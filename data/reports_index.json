@@ -61,10 +61,12 @@
   },
   "2026-06-04": {
     "nyt": {
-      "pdf": "nyt_briefing_2026-06-04.pdf"
+      "pdf": "nyt_briefing_2026-06-04.pdf",
+      "local": "briefings/2026-06-04.html"
     },
     "wsj": {
-      "pdf": "wsj_briefing_2026-06-04.pdf"
+      "pdf": "wsj_briefing_2026-06-04.pdf",
+      "local": "briefings/2026-06-04.html"
     }
   },
   "2026-06-05": {
