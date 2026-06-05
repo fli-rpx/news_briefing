@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Reports · Morning Briefing</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Past Reports</h1>
+            <p class="date">Browse previous briefings</p>
+            <a class="back-link" href="index.html">← Back to Today</a>
+        </header>
+
+        <section id="archiveSection">
+            <div id="loading" class="loading">Loading reports…</div>
+            <ul id="archiveList" class="archive-list"></ul>
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <p>No past reports found.</p>
+            </div>
+            <div id="errorState" class="error-state" style="display: none;">
+                <p>Unable to load reports. Please check your connection or try again later.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Powered by Hermes Agent Pipeline · Observer Commentary</p>
+            <p style="margin-top:0.3rem;">Full briefing generated daily at 6:30 AM</p>
+        </footer>
+    </div>
+
+    <script>
+        const REPORTS_INDEX = 'data/reports_index.json';
+        const REPORTS_DIR = '/reports/';
+
+        async function loadReports() {
+            const list = document.getElementById('archiveList');
+            const loading = document.getElementById('loading');
+            const emptyState = document.getElementById('emptyState');
+            const errorState = document.getElementById('errorState');
+
+            try {
+                const response = await fetch(REPORTS_INDEX);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch reports index');
+                }
+
+                const index = await response.json();
+                const dates = Object.keys(index).sort((a, b) => b.localeCompare(a));
+
+                loading.style.display = 'none';
+
+                if (dates.length === 0) {
+                    emptyState.style.display = 'block';
+                    return;
+                }
+
+                dates.forEach(dateStr => {
+                    const entry = index[dateStr];
+                    const dateObj = new Date(dateStr + 'T00:00:00');
+                    const displayDate = dateObj.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+
+                    const li = document.createElement('li');
+                    li.className = 'archive-item';
+
+                    const wrapper = document.createElement('div');
+                    wrapper.style.cssText = 'padding: 1rem 1.25rem; background: var(--surface); border-radius: 8px; border: 1px solid var(--border);';
+
+                    const dateHeading = document.createElement('div');
+                    dateHeading.style.cssText = 'font-weight: 600; margin-bottom: 0.5rem; color: var(--text);';
+                    dateHeading.textContent = displayDate;
+                    wrapper.appendChild(dateHeading);
+
+                    const sources = ['nyt', 'wsj'];
+                    const labels = { nyt: 'NYT', wsj: 'WSJ' };
+
+                    sources.forEach(source => {
+                        const info = entry[source];
+                        if (!info) return;
+
+                        const sourceRow = document.createElement('div');
+                        sourceRow.style.cssText = 'display: flex; align-items: center; gap: 0.5rem; margin-top: 0.4rem; flex-wrap: wrap;';
+
+                        const label = document.createElement('span');
+                        label.style.cssText = 'font-size: 0.85rem; color: var(--muted); min-width: 2.5rem;';
+                        label.textContent = '[' + labels[source] + ']';
+                        sourceRow.appendChild(label);
+
+                        if (info.pdf) {
+                            const pdfA = document.createElement('a');
+                            pdfA.href = REPORTS_DIR + info.pdf;
+                            pdfA.target = '_blank';
+                            pdfA.style.cssText = 'color: var(--accent); text-decoration: none; font-size: 0.9rem; font-weight: 500;';
+                            pdfA.textContent = '📄 PDF';
+                            sourceRow.appendChild(pdfA);
+                        }
+
+                        if (info.web) {
+                            const sep = document.createElement('span');
+                            sep.style.cssText = 'color: var(--muted); font-size: 0.85rem;';
+                            sep.textContent = '·';
+                            sourceRow.appendChild(sep);
+
+                            const webA = document.createElement('a');
+                            webA.href = info.web;
+                            webA.target = '_blank';
+                            webA.style.cssText = 'color: #4dabf7; text-decoration: none; font-size: 0.9rem; font-weight: 500;';
+                            webA.textContent = '🌐 Web';
+                            sourceRow.appendChild(webA);
+                        }
+
+                        wrapper.appendChild(sourceRow);
+                    });
+
+                    li.appendChild(wrapper);
+                    list.appendChild(li);
+                });
+            } catch (err) {
+                loading.style.display = 'none';
+                errorState.style.display = 'block';
+                console.error('Error loading reports:', err);
+            }
+        }
+
+        loadReports();
+    </script>
+</body>
+</html>
