@@ -1,11 +1,77 @@
 {
+  "2026-05-23": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-23.pdf"
+    }
+  },
+  "2026-05-24": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-24.pdf"
+    }
+  },
+  "2026-05-25": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-25.pdf"
+    }
+  },
+  "2026-05-26": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-26.pdf"
+    }
+  },
+  "2026-05-27": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-27.pdf"
+    }
+  },
+  "2026-05-28": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-28.pdf"
+    }
+  },
+  "2026-05-29": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-29.pdf"
+    }
+  },
+  "2026-05-30": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-30.pdf"
+    }
+  },
+  "2026-05-31": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-05-31.pdf"
+    }
+  },
+  "2026-06-01": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-01.pdf"
+    }
+  },
+  "2026-06-02": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-02.pdf"
+    }
+  },
+  "2026-06-03": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-03.pdf"
+    }
+  },
+  "2026-06-04": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-04.pdf"
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-06-04.pdf"
+    }
+  },
   "2026-06-05": {
     "nyt": {
-      "pdf": "",
       "local": "briefings/2026-06-05.html"
     },
     "wsj": {
-      "pdf": "",
       "local": "briefings/2026-06-05.html"
     }
   }
