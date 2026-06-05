@@ -17,7 +17,7 @@ import sys
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
-REPORTS_ROOT = "/Users/fudongli/.hermes"
+REPORTS_ROOT = os.path.join(PROJECT_ROOT, "reports")
 REPORTS_PREFIX = "/reports/"
 BRIEFINGS_ROOT = os.path.join(PROJECT_ROOT, "briefings")
 BRIEFINGS_PREFIX = "/briefings/"
