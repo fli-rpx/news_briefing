@@ -81,7 +81,7 @@
         async function loadTodayBriefingLink() {
             const container = document.getElementById('todayBriefingLink');
             try {
-                const response = await fetch('data/reports_index.json');
+                const response = await fetch('data/reports_index.json?t=' + Date.now());
                 if (!response.ok) return;
                 const index = await response.json();
                 const entry = index[dateStr];
@@ -107,7 +107,7 @@
         async function loadTodayLinks() {
             const container = document.getElementById('todayLinks');
             try {
-                const response = await fetch('data/reports_index.json');
+                const response = await fetch('data/reports_index.json?t=' + Date.now());
                 if (!response.ok) return;
                 const index = await response.json();
                 const entry = index[dateStr];

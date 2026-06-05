@@ -42,7 +42,7 @@
             const errorState = document.getElementById('errorState');
 
             try {
-                const response = await fetch(REPORTS_INDEX);
+                const response = await fetch(REPORTS_INDEX + '?t=' + Date.now());
                 if (!response.ok) {
                     throw new Error('Failed to fetch reports index');
                 }
