@@ -19,6 +19,8 @@ PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 8080
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 REPORTS_ROOT = "/Users/fudongli/.hermes"
 REPORTS_PREFIX = "/reports/"
+BRIEFINGS_ROOT = os.path.join(PROJECT_ROOT, "briefings")
+BRIEFINGS_PREFIX = "/briefings/"
 
 
 class RequestHandler(http.server.SimpleHTTPRequestHandler):
@@ -29,6 +31,12 @@ class RequestHandler(http.server.SimpleHTTPRequestHandler):
             # Prevent directory traversal
             subpath = os.path.normpath("/" + subpath).lstrip("/")
             return os.path.join(REPORTS_ROOT, subpath)
+        # Handle /briefings/ prefix to serve local briefing HTML files
+        if path.startswith(BRIEFINGS_PREFIX):
+            subpath = path[len(BRIEFINGS_PREFIX):]
+            # Prevent directory traversal
+            subpath = os.path.normpath("/" + subpath).lstrip("/")
+            return os.path.join(BRIEFINGS_ROOT, subpath)
         # Default: serve from project directory
         return super().translate_path(path)
 
@@ -42,8 +50,9 @@ if __name__ == "__main__":
     os.chdir(PROJECT_ROOT)
     with socketserver.TCPServer(("", PORT), RequestHandler) as httpd:
         print(f"Serving Morning Briefing at http://localhost:{PORT}")
-        print(f"Project root:  {PROJECT_ROOT}")
-        print(f"Reports mount: {REPORTS_ROOT} -> {REPORTS_PREFIX}")
+        print(f"Project root:   {PROJECT_ROOT}")
+        print(f"Reports mount:  {REPORTS_ROOT} -> {REPORTS_PREFIX}")
+        print(f"Briefings mount: {BRIEFINGS_ROOT} -> {BRIEFINGS_PREFIX}")
         print("Press Ctrl+C to stop")
         try:
             httpd.serve_forever()

@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morning Briefing</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Morning Briefing — June 5, 2026</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Morning Briefing</h1>
-            <p class="date" id="pageDate">Loading…</p>
-            <div id="todayBriefingLink" style="margin-top: 0.5rem;"></div>
-            <div id="todayLinks" style="margin-top: 1rem;"></div>
-            <a class="past-reports-link" href="archive.html">📋 Past Reports</a>
+            <p class="date">Friday, June 5, 2026</p>
+            <a class="past-reports-link" href="../archive.html">📋 Past Reports</a>
         </header>
 
         <section>
@@ -63,99 +61,5 @@
             <p style="margin-top:0.3rem;">Full briefing generated daily at 6:30 AM</p>
         </footer>
     </div>
-    <script>
-        // Determine today's date
-        const now = new Date();
-        const year = now.getFullYear();
-        const month = String(now.getMonth() + 1).padStart(2, '0');
-        const day = String(now.getDate()).padStart(2, '0');
-        const dateStr = year + '-' + month + '-' + day;
-
-        // Set page date display
-        const pageDate = document.getElementById('pageDate');
-        pageDate.textContent = now.toLocaleDateString('en-US', {
-            weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-        });
-
-        // Add today's local briefing link at the top
-        async function loadTodayBriefingLink() {
-            const container = document.getElementById('todayBriefingLink');
-            try {
-                const response = await fetch('data/reports_index.json');
-                if (!response.ok) return;
-                const index = await response.json();
-                const entry = index[dateStr];
-                if (!entry) return;
-
-                // Use local link from nyt or wsj (they point to the same combined file)
-                const localPath = entry.nyt?.local || entry.wsj?.local;
-                if (!localPath) return;
-
-                const a = document.createElement('a');
-                a.href = localPath;
-                a.target = '_blank';
-                a.className = 'pdf-link';
-                a.style.cssText = 'display: inline-block; margin-top: 0; padding: 0.5rem 1.2rem; background: #1a5fb4; color: white; text-decoration: none; border-radius: 6px; font-size: 0.9rem; font-weight: 600;';
-                a.textContent = '📖 Read Today\'s Briefing';
-                container.appendChild(a);
-            } catch (err) {
-                console.error('Error loading today briefing link:', err);
-            }
-        }
-
-        // Load today's links from index
-        async function loadTodayLinks() {
-            const container = document.getElementById('todayLinks');
-            try {
-                const response = await fetch('data/reports_index.json');
-                if (!response.ok) return;
-                const index = await response.json();
-                const entry = index[dateStr];
-                if (!entry) return;
-
-                const sources = ['nyt', 'wsj'];
-                const labels = { nyt: 'NYT', wsj: 'WSJ' };
-
-                sources.forEach(source => {
-                    const info = entry[source];
-                    if (!info) return;
-
-                    const row = document.createElement('div');
-                    row.style.cssText = 'display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 0.5rem; flex-wrap: wrap;';
-
-                    const label = document.createElement('span');
-                    label.style.cssText = 'font-size: 0.9rem; color: var(--muted);';
-                    label.textContent = '[' + labels[source] + ']';
-                    row.appendChild(label);
-
-                    if (info.pdf) {
-                        const pdfA = document.createElement('a');
-                        pdfA.href = '/reports/' + info.pdf;
-                        pdfA.target = '_blank';
-                        pdfA.className = 'pdf-link';
-                        pdfA.style.cssText = 'display: inline-block; margin-top: 0; padding: 0.4rem 1rem; background: var(--accent); color: white; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600;';
-                        pdfA.textContent = '📄 PDF';
-                        row.appendChild(pdfA);
-                    }
-
-                    if (info.local) {
-                        const localA = document.createElement('a');
-                        localA.href = info.local;
-                        localA.target = '_blank';
-                        localA.style.cssText = 'display: inline-block; margin-top: 0; padding: 0.4rem 1rem; background: #1a5fb4; color: white; text-decoration: none; border-radius: 6px; font-size: 0.85rem; font-weight: 600;';
-                        localA.textContent = '📖 Read';
-                        row.appendChild(localA);
-                    }
-
-                    container.appendChild(row);
-                });
-            } catch (err) {
-                console.error('Error loading today links:', err);
-            }
-        }
-
-        loadTodayBriefingLink();
-        loadTodayLinks();
-    </script>
 </body>
 </html>

@@ -102,18 +102,18 @@
                             sourceRow.appendChild(pdfA);
                         }
 
-                        if (info.web) {
+                        if (info.local) {
                             const sep = document.createElement('span');
                             sep.style.cssText = 'color: var(--muted); font-size: 0.85rem;';
                             sep.textContent = '·';
                             sourceRow.appendChild(sep);
 
-                            const webA = document.createElement('a');
-                            webA.href = info.web;
-                            webA.target = '_blank';
-                            webA.style.cssText = 'color: #4dabf7; text-decoration: none; font-size: 0.9rem; font-weight: 500;';
-                            webA.textContent = '🌐 Web';
-                            sourceRow.appendChild(webA);
+                            const localA = document.createElement('a');
+                            localA.href = info.local;
+                            localA.target = '_blank';
+                            localA.style.cssText = 'color: #4dabf7; text-decoration: none; font-size: 0.9rem; font-weight: 500;';
+                            localA.textContent = '📖 Read';
+                            sourceRow.appendChild(localA);
                         }
 
                         wrapper.appendChild(sourceRow);

@@ -1,1 +1,12 @@
-{}
+{
+  "2026-06-05": {
+    "nyt": {
+      "pdf": "",
+      "local": "briefings/2026-06-05.html"
+    },
+    "wsj": {
+      "pdf": "",
+      "local": "briefings/2026-06-05.html"
+    }
+  }
+}

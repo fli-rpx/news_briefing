@@ -31,7 +31,7 @@ def save_index(index):
         f.write("\n")
 
 
-def update_entry(source, date, pdf=None, web=None):
+def update_entry(source, date, pdf=None, local=None):
     source = source.lower().strip()
     if source not in VALID_SOURCES:
         print(f"Error: source must be one of {VALID_SOURCES}, got '{source}'", file=sys.stderr)
@@ -46,11 +46,12 @@ def update_entry(source, date, pdf=None, web=None):
 
     if pdf:
         index[date][source]["pdf"] = pdf
-    if web:
-        index[date][source]["web"] = web
+    if local:
+        index[date][source]["local"] = local
 
     save_index(index)
-    print(f"Updated {date} -> {source}: pdf={pdf}, web={web}")
+    print(f"Updated {date} -> {source}: pdf={pdf}, local={local}")
+    print(f"Index now contains {len(index)} date(s) with {sum(len(v) for v in index.values())} source entries.")
 
 
 def main():
@@ -58,14 +59,14 @@ def main():
     parser.add_argument("--source", required=True, help="Source: nyt or wsj")
     parser.add_argument("--date", required=True, help="Date in YYYY-MM-DD format")
     parser.add_argument("--pdf", default=None, help="PDF filename")
-    parser.add_argument("--web", default=None, help="Web page URL")
+    parser.add_argument("--local", default=None, help="Path to local HTML file")
     args = parser.parse_args()
 
-    if not args.pdf and not args.web:
-        print("Error: at least one of --pdf or --web must be provided", file=sys.stderr)
+    if not args.pdf and not args.local:
+        print("Error: at least one of --pdf or --local must be provided", file=sys.stderr)
         sys.exit(1)
 
-    update_entry(args.source, args.date, pdf=args.pdf, web=args.web)
+    update_entry(args.source, args.date, pdf=args.pdf, local=args.local)
 
 
 if __name__ == "__main__":
