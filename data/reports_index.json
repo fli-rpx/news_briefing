@@ -78,5 +78,15 @@
       "local": "briefings/2026-06-05.html",
       "pdf": "wsj_briefing_2026-06-05.pdf"
     }
+  },
+  "2026-06-06": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-06.pdf",
+      "local": "briefings/2026-06-06.html"
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-06-06.pdf",
+      "local": "briefings/2026-06-06.html"
+    }
   }
 }
