@@ -28,6 +28,7 @@ BRIEFINGS_DIR = os.path.join(REPO_ROOT, "briefings")
 DATA_DIR = os.path.join(REPO_ROOT, "data")
 INDEX_HTML = os.path.join(REPO_ROOT, "index.html")
 INDEX_JSON = os.path.join(DATA_DIR, "reports_index.json")
+OBSERVERS_JSON = os.path.join(DATA_DIR, "observers.json")
 
 SOURCES = ["nyt", "wsj"]
 
@@ -45,7 +46,7 @@ def parse_args():
     parser.add_argument(
         "--kimi-url",
         default=None,
-        help="URL of a Kimi webpage to download as the local briefing",
+        help='URL of a Kimi webpage. Prefix with "source:" e.g. "nyt:https://..." or "wsj:https://..."',
     )
     parser.add_argument(
         "--bundle-assets",
@@ -93,8 +94,12 @@ def copy_pdfs_for_date(date_str):
 
 
 # Step 2: Update reports_index.json ------------------------------------------------
-def update_index(date_str, copied_pdfs):
-    """Add PDF entries and local HTML links to data/reports_index.json."""
+def update_index(date_str, copied_pdfs, kimi_source=None, kimi_local_path=None, skip_fallback=False):
+    """Add PDF entries and local HTML links to data/reports_index.json.
+
+    If kimi_source and kimi_local_path are provided, only update that source's
+    local entry. Otherwise fall back to shared briefings/{date_str}.html for all.
+    """
     print(f"Updating index: {INDEX_JSON}")
 
     with open(INDEX_JSON, "r", encoding="utf-8") as f:
@@ -115,15 +120,24 @@ def update_index(date_str, copied_pdfs):
             changed = True
             print(f"  Added {source.upper()} PDF entry: {filename}")
 
-    # Ensure a local link is recorded for every source once the HTML exists
-    local_path = f"briefings/{date_str}.html"
-    for source in SOURCES:
-        if source not in entry:
-            entry[source] = {}
-        if entry[source].get("local") != local_path:
-            entry[source]["local"] = local_path
+    # If a Kimi page was saved for a specific source, set that source's local path
+    if kimi_source and kimi_local_path:
+        if kimi_source not in entry:
+            entry[kimi_source] = {}
+        if entry[kimi_source].get("local") != kimi_local_path:
+            entry[kimi_source]["local"] = kimi_local_path
             changed = True
-            print(f"  Added {source.upper()} local entry: {local_path}")
+            print(f"  Set {kimi_source.upper()} local entry: {kimi_local_path}")
+    elif not skip_fallback:
+        # Fallback: shared local path for all sources
+        local_path = f"briefings/{date_str}.html"
+        for source in SOURCES:
+            if source not in entry:
+                entry[source] = {}
+            if entry[source].get("local") != local_path:
+                entry[source]["local"] = local_path
+                changed = True
+                print(f"  Added {source.upper()} local entry: {local_path}")
 
     if changed:
         sorted_index = dict(sorted(index.items()))
@@ -186,44 +200,61 @@ def format_date_title(date_str):
 
 
 def save_local_briefing(date_str, kimi_url=None):
-    """Save briefings/YYYY-MM-DD.html from a Kimi URL or the current index.html."""
-    os.makedirs(BRIEFINGS_DIR, exist_ok=True)
-    out_path = os.path.join(BRIEFINGS_DIR, f"{date_str}.html")
+    """Save briefings/{source}_{date_str}.html from a Kimi URL or the current index.html.
 
-    if kimi_url:
-        print(f"  Fetching {kimi_url} with curl...")
+    Kimi URL can be prefixed with "source:" e.g. "nyt:https://..." or "wsj:https://...".
+    Without prefix, saves to briefings/{date_str}.html (shared fallback).
+    Returns (bool, str) — (success, local_path) where local_path is relative to REPO_ROOT.
+    """
+    os.makedirs(BRIEFINGS_DIR, exist_ok=True)
+
+    source = None
+    clean_url = kimi_url
+    if kimi_url and ":" in kimi_url and kimi_url.split(":")[0] in ("nyt", "wsj"):
+        source = kimi_url.split(":")[0]
+        clean_url = kimi_url[len(source) + 1:]
+
+    if source:
+        out_path = os.path.join(BRIEFINGS_DIR, f"{source}_{date_str}.html")
+    else:
+        out_path = os.path.join(BRIEFINGS_DIR, f"{date_str}.html")
+    local_rel = os.path.relpath(out_path, REPO_ROOT)
+
+    if clean_url:
+        print(f"  Fetching {clean_url} with curl...")
         result = subprocess.run(
-            ["curl", "-s", "-L", kimi_url],
+            ["curl", "-s", "-L", clean_url],
             capture_output=True,
             text=True,
             timeout=120,
         )
         if result.returncode != 0:
             print(f"  ERROR: curl failed: {result.stderr.strip()}")
-            return False
+            return (False, None)
         if not result.stdout.strip():
-            print(f"  ERROR: fetched empty content from {kimi_url}")
-            return False
+            print(f"  ERROR: fetched empty content from {clean_url}")
+            return (False, None)
 
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(result.stdout)
         print(f"  Saved Kimi page to {out_path}")
-        return True
+        return (True, local_rel)
 
     # Fallback: extract from index.html
     print(f"  Generating from {INDEX_HTML}...")
 
     if not os.path.exists(INDEX_HTML):
         print(f"  ERROR: {INDEX_HTML} not found. Cannot generate local briefing.")
-        return False
+        return (False, None)
 
     with open(INDEX_HTML, "r", encoding="utf-8") as f:
         html = f.read()
 
     observers = extract_observer_divs(html)
     if len(observers) != 3:
-        print(f"  ERROR: Expected 3 observer sections, found {len(observers)}.")
-        return False
+        # New index.html is a gallery SPA without hardcoded observers.
+        # This is OK when --kimi-url is used (the primary workflow).
+        return (True, None)
 
     observers_html = "\n\n".join(observers)
     long_date = format_date_long(date_str)
@@ -262,17 +293,72 @@ def save_local_briefing(date_str, kimi_url=None):
         f.write(page)
 
     print(f"  Saved local briefing to {out_path}")
-    return True
+    return (True, local_rel)
+
+
+# Step 3.75: Save observer text for gallery ----------------------------------------
+def save_observers_for_date(date_str):
+    """Extract observer inner HTML from index.html and save to observers.json.
+
+    Expects exactly 3 <div class="observer"> blocks in index.html:
+    first = zhai (翟东升), second = jin (金灿荣), third = song (宋鸿兵).
+    """
+    if not os.path.exists(INDEX_HTML):
+        print(f"  WARNING: {INDEX_HTML} not found. Cannot save observers.")
+        return
+
+    with open(INDEX_HTML, "r", encoding="utf-8") as f:
+        html = f.read()
+
+    divs = extract_observer_divs(html)
+    if len(divs) != 3:
+        # New index.html is a gallery SPA — observers come from the pipeline separately.
+        # The primary workflow uses --kimi-url, which doesn't need observer extraction.
+        return
+
+    # Strip outer <div class="observer">...</div> to get inner HTML
+    inner_htmls = []
+    prefix = '<div class="observer">'
+    suffix = "</div>"
+    for div in divs:
+        inner = div[len(prefix) : -len(suffix)].strip()
+        inner_htmls.append(inner)
+
+    observers = {"zhai": inner_htmls[0], "jin": inner_htmls[1], "song": inner_htmls[2]}
+
+    data = {}
+    if os.path.exists(OBSERVERS_JSON):
+        with open(OBSERVERS_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+    data[date_str] = observers
+    sorted_data = dict(sorted(data.items()))
+
+    os.makedirs(DATA_DIR, exist_ok=True)
+    with open(OBSERVERS_JSON, "w", encoding="utf-8") as f:
+        json.dump(sorted_data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    print(f"  Saved observers for {date_str}")
 
 
 # Step 3.5: Bundle Kimi SPA assets --------------------------------------------------
 def bundle_kimi_assets(date_str, kimi_url):
     """Download JS/CSS assets referenced by a Kimi SPA page so it works offline on GH Pages.
 
-    Parses briefings/YYYY-MM-DD.html for relative asset references (./assets/...),
-    downloads them from the Kimi server, and rewrites remote CDN refs to local.
+    Parses briefings/{source}_YYYY-MM-DD.html for relative asset references (./assets/...),
+    downloads them from the Kimi server.
     """
-    html_path = os.path.join(BRIEFINGS_DIR, f"{date_str}.html")
+    # Parse source from URL prefix like "nyt:https://..." or "wsj:https://..."
+    source = None
+    clean_url = kimi_url
+    if kimi_url and ":" in kimi_url and kimi_url.split(":")[0] in ("nyt", "wsj"):
+        source = kimi_url.split(":")[0]
+        clean_url = kimi_url[len(source) + 1:]
+
+    if source:
+        html_path = os.path.join(BRIEFINGS_DIR, f"{source}_{date_str}.html")
+    else:
+        html_path = os.path.join(BRIEFINGS_DIR, f"{date_str}.html")
     if not os.path.exists(html_path):
         print(f"  Skipping asset bundle: {html_path} not found")
         return False
@@ -286,7 +372,7 @@ def bundle_kimi_assets(date_str, kimi_url):
         return True  # not an error, just nothing to do
 
     # Determine base URL for resolving relative paths
-    base_url = kimi_url.rstrip("/")
+    base_url = clean_url.rstrip("/")
     assets_dir = os.path.join(BRIEFINGS_DIR, "assets")
     os.makedirs(assets_dir, exist_ok=True)
 
@@ -425,18 +511,33 @@ def main():
     print("Step 1: Copying PDFs...")
     copied = copy_pdfs_for_date(date_str)
 
+    # Parse source prefix from kimi_url (e.g. "nyt:https://..." or "wsj:https://...")
+    kimi_source = None
+    if args.kimi_url and ":" in args.kimi_url and args.kimi_url.split(":")[0] in ("nyt", "wsj"):
+        kimi_source = args.kimi_url.split(":")[0]
+
     print("Step 2: Updating reports index...")
-    index_changed = update_index(date_str, copied)
+    # When a Kimi URL is provided, skip the fallback shared-path logic
+    # (the source-specific path is set in Step 2b below)
+    index_changed = update_index(date_str, copied, skip_fallback=bool(args.kimi_url))
 
     if args.kimi_url:
         print("Step 3: Fetching Kimi page...")
     else:
         print("Step 3: Saving local HTML briefing...")
-    html_ok = save_local_briefing(date_str, args.kimi_url)
+    html_ok, local_path = save_local_briefing(date_str, args.kimi_url)
+
+    # Update index with the correct per-source local path if a Kimi page was saved
+    if html_ok and local_path and kimi_source:
+        print("Step 2b: Updating index with per-source local path...")
+        update_index(date_str, [], kimi_source=kimi_source, kimi_local_path=local_path)
 
     if args.kimi_url and args.bundle_assets and html_ok:
         print("Step 3.5: Bundling Kimi SPA assets for offline use...")
         bundle_kimi_assets(date_str, args.kimi_url)
+
+    print("Step 3.75: Saving observer text for gallery...")
+    save_observers_for_date(date_str)
 
     print("Step 4: Git commit and push...")
     git_ok = git_commit_and_push(date_str)
