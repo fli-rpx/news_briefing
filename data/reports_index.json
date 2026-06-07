@@ -95,7 +95,8 @@
       "local": "briefings/2026-06-07.html"
     },
     "nyt": {
-      "local": "briefings/2026-06-07.html"
+      "local": "briefings/2026-06-07.html",
+      "pdf": "nyt_briefing_2026-06-07.pdf"
     }
   }
 }
