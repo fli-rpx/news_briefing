@@ -92,10 +92,10 @@
   "2026-06-07": {
     "wsj": {
       "pdf": "wsj_briefing_2026-06-07.pdf",
-      "local": "briefings/wsj_2026-06-07.html"
+      "local": "briefings/2026-06-07.html"
     },
     "nyt": {
-      "local": "briefings/nyt_2026-06-07.html",
+      "local": "briefings/2026-06-07.html",
       "pdf": "nyt_briefing_2026-06-07.pdf"
     }
   }
