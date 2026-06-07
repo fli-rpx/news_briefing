@@ -54,6 +54,11 @@ def parse_args():
         default=True,
         help="Download JS/CSS assets for Kimi SPA pages so they work offline (default: True)",
     )
+    parser.add_argument(
+        "--cartoon-path",
+        default=None,
+        help='Path to a cartoon image for this date, relative to repo root, e.g. "images/cartoon_2026-06-07.jpg"',
+    )
     return parser.parse_args()
 
 
@@ -341,6 +346,27 @@ def save_observers_for_date(date_str):
     print(f"  Saved observers for {date_str}")
 
 
+def save_cartoon_for_date(date_str, cartoon_path):
+    """Record a cartoon image path in observers.json for the given date."""
+    if not os.path.exists(cartoon_path):
+        print(f"  WARNING: Cartoon file not found: {cartoon_path}")
+        return
+
+    data = {}
+    if os.path.exists(OBSERVERS_JSON):
+        with open(OBSERVERS_JSON, "r", encoding="utf-8") as f:
+            data = json.load(f)
+
+    if date_str not in data:
+        data[date_str] = {}
+    data[date_str]["cartoon"] = os.path.relpath(cartoon_path, REPO_ROOT)
+    sorted_data = dict(sorted(data.items()))
+    with open(OBSERVERS_JSON, "w", encoding="utf-8") as f:
+        json.dump(sorted_data, f, indent=2, ensure_ascii=False)
+        f.write("\n")
+    print(f"  Saved cartoon for {date_str}: {data[date_str]['cartoon']}")
+
+
 # Step 3.5: Bundle Kimi SPA assets --------------------------------------------------
 def bundle_kimi_assets(date_str, kimi_url):
     """Download JS/CSS assets referenced by a Kimi SPA page so it works offline on GH Pages.
@@ -538,6 +564,10 @@ def main():
 
     print("Step 3.75: Saving observer text for gallery...")
     save_observers_for_date(date_str)
+
+    if args.cartoon_path:
+        print("Step 3.8: Saving cartoon reference...")
+        save_cartoon_for_date(date_str, args.cartoon_path)
 
     print("Step 4: Git commit and push...")
     git_ok = git_commit_and_push(date_str)

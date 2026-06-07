@@ -151,6 +151,24 @@
             opacity: 0.3;
             cursor: not-allowed;
         }
+        .cartoon-image {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            margin: 1rem auto;
+            display: block;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .cartoon-wrapper {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .cartoon-wrapper .caption {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -303,7 +321,10 @@
             const content = document.getElementById('contentArea');
             const obs = observersData[dateStr];
             if (obs && obs.zhai && obs.jin && obs.song) {
-                content.innerHTML = `
+                const cartoonHtml = obs.cartoon
+                    ? `<div class="cartoon-wrapper"><img src="${obs.cartoon}" alt="Daily briefing cartoon" class="cartoon-image" loading="lazy"><p class="caption">Daily briefing illustration</p></div>`
+                    : '';
+                content.innerHTML = `${cartoonHtml}
                     <div class="observer-grid">
                         <div class="observer-card">${obs.zhai}</div>
                         <div class="observer-card">${obs.jin}</div>
