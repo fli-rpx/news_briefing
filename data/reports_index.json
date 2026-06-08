@@ -102,7 +102,8 @@
       "local": "briefings/nyt_2026-06-08.html"
     },
     "wsj": {
-      "pdf": "wsj_briefing_2026-06-08.pdf"
+      "pdf": "wsj_briefing_2026-06-08.pdf",
+      "local": "briefings/wsj_2026-06-08.html"
     }
   }
 }
