@@ -369,12 +369,13 @@ def save_cartoon_for_date(date_str, cartoon_path):
 
 # Step 3.5: Bundle Kimi SPA assets --------------------------------------------------
 def bundle_kimi_assets(date_str, kimi_url):
-    """Download JS/CSS assets referenced by a Kimi SPA page so it works offline on GH Pages.
+    """Download JS/CSS + image assets referenced by a Kimi SPA page so it works offline on GH Pages.
 
     Parses briefings/{source}_YYYY-MM-DD.html for relative asset references (./assets/...),
-    downloads them from the Kimi server.
+    downloads each from the Kimi CDN, and saves to briefings/assets/. Then scans downloaded
+    JS bundles for image references (./assets/images/...) and downloads those too.
+    Also patches references in the JS to absolute image paths so GH Pages finds them.
     """
-    # Parse source from URL prefix like "nyt:https://..." or "wsj:https://..."
     source = None
     clean_url = kimi_url
     if kimi_url and ":" in kimi_url and kimi_url.split(":")[0] in ("nyt", "wsj"):
@@ -458,6 +459,42 @@ def bundle_kimi_assets(date_str, kimi_url):
     # (they already use ./assets/X from Kimi's build, so this is a no-op
     #  when briefings/2026-06-05.html references ./assets/X.js which resolves
     #  to briefings/assets/X.js — exactly right for GH Pages)
+
+    # Step: Scan downloaded JS bundles for image references and download them
+    images_dir = os.path.join(assets_dir, "images")
+    os.makedirs(images_dir, exist_ok=True)
+    image_refs = set()
+    for local_name in downloaded:
+        if not local_name.endswith(".js"):
+            continue
+        js_path = os.path.join(assets_dir, local_name)
+        if not os.path.exists(js_path):
+            continue
+        with open(js_path, "r", encoding="utf-8") as f:
+            js = f.read()
+        # Find all ./assets/images/... references in the JS
+        found = re.findall(r'\./assets/images/[^"\'\\s]+', js)
+        image_refs.update(found)
+
+    for img_ref in sorted(image_refs):
+        img_name = img_ref.replace("./assets/images/", "")
+        img_local = os.path.join(images_dir, img_name)
+        if os.path.exists(img_local):
+            continue
+        img_remote = f"{base_url}/images/{img_name}"
+        print(f"  Downloading images/{img_name}...")
+        result = subprocess.run(
+            ["curl", "-s", "-L", img_remote],
+            capture_output=True,
+            timeout=60,
+        )
+        if result.returncode != 0 or len(result.stdout) == 0:
+            print(f"    WARNING: failed to download {img_remote}")
+            continue
+        with open(img_local, "wb") as f:
+            f.write(result.stdout)
+        print(f"    Saved {len(result.stdout)/1024:.0f} KB")
+        downloaded.append(f"images/{img_name}")
 
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(html)
