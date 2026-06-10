@@ -119,10 +119,11 @@
   "2026-06-10": {
     "nyt": {
       "pdf": "nyt_briefing_2026-06-10.pdf",
-      "local": "briefings/2026-06-10.html"
+      "local": "briefings/nyt_2026-06-10.html"
     },
     "wsj": {
-      "local": "briefings/2026-06-10.html"
+      "local": "briefings/2026-06-10.html",
+      "pdf": "wsj_briefing_2026-06-10.pdf"
     }
   }
 }
