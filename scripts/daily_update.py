@@ -472,7 +472,12 @@ def bundle_kimi_assets(date_str, kimi_url):
             continue
         with open(js_path, "r", encoding="utf-8") as f:
             js = f.read()
-        # Find all ./assets/images/... references in the JS
+        # Patch image paths: JS inside assets/ resolves ./images/ correctly
+        # (JS is at briefings/assets/index-X.js, images at briefings/assets/images/)
+        if ".assets/images" in js:
+            js = js.replace("./assets/images/", "./images/")
+            with open(js_path, "w", encoding="utf-8") as f2:
+                f2.write(js)
         found = re.findall(r'\./assets/images/[^"\'\\s]+', js)
         image_refs.update(found)
 
