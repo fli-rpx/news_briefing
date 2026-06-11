@@ -125,5 +125,11 @@
       "local": "briefings/wsj_2026-06-10.html",
       "pdf": "wsj_briefing_2026-06-10.pdf"
     }
+  },
+  "2026-06-11": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-11.pdf",
+      "local": "briefings/nyt_2026-06-11.html"
+    }
   }
 }
