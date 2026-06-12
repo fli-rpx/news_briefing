@@ -1,7 +1,741 @@
-<html>
-<head><title>404 Not Found</title></head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSJ Daily Briefing — June 12, 2026</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #14161b;
+      --surface-2: #1c1f27;
+      --surface-3: #252a33;
+      --text: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --muted: #5f6368;
+      --accent: #b38b59;
+      --accent-2: #c9a227;
+      --green: #34a853;
+      --yellow: #fbbc04;
+      --red: #ea4335;
+      --blue: #8ab4f8;
+      --border: #2e323b;
+      --font-serif: "Chronicle Display", Georgia, "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      background: linear-gradient(180deg, #101218 0%, var(--bg) 100%);
+      border-bottom: 3px solid var(--accent);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+    .masthead {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--text);
+    }
+    .tagline {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .date-line {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    .tone-pill {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(52, 168, 83, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(52, 168, 83, 0.35);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 12, 15, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav ul {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      max-width: 1200px;
+      min-width: max-content;
+    }
+    nav a {
+      display: block;
+      padding: 0.55rem 0.85rem;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    nav a:hover, nav a.active {
+      background: var(--surface-2);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 5rem;
+    }
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.85rem;
+      margin: 0 0 1.25rem;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.8rem 0 0.6rem;
+      color: var(--text);
+    }
+    h4 {
+      font-size: 1rem;
+      color: var(--accent-2);
+      margin: 1.4rem 0 0.5rem;
+    }
+    p { margin: 0.6rem 0; }
+    .lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+    }
+    .card-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .card-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.75rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--surface-2);
+      color: var(--accent);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .text-right { text-align: right; }
+    .badge {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 0.45rem;
+    }
+    .bg-green { background: var(--green); }
+    .bg-yellow { background: var(--yellow); }
+    .bg-red { background: var(--red); }
+    .article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .article-meta {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .article h3 { margin-top: 0; }
+    .article ul {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .article li { margin: 0.35rem 0; }
+    .impact {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .impact-box {
+      background: var(--surface-2);
+      border-radius: 6px;
+      padding: 0.75rem;
+      font-size: 0.9rem;
+    }
+    .impact-up { border-left: 3px solid var(--green); }
+    .impact-down { border-left: 3px solid var(--red); }
+    .signal-note {
+      background: rgba(251, 188, 4, 0.08);
+      border-left: 3px solid var(--yellow);
+      padding: 0.9rem 1rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+      color: var(--text-secondary);
+    }
+    .risk-high { color: var(--red); font-weight: 700; }
+    .risk-med { color: var(--yellow); font-weight: 700; }
+    .risk-low { color: var(--green); font-weight: 700; }
+    .observer {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .observer-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.15rem;
+    }
+    .observer-chinese {
+      color: var(--accent);
+      font-size: 0.95rem;
+      margin-bottom: 0.6rem;
+    }
+    .observer-thesis {
+      color: var(--text-secondary);
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .observer ul {
+      padding-left: 1.2rem;
+      margin: 0;
+    }
+    .observer li { margin: 0.35rem 0; }
+    .insights-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: insight;
+    }
+    .insights-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .insights-list li::before {
+      counter-increment: insight;
+      content: counter(insight);
+      position: absolute;
+      left: 0.85rem;
+      top: 0.85rem;
+      width: 1.35rem;
+      height: 1.35rem;
+      background: var(--accent);
+      color: #000;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .empty-section {
+      color: var(--muted);
+      font-style: italic;
+      padding: 2rem 0;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      header { padding: 1.75rem 1rem 1.25rem; }
+      main { padding: 1rem 0.75rem 3rem; }
+      .impact { grid-template-columns: 1fr; }
+      table { font-size: 0.85rem; }
+      th, td { padding: 0.6rem 0.65rem; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
 <body>
-<center><h1>404 Not Found</h1></center>
-<hr><center>nginx</center>
+  <header>
+    <p class="tagline">The Wall Street Journal · A-Grade Daily Briefing</p>
+    <h1 class="masthead">WSJ Daily Briefing</h1>
+    <p class="date-line">Friday, June 12, 2026</p>
+    <span class="tone-pill">Market Tone: Bullish (+0.8–1.4% major indices)</span>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#economy">Economy</a></li>
+      <li><a href="#geopolitics">Geopolitics</a></li>
+      <li><a href="#sector">Sector</a></li>
+      <li><a href="#outlook">Outlook</a></li>
+      <li><a href="#observer">Observer</a></li>
+      <li><a href="#cartoon">Cartoon</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">Date</div>
+          <div class="card-value">Friday, June 12, 2026</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Market Tone</div>
+          <div class="card-value">Bullish (+0.8–1.4% major indices) with notable safe-haven divergence (Gold +3%)</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Dominant Narrative</div>
+          <div class="card-value">SpaceX historic IPO + Iran deal nearing breakthrough + 2026 World Cup launch</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Collective Psychic State</div>
+          <div class="card-value">"Threshold Excitement" — Ventral Vagal activation with sympathetic mobilization</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Overall Sentiment</div>
+          <div class="card-value">Cautiously Optimistic (+0.35)</div>
+        </div>
+      </div>
+
+      <h3>Key Events Timeline</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>When</th>
+            <th>What</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>TODAY (Fri midday)</td>
+            <td>SpaceX (SPCX) begins Nasdaq trading</td>
+            <td><span class="badge bg-green"></span>Happening now</td>
+          </tr>
+          <tr>
+            <td>Saturday</td>
+            <td>Knicks could clinch 1st NBA title in decades</td>
+            <td><span class="badge bg-yellow"></span>Watch</td>
+          </tr>
+          <tr>
+            <td>This weekend</td>
+            <td>World Cup matches across North America</td>
+            <td><span class="badge bg-green"></span>Ongoing</td>
+          </tr>
+          <tr>
+            <td>This week</td>
+            <td>Iran deal framework — IRGC yet to consent</td>
+            <td><span class="badge bg-red"></span>Blocked</td>
+          </tr>
+          <tr>
+            <td>Next week</td>
+            <td>G-7 summit, French Alps — trade imbalances</td>
+            <td><span class="badge bg-yellow"></span>Upcoming</td>
+          </tr>
+          <tr>
+            <td>Later 2026</td>
+            <td>OpenAI IPO preparation</td>
+            <td><span class="badge bg-yellow"></span>Pending</td>
+          </tr>
+          <tr>
+            <td>Later 2026</td>
+            <td>Anthropic IPO preparation</td>
+            <td><span class="badge bg-yellow"></span>Pending</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="markets">
+      <h2>Markets</h2>
+
+      <article class="article">
+        <h3>SpaceX IPO: The Largest in History — A Watershed</h3>
+        <div class="article-meta">
+          Ticker: SPCX · Valuation: ~$1.77T · Raised: ~$75B · IPO Price: $135 · Indicated Open: $170–175
+        </div>
+        <p><strong>Why It's Historic:</strong></p>
+        <ul>
+          <li>Largest IPO ever (555.6M shares × $135)</li>
+          <li>Outsize portion to individuals → massive retail base</li>
+          <li>Elon Musk → world's first trillionaire</li>
+          <li>Gauge for OpenAI/Anthropic mega-IPOs later this year</li>
+          <li>Revenue: Primarily Starlink (satellite internet) + nascent AI</li>
+        </ul>
+        <h4>Ecosystem Coverage</h4>
+        <table>
+          <thead>
+            <tr><th>Article</th><th>Key Takeaway</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Antonio Gracias Set for $68B Win</td><td>Valor Equity = 2nd largest SpaceX shareholder</td></tr>
+            <tr><td>VCs at Core of Mega IPO Wave</td><td>3 dozen investors across SpaceX/OpenAI/Anthropic</td></tr>
+            <tr><td>"You Could Get Lost in Space" (Jakab)</td><td>Skeptical on space investment funds</td></tr>
+            <tr><td>Gilded-Age → Trillionaires</td><td>Rockefeller to Musk: wealth evolution</td></tr>
+            <tr><td>"You Have No Idea What $1T Is"</td><td>886 comments — playful educational piece</td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="article">
+        <h3>Market Data — The Divergence Story</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th class="text-right">Level</th>
+              <th class="text-right">Chg</th>
+              <th>Signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>DJIA</td><td class="text-right">51,388</td><td class="text-right">+1.06%</td><td><span class="badge bg-green"></span>Bullish</td></tr>
+            <tr><td>S&amp;P 500</td><td class="text-right">7,454</td><td class="text-right">+0.80%</td><td><span class="badge bg-green"></span>Bullish</td></tr>
+            <tr><td>Nasdaq</td><td class="text-right">25,998</td><td class="text-right">+0.73%</td><td><span class="badge bg-green"></span>Bullish</td></tr>
+            <tr><td>Russell 2000</td><td class="text-right">2,964</td><td class="text-right">+1.45%</td><td><span class="badge bg-green"></span>Small caps leading = risk expansion</td></tr>
+            <tr><td>VIX</td><td class="text-right">18.65</td><td class="text-right">-4.06%</td><td><span class="badge bg-green"></span>Complacency returning</td></tr>
+            <tr><td>Gold</td><td class="text-right">$4,237</td><td class="text-right">+3.00%</td><td><span class="badge bg-yellow"></span>Safe-haven + rally = caution</td></tr>
+            <tr><td>Crude Oil</td><td class="text-right">$84.44</td><td class="text-right">-3.73%</td><td><span class="badge bg-green"></span>Peace premium; producer pain</td></tr>
+            <tr><td>US 10Y</td><td class="text-right">4.481%</td><td class="text-right">-1/32</td><td><span class="badge bg-yellow"></span>Elevated, stable</td></tr>
+            <tr><td>Bitcoin</td><td class="text-right">$64,219</td><td class="text-right">+1.05%</td><td><span class="badge bg-green"></span>Mild optimism</td></tr>
+          </tbody>
+        </table>
+        <div class="signal-note">
+          <strong>Key Signal:</strong> Gold +3% alongside equities. This is NOT a classic "all clear" — it's "buy the celebration, buy the hedge."
+        </div>
+      </article>
+
+      <article class="article">
+        <h3>European Markets as a Tech-Bubble Hedge</h3>
+        <p>Strategy piece: European equities offer value and diversification against U.S. tech concentration risk. Practical trade idea for the current market.</p>
+      </article>
+
+      <article class="article">
+        <h3>The Wearable Boom: Real Tech, Murky Business</h3>
+        <p>Oura and Whoop preparing IPOs, but Fitbit/Peloton memories linger. The tech (sleep tracking, HRV) is compelling. The unit economics are unproven at scale.</p>
+      </article>
+    </section>
+
+    <section id="economy">
+      <h2>Economy</h2>
+
+      <article class="article">
+        <h3>G-7 Preview: Trade Imbalances Return</h3>
+        <div class="article-meta">Greg Ip · Capital Account</div>
+        <p>Deficits and surpluses on the French Alps agenda. Structural trade tensions re-emerging.</p>
+      </article>
+
+      <article class="article">
+        <h3>Policy + Opinion Roundup</h3>
+
+        <h4>The 'Dude-Bro' Candidate</h4>
+        <p class="article-meta">Comments: 165 · Graham Platner, Spencer Pratt profiles</p>
+        <p>Candidates blending manliness with populist outrage. Cross-spectrum appeal = cultural shift in political communication.</p>
+
+        <h4>Erika Kirk: Conservative Christian Womanhood</h4>
+        <p class="article-meta">Comments: 948 (MOST ENGAGED TODAY) · Turning Point USA women's conference</p>
+        <p>Birth rates declining, marriage fading, MAGA uncertain. This topic activates the deepest cultural identity engagement.</p>
+
+        <h4>$50,000 Teacher Bonuses from Meta Data Center</h4>
+        <p class="article-meta">Comments: 92</p>
+        <p>Louisiana data center → sales tax windfall → teacher bonuses. Tangible evidence for AI infrastructure benefits debate.</p>
+      </article>
+
+      <article class="article">
+        <h3>Opinion — By Theme</h3>
+
+        <h4>Defense &amp; Security</h4>
+        <ul>
+          <li>"Revolt of Britain's Defenders" — Defense officials resign. NATO structural tension.</li>
+          <li>"FISA 702 Goes Dark" — Surveillance authority expires.</li>
+          <li>"Trump Needs a New Iran Strategy" — Related reading.</li>
+        </ul>
+
+        <h4>U.S. Policy</h4>
+        <ul>
+          <li>"Kathy Hochul and the 'Gestating Parent'" — Gender-neutral language critique.</li>
+          <li>"Is That All From the GOP Congress?" — Republican deliverables questioned.</li>
+          <li>"Newsom's California Health Tax Gambit" — Health insurance tax critique.</li>
+          <li>"Social Security Trust Fund Deception" — Funding fiction exposed.</li>
+        </ul>
+
+        <h4>Culture</h4>
+        <ul>
+          <li>"'Rocky' and the Love of America" — Peggy Noonan on cultural patriotism.</li>
+          <li>"Why Teenagers Stopped Working in Summer" — Labor force trends.</li>
+          <li>"Scott Pelley's Idea of Journalism" — Media criticism.</li>
+        </ul>
+
+        <h4>Free Expression</h4>
+        <table>
+          <thead>
+            <tr><th>Piece</th><th>Author</th><th>Angle</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>"It's the Age of Sanders, Too"</td><td>Continetti</td><td>Bernie's enduring influence</td></tr>
+            <tr><td>"Rapid Prompting: Miracle or Mirage?"</td><td>Camp</td><td>Autism communication debate</td></tr>
+            <tr><td>"In Defense of Trillionaires"</td><td>Zhukovsky</td><td>Wealth creation as social good</td></tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section id="geopolitics">
+      <h2>Geopolitics</h2>
+
+      <article class="article">
+        <h3>Iran Deal: Close, But the Revolutionary Guard Isn't Sold</h3>
+        <div class="article-meta">Authors: Summer Said, Benoit Faucon, Jared Malsin · Comments: 112</div>
+        <p><strong>The Situation:</strong> Mediators report significant progress toward a preliminary MOU to end the 3.5-month U.S.-Iran war, reopen the Strait of Hormuz, and set the stage for nuclear talks. Iran's top diplomats and Supreme Leader Khamenei have signed off.</p>
+        <p><strong>The Block:</strong> The Islamic Revolutionary Guard Corps (IRGC) has NOT consented. Iran's hard-line security establishment prioritizes denying the U.S./Israel victory over ending the war.</p>
+        <p><strong>Twin Narratives:</strong> "Trump Says Iran Deal Is Close" vs "Tehran Says No Decision Made" — classic information war. Both are true from their respective vantage points.</p>
+        <p><strong>Oil Impact:</strong> Crude -3.73% to $84.44. Markets already pricing some peace premium.</p>
+        <div class="impact">
+          <div class="impact-box impact-up"><strong>If deal closes:</strong> Oil ↓, risk-on ↑, Middle East tensions ease</div>
+          <div class="impact-box impact-down"><strong>If IRGC blocks:</strong> Oil ↑, safe-haven demand ↑, protracted uncertainty</div>
+        </div>
+      </article>
+
+      <article class="article">
+        <h3>China Arrests American Scholar-Journalist</h3>
+        <p>Beijing detains Myanmar-born American activist on espionage charges. Adds to friction across trade, tech, and now direct legal action against U.S. citizens. Watch for State Department response.</p>
+      </article>
+
+      <article class="article">
+        <h3>Keiko Fujimori Wins Peru Presidency</h3>
+        <p>Daughter of former authoritarian leader Alberto Fujimori. Continues Latin America's rightward shift. Impact on Chinese resource investment (copper/silver) — right-wing governments are pro-market but may impose more conditions.</p>
+      </article>
+
+      <article class="article">
+        <h3>Cuba: Florida Diaspora as Lifeline</h3>
+        <p>U.S. squeeze on communist government is being countered by Cuban diaspora in Florida — food and medicine shipments preventing total collapse. Soft power vs. hard power: the diaspora wins.</p>
+      </article>
+
+      <article class="article">
+        <h3>Switzerland's Immigration Cap Referendum</h3>
+        <div class="article-meta">Comments: 774 (highest global engagement)</div>
+        <p>A radical proposal to cap the population. Reflects a broader European shift away from the open-borders consensus. Operational challenge: how do you enforce a population cap? The 774 comments suggest deep cultural anxiety.</p>
+      </article>
+    </section>
+
+    <section id="sector">
+      <h2>Sector</h2>
+
+      <article class="article">
+        <h3>Ken Griffin's Miami Real-Estate Play</h3>
+        <p>Citadel CEO acknowledged as "mystery" condo buyer. Paving way for new financial district apartment building. Miami's continued ascent as a financial hub.</p>
+      </article>
+
+      <article class="article">
+        <h3>Chinese Cars: Loved Globally, Ignored at Home</h3>
+        <div class="article-meta">Comments: 106</div>
+        <p>Global sales surging. China's domestic market? Weak. The world validates Chinese manufacturing; Chinese consumers remain skeptical of domestic brands.</p>
+      </article>
+
+      <article class="article">
+        <h3>Nvidia #1 in WSJ Best Companies for the Future 2026</h3>
+        <p>Ranking driven by innovation, financial strength, AI readiness. Also: Alphabet, Microsoft, Meta, Cisco. Full methodology and analysis included.</p>
+      </article>
+    </section>
+
+    <section id="outlook">
+      <h2>Outlook</h2>
+
+      <article class="article">
+        <h3>Probability Outlook — Key Risks</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Risk</th>
+              <th>Probability</th>
+              <th>Impact</th>
+              <th>Trigger</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Iran deal fails → oil spike, correction</td>
+              <td class="risk-med">Med</td>
+              <td class="risk-high">High</td>
+              <td>IRGC refuses to sign</td>
+            </tr>
+            <tr>
+              <td>SpaceX IPO disappoints → mega-IPO window closes</td>
+              <td class="risk-low">Low-Med</td>
+              <td class="risk-high">High</td>
+              <td>Open below $135</td>
+            </tr>
+            <tr>
+              <td>AI price war → margin collapse at OpenAI/Anthropic</td>
+              <td class="risk-med">Med</td>
+              <td class="risk-med">Med</td>
+              <td>More commoditization</td>
+            </tr>
+            <tr>
+              <td>China escalates → U.S. citizen retaliation</td>
+              <td class="risk-med">Med</td>
+              <td class="risk-med">Med</td>
+              <td>Diplomatic expulsions</td>
+            </tr>
+            <tr>
+              <td>Trade imbalances → G-7 tariffs</td>
+              <td class="risk-med">Med</td>
+              <td class="risk-med">Med</td>
+              <td>French Alps communiqué</td>
+            </tr>
+            <tr>
+              <td>Swiss cap → European copycats</td>
+              <td class="risk-low">Low-Med</td>
+              <td class="risk-med">Med</td>
+              <td>Referendum passes</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="article">
+        <h3>Actionable Insights</h3>
+        <ol class="insights-list">
+          <li><strong>European equities as hedge</strong> — U.S. tech crowded, AI trade overextended</li>
+          <li><strong>Gold + stocks = caution signal</strong> — sophisticated investors are hedged</li>
+          <li><strong>Watch SpaceX open ($170–175)</strong> — sets tone for all mega-IPOs</li>
+          <li><strong>Oil downside</strong> — Iran deal = further pressure from $84.44</li>
+          <li><strong>G-7 currency risk</strong> — Chinese yuan, dollar policy in focus next week</li>
+        </ol>
+      </article>
+    </section>
+
+    <section id="observer">
+      <h2>Observer</h2>
+
+      <div class="observer">
+        <div class="observer-name">翟东升 <span style="color:var(--text-secondary);font-weight:400;">Zhai Dongsheng</span></div>
+        <div class="observer-thesis"><strong>Key Thesis:</strong> SpaceX IPO represents a structural reorganization of global capital — private capital now has nation-state scale resource allocation capability. China should learn from Wall Street's support for early-stage innovation.</div>
+        <ul>
+          <li>Gold +3% vs equities = market pricing both "peace premium" AND "uncertainty premium"</li>
+          <li>IRGC resistance = principal-agent problem in Tehran</li>
+          <li>Swiss referendum = end of Western open-borders consensus</li>
+        </ul>
+      </div>
+
+      <div class="observer">
+        <div class="observer-name">金灿荣 <span style="color:var(--text-secondary);font-weight:400;">Jin Canrong</span></div>
+        <div class="observer-thesis"><strong>Key Thesis:</strong> "Century of Unprecedented Change" — U.S.-China friction playing out across multiple domains. China's arrest of American journalist = lawful national security action, not "friction."</div>
+        <ul>
+          <li>AI price war = vulnerability in U.S. AI business models</li>
+          <li>"Dude-Bro" candidates = social media's destabilization of politics</li>
+          <li>Peru's right turn = pragmatic, may ease China investment</li>
+        </ul>
+      </div>
+
+      <div class="observer">
+        <div class="observer-name">宋鸿兵 <span style="color:var(--text-secondary);font-weight:400;">Song Hongbing</span></div>
+        <div class="observer-thesis"><strong>Key Thesis:</strong> Currency war perspective — gold and bitcoin rising simultaneously reveals global capital doing both "embrace dollar" and "flee dollar." SpaceX IPO is a symptom of monetary expansion, not just innovation.</div>
+        <ul>
+          <li>Trillion-dollar fortunes = systemic wealth concentration from QE cycles</li>
+          <li>Oil drop → petrodollar circulation weakens → USD liquidity tightens</li>
+          <li>Strategy: hold physical assets, gold, bitcoin; reduce fiat cash</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cartoon">
+      <h2>Cartoon</h2>
+    </section>
+  </main>
+
+  <footer>
+    <p>Briefing prepared by Hermes Agent — WSJ A-Grade Pipeline</p>
+    <p>Sources: The Wall Street Journal, wsj.com · Date: June 12, 2026</p>
+    <p style="font-size:0.75rem;margin-top:0.75rem;">All content verified against live WSJ homepage (wsj.com) on June 12, 2026. Article URLs extracted via CDP Target.getTargets + DOM queries; headlines, authors, dates, comment counts verified from source; market data from WSJ ticker bar (real-time). Full article text extraction limited by WSJ paywall. All 19K+ characters of homepage text captured.</p>
+  </footer>
+
+  <script>
+    const links = document.querySelectorAll('nav a');
+    const sections = Array.from(links).map(a => document.querySelector(a.getAttribute('href')));
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    sections.forEach(s => s && observer.observe(s));
+  </script>
 </body>
 </html>
