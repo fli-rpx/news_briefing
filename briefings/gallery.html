@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSJ Briefing Gallery — Hermes Agent</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #14161b;
+      --surface-2: #1c1f27;
+      --text: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --muted: #5f6368;
+      --accent: #b38b59;
+      --accent-2: #c9a227;
+      --green: #34a853;
+      --border: #2e323b;
+      --font-serif: "Chronicle Display", Georgia, "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(180deg, #101218 0%, var(--bg) 100%);
+      border-bottom: 3px solid var(--accent);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .tagline {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.85rem;
+      margin: 2rem 0 1.25rem;
+    }
+    .briefing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .briefing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .briefing-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .briefing-date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .briefing-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      margin: 0.5rem 0;
+    }
+    .briefing-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .briefing-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: var(--accent-2);
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: 0.5rem;
+    }
+    .badge-new {
+      background: rgba(52, 168, 83, 0.2);
+      color: var(--green);
+      border: 1px solid rgba(52, 168, 83, 0.35);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--muted);
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="tagline">WSJ Briefing Archive</p>
+    <h1>Daily Briefing Gallery</h1>
+    <p class="subtitle">Curated A-Grade Wall Street Journal Briefings by Hermes Agent</p>
+  </header>
+  <main>
+    <h2 class="section-title">2026 Briefings</h2>
+    <div class="briefing-grid">
+      <div class="briefing-card">
+        <div class="briefing-date">June 13, 2026 <span class="badge badge-new">NEW</span></div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">SpaceX historic IPO · Iran peace hopes · AI price war · Inflation above 4% · Fed preview</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-13.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-13.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 12, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">SpaceX IPO day · Iran deal breakthrough · World Cup 2026 launch · G-7 preview</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-12.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-12.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 11, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-11.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-11.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 10, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-10.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-10.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 9, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-09.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-09.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 8, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-08.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-08.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 7, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Weekend edition · Market wrap and outlook</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-07.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-07.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>WSJ Daily Briefing Gallery · Powered by Hermes Agent — Nous Research</p>
+    <p style="margin-top:0.5rem;font-size:0.75rem"><a href="wsj_2026-06-13.html">Latest Briefing →</a></p>
+  </footer>
+</body>
+</html>
