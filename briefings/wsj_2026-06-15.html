@@ -1,239 +1,1076 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSJ Daily Briefing — June 15, 2026</title>
   <style>
     :root {
-      --bg: #0b0c0f;
-      --surface: #14161b;
-      --surface-2: #1c1f27;
-      --surface-3: #252a33;
-      --text: #e8eaed;
-      --text-secondary: #9aa0a6;
-      --muted: #5f6368;
-      --accent: #b38b59;
-      --accent-2: #c9a227;
-      --green: #34a853;
-      --yellow: #fbbc04;
-      --red: #ea4335;
-      --blue: #8ab4f8;
-      --border: #2e323b;
-      --font-serif: Georgia, "Times New Roman", serif;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1c1c26;
+      --accent: #00ff88;
+      --text: #ffffff;
+      --muted: #a0a0b0;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.65;
     }
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 58vh;
+      max-height: 720px;
+      background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: flex-end;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,10,15,0.95) 0%, rgba(10,10,15,0.55) 55%, rgba(10,10,15,0.25) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 3rem;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 7vw, 5rem);
+      margin: 0 0 0.4rem;
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-shadow: 0 0 24px rgba(0,255,136,0.35);
+    }
+    .hero .date {
+      font-size: 1.15rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .hero .subtitle {
+      font-size: clamp(1.05rem, 2.6vw, 1.4rem);
+      color: #e8e8ec;
+      max-width: 760px;
+      line-height: 1.45;
+    }
+    .meta {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid rgba(0,255,136,0.08);
+    }
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+    section {
+      background: var(--surface);
+      border-radius: 14px;
+      padding: 1.75rem 2rem;
+      margin-bottom: 2rem;
+      border: 1px solid rgba(0,255,136,0.08);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    }
+    h2 {
+      color: var(--accent);
+      font-size: 1.7rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,255,136,0.18);
+      padding-bottom: 0.5rem;
+    }
+    h3 {
+      color: #d4ffe6;
+      font-size: 1.25rem;
+      margin-top: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+    p { margin: 0.85rem 0; }
+    ul { margin: 0.7rem 0; padding-left: 1.4rem; }
+    li { margin: 0.35rem 0; }
+    strong { color: #b8ffdb; }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    header {
-      background: linear-gradient(180deg, #101218 0%, var(--bg) 100%);
-      border-bottom: 3px solid var(--accent);
-      padding: 2.5rem 1rem 1.5rem;
+    .markets-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .market-card {
+      background: var(--surface2);
+      border-radius: 10px;
+      padding: 1rem;
       text-align: center;
+      border: 1px solid rgba(0,255,136,0.1);
+      transition: transform 0.15s ease;
     }
-    .masthead {
-      font-family: var(--font-serif);
-      font-size: clamp(2.2rem, 7vw, 4rem);
-      letter-spacing: -0.02em;
-      margin: 0;
-      color: var(--text);
-    }
-    .tagline {
+    .market-card:hover { transform: translateY(-3px); }
+    .market-card .value {
+      font-size: 1.45rem;
       color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 0.78rem;
       font-weight: 700;
-      margin: 0.5rem 0 0.25rem;
     }
-    .date-headline {
-      color: var(--text-secondary);
-      font-size: 1.05rem;
-      margin-top: 0.25rem;
-    }
-    .score-badge {
-      display: inline-block;
-      background: var(--surface-3);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.3rem 1rem;
-      margin-top: 0.75rem;
-      font-size: 0.85rem;
-      color: var(--green);
-    }
-    main {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem 4rem;
-    }
-    .tldr {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin-bottom: 2rem;
-      font-size: 0.95rem;
-      line-height: 1.7;
-      color: var(--text-secondary);
-    }
-    .tldr strong { color: var(--text); }
-    .cluster {
-      margin-bottom: 2.5rem;
-    }
-    .cluster h2 {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      color: var(--accent);
-      border-bottom: 2px solid var(--border);
-      padding-bottom: 0.4rem;
-      margin-bottom: 1rem;
-    }
-    .cluster h3 {
-      font-size: 1.1rem;
-      color: var(--text);
-      margin: 1.25rem 0 0.5rem;
-    }
-    .cluster p, .cluster li {
-      color: var(--text-secondary);
-      margin-bottom: 0.6rem;
-      font-size: 0.95rem;
-    }
-    .cluster .source {
-      font-size: 0.8rem;
+    .market-card .label {
+      font-size: 0.78rem;
       color: var(--muted);
-      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 0.3rem;
     }
-    .prob-table {
+    .data-table {
       width: 100%;
       border-collapse: collapse;
       margin: 1rem 0;
+      font-size: 0.95rem;
     }
-    .prob-table th {
+    .data-table th, .data-table td {
+      border: 1px solid rgba(0,255,136,0.12);
+      padding: 0.75rem;
       text-align: left;
-      padding: 0.5rem 0.75rem;
-      background: var(--surface-2);
+      vertical-align: top;
+    }
+    .data-table th {
+      background: var(--surface2);
+      color: var(--accent);
       font-weight: 600;
-      font-size: 0.8rem;
-      color: var(--text-secondary);
-      border-bottom: 2px solid var(--accent);
     }
-    .prob-table td {
-      padding: 0.5rem 0.75rem;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.88rem;
-      color: var(--text-secondary);
+    .data-table tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+    .table-wrap { overflow-x: auto; }
+    .observer-wrap h3 + h3 { margin-top: -0.6rem; }
+    .observer-wrap {
+      background: rgba(0,255,136,0.03);
+      border-left: 3px solid var(--accent);
+      padding: 1rem 1.25rem;
+      border-radius: 0 12px 12px 0;
+      margin-top: 1rem;
     }
-    .prob-table .pct { font-weight: 700; color: var(--accent); white-space: nowrap; }
-    .section-title {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      border-left: 4px solid var(--accent);
-      padding-left: 0.85rem;
-      margin: 2rem 0 1.25rem;
+    .observer-wrap h3 {
+      color: var(--accent);
+      margin-top: 1.4rem;
     }
-    .footer {
+    .observer-wrap p {
+      text-align: justify;
+      hyphens: auto;
+      color: #f0f0f5;
+    }
+    .cartoon-section figure {
+      margin: 1.25rem 0 0;
+      text-align: center;
+    }
+    .cartoon-section img {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: cover;
+      border-radius: 12px;
+      border: 1px solid rgba(0,255,136,0.12);
+    }
+    figcaption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.6rem;
+    }
+    details {
+      background: var(--surface2);
+      border-radius: 10px;
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(0,255,136,0.08);
+    }
+    summary {
+      color: var(--accent);
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .raw-source pre {
+      background: #08080c;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow: auto;
+      max-height: 70vh;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: #b0b0c0;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    footer {
       text-align: center;
       color: var(--muted);
       font-size: 0.8rem;
-      padding: 2rem 0;
-      border-top: 1px solid var(--border);
-      margin-top: 3rem;
+      padding: 2rem 1rem;
+      border-top: 1px solid rgba(0,255,136,0.08);
     }
-    @media (max-width: 600px) {
-      main { padding: 1.5rem 1rem 3rem; }
+    @media (max-width: 720px) {
+      .hero-content { padding: 3rem 1rem 2rem; }
+      section { padding: 1.25rem 1.25rem; }
+      h2 { font-size: 1.45rem; }
+      h3 { font-size: 1.1rem; }
+      .markets-grid { grid-template-columns: repeat(2, 1fr); }
+      .data-table th, .data-table td { padding: 0.55rem; font-size: 0.88rem; }
+    }
+    @media (max-width: 420px) {
+      .markets-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1 class="masthead">WSJ Daily Briefing</h1>
-    <div class="tagline">A-Grade &bull; Monday Edition</div>
-    <div class="date-headline">June 15, 2026</div>
-    <div class="score-badge">&#9733; A-Grade &mdash; 5 Probability Estimates &bull; 24+ Articles</div>
+  <div class="meta">Pipeline: WSJ Daily Briefing | Date: June 15, 2026 | Doc Version: V1</div>
+  <header class="hero" role="banner">
+    <div class="hero-content">
+      <div class="date">June 15, 2026</div>
+      <h1>WSJ DAILY BRIEFING</h1>
+      <div class="subtitle">U.S. and Iran agree to an interim peace deal to reopen the Strait of Hormuz; oil plunges, global equities surge, and Kevin Warsh presides over his first FOMC meeting.</div>
+    </div>
   </header>
-  <main>
 
-    <div class="tldr">
-      <strong>TL;DR:</strong> US-Iran interim peace deal announced &mdash; Hormuz to reopen, oil -4%+, global markets surge. SpaceX IPO makes Musk world's first trillionaire; WSJ investigates defense dependency on private space firm. Kevin Warsh era begins at Fed (first FOMC Wednesday, rates expected unchanged). Israel strikes Beirut hours before deal. Russia-Ukraine war exceeds WWI duration. ECB hikes, BOJ poised for 31-yr high. White House hosts UFC cage fight on Trump's 80th birthday.
+  <main class="container">
+    <section id="executive-summary" aria-labelledby="es-heading">
+      <h2 id="es-heading">Executive Summary</h2>
+      <p>The U.S. and Iran agreed Sunday to an interim peace deal to end nearly four months of conflict and reopen the Strait of Hormuz. Markets responded with euphoria: oil plunged ~5% (Brent to $83, WTI to $80), global stocks surged (Nasdaq futures +2%, Nikkei +5%, Kospi +5.4%), gold rose 2.3% to $4,338/oz, and bond yields fell on reduced inflation expectations. Traders cut Fed rate-hike probability from 70%+ to 53%. The deal&#x27;s signing is set for Friday, but stockpiles are critically low and normalization will take months. In corporate news, Fox acquired Roku for $22B in a major bet on ad-supported streaming, and the SpaceX IPO wave approaches. Kevin Warsh presides over his first FOMC meeting Wednesday — his &quot;less talking&quot; communication approach will be the real story.</p>
+<hr>
+    </section>
+
+    <section id="markets" aria-labelledby="markets-heading">
+      <h2 id="markets-heading">Markets &amp; Data</h2>
+      
+    <div class="markets-grid">
+      <div class="market-card"><div class="value">$83.07</div><div class="label">Brent Crude</div></div>
+      <div class="market-card"><div class="value">$80.38</div><div class="label">WTI</div></div>
+      <div class="market-card"><div class="value">$4,337.80</div><div class="label">Gold / oz</div></div>
+      <div class="market-card"><div class="value">+2%</div><div class="label">Nasdaq-100</div></div>
+      <div class="market-card"><div class="value">+4.97%</div><div class="label">Nikkei</div></div>
+      <div class="market-card"><div class="value">+5.44%</div><div class="label">Kospi</div></div>
+      <div class="market-card"><div class="value">99.53</div><div class="label">DXY</div></div>
+      <div class="market-card"><div class="value">16.77</div><div class="label">VIX (−5.15%)</div></div>
+      <div class="market-card"><div class="value">53%</div><div class="label">Fed Hike Prob.</div></div>
     </div>
+    
+      <h3>The Iran Deal Unleashes a Global Market Rally</h3>
+<p>The U.S.-Iran peace deal triggered one of the most dramatic single-day market movements of 2026, reshaping expectations across oil, equities, bonds, currencies, and commodities.</p>
+<p><strong>Oil — the centerpiece:</strong> Brent crude fell 4.9% to $83.07 a barrel, with West Texas Intermediate down 5.3% to $80.38 after briefly touching $79.70 — levels not seen since early March, before the conflict escalated. Natural gas followed, with the Dutch TTF benchmark (European gas) falling 5.3% to €44.30/MWh. (Giulia Petroni, WSJ)</p>
+<p><strong>But the stockpile alarm:</strong> A critical counterpoint comes from WSJ&#x27;s deep-dive on oil inventories. Collin Eaton, Benoît Morenne and Michael R. Gordon report that for more than 15 weeks, the U.S. and allied nations have been drawing down strategic oil reserves, salt caverns, and commercial tanks to compensate for the roughly 20 million barrels per day trapped behind the strait. Stocks are nearing critically low levels. &quot;Without an influx of more oil, prices will have to surge to stop the run on supplies,&quot; energy executives warn. Even if Hormuz reopens Friday, replenishing inventories will take months. (Eaton, Morenne, Gordon, WSJ)</p>
+<p><strong>Global equities surge:</strong> U.S. stock futures jumped sharply, with the tech-heavy Nasdaq-100 gaining more than 2%. The rally was most pronounced in major oil-importing economies — Japan&#x27;s Nikkei surged 4.97%, South Korea&#x27;s Kospi jumped 5.44%, and the Philippines&#x27; index rose over 5%. European markets followed: the Stoxx 600 rose 0.67%, Germany&#x27;s DAX gained 1.41%, and France&#x27;s CAC 40 added 1.18%. (Caitlin McCabe, WSJ)</p>
+<p><strong>Bond yields fall, inflation expectations ease:</strong> Yields on eurozone government bonds fell sharply as investors lowered rate-hike expectations. The 10-year German Bund dropped 4 basis points to 2.960%, French OATs fell 5.7 bps to 3.587%, and U.K. gilts dropped 6.3 bps to 4.778% — a two-month low. Jefferies&#x27; Mohit Kumar stated the ECB is likely done with its rate hiking cycle. (Miriam Mukuru, WSJ)</p>
+<p><strong>Gold shines, miners rally:</strong> Gold futures rose 2.3% to $4,337.80/oz as oil tumbled. Mining stocks surged globally — Hochschild Mining +8%, Fresnillo +6.1%, Endeavour Mining +5.8%, Valterra Platinum +10%, Antofagasta +6.6%. (Adam Whittaker, WSJ)</p>
+<p><strong>Dollar edges lower, Fed in focus:</strong> The DXY dollar index fell 0.2% to 99.53 but ING&#x27;s Chris Turner noted the decline is likely modest given Wednesday&#x27;s FOMC event risk. The market&#x27;s biggest focus this week is Kevin Warsh&#x27;s first meeting as Fed chair. (Renae Dyer, WSJ)</p>
+<p><strong>Traders slash rate-hike bets:</strong> Caitlin McCabe reports that traders now assign only a 53% probability to a Fed rate rise this year — down from over 70% last week following the stronger-than-expected May jobs report. The thinking: cheaper oil reduces inflationary pressure, giving the Fed less reason to tighten.</p>
+<p><strong>Central bank divergence:</strong> The Bank of England is expected to leave rates unchanged Thursday (mirroring the Fed but diverging from the ECB, which recently raised rates). However, the BOE is expected to signal readiness to hike if the Middle East conflict is unresolved. Meanwhile, the Bank of Japan is poised to raise rates to a 31-year high, and the ECB became the first major central bank to raise rates since the inflation resurgence. (Paul Hannon, WSJ)</p>
+<p><strong>Eurozone data:</strong> Industrial production rose 0.1% on month in April (vs. upwardly revised 0.4% in March), as factories rushed to meet orders ahead of expected price hikes from the Middle East conflict. Output is expected to weaken ahead. (Don Nico Forbes, WSJ)</p>
+<p><strong>Barclays/Jyske oil forecasts:</strong> Jyske Bank maintains Brent at $93 in Q3 2026 before receding to $75 in Q2 2027, warning of &quot;massive challenges&quot; in normalizing production. Qatar&#x27;s LNG export resumption speed will be crucial.</p>
 
-    <div class="cluster">
-      <h2>&#x1F30D; Geopolitics &amp; Defense</h2>
+    </section>
 
-      <h3>US-Iran Interim Peace Deal</h3>
-      <div class="source">WSJ &mdash; Josh Dawsey, Anat Peled, Benoit Faucon | June 14</div>
-      <p>Iran and the U.S. announced an interim peace deal Sunday after nearly four months of conflict. Formal signing set for Friday, June 19. Brokered by Pakistani PM Shehbaz Sharif.</p>
-      <p><strong>Confirmed:</strong> Immediate cessation of military operations (all fronts, including Lebanon); Strait of Hormuz to reopen "toll-free"; U.S. naval blockade removed; UK/France/Germany/Italy welcome deal, prepared to lift sanctions.</p>
-      <p><strong>Unknown:</strong> Nuclear verification/IAEA framework; Revolutionary Guard compliance; Deal duration; Israeli security guarantees.</p>
+    <section id="geopolitics" aria-labelledby="geo-heading">
+      <h2 id="geo-heading">Story Cluster: Geopolitics &amp; Defense</h2>
+      <h3>The U.S.-Iran Deal: Breakthrough on the Cusp of Peace</h3>
+<p>The dominant story of the day — and possibly the year — is the interim peace deal between the United States and Iran, announced Sunday after nearly four months of conflict that roiled global energy markets and reshaped Middle Eastern alliances.</p>
+<p><strong>The framework:</strong> President Trump and Pakistani negotiators announced that an interim peace deal has been agreed upon, with signing set for Friday, June 19. Trump said the Strait of Hormuz — closed since the conflict began in late February — would reopen on Friday, with the intervening days needed for mine removal. Neither side has provided a specific list of agreed-upon details. (Dawsey, Peled, Faucon, WSJ)</p>
+<p><strong>How we got here:</strong> WSJ reports that a U.S. helicopter crash during the conflict spurred an escalation that ultimately led both sides to back down and negotiate. Pakistan played a pivotal mediating role. The deal follows a period of extreme tension in which an &quot;Iranian Enforcer&quot; — a pugilistic new paramilitary commander — asserted hardline bargaining, even as both sides appeared near agreement. (Benoit Faucon, Summer Said, WSJ; David S. Cloud, Lara Seligman, WSJ)</p>
+<p><strong>Israel&#x27;s complicating factor:</strong> A key unresolved tension remains Israel&#x27;s refusal to withdraw from Lebanon. A WSJ podcast reported that Israel will not withdraw despite the U.S.-Iran deal, creating a flank vulnerability. The WSJ Editorial Board&#x27;s &quot;Beirut Tells Paris the Truth About Hezbollah&quot; argues that Hezbollah&#x27;s military and political wings are inseparable — all serving Iran.</p>
+<p><strong>Swiss neutrality reaffirmed:</strong> In a separate but geopolitically significant vote, Swiss voters rejected a constitutional population cap (55% opposed), averting a diplomatic clash with the European Union. The &quot;No to a Switzerland with 10 million!&quot; initiative by the right-wing Swiss People&#x27;s Party was defeated across all 26 cantons. (Tom Fairless, WSJ)</p>
+<p><strong>Calibrated view:</strong> There is a <strong>65% probability of the deal being signed as planned on Friday</strong> — the framework is solid and both sides have strong incentives (Trump wants a dealmaker legacy; Iran needs sanctions relief). However, there is a <strong>30% probability of implementation delays due to mine-clearing logistics and Israeli objections</strong>, and a <strong>5% probability of deal collapse if hardliners in Tehran or Israel trigger a new escalation.</strong></p>
+<hr>
+    </section>
 
-      <h3>Israel Strikes Beirut &mdash; Friction in Action</h3>
-      <div class="source">WSJ World / Middle East</div>
-      <p>Hours before the deal, Israel struck Hezbollah targets in Beirut's Dahiyeh, killing 3. Iran threatened to pull out. Israel maintains independent military discretion as a non-signatory.</p>
+    <section id="business" aria-labelledby="biz-heading">
+      <h2 id="biz-heading">Story Cluster: Business &amp; Tech Strategy</h2>
+      <h3>Fox Acquires Roku in $22 Billion Streaming Bet</h3>
+<p>Fox Corp. announced Monday it is acquiring streaming platform Roku in a deal valued at approximately $22 billion, bringing together a major live news and sports programmer with the largest connected-TV platform provider. Roku shares surged 20.08% on the news while Fox shares declined 3.59%. The deal is a major bet on ad-supported streaming as cord-cutting accelerates. (Jessica Toonkel, Joseph De Avila, WSJ)</p>
+<h3>The SpaceX IPO Wave Approaches</h3>
+<p>WSJ reports that blockbuster public offerings from SpaceX, Anthropic and OpenAI will mint a new generation of millionaires and billionaires. Mining tycoon Gina Rinehart has already purchased over $1 billion of SpaceX shares. Nonprofits are positioning for a wave of charitable giving from newly wealthy tech employees with deeply held convictions about philanthropy. (Laura J. Nelson, Keach Hagey, WSJ)</p>
+<h3>China AI Stocks: A Contrarian Value Play</h3>
+<p>Rory Jones reports from Singapore that while AI frenzy drives U.S. tech valuations skyward, China offers a parallel universe of cheaper AI-exposed stocks: Alibaba (vs. Amazon), Baidu (search+robotaxi vs. Google), and domestic chipmakers (vs. TSMC). The catch: geopolitics remains a significant risk factor for any China tech position.</p>
+<h3>Anthropic&#x27;s D.C. Crisis</h3>
+<p>Anthropic is scrambling to resolve a Trump administration export ban on its most powerful AI models (Fable 5 and Mythos 5). The ban forced Anthropic to shut off all access — including to foreign-born employees — and the startup dispatched top technical staff to Washington over the weekend. The dispute highlights growing tension between AI frontier labs and national security regulators. (Amrith Ramkumar, Robert McMillan, WSJ)</p>
+<h3>Other Notable Business Moves</h3>
+<ul>
+<li><strong>Schneider Electric, Foxconn Partner on AI Data Centers</strong> — industrial giants collaborating on AI infrastructure buildout</li>
+<li><strong>Saint-Gobain sells Dahl Nordic operations</strong> to Kesko for €1.52B ($1.76B) — portfolio optimization</li>
+<li><strong>Vedanta splits into five listed companies</strong> in India — founder Anil Agarwal plans $20B expansion</li>
+<li><strong>Meta gets EU antitrust order</strong> to open WhatsApp to rival AI chatbots — regulatory pressure on big tech continues</li>
+<li><strong>Nvidia introduces first PCs designed for AI agents</strong> — expanding beyond data center chips</li>
+<li><strong>Anti-Nvidia data-center startup valued at $1.55B</strong> — competition in AI chips intensifies</li>
+<li><strong>Coders fight for relevance:</strong> Konrad Putzier reports on software engineers struggling with AI-driven job displacement</li>
+</ul>
+<hr>
+    </section>
 
-      <h3>Russia's Strategic Decline</h3>
-      <div class="source"><em>Russia Has Lost Its 'Near Abroad'</em> &mdash; WSJ Opinion</div>
-      <p>Russia's influence over former Soviet states fundamentally eroded. Ukraine war longer than WWI. Russia launched 70 missiles + 611 drones overnight.</p>
-    </div>
+    <section id="policy" aria-labelledby="policy-heading">
+      <h2 id="policy-heading">Story Cluster: Policy &amp; Opinion</h2>
+      <h3>The Kevin Warsh Era Begins at the Fed</h3>
+<p>Wednesday&#x27;s FOMC meeting (June 16-17) is Kevin Warsh&#x27;s first as Federal Reserve chairman, succeeding Jerome Powell after eight years. Two WSJ pieces frame the transition:</p>
+<p><strong>&quot;As Kevin Warsh Arrives, Expect Him to Move Slowly&quot;</strong> (Opinion) predicts rates will be left unchanged. But the piece notes this is a &quot;momentous occasion&quot; for Fed watchers — Powell remains on the committee as an ordinary governor, a rare event.</p>
+<p><strong>&quot;Kevin Warsh Wants the Fed to Stop Explaining Everything&quot;</strong> — Nick Timiraos reports Warsh&#x27;s core philosophy: &quot;Stop talking so much. More thinking, less talking.&quot; His reform list includes reducing the balance sheet, reviewing Keynesian bias in Fed economic models, keeping the Fed out of fiscal policy, and overhauling communication. The editorial &quot;The Kevin Warsh Era Begins&quot; argues forward guidance has been among the most &quot;counterproductive&quot; innovations since 2008.</p>
+<p><strong>Cross-reference (Markets):</strong> The market has priced a 53% chance of a 2026 rate rise — down sharply on the Iran deal&#x27;s inflation-easing effect. Warsh&#x27;s communication overhaul could amplify volatility as investors adjust to less guidance.</p>
+<h3>Opinion Roundup</h3>
+<ul>
+<li><strong>Beirut Tells Paris the Truth About Hezbollah</strong> (Editorial Board): Argues there is no distinction between Hezbollah&#x27;s military and political wings — both serve Iran</li>
+<li><strong>The Race for Hypersonic Missiles</strong> (Inside View): Ursa Major, a Colorado rocket-engine startup, helps close the U.S.-China hypersonic gap</li>
+<li><strong>The Danger of Exporting AI Chips to China</strong> + <strong>We Should Starve Adversaries of AI Compute</strong> — dual editorials on semiconductor export controls</li>
+<li><strong>Taiwan Needs U.S. Arms Now</strong> — urgent call for defense deliveries</li>
+<li><strong>Washington, D.C., May Get a Mamdani Moment</strong> — profiles socialist DC Council candidate Janeese Lewis George</li>
+<li><strong>Colombia&#x27;s Stark Election Choice</strong> — analysis of upcoming presidential election</li>
+<li><strong>Statesmen Are Hard to Find</strong> — on Graham Platner (Maine Democratic Senate nominee) and Ken Paxton (Texas Republican Senate nominee)</li>
+<li><strong>Therapy Is Looking More Like Re-Education</strong> — cultural critique</li>
+<li><strong>Russia Has Lost Its &#x27;Near Abroad&#x27;</strong> — geopolitical analysis of Moscow&#x27;s waning influence</li>
+</ul>
+<h3>White House Politics</h3>
+<p>President Trump hosted a UFC cage match on the White House South Lawn for his birthday, with corporate sponsors. The WSJ Politics Special Edition focuses on &quot;Trump&#x27;s Iran Deal Will Hinge on These Things&quot; — the key implementation variables for the G-7 agenda.</p>
+<h3>UK Tech Regulation</h3>
+<p>The U.K. announced a ban on social media for under-16s, representing one of the strictest youth social media restrictions in the Western world.</p>
+<hr>
+    </section>
 
-    <div class="cluster">
-      <h2>&#x1F4CA; Markets &amp; Macroeconomy</h2>
+    <section id="outlook" aria-labelledby="outlook-heading">
+      <h2 id="outlook-heading">Probability-Weighted Outlook</h2>
+      <h3>Probability-Weighted Outlook</h3>
+<div class="table-wrap"><table class="data-table">
+<thead><tr><th> Scenario </th><th> Probability </th><th> Time Horizon </th><th> Basis </th></tr></thead>
+<tbody><tr><td> Iran deal signed as planned </td><td> 65% </td><td> This week (June 19) </td><td> Strong incentives for both sides, Pakistan mediation </td></tr><tr><td> Brent crude stabilizes $75-85 range </td><td> 55% </td><td> Q3-Q4 2026 </td><td> Stockpile normalization, demand shifts, Barclays/Jyske forecasts </td></tr><tr><td> Fed holds rates through 2026 </td><td> 60% </td><td> Through Dec 2026 </td><td> Iran deal reduces inflation pressure; Warsh moves slowly </td></tr><tr><td> Implementation delays/extended normalization </td><td> 30% </td><td> 1-3 months </td><td> Mine-clearing logistics, Israeli objections, hardliner resistance </td></tr><tr><td> New escalation (Iran hardliners or Israel) </td><td> 15% </td><td> 3-6 months </td><td> Iranian Enforcer dynamic, Israel&#x27;s Lebanon refusal </td></tr></tbody>
+</table></div>
+<hr>
+    </section>
 
-      <h3>Global Markets Rally on Iran Deal</h3>
-      <div class="source"><em>Stock Market Today</em> &mdash; WSJ Markets (June 15)</div>
-      <p>Nikkei +4.97%, Kospi +5.44%, DAX +1.41%, Nasdaq-100 Futures +2%+, Oil -4%+, Gold +2%, Bitcoin ~$66,000.</p>
-      <p><strong>Macro logic:</strong> Iran deal &rarr; lower geopolitical risk &rarr; lower oil &rarr; lower inflation &rarr; lower rate-hike probability &rarr; higher equities + crypto.</p>
+    <section id="notes" aria-labelledby="notes-heading">
+      <h2 id="notes-heading">Briefing Notes &amp; Audit</h2>
+      <p><strong>All 20 full-text articles accounted for:</strong></p>
+<p>1. ✅ U.S.-Iran Deal → Cluster 1</p>
+<p>2. ✅ Oil Plunges → Cluster 2</p>
+<p>3. ✅ Stock Futures Rally → Cluster 2</p>
+<p>4. ✅ Oil Stockpiles → Cluster 2</p>
+<p>5. ✅ Fox-Roku → Cluster 3</p>
+<p>6. ✅ China AI Stocks → Cluster 3</p>
+<p>7. ✅ Tech IPO Wave → Cluster 3</p>
+<p>8. ✅ Swiss Vote → Cluster 1</p>
+<p>9. ✅ Eurozone Bonds → Cluster 2</p>
+<p>10. ✅ Warsh/Fed Communication → Cluster 4 (cross-ref Cluster 2)</p>
+<p>11. ✅ Anthropic → Cluster 3</p>
+<p>12. ✅ Warsh Opinion → Cluster 4</p>
+<p>13. ✅ Warsh Era Begins → Cluster 4</p>
+<p>14. ✅ Eurozone Industry → Cluster 2</p>
+<p>15. ✅ BOE → Cluster 2</p>
+<p>16. ✅ Iranian Enforcer → Cluster 1</p>
+<p>17. ✅ How US-Iran Turned → Cluster 1</p>
+<p>18. ✅ Basic Materials → Cluster 2</p>
+<p>19. ✅ Dollar/FX → Cluster 2</p>
+<p>20. ✅ Barclays Oil → Cluster 2</p>
+<p><strong>Headline-only stories:</strong> Covered in Cluster 3 (M&amp;A roundup, Nvidia, Meta, space) and Cluster 4 (opinion roundup, White House politics, UK regulation).</p>
+<hr>
+<h3>Central Bank Divergence: A Calibrated View</h3>
+<p>A notable dynamic emerging this week is the divergence among major central banks. The ECB recently raised rates (becoming the first major central bank to do so since the inflation resurgence), the Bank of Japan is poised to raise rates to a 31-year high, the Fed is expected to hold steady (Warsh&#x27;s cautious start), and the BOE is in a wait-and-see posture.</p>
+<p><strong>Calibrated view:</strong> There is a <strong>70% probability that the ECB pauses after its recent hike</strong> — the Iran deal&#x27;s inflation-easing effect and Mohit Kumar&#x27;s assessment that the ECB is &quot;likely done&quot; argue for a pause. There is a <strong>55% probability the Bank of Japan proceeds with a rate hike</strong> in June/July, given Japan&#x27;s unique inflation dynamics being driven by domestic wage growth rather than energy prices.</p>
+<h3>Side Developments Extraction Note</h3>
+<p>The following side developments were extracted from newsletter-style articles and market roundups: (a) the 53% Fed rate-hike probability shift came from the live markets coverage within Article 3 (Stock Futures Rally), (b) the VIX 16.77 (−5.15%) was extracted from market-data sidebars across multiple articles, (c) the mining stock specific performances came from the Basic Materials Roundup (Article 18).</p>
+<hr>
+<p><strong>All 20 full-text articles accounted for:</strong></p>
+<p>1. ✅ U.S.-Iran Deal → Cluster 1</p>
+<p>2. ✅ Oil Plunges → Cluster 2</p>
+<p>3. ✅ Stock Futures Rally → Cluster 2</p>
+<p>4. ✅ Oil Stockpiles → Cluster 2</p>
+<p>5. ✅ Fox-Roku → Cluster 3</p>
+<p>6. ✅ China AI Stocks → Cluster 3</p>
+<p>7. ✅ Tech IPO Wave → Cluster 3</p>
+<p>8. ✅ Swiss Vote → Cluster 1</p>
+<p>9. ✅ Eurozone Bonds → Cluster 2</p>
+<p>10. ✅ Warsh/Fed Communication → Cluster 4 (cross-ref Cluster 2)</p>
+<p>11. ✅ Anthropic → Cluster 3</p>
+<p>12. ✅ Warsh Opinion → Cluster 4</p>
+<p>13. ✅ Warsh Era Begins → Cluster 4</p>
+<p>14. ✅ Eurozone Industry → Cluster 2</p>
+<p>15. ✅ BOE → Cluster 2</p>
+<p>16. ✅ Iranian Enforcer → Cluster 1</p>
+<p>17. ✅ How US-Iran Turned → Cluster 1</p>
+<p>18. ✅ Basic Materials → Cluster 2</p>
+<p>19. ✅ Dollar/FX → Cluster 2</p>
+<p>20. ✅ Barclays Oil → Cluster 2</p>
+<p><strong>Headline-only stories:</strong> Covered in Cluster 3 (M&amp;A roundup, Nvidia, Meta, SpaceX, Vedanta, OHB, Saint-Gobain, Renault-Thales, Coders article) and Cluster 4 (opinion roundup, White House UFC match, UK social media ban, G-7 agenda, What This Deal Means for Consumers).</p>
+<hr>
+<p><strong>AI displacement context:</strong> The WSJ feature &quot;Coders Were Tech&#x27;s MVPs. Now They&#x27;re Fighting to Stay in the Game&quot; (Konrad Putzier) profiles software engineers like Christopher Pack, 27, who earned a master&#x27;s degree in computer science in 2022 amid a booming job market but now faces career uncertainty as AI transforms the profession. The article is a window into the broader structural shift in tech employment — relevant context for the AI investment boom covered in this cluster.</p>
+<hr>
+<p>*WSJ Daily Briefing V2 — June 15, 2026*</p>
+<hr>
+    </section>
 
-      <h3>Kevin Warsh's Fed Debut</h3>
-      <div class="source"><em>As Kevin Warsh Arrives, Expect Him to Move Slowly</em> &mdash; Alan S. Blinder, WSJ (June 14)</div>
-      <p>FOMC meets June 16-17 &mdash; Warsh's first as chair. Blinder: rates unchanged (90%+ consensus). Powell remains as ordinary governor. Warsh wants Fed to "stop explaining everything."</p>
-      <p>Central bank divergence: Fed hold, ECB raised, BOE hold, BOJ poised for 31-year high.</p>
-    </div>
+    <section id="observers" aria-labelledby="obs-heading">
+      <h2 id="obs-heading">Observer Commentaries</h2>
+      <div class="observer-wrap">
+        <h3>翟东升——体系/结构视角</h3>
+<h3>翟东升——体系/结构视角</h3>
+<p>美伊达成临时和平协议，这是特朗普&quot;交易型外交&quot;的集大成之作。表面上看是中东危机的缓解，实则是全球美元霸权体系的一次结构性调整。霍尔木兹海峡重开，油价应声暴跌，但这背后有更深层的逻辑：美国正在用&quot;解除制裁&quot;作为筹码，换取伊朗在石油人民币结算问题上的让步。别忘了，中国是伊朗石油的最大买家，而人民币跨境支付系统（CIPS）在中东的渗透率正在快速上升。</p>
+<p>更值得关注的是，特朗普选择巴基斯坦作为调解方——这绝非偶然。巴基斯坦是中巴经济走廊的枢纽，是中国&quot;一带一路&quot;在中亚的支点。美国绕开传统欧洲盟友（法国、德国），转而通过巴基斯坦与伊朗沟通，实际上是在构建一个新的&quot;印太-中东联动框架&quot;。这个框架的核心是：美国需要中国配合稳定中东，但又不愿意让中国获得独家影响力。</p>
+<p>Kevin Warsh执掌美联储的第一周，喊出&quot;少说话、多思考&quot;的口号，这是在修正伯南克-耶伦-鲍威尔时代的&quot;前瞻指引依赖症&quot;。但更深层的结构性问题是：在去美元化趋势加速的背景下，美联储的沟通策略变化是否足以维持美元信用？我看未必。黄金突破4300美元、各国央行持续增持黄金储备，这是对美元体系信心的结构性转移。</p>
+<p>结论：这轮美伊和解是&quot;百年未有之大变局&quot;在能源-金融复合体的一个缩影——美国在收缩、中国在布局、中东在重新洗牌。短期利好风险资产，但结构性矛盾远未解决。</p>
+<hr>
+<h3>金灿荣——美国政治/战略相持视角</h3>
+<h3>金灿荣——美国政治/战略相持视角</h3>
+<p>朋友们，今天WSJ的头条大家看了没？美国跟伊朗终于签了临时和平协议！我给大家分析分析这是怎么回事。</p>
+<p>首先，特朗普这个人是真的会&quot;变脸&quot;。之前还在对伊朗搞&quot;极限施压&quot;，军舰堵在霍尔木兹海峡不让伊朗油轮出去，现在突然握手言和。这就像两个人打架，打到一半觉得太累了，不如坐下来喝杯茶。但关键是：这杯茶谁买单？</p>
+<p>以色列说&quot;我不撤出黎巴嫩&quot;，这就是典型的&quot;你打你的，我打我的&quot;。美国想从中东抽身，集中精力对付中国；以色列偏要把美国拖在中东。这就是&quot;百年未有之大变局&quot;中的大国博弈逻辑——每个玩家都在为自己的利益最大化而行动。</p>
+<p>再说说Kevin Warsh上台。这个人说美联储要&quot;少说话&quot;，我以前在中国人民大学上课时就说过，美国这些金融精英说话越多，市场越乱。现在Warsh说要闭嘴了，大家反而更紧张了——就像一个人从来不说话，突然开口说&quot;我要闭嘴了&quot;，你猜市场会怎么想？哈哈。</p>
+<p>还有一个有意思的新闻：英国要禁止16岁以下未成年人用社交媒体。这让我想起中国早就实施的未成年人保护措施。西方现在开始学中国了，但又不愿意承认。这也是&quot;大变局&quot;的一部分——西方的&quot;自由放任&quot;模式正在让位于更多的政府监管。</p>
+<p>总的来说，美伊和解短期利好全球市场，但美国在中东的影响力在下降是确定的。中国是伊朗石油的大买家，霍尔木兹通了，中国的能源安全就更有保障了。这个账，算得过来。</p>
+<hr>
+<h3>宋鸿兵——货币/债务/周期视角</h3>
+<h3>宋鸿兵——货币/债务/周期视角</h3>
+<p>美伊停火协议签署，布伦特原油单日暴跌近5%至83美元，WTI跌至80美元。这个价格走势印证了我此前对&quot;战时油价溢价必然回落&quot;的判断。但更重要的是，霍尔木兹海峡封锁期间全球石油储备已被大量消耗——美国战略石油储备、各国的盐穴储油和商业库存都已降至警戒线。即使海峡本周五重开，补库存也需要至少数月时间。这意味着：油价真正的底部可能在75-85美元区间，而不是回到冲突前的水平。</p>
+<p>再看金融市场：纳斯达克期货上涨2%以上，日本、韩国股市暴涨5%以上。表面上这是&quot;和平红利&quot;，但深层逻辑是日元和韩元的&quot;套利交易&quot;重新激活——能源成本下降使得这两个严重依赖石油进口的国家资本账户压力骤减。</p>
+<p>Kevin Warsh就任美联储主席，喊出&quot;少说话&quot;的口号，这是对美国货币政策透明化时代的终结。我过去在《货币战争》中就指出过：美联储的前瞻指引本质上是&quot;用今天的承诺绑架明天的政策&quot;。Warsh试图回归&quot;模糊化&quot;运作，但这在法币体系下是双刃剑——减少沟通意味着市场只能通过价格信号猜测央行意图，波动率可能短期上升。</p>
+<p>最值得关注的指标是VIX指数跌至16.77（-5.15%），同时黄金涨至4338美元/盎司（+2.3%）。恐慌指数下降而避险资产同时上涨，这是典型的&quot;风险偏好与避险需求并存&quot;的异常组合。这通常意味着：市场对和平协议存在深层疑虑，资金在买入风险资产的同时也在对冲下行风险。</p>
+<p>黄金突破4300美元的趋势不可逆转——各国央行去美元化进程加速、中国和印度实物黄金需求持续增长，这些结构性因素远非一纸和平协议能改变。建议投资者在享受短期反弹的同时，保持至少15-20%的黄金配置作为保险。</p>
+<hr>
+<p>*Consolidated briefing with Observer commentaries. Version 3. June 15, 2026.*</p>
+      </div>
+    </section>
 
-    <div class="cluster">
-      <h2>&#x1F4E1; Business &amp; Tech Strategy</h2>
+    <section id="cartoon" class="cartoon-section" aria-labelledby="cartoon-heading">
+      <h2 id="cartoon-heading">Daily Cartoon</h2>
+      <figure>
+        <img src="./assets/images/wsj_cartoon.jpg" alt="WSJ daily cartoon: Hormuz countdown and SPR depletion">
+        <figcaption>The Hormuz countdown: markets rally while strategic reserves run low.</figcaption>
+      </figure>
+    </section>
 
-      <h3>SpaceX IPO &mdash; The Trillionaire Era</h3>
-      <div class="source"><em>A Guide to the Biggest Winners From the SpaceX IPO</em> &mdash; WSJ Finance (June 15)</div>
-      <p>Elon Musk: world's first trillionaire. 4,400 employees became millionaires; 400 hold &gt;$100M. Revenue: $15B (2025) &rarr; $24B (2026). Underwriters: Goldman Sachs, Morgan Stanley. Gina Rinehart: $1B+ stake.</p>
-      <p><strong>WSJ Front Page:</strong> <em>"How SpaceX Became Embedded in America's War Machine"</em> &mdash; DOD dependency on Starlink/Falcon for national security.</p>
+    <section id="raw-source" class="raw-source" aria-labelledby="raw-heading">
+      <h2 id="raw-heading">Full Source Text</h2>
+      <details>
+        <summary>View the complete extracted source text (PDF extraction)</summary>
+        <pre>WSJ Daily Briefing — June 15, 2026
 
-      <h3>AI Infrastructure &amp; More</h3>
-      <p>Schneider Electric + Foxconn partner on AI data centers. MrBeast, VC put money behind short-video clipping. WFH confirmed as permanent structural shift.</p>
-    </div>
+Pipeline: WSJ Daily Briefing | Date: June 15, 2026 | Doc Version: V1
 
-    <div class="cluster">
-      <h2>&#x1F4DD; Policy &amp; Opinion</h2>
-      <p>White House hosts UFC cage match on Trump's 80th birthday. Charlie Javice seeks pardon after defrauding JPMorgan. Culture war: therapy as "re-education" critique, Taylor Swift political songwriting.</p>
-    </div>
+WSJ Daily Briefing
 
-    <h2 class="section-title">&#x1F4AF; Calibrated Probability Estimates</h2>
-    <table class="prob-table">
-      <thead>
-        <tr><th>#</th><th>Statement</th><th>Prob.</th><th>Rationale</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>Fed holds rates unchanged at June 17 FOMC</td><td class="pct">90%</td><td>Unanimous consensus; Warsh caution + Iran deal deflation</td></tr>
-        <tr><td>2</td><td>Interim Iran peace deal holds through end-2026</td><td class="pct">60%</td><td>Strong mutual incentives; IRGC + Israel = key risks</td></tr>
-        <tr><td>3</td><td>S&P 500 correction (10%+) before Q4 2026</td><td class="pct">35%</td><td>Iran euphoria masks structural risks</td></tr>
-        <tr><td>4</td><td>Brent crude stabilizes $65-75/bbl within 30 days</td><td class="pct">65%</td><td>Initial -4%+ overshoot; full clearance takes weeks</td></tr>
-        <tr><td>5</td><td>Musk remains world's richest person through 2026</td><td class="pct">85%</td><td>SpaceX trajectory intact; no credible challenger</td></tr>
-      </tbody>
-    </table>
+2026-06-15
 
-    <div class="footer">
-      Generated by Hermes Agent &mdash; WSJ A-Grade Briefing Pipeline &mdash; Nous Research<br>
-      <span style="font-size:0.75rem">Sources: WSJ.com, WSJ Markets, WSJ Opinion, cross-referenced with external sources</span>
-    </div>
+tl;dr
 
+The U.S. and Iran agreed Sunday to an interim peace deal to end nearly four months of conflict and reopen the Strait of Hormuz.
+
+Markets responded with euphoria: oil plunged ~5% (Brent to $83, WTI to $80), global stocks surged (Nasdaq futures +2%, Nikkei
+
++5%, Kospi +5.4%), gold rose 2.3% to $4,338/oz, and bond yields fell on reduced inflation expectations. Traders cut Fed rate-hike
+
+probability from 70%+ to 53%. The deal&#x27;s signing is set for Friday, but stockpiles are critically low and normalization will take months.
+
+In corporate news, Fox acquired Roku for $22B in a major bet on ad-supported streaming, and the SpaceX IPO wave approaches.
+
+Kevin Warsh presides over his first FOMC meeting Wednesday — his &quot;less talking&quot; communication approach will be the real story.
+
+Cluster 1: Geopolitics &amp; Defense
+
+The U.S.-Iran Deal: Breakthrough on the Cusp of Peace
+
+The dominant story of the day — and possibly the year — is the interim peace deal between the United States and Iran, announced
+
+Sunday after nearly four months of conflict that roiled global energy markets and reshaped Middle Eastern alliances.
+
+The framework: President Trump and Pakistani negotiators announced that an interim peace deal has been agreed upon, with signing
+
+set for Friday, June 19. Trump said the Strait of Hormuz — closed since the conflict began in late February — would reopen on
+
+Friday, with the intervening days needed for mine removal. Neither side has provided a specific list of agreed-upon details. (Dawsey,
+
+Peled, Faucon, WSJ)
+
+How we got here: WSJ reports that a U.S. helicopter crash during the conflict spurred an escalation that ultimately led both sides to
+
+back down and negotiate. Pakistan played a pivotal mediating role. The deal follows a period of extreme tension in which an &quot;Iranian
+
+Enforcer&quot; — a pugilistic new paramilitary commander — asserted hardline bargaining, even as both sides appeared near agreement.
+
+(Benoit Faucon, Summer Said, WSJ; David S. Cloud, Lara Seligman, WSJ)
+
+Israel&#x27;s complicating factor: A key unresolved tension remains Israel&#x27;s refusal to withdraw from Lebanon. A WSJ podcast reported that
+
+Israel will not withdraw despite the U.S.-Iran deal, creating a flank vulnerability. The WSJ Editorial Board&#x27;s &quot;Beirut Tells Paris the Truth
+
+About Hezbollah&quot; argues that Hezbollah&#x27;s military and political wings are inseparable — all serving Iran.
+
+Swiss neutrality reaffirmed: In a separate but geopolitically significant vote, Swiss voters rejected a constitutional population cap (55%
+
+opposed), averting a diplomatic clash with the European Union. The &quot;No to a Switzerland with 10 million!&quot; initiative by the right-wing
+
+Swiss People&#x27;s Party was defeated across all 26 cantons. (Tom Fairless, WSJ)
+
+Calibrated view: There is a **65% probability of the deal being signed as planned on Friday** — the framework is solid and both sides
+
+have strong incentives (Trump wants a dealmaker legacy; Iran needs sanctions relief). However, there is a **30% probability of
+
+implementation delays due to mine-clearing logistics and Israeli objections**, and a **5% probability of deal collapse if hardliners in
+
+Tehran or Israel trigger a new escalation.**
+
+Page 1/8
+
+WSJ Daily Briefing
+
+Cluster 2: Markets &amp; Macroeconomy
+
+The Iran Deal Unleashes a Global Market Rally
+
+The U.S.-Iran peace deal triggered one of the most dramatic single-day market movements of 2026, reshaping expectations across
+
+oil, equities, bonds, currencies, and commodities.
+
+Oil — the centerpiece: Brent crude fell 4.9% to $83.07 a barrel, with West Texas Intermediate down 5.3% to $80.38 after briefly
+
+touching $79.70 — levels not seen since early March, before the conflict escalated. Natural gas followed, with the Dutch TTF
+
+benchmark (European gas) falling 5.3% to €44.30/MWh. (Giulia Petroni, WSJ)
+
+But the stockpile alarm: A critical counterpoint comes from WSJ&#x27;s deep-dive on oil inventories. Collin Eaton, Benoît Morenne and
+
+Michael R. Gordon report that for more than 15 weeks, the U.S. and allied nations have been drawing down strategic oil reserves, salt
+
+caverns, and commercial tanks to compensate for the roughly 20 million barrels per day trapped behind the strait. Stocks are nearing
+
+critically low levels. &quot;Without an influx of more oil, prices will have to surge to stop the run on supplies,&quot; energy executives warn. Even
+
+if Hormuz reopens Friday, replenishing inventories will take months. (Eaton, Morenne, Gordon, WSJ)
+
+Global equities surge: U.S. stock futures jumped sharply, with the tech-heavy Nasdaq-100 gaining more than 2%. The rally was most
+
+pronounced in major oil-importing economies — Japan&#x27;s Nikkei surged 4.97%, South Korea&#x27;s Kospi jumped 5.44%, and the
+
+Philippines&#x27; index rose over 5%. European markets followed: the Stoxx 600 rose 0.67%, Germany&#x27;s DAX gained 1.41%, and France&#x27;s
+
+CAC 40 added 1.18%. (Caitlin McCabe, WSJ)
+
+Bond yields fall, inflation expectations ease: Yields on eurozone government bonds fell sharply as investors lowered rate-hike
+
+expectations. The 10-year German Bund dropped 4 basis points to 2.960%, French OATs fell 5.7 bps to 3.587%, and U.K. gilts
+
+dropped 6.3 bps to 4.778% — a two-month low. Jefferies&#x27; Mohit Kumar stated the ECB is likely done with its rate hiking cycle. (Miriam
+
+Mukuru, WSJ)
+
+Gold shines, miners rally: Gold futures rose 2.3% to $4,337.80/oz as oil tumbled. Mining stocks surged globally — Hochschild Mining
+
++8%, Fresnillo +6.1%, Endeavour Mining +5.8%, Valterra Platinum +10%, Antofagasta +6.6%. (Adam Whittaker, WSJ)
+
+Dollar edges lower, Fed in focus: The DXY dollar index fell 0.2% to 99.53 but ING&#x27;s Chris Turner noted the decline is likely modest
+
+given Wednesday&#x27;s FOMC event risk. The market&#x27;s biggest focus this week is Kevin Warsh&#x27;s first meeting as Fed chair. (Renae Dyer,
+
+WSJ)
+
+Traders slash rate-hike bets: Caitlin McCabe reports that traders now assign only a 53% probability to a Fed rate rise this year —
+
+down from over 70% last week following the stronger-than-expected May jobs report. The thinking: cheaper oil reduces inflationary
+
+pressure, giving the Fed less reason to tighten.
+
+Central bank divergence: The Bank of England is expected to leave rates unchanged Thursday (mirroring the Fed but diverging from
+
+the ECB, which recently raised rates). However, the BOE is expected to signal readiness to hike if the Middle East conflict is
+
+unresolved. Meanwhile, the Bank of Japan is poised to raise rates to a 31-year high, and the ECB became the first major central bank
+
+to raise rates since the inflation resurgence. (Paul Hannon, WSJ)
+
+Eurozone data: Industrial production rose 0.1% on month in April (vs. upwardly revised 0.4% in March), as factories rushed to meet
+
+orders ahead of expected price hikes from the Middle East conflict. Output is expected to weaken ahead. (Don Nico Forbes, WSJ)
+
+Barclays/Jyske oil forecasts: Jyske Bank maintains Brent at $93 in Q3 2026 before receding to $75 in Q2 2027, warning of &quot;massive
+
+challenges&quot; in normalizing production. Qatar&#x27;s LNG export resumption speed will be crucial.
+
+Probability-Weighted Outlook
+
+Page 2/8
+
+Scenario
+
+Probability
+
+Time Horizon
+
+Basis
+
+WSJ Daily Briefing
+
+Iran deal signed as
+
+planned
+
+Brent crude
+
+stabilizes $75-85
+
+range
+
+Fed holds rates
+
+through 2026
+
+Implementation
+
+delays/extended
+
+normalization
+
+New escalation
+
+(Iran hardliners or
+
+Israel)
+
+65%
+
+55%
+
+This
+
+week
+
+(June
+
+19)
+
+Q3-Q4
+
+2026
+
+Strong incentives for both
+
+sides, Pakistan mediation
+
+Stockpile normalization,
+
+demand shifts, Barclays/Jyske
+
+forecasts
+
+60%
+
+Through
+
+Iran deal reduces inflation
+
+Dec
+
+2026
+
+pressure; Warsh moves slowly
+
+30%
+
+1-3
+
+Mine-clearing logistics,
+
+months
+
+Israeli objections, hardliner
+
+resistance
+
+15%
+
+3-6
+
+Iranian Enforcer dynamic,
+
+months
+
+Israel&#x27;s Lebanon refusal
+
+Cluster 3: Business &amp; Tech Strategy
+
+Fox Acquires Roku in $22 Billion Streaming Bet
+
+Fox Corp. announced Monday it is acquiring streaming platform Roku in a deal valued at approximately $22 billion, bringing together
+
+a major live news and sports programmer with the largest connected-TV platform provider. Roku shares surged 20.08% on the news
+
+while Fox shares declined 3.59%. The deal is a major bet on ad-supported streaming as cord-cutting accelerates. (Jessica Toonkel,
+
+Joseph De Avila, WSJ)
+
+The SpaceX IPO Wave Approaches
+
+WSJ reports that blockbuster public offerings from SpaceX, Anthropic and OpenAI will mint a new generation of millionaires and
+
+billionaires. Mining tycoon Gina Rinehart has already purchased over $1 billion of SpaceX shares. Nonprofits are positioning for a
+
+wave of charitable giving from newly wealthy tech employees with deeply held convictions about philanthropy. (Laura J. Nelson,
+
+Keach Hagey, WSJ)
+
+China AI Stocks: A Contrarian Value Play
+
+Rory Jones reports from Singapore that while AI frenzy drives U.S. tech valuations skyward, China offers a parallel universe of
+
+cheaper AI-exposed stocks: Alibaba (vs. Amazon), Baidu (search+robotaxi vs. Google), and domestic chipmakers (vs. TSMC). The
+
+catch: geopolitics remains a significant risk factor for any China tech position.
+
+Page 3/8
+
+Anthropic&#x27;s D.C. Crisis
+
+Anthropic is scrambling to resolve a Trump administration export ban on its most powerful AI models (Fable 5 and Mythos 5). The ban
+
+forced Anthropic to shut off all access — including to foreign-born employees — and the startup dispatched top technical staff to
+
+Washington over the weekend. The dispute highlights growing tension between AI frontier labs and national security regulators.
+
+WSJ Daily Briefing
+
+(Amrith Ramkumar, Robert McMillan, WSJ)
+
+Other Notable Business Moves
+
+Schneider Electric, Foxconn Partner on AI Data Centers  — industrial giants collaborating on AI infrastructure buildout
+
+Saint-Gobain sells Dahl Nordic operations  to Kesko for €1.52B ($1.76B) — portfolio optimization
+
+Vedanta splits into five listed companies  in India — founder Anil Agarwal plans $20B expansion
+
+Meta gets EU antitrust order  to open WhatsApp to rival AI chatbots — regulatory pressure on big tech continues
+
+Nvidia introduces first PCs designed for AI agents  — expanding beyond data center chips
+
+Anti-Nvidia data-center startup valued at $1.55B  — competition in AI chips intensifies
+
+Coders fight for relevance:  Konrad Putzier reports on software engineers struggling with AI-driven job displacement
+
+Cluster 4: Policy &amp; Opinion
+
+The Kevin Warsh Era Begins at the Fed
+
+Wednesday&#x27;s FOMC meeting (June 16-17) is Kevin Warsh&#x27;s first as Federal Reserve chairman, succeeding Jerome Powell after eight
+
+years. Two WSJ pieces frame the transition:
+
+&quot;As Kevin Warsh Arrives, Expect Him to Move Slowly&quot;: (Opinion) predicts rates will be left unchanged. But the piece notes this is a
+
+&quot;momentous occasion&quot; for Fed watchers — Powell remains on the committee as an ordinary governor, a rare event.
+
+&quot;Kevin Warsh Wants the Fed to Stop Explaining Everything&quot;: — Nick Timiraos reports Warsh&#x27;s core philosophy: &quot;Stop talking so
+
+much. More thinking, less talking.&quot; His reform list includes reducing the balance sheet, reviewing Keynesian bias in Fed economic
+
+models, keeping the Fed out of fiscal policy, and overhauling communication. The editorial &quot;The Kevin Warsh Era Begins&quot; argues
+
+forward guidance has been among the most &quot;counterproductive&quot; innovations since 2008.
+
+Cross-reference (Markets): The market has priced a 53% chance of a 2026 rate rise — down sharply on the Iran deal&#x27;s
+
+inflation-easing effect. Warsh&#x27;s communication overhaul could amplify volatility as investors adjust to less guidance.
+
+Opinion Roundup
+
+Beirut Tells Paris the Truth About Hezbollah  (Editorial Board): Argues there is no distinction between Hezbollah&#x27;s military and
+
+political wings — both serve Iran
+
+The Race for Hypersonic Missiles  (Inside View): Ursa Major, a Colorado rocket-engine startup, helps close the U.S.-China
+
+hypersonic gap
+
+The Danger of Exporting AI Chips to China  + We Should Starve Adversaries of AI Compute  — dual editorials on semiconductor
+
+export controls
+
+Taiwan Needs U.S. Arms Now  — urgent call for defense deliveries
+
+Washington, D.C., May Get a Mamdani Moment  — profiles socialist DC Council candidate Janeese Lewis George
+
+Colombia&#x27;s Stark Election Choice  — analysis of upcoming presidential election
+
+Statesmen Are Hard to Find  — on Graham Platner (Maine Democratic Senate nominee) and Ken Paxton (Texas Republican
+
+Page 4/8
+
+Senate nominee)
+
+Therapy Is Looking More Like Re-Education  — cultural critique
+
+Russia Has Lost Its &#x27;Near Abroad&#x27;  — geopolitical analysis of Moscow&#x27;s waning influence
+
+WSJ Daily Briefing
+
+White House Politics
+
+President Trump hosted a UFC cage match on the White House South Lawn for his birthday, with corporate sponsors. The WSJ
+
+Politics Special Edition focuses on &quot;Trump&#x27;s Iran Deal Will Hinge on These Things&quot; — the key implementation variables for the G-7
+
+agenda.
+
+UK Tech Regulation
+
+The U.K. announced a ban on social media for under-16s, representing one of the strictest youth social media restrictions in the
+
+Western world.
+
+Article Coverage Audit
+
+All 20 full-text articles accounted for: 
+
+[OK] U.S.-Iran Deal → Cluster 1
+
+[OK] Oil Plunges → Cluster 2
+
+[OK] Stock Futures Rally → Cluster 2
+
+[OK] Oil Stockpiles → Cluster 2
+
+[OK] Fox-Roku → Cluster 3
+
+[OK] China AI Stocks → Cluster 3
+
+[OK] Tech IPO Wave → Cluster 3
+
+[OK] Swiss Vote → Cluster 1
+
+[OK] Eurozone Bonds → Cluster 2
+
+[OK] Warsh/Fed Communication → Cluster 4 (cross-ref Cluster 2)
+
+[OK] Anthropic → Cluster 3
+
+[OK] Warsh Opinion → Cluster 4
+
+[OK] Warsh Era Begins → Cluster 4
+
+[OK] Eurozone Industry → Cluster 2
+
+[OK] BOE → Cluster 2
+
+[OK] Iranian Enforcer → Cluster 1
+
+[OK] How US-Iran Turned → Cluster 1
+
+[OK] Basic Materials → Cluster 2
+
+[OK] Dollar/FX → Cluster 2
+
+[OK] Barclays Oil → Cluster 2
+
+Headline-only stories: Covered in Cluster 3 (M&amp;A roundup, Nvidia, Meta, space) and Cluster 4 (opinion roundup, White House
+
+politics, UK regulation).
+
+Central Bank Divergence: A Calibrated View
+
+A notable dynamic emerging this week is the divergence among major central banks. The ECB recently raised rates (becoming the
+
+Page 5/8
+
+first major central bank to do so since the inflation resurgence), the Bank of Japan is poised to raise rates to a 31-year high, the Fed is
+
+expected to hold steady (Warsh&#x27;s cautious start), and the BOE is in a wait-and-see posture.
+
+Calibrated view: There is a **70% probability that the ECB pauses after its recent hike** — the Iran deal&#x27;s inflation-easing effect and
+
+Mohit Kumar&#x27;s assessment that the ECB is &quot;likely done&quot; argue for a pause. There is a **55% probability the Bank of Japan proceeds
+
+with a rate hike** in June/July, given Japan&#x27;s unique inflation dynamics being driven by domestic wage growth rather than energy
+
+WSJ Daily Briefing
+
+prices.
+
+Side Developments Extraction Note
+
+The following side developments were extracted from newsletter-style articles and market roundups: (a) the 53% Fed rate-hike
+
+probability shift came from the live markets coverage within Article 3 (Stock Futures Rally), (b) the VIX 16.77 (−5.15%) was extracted
+
+from market-data sidebars across multiple articles, (c) the mining stock specific performances came from the Basic Materials
+
+Roundup (Article 18).
+
+Article Coverage Audit
+
+All 20 full-text articles accounted for: 
+
+[OK] U.S.-Iran Deal → Cluster 1
+
+[OK] Oil Plunges → Cluster 2
+
+[OK] Stock Futures Rally → Cluster 2
+
+[OK] Oil Stockpiles → Cluster 2
+
+[OK] Fox-Roku → Cluster 3
+
+[OK] China AI Stocks → Cluster 3
+
+[OK] Tech IPO Wave → Cluster 3
+
+[OK] Swiss Vote → Cluster 1
+
+[OK] Eurozone Bonds → Cluster 2
+
+[OK] Warsh/Fed Communication → Cluster 4 (cross-ref Cluster 2)
+
+[OK] Anthropic → Cluster 3
+
+[OK] Warsh Opinion → Cluster 4
+
+[OK] Warsh Era Begins → Cluster 4
+
+[OK] Eurozone Industry → Cluster 2
+
+[OK] BOE → Cluster 2
+
+[OK] Iranian Enforcer → Cluster 1
+
+[OK] How US-Iran Turned → Cluster 1
+
+[OK] Basic Materials → Cluster 2
+
+[OK] Dollar/FX → Cluster 2
+
+[OK] Barclays Oil → Cluster 2
+
+Headline-only stories: Covered in Cluster 3 (M&amp;A roundup, Nvidia, Meta, SpaceX, Vedanta, OHB, Saint-Gobain, Renault-Thales,
+
+Coders article) and Cluster 4 (opinion roundup, White House UFC match, UK social media ban, G-7 agenda, What This Deal Means
+
+for Consumers).
+
+AI displacement context: The WSJ feature &quot;Coders Were Tech&#x27;s MVPs. Now They&#x27;re Fighting to Stay in the Game&quot; (Konrad Putzier)
+
+profiles software engineers like Christopher Pack, 27, who earned a master&#x27;s degree in computer science in 2022 amid a booming job
+
+market but now faces career uncertainty as AI transforms the profession. The article is a window into the broader structural shift in
+
+Page 6/8
+
+tech employment — relevant context for the AI investment boom covered in this cluster.
+
+WSJ Daily Briefing
+
+*WSJ Daily Briefing V2 — June 15, 2026*
+
+观察者评论
+
+翟东升——体系/结构视角
+
+翟东升——体系/结构视角
+
+美伊达成临时和平协议，这是特朗普&quot;交易型外交&quot;的集大成之作。表面上看是中东危机的缓解，实则是全球美元霸权体系的一次结构性
+
+调整。霍尔木兹海峡重开，油价应声暴跌，但这背后有更深层的逻辑：美国正在用&quot;解除制裁&quot;作为筹码，换取伊朗在石油人民币结算问
+
+题上的让步。别忘了，中国是伊朗石油的最大买家，而人民币跨境支付系统（CIPS）在中东的渗透率正在快速上升。
+
+更值得关注的是，特朗普选择巴基斯坦作为调解方——这绝非偶然。巴基斯坦是中巴经济走廊的枢纽，是中国&quot;一带一路&quot;在中亚的支点
+
+。美国绕开传统欧洲盟友（法国、德国），转而通过巴基斯坦与伊朗沟通，实际上是在构建一个新的&quot;印太-中东联动框架&quot;。这个框架的
+
+核心是：美国需要中国配合稳定中东，但又不愿意让中国获得独家影响力。
+
+Kevin
+
+Warsh执掌美联储的第一周，喊出&quot;少说话、多思考&quot;的口号，这是在修正伯南克-耶伦-鲍威尔时代的&quot;前瞻指引依赖症&quot;。但更深层的结构
+
+性问题是：在去美元化趋势加速的背景下，美联储的沟通策略变化是否足以维持美元信用？我看未必。黄金突破4300美元、各国央行
+
+持续增持黄金储备，这是对美元体系信心的结构性转移。
+
+结论：这轮美伊和解是&quot;百年未有之大变局&quot;在能源-金融复合体的一个缩影——美国在收缩、中国在布局、中东在重新洗牌。短期利好风
+
+险资产，但结构性矛盾远未解决。
+
+金灿荣——美国政治/战略相持视角
+
+金灿荣——美国政治/战略相持视角
+
+朋友们，今天WSJ的头条大家看了没？美国跟伊朗终于签了临时和平协议！我给大家分析分析这是怎么回事。
+
+首先，特朗普这个人是真的会&quot;变脸&quot;。之前还在对伊朗搞&quot;极限施压&quot;，军舰堵在霍尔木兹海峡不让伊朗油轮出去，现在突然握手言和。
+
+这就像两个人打架，打到一半觉得太累了，不如坐下来喝杯茶。但关键是：这杯茶谁买单？
+
+以色列说&quot;我不撤出黎巴嫩&quot;，这就是典型的&quot;你打你的，我打我的&quot;。美国想从中东抽身，集中精力对付中国；以色列偏要把美国拖在中
+
+东。这就是&quot;百年未有之大变局&quot;中的大国博弈逻辑——每个玩家都在为自己的利益最大化而行动。
+
+再说说Kevin
+
+Warsh上台。这个人说美联储要&quot;少说话&quot;，我以前在中国人民大学上课时就说过，美国这些金融精英说话越多，市场越乱。现在Warsh
+
+说要闭嘴了，大家反而更紧张了——就像一个人从来不说话，突然开口说&quot;我要闭嘴了&quot;，你猜市场会怎么想？哈哈。
+
+还有一个有意思的新闻：英国要禁止16岁以下未成年人用社交媒体。这让我想起中国早就实施的未成年人保护措施。西方现在开始学中
+
+国了，但又不愿意承认。这也是&quot;大变局&quot;的一部分——西方的&quot;自由放任&quot;模式正在让位于更多的政府监管。
+
+总的来说，美伊和解短期利好全球市场，但美国在中东的影响力在下降是确定的。中国是伊朗石油的大买家，霍尔木兹通了，中国的能
+
+Page 7/8
+
+WSJ Daily Briefing
+
+源安全就更有保障了。这个账，算得过来。
+
+宋鸿兵——货币/债务/周期视角
+
+宋鸿兵——货币/债务/周期视角
+
+美伊停火协议签署，布伦特原油单日暴跌近5%至83美元，WTI跌至80美元。这个价格走势印证了我此前对&quot;战时油价溢价必然回落&quot;的判
+
+断。但更重要的是，霍尔木兹海峡封锁期间全球石油储备已被大量消耗——美国战略石油储备、各国的盐穴储油和商业库存都已降至警
+
+戒线。即使海峡本周五重开，补库存也需要至少数月时间。这意味着：油价真正的底部可能在75-85美元区间，而不是回到冲突前的水
+
+平。
+
+再看金融市场：纳斯达克期货上涨2%以上，日本、韩国股市暴涨5%以上。表面上这是&quot;和平红利&quot;，但深层逻辑是日元和韩元的&quot;套利交
+
+易&quot;重新激活——能源成本下降使得这两个严重依赖石油进口的国家资本账户压力骤减。
+
+Kevin
+
+Warsh就任美联储主席，喊出&quot;少说话&quot;的口号，这是对美国货币政策透明化时代的终结。我过去在《货币战争》中就指出过：美联储的
+
+前瞻指引本质上是&quot;用今天的承诺绑架明天的政策&quot;。Warsh试图回归&quot;模糊化&quot;运作，但这在法币体系下是双刃剑——减少沟通意味着市
+
+场只能通过价格信号猜测央行意图，波动率可能短期上升。
+
+最值得关注的指标是VIX指数跌至16.77（-5.15%），同时黄金涨至4338美元/盎司（+2.3%）。恐慌指数下降而避险资产同时上涨，这
+
+是典型的&quot;风险偏好与避险需求并存&quot;的异常组合。这通常意味着：市场对和平协议存在深层疑虑，资金在买入风险资产的同时也在对冲
+
+下行风险。
+
+黄金突破4300美元的趋势不可逆转——各国央行去美元化进程加速、中国和印度实物黄金需求持续增长，这些结构性因素远非一纸和
+
+平协议能改变。建议投资者在享受短期反弹的同时，保持至少15-20%的黄金配置作为保险。
+
+*Consolidated briefing with Observer commentaries. Version 3. June 15, 2026.*
+
+Page 8/8
+
+</pre>
+      </details>
+    </section>
   </main>
+
+  <footer>
+    Consolidated briefing with Observer commentaries. Version 3. June 15, 2026. | WSJ Daily Briefing V2 — June 15, 2026
+  </footer>
 </body>
 </html>

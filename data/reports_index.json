@@ -150,6 +150,14 @@
         "./assets/images/nyt_hero_bg.svg",
         "./assets/images/nyt_cartoon.svg"
       ]
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-06-15.pdf",
+      "local": "briefings/wsj_2026-06-15.html",
+      "images": [
+        "./assets/images/wsj_hero_bg.jpg",
+        "./assets/images/wsj_cartoon.jpg"
+      ]
     }
   },
   "2026-06-14": {
