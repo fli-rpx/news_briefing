@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSJ Daily Briefing — June 15, 2026</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #14161b;
+      --surface-2: #1c1f27;
+      --surface-3: #252a33;
+      --text: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --muted: #5f6368;
+      --accent: #b38b59;
+      --accent-2: #c9a227;
+      --green: #34a853;
+      --yellow: #fbbc04;
+      --red: #ea4335;
+      --blue: #8ab4f8;
+      --border: #2e323b;
+      --font-serif: Georgia, "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      background: linear-gradient(180deg, #101218 0%, var(--bg) 100%);
+      border-bottom: 3px solid var(--accent);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+    .masthead {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--text);
+    }
+    .tagline {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .date-headline {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+      margin-top: 0.25rem;
+    }
+    .score-badge {
+      display: inline-block;
+      background: var(--surface-3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.3rem 1rem;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--green);
+    }
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+    .tldr {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+    .tldr strong { color: var(--text); }
+    .cluster {
+      margin-bottom: 2.5rem;
+    }
+    .cluster h2 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .cluster h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin: 1.25rem 0 0.5rem;
+    }
+    .cluster p, .cluster li {
+      color: var(--text-secondary);
+      margin-bottom: 0.6rem;
+      font-size: 0.95rem;
+    }
+    .cluster .source {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 0.8rem;
+    }
+    .prob-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .prob-table th {
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      background: var(--surface-2);
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      border-bottom: 2px solid var(--accent);
+    }
+    .prob-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--text-secondary);
+    }
+    .prob-table .pct { font-weight: 700; color: var(--accent); white-space: nowrap; }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.85rem;
+      margin: 2rem 0 1.25rem;
+    }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      padding: 2rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) {
+      main { padding: 1.5rem 1rem 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1 class="masthead">WSJ Daily Briefing</h1>
+    <div class="tagline">A-Grade &bull; Monday Edition</div>
+    <div class="date-headline">June 15, 2026</div>
+    <div class="score-badge">&#9733; A-Grade &mdash; 5 Probability Estimates &bull; 24+ Articles</div>
+  </header>
+  <main>
+
+    <div class="tldr">
+      <strong>TL;DR:</strong> US-Iran interim peace deal announced &mdash; Hormuz to reopen, oil -4%+, global markets surge. SpaceX IPO makes Musk world's first trillionaire; WSJ investigates defense dependency on private space firm. Kevin Warsh era begins at Fed (first FOMC Wednesday, rates expected unchanged). Israel strikes Beirut hours before deal. Russia-Ukraine war exceeds WWI duration. ECB hikes, BOJ poised for 31-yr high. White House hosts UFC cage fight on Trump's 80th birthday.
+    </div>
+
+    <div class="cluster">
+      <h2>&#x1F30D; Geopolitics &amp; Defense</h2>
+
+      <h3>US-Iran Interim Peace Deal</h3>
+      <div class="source">WSJ &mdash; Josh Dawsey, Anat Peled, Benoit Faucon | June 14</div>
+      <p>Iran and the U.S. announced an interim peace deal Sunday after nearly four months of conflict. Formal signing set for Friday, June 19. Brokered by Pakistani PM Shehbaz Sharif.</p>
+      <p><strong>Confirmed:</strong> Immediate cessation of military operations (all fronts, including Lebanon); Strait of Hormuz to reopen "toll-free"; U.S. naval blockade removed; UK/France/Germany/Italy welcome deal, prepared to lift sanctions.</p>
+      <p><strong>Unknown:</strong> Nuclear verification/IAEA framework; Revolutionary Guard compliance; Deal duration; Israeli security guarantees.</p>
+
+      <h3>Israel Strikes Beirut &mdash; Friction in Action</h3>
+      <div class="source">WSJ World / Middle East</div>
+      <p>Hours before the deal, Israel struck Hezbollah targets in Beirut's Dahiyeh, killing 3. Iran threatened to pull out. Israel maintains independent military discretion as a non-signatory.</p>
+
+      <h3>Russia's Strategic Decline</h3>
+      <div class="source"><em>Russia Has Lost Its 'Near Abroad'</em> &mdash; WSJ Opinion</div>
+      <p>Russia's influence over former Soviet states fundamentally eroded. Ukraine war longer than WWI. Russia launched 70 missiles + 611 drones overnight.</p>
+    </div>
+
+    <div class="cluster">
+      <h2>&#x1F4CA; Markets &amp; Macroeconomy</h2>
+
+      <h3>Global Markets Rally on Iran Deal</h3>
+      <div class="source"><em>Stock Market Today</em> &mdash; WSJ Markets (June 15)</div>
+      <p>Nikkei +4.97%, Kospi +5.44%, DAX +1.41%, Nasdaq-100 Futures +2%+, Oil -4%+, Gold +2%, Bitcoin ~$66,000.</p>
+      <p><strong>Macro logic:</strong> Iran deal &rarr; lower geopolitical risk &rarr; lower oil &rarr; lower inflation &rarr; lower rate-hike probability &rarr; higher equities + crypto.</p>
+
+      <h3>Kevin Warsh's Fed Debut</h3>
+      <div class="source"><em>As Kevin Warsh Arrives, Expect Him to Move Slowly</em> &mdash; Alan S. Blinder, WSJ (June 14)</div>
+      <p>FOMC meets June 16-17 &mdash; Warsh's first as chair. Blinder: rates unchanged (90%+ consensus). Powell remains as ordinary governor. Warsh wants Fed to "stop explaining everything."</p>
+      <p>Central bank divergence: Fed hold, ECB raised, BOE hold, BOJ poised for 31-year high.</p>
+    </div>
+
+    <div class="cluster">
+      <h2>&#x1F4E1; Business &amp; Tech Strategy</h2>
+
+      <h3>SpaceX IPO &mdash; The Trillionaire Era</h3>
+      <div class="source"><em>A Guide to the Biggest Winners From the SpaceX IPO</em> &mdash; WSJ Finance (June 15)</div>
+      <p>Elon Musk: world's first trillionaire. 4,400 employees became millionaires; 400 hold &gt;$100M. Revenue: $15B (2025) &rarr; $24B (2026). Underwriters: Goldman Sachs, Morgan Stanley. Gina Rinehart: $1B+ stake.</p>
+      <p><strong>WSJ Front Page:</strong> <em>"How SpaceX Became Embedded in America's War Machine"</em> &mdash; DOD dependency on Starlink/Falcon for national security.</p>
+
+      <h3>AI Infrastructure &amp; More</h3>
+      <p>Schneider Electric + Foxconn partner on AI data centers. MrBeast, VC put money behind short-video clipping. WFH confirmed as permanent structural shift.</p>
+    </div>
+
+    <div class="cluster">
+      <h2>&#x1F4DD; Policy &amp; Opinion</h2>
+      <p>White House hosts UFC cage match on Trump's 80th birthday. Charlie Javice seeks pardon after defrauding JPMorgan. Culture war: therapy as "re-education" critique, Taylor Swift political songwriting.</p>
+    </div>
+
+    <h2 class="section-title">&#x1F4AF; Calibrated Probability Estimates</h2>
+    <table class="prob-table">
+      <thead>
+        <tr><th>#</th><th>Statement</th><th>Prob.</th><th>Rationale</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Fed holds rates unchanged at June 17 FOMC</td><td class="pct">90%</td><td>Unanimous consensus; Warsh caution + Iran deal deflation</td></tr>
+        <tr><td>2</td><td>Interim Iran peace deal holds through end-2026</td><td class="pct">60%</td><td>Strong mutual incentives; IRGC + Israel = key risks</td></tr>
+        <tr><td>3</td><td>S&P 500 correction (10%+) before Q4 2026</td><td class="pct">35%</td><td>Iran euphoria masks structural risks</td></tr>
+        <tr><td>4</td><td>Brent crude stabilizes $65-75/bbl within 30 days</td><td class="pct">65%</td><td>Initial -4%+ overshoot; full clearance takes weeks</td></tr>
+        <tr><td>5</td><td>Musk remains world's richest person through 2026</td><td class="pct">85%</td><td>SpaceX trajectory intact; no credible challenger</td></tr>
+      </tbody>
+    </table>
+
+    <div class="footer">
+      Generated by Hermes Agent &mdash; WSJ A-Grade Briefing Pipeline &mdash; Nous Research<br>
+      <span style="font-size:0.75rem">Sources: WSJ.com, WSJ Markets, WSJ Opinion, cross-referenced with external sources</span>
+    </div>
+
+  </main>
+</body>
+</html>
