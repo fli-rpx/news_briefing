@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYT Daily Briefing — June 14, 2026 | Global Signal</title>
+  <style>
+    :root{
+      --bg:#0a0a0f;--text:#e0e0e0;--card:#1a1a2e;--gold:#d4af37;--muted:#888;--red:#e63946;--orange:#f4a261;--yellow:#e9c46a;--green:#2a9d8f;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+    a{color:var(--gold);text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* Nav */
+    nav{position:sticky;top:0;z-index:50;background:rgba(10,10,15,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(212,175,55,.15);padding:.75rem 1rem}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-weight:700;letter-spacing:.5px;color:var(--gold);font-size:1.1rem}
+    .pills{display:flex;gap:.5rem}
+    .pill{padding:.4rem .85rem;border:1px solid rgba(212,175,55,.3);border-radius:999px;font-size:.8rem;color:var(--text);transition:all .2s}
+    .pill:hover{background:var(--gold);color:#000}
+
+    /* Ticker */
+    .ticker{position:sticky;top:48px;z-index:40;background:#0f0f16;border-top:1px solid rgba(212,175,55,.1);border-bottom:1px solid rgba(212,175,55,.1);overflow:hidden;padding:.55rem 0}
+    .ticker-track{display:flex;width:max-content;animation:tick 35s linear infinite;gap:2.5rem}
+    .ticker span{white-space:nowrap;font-size:.78rem;color:var(--muted)}
+    .ticker span::before{content:"✦";color:var(--gold);margin-right:.6rem}
+    @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+    /* Hero */
+    .hero{position:relative;min-height:60vh;display:flex;align-items:flex-end;padding:2rem 1rem;background:linear-gradient(180deg,rgba(10,10,15,.35),rgba(10,10,15,.92)),url('./assets/images/nyt_hero_bg.jpg');background-size:cover;background-position:center}
+    .hero-content{max-width:1100px;margin:0 auto;width:100%}
+    .hero-date{color:var(--gold);font-size:.9rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
+    .hero h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;font-weight:800;margin-bottom:.75rem}
+    .hero-subtitle{font-size:clamp(1rem,2.5vw,1.35rem);color:#b8b8c8;max-width:700px}
+
+    /* Layout */
+    main{max-width:1100px;margin:0 auto;padding:2rem 1rem 4rem}
+    section{margin-bottom:3rem}
+    .section-title{font-size:1.4rem;font-weight:700;margin-bottom:1.25rem;color:var(--gold);border-left:3px solid var(--gold);padding-left:.75rem}
+
+    /* Cards */
+    .card{background:var(--card);border-radius:10px;padding:1.25rem;border:1px solid rgba(212,175,55,.08);transition:transform .25s ease,box-shadow .25s ease}
+    .card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 20px rgba(212,175,55,.08)}
+    .summary-card p{margin-bottom:1rem;color:#c8c8d8}
+    .summary-card p:last-child{margin-bottom:0}
+    .prediction-list{padding-left:1.1rem}
+    .prediction-list li{margin-bottom:.65rem;color:#c8c8d8}
+
+    /* Clusters */
+    .cluster{border-left:5px solid transparent;padding-left:1.1rem;margin-bottom:1.5rem}
+    .cluster h3{margin-bottom:.5rem;font-size:1.15rem}
+    .cluster p{color:#b0b0c0}
+    .c1{border-color:var(--red)}.c1 h3{color:var(--red)}
+    .c2{border-color:var(--orange)}.c2 h3{color:var(--orange)}
+    .c3{border-color:var(--yellow)}.c3 h3{color:var(--yellow)}
+    .c4{border-color:var(--green)}.c4 h3{color:var(--green)}
+
+    /* Table */
+    table{width:100%;border-collapse:collapse;background:var(--card);border-radius:10px;overflow:hidden}
+    th,td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid rgba(212,175,55,.1)}
+    th{background:rgba(212,175,55,.1);color:var(--gold);font-weight:600;font-size:.85rem}
+    tr:last-child td{border-bottom:none}
+    .highlight-row td{background:rgba(212,175,55,.05);font-weight:600}
+
+    /* Predictions */
+    .pred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1rem}
+    .pred-card{background:var(--card);border-radius:10px;padding:1rem;border-top:3px solid var(--gold)}
+    .pred-card .level{font-size:.75rem;color:var(--gold);text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem}
+    .pred-card .count{font-size:1.8rem;font-weight:800;line-height:1}
+    .pred-card .desc{font-size:.85rem;color:var(--muted);margin-top:.3rem}
+
+    /* Observers */
+    .observer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1rem}
+    .observer-card{background:#141425;border:1px solid rgba(212,175,55,.12);border-radius:12px;padding:1.25rem;transition:transform .25s ease,box-shadow .25s ease}
+    .observer-card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.45),0 0 20px rgba(212,175,55,.08)}
+    .observer-card .name{font-size:1.15rem;font-weight:700;color:var(--gold);margin-bottom:.15rem}
+    .observer-card .name-en{font-size:.8rem;color:var(--muted);margin-bottom:.1rem}
+    .observer-card .role{font-size:.75rem;color:#aaa;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.75rem}
+    .observer-card .zh{font-size:.95rem;color:#d0d0e0;line-height:1.75}
+
+    /* Cartoon */
+    .cartoon-card{border:2px dashed rgba(212,175,55,.5);border-radius:12px;padding:1.25rem;background:var(--card)}
+    .cartoon-card img{border-radius:8px;margin-bottom:.75rem}
+    .cartoon-card figcaption{text-align:center;color:var(--muted);font-size:.9rem;font-style:italic}
+
+    /* Footer */
+    footer{text-align:center;padding:2rem 1rem;border-top:1px solid rgba(212,175,55,.15);color:var(--muted);font-size:.85rem}
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <div class="brand">NYT Global Signal</div>
+      <div class="pills">
+        <a href="#" class="pill">Dashboard</a>
+        <a href="#" class="pill">Signals</a>
+        <a href="#" class="pill">Archives</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="ticker">
+    <div class="ticker-track">
+      <span>US-Iran 60-day ceasefire defers nuclear talks</span>
+      <span>Trump turns 80 amid declining public confidence</span>
+      <span>G7 convenes in Évian as allies question US reliability</span>
+      <span>Germany and Japan rearm with fear of American abandonment</span>
+      <span>Knicks win first NBA title in 53 years</span>
+      <span>SpaceX valuation hits $2 trillion</span>
+      <span>US-Iran 60-day ceasefire defers nuclear talks</span>
+      <span>Trump turns 80 amid declining public confidence</span>
+      <span>G7 convenes in Évian as allies question US reliability</span>
+      <span>Germany and Japan rearm with fear of American abandonment</span>
+      <span>Knicks win first NBA title in 53 years</span>
+      <span>SpaceX valuation hits $2 trillion</span>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div class="hero-content">
+      <div class="hero-date">June 14, 2026</div>
+      <h1>Global Signal: The 60-Day Pause</h1>
+      <p class="hero-subtitle">A System Under Stress — War oscillates, alliances fracture, feedback loops break.</p>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2 class="section-title">Executive Summary</h2>
+      <div class="card summary-card">
+        <p>On June 14, 2026, the United States and Iran signed a 60-day ceasefire deal reopening the Strait of Hormuz while deferring nuclear talks — a deal far short of Trump's "unconditional surrender" demand. Israel erupted in bipartisan rage at being sold out. Trump turned 80, surrounded by an MMA octagon and declining public confidence — nearly 6 in 10 Americans see him as "more erratic." His embrace of China as a "G2" peer is upending alliances across Asia and Europe simultaneously: the G7 convenes in Évian with European leaders no longer viewing the US as a partner but "in some cases, as a threat." Germany and Japan are rearming with "justifiable fear that the United States might sell them out." British forces seized a Russian shadow fleet tanker in the English Channel. Belfast burned in anti-immigrant riots. The Knicks won their first NBA championship in 53 years, producing New York's first collective joy unmoored from tragedy. SpaceX hit a $2 trillion valuation. The aggregate sentiment is decisively negative (−0.50 mean, 54.5% negative/very negative), with only 13.6% positive. The Knicks championship is the sole pure ventral-vagal (safety/connection) signal in the entire corpus.</p>
+        <ol class="prediction-list">
+          <li><strong>Geneva nuclear talks will produce a framework agreement, not a final deal</strong> — High (75%) — 60 days</li>
+          <li><strong>Israel will conduct a military action against Iranian nuclear sites within 90 days</strong> — Moderate-High (65%) — 90 days</li>
+          <li><strong>At least 2 G7 members will sign bilateral security arrangements outside the US umbrella within 12 months</strong> — High (70%) — 12 months</li>
+          <li><strong>Strait of Hormuz will not return to pre-war traffic within 60-day ceasefire</strong> — High (80%) — 60 days</li>
+          <li><strong>At least one major university will face federal funding suspension within next fiscal year</strong> — Moderate (60%) — 12 months</li>
+          <li><strong>Trump will not complete his term due to health incident</strong> — Low-Moderate (35%) — 4.5 years</li>
+          <li><strong>US-China "G2" framework produces trade/investment deal within 6 months, but doesn't resolve Taiwan</strong> — High (75%) — 6 months</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Story Clusters</h2>
+      <div class="card cluster c1">
+        <h3>Cluster 1 — War &amp; Diplomacy</h3>
+        <p>US-Iran 60-day ceasefire deal. The deal falls short of "unconditional surrender." Nuclear question deferred to Geneva. Israel furious — Netanyahu faces political crisis. Strait of Hormuz partially reopened; Iran will charge "service fee." Oil traffic far below prewar levels.</p>
+      </div>
+      <div class="card cluster c2">
+        <h3>Cluster 2 — Alliance Fracture</h3>
+        <p>Trump embraces China as "G2" peer — freezes Taiwan arms ($14B), allows Nvidia chip sales. G7 in Évian — European leaders see US as "in some cases, a threat." "Bathroom caucus" of 6 leaders talk without US. Germany/Japan rearming — Germany asks France for nuclear umbrella, Japan deploys missiles reaching China. US credibility as alliance leader in question.</p>
+      </div>
+      <div class="card cluster c3">
+        <h3>Cluster 3 — Leadership &amp; Decline</h3>
+        <p>Trump turns 80 — MMA octagon, dozing in public, 14 lbs gained, 4-5 hrs sleep, 150 daily posts. Sergio Gor as ambassador to India cancels $850M embassy project. Trump's personal lawyer James M. McDonald nominated as SDNY US Attorney — historic independence broken. University crackdown: 8 activists indicted at Michigan; Ivy League legal spending up 37% to $333M.</p>
+      </div>
+      <div class="card cluster c4">
+        <h3>Cluster 4 — Society &amp; Joy</h3>
+        <p>Knicks win first NBA championship in 53 years — "pure ventral vagal." Belfast anti-immigrant riots — bus set on fire, families evacuated. Indonesia's bissu (transgender priests) face growing threat from conservative Islam. Japan's succession crisis — imperial family down 25% since 1990. Switzerland rejects population cap 55-45%. 12 killed in skydiving plane crash.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Geographic Critique</h2>
+      <div class="card">
+        <table>
+          <tr><th>Region</th><th>Articles</th><th>Share</th></tr>
+          <tr class="highlight-row"><td>United States</td><td>12</td><td>54.5%</td></tr>
+          <tr><td>Middle East</td><td>3</td><td>13.6%</td></tr>
+          <tr><td>Europe</td><td>5</td><td>22.7%</td></tr>
+          <tr><td>East Asia</td><td>3</td><td>13.6%</td></tr>
+          <tr><td>Southeast Asia</td><td>1</td><td>4.5%</td></tr>
+        </table>
+        <p style="margin-top:1rem;color:#b0b0c0"><strong>Blind spots:</strong> Africa (0 articles), Latin America (0), Climate (0), Russia-Ukraine (only indirect).</p>
+        <p style="margin-top:.5rem;color:#b0b0c0;font-style:italic">"NYT coverage reflects an institution looking inward at a moment when the most consequential stories are global."</p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Predictions Table</h2>
+      <div class="pred-grid">
+        <div class="pred-card">
+          <div class="level">High (70-80%)</div>
+          <div class="count">4</div>
+          <div class="desc">predictions with strong confidence</div>
+        </div>
+        <div class="pred-card">
+          <div class="level">Moderate (55-69%)</div>
+          <div class="count">2</div>
+          <div class="desc">predictions with medium confidence</div>
+        </div>
+        <div class="pred-card">
+          <div class="level">Low-Moderate (&lt;40%)</div>
+          <div class="count">1</div>
+          <div class="desc">prediction with lower confidence</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Observer Commentaries</h2>
+      <div class="observer-grid">
+        <article class="observer-card">
+          <div class="name">翟东升</div>
+          <div class="name-en">Zhai Dongsheng</div>
+          <div class="role">System / Structure perspective</div>
+          <div class="zh">"美伊60天停火协议不是外交胜利，而是主权信用货币体系的结构性溃败。Washington demanded unconditional surrender and got a 60-day pause with zero nuclear resolution. Iran controls the Strait and charges a 'service fee' — this is the logical consequence of a reserve currency issuer that has exhausted both fiscal space and moral authority. Musk hits $2 trillion while wages fall in real terms. 这还不是分配问题——这是体系问题。G7 is dead. European leaders no longer see U.S. as partner — they see it as threat. Germany and Japan rearming is not about Russia or China — it is the recognition that the dollar-based security umbrella has become contingent. 60 days. The ceasefire is not the story; the parallel system reconfiguration it enables is the story."</div>
+        </article>
+        <article class="observer-card">
+          <div class="name">金灿荣</div>
+          <div class="name-en">Jin Canrong</div>
+          <div class="role">US Politics / Strategy perspective</div>
+          <div class="zh">"美伊停火协议——这哪是和平，这是'大甩卖'？川普一开始要的是'无条件投降'，结果伊朗核设施完好无损，霍尔木兹海峡过路费照收不误。这不叫外交艺术，这叫'打不赢就找个台阶下'。百年未有之大变局的核心：美国从战略进攻转入了战略防御。川普80大寿——皇上老了，但太监们还在喊'万岁'。德国日本重新武装——美国不想当大哥了，小弟们只能自己买刀。中国什么都没做，什么都没打，但在这场大变局里占据了最有利的位置。台湾军售冻结了——美国自己停的。英伟达芯片可以卖了——美国自己批的。'G2'框架出来了——川普自己提的。这就好比你跟人打麻将，你都没上桌，结果对手自己把牌推倒了，说'你赢了'。"</div>
+        </article>
+        <article class="observer-card">
+          <div class="name">宋鸿兵</div>
+          <div class="name-en">Song Hongbing</div>
+          <div class="role">Currency / Debt / Cycle perspective</div>
+          <div class="zh">"从工程系统视角看，最核心的信号不是'伊朗达成了协议'，而是这套全球美元环流系统在承受极限应力后终于产生了第一个控制回路的响应。霍尔木兹海峡从未如此清晰地展示它在美元环流系统中的位置——它是石油美元体系的节流阀。战前每日过货1800万桶，现在美国协助通航仅约300万桶/日。60天停火协议后，伊朗宣布收取'服务费'——这意味着阀门控制权没有回到美国手中，而是被正式让渡给了伊朗。G7的报道标题已经说明一切：'原本要团结，现在被特朗普分裂。'当美国总统的健康数据需要通过'22名专家的私人检查'而非独立医疗审查来发布，当司法部选举诉讼0胜8负仍持续起诉，当政策在数小时内从'轰炸'翻转为'协议'——这说明系统的反馈回路正在断裂。没有负反馈的系统，必然走向振荡放大。未来60天，所有投资者的第一课不是看行情，而是看系统是否能重建自己的反馈回路。"</div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Daily Cartoon</h2>
+      <figure class="cartoon-card">
+        <img src="./assets/images/nyt_cartoon.jpg" alt="Daily Cartoon">
+        <figcaption>Systems under stress: war oscillates, alliances fracture, feedback loops break — but the trophy glows.</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 NYT | Global Signal | 22 articles verified | June 14, 2026
+  </footer>
+</body>
+</html>
