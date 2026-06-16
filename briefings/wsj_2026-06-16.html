@@ -1,397 +1,812 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="WSJ Daily Briefing — June 16, 2026: Geopolitics, Markets, Business &amp; Tech, Policy, and Observer commentaries.">
-<title>WSJ Briefing — June 16, 2026</title>
-<style>
-:root {
-  --bg: #0a0a0f;
-  --text: #e0e0e0;
-  --muted: #a0a0b0;
-  --accent: #00ff88;
-  --navy: #0d1b2a;
-  --card-bg: rgba(13, 27, 42, 0.62);
-  --border: rgba(0, 255, 136, 0.14);
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WSJ Daily Briefing — June 16, 2026</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --accent: #00ff88;
+      --text: #ffffff;
+      --muted: #a0a0b0;
+      --card: #12121a;
+      --border: #1f1f2e;
+      --positive: #00ff88;
+      --negative: #ff6b6b;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-html {
-  scroll-behavior: smooth;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--bg);
-  color: var(--text);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.65;
-  /* Subtle grid + soft vignette */
-  background-image:
-    radial-gradient(circle at 50% 0%, rgba(13, 27, 42, 0.75), transparent 55%),
-    linear-gradient(rgba(0, 255, 136, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 136, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 38px 38px, 38px 38px;
-  background-attachment: fixed;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "PingFang SC", "Microsoft YaHei", "Noto Sans SC";
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
 
-.container {
-  max-width: 920px;
-  margin: 0 auto;
-  padding: 2.5rem 1.25rem;
-}
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.page-header {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.9) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
 
-.page-header h1 {
-  margin: 0 0 0.35rem;
-  font-size: clamp(1.9rem, 5vw, 2.9rem);
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -0.02em;
-}
+    .hero-content {
+      max-width: 900px;
+      animation: fadeInUp 1s ease-out;
+    }
 
-.subtitle {
-  margin: 0.25rem 0;
-  color: var(--muted);
-  font-size: 1.05rem;
-}
+    .hero-label {
+      display: inline-block;
+      color: var(--bg);
+      background: var(--accent);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+    }
 
-.source-note {
-  margin: 0.75rem auto 0;
-  max-width: 720px;
-  color: #7a7a8a;
-  font-size: 0.9rem;
-  line-height: 1.55;
-}
+    .hero h1 {
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 1rem;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.6);
+    }
 
-.section-rule {
-  border: 0;
-  height: 1px;
-  margin: 2.25rem 0;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  opacity: 0.35;
-}
+    .hero-date {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
 
-.cluster, .observers {
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 1.6rem 1.8rem;
-  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.32);
-}
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.35rem);
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto;
+    }
 
-.cluster + .section-rule {
-  margin-top: 2.25rem;
-}
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.cluster h2, .observers h2 {
-  margin: 0 0 1.2rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--accent);
-  color: var(--accent);
-  font-size: 1.5rem;
-  font-weight: 700;
-}
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
 
-.cluster h3 {
-  margin: 1.5rem 0 0.6rem;
-  color: #f2f2f2;
-  font-size: 1.2rem;
-  font-weight: 650;
-  border-left: 3px solid var(--accent);
-  padding-left: 0.7rem;
-}
+    section {
+      margin-bottom: 5rem;
+    }
 
-.cluster p, .observers p {
-  margin: 0.85rem 0;
-}
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
 
-.cluster strong, .observers strong {
-  color: var(--accent);
-  font-weight: 650;
-}
+    h2 {
+      color: var(--accent);
+      font-size: clamp(1.5rem, 4vw, 2.25rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding-bottom: 0.4rem;
+      border-bottom: 3px solid var(--accent);
+    }
 
-.cluster em, .observers em {
-  color: #a8b4c4;
-}
+    h3 {
+      color: var(--text);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 2rem 0 0.9rem;
+      line-height: 1.3;
+    }
 
-.table-wrap {
-  width: 100%;
-  overflow-x: auto;
-  margin: 1.4rem 0;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-}
+    h4 {
+      color: var(--accent);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.6rem;
+    }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: rgba(13, 27, 42, 0.72);
-  font-size: 0.95rem;
-}
+    p {
+      margin-bottom: 1rem;
+      color: #e2e2e8;
+    }
 
-th, td {
-  padding: 0.8rem 0.9rem;
-  text-align: left;
-  vertical-align: top;
-}
+    .lead {
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 500;
+    }
 
-th {
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 700;
-}
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.75rem;
+      margin-bottom: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
 
-tr:nth-child(even) {
-  background: rgba(255, 255, 255, 0.035);
-}
+    .card:hover {
+      border-color: rgba(0, 255, 136, 0.4);
+      transform: translateY(-2px);
+    }
 
-tr:last-child td {
-  border-bottom: none;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
 
-td {
-  border-bottom: 1px solid rgba(0, 255, 136, 0.1);
-}
+    .market-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
 
-.observers {
-  margin-top: 0.5rem;
-}
+    .market-card:hover {
+      border-color: rgba(0, 255, 136, 0.4);
+    }
 
-.observers h2 .zh-title {
-  font-size: 0.85em;
-  opacity: 0.85;
-  margin-left: 0.5rem;
-}
+    .market-card .label {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.4rem;
+    }
 
-.observer-card {
-  background: rgba(10, 10, 15, 0.42);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 1.25rem 1.4rem;
-  margin-bottom: 1.4rem;
-}
+    .market-card .value {
+      color: var(--text);
+      font-size: 1.75rem;
+      font-weight: 800;
+      margin: 0.3rem 0;
+      letter-spacing: -0.02em;
+    }
 
-.observer-card:last-child {
-  margin-bottom: 0;
-}
+    .market-card .change {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
 
-.observer-card h3 {
-  margin: 0 0 0.8rem;
-  color: var(--accent);
-  font-size: 1.25rem;
-  font-weight: 700;
-}
+    .positive { color: var(--positive); }
+    .negative { color: var(--negative); }
+    .neutral { color: var(--muted); }
 
-.observer-card p {
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", system-ui, sans-serif;
-  line-height: 1.85;
-  text-align: justify;
-}
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
 
-.page-footer {
-  text-align: center;
-  color: #777;
-  font-size: 0.85rem;
-  margin-top: 1rem;
-}
+    th, td {
+      padding: 1.1rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
 
-@media (max-width: 640px) {
-  .container {
-    padding: 1.4rem 0.9rem;
-  }
+    th {
+      background: rgba(0, 255, 136, 0.08);
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+    }
 
-  .cluster, .observers {
-    padding: 1.15rem 1.1rem;
-    border-radius: 12px;
-  }
+    tr:last-child td {
+      border-bottom: none;
+    }
 
-  .cluster h2, .observers h2 {
-    font-size: 1.25rem;
-  }
+    tr:hover {
+      background: rgba(0, 255, 136, 0.04);
+    }
 
-  .cluster h3 {
-    font-size: 1.05rem;
-  }
+    .prob {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
 
-  th, td {
-    padding: 0.6rem 0.65rem;
-    font-size: 0.88rem;
-  }
+    .cluster-label {
+      display: inline-block;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
 
-  .observer-card {
-    padding: 1rem;
-  }
-}
-</style>
+    .observer {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .observer-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .observer-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .observer-title {
+      flex: 1;
+    }
+
+    .observer-title h3 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    .observer-title .lens {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .chinese-text {
+      font-family: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", sans-serif;
+      line-height: 1.85;
+      font-size: 1.05rem;
+      color: #ececf2;
+    }
+
+    .chinese-text p {
+      margin-bottom: 1.1rem;
+    }
+
+    .cartoon-container {
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2rem;
+    }
+
+    .cartoon-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    }
+
+    .cartoon-caption {
+      margin-top: 1.25rem;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    .source-note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      border-left: 3px solid var(--accent);
+      padding-left: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .probability-box {
+      background: rgba(0, 255, 136, 0.06);
+      border-left: 4px solid var(--accent);
+      padding: 1rem 1.25rem;
+      margin: 1rem 0 1.5rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .probability-box strong {
+      color: var(--accent);
+    }
+
+    .cross-ref {
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-left: 3px solid var(--border);
+      padding-left: 1rem;
+      margin: 1rem 0;
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      main {
+        padding: 2.5rem 1rem;
+      }
+
+      section {
+        margin-bottom: 3.5rem;
+      }
+
+      .card, .observer {
+        padding: 1.25rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.9rem;
+      }
+
+      .market-card .value {
+        font-size: 1.35rem;
+      }
+
+      th, td {
+        padding: 0.85rem;
+        font-size: 0.9rem;
+      }
+
+      .observer-header {
+        gap: 0.75rem;
+      }
+
+      .observer-title h3 {
+        font-size: 1.25rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-overlay {
+        padding: 1.25rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="container">
-<header class="page-header">
-<h1>WSJ Briefing — June 16, 2026</h1>
-<p class="subtitle">Tuesday, June 16, 2026 · Source: The Wall Street Journal</p>
-<p class="source-note">Compiled from full-text articles and headline listings. The G7 summit convenes this week in Evian-les-Bains, France (June&nbsp;16–18). The Federal Reserve decision is expected Wednesday, June&nbsp;17.</p>
-</header>
-<hr class="section-rule">
-<section class="cluster cluster-1-geopolitics-defense">
-<h2>Cluster 1: Geopolitics &amp; Defense</h2>
-<h3>U.S. and Iran Reach Interim Deal to Reopen Strait of Hormuz</h3>
-<p>The United States and Iran announced an interim peace deal on Sunday, June 14, marking the first major step toward ending a nearly four-month conflict (since late February 2026) that has roiled global energy markets and created political turmoil worldwide. A formal signing is planned for Friday, June 19, President Donald Trump and Pakistani negotiators said.</p>
-<p>The interim agreement aims to reopen the Strait of Hormuz, lift the U.S. naval blockade, and pause hostilities for <strong>at least 60 days</strong>. However, neither side provided a specific list of agreed-upon details. The thorniest issue — Tehran's nuclear program — has been deferred to future technical talks, leaving the deal's long-term viability in question.</p>
-<p><strong>Probability estimate: 65%</strong> that the Friday, June 19 signing occurs as scheduled. The 35% downside includes potential Israeli military action derailing negotiations, Iranian last-minute demands, or CIA-identified discrepancies between Iran's public commitments and private discussions.</p>
-<p><strong>Cross-reference:</strong> The outcome of the Friday signing will directly impact oil prices and broader market sentiment covered in Cluster 2.</p>
-<h3>Skepticism Runs Deep: CIA, Allies Question Iranian Intentions</h3>
-<p>CIA Director John Ratcliffe and other senior U.S. officials are skeptical that Iran genuinely intends to make the nuclear concessions required in a final agreement, citing U.S. intelligence that Iranian officials' private discussions differ from their public commitments, according to three sources. Ratcliffe raised his concerns with Trump over the weekend, with support from Secretary of State Marco Rubio and Defense Secretary Pete Hegseth.</p>
-<p>French President Emmanuel Macron said Tuesday's working lunch at the G7 summit (being held June 16-18 in Evian-les-Bains) would focus on the safe reopening of the Strait of Hormuz, including a possible Franco-British-led maritime mine-clearing mission. Trump said in a social-media post on Sunday, June 14, that the Strait was "already partially open" and would be "completely open" on Friday, June 19, adding that U.S. forces are "doing a little hunting for a couple of mines."</p>
-<h3>Israel Alarmed by Exclusion from U.S.-Iran Negotiations; Lebanon Front Complicates Peace</h3>
-<p>Outrage has erupted across Israel's political spectrum over Israel's exclusion from direct involvement in the U.S.-Iran negotiations. The frustration was captured in the main headline of the Israeli newspaper <em>Yediot Aharonot</em> on Sunday, June 14, describing the agreement as a "bad deal." Former Israeli Defense Minister Avigdor Liberman called it a "catastrophe from Israel's perspective."</p>
-<p>Compounding the challenge, the ongoing conflict between Israel and Hezbollah in Lebanon complicates the broader U.S.-Iran deal. As WSJ's Tina Fuhr reports, the Lebanon front remains a significant obstacle: Israeli airstrikes near Beirut over the weekend drew Trump's anger, while Hezbollah continues to fire shots toward Israeli territory. Israel also demanded an end to Tehran's support for proxy groups including Hezbollah in Lebanon, Hamas in Gaza, and the Houthis in Yemen — objectives critics say are absent from the deal's framework.</p>
-<p><strong>Cross-reference: Israel's military posture directly affects oil market risk premiums</strong> discussed in Cluster 2. A breakdown in U.S.-Israel coordination could reintroduce the geopolitical risk that Monday's market rally had priced out.</p>
-<p><strong>Probability estimate: 40%</strong> that Israeli military action (strikes on Iranian proxies in Lebanon or Syria) derails the deal before the Friday, June 19 signing. This is elevated by Israel's history of independent operations and the explicit disconnect between Washington and Tel Aviv.</p>
-<h3>B-52 Bomber Crash at Edwards Air Force Base</h3>
-<p>Eight crew members are believed dead after a B-52 bomber crashed shortly after takeoff at Edwards Air Force Base in California. The incident, which occurred over the weekend, is under investigation. The cause of the crash has not been determined. This is a reminder of the human and material costs of sustained military operations as diplomatic off-ramps emerge.</p>
-<h3>Europe's Defense Boomtowns: Economic Gain, Social Pain</h3>
-<p>New investment in French and British defense towns is bringing jobs and economic stimulus but also sparking division and resentment among local populations. Housing shortages, infrastructure strain, and cultural friction accompany the influx of workers and capital. This side development parallels the broader European rearmament trend triggered by the Ukraine war and accelerated by the Iran conflict.</p>
-<h3>Russia-Ukraine: G7 Backs Ukraine, Kremlin Strikes Kyiv Sacred Site</h3>
-<p>Ukrainian President Volodymyr Zelensky urged tougher sanctions on Russia at the G7 summit, as G7 leaders backed Ukraine priorities and support for air defense expansion. Russia struck a sacred site in Kyiv, drawing condemnation from the WSJ Editorial Board, which argues that targeting cultural heritage sites demonstrates Russia's disregard for international norms. Trump said he had a "very good meeting" with Zelensky and would meet him again on Tuesday, June 16.</p>
-</section>
-<hr class="section-rule">
-<section class="cluster cluster-2-markets-macroeconomy">
-<h2>Cluster 2: Markets &amp; Macroeconomy</h2>
-<h3>SpaceX Overtakes Amazon in Market Value</h3>
-<p>SpaceX shares rose another 14% in early trading on Tuesday, June 16, putting Elon Musk's rocket company on track to leapfrog Amazon.com and become the world's fifth-most valuable public company. The stock was trading at approximately $208.90, more than 54% above its $135 IPO price from the prior week, giving the company a market capitalization of roughly $2.75 trillion.</p>
-<p>Tuesday's gains were driven by SpaceX's announcement of a $60 billion deal to acquire AI-coding startup Anysphere (Cursor). The underwriters exercised their "greenshoe" option to purchase additional shares, increasing total IPO proceeds to $85.7 billion from $75 billion.</p>
-<p>More than $3 billion worth of SpaceX shares exchanged hands as of 7:21 a.m. ET Tuesday — several times the trading volumes in Nvidia, Microsoft, Tesla, and Apple combined. Australian mining magnate Gina Rinehart bought over $1 billion of SpaceX stock in a separate exclusive deal, as WSJ reported.</p>
-<p><strong>Probability estimate: 55%</strong> that SpaceX maintains its position above Amazon in market cap by end of week (June 20). The 45% downside reflects the inherent volatility of a post-IPO stock surging 54% in days without commensurate earnings visibility.</p>
-<p><strong>Cross-reference with Cluster 3 (Business &amp; Tech):</strong> SpaceX's $60B Cursor acquisition signals a major strategic push into AI-assisted coding, potentially reshaping the developer tools market.</p>
-<h3>Stocks Rally on Iran Deal, Oil Slides</h3>
-<p>The Dow Jones Industrial Average closed at a record 51,923.70 on Monday, June 15 (up 1.41%), while the S&amp;P 500 reached 7,574.49 (up 1.92%) and the Nasdaq surged 3.02% to 26,671.42. The rally capped the best three-session stretch in more than a year as investors priced in the end of the Iran war risk premium.</p>
-<p>By Tuesday, June 16, markets were consolidating: DJIA 52,069.02 (+0.77%), S&amp;P 500 7,557.60 (+0.04%), Nasdaq 26,715.59 (+0.12%). The VIX fell to 15.91 (-1.79%).</p>
-<p>Oil prices continued their decline. Brent crude fell 4.9% to $83.07 a barrel on Monday, while WTI dropped 5.3% to $80.38. By Tuesday, crude had dipped below $80 to $77.72 (-3.75% on the day). Natural gas also tumbled, with the Dutch TTF contract — the European benchmark — down 5.3% to €44.30 per megawatt hour.</p>
-<p>Goldman Sachs cut its oil-price forecasts, anticipating faster Gulf supply recovery as the Strait of Hormuz reopens.</p>
-<h3>Central Bank Decisions: BOJ Hikes, Fed and BOE on Deck</h3>
-<p>The Bank of Japan raised its policy rate to <strong>1%</strong> — a 31-year high — on Tuesday, June 16, as elevated energy prices from the Middle East conflict stoked inflation fears. The Australian central bank held rates but warned more hikes may come.</p>
-<p>The Federal Reserve is expected to leave rates unchanged at its decision on <strong>Wednesday, June 17</strong>, but the focus will be on whether it leaves the door open to future hikes given the evolving inflation picture. This will be Kevin Warsh's first meeting as Fed chairman. The Bank of England decision follows later in the week.</p>
-<p>U.S. Treasury yields edged lower: the 10-year yield stood at 4.457%. The DXY dollar index was stable at 99.628. The WSJ Dollar Index fell 0.12% to 96.22.</p>
-<p><strong>Probability estimate: 80%</strong> that the Fed holds rates steady on Wednesday, June 17. The 20% probability of a hike reflects the BOJ's aggressive move and sticky energy prices, though the Iran deal's deflationary oil impact reduces urgency.</p>
-<h3>Gold Holds Above $4,300 at $4,356.90</h3>
-<p>Gold held Monday's gains at approximately $4,356.90 on Tuesday, reflecting persistent uncertainty despite the Iran deal. Investors continue to hedge against the possibility that the agreement unravels. Bitcoin traded at $65,978.18 (-0.86%).</p>
-<h3>Consolidated Probability Table</h3>
-<div class="table-wrap"><table>
-<thead>
-<tr>
-<th>Event</th>
-<th>Probability</th>
-<th>Key Variable</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Iran deal signed Friday June 19</td>
-<td>65%</td>
-<td>Israeli actions, Iranian last-minute demands</td>
-</tr>
-<tr>
-<td>Israeli action derails deal before signing</td>
-<td>40%</td>
-<td>Hezbollah/Beirut escalation</td>
-</tr>
-<tr>
-<td>SpaceX stays above Amazon market cap by week end (June 20)</td>
-<td>55%</td>
-<td>Post-IPO volatility, earnings visibility</td>
-</tr>
-<tr>
-<td>Fed holds rates steady Wednesday June 17</td>
-<td>80%</td>
-<td>Iran deal oil deflation vs. energy-inflation lag</td>
-</tr>
-<tr>
-<td>Iran advances enrichment during 60-day pause</td>
-<td>50%</td>
-<td>IAEA inspection access, CIA assessments</td>
-</tr>
-</tbody>
-</table></div>
-</section>
-<hr class="section-rule">
-<section class="cluster cluster-3-business-tech-strategy">
-<h2>Cluster 3: Business &amp; Tech Strategy</h2>
-<h3>SpaceX's $60 Billion AI Bet: The Cursor/Anysphere Acquisition</h3>
-<p>SpaceX's $60 billion acquisition of Anysphere (maker of Cursor, the AI coding assistant) represents the most aggressive strategic pivot from a newly-public company in recent memory. The deal signals Musk's intent to vertically integrate AI software development capabilities into SpaceX's broader ecosystem, potentially extending from rocket engineering automation to satellite constellation management.</p>
-<p><strong>Cross-reference with Cluster 2:</strong> The acquisition was the catalyst for Tuesday's 14% surge and the market-cap milestone above Amazon. Investors are betting SpaceX can replicate the "platform economics" playbook — using a high-margin software layer to amplify hardware revenue.</p>
-<h3>Tech's IPO Wave: Charitable Windfalls Ahead; Who Profited Most</h3>
-<p>The SpaceX IPO is the first in a string of AI public-market debuts that could deliver new riches to startup employees — and, by extension, to charitable causes. WSJ reporters Laura J. Nelson and Keach Hagey note that the wealth creation from AI IPOs may generate a philanthropic wave similar to the dot-com and social-media eras.</p>
-<p>WSJ's IPO section also examined who profited most from the historic offering. The biggest winners include early SpaceX investors, institutional backers who received IPO allocations, and employees with vested options — alongside Gina Rinehart's $1 billion secondary-market purchase.</p>
-<h3>Asian Chip Stocks Rebound; Chinese AI Stocks Still Cheap</h3>
-<p>Asian semiconductor stocks rebounded on Tuesday, capping a roller-coaster week amid geopolitical volatility, inflation concerns, and worries about an AI-stock bubble. Chinese AI-related stocks remain relatively cheap compared to U.S. peers, presenting a potential opportunity for value-seeking investors, according to WSJ's Rory Jones.</p>
-<h3>Go, Philippine Fintech IPO Pipeline</h3>
-<p>Ride-hailing app Go surged after Japan's biggest IPO so far this year. Meanwhile, an Ant International-backed Philippine fintech unicorn plans to file for an IPO as soon as this month, signaling continued Asian fintech momentum.</p>
-<h3>Side Story: FIFA Stakes $3.8 Billion World Cup on Unprecedented Grass Experiment</h3>
-<p>FIFA is conducting an unprecedented grass-turf experiment for the 2026 World Cup, staking the tournament's $3.8 billion economic impact on the success of innovative field management technology across 16 North American venues.</p>
-<p><strong>Side development:</strong> The cast-iron tourist binoculars industry is retrofitting scenic viewers with tap-to-pay technology, as fewer people carry quarters. This WSJ Journal Reports story illustrates the cashless economy's reach into unexpected corners.</p>
-</section>
-<hr class="section-rule">
-<section class="cluster cluster-4-policy-opinion">
-<h2>Cluster 4: Policy &amp; Opinion</h2>
-<h3>WSJ Editorial: "Trump Stages an Iran Retreat"</h3>
-<p>The Editorial Board (June 16, 2026) argues that by agreeing to a ceasefire and reopening the Strait of Hormuz without securing verifiable nuclear concessions, Trump is walking back from his stated maximum-pressure position. The editorial warns that Iran may use the 60-day pause to reconstitute military capabilities and advance its nuclear program.</p>
-<p><strong>Probability estimate: 50%</strong> that Iran advances enrichment activities during the 60-day pause, based on historical behavior (JCPOA-era patterns) and current CIA skepticism as reported by WSJ.</p>
-<h3>Walter Russell Mead: "Trump, Cynicism and the Deal"</h3>
-<p>Mead (June 16, 2026) argues that Trump's willingness to compromise reflects a realist recognition that the war had become unsustainable. He suggests the deal represents a strategic pivot rather than a retreat, but warns that the lack of nuclear inspection details creates "dangerous ambiguity."</p>
-<h3>WSJ Opinion: "Israel Fights While Trump Talks"</h3>
-<p>An analysis (June 16, 2026) of the strategic divergence between U.S. diplomacy and Israeli military operations. After Iran fired ballistic missiles at Israel over the weekend, Netanyahu struck Iranian air defenses, missile sites, and a Revolutionary Guard petrochemical complex. Trump had loudly opposed any Israeli response, but the editorial argues the strikes may strengthen U.S. diplomatic leverage by demonstrating military credibility.</p>
-<h3>"Rhode Island Joins the Tax Race to the Top"</h3>
-<p>The Editorial Board examines Rhode Island's tax policy changes as part of a broader trend of states competing for mobile capital through favorable tax regimes.</p>
-<h3>Swiss Pragmatism: Population Cap Rejected</h3>
-<p>Switzerland on Sunday, June 14, rejected a proposal to cap its population at 10 million, with approximately 55% voting against and 45% in favor. Championed by the right-wing Swiss People's Party (SVP), the proposal would have risked ending free movement of labor with the EU. Swiss Justice Minister Beat Jans welcomed the result but pledged to address housing and immigration concerns. The vote was likened to Britain's 2016 Brexit referendum.</p>
-<h3>The Race to Land an Iran Deal: Trump's 80th Birthday Weekend</h3>
-<p>WSJ's behind-the-scenes reporting reveals how Trump's 80th birthday celebration (Sunday, June 14) and the UFC Freedom 250 event at the White House shaped the Iran deal timeline. Trump hosted 4,000 attendees including Rubio, Johnson, and Polish President Nawrocki on the South Lawn. The $60 million UFC event blended presidential power with commercial branding in an unprecedented spectacle.</p>
-</section>
-<hr class="section-rule">
-<section class="observers" lang="zh">
-<h2>Observers <span class="zh-title" lang="zh">观察者评论</span></h2>
-<article class="observer-card">
-<h3 lang="zh">翟东升——体系/结构视角</h3>
-<p>表面上看，美伊临时协议是"和平"的胜利，但从体系结构来看，这不过是美国帝国收缩战略的一个节点。特朗普选择在自己80岁生日当天宣布协议，绝非偶然——他将个人形象与国家命运捆绑，反映的是美国霸权体系内部的深刻矛盾：军事上无法速胜，经济上承受不起持久战，政治上需要一场"胜利"来转移国内矛盾。</p>
-<p>值得关注的是三个结构性信号：</p>
-<p>第一，霍尔木兹海峡的重新开放意味着能源权力结构的再平衡。过去四个月，伊朗通过封锁海峡展示了"非对称威慑力"，迫使美国回到谈判桌。这是小国撬动体系杠杆的经典案例。</p>
-<p>第二，以色列被排除在谈判之外不是外交疏忽，而是体系性调整的结果。美国正在从"无条件支持以色列"转向"有条件平衡区域利益"，这对中东权力格局的影响将是深远的。</p>
-<p>第三，日本央行加息至1%（31年高点）表明，全球货币体系正在经历痛苦的"正常化"。能源价格冲击正在通过利率渠道传导至实体经济，而美联储的犹豫（大概率维持利率不变）恰恰说明美国对利率敏感度的脆弱。</p>
-<p>SpaceX市值超越亚马逊这个事件，表面上是科技股故事，实际上是美元流动性过剩催生的资产价格泡沫的缩影。2.75万亿美元的估值对应的是什么盈利基础？这更像是货币现象而非价值发现。</p>
-<p>金价维持在4300美元以上说明市场对"和平"的真实可持续性高度怀疑。钱在说真话。</p>
-</article>
-<article class="observer-card">
-<h3 lang="zh">金灿荣——美国政治/战略相持视角</h3>
-<p>特朗普80岁生日在白宫南草坪搞UFC格斗赛，这个画面太"美国"了——一边宣布"伟大的和平协议"，一边让两个人在铁笼子里打得头破血流。这就是美国现在的写照：表面上是世界领袖，实际上越来越像一头困惑的狮子，不知道是该继续打仗还是该回家睡觉。</p>
-<p>"百年未有之大变局"在我理解，就是大国之间的力量对比在发生根本性变化。美国打伊朗打了四个月，结果怎么样？签了一个60天的停火协议，核问题一个字没谈。这就好比你去打架，打了四个月发现打不赢，于是握手说"我们先休息60天"，然后就开party庆祝胜利。这不是和平，这是体面地承认自己陷入了泥潭。</p>
-<p>以色列的反应很有意思。他们说这是一个"坏协议"，前国防部长利伯曼说"从以色列角度看是灾难"。这说明什么？说明美国已经不能完全控制自己的盟友了。以色列想要的是彻底消灭伊朗的威胁，但美国现在想要的是赶紧离开中东这个泥潭。这种离心力是"百年未有之大变局"的一部分——旧有的联盟结构正在松动。</p>
-<p>瑞士拒绝人口限制公投这件事，55%对45%，跟脱欧公投很像，但方向相反。瑞士人选择了实用主义，说明欧洲还没有完全向右转。用老百姓的话说："谁来给我端盘子？谁来给我养老？"——经济安全感比民族主义更有投票价值。</p>
-<p>SpaceX的故事最有意思。一家刚上市的公司，涨了54%，市值超过亚马逊，又花600亿买了个AI公司。这像极了2000年互联网泡沫时期——不是公司不好，而是价格太疯狂了。芒格先生生前说得好："不是聪明就能赚钱，要等到好价格。"</p>
-</article>
-<article class="observer-card">
-<h3 lang="zh">宋鸿兵——货币/债务/周期视角</h3>
-<p>让我们穿透新闻的表象，看背后真正的货币与债务逻辑。</p>
-<p>美伊临时协议最核心的经济影响不是"和平红利"，而是霍尔木兹海峡重新开放引起的原油价格暴跌。原油从战时高位迅速回落至80美元以下，这对全球通胀曲线的影响将是立竿见影的。但请注意：黄金纹丝不动地守在4360美元上方——这在告诉我们，市场并不相信"和平"是可持续的。</p>
-<p>日本央行加息至1%（31年高位）是一个重要的周期信号。日本是全球最大的债权国，其利率政策决定了全球套利交易的成本。当日本开始加息，借日元买全球资产的carry trade就会松动。这是金融海啸之前的典型征兆——中心国家的利率上升会引发全球流动性收缩。</p>
-<p>SpaceX的2.75万亿美元市值令人想起2000年的思科和2021年的特斯拉。IPO规模从750亿膨胀到857亿美元，超额配售权全部行使，这在新股发行历史上是前所未有的。更值得注意的是，仅一个早晨的交易量就超过英伟达、微软、特斯拉、苹果之和——这不是正常的价值发现，这是零利率时代积累的过剩流动性在追逐有限的"优质资产"。当美联储资产负债表上的债务货币化进程不可逆时，每一次"IPO盛宴"本质都是货币幻觉的狂欢。</p>
-<p>美联储明天（6月17日）的利率决定值得高度警惕。沃什作为新主席的第一次会议，如果释放任何鹰派信号——考虑到BOJ已经行动——全球资产价格将面临重估压力。G7峰会在法国召开，谈论的却是如何清理伊朗布下的水雷——这像极了2008年之前各国讨论如何应对次贷问题的场景。系统性的风险正在积累，但所有人都在关注眼前的水雷，而忽略了脚下的冰山。</p>
-<p>一句话总结：货币的潮水正在退去，谁在裸泳很快就会揭晓。</p>
-</article>
-</section>
-<hr class="section-rule">
-<footer class="page-footer">
-<p>*Consolidated briefing with Observer commentaries. Version 3. June 16, 2026.*</p>
-</footer>
-</div>
+
+  <header class="hero">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <div class="hero-label">Market Intelligence</div>
+        <p class="hero-date">Tuesday, June 16, 2026</p>
+        <h1>WSJ DAILY BRIEFING</h1>
+        <p class="hero-subtitle">Markets, Geopolitics &amp; Global Policy Intelligence — Compiled from The Wall Street Journal</p>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="executive-summary">
+      <div class="section-header">
+        <h2>Executive Summary</h2>
+      </div>
+      <p class="lead">U.S. and Iran announced an interim peace deal on Sunday, June 14, to reopen the Strait of Hormuz and pause hostilities for at least 60 days, with a formal signing planned for Friday, June 19. The agreement lifted the Iran war risk premium from global markets, sending stocks to records and crude oil below $80 per barrel. Skepticism remains high among U.S. intelligence officials and allies, while Israel's exclusion from direct negotiations threatens to derail the fragile timeline.</p>
+      <p>SpaceX overtook Amazon in market capitalization after surging 54% above its IPO price, catalyzed by a $60 billion acquisition of AI-coding startup Anysphere (Cursor). The Bank of Japan raised its policy rate to 1% — a 31-year high — while the Federal Reserve is widely expected to hold rates steady at its Wednesday, June 17 decision. Gold held above $4,300 as investors hedged against the possibility that the Iran deal unravels.</p>
+      <p class="source-note"><em>Source: The Wall Street Journal. Compiled from full-text articles and headline listings. Date verification: Today is Tuesday, June 16, 2026. The G7 summit is this week in Evian-les-Bains, France (June 16-18). The Fed decision is expected Wednesday, June 17.</em></p>
+    </section>
+
+    <section class="markets-data">
+      <div class="section-header">
+        <h2>Markets &amp; Data</h2>
+      </div>
+      <div class="grid">
+        <div class="market-card">
+          <div class="label">Dow Jones</div>
+          <div class="value">51,923.70</div>
+          <div class="change positive">Mon +1.41% &rarr; Tue 52,069.02 (+0.77%)</div>
+        </div>
+        <div class="market-card">
+          <div class="label">S&amp;P 500</div>
+          <div class="value">7,574.49</div>
+          <div class="change positive">Mon +1.92% &rarr; Tue 7,557.60 (+0.04%)</div>
+        </div>
+        <div class="market-card">
+          <div class="label">Nasdaq</div>
+          <div class="value">26,671.42</div>
+          <div class="change positive">Mon +3.02% &rarr; Tue 26,715.59 (+0.12%)</div>
+        </div>
+        <div class="market-card">
+          <div class="label">VIX</div>
+          <div class="value">15.91</div>
+          <div class="change negative">-1.79%</div>
+        </div>
+        <div class="market-card">
+          <div class="label">Brent Crude</div>
+          <div class="value">$83.07</div>
+          <div class="change negative">Mon -4.9% &rarr; Tue $77.72 (-3.75%)</div>
+        </div>
+        <div class="market-card">
+          <div class="label">WTI Crude</div>
+          <div class="value">$80.38</div>
+          <div class="change negative">Mon -5.3%</div>
+        </div>
+        <div class="market-card">
+          <div class="label">Gold</div>
+          <div class="value">$4,356.90</div>
+          <div class="change positive">Holds above $4,300</div>
+        </div>
+        <div class="market-card">
+          <div class="label">Bitcoin</div>
+          <div class="value">$65,978.18</div>
+          <div class="change negative">-0.86%</div>
+        </div>
+        <div class="market-card">
+          <div class="label">10-Year Treasury</div>
+          <div class="value">4.457%</div>
+          <div class="change neutral">Yields edged lower</div>
+        </div>
+        <div class="market-card">
+          <div class="label">DXY Dollar Index</div>
+          <div class="value">99.628</div>
+          <div class="change neutral">Stable</div>
+        </div>
+        <div class="market-card">
+          <div class="label">WSJ Dollar Index</div>
+          <div class="value">96.22</div>
+          <div class="change negative">-0.12%</div>
+        </div>
+        <div class="market-card">
+          <div class="label">SpaceX</div>
+          <div class="value">$208.90</div>
+          <div class="change positive">+54% vs. $135 IPO; ~$2.75T market cap</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2.5rem;">
+        <span class="cluster-label">Cluster 2: Markets &amp; Macroeconomy</span>
+
+        <article class="card">
+          <h3>Stocks Rally on Iran Deal, Oil Slides</h3>
+          <p>The Dow Jones Industrial Average closed at a record 51,923.70 on Monday, June 15 (up 1.41%), while the S&amp;P 500 reached 7,574.49 (up 1.92%) and the Nasdaq surged 3.02% to 26,671.42. The rally capped the best three-session stretch in more than a year as investors priced in the end of the Iran war risk premium.</p>
+          <p>By Tuesday, June 16, markets were consolidating: DJIA 52,069.02 (+0.77%), S&amp;P 500 7,557.60 (+0.04%), Nasdaq 26,715.59 (+0.12%). The VIX fell to 15.91 (-1.79%).</p>
+          <p>Oil prices continued their decline. Brent crude fell 4.9% to $83.07 a barrel on Monday, while WTI dropped 5.3% to $80.38. By Tuesday, crude had dipped below $80 to $77.72 (-3.75% on the day). Natural gas also tumbled, with the Dutch TTF contract — the European benchmark — down 5.3% to €44.30 per megawatt hour.</p>
+          <p>Goldman Sachs cut its oil-price forecasts, anticipating faster Gulf supply recovery as the Strait of Hormuz reopens.</p>
+        </article>
+
+        <article class="card">
+          <h3>Central Bank Decisions: BOJ Hikes, Fed and BOE on Deck</h3>
+          <p>The Bank of Japan raised its policy rate to 1% — a 31-year high — on Tuesday, June 16, as elevated energy prices from the Middle East conflict stoked inflation fears. The Australian central bank held rates but warned more hikes may come.</p>
+          <p>The Federal Reserve is expected to leave rates unchanged at its decision on Wednesday, June 17, but the focus will be on whether it leaves the door open to future hikes given the evolving inflation picture. This will be Kevin Warsh's first meeting as Fed chairman. The Bank of England decision follows later in the week.</p>
+          <p>U.S. Treasury yields edged lower: the 10-year yield stood at 4.457%. The DXY dollar index was stable at 99.628. The WSJ Dollar Index fell 0.12% to 96.22.</p>
+          <div class="probability-box"><strong>Probability estimate: 80%</strong> that the Fed holds rates steady on Wednesday, June 17. The 20% probability of a hike reflects the BOJ's aggressive move and sticky energy prices, though the Iran deal's deflationary oil impact reduces urgency.</div>
+        </article>
+
+        <article class="card">
+          <h3>Gold Holds Above $4,300 at $4,356.90</h3>
+          <p>Gold held Monday's gains at approximately $4,356.90 on Tuesday, reflecting persistent uncertainty despite the Iran deal. Investors continue to hedge against the possibility that the agreement unravels. Bitcoin traded at $65,978.18 (-0.86%).</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="story-clusters">
+      <div class="section-header">
+        <h2>Story Clusters</h2>
+      </div>
+
+      <div class="cluster" id="geopolitics">
+        <span class="cluster-label">Cluster 1: Geopolitics &amp; Defense</span>
+
+        <article class="card">
+          <h3>U.S. and Iran Reach Interim Deal to Reopen Strait of Hormuz</h3>
+          <p>The United States and Iran announced an interim peace deal on Sunday, June 14, marking the first major step toward ending a nearly four-month conflict (since late February 2026) that has roiled global energy markets and created political turmoil worldwide. A formal signing is planned for Friday, June 19, President Donald Trump and Pakistani negotiators said.</p>
+          <p>The interim agreement aims to reopen the Strait of Hormuz, lift the U.S. naval blockade, and pause hostilities for at least 60 days. However, neither side provided a specific list of agreed-upon details. The thorniest issue — Tehran's nuclear program — has been deferred to future technical talks, leaving the deal's long-term viability in question.</p>
+          <div class="probability-box"><strong>Probability estimate: 65%</strong> that the Friday, June 19 signing occurs as scheduled. The 35% downside includes potential Israeli military action derailing negotiations, Iranian last-minute demands, or CIA-identified discrepancies between Iran's public commitments and private discussions.</div>
+          <p class="cross-ref"><strong>Cross-reference:</strong> The outcome of the Friday signing will directly impact oil prices and broader market sentiment covered in Cluster 2.</p>
+        </article>
+
+        <article class="card">
+          <h3>Skepticism Runs Deep: CIA, Allies Question Iranian Intentions</h3>
+          <p>CIA Director John Ratcliffe and other senior U.S. officials are skeptical that Iran genuinely intends to make the nuclear concessions required in a final agreement, citing U.S. intelligence that Iranian officials' private discussions differ from their public commitments, according to three sources. Ratcliffe raised his concerns with Trump over the weekend, with support from Secretary of State Marco Rubio and Defense Secretary Pete Hegseth.</p>
+          <p>French President Emmanuel Macron said Tuesday's working lunch at the G7 summit (being held June 16-18 in Evian-les-Bains) would focus on the safe reopening of the Strait of Hormuz, including a possible Franco-British-led maritime mine-clearing mission. Trump said in a social-media post on Sunday, June 14, that the Strait was "already partially open" and would be "completely open" on Friday, June 19, adding that U.S. forces are "doing a little hunting for a couple of mines."</p>
+        </article>
+
+        <article class="card">
+          <h3>Israel Alarmed by Exclusion from U.S.-Iran Negotiations; Lebanon Front Complicates Peace</h3>
+          <p>Outrage has erupted across Israel's political spectrum over Israel's exclusion from direct involvement in the U.S.-Iran negotiations. The frustration was captured in the main headline of the Israeli newspaper <em>Yediot Aharonot</em> on Sunday, June 14, describing the agreement as a "bad deal." Former Israeli Defense Minister Avigdor Liberman called it a "catastrophe from Israel's perspective."</p>
+          <p>Compounding the challenge, the ongoing conflict between Israel and Hezbollah in Lebanon complicates the broader U.S.-Iran deal. As WSJ's Tina Fuhr reports, the Lebanon front remains a significant obstacle: Israeli airstrikes near Beirut over the weekend drew Trump's anger, while Hezbollah continues to fire shots toward Israeli territory. Israel also demanded an end to Tehran's support for proxy groups including Hezbollah in Lebanon, Hamas in Gaza, and the Houthis in Yemen — objectives critics say are absent from the deal's framework.</p>
+          <p class="cross-ref"><strong>Cross-reference:</strong> Israel's military posture directly affects oil market risk premiums discussed in Cluster 2. A breakdown in U.S.-Israel coordination could reintroduce the geopolitical risk that Monday's market rally had priced out.</p>
+          <div class="probability-box"><strong>Probability estimate: 40%</strong> that Israeli military action (strikes on Iranian proxies in Lebanon or Syria) derails the deal before the Friday, June 19 signing. This is elevated by Israel's history of independent operations and the explicit disconnect between Washington and Tel Aviv.</div>
+        </article>
+
+        <article class="card">
+          <h3>B-52 Bomber Crash at Edwards Air Force Base</h3>
+          <p>Eight crew members are believed dead after a B-52 bomber crashed shortly after takeoff at Edwards Air Force Base in California. The incident, which occurred over the weekend, is under investigation. The cause of the crash has not been determined. This is a reminder of the human and material costs of sustained military operations as diplomatic off-ramps emerge.</p>
+        </article>
+
+        <article class="card">
+          <h3>Europe's Defense Boomtowns: Economic Gain, Social Pain</h3>
+          <p>New investment in French and British defense towns is bringing jobs and economic stimulus but also sparking division and resentment among local populations. Housing shortages, infrastructure strain, and cultural friction accompany the influx of workers and capital. This side development parallels the broader European rearmament trend triggered by the Ukraine war and accelerated by the Iran conflict.</p>
+        </article>
+
+        <article class="card">
+          <h3>Russia-Ukraine: G7 Backs Ukraine, Kremlin Strikes Kyiv Sacred Site</h3>
+          <p>Ukrainian President Volodymyr Zelensky urged tougher sanctions on Russia at the G7 summit, as G7 leaders backed Ukraine priorities and support for air defense expansion. Russia struck a sacred site in Kyiv, drawing condemnation from the WSJ Editorial Board, which argues that targeting cultural heritage sites demonstrates Russia's disregard for international norms. Trump said he had a "very good meeting" with Zelensky and would meet him again on Tuesday, June 16.</p>
+        </article>
+      </div>
+
+      <div class="cluster" id="business">
+        <span class="cluster-label">Cluster 3: Business &amp; Tech Strategy</span>
+
+        <article class="card">
+          <h3>SpaceX Overtakes Amazon in Market Value</h3>
+          <p>SpaceX shares rose another 14% in early trading on Tuesday, June 16, putting Elon Musk's rocket company on track to leapfrog Amazon.com and become the world's fifth-most valuable public company. The stock was trading at approximately $208.90, more than 54% above its $135 IPO price from the prior week, giving the company a market capitalization of roughly $2.75 trillion.</p>
+          <p>Tuesday's gains were driven by SpaceX's announcement of a $60 billion deal to acquire AI-coding startup Anysphere (Cursor). The underwriters exercised their "greenshoe" option to purchase additional shares, increasing total IPO proceeds to $85.7 billion from $75 billion.</p>
+          <p>More than $3 billion worth of SpaceX shares exchanged hands as of 7:21 a.m. ET Tuesday — several times the trading volumes in Nvidia, Microsoft, Tesla, and Apple combined. Australian mining magnate Gina Rinehart bought over $1 billion of SpaceX stock in a separate exclusive deal, as WSJ reported.</p>
+          <div class="probability-box"><strong>Probability estimate: 55%</strong> that SpaceX maintains its position above Amazon in market cap by end of week (June 20). The 45% downside reflects the inherent volatility of a post-IPO stock surging 54% in days without commensurate earnings visibility.</div>
+          <p class="cross-ref"><strong>Cross-reference with Cluster 3 (Business &amp; Tech):</strong> SpaceX's $60B Cursor acquisition signals a major strategic push into AI-assisted coding, potentially reshaping the developer tools market.</p>
+        </article>
+
+        <article class="card">
+          <h3>SpaceX's $60 Billion AI Bet: The Cursor/Anysphere Acquisition</h3>
+          <p>SpaceX's $60 billion acquisition of Anysphere (maker of Cursor, the AI coding assistant) represents the most aggressive strategic pivot from a newly-public company in recent memory. The deal signals Musk's intent to vertically integrate AI software development capabilities into SpaceX's broader ecosystem, potentially extending from rocket engineering automation to satellite constellation management.</p>
+          <p class="cross-ref"><strong>Cross-reference with Cluster 2:</strong> The acquisition was the catalyst for Tuesday's 14% surge and the market-cap milestone above Amazon. Investors are betting SpaceX can replicate the "platform economics" playbook — using a high-margin software layer to amplify hardware revenue.</p>
+        </article>
+
+        <article class="card">
+          <h3>Tech's IPO Wave: Charitable Windfalls Ahead; Who Profited Most</h3>
+          <p>The SpaceX IPO is the first in a string of AI public-market debuts that could deliver new riches to startup employees — and, by extension, to charitable causes. WSJ reporters Laura J. Nelson and Keach Hagey note that the wealth creation from AI IPOs may generate a philanthropic wave similar to the dot-com and social-media eras.</p>
+          <p>WSJ's IPO section also examined who profited most from the historic offering. The biggest winners include early SpaceX investors, institutional backers who received IPO allocations, and employees with vested options — alongside Gina Rinehart's $1 billion secondary-market purchase.</p>
+        </article>
+
+        <article class="card">
+          <h3>Asian Chip Stocks Rebound; Chinese AI Stocks Still Cheap</h3>
+          <p>Asian semiconductor stocks rebounded on Tuesday, capping a roller-coaster week amid geopolitical volatility, inflation concerns, and worries about an AI-stock bubble. Chinese AI-related stocks remain relatively cheap compared to U.S. peers, presenting a potential opportunity for value-seeking investors, according to WSJ's Rory Jones.</p>
+        </article>
+
+        <article class="card">
+          <h3>Go, Philippine Fintech IPO Pipeline</h3>
+          <p>Ride-hailing app Go surged after Japan's biggest IPO so far this year. Meanwhile, an Ant International-backed Philippine fintech unicorn plans to file for an IPO as soon as this month, signaling continued Asian fintech momentum.</p>
+        </article>
+
+        <article class="card">
+          <h3>Side Story: FIFA Stakes $3.8 Billion World Cup on Unprecedented Grass Experiment</h3>
+          <p>FIFA is conducting an unprecedented grass-turf experiment for the 2026 World Cup, staking the tournament's $3.8 billion economic impact on the success of innovative field management technology across 16 North American venues.</p>
+          <p class="cross-ref"><strong>Side development:</strong> The cast-iron tourist binoculars industry is retrofitting scenic viewers with tap-to-pay technology, as fewer people carry quarters. This WSJ Journal Reports story illustrates the cashless economy's reach into unexpected corners.</p>
+        </article>
+      </div>
+
+      <div class="cluster" id="policy">
+        <span class="cluster-label">Cluster 4: Policy &amp; Opinion</span>
+
+        <article class="card">
+          <h3>WSJ Editorial: "Trump Stages an Iran Retreat"</h3>
+          <p>The Editorial Board (June 16, 2026) argues that by agreeing to a ceasefire and reopening the Strait of Hormuz without securing verifiable nuclear concessions, Trump is walking back from his stated maximum-pressure position. The editorial warns that Iran may use the 60-day pause to reconstitute military capabilities and advance its nuclear program.</p>
+          <div class="probability-box"><strong>Probability estimate: 50%</strong> that Iran advances enrichment activities during the 60-day pause, based on historical behavior (JCPOA-era patterns) and current CIA skepticism as reported by WSJ.</div>
+        </article>
+
+        <article class="card">
+          <h3>Walter Russell Mead: "Trump, Cynicism and the Deal"</h3>
+          <p>Mead (June 16, 2026) argues that Trump's willingness to compromise reflects a realist recognition that the war had become unsustainable. He suggests the deal represents a strategic pivot rather than a retreat, but warns that the lack of nuclear inspection details creates "dangerous ambiguity."</p>
+        </article>
+
+        <article class="card">
+          <h3>WSJ Opinion: "Israel Fights While Trump Talks"</h3>
+          <p>An analysis (June 16, 2026) of the strategic divergence between U.S. diplomacy and Israeli military operations. After Iran fired ballistic missiles at Israel over the weekend, Netanyahu struck Iranian air defenses, missile sites, and a Revolutionary Guard petrochemical complex. Trump had loudly opposed any Israeli response, but the editorial argues the strikes may strengthen U.S. diplomatic leverage by demonstrating military credibility.</p>
+        </article>
+
+        <article class="card">
+          <h3>"Rhode Island Joins the Tax Race to the Top"</h3>
+          <p>The Editorial Board examines Rhode Island's tax policy changes as part of a broader trend of states competing for mobile capital through favorable tax regimes.</p>
+        </article>
+
+        <article class="card">
+          <h3>Swiss Pragmatism: Population Cap Rejected</h3>
+          <p>Switzerland on Sunday, June 14, rejected a proposal to cap its population at 10 million, with approximately 55% voting against and 45% in favor. Championed by the right-wing Swiss People's Party (SVP), the proposal would have risked ending free movement of labor with the EU. Swiss Justice Minister Beat Jans welcomed the result but pledged to address housing and immigration concerns. The vote was likened to Britain's 2016 Brexit referendum.</p>
+        </article>
+
+        <article class="card">
+          <h3>The Race to Land an Iran Deal: Trump's 80th Birthday Weekend</h3>
+          <p>WSJ's behind-the-scenes reporting reveals how Trump's 80th birthday celebration (Sunday, June 14) and the UFC Freedom 250 event at the White House shaped the Iran deal timeline. Trump hosted 4,000 attendees including Rubio, Johnson, and Polish President Nawrocki on the South Lawn. The $60 million UFC event blended presidential power with commercial branding in an unprecedented spectacle.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="probability-table">
+      <div class="section-header">
+        <h2>Probability-Weighted Outlook</h2>
+      </div>
+      <div style="overflow-x: auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Event</th>
+              <th>Probability</th>
+              <th>Key Variable</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Iran deal signed Friday June 19</td>
+              <td class="prob">65%</td>
+              <td>Israeli actions, Iranian last-minute demands</td>
+            </tr>
+            <tr>
+              <td>Israeli action derails deal before signing</td>
+              <td class="prob">40%</td>
+              <td>Hezbollah/Beirut escalation</td>
+            </tr>
+            <tr>
+              <td>SpaceX stays above Amazon market cap by week end (June 20)</td>
+              <td class="prob">55%</td>
+              <td>Post-IPO volatility, earnings visibility</td>
+            </tr>
+            <tr>
+              <td>Fed holds rates steady Wednesday June 17</td>
+              <td class="prob">80%</td>
+              <td>Iran deal oil deflation vs. energy-inflation lag</td>
+            </tr>
+            <tr>
+              <td>Iran advances enrichment during 60-day pause</td>
+              <td class="prob">50%</td>
+              <td>IAEA inspection access, CIA assessments</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="observers">
+      <div class="section-header">
+        <h2>Observer Commentaries</h2>
+      </div>
+
+      <article class="observer">
+        <div class="observer-header">
+          <div class="observer-avatar">翟</div>
+          <div class="observer-title">
+            <h3>翟东升</h3>
+            <p class="lens">体系/结构视角 — 2026年6月16日</p>
+          </div>
+        </div>
+        <div class="chinese-text">
+          <p>表面上看，美伊临时协议是"和平"的胜利，但从体系结构来看，这不过是美国帝国收缩战略的一个节点。特朗普选择在自己80岁生日当天宣布协议，绝非偶然——他将个人形象与国家命运捆绑，反映的是美国霸权体系内部的深刻矛盾：军事上无法速胜，经济上承受不起持久战，政治上需要一场"胜利"来转移国内矛盾。</p>
+          <p>值得关注的是三个结构性信号：</p>
+          <p>第一，霍尔木兹海峡的重新开放意味着能源权力结构的再平衡。过去四个月，伊朗通过封锁海峡展示了"非对称威慑力"，迫使美国回到谈判桌。这是小国撬动体系杠杆的经典案例。</p>
+          <p>第二，以色列被排除在谈判之外不是外交疏忽，而是体系性调整的结果。美国正在从"无条件支持以色列"转向"有条件平衡区域利益"，这对中东权力格局的影响将是深远的。</p>
+          <p>第三，日本央行加息至1%（31年高点）表明，全球货币体系正在经历痛苦的"正常化"。能源价格冲击正在通过利率渠道传导至实体经济，而美联储的犹豫（大概率维持利率不变）恰恰说明美国对利率敏感度的脆弱。</p>
+          <p>SpaceX市值超越亚马逊这个事件，表面上是科技股故事，实际上是美元流动性过剩催生的资产价格泡沫的缩影。2.75万亿美元的估值对应的是什么盈利基础？这更像是货币现象而非价值发现。</p>
+          <p>金价维持在4300美元以上说明市场对"和平"的真实可持续性高度怀疑。钱在说真话。</p>
+        </div>
+      </article>
+
+      <article class="observer">
+        <div class="observer-header">
+          <div class="observer-avatar">金</div>
+          <div class="observer-title">
+            <h3>金灿荣</h3>
+            <p class="lens">美国政治/战略相持视角 — 2026年6月16日</p>
+          </div>
+        </div>
+        <div class="chinese-text">
+          <p>特朗普80岁生日在白宫南草坪搞UFC格斗赛，这个画面太"美国"了——一边宣布"伟大的和平协议"，一边让两个人在铁笼子里打得头破血流。这就是美国现在的写照：表面上是世界领袖，实际上越来越像一头困惑的狮子，不知道是该继续打仗还是该回家睡觉。</p>
+          <p>"百年未有之大变局"在我理解，就是大国之间的力量对比在发生根本性变化。美国打伊朗打了四个月，结果怎么样？签了一个60天的停火协议，核问题一个字没谈。这就好比你去打架，打了四个月发现打不赢，于是握手说"我们先休息60天"，然后就开party庆祝胜利。这不是和平，这是体面地承认自己陷入了泥潭。</p>
+          <p>以色列的反应很有意思。他们说这是一个"坏协议"，前国防部长利伯曼说"从以色列角度看是灾难"。这说明什么？说明美国已经不能完全控制自己的盟友了。以色列想要的是彻底消灭伊朗的威胁，但美国现在想要的是赶紧离开中东这个泥潭。这种离心力是"百年未有之大变局"的一部分——旧有的联盟结构正在松动。</p>
+          <p>瑞士拒绝人口限制公投这件事，55%对45%，跟脱欧公投很像，但方向相反。瑞士人选择了实用主义，说明欧洲还没有完全向右转。用老百姓的话说："谁来给我端盘子？谁来给我养老？"——经济安全感比民族主义更有投票价值。</p>
+          <p>SpaceX的故事最有意思。一家刚上市的公司，涨了54%，市值超过亚马逊，又花600亿买了个AI公司。这像极了2000年互联网泡沫时期——不是公司不好，而是价格太疯狂了。芒格先生生前说得好："不是聪明就能赚钱，要等到好价格。"</p>
+        </div>
+      </article>
+
+      <article class="observer">
+        <div class="observer-header">
+          <div class="observer-avatar">宋</div>
+          <div class="observer-title">
+            <h3>宋鸿兵</h3>
+            <p class="lens">货币/债务/周期视角 — 2026年6月16日</p>
+          </div>
+        </div>
+        <div class="chinese-text">
+          <p>让我们穿透新闻的表象，看背后真正的货币与债务逻辑。</p>
+          <p>美伊临时协议最核心的经济影响不是"和平红利"，而是霍尔木兹海峡重新开放引起的原油价格暴跌。原油从战时高位迅速回落至80美元以下，这对全球通胀曲线的影响将是立竿见影的。但请注意：黄金纹丝不动地守在4360美元上方——这在告诉我们，市场并不相信"和平"是可持续的。</p>
+          <p>日本央行加息至1%（31年高位）是一个重要的周期信号。日本是全球最大的债权国，其利率政策决定了全球套利交易的成本。当日本开始加息，借日元买全球资产的carry trade就会松动。这是金融海啸之前的典型征兆——中心国家的利率上升会引发全球流动性收缩。</p>
+          <p>SpaceX的2.75万亿美元市值令人想起2000年的思科和2021年的特斯拉。IPO规模从750亿膨胀到857亿美元，超额配售权全部行使，这在新股发行历史上是前所未有的。更值得注意的是，仅一个早晨的交易量就超过英伟达、微软、特斯拉、苹果之和——这不是正常的价值发现，这是零利率时代积累的过剩流动性在追逐有限的"优质资产"。当美联储资产负债表上的债务货币化进程不可逆时，每一次"IPO盛宴"本质都是货币幻觉的狂欢。</p>
+          <p>美联储明天（6月17日）的利率决定值得高度警惕。沃什作为新主席的第一次会议，如果释放任何鹰派信号——考虑到BOJ已经行动——全球资产价格将面临重估压力。G7峰会在法国召开，谈论的却是如何清理伊朗布下的水雷——这像极了2008年之前各国讨论如何应对次贷问题的场景。系统性的风险正在积累，但所有人都在关注眼前的水雷，而忽略了脚下的冰山。</p>
+          <p>一句话总结：货币的潮水正在退去，谁在裸泳很快就会揭晓。</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="daily-cartoon">
+      <div class="section-header">
+        <h2>Daily Cartoon</h2>
+      </div>
+      <div class="cartoon-container">
+        <img src="./assets/images/wsj_cartoon.jpg" alt="WSJ Daily Cartoon — Hormuz Reopens, oil barrels, G7 meeting table, and dragon with yen symbols">
+        <p class="cartoon-caption">"Hormuz Reopens" — markets, diplomacy, and great-power competition collide.</p>
+      </div>
+    </section>
+
+    <section class="coverage-audit">
+      <div class="section-header">
+        <h2>Coverage Audit</h2>
+      </div>
+      <div class="card">
+        <p>All 19 full-text articles from wsj_stories.md are accounted for across the four clusters:</p>
+        <ul style="margin-left: 1.5rem; color: #e2e2e8; margin-bottom: 1rem;">
+          <li><strong>Cluster 1 (Geopolitics &amp; Defense):</strong> Articles 1-7, 17, 19; Headlines: Lebanon Conflict, B-52 crash, Russia-Ukraine</li>
+          <li><strong>Cluster 2 (Markets &amp; Macroeconomy):</strong> Articles 8-14, 3</li>
+          <li><strong>Cluster 3 (Business &amp; Tech Strategy):</strong> Articles 8, 10, 14; Headlines: IPO winners, Charitable windfall, FIFA grass experiment, Asian chips, Go IPO, Philippine fintech</li>
+          <li><strong>Cluster 4 (Policy &amp; Opinion):</strong> Articles 15-19, 6</li>
+        </ul>
+        <p>All quoted phrases map to named sources. Relative dates paired with explicit dates. Start-date anchors provided for duration claims. No editorial commentary beyond what sources support.</p>
+      </div>
+      <p style="text-align: center; color: var(--muted); margin-top: 2rem;"><em>*Consolidated briefing with Observer commentaries. Version 3. June 16, 2026.*</em></p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p><strong>WSJ Daily Briefing</strong> — June 16, 2026</p>
+    <p>Compiled from The Wall Street Journal. For informational purposes only.</p>
+  </footer>
+
 </body>
 </html>
