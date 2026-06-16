@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYT Master Briefing — June 16, 2026</title>
+<meta name="description" content="NYT Master Briefing for Tuesday, June 16, 2026 — US-Iran Framework Deal, Hormuz Reopening, Ukraine Defense Crisis, G7 Summit, and more.">
+<meta property="og:title" content="NYT Master Briefing — June 16, 2026">
+<meta property="og:description" content="Comprehensive intelligence briefing from 38 NYT articles across 5 analytical lenses.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="./assets/images/nyt_hero_bg.jpg">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #101018;
+  --bg3: #181825;
+  --accent: #00ff88;
+  --accent-dim: rgba(0,255,136,0.15);
+  --accent2: #ff6b6b;
+  --text: #e6e6e6;
+  --text-dim: #888899;
+  --card-bg: #141420;
+  --card-border: #1e1e30;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;height:auto}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;text-align:center;padding:2rem}
+.hero-bg{position:absolute;inset:0;background:url('./assets/images/nyt_hero_bg.jpg') center/cover no-repeat;filter:brightness(0.4) saturate(1.2);z-index:0}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,15,0.3) 0%,rgba(10,10,15,0.85) 70%,var(--bg) 100%);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:800px}
+.hero h1{font-size:clamp(2rem,5vw,4.5rem);font-weight:800;letter-spacing:-0.02em;margin-bottom:1rem;background:linear-gradient(135deg,#fff 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(1rem,2vw,1.4rem);color:var(--text-dim);margin-bottom:2rem}
+.hero-date{font-size:0.9rem;color:var(--accent);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1.5rem}
+.scroll-indicator{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:2;color:var(--accent);animation:bounce 2s infinite;font-size:1.5rem;cursor:pointer;opacity:0.7}
+@keyframes bounce{0%,20%,50%,80%,100%{transform:translateX(-50%) translateY(0)}40%{transform:translateX(-50%) translateY(-10px)}60%{transform:translateX(-50%) translateY(-5px)}}
+
+/* Layout */
+.container{max-width:1100px;margin:0 auto;padding:2rem 1.5rem}
+.section{padding:3rem 0}
+.section-title{font-size:clamp(1.3rem,2.5vw,2rem);font-weight:700;margin-bottom:2rem;padding-bottom:0.5rem;border-bottom:2px solid var(--accent-dim);display:flex;align-items:center;gap:0.75rem}
+.section-title .num{color:var(--accent);font-size:0.8em;opacity:0.6}
+.tag{display:inline-block;padding:0.15rem 0.6rem;border-radius:4px;font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em}
+.tag-green{background:rgba(0,255,136,0.15);color:var(--accent)}
+.tag-red{background:rgba(255,107,107,0.15);color:var(--accent2)}
+.tag-blue{background:rgba(100,150,255,0.15);color:#6496ff}
+
+/* Fade-in animations */
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-in.visible{opacity:1;transform:translateY(0)}
+
+/* Executive Summary */
+.exec-summary{background:var(--bg2);border-radius:12px;padding:2rem;border-left:3px solid var(--accent);margin-bottom:2rem;font-size:1.05rem;line-height:1.8}
+
+/* Prediction Cards */
+.predictions-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.25rem;margin-bottom:2rem}
+.pred-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;padding:1.5rem;transition:border-color 0.3s,transform 0.2s}
+.pred-card:hover{border-color:var(--accent-dim);transform:translateY(-2px)}
+.pred-card .pred-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem}
+.pred-card .pred-num{font-size:0.75rem;color:var(--accent);font-weight:700;text-transform:uppercase}
+.pred-card .pred-confidence{font-size:2rem;font-weight:800;color:var(--accent);line-height:1}
+.pred-card .pred-title{font-weight:700;font-size:1rem;margin-bottom:0.75rem}
+.pred-card .pred-detail{font-size:0.85rem;color:var(--text-dim);margin-bottom:0.5rem}
+.pred-card .pred-detail strong{color:var(--text)}
+.pred-card .pred-falsify{font-size:0.8rem;background:rgba(255,107,107,0.1);border-left:2px solid var(--accent2);padding:0.5rem 0.75rem;border-radius:0 4px 4px 0;margin-top:0.5rem;color:var(--accent2)}
+.confidence-bar{height:4px;background:var(--bg3);border-radius:2px;margin:0.5rem 0;overflow:hidden}
+.confidence-fill{height:100%;background:var(--accent);border-radius:2px;transition:width 1s ease}
+
+/* Story Clusters */
+.cluster{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.cluster-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;flex-wrap:wrap;gap:0.5rem}
+.cluster-header h3{font-size:1.15rem;font-weight:700}
+.cluster-count{font-size:0.8rem;color:var(--accent)}
+.cluster-lenses{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem;margin:1rem 0}
+.lens-item{background:var(--bg2);border-radius:8px;padding:0.75rem 1rem;font-size:0.85rem}
+.lens-item .lens-label{font-weight:600;color:var(--accent);display:block;margin-bottom:0.3rem;font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em}
+.cluster-quote{background:rgba(255,255,255,0.03);border-left:2px solid var(--accent-dim);padding:1rem 1.25rem;margin-top:0.75rem;border-radius:0 6px 6px 0;font-style:italic;font-size:0.9rem;color:var(--text-dim)}
+
+/* Observer Cards */
+.observer-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;padding:1.5rem;margin-bottom:1.25rem;border-left:3px solid var(--accent2)}
+.observer-card h3{font-size:1.1rem;font-weight:700;margin-bottom:0.3rem}
+.observer-card .obs-sub{color:var(--accent2);font-size:0.85rem;margin-bottom:1rem;opacity:0.8}
+.observer-card p,.observer-card li{font-size:0.9rem;line-height:1.7;color:var(--text-dim);margin-bottom:0.5rem}
+.observer-card ul{padding-left:1.25rem;margin:0.5rem 0}
+.observer-card .obs-pred{background:rgba(0,255,136,0.05);border-radius:8px;padding:0.75rem 1rem;margin-top:0.75rem;font-size:0.85rem}
+.observer-card .obs-pred strong{color:var(--accent)}
+
+/* Geographic Accordion */
+.geo-accordion details{background:var(--card-bg);border:1px solid var(--card-border);border-radius:10px;margin-bottom:0.75rem;overflow:hidden}
+.geo-accordion summary{padding:1rem 1.25rem;cursor:pointer;font-weight:600;font-size:0.95rem;display:flex;align-items:center;gap:0.5rem;transition:background 0.2s}
+.geo-accordion summary:hover{background:var(--bg2)}
+.geo-accordion summary::-webkit-details-marker{color:var(--accent)}
+.geo-accordion .geo-content{padding:0 1.25rem 1.25rem;font-size:0.9rem;color:var(--text-dim);line-height:1.7}
+
+/* Cartoon */
+.cartoon-section{text-align:center;margin:2rem 0}
+.cartoon-section img{border-radius:12px;border:1px solid var(--card-border);max-width:100%}
+.cartoon-section .caption{margin-top:0.75rem;font-size:0.85rem;color:var(--text-dim);font-style:italic}
+
+/* Other Stories */
+.story-list{list-style:none;padding:0}
+.story-list li{padding:0.75rem 1rem;margin-bottom:0.5rem;background:var(--card-bg);border-radius:8px;border-left:2px solid var(--accent-dim);font-size:0.9rem}
+.story-list li strong{color:var(--accent)}
+
+/* Footer */
+footer{background:var(--bg2);border-top:1px solid var(--card-border);padding:2rem;text-align:center;font-size:0.85rem;color:var(--text-dim)}
+footer a{color:var(--accent)}
+
+/* Responsive */
+@media(max-width:640px){
+  .container{padding:1rem}
+  .section{padding:2rem 0}
+  .predictions-grid{grid-template-columns:1fr}
+  .cluster-lenses{grid-template-columns:1fr}
+  .hero h1{font-size:1.8rem}
+}
+</style>
+</head>
+<body>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content fade-in">
+    <div class="hero-date">Tuesday, June 16, 2026</div>
+    <h1>NYT Master Briefing</h1>
+    <p>The World Exhales Cautiously — US-Iran Framework, Hormuz Reopening, Ukraine Under Siege, and America's Cultural Crossroads</p>
+  </div>
+  <div class="scroll-indicator" onclick="document.getElementById('exec').scrollIntoView()">↓</div>
+</section>
+
+<div class="container">
+
+<!-- Executive Summary -->
+<section class="section" id="exec">
+  <h2 class="section-title fade-in"><span class="num">01</span> Executive Summary</h2>
+  <div class="exec-summary fade-in">
+    The world exhales cautiously. A U.S.-Iran framework pauses a war that killed thousands, sent oil above $120, and choked the Strait of Hormuz — but defers every central question (nuclear enrichment, sanctions, regional proxies) to a 60-day negotiation that could collapse. Ukraine burns under Russia's heaviest assault, its Patriot defences stretched beyond breaking, even as its EU bid advances. Domestically, America races between cultural poles: cage fights at the White House, Knicks joy in New York, Catholic church reckoning, Colorado basin sliding toward litigation. Three reversals define June 16: Trump claiming victory for a problem he created, Netanyahu humiliated by the ally he bet everything on, and Iran — materially weaker — enduring to negotiate undefeated. The dominant global nervous system state is <strong style="color:var(--accent)">cautious ventral</strong>: daylight visible, safety unproven.
+  </div>
+</section>
+
+<!-- Predictions -->
+<section class="section" id="predictions">
+  <h2 class="section-title fade-in"><span class="num">02</span> Seven Calibrated Predictions</h2>
+  <div class="predictions-grid">
+    <!-- P1 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 1</span>
+        <span class="pred-confidence">70%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:70%"></div></div>
+      <div class="pred-title">Iran Framework Deal Holds 60 Days</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> June 16 → Aug 15</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥70 to win ¥100</div>
+      <div class="pred-detail"><strong>Evidence:</strong> Both sides need the pause, but nuclear enrichment intractable — no U.S. concession mandate, divergent interpretations already flagged.</div>
+      <div class="pred-falsify">✗ Falsified if: Khamenei publicly rejects framework within 14 days</div>
+    </div>
+    <!-- P2 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 2</span>
+        <span class="pred-confidence">65%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:65%"></div></div>
+      <div class="pred-title">Oil Stabilises $75-85/bbl Through July</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> June 16 → July 31</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥65 on "Brent stays $75-85"</div>
+      <div class="pred-detail"><strong>Evidence:</strong> Brent dropped 4.8% to $83.17 on deal. China's reduced buying (11.6M → under 8M bpd) is structural dampener.</div>
+      <div class="pred-falsify">✗ Falsified if: Brent closes above $90 for 5 consecutive trading days</div>
+    </div>
+    <!-- P3 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 3</span>
+        <span class="pred-confidence">75%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:75%"></div></div>
+      <div class="pred-title">Major Ukraine Air-Defence Breach Within 30 Days</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> June 16 → July 16</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥75 on "Ukraine loses critical infrastructure"</div>
+      <div class="pred-detail"><strong>Evidence:</strong> Russia: 410 ballistic missiles in 2026. Ukraine received 1,600 interceptors over 3 years; Lockheed global output = 620/year.</div>
+      <div class="pred-falsify">✗ Falsified if: U.S. announces emergency Patriot delivery within 14 days</div>
+    </div>
+    <!-- P4 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 4</span>
+        <span class="pred-confidence">80%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:80%"></div></div>
+      <div class="pred-title">Netanyahu Loses Upcoming Israeli Election</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> 3-6 months</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥80 on "Netanyahu not leading next coalition"</div>
+      <div class="pred-detail"><strong>Evidence:</strong> Behind in polls. Trump publicly called him "crazy" — alliance guarantee fraying. Iran strategy universally seen as failure.</div>
+      <div class="pred-falsify">✗ Falsified if: Likud leads any post-deal poll by ≥5 points</div>
+    </div>
+    <!-- P5 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 5</span>
+        <span class="pred-confidence">85%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:85%"></div></div>
+      <div class="pred-title">Colorado River Crisis Produces Litigation</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> 6-12 months</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥85 on "at least one lawsuit filed"</div>
+      <div class="pred-detail"><strong>Evidence:</strong> 7 states disagree after 6+ months talks + 2 White House meetings. Arizona and Colorado "readying lawyers."</div>
+      <div class="pred-falsify">✗ Falsified if: All 7 states sign unified agreement before October 2026</div>
+    </div>
+    <!-- P6 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 6</span>
+        <span class="pred-confidence">60%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:60%"></div></div>
+      <div class="pred-title">Fox-Roku Acquisition Faces Regulatory Hurdles</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> 12-18 months</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥60 on "acquisition blocked or delayed"</div>
+      <div class="pred-detail"><strong>Evidence:</strong> $22B deal combining Fox News (dominant cable news) with Roku (100M+ households). Fox stock fell 14% — markets pricing risk.</div>
+      <div class="pred-falsify">✗ Falsified if: Deal closes within 12 months without conditions</div>
+    </div>
+    <!-- P7 -->
+    <div class="pred-card fade-in">
+      <div class="pred-header">
+        <span class="pred-num">Prediction 7</span>
+        <span class="pred-confidence">70%</span>
+      </div>
+      <div class="confidence-bar"><div class="confidence-fill" style="width:70%"></div></div>
+      <div class="pred-title">Kennedy Vaccine Appeal Fails, Fall Season Disrupted</div>
+      <div class="pred-detail"><strong>Timeframe:</strong> 3-6 months</div>
+      <div class="pred-detail"><strong>Betting Line:</strong> Risk ¥70 on "ACIP unable to recommend 2026-27 vaccines"</div>
+      <div class="pred-detail"><strong>Evidence:</strong> Only 6 of 17 ACIP panelists had vaccine experience. Judge's "arbitrary and capricious" finding is high bar to overturn.</div>
+      <div class="pred-falsify">✗ Falsified if: Appeals court lifts ACIP freeze before September 1, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- Story Clusters -->
+<section class="section" id="clusters">
+  <h2 class="section-title fade-in"><span class="num">03</span> Thematic Clusters</h2>
+
+  <!-- Cluster A -->
+  <div class="cluster fade-in">
+    <div class="cluster-header">
+      <h3>Cluster A: The War That Produced a Framework</h3>
+      <span class="cluster-count tag tag-green">10 articles</span>
+    </div>
+    <div class="cluster-lenses">
+      <div class="lens-item"><span class="lens-label">Connector</span>Iran's population is <strong>dorsal</strong> (World Cup apathy — survival mode). Trump administration is <strong>performing ventral vagal</strong> (triumphal victory claims) over residual sympathetic tension. Israel is in <strong>dorsal collapse</strong> (humiliation, electoral defeat looming).</div>
+      <div class="lens-item"><span class="lens-label">Philosophy (Mao)</span>The principal contradiction (U.S.-Iran war) is shifting from antagonistic to non-antagonistic — but enrichment rights remain unresolved, the principal aspect of the contradiction.</div>
+      <div class="lens-item"><span class="lens-label">Strategy (Clausewitz)</span>The war failed as politics — military means disproportionate to political ends. Friction: "Iran's view differs from what the American team claims" — Sen. Graham.</div>
+      <div class="lens-item"><span class="lens-label">Operations (Han Fei)</span>Trump's words (名): "we won, goals achieved." Results (刑): nuclear question deferred, regime not toppled. Gap between claim and reality = operational risk.</div>
+    </div>
+    <div class="cluster-quote">"It is possible that no deal will ever be reached, and very likely that if one is reached, it will be worse than what we could have achieved through diplomacy before the war." — Daniel B. Shapiro [Art. 2]</div>
+  </div>
+
+  <!-- Cluster B -->
+  <div class="cluster fade-in">
+    <div class="cluster-header">
+      <h3>Cluster B: Ukraine Under the Bomb</h3>
+      <span class="cluster-count tag tag-red">5 articles</span>
+    </div>
+    <div class="cluster-lenses">
+      <div class="lens-item"><span class="lens-label">Connector</span>Ukraine is in <strong>sympathetic hyperarousal</strong> — 24-hour radar shifts, overwhelmed air defenders, cultural trauma (cathedral burning). Ventral vagal persistence: AI innovation, EU negotiations continue despite trauma.</div>
+      <div class="lens-item"><span class="lens-label">Philosophy (Laozi)</span>The soft (AI-driven interceptors) overcomes the hard (Russian missiles). Ukraine meets precision with data — 10,000 interception videos → 95% automation.</div>
+      <div class="lens-item"><span class="lens-label">Strategy (Clausewitz)</span>Ukraine's centre of gravity = external military aid. Russia pressures Patriot supply line through volume — 410 ballistic missiles in 5 months vs. 620 PAC-3s globally per year.</div>
+      <div class="lens-item"><span class="lens-label">Operations (Zeng Guofan)</span>Methodical, incremental capability building — 10,000+ training videos, dozens of successful AI-assisted interceptions. 精诚所至金石为开 in 21st-century warfare.</div>
+    </div>
+    <div class="cluster-quote">"We can see the incoming missiles, but there is nothing left to fire at them with." — Valerii Romanenko [Art. 4]</div>
+  </div>
+
+  <!-- Cluster C -->
+  <div class="cluster fade-in">
+    <div class="cluster-header">
+      <h3>Cluster C: America's Cultural Nervous System</h3>
+      <span class="cluster-count tag tag-blue">8 articles</span>
+    </div>
+    <div class="cluster-lenses">
+      <div class="lens-item"><span class="lens-label">Connector</span>Knicks victory = <strong>collective ventral joy</strong> (53 years of dorsal disappointment → celebration). Kennedy Center/UFC divide maps onto sympathetic (UFC) vs ventral-subtle (symphony) — two nervous systems in the same country.</div>
+      <div class="lens-item"><span class="lens-label">Philosophy (Nietzsche)</span>UFC at the White House is the Übermensch caricatured — domination as spectacle, power without self-overcoming. Kennedy Center symphony is sublimated will to power.</div>
+      <div class="lens-item"><span class="lens-label">Strategy (Mao)</span>Trump's Kennedy Center takeover and Smithsonian interference = political power secured through cultural terrain. Culture is the battlefield.</div>
+      <div class="lens-item"><span class="lens-label">Operations (Drucker)</span>Kennedy Center: lost donors, artists, audience. Measurable symptoms of a strategy prioritising ideological conformity over artistic excellence.</div>
+    </div>
+    <div class="cluster-quote">"This is the next chapter in America's fighting spirit story." — Brendan Fitzgerald, U.F.C. broadcaster [Art. 36]</div>
+  </div>
+
+  <!-- Cluster D -->
+  <div class="cluster fade-in">
+    <div class="cluster-header">
+      <h3>Cluster D: Institutional Reckonings</h3>
+      <span class="cluster-count tag tag-blue">9 articles</span>
+    </div>
+    <div class="cluster-lenses">
+      <div class="lens-item"><span class="lens-label">Connector</span>Catholic Archdiocese: <strong>dorsal</strong> — bankruptcy risk. Colorado River: <strong>sympathetic</strong> — litigation-ready. ACIP: <strong>dorsal</strong> — court-frozen. Quebec: <strong>ventral</strong> — at peace with assisted dying. Shasta County: <strong>sympathetic</strong> — fighting state authority.</div>
+      <div class="lens-item"><span class="lens-label">Philosophy (Laozi)</span>Catholic Church taught Quebeckers to accept suffering; Quebec now leads world in choosing to end suffering. 反者道之动 — reversal.</div>
+      <div class="lens-item"><span class="lens-label">Strategy (Clausewitz)</span>Every institution experiences friction: Archdiocese (1,300 plaintiffs must all agree = bankruptcy risk), Colorado River (7 states must all agree), ACIP (court freeze + appeal = no action until resolved).</div>
+      <div class="lens-item"><span class="lens-label">Operations (Han Fei)</span>Trump's two handles applied inconsistently: punishes Newsom (DOJ), rewards Iran (deal), undercuts Israel (rebuke), arms Ukraine then pauses. System-wide unpredictability results.</div>
+    </div>
+    <div class="cluster-quote">"That whole culture of silence, that hiding behind the shadows, that's got to stop." — Angela Walker, SNAP [Art. 19]</div>
+  </div>
+
+  <!-- Cluster E -->
+  <div class="cluster fade-in">
+    <div class="cluster-header">
+      <h3>Cluster E: Other Notable Stories</h3>
+      <span class="cluster-count tag tag-green">5 articles</span>
+    </div>
+    <ul class="story-list">
+      <li><strong>Newsom Investigation (Art. 13):</strong> Trump DOJ investigating leading 2028 Democratic candidate. The 2028 race begins now.</li>
+      <li><strong>China's Oil Leverage (Art. 26):</strong> China reduced imports 11.6M → under 8M bpd — single most important factor stabilising global oil. Economic statecraft through non-action.</li>
+      <li><strong>SpaceX IPO (Art. 28):</strong> $85.7B raised, $2.5T market cap. Bellwether for Anthropic/OpenAI IPOs.</li>
+      <li><strong>Fox-Roku Deal (Art. 29):</strong> $22B — Fox content + Roku distribution (100M+ households). Antitrust scrutiny risk.</li>
+      <li><strong>Alabama Solar Fight (Art. 14):</strong> GOP vs solar power tied to AI data center boom. 2026 midterm issue where energy, tech, and climate politics converge.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Geographic Critique -->
+<section class="section" id="geo">
+  <h2 class="section-title fade-in"><span class="num">04</span> Geographic Critique</h2>
+  <div class="geo-accordion fade-in">
+    <details>
+      <summary>🌍 Middle East</summary>
+      <div class="geo-content">The U.S.-Iran framework deal pauses a devastating war but defers all central questions. Israel's Netanyahu faces humiliation and potential electoral defeat — Trump publicly called him "crazy." Hormuz reopening is cautious and partial — full flows not expected until Q1-Q2 2027 per UAE CEO. Five hundred vessels remain stranded with 11,000 seafarers.</div>
+    </details>
+    <details>
+      <summary>🇪🇺 Europe / Russia</summary>
+      <div class="geo-content">Ukraine burns under Russia's heaviest ballistic missile assault — 410 missiles in first 5 months of 2026 vs 74 in all of 2023. Patriot interceptors critically depleted: "A goalkeeper with 10 balls flying at him." EU membership advances while the country fights for survival. Europe beginning to "think about life without America."</div>
+    </details>
+    <details>
+      <summary>🌏 Asia-Pacific</summary>
+      <div class="geo-content">China reduced oil imports from 11.6M to under 8M bpd — a structural dampener on global oil prices. This is economic statecraft through non-action — water-like power in the Laozi sense. The lesson: energy independence reduces vulnerability to Middle East disruptions. China's clean energy capacity (wind + solar) exceeds the rest of the world combined.</div>
+    </details>
+    <details>
+      <summary>🌎 North America</summary>
+      <div class="geo-content">G7 summit in Switzerland frames global diplomacy. Domestically: Knicks championship joy (first in 53 years), Catholic church abuse settlement ($800M, 1,300 plaintiffs), Colorado River litigation threat (7 states at impasse), Kennedy Center cultural battle, Fox-Roku media merger ($22B).</div>
+    </details>
+  </div>
+</section>
+
+<!-- Observer Commentaries -->
+<section class="section" id="observers">
+  <h2 class="section-title fade-in"><span class="num">05</span> Observer Commentaries</h2>
+
+  <!-- Zhai -->
+  <div class="observer-card fade-in">
+    <h3>翟东升 <span style="font-weight:400;font-size:0.85rem;color:var(--text-dim)">(Zhai DongSheng)</span></h3>
+    <div class="obs-sub">框架协议掩盖的战略溃败：美元霸权的黄昏？</div>
+    <p>The U.S.-Iran framework deal is not a victory but a strategic retreat packaged as an agreement. None of the three war goals (destroy Iran's military, topple the regime, eliminate nuclear program) were achieved. China's role was crucial — by reducing imports from 11.6M to under 8M bpd, China prevented oil from exceeding $200/barrel. This is "soft power through non-action" — Laozi-style power.</p>
+    <p>The crisis exposed a structural contradiction: the U.S. can start wars but cannot end them effectively. The petrodollar foundation is being eroded not by alternative currencies but by structural transformation of the global energy system.</p>
+    <div class="obs-pred">
+      <strong>Predictions:</strong> (1) Framework holds 60 days but comprehensive deal impossible. (2) Israel will attempt a spoiler attack within the 60-day window. (3) China will accelerate investment in alternative energy corridors (CPEC, Myanmar pipeline) and RMB-denominated energy trading.
+    </div>
+  </div>
+
+  <!-- Jin -->
+  <div class="observer-card fade-in">
+    <h3>金灿荣 <span style="font-weight:400;font-size:0.85rem;color:var(--text-dim)">(Jin CanRong)</span></h3>
+    <div class="obs-sub">三个结构性矛盾决定了协议的脆弱性</div>
+    <p><strong>Contradiction 1:</strong> U.S. domestic political cycle vs. Middle East strategic needs. Trump needs a "victory" for the midterms — this deal is timed for G7 election-cycle rhythm, not Middle East reality.</p>
+    <p><strong>Contradiction 2:</strong> Israel's strategic dilemma. Netanyahu built his career on the "Iran threat." Now excluded from the deal, Trump publicly calls him "crazy." Two options: accept the deal (admit strategic failure) or sabotage it (risk destroying U.S.-Israel relations).</p>
+    <p><strong>Contradiction 3:</strong> Ukraine war resource misallocation. The U.S. diverted military resources to the Middle East, leaving Ukraine's Patriot missile gap exposed. Russia's ballistic missile launches surged from 74 (2023) to 410 (first 5 months of 2026).</p>
+    <p>Key insight: Europe is beginning to "think about life without America" — a strategic autonomy shift that reshapes US-China-EU triangular relations.</p>
+    <div class="obs-pred"><strong>Conclusion:</strong> Framework agreement looks like peace, feels like ceasefire. The 2018 Singapore summit with North Korea started the same way. Without substantive content, the framework itself becomes part of the problem.</div>
+  </div>
+
+  <!-- Song -->
+  <div class="observer-card fade-in">
+    <h3>宋鸿兵 <span style="font-weight:400;font-size:0.85rem;color:var(--text-dim)">(Song HongBing)</span></h3>
+    <div class="obs-sub">霍尔木兹海峡：金融暗战的终极战场</div>
+    <p>What appears as a ceasefire is actually a financial front. The Strait of Hormuz is not just an oil passage — it's the "lifeblood" of the global dollar system. Iran's 3-month closure was a "limit stress test" of the global financial system.</p>
+    <p>The real question: why was Trump so eager to reopen the Strait? Answer: $4.07/gallon gasoline — up 37% from pre-war levels. The midterm elections demanded lower oil prices. The SpaceX IPO ($85.7B raised, $2.5T market cap) is not coincidental — global hot money is seeking new safe havens.</p>
+    <div class="obs-pred">
+      <strong>Key Warnings:</strong> (1) Shipping insurance could become the next crisis — 500 vessels stranded, 11,000 seafarers. (2) Fertilizer supply chain disruption ignored — 5 major exporters, 1/3 of global urea supply. (3) The dollar credit system is undergoing "chronic stripping" — as China reduces Middle East oil dependence, the petrodollar foundation erodes silently.
+    </div>
+  </div>
+</section>
+
+<!-- Cartoon -->
+<section class="section" id="cartoon">
+  <h2 class="section-title fade-in"><span class="num">06</span> Editorial Cartoon</h2>
+  <div class="cartoon-section fade-in">
+    <img src="./assets/images/nyt_cartoon.jpg" alt="Editorial Cartoon June 16, 2026" loading="lazy">
+    <div class="caption">Editorial Cartoon: June 16, 2026 — US-Iran Framework Deal, Hormuz Reopening, G7 Summit, Ukraine Patriot Crisis</div>
+  </div>
+</section>
+
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>Generated by <a href="https://hermes-agent.nousresearch.com">Hermes Agent</a> | NYT Briefing Pipeline | June 16, 2026</p>
+  <p style="margin-top:0.5rem"><a href="../index.html">← Morning Briefing Gallery</a></p>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.fade-in').forEach(function(el) {
+    observer.observe(el);
+  });
+  // Animate confidence bars on scroll
+  const barObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.width = entry.target.getAttribute('data-width') || entry.target.style.width;
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.confidence-fill').forEach(function(el) {
+    el.setAttribute('data-width', el.style.width);
+    el.style.width = '0%';
+    barObserver.observe(el.parentElement);
+  });
+});
+</script>
+</body>
+</html>
