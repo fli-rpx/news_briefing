@@ -513,7 +513,7 @@ def git_commit_and_push(date_str):
     """Stage, commit, and push repository changes."""
     print("Staging changes for git...")
 
-    paths_to_stage = ["reports/", "data/reports_index.json", "briefings/", "index.html"]
+    paths_to_stage = ["reports/", "data/reports_index.json", "data/observers.json", "briefings/", "images/", "index.html"]
     for item in paths_to_stage:
         path = os.path.join(REPO_ROOT, item)
         if os.path.exists(path):
