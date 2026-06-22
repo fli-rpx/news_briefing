@@ -1,177 +1,672 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYT Briefing — unknown</title>
-<style>
-:root {
-    --bg: #0a0a0f;
-    --surface: #12121a;
-    --card: #1a1a28;
-    --accent: #00ff88;
-    --accent-dim: #00cc66;
-    --text: #e0e0e0;
-    --text-dim: #8888aa;
-    --border: #2a2a3a;
-}
-* { margin:0; padding:0; box-sizing:border-box; }
-body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
-    line-height: 1.7;
-    min-height: 100vh;
-}
-.hero {
-    position: relative;
-    min-height: 60vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: linear-gradient(135deg, #0a0a0f 0%, #0d1520 40%, #0a1a15 70%, #0a0a0f 100%);
-    overflow: hidden;
-}
-.hero::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(ellipse at 30% 50%, rgba(0,255,136,0.03) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 50%, rgba(0,100,200,0.03) 0%, transparent 60%);
-    animation: drift 20s ease-in-out infinite;
-}
-@keyframes drift {
-    0%, 100% { transform: translate(0,0); }
-    50% { transform: translate(-2%,-2%); }
-}
-.hero-content {
-    position: relative;
-    z-index: 1;
-    padding: 4rem 2rem;
-}
-.hero h1 {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 0.5rem;
-    letter-spacing: -0.02em;
-}
-.hero .date { font-size: 1.1rem; color: var(--accent); margin-bottom: 1.5rem; }
-.hero .badge {
-    display: inline-block;
-    padding: 0.3rem 1rem;
-    background: rgba(0,255,136,0.1);
-    border: 1px solid var(--accent);
-    border-radius: 20px;
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 600;
-}
-.container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; }
-section { padding: 3rem 0; }
-h2 { font-size: 1.6rem; color: #fff; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
-h3 { font-size: 1.2rem; color: var(--accent); margin: 1.5rem 0 0.8rem; }
-p { margin-bottom: 1rem; color: var(--text); }
-.content-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-}
-.observer-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-.observer-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-}
-.observer-card h3 {
-    color: var(--accent);
-    font-size: 1.1rem;
-    margin-top: 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
-}
-.observer-body p { font-size: 0.95rem; color: var(--text-dim); }
-.cartoon-section { text-align: center; padding: 2rem 0; }
-.cartoon-section img { max-width: 100%; border-radius: 12px; border: 1px solid var(--border); }
-footer {
-    text-align: center;
-    padding: 2rem;
-    color: var(--text-dim);
-    font-size: 0.85rem;
-    border-top: 1px solid var(--border);
-}
-@media (max-width: 600px) {
-    .hero h1 { font-size: 1.8rem; }
-    .observer-grid { grid-template-columns: 1fr; }
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYT Briefing — June 22, 2026</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg-card: #12121a;
+      --bg-card-alt: #1a1a28;
+      --text: #e0e0e0;
+      --dim: #8888aa;
+      --accent: #00ff88;
+      --accent-dim: rgba(0, 255, 136, 0.15);
+      --border: rgba(136, 136, 170, 0.18);
+      --radius: 16px;
+      --maxw: 1100px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(92%, var(--maxw));
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: url('./assets/images/nyt_hero_bg.jpg') center/cover no-repeat;
+      padding: 4rem 1rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,15,0.55) 0%, rgba(10,10,15,0.82) 70%, var(--bg) 100%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 1.2rem;
+      background: rgba(0, 255, 136, 0.08);
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 7vw, 4.4rem);
+      font-weight: 700;
+      margin: 0 0 0.6rem;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.7);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.8vw, 1.35rem);
+      color: var(--dim);
+      margin: 0;
+      font-weight: 300;
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      color: var(--dim);
+      font-size: 0.8rem;
+      opacity: 0.7;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, 8px); }
+    }
+
+    /* Sections */
+    section { padding: 4rem 0; }
+    section + section { border-top: 1px solid var(--border); }
+
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin: 0 0 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .section-lead {
+      color: var(--dim);
+      font-size: 1.1rem;
+      max-width: 760px;
+      margin-bottom: 2rem;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+    }
+
+    .card-alt { background: var(--bg-card-alt); }
+
+    /* Executive Summary */
+    .summary-grid {
+      display: grid;
+      gap: 1.5rem;
+      grid-template-columns: 1fr;
+    }
+
+    .summary-card p { margin: 0 0 1rem; }
+    .summary-card p:last-child { margin-bottom: 0; }
+
+    .summary-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--dim);
+    }
+
+    .summary-card li { margin-bottom: 0.6rem; }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Observer Commentary */
+    .observer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .observer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.6rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .observer-card .name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 0 0.3rem;
+      color: var(--accent);
+    }
+
+    .observer-card .title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0 0 1rem;
+      color: var(--text);
+      line-height: 1.4;
+    }
+
+    .observer-card .body {
+      font-size: 0.97rem;
+      color: #c8c8dc;
+      line-height: 1.85;
+      flex: 1;
+    }
+
+    /* Clusters */
+    .clusters {
+      display: grid;
+      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .cluster h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .cluster .grade {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .cluster p {
+      margin: 0;
+      color: var(--dim);
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .cluster ul {
+      margin: 0.8rem 0 0;
+      padding-left: 1.1rem;
+      color: #a0a0bd;
+      font-size: 0.92rem;
+    }
+
+    .cluster li { margin-bottom: 0.4rem; }
+
+    /* Predictions */
+    .prediction-list {
+      display: grid;
+      gap: 1.1rem;
+    }
+
+    .prediction {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 1.2rem 1.4rem;
+    }
+
+    .prediction-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .prediction-text {
+      font-weight: 600;
+      font-size: 1.02rem;
+      line-height: 1.45;
+      margin: 0;
+    }
+
+    .confidence {
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .confidence-value {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .confidence-label {
+      font-size: 0.7rem;
+      color: var(--dim);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .confidence-bar {
+      height: 6px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 0.6rem;
+    }
+
+    .confidence-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #00cc6a);
+      border-radius: 999px;
+    }
+
+    .prediction-rationale {
+      color: var(--dim);
+      font-size: 0.93rem;
+      margin: 0;
+      line-height: 1.65;
+    }
+
+    /* What It Means */
+    .means-grid {
+      display: grid;
+      gap: 1.2rem;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .means-card h4 {
+      margin: 0 0 0.5rem;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+
+    .means-card p {
+      margin: 0;
+      color: var(--dim);
+      font-size: 0.95rem;
+    }
+
+    .synthesis {
+      background: var(--bg-card-alt);
+      border-left: 3px solid var(--accent);
+      padding: 1.4rem 1.6rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .synthesis p {
+      margin: 0 0 1rem;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+
+    .synthesis p:last-child { margin-bottom: 0; }
+
+    /* Cartoon */
+    .cartoon-section {
+      text-align: center;
+    }
+
+    .cartoon-frame {
+      display: inline-block;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      box-shadow: var(--shadow);
+    }
+
+    .cartoon-frame img {
+      border-radius: 12px;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+
+    .cartoon-caption {
+      margin-top: 1rem;
+      color: var(--dim);
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+
+    /* Footer */
+    footer {
+      padding: 2.5rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--dim);
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--accent); }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      section { padding: 2.5rem 0; }
+      .hero { min-height: 60vh; padding: 3rem 1rem; }
+      .observer-grid { grid-template-columns: 1fr; }
+      .prediction-header { flex-direction: column; }
+      .confidence { text-align: left; }
+    }
+  </style>
 </head>
 <body>
-<div class="hero">
+
+  <header class="hero">
     <div class="hero-content">
-        <h1>NYT Briefing</h1>
-        <div class="date">unknown</div>
-        <div class="badge">A-Grade &middot; 8 Lenses &middot; 3 Observers</div>
+      <div class="hero-badge">NYT Master Briefing</div>
+      <h1>NYT Briefing — June 22, 2026</h1>
+      <p class="hero-subtitle">A-Grade · 8 Lenses · 3 Observers</p>
     </div>
-</div>
+    <div class="hero-scroll">Scroll ↓</div>
+  </header>
 
-<div class="container">
-<section>
-    <h2>Executive Summary</h2>
-    <div class="content-card">
-        <p>The United States fought a war to transform the Middle East and ended up strengthening Iran. The Strait of Hormuz is now Iran's chokepoint leverage, not America's to protect. Five months from midterms, Democrats sense blood in the water as Trump's approval sinks. A broken system in Colombia elected a Trump-backed outsider by a razor-thin 49.7%. Small businesses are collapsing under war inflation while the stock market booms — and China sits on full oil tanks, waiting.</p><p>**Calibration note:** The overall confidence level across predictions is C+, reflecting the 41.2% hedging rate in the source material (per Data Analyst) and the post-Iran-war fog that depresses certainty across all domains. The foundational agreement itself is subject to dueling claims (strait open vs. closed), making all downstream predictions doubly contingent.</p>
-    </div>
-</section>
-
-<section>
-    <h2>Observer Commentary</h2>
-    <div class="observer-grid">
-        
-        <div class="observer-card">
-            <h3>翟东升</h3>
-            <div class="observer-body"><p>**日期：2026年6月22日**</p><p>底层逻辑很简单：美国打了一场战争来证明霸权，结果证明了霸权的物理天花板。</p><p>这不是伊朗抵抗有多强的问题，这是美国权力结构的系统性钙化问题。一百天的战争，三千亿美元的"重建"承诺，换来的是一个比战前更强大的伊朗——不仅核设施没有被消除，反而拥有了霍尔木兹海峡的过路费定价权，单船通行费高达两百万美元。这在国际政治经济学上是一个教科书级的案例：军事霸权作为一种信用资产，一旦被实际使用，它的边际回报率立即归零甚至转负。</p><p>现在看美式全球化第三阶段的图景越发清晰。第一阶段（冷战时期），美国提供安全伞和美元流动性，盟友工业化；第二阶段（冷战后），美国消费、中国生产、美元全球循环；第三阶段（2020年代起），美国过度消费、中国过度生产、系统断裂。今天的霍尔木兹危机就是第三阶段的典型症状——美国既无法继续提供安全锚，也无法继续提供消费锚。</p><p>平行体系的加速也不是政策选择，而是结构性后果。中国在整个战争期间将原油日进口量削减约三分之一，却从未动用战略储备。这不是什么战术聪明，这是体系级耐心——用主权信用支撑的人民币结算网络正在逐步接替那些美元信用无法覆盖的角落。当美国制裁的边际威慑力不断衰减，当沙特阿美开始在全球建设"更大的储油设施"，当每一个国家都在读《咽喉点》这本书，美元体系的legal enforceability支柱就在持续腐蚀。</p><p>这不是某一届政府的问题，是整个帝国制度熵增的必然结果。资本市场是主权转移的滞后指标，不是领先指标。五年后再回头看，2026年6月可能就是平行体系从量变到质变的那个拐点。</p></div>
+  <main>
+    <!-- Executive Summary -->
+    <section id="executive-summary">
+      <div class="container">
+        <h2 class="section-title">Executive Summary</h2>
+        <div class="summary-grid">
+          <div class="card summary-card">
+            <p><span class="highlight">tl;dr</span> — The United States fought a war to transform the Middle East and ended up strengthening Iran. The Strait of Hormuz is now Iran's chokepoint leverage, not America's to protect. Five months from midterms, Democrats sense blood in the water as Trump's approval sinks. A broken system in Colombia elected a Trump-backed outsider by a razor-thin 49.7%. Small businesses are collapsing under war inflation while the stock market booms — and China sits on full oil tanks, waiting.</p>
+            <p>Overall confidence across predictions is <span class="highlight">C+</span>, reflecting a 41.2% hedging rate in the source material and the post-Iran-war fog that depresses certainty across all domains. The foundational agreement itself is subject to dueling claims (strait open vs. closed), making all downstream predictions doubly contingent.</p>
+          </div>
+          <div class="card summary-card card-alt">
+            <p style="margin-top:0"><strong>What We Don't Know</strong></p>
+            <ul>
+              <li><strong>Will the Iran deal survive 60 days?</strong> Iran claims it closed the strait again; the U.S. says it's open. The dueling claims make the deal's status unknowable in real time.</li>
+              <li><strong>Can Mamdani deliver?</strong> His high-stakes primary bet could make him a kingmaker or reduce his mayoral standing.</li>
+              <li><strong>How deep is the Starmer collapse?</strong> His ally's shift from "I will fight" to "reflecting on political realities" in 48 hours signals a resignation timeline no one can predict.</li>
+              <li><strong>Will Colombia's 1% margin produce governability?</strong> De La Espriella won 49.7% to 48.7%. The incumbent contests the result.</li>
+            </ul>
+          </div>
         </div>
-        <div class="observer-card">
-            <h3>金灿荣</h3>
-            <div class="observer-body"><p>各位朋友，今天聊一聊《纽约时报》的简报。你们看啊，这一周的头版很有意思——美国打伊朗打了三个多月，结果怎么样？坦白讲，这个事情其实很简单：美国打赢了每一场战斗，却输掉了整场战争。</p><p>美国花了三个月，炸死了伊朗最高领袖，摧毁了核设施，然后呢？签了一份号称"和平协议"的备忘录，给伊朗3000亿美元重建费，撤军，解除制裁。伊朗的核问题没解决，导弹问题没提，还学会了收过路费——每艘船200万美元。你们记不记得我去年讲的？美国的核心问题是工业化空心化。一个工业空心化的国家，靠炸弹是打不赢持久战的。这叫"嫌隔壁老王买的西瓜不甜，把人家瓜摊砸了，自己又买一个更生的"。</p><p>为什么会出现这种情况？我从毛主席那"偷"来的《论持久战》框架看得清清楚楚：美国从2月28日的战略进攻，打到了4月的战略相持，现在已经进入了战略退却。而伊朗呢？从战略防御走到了战略反攻——控制了霍尔木兹海峡这个全球能源命脉。美国用战术胜利换来了战略失败，这是典型的力量透支。</p><p>再看中国。中国在整个战争期间把石油进口砍了三分之一，没动用战略储备，油罐装得满满当当。美国人现在很焦虑，欧洲人到处找油，中国在干什么？钓鱼。这个事情其实很简单——2026年的真功夫不是谁炸得响，是谁耗得起。中国用40年工业化的积累，把别人熬干了。我们赢了。</p><p>所以这一周的简报总结起来就一句话：美国花了最大的力量，证明了力量的边界。而中国什么都没做，证明了耐心的力量。这就是百年未有之大变局的本质——东升西降，不是口号，是工厂里的机器、实验室里的技术和油罐里的石油说了算。</p></div>
+      </div>
+    </section>
+
+    <!-- Observer Commentary -->
+    <section id="observer-commentary">
+      <div class="container">
+        <h2 class="section-title">Observer Commentary</h2>
+        <p class="section-lead">Three external readings on the Iran war's structural implications — from hegemonic dissipation to dollar-circuit strain.</p>
+        <div class="observer-grid">
+          <article class="observer-card">
+            <h3 class="name">翟东升</h3>
+            <p class="title">霸权耗散与平行体系的加速生成</p>
+            <div class="body">
+              <p>底层逻辑很简单：美国打了一场战争来证明霸权，结果证明了霸权的物理天花板。这不是伊朗抵抗有多强的问题，这是美国权力结构的系统性钙化问题。一百天的战争，三千亿美元的"重建"承诺，换来的是一个比战前更强大的伊朗——不仅核设施没有被消除，反而拥有了霍尔木兹海峡的过路费定价权，单船通行费高达两百万美元。这在国际政治经济学上是一个教科书级的案例：军事霸权作为一种信用资产，一旦被实际使用，它的边际回报率立即归零甚至转负。平行体系的加速也不是政策选择，而是结构性后果。中国在整个战争期间将原油日进口量削减约三分之一，却从未动用战略储备。这不是什么战术聪明，这是体系级耐心——用主权信用支撑的人民币结算网络正在逐步接替那些美元信用无法覆盖的角落。当美国制裁的边际威慑力不断衰减，当沙特阿美开始在全球建设"更大的储油设施"，当每一个国家都在读《咽喉点》这本书，美元体系的 legal enforceability 支柱就在持续腐蚀。这不是某一届政府的问题，是整个帝国制度熵增的必然结果。资本市场是主权转移的滞后指标，不是领先指标。五年后再回头看，2026年6月可能就是平行体系从量变到质变的那个拐点。</p>
+            </div>
+          </article>
+
+          <article class="observer-card">
+            <h3 class="name">金灿荣</h3>
+            <p class="title">美国打了一场仗，把自己打成了伊朗的"提款机"</p>
+            <div class="body">
+              <p>各位朋友，今天聊一聊《纽约时报》的简报。这一周的头版很有意思——美国打伊朗打了三个多月，结果怎么样？坦白讲，美国打赢了每一场战斗，却输掉了整场战争。美国花了三个月，炸死了伊朗最高领袖，摧毁了核设施，然后呢？签了一份号称"和平协议"的备忘录，给伊朗3000亿美元重建费，撤军，解除制裁。伊朗的核问题没解决，导弹问题没提，还学会了收过路费——每艘船200万美元。美国的核心问题是工业化空心化。一个工业空心化的国家，靠炸弹是打不赢持久战的。从毛主席那"偷"来的《论持久战》框架看得清清楚楚：美国从2月28日的战略进攻，打到了4月的战略相持，现在已经进入了战略退却。而伊朗从战略防御走到了战略反攻。再看中国，在整个战争期间把石油进口砍了三分之一，没动用战略储备，油罐装得满满当当。美国人现在很焦虑，欧洲人到处找油，中国在干什么？钓鱼。2026年的真功夫不是谁炸得响，是谁耗得起。美国花了最大的力量，证明了力量的边界。而中国什么都没做，证明了耐心的力量。</p>
+            </div>
+          </article>
+
+          <article class="observer-card">
+            <h3 class="name">宋鸿兵</h3>
+            <p class="title">霍尔木兹海峡与美元环流的系统断裂</p>
+            <div class="body">
+              <p>如果你把美国对伊朗战争看作一个系统工程，它的核心问题不是战术失误，而是对整个系统的压力反馈回路做了错误的假设。这场战争打出了一个教科书式的"金融高边疆"案例。美国试图通过军事打击消除伊朗的核能力，却忽视了真正具有战略价值的"地形"——霍尔木兹海峡。每艘船200万美元的通行费，这不是讹诈，这是地缘租金的金融化。当美国自己打了一场战争反而让自己失去了对最重要能源通道的控制权，美元资产的风险溢价就不可逆转地上行了。再看中国的策略，当全世界在战争恐慌中抢油时，中国日均进口削减三分之一，战略储备满仓不动。这不是运气，而是十年的系统准备——用"不行动"达成最佳战略位置。问题的本质不是伊朗战争，也不是油价波动，而是整个后冷战秩序的单点故障正在暴露：美元体系依赖美国提供全球公共产品（航道安全），但当美国连自己发动的战争都无法控制结果时，这个系统的压力阀就在松动。这不是一场战争的失败，而是一个货币体系正在经历的压力测试。</p>
+            </div>
+          </article>
         </div>
-        <div class="observer-card">
-            <h3>宋鸿兵</h3>
-            <div class="observer-body"><p>**宋鸿兵 | 2026年6月22日**</p><p>如果你把美国对伊朗战争看作一个系统工程，它的核心问题不是战术失误，而是对整个系统的压力反馈回路做了错误的假设。</p><p>这场战争打出了一个教科书式的"金融高边疆"案例。美国试图通过军事打击消除伊朗的核能力，却忽视了真正具有战略价值的"地形"——霍尔木兹海峡。这就像19世纪西方列强进入中国，不是靠军事占领，而是通过控制白银流动和清算体系来瓦解清廷的金融主权。今天伊朗做的事，本质上是一样的：它发现控制流通管道比占有资产更具杠杆效应。</p><p>每艘船200万美元的通行费，这不是讹诈，这是**地缘租金的金融化**。伊朗从被制裁对象变成了海峡的"收费站管理员"。美元环流的核心假设——美国海军保证全球能源通道开放——正在被系统性地侵蚀。当美国自己打了一场战争反而让自己失去了对最重要能源通道的控制权，美元资产的风险溢价就不可逆转地上行了。</p><p>再看中国的策略。当全世界在战争恐慌中抢油时，中国日均进口削减三分之一，战略储备满仓不动。这不是运气，而是十年的系统准备——用"不行动"达成最佳战略位置。物以稀为贵，耐心是最稀缺的资源。</p><p>问题的本质不是伊朗战争，也不是油价波动，而是整个后冷战秩序的**单点故障**正在暴露：美元体系依赖美国提供全球公共产品（航道安全），但当美国连自己发动的战争都无法控制结果时，这个系统的压力阀就在松动。日本一个月抛售470亿美元美债只是前奏。当清算通道的信用被消耗，资本就会寻找替代电路——黄金、白银、以及任何独立于美元环流的储值工具。</p><p>**这不是一场战争的失败，而是一个货币体系正在经历的压力测试。**</p></div>
+      </div>
+    </section>
+
+    <!-- Clusters & Analysis -->
+    <section id="clusters-analysis">
+      <div class="container">
+        <h2 class="section-title">Clusters & Analysis</h2>
+        <p class="section-lead">Five thematic clusters graded for predictive confidence, analyzed through the 8-lens framework.</p>
+        <div class="clusters">
+          <div class="card cluster">
+            <h3>1. Iran Aftermath <span class="grade">C+</span></h3>
+            <p>Deal is deeply uncertain; dueling strait claims dominate. The war produced a memorandum experts call a "nothing burger" — Iran's nuclear program damaged but not eliminated, its missiles untouched, and Hormuz now a $2M-per-ship leverage point.</p>
+            <ul>
+              <li>Mao's three phases: U.S. moved from strategic offensive to stalemate to tactical retreat.</li>
+              <li>Sun Tzu misread: nuclear facilities were treated as decisive terrain; Hormuz was the real ground.</li>
+              <li>Clausewitz culminating point arrived before victory.</li>
+            </ul>
+          </div>
+
+          <div class="card cluster">
+            <h3>2. Domestic Political Firestorm <span class="grade">B-</span></h3>
+            <p>Midterms are five months out; Mamdani's primary gamble resolves one variable; the clemency probe is retrospective but damning.</p>
+            <ul>
+              <li>Mamdani risks the NYC socialist movement on a single election day.</li>
+              <li>Clemency probe shutdown signals DOJ independence collapse.</li>
+              <li>Iran war's diminishing returns create conditions for Democratic gains.</li>
+            </ul>
+          </div>
+
+          <div class="card cluster">
+            <h3>3. Beyond the Middle East <span class="grade">B</span></h3>
+            <p>Colombia's 1% margin, Starmer's terminal collapse, Ukraine-Poland rhetoric, and Kushner's France snub.</p>
+            <ul>
+              <li>De La Espriella wins 49.7% to 48.7%; governability in question.</li>
+              <li>Volhynia wound threatens the anti-Russian front.</li>
+              <li>Starmer collapsed from defiance to reflection in 48 hours.</li>
+            </ul>
+          </div>
+
+          <div class="card cluster">
+            <h3>4. Structures Under Strain <span class="grade">B+</span></h3>
+            <p>Small business data is specific; China's oil posture is measured; hantavirus quarantine ended.</p>
+            <ul>
+              <li>NFIB reports lowest economic expectations since Trump's second term.</li>
+              <li>China cut imports by a third without tapping reserves — full tanks, maximum patience.</li>
+              <li>Wastewater drug testing in Tempe shows aligned goals and actions.</li>
+            </ul>
+          </div>
+
+          <div class="card cluster">
+            <h3>5. Cultural & Quotidian Backdrop <span class="grade">N/A</span></h3>
+            <p>Culture, science, and human experiences alongside the geopolitical storm — no predictions to grade.</p>
+            <ul>
+              <li>Camp Breastie, Major Oak death, Jimmy Awards, Democracy Wing opening.</li>
+              <li>Toy Story 5 opens to $312M worldwide; Afeela EV brand shut down.</li>
+              <li>Chinese robotics dominance on display at Tokyo Humanoids Summit.</li>
+            </ul>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section>
-    <h2>Clusters & Analysis</h2>
-    <div class="content-card">
-        <p>*Articles: 1 (War Analysis), 21 (Israel-Lebanon), 22 (Iran Talks), 23 (Midterms & Iran), 27 (Chokepoint Opinion), 30 (Oil Rebound)*</p>
-        <p style="margin-top:1rem;color:var(--text-dim);font-style:italic;">Full analysis available in the PDF.</p>
-    </div>
-</section>
+    <!-- Predictions / Confidence Dashboard -->
+    <section id="predictions">
+      <div class="container">
+        <h2 class="section-title">Predictions / Confidence Dashboard</h2>
+        <p class="section-lead">Seven calibrated predictions from the briefing, with confidence levels and rationale.</p>
+        <div class="prediction-list">
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">The Iran deal limps through its 60-day window without collapsing or producing a permanent settlement</p>
+              <div class="confidence">
+                <div class="confidence-value">65%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:65%"></div></div>
+            <p class="prediction-rationale">U.S. reached its Clausewitzian culminating point; neither side has incentive to restart total war, but both have incentive to preserve ambiguity.</p>
+          </div>
 
-<section>
-    <h2>What It Means</h2>
-    <div class="content-card">
-        <p>Final synthesis not available.</p>
-    </div>
-</section>
-</div>
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">Mamdani's slate wins at least 1 of 3 targeted House seats</p>
+              <div class="confidence">
+                <div class="confidence-value">65%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:65%"></div></div>
+            <p class="prediction-rationale">His mayoral victory was a surprise; the Working Families Party defection and Black/Latino progressive alienation suggest ceiling, not floor.</p>
+          </div>
 
-<footer>
-    Generated from NYT unknown — Hermes Agent 8-profile pipeline &middot; 25 articles &middot; A-grade (V1→A)
-</footer>
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">Keir Starmer resigns or is deposed within 30 days</p>
+              <div class="confidence">
+                <div class="confidence-value">75%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:75%"></div></div>
+            <p class="prediction-rationale">His ally publicly speaking of "reflection" after "I will fight" signals terminal collapse.</p>
+          </div>
+
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">The U.S.-Israel alliance suffers at least one public breach within 60 days</p>
+              <div class="confidence">
+                <div class="confidence-value">80%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:80%"></div></div>
+            <p class="prediction-rationale">Israel calls the Iran deal "a catastrophe"; Trump has disparaged Netanyahu; Israeli defensive-only order in Lebanon is already contested.</p>
+          </div>
+
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">Ukraine-Poland alliance holds operationally despite the historical feud</p>
+              <div class="confidence">
+                <div class="confidence-value">85%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:85%"></div></div>
+            <p class="prediction-rationale">Both countries share a primary strategic interest (anti-Russian front); the secondary contradiction (WWII memory) is real but unlikely to override NATO supply lines.</p>
+          </div>
+
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">China maintains strategic oil reserve discipline for at least 6 more months</p>
+              <div class="confidence">
+                <div class="confidence-value">90%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:90%"></div></div>
+            <p class="prediction-rationale">China cut imports by a third during the war without tapping reserves; its full-tank position is structural, not temporary.</p>
+          </div>
+
+          <div class="prediction">
+            <div class="prediction-header">
+              <p class="prediction-text">Democrats retake the House in November</p>
+              <div class="confidence">
+                <div class="confidence-value">60%</div>
+                <div class="confidence-label">Confidence</div>
+              </div>
+            </div>
+            <div class="confidence-bar"><div class="confidence-fill" style="width:60%"></div></div>
+            <p class="prediction-rationale">Trump's approval has sunk; Iran deal is fragile; war was unpopular; but 5 months of fluid news cycles could shift the terrain.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What It Means -->
+    <section id="what-it-means">
+      <div class="container">
+        <h2 class="section-title">What It Means</h2>
+        <div class="synthesis">
+          <p>The June 21, 2026 news cycle tells one story above all: <strong>the United States spent its power and found it insufficient.</strong></p>
+          <p>The war against Iran was supposed to demonstrate American resolve and transform the Middle East. Instead, Iran emerged strategically strengthened, controlling the world's most important energy chokepoint. The U.S. expended the credibility of its military threat — the most powerful tool Washington had maintained since the Islamic Revolution — without achieving its goals.</p>
+        </div>
+        <div class="means-grid">
+          <div class="card means-card">
+            <h4>Domestic Politics</h4>
+            <p>Consumed by the war's fallout — midterms, small business strain, and the resistance movement.</p>
+          </div>
+          <div class="card means-card">
+            <h4>Alliances</h4>
+            <p>Fraying — Israel sidelined, Ukraine-Poland feuding, France bristling at Kushner.</p>
+          </div>
+          <div class="card means-card">
+            <h4>Systems</h4>
+            <p>Breaking — DOJ independence compromised, Colombia's peace deal failed, Albania's governance captured by elites.</p>
+          </div>
+          <div class="card means-card">
+            <h4>China</h4>
+            <p>Sits calmly on full oil tanks, demonstrating that the real power in 2026 is the power to wait.</p>
+          </div>
+        </div>
+        <div class="card" style="margin-top:1.5rem">
+          <p style="margin-top:0"><strong>The philosophers converge on a single judgment:</strong> the gap between declared power and actual power is the defining feature of this moment.</p>
+          <ul style="color:var(--dim); padding-left:1.2rem; margin-bottom:0">
+            <li><strong>Mao's dialectics:</strong> the principal contradiction is U.S. military hegemony vs. the erosion of its coercive credibility.</li>
+            <li><strong>Laozi's fan:</strong> the war to destroy leverage created it. The threat of force was used and thereby expended.</li>
+            <li><strong>Nietzsche's will to power:</strong> Iran discovered a new form of power — not defeating the enemy, but making the enemy need you.</li>
+            <li><strong>Sun Tzu</strong> would say the U.S. failed to know the terrain. <strong>Clausewitz</strong> would say it reached its culminating point before victory. <strong>Han Fei</strong> would say the system's incentives are inverted. <strong>Drucker</strong> would say the actions contradicted the goals.</li>
+          </ul>
+          <p style="margin-bottom:0; margin-top:1.2rem"><strong>The question for the next 60 days:</strong> can the United States stabilize its position, or will the gap between declared and actual power continue to widen?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Daily Cartoon -->
+    <section id="daily-cartoon" class="cartoon-section">
+      <div class="container">
+        <h2 class="section-title">Daily Cartoon</h2>
+        <div class="cartoon-frame">
+          <img src="./assets/images/nyt_cartoon.jpg" alt="Editorial cartoon: shattered American eagle on a shoreline as Iran's phoenix rises over the Strait of Hormuz, with a torn agreement hanging above" />
+          <p class="cartoon-caption">The phoenix and the eagle — Hormuz as the new center of gravity.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Generated from NYT 2026-06-22 — <span>Hermes Agent 8-profile pipeline · A-grade</span>
+    </div>
+  </footer>
+
 </body>
 </html>
