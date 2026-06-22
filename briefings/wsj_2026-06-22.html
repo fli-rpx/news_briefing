@@ -1,25 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSJ Briefing — June 22, 2026</title>
   <style>
     :root {
       --bg: #0a0a0f;
-      --card: #12121a;
-      --card-light: #1a1a28;
-      --accent: #00ff88;
+      --bg-card: #12121a;
+      --bg-card-light: #1a1a28;
       --text: #e0e0e0;
       --dim: #8888aa;
-      --border: #2a2a3a;
-      --green: #4ade80;
-      --red: #f87171;
-      --amber: #facc15;
+      --accent: #00ff88;
+      --accent-dim: rgba(0, 255, 136, 0.15);
+      --border: rgba(136, 136, 170, 0.2);
+      --radius: 14px;
     }
 
     * {
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     html {
@@ -27,20 +28,28 @@
     }
 
     body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
 
     /* Hero */
     .hero {
       position: relative;
-      padding: 4.5rem 1.5rem;
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      background: linear-gradient(135deg, #0a0a0f 0%, #12121a 50%, #0a0a0f 100%);
+      background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat;
       overflow: hidden;
     }
 
@@ -48,486 +57,876 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 50% 0%, rgba(0, 255, 136, 0.12), transparent 60%);
-      pointer-events: none;
+      background: linear-gradient(180deg, rgba(10,10,15,0.55) 0%, rgba(10,10,15,0.75) 60%, rgba(10,10,15,0.95) 100%);
+      z-index: 1;
     }
 
-    .hero-inner {
+    .hero-content {
       position: relative;
-      z-index: 1;
-      max-width: 900px;
-      margin: 0 auto;
+      z-index: 2;
+      padding: 60px 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 999px;
+      margin-bottom: 22px;
+      background: rgba(0, 255, 136, 0.08);
     }
 
     .hero h1 {
-      margin: 0;
-      font-size: clamp(2rem, 6vw, 3.25rem);
+      font-size: clamp(2.2rem, 6vw, 4rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 14px;
+      text-shadow: 0 4px 30px rgba(0,0,0,0.6);
     }
 
-    .hero .subtitle {
-      margin-top: 0.75rem;
-      font-size: clamp(1rem, 2.5vw, 1.35rem);
-      font-weight: 600;
+    .hero h1 span {
       color: var(--accent);
     }
 
-    .hero .meta {
-      margin-top: 1rem;
-      font-size: 0.9rem;
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.4vw, 1.25rem);
       color: var(--dim);
+      font-weight: 400;
+      letter-spacing: 0.04em;
     }
 
-    /* Layout */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 2rem 1.5rem;
-    }
-
+    /* Sections */
     section {
-      margin-bottom: 3.5rem;
-    }
-
-    .section-title {
-      margin: 0 0 1.25rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent);
+      padding: 60px 0;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
     }
 
-    .section-lead {
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      margin-bottom: 28px;
+    }
+
+    .section-header h2 {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-header h2::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 28px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
+    .section-header p {
       color: var(--dim);
-      margin-bottom: 1.25rem;
+      margin-top: 8px;
+      font-size: 0.95rem;
     }
 
     /* Cards */
     .card {
-      background: var(--card);
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
-      transition: transform 0.15s ease, border-color 0.15s ease;
+      border-radius: var(--radius);
+      padding: 26px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .card:hover {
-      transform: translateY(-2px);
       border-color: rgba(0, 255, 136, 0.35);
-    }
-
-    .card-light {
-      background: var(--card-light);
+      transform: translateY(-2px);
     }
 
     .card h3 {
-      margin: 0 0 0.5rem;
       font-size: 1.15rem;
-      color: var(--text);
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-weight: 700;
     }
 
     .card h4 {
-      margin: 0 0 0.25rem;
       font-size: 1rem;
-      color: var(--accent);
+      color: var(--text);
+      margin-bottom: 8px;
+      font-weight: 600;
     }
 
-    .card p,
-    .card li {
-      color: var(--dim);
-      margin: 0.5rem 0 0;
+    .card p, .card li {
+      color: #b8b8c8;
+      font-size: 0.94rem;
+    }
+
+    .card p {
+      margin-bottom: 12px;
+    }
+
+    .card p:last-child {
+      margin-bottom: 0;
     }
 
     .card ul {
-      margin: 0.75rem 0 0;
-      padding-left: 1.25rem;
+      padding-left: 18px;
+      margin: 10px 0;
     }
 
     .card li {
-      margin: 0.35rem 0;
+      margin-bottom: 6px;
     }
 
-    /* Grids */
-    .grid {
+    /* Executive Summary */
+    .summary-lead {
+      font-size: 1.08rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .snapshot-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.25rem;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+      margin-top: 24px;
     }
 
-    .dashboard {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 1rem;
+    .snapshot-item {
+      background: var(--bg-card-light);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
     }
 
-    /* Observer cards */
-    .observer-card .observer-name {
-      margin: 0;
-      font-size: 1.35rem;
-      color: var(--accent);
-    }
-
-    .observer-card .observer-role {
-      margin: 0.25rem 0 1rem;
-      font-size: 0.8rem;
+    .snapshot-item .label {
+      font-size: 0.78rem;
       color: var(--dim);
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
     }
 
-    .observer-card .commentary {
-      font-size: 1rem;
-      line-height: 1.8;
+    .snapshot-item .value {
+      font-size: 1.15rem;
+      font-weight: 700;
       color: var(--text);
     }
 
-    /* Tables */
-    .table-wrap {
-      overflow-x: auto;
-      border-radius: 12px;
+    .snapshot-item .value.up { color: var(--accent); }
+    .snapshot-item .value.down { color: #ff6b6b; }
+
+    /* Observer Commentary */
+    .observer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 22px;
+    }
+
+    .observer-card {
+      background: var(--bg-card);
       border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .observer-card:hover {
+      border-color: rgba(0, 255, 136, 0.3);
+    }
+
+    .observer-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .observer-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), #008f50);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: #0a0a0f;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .observer-meta h3 {
+      font-size: 1.15rem;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .observer-meta span {
+      font-size: 0.82rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .observer-body {
+      color: #c4c4d4;
+      font-size: 0.95rem;
+      line-height: 1.85;
+      font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    /* Clusters */
+    .cluster-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .cluster-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .cluster-card h3 {
+      font-size: 1.1rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cluster-item {
+      margin-bottom: 18px;
+    }
+
+    .cluster-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .cluster-item h4 {
+      font-size: 0.98rem;
+      color: var(--text);
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+
+    .cluster-item p {
+      font-size: 0.9rem;
+      color: #a0a0b8;
+      line-height: 1.65;
+    }
+
+    .cluster-item .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Markets Table */
+    .market-table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--bg-card);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.95rem;
       min-width: 600px;
     }
 
-    th,
-    td {
-      padding: 0.85rem 1rem;
+    thead {
+      background: var(--bg-card-light);
+    }
+
+    th, td {
+      padding: 14px 18px;
       text-align: left;
+      font-size: 0.92rem;
       border-bottom: 1px solid var(--border);
     }
 
     th {
-      color: var(--accent);
-      font-weight: 700;
-      background: rgba(0, 255, 136, 0.06);
-    }
-
-    td {
       color: var(--dim);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.78rem;
     }
 
-    tr:last-child td {
+    tbody tr:last-child td {
       border-bottom: none;
     }
 
-    .positive {
-      color: var(--green);
-      font-weight: 600;
+    tbody tr:hover {
+      background: rgba(0, 255, 136, 0.04);
     }
 
-    .negative {
-      color: var(--red);
-      font-weight: 600;
-    }
-
-    .neutral {
-      color: var(--amber);
-      font-weight: 600;
-    }
-
-    /* Probability dashboard */
-    .metric {
-      text-align: center;
-      padding: 1.25rem 1rem;
-    }
-
-    .metric .value {
-      font-size: 2rem;
-      font-weight: 800;
-      color: var(--accent);
-    }
-
-    .metric .label {
-      display: block;
-      margin-top: 0.25rem;
+    td.index-name {
       color: var(--text);
       font-weight: 600;
-      font-size: 0.95rem;
     }
 
-    .metric .sublabel {
-      display: block;
-      margin-top: 0.25rem;
+    td.index-value {
+      color: var(--text);
+      font-family: 'SF Mono', Monaco, monospace;
+    }
+
+    td.index-change {
+      font-weight: 600;
+    }
+
+    .change-up { color: var(--accent); }
+    .change-down { color: #ff6b6b; }
+    .change-neutral { color: var(--dim); }
+
+    /* Predictions Dashboard */
+    .prediction-list {
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      max-width: 780px;
+    }
+
+    .prediction-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+    }
+
+    .prediction-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .prediction-title {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .prediction-prob {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .prediction-meta {
+      font-size: 0.82rem;
       color: var(--dim);
-      font-size: 0.8rem;
+      margin-bottom: 12px;
     }
 
-    .probability-bar {
-      width: 100%;
-      height: 6px;
-      background: var(--border);
-      border-radius: 3px;
-      margin-top: 0.75rem;
+    .prediction-bar {
+      height: 8px;
+      background: var(--bg-card-light);
+      border-radius: 4px;
       overflow: hidden;
+      margin-bottom: 10px;
     }
 
-    .probability-bar .fill {
+    .prediction-bar-fill {
       height: 100%;
-      background: var(--accent);
-      border-radius: 3px;
+      background: linear-gradient(90deg, var(--accent), #00cc6a);
+      border-radius: 4px;
     }
 
-    /* Lists */
-    .clean-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .prediction-basis {
+      font-size: 0.88rem;
+      color: #a0a0b8;
+      line-height: 1.55;
     }
 
-    .clean-list li {
-      padding: 0.65rem 0;
+    /* What It Means */
+    .takeaway-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+    }
+
+    .takeaway-card p {
+      color: #c4c4d4;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .takeaway-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .takeaway-card strong {
+      color: var(--accent);
+    }
+
+    /* Cartoon */
+    .cartoon-section {
+      padding: 60px 0;
+    }
+
+    .cartoon-frame {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+    }
+
+    .cartoon-frame img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .cartoon-caption {
+      margin-top: 18px;
       color: var(--dim);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .clean-list li:last-child {
-      border-bottom: none;
+      font-size: 0.92rem;
+      font-style: italic;
     }
 
     /* Footer */
     footer {
-      text-align: center;
-      padding: 2.5rem 1.5rem;
-      color: var(--dim);
-      font-size: 0.85rem;
+      background: var(--bg-card);
       border-top: 1px solid var(--border);
+      padding: 28px 0;
+      text-align: center;
     }
 
-    /* Mobile */
+    footer p {
+      color: var(--dim);
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+    }
+
+    footer .accent {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Responsive */
     @media (max-width: 640px) {
-      .hero {
-        padding: 3rem 1rem;
-      }
-
-      .container {
-        padding: 1.25rem 1rem;
-      }
-
       section {
-        margin-bottom: 2.5rem;
+        padding: 44px 0;
       }
 
-      .card {
-        padding: 1.15rem;
+      .hero {
+        min-height: 420px;
       }
 
-      .section-title {
-        font-size: 1.3rem;
+      .observer-grid,
+      .cluster-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .observer-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .prediction-top {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      th, td {
+        padding: 12px 14px;
       }
     }
   </style>
 </head>
 <body>
 
+  <!-- Hero -->
   <header class="hero">
-    <div class="hero-inner">
-      <h1>WSJ Briefing — June 22, 2026</h1>
-      <div class="subtitle">A-Grade · 8 Lenses · 3 Observers</div>
-      <div class="meta">Consolidated from Wall Street Journal analysis · Version 3</div>
+    <div class="hero-content">
+      <div class="hero-badge">WSJ Daily Briefing</div>
+      <h1>WSJ Briefing — <span>June 22, 2026</span></h1>
+      <p class="hero-subtitle">A-Grade · 8 Lenses · 3 Observers</p>
     </div>
   </header>
 
-  <main class="container">
-
+  <main>
     <!-- Executive Summary -->
     <section id="executive-summary">
-      <h2 class="section-title">Executive Summary</h2>
-      <div class="card card-light">
-        <p style="color: var(--text);">
-          Monday's <em>WSJ</em> depicts a world in simultaneous diplomatic motion and financial caution. The lead story is the U.S.-Iran peace process in Switzerland, where Pakistani and Qatari mediators announced a breakthrough “de-confliction cell” for Lebanon and a communication line for the Strait of Hormuz — fragile but concrete progress.
+      <div class="container">
+        <div class="section-header">
+          <h2>Executive Summary</h2>
+          <p>The dominant themes from Monday's WSJ: fragile US-Iran breakthroughs, UK political upheaval, and late-cycle AI warnings.</p>
+        </div>
+        <p class="summary-lead">
+          Monday's WSJ paints a picture of a world in simultaneous diplomatic motion and financial caution. The dominant narrative is the US-Iran peace process in Switzerland, where mediators announced a breakthrough "de-confliction cell" for Lebanon and a communication line for the Strait of Hormuz — fragile but concrete progress. UK Prime Minister Keir Starmer resigned, with Andy Burnham expected to succeed him, as sterling and gilts recovered on the resolution of political uncertainty. In tech and markets, two warning signals dominated: Microsoft CEO Satya Nadella issued a blistering critique of AI power concentration, and James Mackintosh's Streetwise column argued the flood of capital into AI investments is a classic late-cycle warning sign.
         </p>
-        <p style="color: var(--dim); margin-top: 0.75rem;">
-          In the UK, Prime Minister Keir Starmer resigned, clearing the way for Andy Burnham; sterling and gilts recovered on political clarity, but gilt yields had already hit multiyear highs, leaving the next PM a difficult fiscal inheritance. In tech and markets, two warning signals dominated: Microsoft CEO Satya Nadella issued a blistering critique of AI power concentration, while James Mackintosh's <em>Streetwise</em> column argued that the flood of capital into AI is a classic late-cycle warning sign.
-        </p>
-        <p style="margin-top: 1rem; color: var(--accent); font-weight: 600;">
-          Market snapshot: S&P 500 Futures 7,557.50 (-0.18%) · Crude Oil $77.00/bbl (+0.52%) · U.S. 10-Yr 4.491% · VIX 17.43 (+6.28%) · Gold $4,227.60/oz (-0.43%) · Shanghai Composite +1.78%
-        </p>
+        <div class="snapshot-grid">
+          <div class="snapshot-item">
+            <div class="label">S&P 500 Futures</div>
+            <div class="value down">7,557.50 <span style="font-size:0.8rem">(-0.18%)</span></div>
+          </div>
+          <div class="snapshot-item">
+            <div class="label">Crude Oil</div>
+            <div class="value up">$77.00/bbl <span style="font-size:0.8rem">(+0.52%)</span></div>
+          </div>
+          <div class="snapshot-item">
+            <div class="label">U.S. 10-Yr</div>
+            <div class="value">4.491%</div>
+          </div>
+          <div class="snapshot-item">
+            <div class="label">VIX</div>
+            <div class="value down">17.43 <span style="font-size:0.8rem">(+6.28%)</span></div>
+          </div>
+          <div class="snapshot-item">
+            <div class="label">Gold</div>
+            <div class="value down">$4,227.60/oz <span style="font-size:0.8rem">(-0.43%)</span></div>
+          </div>
+          <div class="snapshot-item">
+            <div class="label">Shanghai Composite</div>
+            <div class="value up">+1.78%</div>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Observer Commentary -->
-    <section id="observer-commentary">
-      <h2 class="section-title">Observer Commentary</h2>
-      <div class="grid">
+    <section id="observers">
+      <div class="container">
+        <div class="section-header">
+          <h2>Observer Commentary</h2>
+          <p>Three analytical lenses on the day's headlines.</p>
+        </div>
+        <div class="observer-grid">
+          <article class="observer-card">
+            <div class="observer-header">
+              <div class="observer-avatar">翟</div>
+              <div class="observer-meta">
+                <h3>翟东升</h3>
+                <span>体系 / 结构视角</span>
+              </div>
+            </div>
+            <div class="observer-body">
+              今日WSJ的头条清晰地勾勒出美元体系的深层矛盾。伊朗谈判取得进展，美伊同意建立黎巴嫩冲突"去冲突化机制"和霍尔木兹海峡通信线路——这是平行体系理论的又一个实证。美国一边试图维系美元霸权下的石油-美元循环（确保霍尔木兹通航），一边却面临财政纪律的全面崩溃。英国斯塔默辞职、金边收益率攀升至多年高位，正是西方主权信用体系熵增的缩影。特别值得注意的是，WSJ评论版对AI产业的"自由市场"呼吁，恰恰暴露了美国在技术霸权维护上的两难：既要防止AI巨头"吞噬经济"，又无力通过产业政策引导发展。这验证了我一直以来提出的观点——美元霸权与产业空心化是同一枚硬币的两面。AI泡沫的膨胀（马斯克用600亿美元股票收购Cursor）不过是美元流动性过剩寻找出路的必然结果。中国应抓住这个战略窗口，加速推进人民币跨境支付体系和数字人民币的国际化布局。
+            </div>
+          </article>
 
-        <article class="card observer-card">
-          <h3 class="observer-name">翟东升</h3>
-          <div class="observer-role">体系 / 结构视角</div>
-          <div class="commentary">
-            今日WSJ的头条清晰地勾勒出美元体系的深层矛盾。伊朗谈判取得进展，美伊同意建立黎巴嫩冲突“去冲突化机制”和霍尔木兹海峡通信线路——这是平行体系理论的又一个实证。美国一边试图维系美元霸权下的石油-美元循环（确保霍尔木兹通航），一边却面临财政纪律的全面崩溃。英国斯塔默辞职、金边收益率攀升至多年高位，正是西方主权信用体系熵增的缩影。特别值得注意的是，WSJ评论版对AI产业的“自由市场”呼吁，恰恰暴露了美国在技术霸权维护上的两难：既要防止AI巨头“吞噬经济”，又无力通过产业政策引导发展。这验证了我一直以来提出的观点——美元霸权与产业空心化是同一枚硬币的两面。AI泡沫的膨胀（马斯克用600亿美元股票收购Cursor）不过是美元流动性过剩寻找出路的必然结果。中国应抓住这个战略窗口，加速推进人民币跨境支付体系和数字人民币的国际化布局。
-          </div>
-        </article>
+          <article class="observer-card">
+            <div class="observer-header">
+              <div class="observer-avatar">金</div>
+              <div class="observer-meta">
+                <h3>金灿荣</h3>
+                <span>美国政治 / 战略相持视角</span>
+              </div>
+            </div>
+            <div class="observer-body">
+              看今天的WSJ，我突然想起一句话："百年未有之大变局"——这真的不是空话。你看美国跟伊朗的谈判，谈得磕磕绊绊的，特朗普发个社交媒体就能让伊朗代表团离席，这叫什么大国威望？说好的"极限施压"呢，现在变成了"极限扯皮"。最搞笑的是还得靠巴基斯坦和卡塔尔来调解——两个地区国家给超级大国当和事佬，这画面太美我不敢看。英国那边更热闹，斯塔默终于扛不住了，伯南要上台。英国这两年换了多少个首相了？这说明什么？说明西方政治体制在民粹主义和精英治理之间找不到平衡点。金边收益率创新高，那是市场在用脚投票。AI泡沫这事儿我特别关注。马斯克600亿收购Cursor，这是什么操作？自己股价虚高，拿股票去换别人的公司——这不就是新时代的"以地换钱"吗？纳德拉说不能让AI巨头"吃掉经济"——说得挺好，可微软自己不就是最大的AI巨头之一吗？这就是美国式的"又当又立"。
+            </div>
+          </article>
 
-        <article class="card observer-card">
-          <h3 class="observer-name">金灿荣</h3>
-          <div class="observer-role">美国政治 / 战略相持视角</div>
-          <div class="commentary">
-            看今天的WSJ，我突然想起一句话：“百年未有之大变局”——这真的不是空话。你看美国跟伊朗的谈判，谈得磕磕绊绊的，特朗普发个社交媒体就能让伊朗代表团离席，这叫什么大国威望？说好的“极限施压”呢，现在变成了“极限扯皮”。最搞笑的是还得靠巴基斯坦和卡塔尔来调解——两个地区国家给超级大国当和事佬，这画面太美我不敢看。英国那边更热闹，斯塔默终于扛不住了，伯南要上台。英国这两年换了多少个首相了？这说明什么？说明西方政治体制在民粹主义和精英治理之间找不到平衡点。金边收益率创新高，那是市场在用脚投票。AI泡沫这事儿我特别关注。马斯克600亿收购Cursor，这是什么操作？自己股价虚高，拿股票去换别人的公司——这不就是新时代的“以地换钱”吗？纳德拉说不能让AI巨头“吃掉经济”——说得挺好，可微软自己不就是最大的AI巨头之一吗？这就是美国式的“又当又立”。
-          </div>
-        </article>
-
-        <article class="card observer-card">
-          <h3 class="observer-name">宋鸿兵</h3>
-          <div class="observer-role">货币 / 债务 / 周期视角</div>
-          <div class="commentary">
-            今天的WSJ充分验证了我一直强调的“美元潮汐”周期理论。伊朗谈判取得进展、霍尔木兹海峡有望重新开放，油价应声回落——但请注意，这背后是美元潮汐退潮期的地缘政治博弈。美国需要中东稳定来压低能源价格，从而为国内通胀降温，为可能的降息创造空间。英国金边收益率攀升至多年高位，这是典型的主权债务危机前兆。斯塔默辞职只是表象，深层问题是英国财政赤字已经失控。而全球AI领域的资本狂欢——SpaceX用600亿美元股票收购Cursor、Broadcom为Google和Anthropic供应AI芯片——正是美元潮汐涌向新兴资产类别的典型表现。当海量资金追逐有限的AI资产时，泡沫必然形成。我再次提醒：当前全球处于债务周期的顶部区域。美国联邦基金利率虽维持在3.5%-3.75%，但这远高于疫情前的水平，而政府的利息支出已经成为一个巨大的财政黑洞。一旦AI泡沫破裂，随之而来的将是比2008年更严重的系统性危机。黄金在$4,227/盎司的高位，就是对这一前景的最好警示。
-          </div>
-        </article>
-
+          <article class="observer-card">
+            <div class="observer-header">
+              <div class="observer-avatar">宋</div>
+              <div class="observer-meta">
+                <h3>宋鸿兵</h3>
+                <span>货币 / 债务 / 周期视角</span>
+              </div>
+            </div>
+            <div class="observer-body">
+              今天的WSJ充分验证了我一直强调的"美元潮汐"周期理论。伊朗谈判取得进展、霍尔木兹海峡有望重新开放，油价应声回落——但请注意，这背后是美元潮汐退潮期的地缘政治博弈。美国需要中东稳定来压低能源价格，从而为国内通胀降温，为可能的降息创造空间。英国金边收益率攀升至多年高位，这是典型的主权债务危机前兆。斯塔默辞职只是表象，深层问题是英国财政赤字已经失控。而全球AI领域的资本狂欢——SpaceX用600亿美元股票收购Cursor、Broadcom为Google和Anthropic供应AI芯片——正是美元潮汐涌向新兴资产类别的典型表现。当海量资金追逐有限的AI资产时，泡沫必然形成。我再次提醒：当前全球处于债务周期的顶部区域。美国联邦基金利率虽维持在3.5%-3.75%，但这远高于疫情前的水平，而政府的利息支出已经成为一个巨大的财政黑洞。一旦AI泡沫破裂，随之而来的将是比2008年更严重的系统性危机。黄金在$4,227/盎司的高位，就是对这一前景的最好警示。
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- Clusters & Analysis -->
     <section id="clusters">
-      <h2 class="section-title">Clusters &amp; Analysis</h2>
+      <div class="container">
+        <div class="section-header">
+          <h2>Clusters &amp; Analysis</h2>
+          <p>Geopolitics, markets, business, and policy through the WSJ lens.</p>
+        </div>
+        <div class="cluster-grid">
+          <div class="cluster-card">
+            <h3>🌍 Geopolitics &amp; Defense</h3>
+            <div class="cluster-item">
+              <h4>US-Iran Talks: De-Confliction Breakthrough</h4>
+              <p>Iran and the U.S. agreed to a "de-confliction cell" for Lebanon and a Hormuz communication line, mediated by Pakistan and Qatar. Iranian negotiator Hossein Ghorbanzadeh signaled progress on sanctions waivers and frozen assets.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>Ukraine: Zelensky's Open Letter</h4>
+              <p>Zelensky offered Putin a face-to-face meeting and ceasefire, citing Russia's losses of ~30,000 troops per month and Ukraine's growing battlefield advantage.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>UK: Starmer Resigns, Burnham Ascends</h4>
+              <p>Sterling and gilt yields recovered after Starmer's resignation. Andy Burnham is widely expected to succeed him, though fiscal challenges remain.</p>
+            </div>
+          </div>
 
-      <div class="card">
-        <h3>Cluster 1: Geopolitics &amp; Defense</h3>
-        <ul>
-          <li><strong>U.S.-Iran talks — de-confliction breakthrough:</strong> In Bürgenstock, Switzerland, Iran and the U.S. agreed to a mechanism to halt Israel-Hezbollah fighting and a Hormuz communication line for safe commercial passage. Iranian negotiator Hossein Ghorbanzadeh signaled progress on sanctions waivers and frozen assets. The process remains fragile: Trump threatened renewed attacks via social media, briefly pausing direct talks. The <em>WSJ</em> editorial board urges maintaining maximum pressure rather than a framework deal.</li>
-          <li><strong>Ukraine — Zelensky's open letter:</strong> President Zelensky offered Putin a face-to-face meeting and ceasefire, citing Russian losses of ~30,000 troops/month and Ukraine's improving battlefield position. The U.S.-mediated peace process has stalled as Washington shifts attention to the Middle East.</li>
-          <li><strong>UK — Starmer resigns, Burnham ascends:</strong> Sterling and gilt yields recovered after Starmer's resignation, with Andy Burnham expected to succeed him. But gilt yields had already reached multiyear highs on inflation and political concerns, leaving the next PM a tight labor market, persistent inflation, and elevated borrowing costs.</li>
-        </ul>
-      </div>
+          <div class="cluster-card">
+            <h3>📈 Markets &amp; Macroeconomy</h3>
+            <div class="cluster-item">
+              <h4>Oil Markets: Hormuz Progress Eases Pressure</h4>
+              <p>Brent crude settled at <span class="highlight">$77.00/bbl (+0.52%)</span> as tankers continued transiting Hormuz and disruption risk declined.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>Fixed Income: Gilt Yields React</h4>
+              <p>U.K. gilt yields stabilized after Starmer's resignation. U.S. 10-Year sits at <span class="highlight">4.491%</span>, VIX elevated at <span class="highlight">17.43 (+6.28%)</span>, and 30-year mortgages climbed to <span class="highlight">6.53%</span>.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>AI Investment Warning</h4>
+              <p>James Mackintosh warned that money flooding into AI is a late-cycle signal, citing SpaceX's $60 billion all-stock purchase of Cursor as classic froth.</p>
+            </div>
+          </div>
 
-      <div class="card">
-        <h3>Cluster 2: Markets &amp; Macroeconomy</h3>
-        <ul>
-          <li><strong>Oil markets:</strong> Brent crude settled at $77.00/bbl (+0.52%) as tankers continued transiting Hormuz and the new U.S.-Iran communication line materially reduced disruption risk.</li>
-          <li><strong>Fixed income:</strong> UK gilt yields stabilized after Starmer's resignation, having climbed to multiyear highs. The U.S. 10-Year yield sits at 4.491%; VIX is elevated at 17.43 (+6.28%). The 30-year fixed mortgage rate rose to 6.53%, reversing sub-6% levels seen in February.</li>
-          <li><strong>AI investment warning:</strong> James Mackintosh argues the flood of money into AI is a giant warning sign. SpaceX's $60 billion all-stock purchase of Cursor — using inflated equity to buy an AI startup — is cited as classic late-cycle froth, though real enterprise adoption may provide a valuation floor absent in 2000.</li>
-        </ul>
-      </div>
+          <div class="cluster-card">
+            <h3>💼 Business &amp; Tech Strategy</h3>
+            <div class="cluster-item">
+              <h4>Microsoft's Nadella Takes on AI Giants</h4>
+              <p>Nadella argued society cannot "let AI giants eat the economy," calling for cheaper models, user control, and public trust — a notable pivot for Microsoft's strategy.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>Broadcom's Dual AI Play</h4>
+              <p>Broadcom is supplying AI chips to Google and computing capacity to Anthropic, showing the expanding hardware layer beyond Nvidia.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>Apple Faces Tariff Math</h4>
+              <p>Apple is weighing iPhone price hikes to offset a 30% tariff on Chinese imports, with a 256GB iPhone potentially reaching $1,100. Apple shares rose 7% pre-market.</p>
+            </div>
+          </div>
 
-      <div class="card">
-        <h3>Cluster 3: Business &amp; Tech Strategy</h3>
-        <ul>
-          <li><strong>Microsoft's Nadella vs. AI giants:</strong> In a WSJ interview, Satya Nadella warned society cannot “let AI giants eat the economy,” calling for cheaper models, more user control, and public trust. This marks a strategic shift for Microsoft, which helped launch the boom through OpenAI.</li>
-          <li><strong>Broadcom's dual AI play:</strong> Broadcom is supplying AI chips to Google and computing capacity to Anthropic, demonstrating an expanding hardware layer beyond Nvidia.</li>
-          <li><strong>Apple's tariff math:</strong> Apple is weighing iPhone price hikes this fall while trying to avoid linking them to the 30% U.S. tariff on Chinese imports. A 256GB iPhone with a ~$550 bill of materials could see tariff-inclusive costs near $1,100. Apple shares rose 7% pre-market on the U.S.-China tariff reduction.</li>
-          <li><strong>Polymarket scrutiny:</strong> WSJ reports influencers appeared to make massive profits on Polymarket, but the gains were fabricated — raising integrity questions about the prediction-market ecosystem.</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h3>Cluster 4: Policy &amp; Opinion</h3>
-        <ul>
-          <li><strong>Editorial board on AI:</strong> Argues government bureaucrats are ill-equipped to police AI “jailbreaks” and that micromanagement picks winners and losers; advocates free-market competition.</li>
-          <li><strong>Unions &amp; culture wars:</strong> A second editorial contends unions increasingly fight for “left-wing cultural fads” rather than traditional labor issues, alienating members.</li>
-          <li><strong>Britain's tennis tax:</strong> Critiques UK tax treatment of Wimbledon prize money as a competitive disadvantage.</li>
-          <li><strong>Notable opinion pieces:</strong> Trump explains the Iran deal; “Iran and Trump Blame Israel First”; race preferences falling nationwide; bankruptcy and higher education; “Victory Over Iran Is Still Possible”; Coke vs. IRS ($20 billion at stake).</li>
-          <li><strong>What to watch this week:</strong> Iran talks continue; UK leadership transition; U.S.-China tariff implementation; Fed commentary after the June 17 hold at 3.5%-3.75%; Coke vs. IRS opening arguments.</li>
-        </ul>
+          <div class="cluster-card">
+            <h3>🏛️ Policy &amp; Opinion</h3>
+            <div class="cluster-item">
+              <h4>WSJ Editorial: Free Market on AI</h4>
+              <p>The editorial board argued bureaucrats are ill-equipped to police AI "jailbreaks" and that free-market competition is the best regulator.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>Unions and Culture Wars</h4>
+              <p>A second editorial contended unions increasingly fight for "left-wing cultural fads" rather than traditional labor issues, alienating members.</p>
+            </div>
+            <div class="cluster-item">
+              <h4>What to Watch This Week</h4>
+              <p>Iran talks continue; UK leadership transition; US-China tariff implementation; Fed commentary; Coke vs. IRS opening arguments.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Markets & Finance -->
+    <!-- Markets Table -->
     <section id="markets">
-      <h2 class="section-title">Markets &amp; Finance Highlights</h2>
-      <p class="section-lead">Key market data from the June 22 briefing.</p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Index / Future</th>
-              <th>Value</th>
-              <th>Change</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>DJIA Futures</td><td>51,985.00</td><td class="negative">-0.04%</td></tr>
-            <tr><td>S&amp;P 500 Futures</td><td>7,557.50</td><td class="negative">-0.18%</td></tr>
-            <tr><td>Nasdaq Futures</td><td>30,709.00</td><td class="negative">-0.03%</td></tr>
-            <tr><td>Crude Oil</td><td>$77.00 / bbl</td><td class="positive">+0.52%</td></tr>
-            <tr><td>Gold</td><td>$4,227.60 / oz</td><td class="negative">-0.43%</td></tr>
-            <tr><td>U.S. 10-Yr</td><td>4.491%</td><td class="neutral">+2 bp</td></tr>
-            <tr><td>VIX</td><td>17.43</td><td class="negative">+6.28%</td></tr>
-            <tr><td>Bitcoin</td><td>$64,074</td><td class="negative">-0.10%</td></tr>
-            <tr><td>Dollar Index</td><td>97.17</td><td class="positive">+0.11%</td></tr>
-            <tr><td>Shanghai Composite</td><td>4,163.10</td><td class="positive">+1.78%</td></tr>
-            <tr><td>30-Yr Mortgage (avg)</td><td>6.53%</td><td class="neutral">Elevated from Feb lows</td></tr>
-          </tbody>
-        </table>
+      <div class="container">
+        <div class="section-header">
+          <h2>Markets &amp; Finance Highlights</h2>
+          <p>Key indices, commodities, and rates from the WSJ market snapshot.</p>
+        </div>
+        <div class="market-table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Index / Future</th>
+                <th>Value</th>
+                <th>Change</th>
+                <th>Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="index-name">DJIA Futures</td>
+                <td class="index-value">51,985.00</td>
+                <td class="index-change change-down">-0.04%</td>
+                <td class="change-neutral">—</td>
+              </tr>
+              <tr>
+                <td class="index-name">S&amp;P 500 Futures</td>
+                <td class="index-value">7,557.50</td>
+                <td class="index-change change-down">-0.18%</td>
+                <td class="change-neutral">—</td>
+              </tr>
+              <tr>
+                <td class="index-name">Nasdaq Futures</td>
+                <td class="index-value">30,709.00</td>
+                <td class="index-change change-down">-0.03%</td>
+                <td class="change-neutral">—</td>
+              </tr>
+              <tr>
+                <td class="index-name">Crude Oil</td>
+                <td class="index-value">$77.00/bbl</td>
+                <td class="index-change change-up">+0.52%</td>
+                <td class="change-neutral">Hormuz risk easing</td>
+              </tr>
+              <tr>
+                <td class="index-name">Gold</td>
+                <td class="index-value">$4,227.60/oz</td>
+                <td class="index-change change-down">-0.43%</td>
+                <td class="change-neutral">Near record highs</td>
+              </tr>
+              <tr>
+                <td class="index-name">U.S. 10-Yr</td>
+                <td class="index-value">4.491%</td>
+                <td class="index-change change-up">+2bp</td>
+                <td class="change-neutral">—</td>
+              </tr>
+              <tr>
+                <td class="index-name">VIX</td>
+                <td class="index-value">17.43</td>
+                <td class="index-change change-down">+6.28%</td>
+                <td class="change-neutral">Elevated uncertainty</td>
+              </tr>
+              <tr>
+                <td class="index-name">Bitcoin</td>
+                <td class="index-value">$64,074</td>
+                <td class="index-change change-down">-0.10%</td>
+                <td class="change-neutral">—</td>
+              </tr>
+              <tr>
+                <td class="index-name">Dollar Index</td>
+                <td class="index-value">97.17</td>
+                <td class="index-change change-up">+0.11%</td>
+                <td class="change-neutral">—</td>
+              </tr>
+              <tr>
+                <td class="index-name">Shanghai Composite</td>
+                <td class="index-value">4,163.10</td>
+                <td class="index-change change-up">+1.78%</td>
+                <td class="change-neutral">Tariff reduction boost</td>
+              </tr>
+              <tr>
+                <td class="index-name">30-Yr Mortgage (avg)</td>
+                <td class="index-value">6.53%</td>
+                <td class="index-change change-neutral">Elevated</td>
+                <td class="change-neutral">Reversed sub-6% Feb lows</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <!-- Predictions / Confidence Dashboard -->
+    <!-- Predictions Dashboard -->
     <section id="predictions">
-      <h2 class="section-title">Predictions / Confidence Dashboard</h2>
-      <p class="section-lead">Probability-weighted outlook from the briefing.</p>
-      <div class="dashboard">
-
-        <div class="card metric">
-          <div class="value">55%</div>
-          <div class="label">U.S.-Iran Comprehensive Framework</div>
-          <div class="sublabel">90 days · de-confliction + Hormuz line = progress; Trump/Hezbollah = risk</div>
-          <div class="probability-bar"><div class="fill" style="width: 55%;"></div></div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Predictions / Confidence Dashboard</h2>
+          <p>Probability-weighted outlook based on the WSJ briefing analysis.</p>
         </div>
+        <div class="prediction-list">
+          <div class="prediction-item">
+            <div class="prediction-top">
+              <div class="prediction-title">US-Iran comprehensive framework agreement</div>
+              <div class="prediction-prob">55%</div>
+            </div>
+            <div class="prediction-meta">Horizon: 90 days</div>
+            <div class="prediction-bar"><div class="prediction-bar-fill" style="width: 55%"></div></div>
+            <div class="prediction-basis">De-confliction cell + Hormuz line = structural progress; Trump impulses + Hezbollah = risk.</div>
+          </div>
 
-        <div class="card metric">
-          <div class="value">70%</div>
-          <div class="label">UK PM Burnham Assumes Office</div>
-          <div class="sublabel">30 days · clear succession path, Labour unity</div>
-          <div class="probability-bar"><div class="fill" style="width: 70%;"></div></div>
+          <div class="prediction-item">
+            <div class="prediction-top">
+              <div class="prediction-title">UK PM Burnham assumes office</div>
+              <div class="prediction-prob">70%</div>
+            </div>
+            <div class="prediction-meta">Horizon: 30 days</div>
+            <div class="prediction-bar"><div class="prediction-bar-fill" style="width: 70%"></div></div>
+            <div class="prediction-basis">Clear succession path, Labour unity behind Burnham.</div>
+          </div>
+
+          <div class="prediction-item">
+            <div class="prediction-top">
+              <div class="prediction-title">AI sector correction &gt;15%</div>
+              <div class="prediction-prob">40%</div>
+            </div>
+            <div class="prediction-meta">Horizon: 6 months</div>
+            <div class="prediction-bar"><div class="prediction-bar-fill" style="width: 40%"></div></div>
+            <div class="prediction-basis">Classic late-cycle signals (all-stock M&amp;A, insider selling, record inflows) but real enterprise revenue provides floor.</div>
+          </div>
+
+          <div class="prediction-item">
+            <div class="prediction-top">
+              <div class="prediction-title">Hormuz Strait disruption (re-escalation)</div>
+              <div class="prediction-prob">30%</div>
+            </div>
+            <div class="prediction-meta">Horizon: 90 days</div>
+            <div class="prediction-bar"><div class="prediction-bar-fill" style="width: 30%"></div></div>
+            <div class="prediction-basis">If Israel-Hezbollah fighting escalates, the de-confliction mechanism could break down.</div>
+          </div>
+
+          <div class="prediction-item">
+            <div class="prediction-top">
+              <div class="prediction-title">Apple iPhone price increase ≥10%</div>
+              <div class="prediction-prob">65%</div>
+            </div>
+            <div class="prediction-meta">Horizon: 3 months</div>
+            <div class="prediction-bar"><div class="prediction-bar-fill" style="width: 65%"></div></div>
+            <div class="prediction-basis">Tariff math (30% on Chinese imports) forces margin action; question is how much consumer demand absorbs.</div>
+          </div>
         </div>
-
-        <div class="card metric">
-          <div class="value">40%</div>
-          <div class="label">AI Sector Correction &gt;15%</div>
-          <div class="sublabel">6 months · late-cycle signals, but real enterprise revenue provides a floor</div>
-          <div class="probability-bar"><div class="fill" style="width: 40%;"></div></div>
-        </div>
-
-        <div class="card metric">
-          <div class="value">30%</div>
-          <div class="label">Hormuz Strait Disruption (Re-escalation)</div>
-          <div class="sublabel">90 days · Israel-Hezbollah escalation could break the mechanism</div>
-          <div class="probability-bar"><div class="fill" style="width: 30%;"></div></div>
-        </div>
-
-        <div class="card metric">
-          <div class="value">65%</div>
-          <div class="label">Apple iPhone Price Increase ≥10%</div>
-          <div class="sublabel">3 months · 30% tariff on Chinese imports forces margin action</div>
-          <div class="probability-bar"><div class="fill" style="width: 65%;"></div></div>
-        </div>
-
       </div>
     </section>
 
     <!-- What It Means -->
     <section id="what-it-means">
-      <h2 class="section-title">What It Means</h2>
-      <div class="card card-light">
-        <p style="color: var(--text);">
-          The June 22 briefing points to a global system doing two things at once: negotiating off-ramps from acute geopolitical risk while financial markets price in the accumulated strain of debt, tariffs, and late-cycle asset booms.
-        </p>
-        <p style="color: var(--dim); margin-top: 0.75rem;">
-          The U.S.-Iran de-confliction mechanism is real structural progress, but it is built on a narrow ledge — one impulsive social-media post already paused talks. Hormuz disruption risk has fallen, yet a 30% probability of re-escalation remains material. In the UK, Burnham's likely ascension resolves political uncertainty without resolving fiscal stress; gilt yields are the market's verdict on the underlying deficit.
-        </p>
-        <p style="color: var(--dim); margin-top: 0.75rem;">
-          The most consequential undercurrent is AI. A $60 billion all-stock acquisition, warnings from an AI incumbent CEO, and record capital inflows are the soundtrack of a market top — even if enterprise adoption justifies a higher floor than the dot-com era. The observer commentary converges on the same conclusion: liquidity surplus, dollar-system contradictions, and strategic competition are converging. For readers, the watch items are the durability of U.S.-Iran talks, the trajectory of UK gilt yields, and whether AI earnings can catch up to AI valuations.
-        </p>
+      <div class="container">
+        <div class="section-header">
+          <h2>What It Means</h2>
+          <p>The connective tissue beneath today's headlines.</p>
+        </div>
+        <div class="takeaway-card">
+          <p>Today's briefing reveals a world caught between <strong>diplomatic momentum and financial fragility</strong>. The US-Iran breakthrough is real but reversible — progress depends on institutional mechanisms (de-confliction cells, Hormuz communication lines) rather than trust in leaders.</p>
+          <p>Meanwhile, the UK leadership transition resolves political uncertainty without solving fiscal stress. Gilt yields at multiyear highs signal that markets are pricing sovereign risk, not just inflation.</p>
+          <p>In technology, the AI boom is entering a <strong>late-cycle phase</strong>: all-stock acquisitions, insider selling, and defensive rhetoric from incumbents suggest froth, even as enterprise adoption provides a floor. The tension between Nadella's anti-concentration rhetoric and Microsoft's own AI dominance encapsulates the broader contradiction.</p>
+          <p>Bottom line: markets are rewarding short-term de-escalation (lower Hormuz risk, UK clarity, tariff relief) while quietly pricing longer-term risks (sovereign debt, AI valuations, geopolitical relapse).</p>
+        </div>
       </div>
     </section>
 
+    <!-- Daily Cartoon -->
+    <section class="cartoon-section" id="daily-cartoon">
+      <div class="container">
+        <div class="section-header">
+          <h2>Daily Cartoon</h2>
+          <p>A visual take on the day's central theme.</p>
+        </div>
+        <div class="cartoon-frame">
+          <img src="./assets/images/wsj_cartoon.jpg" alt="Editorial cartoon: a shattered American eagle on the shore as a phoenix rises from flames over the Strait of Hormuz">
+          <p class="cartoon-caption">Shattered eagle, rising phoenix: the Strait of Hormuz as the fault line of a shifting order.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    Generated from WSJ 2026-06-22 — Hermes Agent 8-profile pipeline · A-grade
+    <div class="container">
+      <p>Generated from WSJ 2026-06-22 — <span class="accent">Hermes Agent 8-profile pipeline · A-grade</span></p>
+    </div>
   </footer>
 
 </body>
 </html>
- 
