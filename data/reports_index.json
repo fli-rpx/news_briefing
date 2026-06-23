@@ -289,6 +289,14 @@
         "./assets/images/wsj_hero_bg.jpg",
         "./assets/images/wsj_cartoon.jpg"
       ]
+    },
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-23.pdf",
+      "local": "briefings/nyt_2026-06-23.html",
+      "images": [
+        "./assets/images/nyt_hero_bg.jpg",
+        "./assets/images/nyt_cartoon.jpg"
+      ]
     }
   }
 }
