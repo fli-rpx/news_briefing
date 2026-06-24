@@ -312,8 +312,7 @@
       "pdf": "wsj_briefing_2026-06-24.pdf",
       "local": "briefings/wsj_2026-06-24.html",
       "images": [
-        "./assets/images/wsj_hero_bg.jpg",
-        "./assets/images/wsj_cartoon.jpg"
+        "./assets/images/wsj_hero_bg.jpg"
       ]
     }
   }
