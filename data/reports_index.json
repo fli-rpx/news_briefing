@@ -298,5 +298,15 @@
         "./assets/images/nyt_cartoon.jpg"
       ]
     }
+  },
+  "2026-06-24": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-24.pdf",
+      "local": "briefings/nyt_2026-06-24.html",
+      "images": [
+        "./assets/images/nyt_hero_bg.jpg",
+        "./assets/images/nyt_cartoon.jpg"
+      ]
+    }
   }
 }
