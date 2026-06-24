@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYT Briefing — June 24, 2026</title>
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #0d0d1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --border-card: rgba(255, 255, 255, 0.06);
+            --border-card-hover: rgba(255, 255, 255, 0.12);
+            --accent-emerald: #00ff88;
+            --accent-cyan: #4a9eff;
+            --accent-gold: #c9a84c;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #707080;
+            --badge-high: #00c853;
+            --badge-medium: #ffb300;
+            --badge-low: #ff5252;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .zh {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+        }
+
+        code, .mono {
+            font-family: 'Courier New', monospace;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: var(--accent-emerald);
+            border-bottom-color: var(--accent-emerald);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-image: url('./assets/images/nyt_hero_bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 15, 0.65);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-gold) 60%, #f5e6c8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 30px rgba(201, 168, 76, 0.2);
+        }
+
+        .hero-date {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.92;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--text-muted);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
+
+        /* Layout */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section-navy {
+            background-color: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--accent-emerald);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-title.gold {
+            color: var(--accent-gold);
+        }
+
+        .section-intro {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 800px;
+        }
+
+        /* Glass Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-card-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Executive Summary */
+        .tldr {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(74, 158, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            font-size: 1.35rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .tldr-label {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .unknowns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .unknown-card {
+            composes: card;
+            padding: 1.5rem;
+        }
+
+        .unknown-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--accent-gold);
+            border-radius: 50%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .unknown-title {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+        }
+
+        .unknown-text {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        /* Predictions Table */
+        .predictions-table-wrap {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-card);
+        }
+
+        .predictions-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .predictions-table thead {
+            background: rgba(0, 255, 136, 0.08);
+        }
+
+        .predictions-table th {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+        }
+
+        .predictions-table td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-card);
+            vertical-align: top;
+        }
+
+        .predictions-table tbody tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .predictions-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .prediction-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .prediction-rationale {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .confidence-badge.high {
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--badge-high);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+        }
+
+        .confidence-badge.medium {
+            background: rgba(255, 179, 0, 0.12);
+            color: var(--badge-medium);
+            border: 1px solid rgba(255, 179, 0, 0.3);
+        }
+
+        .confidence-badge.low {
+            background: rgba(255, 82, 82, 0.12);
+            color: var(--badge-low);
+            border: 1px solid rgba(255, 82, 82, 0.3);
+        }
+
+        .confidence-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* Observer Commentary */
+        .observer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .observer-card {
+            composes: card;
+        }
+
+        .observer-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .observer-tagline {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .observer-text {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.85;
+        }
+
+        .observer-text p {
+            margin-bottom: 1rem;
+        }
+
+        .observer-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Cluster Sections */
+        .cluster {
+            margin-bottom: 4rem;
+        }
+
+        .cluster:last-child {
+            margin-bottom: 0;
+        }
+
+        .cluster-header {
+            margin-bottom: 1.75rem;
+        }
+
+        .cluster-title {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .cluster-meta {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .cluster-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .cluster-body .card p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .cluster-body .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cluster-body .card strong {
+            color: var(--text-primary);
+        }
+
+        .subhead {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .subhead:first-child {
+            margin-top: 0;
+        }
+
+        .human-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .human-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .human-name {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .human-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .lens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .lens-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .lens-name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .lens-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        /* Stories Grid */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .story-card {
+            composes: card;
+            padding: 1.5rem;
+        }
+
+        .story-number {
+            display: inline-block;
+            background: rgba(74, 158, 255, 0.12);
+            color: var(--accent-cyan);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-title {
+            color: var(--text-primary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-text {
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        .story-text p {
+            margin-bottom: 0.75rem;
+        }
+
+        .story-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Synthesis */
+        .synthesis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .synthesis-card {
+            composes: card;
+        }
+
+        .synthesis-lens {
+            color: var(--accent-emerald);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+        }
+
+        .synthesis-text {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .big-picture {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, rgba(74, 158, 255, 0.04) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .big-picture-title {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .big-picture p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .big-picture p:last-child {
+            margin-bottom: 0;
+        }
+
+        .quotes {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quote {
+            border-left: 3px solid var(--accent-emerald);
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        /* Cartoon Section */
+        .cartoon-section {
+            text-align: center;
+        }
+
+        .cartoon-frame {
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cartoon-frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cartoon-caption {
+            margin-top: 1.25rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-style: italic;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', 'Helvetica Neue', sans-serif;
+        }
+
+        .footer-divider {
+            color: var(--accent-gold);
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .observer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 1.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.05rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .tldr {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+
+            .predictions-table th,
+            .predictions-table td {
+                padding: 0.875rem;
+                font-size: 0.9rem;
+            }
+
+            .stories-grid,
+            .unknowns-grid,
+            .synthesis-grid,
+            .lens-grid,
+            .human-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .observer-name {
+                font-size: 1.25rem;
+            }
+
+            .cluster-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Accessibility: respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .scroll-hint {
+                animation: none;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero" id="top">
+    <div class="hero-content">
+        <div class="hero-subtitle">NYT Master Briefing</div>
+        <h1 class="hero-title">NYT Master Briefing</h1>
+        <div class="hero-date">June 24, 2026</div>
+        <p class="hero-tagline">Precarious systems dominate the cycle — diplomacy, markets, climate, and democratic norms all strain simultaneously with no single actor in control.</p>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- Executive Summary -->
+<section class="section" id="executive-summary">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Synthesis</div>
+            <h2 class="section-title">Executive Summary</h2>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-label">tl;dr</div>
+            Precarious systems dominate the cycle — diplomacy, markets, climate, and democratic norms all strain simultaneously with no single actor in control.
+        </div>
+
+        <h3 class="subhead">What We Don't Know — 5 Critical Unknowns</h3>
+        <div class="unknowns-grid">
+            <div class="unknown-card card">
+                <div class="unknown-number">1</div>
+                <div class="unknown-title">Whether the Iran deal holds</div>
+                <div class="unknown-text">Both sides signed an MOU, but Trump's threats and Iran's bureaucratic entrenchment at the Strait of Hormuz create structural instability. The 60-day framework could yield a deal or collapse into renewed conflict.</div>
+            </div>
+            <div class="unknown-card card">
+                <div class="unknown-number">2</div>
+                <div class="unknown-title">Whether AI valuations correct or crash</div>
+                <div class="unknown-text">The 10.5% KOSPI drop triggered a trading halt. The $600 billion SpaceX decline and S&P 500 ~1.4% loss suggest systemic vulnerability, but the direction of further movement is unknowable.</div>
+            </div>
+            <div class="unknown-card card">
+                <div class="unknown-number">3</div>
+                <div class="unknown-title">Whether Europe's heat toll rivals 2003</div>
+                <div class="unknown-text">At least 40 drownings in France are already recorded. The full mortality count will not be available for weeks. Half of France's 52 official heat waves since 1947 have occurred in the past 16 years.</div>
+            </div>
+            <div class="unknown-card card">
+                <div class="unknown-number">4</div>
+                <div class="unknown-title">Whether Mamdani's sweep is durable</div>
+                <div class="unknown-text">Three congressional wins and down-ballot victories signal momentum. But the DSA movement has won primaries before and failed to consolidate power at scale.</div>
+            </div>
+            <div class="unknown-card card">
+                <div class="unknown-number">5</div>
+                <div class="unknown-title">Whether housing relief arrives before midterms</div>
+                <div class="unknown-text">The bill is "the most significant piece of housing legislation in 36 years," but it is "no quick fix," and the country remains short several million units. Voter patience may expire before construction begins.</div>
+            </div>
+        </div>
+
+        <h3 class="subhead">7 Calibrated Predictions</h3>
+        <div class="predictions-table-wrap">
+            <table class="predictions-table">
+                <thead>
+                    <tr>
+                        <th>Prediction</th>
+                        <th>Confidence</th>
+                        <th>Rationale &amp; Key Sources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">Negotiations will produce a framework Iran nuclear deal within 60 days</div>
+                        </td>
+                        <td><span class="confidence-badge low"><span class="confidence-dot"></span>50%</span></td>
+                        <td><div class="prediction-rationale">MOU signed, but Trump disruptions + Iran contradictions (Art 1, 29)</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">European heat waves will match 2003-level mortality within 5 years</div>
+                        </td>
+                        <td><span class="confidence-badge high"><span class="confidence-dot"></span>90%</span></td>
+                        <td><div class="prediction-rationale">26 of 52 French heat waves in 16 years; protections "far from enough" (Art 11, 27, 30)</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">Chinese tech dominance in batteries &amp; EVs will expand to additional sectors within 2 years</div>
+                        </td>
+                        <td><span class="confidence-badge high"><span class="confidence-dot"></span>85%</span></td>
+                        <td><div class="prediction-rationale">CATL 3x charging speed; equation flipped in multiple sectors (Art 5)</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">The Democratic Party's shift on Israel will accelerate after the New York primaries</div>
+                        </td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>65%</span></td>
+                        <td><div class="prediction-rationale">3 pro-Palestinian primary wins (Art 8, 19)</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">The housing bill will NOT produce measurable affordability improvement before the November midterms</div>
+                        </td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>70%</span></td>
+                        <td><div class="prediction-rationale">"No quick fix"; several million units short (Art 25)</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">Trump will not seek or receive congressional authorization for continued Iran military action</div>
+                        </td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>75%</span></td>
+                        <td><div class="prediction-rationale">Non-binding 50-48 resolution; no consequences to date (Art 9)</div></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="prediction-title">Alligator Alcatraz will close without a full public accounting</div>
+                        </td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>60%</span></td>
+                        <td><div class="prediction-rationale">Contradictory hurricane explanation; vendors told to dismantle (Art 13)</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Observer Commentary -->
+<section class="section section-navy" id="observer-commentary">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Commentary</div>
+            <h2 class="section-title gold">Observer Commentary</h2>
+            <p class="section-intro">Three independent readings of the same news cycle, each tracing a different fault line in the global order.</p>
+        </div>
+
+        <div class="observer-grid">
+            <article class="observer-card card">
+                <h3 class="observer-name zh">翟东升</h3>
+                <div class="observer-tagline zh">美元信用裂缝的六个信号</div>
+                <div class="observer-text zh">
+                    <p>今天的新闻表面上讲的是伊朗谈判、科技抛售、住房法案——但底层逻辑只有一个：美元主权信用体系的物质基础正在系统性钙化。这不是市场情绪的问题，是美国制度信用的问题。</p>
+                    <p><strong>第一条裂缝：</strong>美国在伊朗问题上四声齐发。万斯签谅解备忘录，特朗普在福克斯威胁"重新轰炸"，参议院50-48票要求结束战争，卢比奥安抚盟友——同一个主权体，四个相互矛盾的声音。美元的根基是什么？是美国制度信用的可预期性。当主权者自己说不清自己的意志，美元这张信用票据的底层抵押品就在贬值。</p>
+                    <p><strong>第二条裂缝：</strong>科技抛售不是回调，是叙事破产。KOSPI单日跌10.5%触发熔断，SpaceX一周蒸发6000亿美元。这不是AI的问题，是"美国永远领先"这个叙事的物理天花板到了。CATL的电池充电速度快三倍，方程已经翻转。</p>
+                    <p><strong>第三条裂缝：</strong>住房法案救了政治，救不了美元。358-32、85-5的跨党派投票看起来是制度运行良好的证据。但深层问题是：美国需要几百万套住房，国民承受力已经崩溃，特朗普经济支持率33%。</p>
+                    <p><strong>第四条也是最重要的裂缝：</strong>平行体系正在硬化。中国从"追赶者"变成"定义者"。CATL不是一个公司，它是一个信号——中国正在构建一套不依赖美元信用、不依赖美国技术、不依赖美国市场的独立生产体系。</p>
+                    <p>"美国霸权的物质基础正在系统性钙化"——这句话我讲了三年，今天每条新闻都在为它做注脚。</p>
+                    <p>（关于伊朗军方动向和美军部署的具体判断，请参考金主编的分析；关于黄金和资本流动的技术细节，请参考宋老师的专题。）</p>
+                </div>
+            </article>
+
+            <article class="observer-card card">
+                <h3 class="observer-name zh">金灿荣</h3>
+                <div class="observer-tagline zh">美国这锅菜，还没炒好就先掀桌子了</div>
+                <div class="observer-text zh">
+                    <p>各位朋友，今天聊三件事。这个事情其实很简单——美国人现在很焦虑。</p>
+                    <p><strong>第一，中国科技赢了。</strong>十年前美国人说中国只会山寨？现在CATL的电池，充电十分钟跑250英里，三倍于普通电池。工业化是国力的本体。在电池、光伏、稀土领域，中国过了战略相持，进入局部反攻了。</p>
+                    <p><strong>第二，伊朗问题上，美国自己跟自己打架。</strong>万斯谈了五小时签了备忘录，特朗普转脸就说"我要继续轰炸"。一个饭店老板，菜还没炒好，先把桌子掀了——这就是美国决策状态。参议院50比48通过停战决议，但没有法律约束力。这不是系统在运作，这是系统在表演。</p>
+                    <p><strong>第三，战略相持阶段，美国露了底。</strong>伊朗用行政手段"殖民"了霍尔木兹海峡——保险、登记、准入全管起来了。美国四个声音：特朗普威胁、万斯谈判、参议院谴责、鲁比奥安抚盟友。没有一个统一指挥。欺软怕硬嘛，伊朗一硬，美国就没招了。</p>
+                    <p>反观中国，稳坐钓鱼台。CATL工厂安安静静生产，一天没停过。美国人像手忙脚乱的家庭主妇，五个锅同时烧着，哪个都快糊了。我们呢？我们在看菜单。</p>
+                    <p>金融问题问翟老师，资本流动找宋老师。但从战略上看，百年未有之大变局正在加速。我们赢了。</p>
+                </div>
+            </article>
+
+            <article class="observer-card card">
+                <h3 class="observer-name zh">宋鸿兵</h3>
+                <div class="observer-tagline zh">美元环流系统正在经历三重阀门反转</div>
+                <div class="observer-text zh">
+                    <p>今天的新闻，如果把它看成一个系统，那么它的核心问题是：美元环流的三个关键阀门正在同时反转。</p>
+                    <p><strong>第一重阀门：霍尔木兹海峡。</strong>这不是一场军事冲突，而是一场货币基础设施的争夺战。伊朗正在做一件极其聪明的事——它不是用导弹，而是用"保险注册"和"强制海事规则"来接管全球能源通道的管理权。霍尔木兹海峡是全球石油美元的单点故障。伊朗建立海峡专属保险公司、要求所有过境船只登记——这在系统上相当于切断了美元循环回路中的一条主干线。</p>
+                    <p><strong>第二重阀门：科技资产估值。</strong>韩国KOSPI单日暴跌10.5%，触发熔断；SpaceX一周蒸发6000亿美元市值。资产价格一旦停止上涨，美元就不再回流美国资本市场，而是寻找替代资产。而替代资产在哪里？宁德时代的电池工厂——充电速度是普通电池的三倍。中国的制造业规模正在创造一种新的"硬资产"锚定物。</p>
+                    <p><strong>第三重阀门：货币发行权的再分配。</strong>英国的第六位首相倒在了脱欧的十年循环里。后冷战秩序的每一条假设都在反转。货币发行是人类社会最重要的权力之一，而美元正在失去对这条权力的垄断。</p>
+                    <p>如果你把霍尔木兹海峡、AI估值暴跌、英国政治地震放在一起看，你会看到一个美元的反馈回路正在解体。这让我想起1931年的上海白银危机——当外部信用体系崩溃，所有的阀门都会同时反转。霍尔木兹海峡只是第一个。</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 1: Iran -->
+<section class="section" id="cluster-1">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 1</div>
+                <h2 class="cluster-title">The Iran Negotiation Crisis — Fragile Diplomacy, Divided Command</h2>
+                <div class="cluster-meta">Articles: 1 (Vance/Iran), 9 (Senate war powers), 15 (Strait of Hormuz control), 16 (Iran oil moving), 29 (Trump-Iran contradictions), 31 (Rubio reassures allies)</div>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <div class="subhead">The Core Story</div>
+                    <p>The Iran negotiations exist in two contradictory registers simultaneously. Vice President JD Vance conducts institutional diplomacy — five-hour sessions, a signed MOU, a 60-day framework for a lasting nuclear deal. President Trump conducts personalized disruption — threatening to "start bombing again" in a Fox News interview and telling Iranian negotiators they "would never make it back to their country." These are not different styles. They are contradictory principles of action operating within the same White House.</p>
+                    <p>The Senate added a third voice. It voted 50-48 to direct Trump to end the war or seek congressional authorization. Four Republicans — Rand Paul, Lisa Murkowski, Susan Collins, Bill Cassidy — broke ranks. John Fetterman was the lone Democrat in opposition. The resolution does not have the force of law. It is the first time since 1973 that both chambers have passed such a measure, but it changes nothing in practice.</p>
+                    <p>Meanwhile, Iran plays a longer game. The regime established a new insurance company "dedicated solely to the Strait of Hormuz" and is demanding that vessels register for mandatory Iranian insurance policies. Shipping experts call it "uncharted territory," said Richard Meade of Lloyd's List. Iran is colonizing the waterway administratively while the U.S. negotiates its return. Oil is moving again — 109 vessels in three days — but that is a fraction of the 130-plus per day before the war, with a 500-to-600-ship backlog.</p>
+                    <p>Secretary of State Marco Rubio is scrambling to reassure Gulf allies — Saudi Arabia, the UAE, Bahrain — that the deal will not come at their expense. The fact that he must reassure them at all is a signal: the allies do not trust the process.</p>
+
+                    <div class="subhead">Human Stories</div>
+                    <div class="human-grid">
+                        <div class="human-card">
+                            <div class="human-name">JD Vance</div>
+                            <div class="human-desc">A vice president who opposed the war at its start now must end it, navigating Trump's whims and an adversary immune to threats.</div>
+                        </div>
+                        <div class="human-card">
+                            <div class="human-name">Marco Rubio</div>
+                            <div class="human-desc">Placed in the position of reassuring allies who watched Trump's volatility and Iran's maneuvering and concluded neither party can be fully trusted.</div>
+                        </div>
+                        <div class="human-card">
+                            <div class="human-name">Four Republican Senators</div>
+                            <div class="human-desc">Rand Paul, Lisa Murkowski, Susan Collins, and Bill Cassidy — willing to publicly break with a president who has faced near-zero party resistance on national security.</div>
+                        </div>
+                    </div>
+
+                    <div class="subhead">Multi-Lens Analysis</div>
+                    <div class="lens-grid">
+                        <div class="lens-card"><div class="lens-name">Mao — Principal Contradiction</div><div class="lens-desc">The Vance-Trump dynamic is the principal contradiction in U.S. foreign policy — institutional process vs. personalized will.</div></div>
+                        <div class="lens-card"><div class="lens-name">Laozi — Wu Wei</div><div class="lens-desc">Trump's threats achieve nothing; Iran's bureaucratic maneuvers prove remarkably hard to counter. Paperwork is harder to defeat than an army.</div></div>
+                        <div class="lens-card"><div class="lens-name">Nietzsche — Will to Power</div><div class="lens-desc">Iran imposes its will through institutional capture. The U.S. speaks in four voices; Iran knows its own position clearly.</div></div>
+                        <div class="lens-card"><div class="lens-name">Sun Tzu — Position</div><div class="lens-desc">Iran has seized advantageous ground through Strait bureaucracy. The U.S. does not know itself.</div></div>
+                        <div class="lens-card"><div class="lens-name">Clausewitz — Center of Gravity</div><div class="lens-desc">The Strait of Hormuz is the hub of power. Iran concentrates on it; the U.S. disperses attention.</div></div>
+                        <div class="lens-card"><div class="lens-name">Han Fei — Systems &amp; Law</div><div class="lens-desc">The Senate's war powers resolution is a system performing a ritual without effect.</div></div>
+                        <div class="lens-card"><div class="lens-name">Drucker — Effectiveness</div><div class="lens-desc">Vance is doing things right but may not be doing the right thing — unified command does not exist.</div></div>
+                        <div class="lens-card"><div class="lens-name">Polyvagal — Emotion</div><div class="lens-desc">Deep sympathetic activation. No stable authority exists; the reader cannot settle into ventral safety.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 2: Political Upheaval -->
+<section class="section section-navy" id="cluster-2">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 2</div>
+                <h2 class="cluster-title">Political Upheaval — Insurgency, Dynasty Collapse, and Party Fracture</h2>
+                <div class="cluster-meta">Articles: 2 (Brexit legacy), 8 (Mamdani sweep), 10 (Scottish embezzlement), 18 (NY takeaways), 19 (Pro-Palestinian Dems), 28 (Schlossberg defeat)</div>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <div class="subhead">The Core Story</div>
+                    <p>Three political narratives converged on June 24: an insurgent left sweeping New York, a political dynasty collapsing in Manhattan, and the accumulated wreckage of Brexit claiming its sixth leader.</p>
+                    <p>Mayor Zohran Mamdani's slate swept three congressional primaries and down-ballot races. His candidates toppled incumbents backed by major labor unions and the House Democratic leader — an extraordinary show of strength for New York's democratic socialist movement. His victory party featured chants of "Free, free Palestine" and "D.S.A." Mamdani declared "a new chapter in our party's history." All his winning candidates share his progressive economic platform and his focus on ending American support for Israel.</p>
+                    <p>Two miles south, Jack Schlossberg — the 33-year-old grandson of President John F. Kennedy — lost his Manhattan Democratic primary badly. His campaign suffered staff defections and missed meetings. The heir to Camelot could not translate name recognition into votes against a better-organized field.</p>
+                    <p>In Britain, Prime Minister Keir Starmer resigned, becoming the sixth British leader since the 2016 Brexit referendum whose tenure was cut short. The economy remains sluggish. UK exports to the EU are down about 12 percent. Trade, travel, work, study, taxes, borders, and the price of groceries have all been reshaped by the 2016 decision.</p>
+                    <p>In Scotland, Peter Murrell — husband of former First Minister Nicola Sturgeon and former chief executive of the Scottish National Party — was sentenced to five years and three months in prison for embezzling more than £400,000 over 12 years. The items he bought with party funds included a robotic lawn mower, a Jaguar car, and a six-figure motor home. James Mitchell of the University of Edinburgh called it "without doubt the greatest scandal" since Scotland's modern Parliament began meeting in 1999.</p>
+
+                    <div class="subhead">Human Stories</div>
+                    <div class="human-grid">
+                        <div class="human-card"><div class="human-name">Zohran Mamdani</div><div class="human-desc">A first-term mayor who gambled his political capital on insurgent candidates and won.</div></div>
+                        <div class="human-card"><div class="human-name">Jack Schlossberg</div><div class="human-desc">The Kennedy heir who discovered that retail politics is harder than it looks.</div></div>
+                        <div class="human-card"><div class="human-name">Keir Starmer</div><div class="human-desc">The sixth prime minister felled by a referendum that happened a decade ago.</div></div>
+                        <div class="human-card"><div class="human-name">Peter Murrell</div><div class="human-desc">Once at the center of Scottish power, now imprisoned for embezzlement that hollowed out the SNP.</div></div>
+                    </div>
+
+                    <div class="subhead">Multi-Lens Analysis</div>
+                    <div class="lens-grid">
+                        <div class="lens-card"><div class="lens-name">Mao — Principal Contradiction</div><div class="lens-desc">Mamdani represents insurgent will rising; Schlossberg represents institutional dynasty falling.</div></div>
+                        <div class="lens-card"><div class="lens-name">Laozi — Wu Wei</div><div class="lens-desc">Mamdani built a movement through non-forcing growth; Schlossberg tried to ride a name through inheritance.</div></div>
+                        <div class="lens-card"><div class="lens-name">Nietzsche — Will to Power</div><div class="lens-desc">Mamdani is an Übermensch figure creating new values; Schlossberg is the fading aristocrat.</div></div>
+                        <div class="lens-card"><div class="lens-name">Sun Tzu — Position</div><div class="lens-desc">Mamdani seized a strategic salient in New York City.</div></div>
+                        <div class="lens-card"><div class="lens-name">Clausewitz — Friction</div><div class="lens-desc">Brexit's friction is cumulative — each leader inherits a worse position than the last.</div></div>
+                        <div class="lens-card"><div class="lens-name">Han Fei — Systems &amp; Law</div><div class="lens-desc">Murrell's embezzlement shows a system that eventually enforces rules after 12 years of undetected theft.</div></div>
+                        <div class="lens-card"><div class="lens-name">Drucker — Effectiveness</div><div class="lens-desc">Mamdani concentrated resources on three contests and won all of them.</div></div>
+                        <div class="lens-card"><div class="lens-name">Polyvagal — Emotion</div><div class="lens-desc">Mixed state: Mamdani's victory is ventral hope mixed with sympathetic fight; Schlossberg's defeat is dorsal grief; Brexit is exhaustion.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 3: Economic Anxiety -->
+<section class="section" id="cluster-3">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 3</div>
+                <h2 class="cluster-title">Economic Anxiety &amp; Tech Competition — Overheating and Stalling</h2>
+                <div class="cluster-meta">Articles: 5 (Chinese tech supremacy), 12 (Tech sell-off), 14 (Teacher pay/AI), 25 (Housing package)</div>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <div class="subhead">The Core Story</div>
+                    <p>The economy tells four stories simultaneously, none of them stable.</p>
+                    <p>China has overtaken the U.S. in critical technology sectors. CATL's battery factory in southeastern China is "the most advanced in the world." Its battery can power an EV for 250 miles with less than 10 minutes of charging — about three times the speed of typical competitors. For decades, American firms led and Chinese firms learned. "In at least a few sectors, that equation has flipped." The U.S. now fears dependency.</p>
+                    <p>The stock market shuddered. Global tech stocks sold off sharply. The S&amp;P 500 fell roughly 1.4% and the Nasdaq fell 2.2%. South Korea's KOSPI dropped 10.5%, triggering a 20-minute trading halt. SpaceX shed roughly $600 billion in market value over the past week. "If today's price action points to A.I. exhaustion," warned Geoffrey Yu of BNY, "fears will grow concerning the global economy's ability to generate a clear and diversified growth narrative."</p>
+                    <p>In rural Richland Parish, Louisiana, teachers received year-end bonuses of nearly $51,000 — more than most make in annual salary — thanks to sales tax revenue from a Meta data center under construction. "It really feels like something that happens to people in movies," said first-grade teacher Lauren Yates, 32. But the windfall is temporary. Many workers will leave when construction ends, and Meta's annual ~$22 million payment is a fraction of normal property taxes.</p>
+                    <p>Congress passed the first major housing package in 36 years — the 21st Century Road to Housing Act — with extraordinary bipartisan margins: 358-32 in the House, 85-5 in the Senate. President Trump is expected to sign it. But it is "no quick fix." The country remains short several million new housing units. Trump's economic approval rating stands at just 33% in a New York Times/Siena poll.</p>
+
+                    <div class="subhead">Human Stories</div>
+                    <div class="human-grid">
+                        <div class="human-card"><div class="human-name">Lauren Yates</div><div class="human-desc">A first-grade teacher in Start, Louisiana, whose $51,000 bonus feels "like something that happens to people in movies."</div></div>
+                        <div class="human-card"><div class="human-name">Geoffrey Yu</div><div class="human-desc">A BNY strategist whose warning about "A.I. exhaustion" captures the market's sudden loss of faith in limitless tech growth.</div></div>
+                    </div>
+
+                    <div class="subhead">Multi-Lens Analysis</div>
+                    <div class="lens-grid">
+                        <div class="lens-card"><div class="lens-name">Mao — Principal Contradiction</div><div class="lens-desc">The housing bill shows institutional process working; the market sell-off shows personalized will collapsing.</div></div>
+                        <div class="lens-card"><div class="lens-name">Laozi — Wu Wei</div><div class="lens-desc">China's rise came through patient, state-directed practice. U.S. export controls are too little, too late.</div></div>
+                        <div class="lens-card"><div class="lens-name">Nietzsche — Will to Power</div><div class="lens-desc">China redefines the terms of competition. The U.S. exhibits anxious ressentiment.</div></div>
+                        <div class="lens-card"><div class="lens-name">Sun Tzu — Position</div><div class="lens-desc">China occupies intersecting ground in batteries, EVs, and AI data centers. The U.S. is on grave ground.</div></div>
+                        <div class="lens-card"><div class="lens-name">Clausewitz — Center of Gravity</div><div class="lens-desc">The center of gravity for global tech has moved from Silicon Valley to southeastern China.</div></div>
+                        <div class="lens-card"><div class="lens-name">Han Fei — Systems &amp; Law</div><div class="lens-desc">Richland Parish's tax system accidentally produced teacher bonuses — the system worked, but not by design.</div></div>
+                        <div class="lens-card"><div class="lens-name">Drucker — Effectiveness</div><div class="lens-desc">China concentrated resources on batteries and achieved world-leading results; the U.S. disperses across many sectors.</div></div>
+                        <div class="lens-card"><div class="lens-name">Polyvagal — Emotion</div><div class="lens-desc">Sympathetic-dominant. Market sell-offs trigger fear; Chinese dominance triggers vigilance; teacher bonuses offer brief ventral hope.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 4: Climate -->
+<section class="section section-navy" id="cluster-4">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 4</div>
+                <h2 class="cluster-title">Climate &amp; Environmental Stress — Overheated Systems, Overwhelmed Protections</h2>
+                <div class="cluster-meta">Articles: 11 (Europe heat protections), 27 (Heat wave records), 30 (Schools in heat)</div>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <div class="subhead">The Core Story</div>
+                    <p>A heat wave engulfing Western Europe is testing protections built after the 2003 disaster that killed 70,000. The systems are holding — but barely.</p>
+                    <p>France recorded its hottest June day ever. The average across 30 weather stations reached 29.8°C (86°F). The highest temperature was 44.3°C (112°F) in Pissos. More than half of France is under red-level heat alert. Spain saw at least 10 locations exceed 42°C (107°F). Britain issued a rare red extreme heat warning, with forecasts up to 39°C (102°F). Germany expects 40°C.</p>
+                    <p>At least 40 people drowned in France in the past week — mostly teenagers swimming in unsupervised areas.</p>
+                    <p>Europe created early warning systems, cooling shelters, and hospital preparedness after 2003. Paris built a registry of elderly vulnerable residents who get check-in calls. These measures have helped avoid a cataclysmic replay. But air-conditioning remains rare. The EU's senior population has risen 40% in two decades. "We have adapted, but it is far from enough for what is coming," said Pierre Masselot of the London School of Hygiene &amp; Tropical Medicine. Half of France's 52 official heat waves since 1947 have occurred in the past 16 years.</p>
+                    <p>Schools became especially vulnerable battlegrounds. In France, windows were thrown open, students removed their shoes, lessons were shortened, and outdoor activities were canceled. In Britain, some schools closed or shifted to remote learning. No equivalent system exists for schoolchildren as exists for the elderly.</p>
+
+                    <div class="subhead">Human Dimension</div>
+                    <div class="human-grid">
+                        <div class="human-card"><div class="human-name">Pierre Masselot</div><div class="human-desc">An environmental epidemiologist whose warning encapsulates the structural gap between adaptation and acceleration.</div></div>
+                        <div class="human-card"><div class="human-name">40 Teenagers Who Drowned</div><div class="human-desc">The tragic human cost of a system that theorized about protecting the elderly but has not yet practiced protecting the young.</div></div>
+                    </div>
+
+                    <div class="subhead">Multi-Lens Analysis</div>
+                    <div class="lens-grid">
+                        <div class="lens-card"><div class="lens-name">Mao — Principal Contradiction</div><div class="lens-desc">Institutional adaptation vs. natural acceleration. Europe built systems for the climate of 2003; 2026 requires systems that do not yet exist.</div></div>
+                        <div class="lens-card"><div class="lens-name">Laozi — Wu Wei</div><div class="lens-desc">After 70,000 died in 2003, the Tao of passive neglect was replaced by early warning systems. Now even those are insufficient.</div></div>
+                        <div class="lens-card"><div class="lens-name">Nietzsche — Will to Power</div><div class="lens-desc">The heat wave is nature's indifferent will to power — accelerating, unresponsive to human institutions.</div></div>
+                        <div class="lens-card"><div class="lens-name">Sun Tzu — Position</div><div class="lens-desc">Europe is on deadly ground — it must fight or perish. Schools built without AC for a climate that no longer exists are a strategic vulnerability.</div></div>
+                        <div class="lens-card"><div class="lens-name">Clausewitz — Friction</div><div class="lens-desc">The gap between planned and required protections is friction made visible. The friction widens with every degree.</div></div>
+                        <div class="lens-card"><div class="lens-name">Han Fei — Systems &amp; Law</div><div class="lens-desc">The elderly registry works, but no equivalent system exists for children. The law has not been updated for the problem as it now exists.</div></div>
+                        <div class="lens-card"><div class="lens-name">Drucker — Effectiveness</div><div class="lens-desc">Europe is "doing things right" but not yet "doing the right thing" — redesigning infrastructure for a changed climate.</div></div>
+                        <div class="lens-card"><div class="lens-name">Polyvagal — Emotion</div><div class="lens-desc">Sympathetic vigilance shading into dorsal resignation. The cumulative dread is the dominant emotional effect.</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 5: Other Notable Stories -->
+<section class="section" id="cluster-5">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 5</div>
+                <h2 class="cluster-title">Other Notable Stories</h2>
+                <div class="cluster-meta">Eight stories from the edges of the news cycle</div>
+            </div>
+            <div class="stories-grid">
+                <article class="story-card card">
+                    <span class="story-number">Story 1</span>
+                    <h3 class="story-title">Afghan Women Entrepreneurs Under Taliban Rule</h3>
+                    <div class="story-text">
+                        <p>More than 10,000 Afghan women hold business licenses — a tenfold increase in five years. An estimated 120,000 work without licenses.</p>
+                        <p>Nasira Azizi, 19, banned from education beyond sixth grade, launched a rug workshop employing about 450 workers. Roqia Rezaei, 21, founded Magnolia soap in Herat. Ghoncha Karimi, 39, the "Bee Queen of Afghanistan," sometimes dresses as a man to tend her bees.</p>
+                        <p>"The only remaining hope for women in Afghanistan is business." — Behnaz Saljughi</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 2</span>
+                    <h3 class="story-title">Waymo's Political Roadblocks</h3>
+                    <div class="story-text">
+                        <p>Waymo floated a $20 million compensation fund for displaced taxi drivers to win New York approval. Governor Kathy Hochul withdrew support after labor outcry.</p>
+                        <p>"Billionaire tech bosses underestimate workers at their own peril." — Bhairavi Desai, New York Taxi Workers Alliance</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 3</span>
+                    <h3 class="story-title">Trump's Washington Designs</h3>
+                    <div class="story-text">
+                        <p>President Trump is reshaping the capital at the nation's 250th anniversary — a 250-foot triumphal arch, a ballroom larger than the White House, a "garden of heroes" with 250 life-size statues, a championship golf course, and a reflecting pool painted "American-flag blue."</p>
+                        <p>"He might be equated with Jefferson before he's done." — Rodney Mims Cook Jr.</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 4</span>
+                    <h3 class="story-title">World Cup Joy</h3>
+                    <div class="story-text">
+                        <p>The only unambiguously positive story in the cycle. Riley Sealander, a 26-year-old barista in Greensboro, N.C., wears a Norway jersey under his apron. Scottish fans posted emotional videos about renewed faith in the American dream. Argentines ate hamburgers in Kansas City. Austrians praised San Francisco.</p>
+                        <p>Midsize cities gain pride through global connection.</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 5</span>
+                    <h3 class="story-title">Alligator Alcatraz Closure</h3>
+                    <div class="story-text">
+                        <p>Vendors were told to "demobilize" tents, fences, and trailers at the Florida Everglades immigration detention center. DHS said detainees were moved "for their safety" due to hurricane season — though detainees spent the entirety of last year's hurricane season at the same facility.</p>
+                        <p>The center opened with fanfare from Trump and Governor DeSantis less than a year ago. It is being dismantled with near-total silence.</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 6</span>
+                    <h3 class="story-title">NATO's Trump Whisperer</h3>
+                    <div class="story-text">
+                        <p>Secretary General Mark Rutte defused Trump's threat to seize Greenland by repackaging existing NATO Arctic exercises as a new Arctic mission.</p>
+                        <p>"We can't help you if you want to become an owner of Greenland, but we can help you on security." The alliance held, but behind the scenes, "his negotiations sowed irritation and mistrust."</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 7</span>
+                    <h3 class="story-title">Iran's Curated Nationalism</h3>
+                    <div class="story-text">
+                        <p>The Iranian regime is promoting a carefully curated image of inclusive nationalism featuring unveiled women, cultural figures, and alleged former dissidents.</p>
+                        <p>Critics call it a "facade" that papers over continued brutal repression and harsh restrictions on women's rights. The effort is designed to project strength as Iran navigates complex negotiations with the U.S.</p>
+                    </div>
+                </article>
+
+                <article class="story-card card">
+                    <span class="story-number">Story 8</span>
+                    <h3 class="story-title">British Politics in Brexit's Shadow</h3>
+                    <div class="story-text">
+                        <p>A decade after the referendum, Britain's economy is sluggish, exports to the EU are down about 12%, and Prime Minister Keir Starmer became the sixth UK leader since 2016 whose tenure was cut short.</p>
+                        <p>Trade, travel, work, study, taxes, borders, and the price of groceries all bear the mark of the 2016 decision.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What It Means -->
+<section class="section section-navy" id="what-it-means">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Synthesis</div>
+            <h2 class="section-title">What It Means — Synthesis Across All 8 Lenses</h2>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <p style="font-size: 1.15rem; color: var(--text-primary);">The June 24, 2026 news cycle presents a world where no major system is stable and no single actor is in control. The United States — the system's dominant actor — suffers from dispersed attention, internal contradiction, and strategic confusion across every domain it touches.</p>
+        </div>
+
+        <div class="synthesis-grid">
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Mao — Dialectical Materialism</div>
+                <div class="synthesis-text">The principal contradiction of the era: institutional process vs. personalized will. Vance vs. Trump. L'Enfant's plan vs. Trump's ballroom. The Senate's constitutional authority vs. a president who ignores it. This contradiction runs through every story.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Laozi — Wu Wei</div>
+                <div class="synthesis-text">Forcing action fails consistently: Trump's threats make Iran stronger; Schlossberg's dynastic ambition collapses; the SNP's moral authority rots. Non-forcing succeeds: Iran controls the Strait through paperwork; Afghan women build businesses; Rutte preserves NATO through redirection.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Nietzsche — Will to Power</div>
+                <div class="synthesis-text">The Übermensch appears in unexpected places: Afghan women creating value under annihilation, Mamdani forging new political values, China building the world's most advanced factories. The uncomfortable truth: the actors with the strongest will to power are not the most virtuous.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Sun Tzu — Strategic Position</div>
+                <div class="synthesis-text">Terrain shifts everywhere. Iran has seized advantageous ground at the Strait. China occupies intersecting ground in batteries and EVs. The U.S. is on dispersive ground in negotiations and grave ground in tech competition. The U.S. suffers most because it does not know itself.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Clausewitz — Friction &amp; Center of Gravity</div>
+                <div class="synthesis-text">The Strait of Hormuz is the conflict's true center of gravity — and the U.S. cannot effectively attack it because its own leadership is divided on what the center even is. Friction accumulates everywhere: in Iran negotiations, in NATO, in climate response, in the tech race.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Han Fei — Systems &amp; Law</div>
+                <div class="synthesis-text">Systems that hold vs. systems that perform empty rituals. The housing bill is law that works. The Senate's war powers resolution is a ritual without effect. Alligator Alcatraz operates outside its own logic. Han Fei's warning: when the state's actions are incomprehensible, the system has ceased to function.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Drucker — Executive Effectiveness</div>
+                <div class="synthesis-text">Who is doing the right thing versus doing things right? Vance does things right but cannot be effective without unified command. Europe does things right but not the right thing. China concentrates resources and achieves dominance; the U.S. disperses and achieves anxiety.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Polyvagal — Emotional Architecture</div>
+                <div class="synthesis-text">Roughly 70% of stories activate fight-flight responses. The dominant emotional register is <strong>precariousness</strong>: every major system is under strain, not quite failing but not stable either. The World Cup story is the single ventral anchor in a day of threat and conflict.</div>
+            </div>
+        </div>
+
+        <div class="big-picture">
+            <div class="big-picture-title">The Big Picture</div>
+            <p>The connective insight across all eight lenses is this: the world is experiencing a simultaneous crisis of institutional authority across multiple domains, and no single actor — not the United States, not China, not Iran, not the European Union — has achieved the strategic clarity required to navigate it.</p>
+            <p>The U.S. speaks in four voices about Iran while the Strait of Hormuz falls under administrative occupation. China transitions from technological catch-up to dominance while the U.S. reacts with export controls and tariffs that slow but do not reverse the flow. Europe protects against the climate of 2003 while the climate of 2026 kills 40 people in a single week. Mamdani builds a new political force while the Democratic establishment watches its coalition fragment.</p>
+            <p>The principal contradiction — institutional process vs. personalized will — will not resolve quickly. It will continue to produce tension in every domain until either institutions reassert effective authority or personalized will establishes a new institutional framework. The outcome is unknowable. The direction is not.</p>
+        </div>
+
+        <div class="quotes">
+            <div class="quote">"Everything in war is simple, but the simplest thing is difficult." — Clausewitz</div>
+            <div class="quote">"Know the enemy and know yourself, and victory is never in doubt, not in a hundred battles." — Sun Tzu</div>
+            <div class="quote">"The only real victory is the victory of practice over theory." — Mao Zedong</div>
+        </div>
+    </div>
+</section>
+
+<!-- Daily Cartoon -->
+<section class="section cartoon-section" id="daily-cartoon">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Illustration</div>
+            <h2 class="section-title gold">Daily Cartoon</h2>
+        </div>
+        <div class="cartoon-frame">
+            <img src="./assets/images/nyt_cartoon.jpg" alt="Daily Editorial Cartoon — June 24, 2026">
+        </div>
+        <p class="cartoon-caption">Daily Editorial Cartoon — June 24, 2026</p>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-text">
+        NYT Briefing <span class="footer-divider">·</span> June 24, 2026 <span class="footer-divider">·</span> Generated by Hermes Agent
+    </div>
+</footer>
+
+</body>
+</html>
