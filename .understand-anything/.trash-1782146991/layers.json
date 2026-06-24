@@ -1,0 +1,140 @@
+[
+  {
+    "id": "layer:documentation",
+    "name": "Documentation",
+    "description": "Project documentation files including README and requirements",
+    "nodeIds": [
+      "document:README.md",
+      "document:REQUIREMENTS.md"
+    ]
+  },
+  {
+    "id": "layer:web-frontend",
+    "name": "Web Frontend",
+    "description": "Main HTML pages, styles, and archive for the briefing website",
+    "nodeIds": [
+      "file:archive.html",
+      "file:index.html",
+      "file:style.css"
+    ]
+  },
+  {
+    "id": "layer:briefing-pages",
+    "name": "Briefing Pages",
+    "description": "Daily NYT and WSJ briefing HTML pages with observer commentary",
+    "nodeIds": [
+      "file:briefings/gallery.html",
+      "file:briefings/nyt_2026-06-04.html",
+      "file:briefings/nyt_2026-06-05.html",
+      "file:briefings/nyt_2026-06-06.html",
+      "file:briefings/nyt_2026-06-07.html",
+      "file:briefings/nyt_2026-06-08.html",
+      "file:briefings/nyt_2026-06-09.html",
+      "file:briefings/nyt_2026-06-10.html",
+      "file:briefings/nyt_2026-06-11.html",
+      "file:briefings/nyt_2026-06-12.html",
+      "file:briefings/nyt_2026-06-13.html",
+      "file:briefings/nyt_2026-06-14.html",
+      "file:briefings/nyt_2026-06-15.html",
+      "file:briefings/nyt_2026-06-16.html",
+      "file:briefings/nyt_2026-06-17.html",
+      "file:briefings/nyt_2026-06-18.html",
+      "file:briefings/nyt_2026-06-19.html",
+      "file:briefings/nyt_2026-06-21.html",
+      "file:briefings/nyt_2026-06-22.html",
+      "file:briefings/wsj_2026-06-07.html",
+      "file:briefings/wsj_2026-06-08.html",
+      "file:briefings/wsj_2026-06-09.html",
+      "file:briefings/wsj_2026-06-10.html",
+      "file:briefings/wsj_2026-06-11.html",
+      "file:briefings/wsj_2026-06-12.html",
+      "file:briefings/wsj_2026-06-13.html",
+      "file:briefings/wsj_2026-06-15.html",
+      "file:briefings/wsj_2026-06-16.html",
+      "file:briefings/wsj_2026-06-17.html",
+      "file:briefings/wsj_2026-06-18.html",
+      "file:briefings/wsj_2026-06-19.html",
+      "file:briefings/wsj_2026-06-21.html",
+      "file:briefings/wsj_2026-06-22.html"
+    ]
+  },
+  {
+    "id": "layer:assets",
+    "name": "Bundled Assets",
+    "description": "Auto-generated CSS and JavaScript assets from Kimi web integration",
+    "nodeIds": [
+      "file:briefings/assets/index-BLKeZuY7.css",
+      "file:briefings/assets/index-BQEknNIh.css",
+      "file:briefings/assets/index-BaKF91cf.css",
+      "file:briefings/assets/index-BavH-IQc.css",
+      "file:briefings/assets/index-C1fFgFBf.css",
+      "file:briefings/assets/index-CAhUiIVZ.css",
+      "file:briefings/assets/index-CD6x4bSu.css",
+      "file:briefings/assets/index-D_rC8OMO.css",
+      "file:briefings/assets/index-DnGA641s.css",
+      "file:briefings/assets/index-DymaOaEY.css",
+      "file:briefings/assets/index-IHnN5M64.css",
+      "file:briefings/assets/index-MhNm8dzV.css",
+      "file:briefings/assets/index-ob4TXiS4.css",
+      "file:briefings/assets/index-uZ4_Rrpx.css",
+      "file:briefings/assets/index-y74eMlZk.css",
+      "file:briefings/assets/index-B7QnFapy.js",
+      "file:briefings/assets/index-BCAAm0vL.js",
+      "file:briefings/assets/index-BkaggUKK.js",
+      "file:briefings/assets/index-BMAzdbAe.js",
+      "file:briefings/assets/index-BN0rYByS.js",
+      "file:briefings/assets/index-C-Z0inli.js",
+      "file:briefings/assets/index-CrDxPNo2.js",
+      "file:briefings/assets/index-CtVMf-Mu.js",
+      "file:briefings/assets/index-Cu7y5OTe.js",
+      "file:briefings/assets/index-CuFudCbM.js",
+      "file:briefings/assets/index-DgTG6Exq.js",
+      "file:briefings/assets/index-DJNigZ9b.js",
+      "file:briefings/assets/index-DQkAxoPd.js",
+      "file:briefings/assets/index-DwiaFw4y.js",
+      "file:briefings/assets/index-KL5agRJB.js",
+      "file:briefings/assets/sdk-seed.js"
+    ]
+  },
+  {
+    "id": "layer:scripts",
+    "name": "Python Scripts",
+    "description": "Server and automation scripts for building and serving briefings",
+    "nodeIds": [
+      "file:scripts/build_combined.py",
+      "file:scripts/daily_update.py",
+      "file:scripts/generate_nyt_2026_06_12.py",
+      "file:scripts/update_index.py",
+      "file:serve.py"
+    ]
+  },
+  {
+    "id": "layer:data-config",
+    "name": "Data & Configuration",
+    "description": "JSON data files for reports index and observer configuration",
+    "nodeIds": [
+      "config:reports_index.json",
+      "config:data/observers.json",
+      "config:data/reports_index.json"
+    ]
+  },
+  {
+    "id": "layer:demos",
+    "name": "Demo Pages",
+    "description": "Sample/demo HTML pages and their assets",
+    "nodeIds": [
+      "file:demo/assets/index-C0yImpgo.css",
+      "file:demo/assets/index-CRlGGo-N.js",
+      "file:demo/index.html"
+    ]
+  },
+  {
+    "id": "layer:miscellaneous",
+    "name": "Miscellaneous",
+    "description": "Other project files not fitting other layers",
+    "nodeIds": [
+      "file:.understand-anything/.understandignore",
+      "file:images/.gitkeep"
+    ]
+  }
+]

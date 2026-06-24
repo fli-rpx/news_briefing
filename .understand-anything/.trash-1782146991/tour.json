@@ -1,0 +1,85 @@
+[
+  {
+    "order": 1,
+    "title": "Project Overview",
+    "description": "MorningBriefing is a daily news briefing system that tracks NYT and WSJ articles with Chinese observer commentary. Start here to understand the project's purpose and structure.",
+    "nodeIds": [
+      "document:README.md"
+    ]
+  },
+  {
+    "order": 2,
+    "title": "Requirements & Architecture",
+    "description": "Review the detailed requirements document that outlines the full architecture, including the three-observer analysis system, PDF management, and deployment considerations.",
+    "nodeIds": [
+      "document:REQUIREMENTS.md"
+    ]
+  },
+  {
+    "order": 3,
+    "title": "Web Server Entry Point",
+    "description": "The Python HTTP server that serves the briefing website, mounting external PDF directories under /reports/ for browser access.",
+    "nodeIds": [
+      "file:serve.py"
+    ]
+  },
+  {
+    "order": 4,
+    "title": "Main Website Pages",
+    "description": "The main index.html provides today's NYT and WSJ links with three observer analysis sections. archive.html allows browsing past briefings by date.",
+    "nodeIds": [
+      "file:index.html",
+      "file:archive.html"
+    ]
+  },
+  {
+    "order": 5,
+    "title": "Styling System",
+    "description": "Dark-themed CSS stylesheet that defines the visual presentation of the briefing website, including observer analysis sections and PDF link formatting.",
+    "nodeIds": [
+      "file:style.css"
+    ]
+  },
+  {
+    "order": 6,
+    "title": "Daily Update Automation",
+    "description": "The main automation script that generates daily NYT and WSJ briefing pages with observer commentary sections. This is the core content pipeline.",
+    "nodeIds": [
+      "file:scripts/daily_update.py"
+    ]
+  },
+  {
+    "order": 7,
+    "title": "Combined HTML Builder",
+    "description": "Builds a combined NYT + WSJ HTML page from the latest source files for consolidated reading.",
+    "nodeIds": [
+      "file:scripts/build_combined.py"
+    ]
+  },
+  {
+    "order": 8,
+    "title": "Index Management",
+    "description": "CLI tools for updating the reports index JSON and generating sample briefing content.",
+    "nodeIds": [
+      "file:scripts/update_index.py",
+      "file:scripts/generate_nyt_2026_06_12.py"
+    ]
+  },
+  {
+    "order": 9,
+    "title": "Data Layer",
+    "description": "JSON indices that track all briefing entries by date and source, plus the observer configuration data.",
+    "nodeIds": [
+      "config:data/reports_index.json",
+      "config:data/observers.json"
+    ]
+  },
+  {
+    "order": 10,
+    "title": "Briefing Gallery",
+    "description": "A gallery-style HTML page that displays all available briefing entries with visual navigation.",
+    "nodeIds": [
+      "file:briefings/gallery.html"
+    ]
+  }
+]
