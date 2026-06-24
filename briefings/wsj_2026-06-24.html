@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSJ Daily Briefing — June 24, 2026</title>
+    <style>
+        :root {
+            --bg: #0a0a0f;
+            --card: #1a1a2e;
+            --card-hover: #20203a;
+            --text: #ffffff;
+            --muted: #a0a0b0;
+            --accent: #00ff88;
+            --accent-dim: rgba(0, 255, 136, 0.15);
+            --border: rgba(0, 255, 136, 0.25);
+            --radius: 16px;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            line-height: 1.7;
+            font-size: 17px;
+        }
+
+        .zh {
+            font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 72vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat;
+            isolation: isolate;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.75) 70%, var(--bg) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .hero-kicker {
+            color: var(--accent);
+            font-weight: 700;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.6rem, 7vw, 5rem);
+            font-weight: 800;
+            margin: 0 0 0.5rem;
+            line-height: 1.05;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-date {
+            color: var(--accent);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.4vw, 1.45rem);
+            color: #e0e0ea;
+            max-width: 720px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(1100px, 92vw);
+            margin: 0 auto;
+            padding: 3rem 0 5rem;
+        }
+
+        section {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header {
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 700;
+        }
+
+        .section-header p {
+            margin: 0.35rem 0 0;
+            color: var(--muted);
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .exec-summary {
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .exec-summary p {
+            margin: 0 0 1rem;
+        }
+
+        .snapshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .snapshot-item {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .snapshot-item:hover {
+            transform: translateY(-3px);
+            background: var(--card-hover);
+        }
+
+        .snapshot-label {
+            color: var(--muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+
+        .snapshot-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .snapshot-context {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-top: 0.35rem;
+        }
+
+        .cluster {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 2rem 2.25rem;
+            margin-bottom: 1.75rem;
+            box-shadow: var(--shadow);
+        }
+
+        .cluster-header {
+            margin-bottom: 1rem;
+        }
+
+        .cluster-num {
+            display: inline-block;
+            background: var(--accent-dim);
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            margin-bottom: 0.5rem;
+        }
+
+        .cluster-title {
+            margin: 0;
+            font-size: 1.55rem;
+            font-weight: 700;
+        }
+
+        .cluster-tldr {
+            background: rgba(0, 255, 136, 0.08);
+            border-left: 3px solid var(--accent);
+            padding: 1rem 1.25rem;
+            border-radius: 0 12px 12px 0;
+            margin: 0 0 1.5rem;
+            color: #e8fff3;
+        }
+
+        .cluster-body p {
+            margin: 0 0 1.1rem;
+        }
+
+        .cluster-body h3 {
+            margin: 1.75rem 0 0.75rem;
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .cluster-body h3:first-child {
+            margin-top: 0;
+        }
+
+        blockquote {
+            margin: 1.25rem 0;
+            padding: 1rem 1.5rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            color: #d0d0e0;
+            font-style: italic;
+        }
+
+        .prob-table-wrapper {
+            overflow-x: auto;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card);
+        }
+
+        th, td {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            vertical-align: top;
+        }
+
+        th {
+            background: rgba(0, 255, 136, 0.12);
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .prob-id {
+            font-weight: 800;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .probability {
+            font-weight: 800;
+            color: var(--accent);
+            white-space: nowrap;
+        }
+
+        .observer-grid {
+            display: grid;
+            gap: 1.75rem;
+        }
+
+        .observer-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.75rem 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .observer-header {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .observer-name {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--accent);
+        }
+
+        .observer-title {
+            margin: 0.3rem 0 0;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .observer-body {
+            font-size: 1.05rem;
+            line-height: 1.85;
+        }
+
+        .observer-body p {
+            margin: 0 0 1rem;
+            text-align: justify;
+        }
+
+        .observer-body strong {
+            color: var(--accent);
+        }
+
+        .cartoon-section {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .cartoon-section img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .cartoon-caption {
+            padding: 1.25rem 1.5rem;
+            background: var(--card);
+            color: var(--muted);
+            font-size: 0.95rem;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin-top: 2rem;
+        }
+
+        footer .accent {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .hero {
+                min-height: 60vh;
+            }
+
+            .container {
+                padding: 2rem 0 3rem;
+            }
+
+            .card, .cluster, .observer-card {
+                padding: 1.25rem 1.35rem;
+            }
+
+            th, td {
+                padding: 0.85rem 0.75rem;
+                font-size: 0.9rem;
+            }
+
+            .snapshot-value {
+                font-size: 1.65rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.45rem;
+            }
+
+            .cluster-title {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-content">
+        <p class="hero-kicker">WSJ Daily Briefing</p>
+        <h1>Phase One, Fractured Markets</h1>
+        <p class="hero-date">June 24, 2026</p>
+        <p class="hero-subtitle">The Iran interim deal reshapes Middle East geopolitics as a deepening AI-led tech rout tests market confidence. Oil slides on supply hopes, the yen hits 40-year lows, and the Great AI Reckoning arrives at G-7.</p>
+    </div>
+</header>
+
+<main class="container">
+
+    <section aria-labelledby="exec-summary">
+        <div class="section-header">
+            <h2 id="exec-summary">Executive Summary</h2>
+            <p>Today's key themes at a glance</p>
+        </div>
+        <div class="card exec-summary">
+            <p>The U.S.-Iran interim agreement lifts sanctions on Iranian oil sales in dollars, reopens the Strait of Hormuz, and trades sanctions relief for IAEA inspector access — but leaves Iran's militias and missile arsenal untouched, drawing criticism from all sides.</p>
+            <p>Markets are in the grip of an AI-led tech rout: the Nasdaq fell over 2%, Micron dropped ~13%, and South Korea's KOSPI plunged 10%. The selloff has revived "Nifty Fifty" comparisons as investors question whether massive AI capex will ever generate sufficient returns.</p>
+            <p>Brent crude fell to $71–$72, its lowest since the conflict began, as the Hormuz reopening and Iranian supply resumption shift the oil center of gravity. The Japanese yen weakened to 161.61 — a 40-year low.</p>
+            <p>At the G-7 summit, Trump negotiates with Anthropic over AI model access while Satya Nadella warns the industry must "earn society's permission." Meanwhile, U.S.-China trade has plunged to its lowest proportion since 2001, and the WSJ Editorial Board publishes three competing frameworks on the Iran deal.</p>
+        </div>
+    </section>
+
+    <section aria-labelledby="markets-snapshot">
+        <div class="section-header">
+            <h2 id="markets-snapshot">Markets Snapshot</h2>
+            <p>Key levels and rates driving today's narrative</p>
+        </div>
+        <div class="snapshot-grid">
+            <div class="snapshot-item">
+                <div class="snapshot-label">Nasdaq Composite</div>
+                <div class="snapshot-value">-2%+</div>
+                <div class="snapshot-context">Deepening AI-led tech rout; Micron -13%</div>
+            </div>
+            <div class="snapshot-item">
+                <div class="snapshot-label">Brent Crude</div>
+                <div class="snapshot-value">$71–$72</div>
+                <div class="snapshot-context">Lowest since conflict began; Hormuz easing</div>
+            </div>
+            <div class="snapshot-item">
+                <div class="snapshot-label">USD/JPY</div>
+                <div class="snapshot-value">161.61</div>
+                <div class="snapshot-context">40-year low; BOJ rate differential squeeze</div>
+            </div>
+            <div class="snapshot-item">
+                <div class="snapshot-label">KOSPI</div>
+                <div class="snapshot-value">-10%</div>
+                <div class="snapshot-context">Worst day in years; Samsung heavy drag</div>
+            </div>
+        </div>
+    </section>
+
+    <section aria-labelledby="story-clusters">
+        <div class="section-header">
+            <h2 id="story-clusters">Story Clusters</h2>
+            <p>Four lenses on the day's developments</p>
+        </div>
+        
+        <section class="cluster" id="cluster-1">
+            <header class="cluster-header">
+                <span class="cluster-num">Cluster 1</span>
+                <h2 class="cluster-title">Geopolitics &amp; Defense</h2>
+            </header>
+            <p class="cluster-tldr"><strong>tl;dr:</strong> The U.S.-Iran interim agreement lifts sanctions on Iranian oil sales in dollars, reopens the Strait of Hormuz, and trades sanctions relief for IAEA inspector access — but leaves militias and missiles untouched. Europe sees tentative economic relief from peace hopes. Russia pressures Belarus to open a northern front in Ukraine. A North Korean soldier makes a rare DMZ crossing into the South.</p>
+            <div class="cluster-body">
+                <h3>Iran Deal: Phase One Achieved, Strategic Questions Remain</h3>
+                <p>The interim U.S.-Iran agreement has reshaped the Middle East's strategic landscape, but analysts warn that the deal leaves fundamental security concerns unaddressed. President Trump's pact lifts the U.S. blockade on Iranian ports, clears Tehran to sell crude in dollars (reversing a 2018 ban), and reopens the Strait of Hormuz for shipping. Yet according to reporting by Jared Malsin, the agreement "makes no demands on Tehran over its militias or huge arsenal of missiles."</p>
+                <p>Iran's Supreme Leader Mojtaba Khamenei acknowledged the deal's narrow scope. He said he "only agreed to the country's president signing the deal after receiving assurances that the interests of its militias, known as the Axis of Resistance, would be protected." Khamenei added: "They have also explicitly stated that if the American side seeks excessive demands, they will not submit to them."</p>
+                <p>The Senate passed a bipartisan resolution directing President Trump to end hostilities with Iran, reflecting growing war fatigue in Washington. The vote adds congressional weight to the diplomatic track, though the resolution's binding authority remains untested.</p>
+                <blockquote>Calibrated view: There is an <strong>80% probability that the interim deal holds without major breach within the next 90 days</strong> — both sides face strong economic incentives to maintain the framework. Washington wants peace dividends visible in falling oil prices and market stabilization, while Tehran urgently needs sanctions relief. Khamenei's preserved militia network and defiant rhetoric are face-saving postures, not deal-breakers, as long as sanctions relief flows.</blockquote>
+
+                <h3>Strait of Hormuz: The Logjam Begins to Ease</h3>
+                <p>Shipping activity through the Strait of Hormuz is gradually resuming, with international authorities reporting improved safety conditions. The waterway carries approximately 20% of the world's oil. The disruption had triggered significant insurance premium spikes and supply chain bottlenecks. The reopening is expected to place further downward pressure on crude prices — Brent has already fallen to its lowest level since the war began, trading around $71–$72 per barrel.</p>
+
+                <h3>Europe: Tentative Economic Relief on the Back of Peace Hopes</h3>
+                <p>Two surveys published Tuesday capture Europe's cautious optimism. S&P Global's composite purchasing managers' index for the eurozone rose to 49.5 from 48.5, driven by a "cooling of input cost pressures... particularly notable in manufacturing sectors that had been hit hardest by disruptions in Red Sea and Hormuz shipping lanes." Separately, the Ifo Institute reported its business-climate index rose to 85.6 in June from 85.0 in May — a second-straight monthly rise, marginally exceeding consensus expectations.</p>
+
+                <h3>Russia-Ukraine: The Northern Front Threat</h3>
+                <p>Russia is increasing pressure on Belarus to join the war effort in Ukraine, seeking to open a new northern front. The push comes as Moscow's forces face mounting challenges on existing axes. Ukraine has stepped up drone strikes on Russian oil refineries, causing spreading fuel shortages inside Russia.</p>
+
+                <h3>North Korea: A Rare DMZ Crossing</h3>
+                <p>A North Korean soldier made a rare escape across the Demilitarized Zone into South Korea. South Korean authorities are processing the soldier, who is expected to provide intelligence on conditions inside the isolated regime. The defection comes amid heightened tensions on the Korean Peninsula.</p>
+            </div>
+        </section>
+        
+        <section class="cluster" id="cluster-2">
+            <header class="cluster-header">
+                <span class="cluster-num">Cluster 2</span>
+                <h2 class="cluster-title">Markets &amp; Macroeconomy</h2>
+            </header>
+            <p class="cluster-tldr"><strong>tl;dr:</strong> The AI-led tech rout deepens: Nasdaq -2%+, Micron -13%, KOSPI -10% (worst day in years). The "Nifty Fifty" parallel haunts investors as AI capex sustainability comes under fire. Brent crude slides to $71–$72 on Iran supply hopes and Hormuz reopening. The yen hits 161.61 — a 40-year low. The market's narrow leadership in mega-cap tech poses a systemic vulnerability.</p>
+            <div class="cluster-body">
+                <h3>The AI Selloff: Fear, Fundamentals, and the Micron Threshold</h3>
+                <p>The dominant market narrative this week is the deepening rout in AI-related tech stocks. Alexander Osipovich reports that the Nasdaq composite fell over 2% on Tuesday, with Intel, Nvidia, Oracle, and Tesla all down 3% or more. Chip maker Micron Technology dropped approximately 13%, pulling the S&P 500 lower. The selloff reflected "deepening fears about the sustainability of the artificial-intelligence boom and whether massive AI-related capital expenditures would generate sufficient returns."</p>
+                <p>By early European trading Wednesday, futures contracts tied to the S&P 500 and Nasdaq 100 pointed to a modest rebound, with the "global tech selloff appearing to pause as investors awaited Micron Technology's earnings report after the close Wednesday, which was expected to come under intense scrutiny as a bellwether for the AI trade."</p>
+                <p>The historical parallel haunting investors is the "Nifty Fifty" of the 1970s. If the Magnificent Seven were to trail the market as badly as those one-decision stocks did in their mid-1970s collapse, "the damage would be severe." Sentiment trumps value in the short run, and concentration risk in mega-cap tech poses a systemic threat to portfolios.</p>
+                <blockquote>Calibrated view: There is a <strong>70% probability that the S&P 500 tests its 50-day moving average within two weeks</strong> — the AI selloff is positional and tactical, not structural, but the extreme concentration in mega-cap tech means any disappointment in Micron's guidance could trigger a broader rotation out of growth and into value and energy.</blockquote>
+
+                <h3>Oil: The Center of Gravity Shifts</h3>
+                <p>Brent crude oil fell to its lowest level since the start of the Middle East conflict, trading around $71–$72 per barrel. The trigger was clear: Iran was cleared to sell crude in dollars as part of the interim peace agreement. The deal waives banking and transport sanctions to facilitate transactions, providing an immediate financial benefit to Tehran while increasing global supply expectations.</p>
+                <blockquote>Calibrated view: There is a <strong>60% probability that oil stabilizes in the $68–$75 range within two weeks</strong> — the Hormuz reopening and Iranian supply resumption are real supply-side events, but implementation uncertainty (bank compliance, insurance market recalibration, port coordination) will slow the actual flow of additional barrels.</blockquote>
+
+                <h3>The Yen at 40-Year Lows: A Slow-Motion Crisis</h3>
+                <p>The Japanese yen weakened to 161.61 against the U.S. dollar, its lowest level since 1986. The relentless decline reflects the wide interest rate differential between the U.S. and Japan, with the Bank of Japan holding rates near zero while the Federal Reserve maintains a higher rate posture. The weak yen boosts Japanese exporters but squeezes consumers through higher import costs. Market participants are watching for potential intervention by Japanese authorities.</p>
+
+                <h3>The Biggest Risks: A Market Too Narrow to Stand On</h3>
+                <p>An assessment of market vulnerabilities identifies four key threats: (1) the concentration of gains in a handful of AI-related mega-cap stocks; (2) higher-for-longer interest rates as the Fed signals caution; (3) geopolitical uncertainties surrounding Iran deal implementation; and (4) the risk that AI capital spending disappoints in terms of returns.</p>
+            </div>
+        </section>
+        
+        <section class="cluster" id="cluster-3">
+            <header class="cluster-header">
+                <span class="cluster-num">Cluster 3</span>
+                <h2 class="cluster-title">Business &amp; Tech Strategy</h2>
+            </header>
+            <p class="cluster-tldr"><strong>tl;dr:</strong> At the G-7 summit, Trump says Anthropic AI model access talks are "going fine" amid G-7 leader unease. Microsoft CEO Satya Nadella delivers a pointed critique of AI concentration, calling for "earning society's permission." SK Hynix plans a $29B U.S. listing — one of the largest ever by a non-U.S. company. Tesla faces a federal safety probe after a fatal crash. Top-paid CEOs breach the $200M threshold.</p>
+            <div class="cluster-body">
+                <h3>The Great AI Reckoning: Spending, Concentration, and Accountability</h3>
+                <p>The AI industry's central tension — between massive capital expenditure and uncertain returns — is being tested in real time. Amrith Ramkumar, Sam Schechner, and Noemie Bisserbe report from the G-7 summit in Évian-les-Bains that President Trump said negotiations with Anthropic over restoring access to its latest AI models were "going fine." Trump and Commerce Secretary Howard Lutnick told reporters that talks are continuing nearly a week after they started.</p>
+                <p>Some G-7 world leaders expressed concern about losing access to leading U.S. AI tools, highlighting the geopolitical stakes of the Anthropic dispute and the broader concentration of AI capability in American hands.</p>
+                <blockquote>Calibrated view: There is a <strong>75% probability that the Anthropic model access dispute resolves with a compromise within 30 days</strong> — Trump's "going fine" framing, G-7 leader unease about losing access to cutting-edge AI, and both sides' strong economic incentives to reach a deal all point toward a negotiated resolution.</blockquote>
+                <p>Microsoft CEO Satya Nadella offered the day's most pointed critique of AI industry dynamics. He called for "earning society's permission rather than allowing AI giants to dominate the economic landscape." Nadella argued that the AI industry needs to ensure broad distribution of economic benefits. His comments come amid growing concern about the concentration of AI capabilities among a handful of powerful companies — Microsoft, Google, Amazon, OpenAI, and Anthropic — and the market's judgment on whether those capabilities justify their valuations.</p>
+
+                <h3>SK Hynix: A $29 Billion Bet on AI Memory, Launched in a Storm</h3>
+                <p>South Korea's SK Hynix plans to raise more than $29 billion through a U.S. listing, one of the largest ever by a non-U.S. company on American exchanges. The memory-chip maker has been a key beneficiary of AI-driven demand for high-bandwidth memory (HBM) chips used in Nvidia's AI processors. The company is launching the listing during a volatile period for tech stocks — a signal of confidence in the long-term AI demand trajectory, even as short-term sentiment sours.</p>
+                <blockquote>Calibrated view: There is a <strong>65% probability that SK Hynix's $29 billion listing prices within 10% of its initial filing range within 6 months</strong> — launching during a tech rout forces attractive pricing, but the quality of its HBM business provides underlying institutional demand.</blockquote>
+
+                <h3>Tesla: Federal Safety Probe After Fatal Crash</h3>
+                <p>The National Highway Traffic Safety Administration has opened a federal safety investigation into a fatal Tesla crash into a Texas home. Regulators are examining whether the vehicle's advanced driver-assistance systems — Autopilot or Full Self-Driving — were engaged at the time of the accident. The probe adds to a growing list of federal investigations into Tesla's driver-assistance features.</p>
+
+                <h3>CEO Pay: The $200 Million Threshold Is Breached</h3>
+                <p>Top-paid CEOs have smashed the $200 million payday mark, setting new records for executive compensation. The surge reflects strong corporate performance and stock market gains, but has reignited debate about income inequality and corporate governance. Shareholder advisory firms have raised concerns that some pay packages are not sufficiently tied to long-term performance.</p>
+            </div>
+        </section>
+        
+        <section class="cluster" id="cluster-4">
+            <header class="cluster-header">
+                <span class="cluster-num">Cluster 4</span>
+                <h2 class="cluster-title">Policy &amp; Opinion</h2>
+            </header>
+            <p class="cluster-tldr"><strong>tl;dr:</strong> Three WSJ editorials offer competing frameworks on the Iran deal — victory, consolidation, or blame game. U.S.-China trade has plunged to its lowest proportion since 2001, even as Trump tries to publicly de-escalate. The Scott Pelley case raises questions about media independence in an era of political polarization.</p>
+            <div class="cluster-body">
+                <h3>The Iran Debate: Victory, Consolidation, or Blame?</h3>
+                <p>Three WSJ editorial pieces published today offer competing frameworks for interpreting the U.S.-Iran interim agreement — revealing internal editorial tension about whether the deal represents strategic success or a dangerously incomplete settlement.</p>
+                <p>"Victory Over Iran Is Still Possible" argues that "the president deserves tremendous credit for taking the fight directly to Tehran" and that "every American should welcome the prospect of peace." The piece asserts that while the interim deal has shortcomings, it "creates a foundation upon which a more comprehensive agreement can be built."</p>
+                <p>In direct tension, "How Iran Plans to Consolidate Its Victory" warns that Iran's leadership views the deal as "a validation of their strategy of withstanding maximum pressure" and intends to use sanctions relief to rebuild their economy while maintaining regional proxy forces.</p>
+                <p>"Iran and Trump Blame Israel First" examines the finger-pointing between the Trump administration and Israel over the conduct and conclusion of the conflict, arguing that this blame game "distracts from the fundamental strategic questions that remain unresolved."</p>
+
+                <h3>U.S.-China Trade: The Delicate Balancing Act</h3>
+                <p>President Trump has been trying to publicly de-escalate tensions with China to soothe markets while privately keeping up pressure on Beijing. After threatening additional 100% tariffs on Chinese imports, Trump spoke with senior officials about sending a message that the U.S. wants to de-escalate. Beijing is eager to save the Trump-Xi summit, and Washington wants to stem stock-market losses.</p>
+                <p>The structural damage is already visible. Hannah Miao and Roque Ruiz report that trade between the world's two largest economies has plunged to levels not seen in decades. For every $100 that American importers spent on goods last year, about $9 went to products made in China — the lowest proportion since 2001, when China joined the World Trade Organization. As recently as 2018, the equivalent figure was above $20. Yet the overall U.S. goods trade deficit has risen as importers shifted sourcing to Vietnam, Mexico, and India.</p>
+
+                <h3>Media and Politics: The Scott Pelley Case</h3>
+                <p>An opinion piece examines the intersection of journalism, politics, and corporate interests through the example of Scott Pelley's reporting. The piece explores broader questions about media independence and the pressures faced by news organizations in an era of intense political polarization and ownership changes.</p>
+            </div>
+        </section>
+        
+    </section>
+
+    <section aria-labelledby="probability-outlook">
+        <div class="section-header">
+            <h2 id="probability-outlook">Probability-Weighted Outlook</h2>
+            <p>Calibrated forecasts, time horizons, and rationale</p>
+        </div>
+        <div class="prob-table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Scenario</th>
+                        <th>Probability</th>
+                        <th>Time Horizon</th>
+                        <th>Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr>
+            <td class="prob-id">P1</td>
+            <td>Iran interim deal holds without major breach</td>
+            <td class="probability">80%</td>
+            <td>90 days</td>
+            <td>Both sides face strong economic incentives — Washington wants peace dividends (lower oil prices, market stabilization); Tehran urgently needs sanctions relief. Khamenei's preserved militia network is face-saving, not a deal-breaker, as long as relief flows.</td>
+        </tr>
+        
+        <tr>
+            <td class="prob-id">P2</td>
+            <td>S&P 500 tests its 50-day moving average</td>
+            <td class="probability">70%</td>
+            <td>2 weeks</td>
+            <td>The AI selloff is positional and tactical, but extreme concentration in mega-cap tech means any disappointment in Micron's guidance could trigger a broader rotation out of growth and into value and energy.</td>
+        </tr>
+        
+        <tr>
+            <td class="prob-id">P3</td>
+            <td>Oil stabilizes in $68–$75 range</td>
+            <td class="probability">60%</td>
+            <td>2 weeks</td>
+            <td>Hormuz reopening and Iranian supply resumption are real supply-side events, but implementation uncertainty (bank compliance, insurance recalibration, port coordination) will slow actual barrel flow.</td>
+        </tr>
+        
+        <tr>
+            <td class="prob-id">P4</td>
+            <td>Anthropic model access dispute resolves with compromise</td>
+            <td class="probability">75%</td>
+            <td>30 days</td>
+            <td>Trump's "going fine" framing, G-7 leader unease about losing access to cutting-edge AI, and both sides' strong economic incentives point toward a negotiated resolution. Neither party gains from a prolonged standoff.</td>
+        </tr>
+        
+        <tr>
+            <td class="prob-id">P5</td>
+            <td>SK Hynix $29B listing prices within 10% of filing range</td>
+            <td class="probability">65%</td>
+            <td>6 months</td>
+            <td>Launching during a tech rout forces attractive pricing, but the quality of its HBM business (directly tied to Nvidia AI processors) provides underlying institutional demand. Tests whether AI's fundamental demand story overcomes narrative damage.</td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section aria-labelledby="observer-commentaries">
+        <div class="section-header">
+            <h2 id="observer-commentaries">Observer Commentaries</h2>
+            <p>Three perspectives on the structural and strategic landscape</p>
+        </div>
+        <div class="observer-grid">
+            
+        <article class="observer-card">
+            <header class="observer-header">
+                <h3 class="observer-name">翟东升</h3>
+                <p class="observer-title">体系/结构视角 — 美元体系的裂缝与平行秩序的胎动</p>
+            </header>
+            <div class="observer-body zh" lang="zh-CN">
+                <p><strong>翟东升 | 国际政治经济学与货币体系学者</strong></p>
+                <p>今日简报中最具结构性意义的信号，并非AI抛售或伊朗协议的表面条款，而是美元体系内部矛盾的又一次显性化。</p>
+                <p>先看伊朗协议。特朗普解除伊朗石油美元结算禁令，表面是外交突破，实则暴露了华盛顿"极限施压"战略的不可持续。美元作为石油贸易媒介的地位并未动摇，但以制裁为武器封锁特定国家退出美元体系的做法的信用已被严重侵蚀。当制裁的边际效用递减，而制裁对象开始构建平行支付清算通道时，美元体系的地基正在被动摇。</p>
+                <p>再看日元跌至161——四十年低点。这本质上不是一个"弱日元"故事，而是美元利率高企对全球货币体系的虹吸效应。美国联邦政府赤字率持续维持在高位，国债规模逼近不可持续阈值，却通过美联储的高利率政策吸引全球资本接盘。这套"借新还旧"的循环依赖两个前提：一是全球对美元资产的无条件信任，二是不出现替代性资产。而恰恰是这两个前提，正在被美国自己的政策消解。</p>
+                <p>美中贸易降至2001年以来最低，贸易网络从中国转向越南、墨西哥、印度——这不是简单的"脱钩"，而是全球供应链在美元体系内部的"去中心化重组"。每个新节点都在为未来的平行体系培育支付习惯和结算基础设施。</p>
+                <p>AI巨头的估值崩塌则是一个更深刻的寓言：当美国国内最耀眼的增长引擎——科技七巨头——也开始面临资本回报率质疑时，华盛顿赖以支撑财政扩张的"资产泡沫-资本流入"闭环还能维持多久？</p>
+                <p>大趋势清晰：美元体系的单极格局正在从"结构性霸权"演变为"摩擦性主导"。平行体系并非明日建成，但今日已在每一处裂缝中生长。</p>
+            </div>
+        </article>
+        
+
+        <article class="observer-card">
+            <header class="observer-header">
+                <h3 class="observer-name">金灿荣</h3>
+                <p class="observer-title">美国政治/战略相持视角 — 百年未有之大变局，美国这盘棋越下越尴尬</p>
+            </header>
+            <div class="observer-body zh" lang="zh-CN">
+                <p>今天看WSJ简报，真是越看越有意思。什么叫"百年未有之大变局"？这就是。美国现在是什么状态？我总结八个字——<strong>战略上贪心，战术上抽筋</strong>。</p>
+                <p>先说伊朗这摊事。特朗普跟伊朗签了个临时协议，港口解封了，石油能卖了，霍尔木兹海峡也通了。听着挺漂亮是吧？但你仔细看内容——协议里压根没提伊朗的导弹和民兵。这就好比你去饭店点了一桌子菜，结果只上了凉菜，硬菜全在厨房里放着。伊朗最高领袖哈梅内伊说了：我保留"抵抗轴心"的所有权利。翻译成大白话就是：钱我收，枪我留，你拿我怎么样？</p>
+                <p>美国打来打去，从"极限施压"打到"有限妥协"，这不叫外交胜利，这叫<strong>战略性泄气</strong>。以前是要你命，现在是跟你做买卖——这在金教授看来，就是霸权衰退的典型症状。</p>
+                <p>再看中美贸易。美国跟中国吵了这么多年，对华贸易份额从20%跌到了9%。听着像赢了？错。美国的总贸易逆差反而扩大了——不去中国买，就去越南、墨西哥、印度买，成本更高，质量还不一定更好。这叫什么？这叫<strong>你不想吃食堂了，结果外卖又贵又慢，最后饿的还是你自己</strong>。</p>
+                <p>AI那边也热闹。美股科技七姐妹跌得稀里哗啦，英伟达、英特尔、特斯拉一起往下掉。为什么？因为大家突然想明白一个道理：你花了几千亿搞AI，请问赚到钱了吗？这就像村里首富买了一万台拖拉机，结果一亩地还没种呢。微软的纳德拉说了句实话：AI行业得先争取社会的"许可"，而不是几个巨头在那自嗨。话很客气，意思很狠——<strong>泡沫要破了</strong>。</p>
+                <p>总而言之，美国现在是内政、外交、经济三条线同时吃紧。伊朗协议是面子，AI下跌是里子，对华贸易是底子。面子勉强撑住了，里子和底子都在漏。这场大变局，咱们搬好小板凳，慢慢看。</p>
+                <p><strong>金灿荣</strong> — <em>2026年6月24日</em></p>
+            </div>
+        </article>
+        
+
+        <article class="observer-card">
+            <header class="observer-header">
+                <h3 class="observer-name">宋鸿兵</h3>
+                <p class="observer-title">货币/债务/周期视角 — 美元潮汐、边缘债务与AI泡沫</p>
+            </header>
+            <div class="observer-body zh" lang="zh-CN">
+                <p><strong>2026年6月24日</strong></p>
+                <p>日元跌至161.61，创1986年以来新低。这绝非普通波动，而是美元潮汐回流周期的又一次重演——美联储维持高利率，虹吸全球流动性，边缘经济体率先承压。日元之后，那些外债高企、储备薄弱的新兴市场国家，将成为下一批倒下的多米诺骨牌。这是债务周期的铁律，从未改变。</p>
+                <p>AI板块的暴跌同样令人警觉。Micron一天跌13%，市场将其与1970年代"Nifty Fifty"相提并论。当年漂亮50崩盘后，整整十年跑输大盘。如今AI军备竞赛的资本开支已达天文数字，但真实回报却遥遥无期。Satya Nadella呼吁AI行业"赢得社会许可"，本质上是在承认：这场泡沫缺少基本面支撑。这不是普通调整——这是市场在用脚投票，质疑AI泡沫的最终ROI。历史从不会简单重复，但押韵得令人脊背发凉。</p>
+                <p>战争经济学也在同步转向。伊朗协议打开了霍尔木兹海峡，布伦特原油跌至71美元——美国用和平红利压油价、降通胀、稳市场。但俄罗斯正逼迫白俄罗斯开辟乌克兰北方战线，战争远未结束。对战争机器而言，和平与战争都只是资产负债表上的数字游戏。真正的赢家，永远是能在潮汐转换中提前布局的人。</p>
+                <p><strong>资本永不眠，它只是在寻找下一个安全的落脚点。</strong></p>
+            </div>
+        </article>
+        
+        </div>
+    </section>
+
+    <section aria-labelledby="daily-cartoon">
+        <div class="section-header">
+            <h2 id="daily-cartoon">Daily Cartoon</h2>
+            <p>Editorial illustration</p>
+        </div>
+        <figure class="cartoon-section">
+            <img src="./assets/images/wsj_cartoon.jpg" alt="Daily editorial cartoon">
+            <figcaption class="cartoon-caption">WSJ Daily Cartoon — June 24, 2026</figcaption>
+        </figure>
+    </section>
+
+</main>
+
+<footer>
+    <p><span class="accent">WSJ Daily Briefing</span> &middot; AI-generated &middot; June 24, 2026</p>
+</footer>
+
+</body>
+</html>

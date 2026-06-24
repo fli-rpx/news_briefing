@@ -1,0 +1,97 @@
+{
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "README.md \u2014 markdown docs file (46 lines)",
+      "sizeLines": 46,
+      "language": "markdown",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:REQUIREMENTS.md",
+      "type": "document",
+      "name": "REQUIREMENTS.md",
+      "filePath": "REQUIREMENTS.md",
+      "summary": "REQUIREMENTS.md \u2014 markdown docs file (83 lines)",
+      "sizeLines": 83,
+      "language": "markdown",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:archive.html",
+      "type": "file",
+      "name": "archive.html",
+      "filePath": "archive.html",
+      "summary": "archive.html \u2014 html markup file (135 lines)",
+      "sizeLines": 135,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "index.html \u2014 html markup file (362 lines)",
+      "sizeLines": 362,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:reports_index.json",
+      "type": "config",
+      "name": "reports_index.json",
+      "filePath": "reports_index.json",
+      "summary": "reports_index.json \u2014 json config file (22 lines)",
+      "sizeLines": 22,
+      "language": "json",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:style.css",
+      "type": "file",
+      "name": "style.css",
+      "filePath": "style.css",
+      "summary": "style.css \u2014 css markup file (192 lines)",
+      "sizeLines": 192,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:index.html",
+      "target": "file:style.css",
+      "type": "imports",
+      "weight": 0.7
+    }
+  ],
+  "batchIndex": 0
+}

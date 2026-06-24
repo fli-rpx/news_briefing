@@ -1,0 +1,616 @@
+{
+  "scriptCompleted": true,
+  "files": [
+    {
+      "path": ".understand-anything/.understandignore",
+      "language": "unknown",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "archive.html",
+      "language": "html",
+      "sizeLines": 135,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-B7QnFapy.js",
+      "language": "javascript",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-BaKF91cf.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-BavH-IQc.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-BCAAm0vL.js",
+      "language": "javascript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-BkaggUKK.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-BLKeZuY7.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-BMAzdbAe.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-BN0rYByS.js",
+      "language": "javascript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-BQEknNIh.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-C-Z0inli.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-C1fFgFBf.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-CAhUiIVZ.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-CD6x4bSu.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-CrDxPNo2.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-CtVMf-Mu.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-Cu7y5OTe.js",
+      "language": "javascript",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-CuFudCbM.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-D_rC8OMO.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-DgTG6Exq.js",
+      "language": "javascript",
+      "sizeLines": 4253,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-DJNigZ9b.js",
+      "language": "javascript",
+      "sizeLines": 40,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-DnGA641s.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-DQkAxoPd.js",
+      "language": "javascript",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-DwiaFw4y.js",
+      "language": "javascript",
+      "sizeLines": 4233,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-DymaOaEY.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-IHnN5M64.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-KL5agRJB.js",
+      "language": "javascript",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/assets/index-MhNm8dzV.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-ob4TXiS4.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-uZ4_Rrpx.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/index-y74eMlZk.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/assets/sdk-seed.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "briefings/gallery.html",
+      "language": "html",
+      "sizeLines": 254,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-04.html",
+      "language": "html",
+      "sizeLines": 65,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-05.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-06.html",
+      "language": "html",
+      "sizeLines": 65,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-07.html",
+      "language": "html",
+      "sizeLines": 11,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-08.html",
+      "language": "html",
+      "sizeLines": 302,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-09.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-10.html",
+      "language": "html",
+      "sizeLines": 15,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-11.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-12.html",
+      "language": "html",
+      "sizeLines": 547,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-13.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-14.html",
+      "language": "html",
+      "sizeLines": 240,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-15.html",
+      "language": "html",
+      "sizeLines": 817,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-16.html",
+      "language": "html",
+      "sizeLines": 432,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-17.html",
+      "language": "html",
+      "sizeLines": 793,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-18.html",
+      "language": "html",
+      "sizeLines": 224,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-19.html",
+      "language": "html",
+      "sizeLines": 120,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-21.html",
+      "language": "html",
+      "sizeLines": 99,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/nyt_2026-06-22.html",
+      "language": "html",
+      "sizeLines": 672,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-07.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-08.html",
+      "language": "html",
+      "sizeLines": 15,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-09.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-10.html",
+      "language": "html",
+      "sizeLines": 14,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-11.html",
+      "language": "html",
+      "sizeLines": 11,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-12.html",
+      "language": "html",
+      "sizeLines": 741,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-13.html",
+      "language": "html",
+      "sizeLines": 564,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-15.html",
+      "language": "html",
+      "sizeLines": 1076,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-16.html",
+      "language": "html",
+      "sizeLines": 812,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-17.html",
+      "language": "html",
+      "sizeLines": 409,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-18.html",
+      "language": "html",
+      "sizeLines": 678,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-19.html",
+      "language": "html",
+      "sizeLines": 231,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-21.html",
+      "language": "html",
+      "sizeLines": 569,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "briefings/wsj_2026-06-22.html",
+      "language": "html",
+      "sizeLines": 932,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "data/observers.json",
+      "language": "json",
+      "sizeLines": 92,
+      "fileCategory": "config"
+    },
+    {
+      "path": "data/reports_index.json",
+      "language": "json",
+      "sizeLines": 283,
+      "fileCategory": "config"
+    },
+    {
+      "path": "demo/assets/index-C0yImpgo.css",
+      "language": "css",
+      "sizeLines": 1,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "demo/assets/index-CRlGGo-N.js",
+      "language": "javascript",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "demo/index.html",
+      "language": "html",
+      "sizeLines": 15,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "images/.gitkeep",
+      "language": "unknown",
+      "sizeLines": 0,
+      "fileCategory": "code"
+    },
+    {
+      "path": "index.html",
+      "language": "html",
+      "sizeLines": 362,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "reports_index.json",
+      "language": "json",
+      "sizeLines": 22,
+      "fileCategory": "config"
+    },
+    {
+      "path": "REQUIREMENTS.md",
+      "language": "markdown",
+      "sizeLines": 83,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/build_combined.py",
+      "language": "python",
+      "sizeLines": 282,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/daily_update.py",
+      "language": "python",
+      "sizeLines": 627,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/generate_nyt_2026_06_12.py",
+      "language": "python",
+      "sizeLines": 934,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/update_index.py",
+      "language": "python",
+      "sizeLines": 73,
+      "fileCategory": "code"
+    },
+    {
+      "path": "serve.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "style.css",
+      "language": "css",
+      "sizeLines": 192,
+      "fileCategory": "markup"
+    }
+  ],
+  "totalFiles": 82,
+  "filteredByIgnore": 0,
+  "estimatedComplexity": "moderate",
+  "stats": {
+    "filesScanned": 82,
+    "byCategory": {
+      "code": 24,
+      "markup": 53,
+      "config": 3,
+      "docs": 2
+    },
+    "byLanguage": {
+      "unknown": 2,
+      "html": 36,
+      "javascript": 17,
+      "css": 17,
+      "json": 3,
+      "markdown": 2,
+      "python": 5
+    }
+  },
+  "project": {
+    "name": "MorningBriefing",
+    "description": "Daily news briefing with Observer Commentary. Tracks NYT and WSJ briefings with PDF and Web version support.",
+    "languages": [
+      "html",
+      "css",
+      "javascript",
+      "python",
+      "json",
+      "markdown"
+    ],
+    "frameworks": [],
+    "entryPoint": "serve.py"
+  },
+  "importMap": {
+    ".understand-anything/.understandignore": [],
+    "archive.html": [],
+    "briefings/assets/index-B7QnFapy.js": [],
+    "briefings/assets/index-BaKF91cf.css": [],
+    "briefings/assets/index-BavH-IQc.css": [],
+    "briefings/assets/index-BCAAm0vL.js": [],
+    "briefings/assets/index-BkaggUKK.js": [],
+    "briefings/assets/index-BLKeZuY7.css": [],
+    "briefings/assets/index-BMAzdbAe.js": [],
+    "briefings/assets/index-BN0rYByS.js": [],
+    "briefings/assets/index-BQEknNIh.css": [],
+    "briefings/assets/index-C-Z0inli.js": [],
+    "briefings/assets/index-C1fFgFBf.css": [],
+    "briefings/assets/index-CAhUiIVZ.css": [],
+    "briefings/assets/index-CD6x4bSu.css": [],
+    "briefings/assets/index-CrDxPNo2.js": [],
+    "briefings/assets/index-CtVMf-Mu.js": [],
+    "briefings/assets/index-Cu7y5OTe.js": [],
+    "briefings/assets/index-CuFudCbM.js": [],
+    "briefings/assets/index-D_rC8OMO.css": [],
+    "briefings/assets/index-DgTG6Exq.js": [],
+    "briefings/assets/index-DJNigZ9b.js": [],
+    "briefings/assets/index-DnGA641s.css": [],
+    "briefings/assets/index-DQkAxoPd.js": [],
+    "briefings/assets/index-DwiaFw4y.js": [],
+    "briefings/assets/index-DymaOaEY.css": [],
+    "briefings/assets/index-IHnN5M64.css": [],
+    "briefings/assets/index-KL5agRJB.js": [],
+    "briefings/assets/index-MhNm8dzV.css": [],
+    "briefings/assets/index-ob4TXiS4.css": [],
+    "briefings/assets/index-uZ4_Rrpx.css": [],
+    "briefings/assets/index-y74eMlZk.css": [],
+    "briefings/assets/sdk-seed.js": [],
+    "briefings/gallery.html": [],
+    "briefings/nyt_2026-06-04.html": [],
+    "briefings/nyt_2026-06-05.html": [],
+    "briefings/nyt_2026-06-06.html": [],
+    "briefings/nyt_2026-06-07.html": [],
+    "briefings/nyt_2026-06-08.html": [],
+    "briefings/nyt_2026-06-09.html": [],
+    "briefings/nyt_2026-06-10.html": [],
+    "briefings/nyt_2026-06-11.html": [],
+    "briefings/nyt_2026-06-12.html": [],
+    "briefings/nyt_2026-06-13.html": [],
+    "briefings/nyt_2026-06-14.html": [],
+    "briefings/nyt_2026-06-15.html": [],
+    "briefings/nyt_2026-06-16.html": [],
+    "briefings/nyt_2026-06-17.html": [],
+    "briefings/nyt_2026-06-18.html": [],
+    "briefings/nyt_2026-06-19.html": [],
+    "briefings/nyt_2026-06-21.html": [],
+    "briefings/nyt_2026-06-22.html": [],
+    "briefings/wsj_2026-06-07.html": [],
+    "briefings/wsj_2026-06-08.html": [],
+    "briefings/wsj_2026-06-09.html": [],
+    "briefings/wsj_2026-06-10.html": [],
+    "briefings/wsj_2026-06-11.html": [],
+    "briefings/wsj_2026-06-12.html": [],
+    "briefings/wsj_2026-06-13.html": [],
+    "briefings/wsj_2026-06-15.html": [],
+    "briefings/wsj_2026-06-16.html": [],
+    "briefings/wsj_2026-06-17.html": [],
+    "briefings/wsj_2026-06-18.html": [],
+    "briefings/wsj_2026-06-19.html": [],
+    "briefings/wsj_2026-06-21.html": [],
+    "briefings/wsj_2026-06-22.html": [],
+    "data/observers.json": [],
+    "data/reports_index.json": [],
+    "demo/assets/index-C0yImpgo.css": [],
+    "demo/assets/index-CRlGGo-N.js": [],
+    "demo/index.html": [],
+    "images/.gitkeep": [],
+    "index.html": [],
+    "README.md": [],
+    "reports_index.json": [],
+    "REQUIREMENTS.md": [],
+    "scripts/build_combined.py": [],
+    "scripts/daily_update.py": [],
+    "scripts/generate_nyt_2026_06_12.py": [],
+    "scripts/update_index.py": [],
+    "serve.py": [],
+    "style.css": []
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "nodes": [
+    {
+      "id": "file:briefings/wsj_2026-06-08.html",
+      "type": "file",
+      "name": "wsj_2026-06-08.html",
+      "filePath": "briefings/wsj_2026-06-08.html",
+      "summary": "wsj_2026-06-08.html \u2014 html markup file (15 lines)",
+      "sizeLines": 15,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-09.html",
+      "type": "file",
+      "name": "wsj_2026-06-09.html",
+      "filePath": "briefings/wsj_2026-06-09.html",
+      "summary": "wsj_2026-06-09.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-10.html",
+      "type": "file",
+      "name": "wsj_2026-06-10.html",
+      "filePath": "briefings/wsj_2026-06-10.html",
+      "summary": "wsj_2026-06-10.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-11.html",
+      "type": "file",
+      "name": "wsj_2026-06-11.html",
+      "filePath": "briefings/wsj_2026-06-11.html",
+      "summary": "wsj_2026-06-11.html \u2014 html markup file (11 lines)",
+      "sizeLines": 11,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-12.html",
+      "type": "file",
+      "name": "wsj_2026-06-12.html",
+      "filePath": "briefings/wsj_2026-06-12.html",
+      "summary": "wsj_2026-06-12.html \u2014 html markup file (741 lines)",
+      "sizeLines": 741,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-13.html",
+      "type": "file",
+      "name": "wsj_2026-06-13.html",
+      "filePath": "briefings/wsj_2026-06-13.html",
+      "summary": "wsj_2026-06-13.html \u2014 html markup file (564 lines)",
+      "sizeLines": 564,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-15.html",
+      "type": "file",
+      "name": "wsj_2026-06-15.html",
+      "filePath": "briefings/wsj_2026-06-15.html",
+      "summary": "wsj_2026-06-15.html \u2014 html markup file (1076 lines)",
+      "sizeLines": 1076,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "very-complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-16.html",
+      "type": "file",
+      "name": "wsj_2026-06-16.html",
+      "filePath": "briefings/wsj_2026-06-16.html",
+      "summary": "wsj_2026-06-16.html \u2014 html markup file (812 lines)",
+      "sizeLines": 812,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-17.html",
+      "type": "file",
+      "name": "wsj_2026-06-17.html",
+      "filePath": "briefings/wsj_2026-06-17.html",
+      "summary": "wsj_2026-06-17.html \u2014 html markup file (409 lines)",
+      "sizeLines": 409,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-18.html",
+      "type": "file",
+      "name": "wsj_2026-06-18.html",
+      "filePath": "briefings/wsj_2026-06-18.html",
+      "summary": "wsj_2026-06-18.html \u2014 html markup file (678 lines)",
+      "sizeLines": 678,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-19.html",
+      "type": "file",
+      "name": "wsj_2026-06-19.html",
+      "filePath": "briefings/wsj_2026-06-19.html",
+      "summary": "wsj_2026-06-19.html \u2014 html markup file (231 lines)",
+      "sizeLines": 231,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-21.html",
+      "type": "file",
+      "name": "wsj_2026-06-21.html",
+      "filePath": "briefings/wsj_2026-06-21.html",
+      "summary": "wsj_2026-06-21.html \u2014 html markup file (569 lines)",
+      "sizeLines": 569,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-22.html",
+      "type": "file",
+      "name": "wsj_2026-06-22.html",
+      "filePath": "briefings/wsj_2026-06-22.html",
+      "summary": "wsj_2026-06-22.html \u2014 html markup file (932 lines)",
+      "sizeLines": 932,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "module:briefings",
+      "type": "module",
+      "name": "briefings",
+      "filePath": "briefings",
+      "summary": "Directory: briefings",
+      "sizeLines": 6066,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-08.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-09.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-10.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-11.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-12.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-13.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-15.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-16.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-17.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-18.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-19.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-21.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-22.html",
+      "type": "contains",
+      "weight": 1.0
+    }
+  ],
+  "batchIndex": 3
+}
