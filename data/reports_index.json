@@ -315,5 +315,14 @@
         "./assets/images/wsj_hero_bg.jpg"
       ]
     }
+  },
+  "2026-06-25": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-25.pdf",
+      "local": "briefings/2026-06-25.html"
+    },
+    "wsj": {
+      "local": "briefings/2026-06-25.html"
+    }
   }
 }
