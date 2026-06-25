@@ -1,0 +1,1662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYT Briefing — June 25, 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #0d0d1a;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.06);
+            --border-card: rgba(255, 255, 255, 0.06);
+            --border-card-hover: rgba(255, 255, 255, 0.12);
+            --accent-emerald: #00ff88;
+            --accent-cyan: #4a9eff;
+            --accent-gold: #c9a84c;
+            --text-primary: #f0f0f5;
+            --text-secondary: #a0a0b0;
+            --text-muted: #707080;
+            --badge-high: #00c853;
+            --badge-medium: #ffb300;
+            --badge-low: #ff5252;
+            --shadow-soft: 0 8px 32px rgba(0, 0, 0, 0.4);
+            --radius: 12px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .zh {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        code, .mono {
+            font-family: 'Courier New', monospace;
+        }
+
+        a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            transition: color 0.2s ease, border-color 0.2s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        a:hover {
+            color: var(--accent-emerald);
+            border-bottom-color: var(--accent-emerald);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 15, 0.45);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-subtitle {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin-bottom: 1.25rem;
+        }
+
+        .hero-title {
+            font-size: clamp(2.8rem, 8vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.05;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent-gold) 60%, #f5e6c8 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 30px rgba(201, 168, 76, 0.2);
+        }
+
+        .hero-date {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            margin-bottom: 2rem;
+        }
+
+        .hero-tagline {
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.92;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            color: var(--text-muted);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-8px); }
+            60% { transform: translateX(-50%) translateY(-4px); }
+        }
+
+        /* Layout */
+        .section {
+            padding: 5rem 1.5rem;
+        }
+
+        .section-navy {
+            background-color: var(--bg-secondary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 3rem;
+        }
+
+        .section-label {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--accent-cyan);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            color: var(--accent-emerald);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .section-title.gold {
+            color: var(--accent-gold);
+        }
+
+        .section-intro {
+            color: var(--text-secondary);
+            font-size: 1.15rem;
+            max-width: 800px;
+        }
+
+        /* Glass Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: var(--radius);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .card:hover {
+            background: var(--bg-card-hover);
+            border-color: var(--border-card-hover);
+            transform: translateY(-3px);
+        }
+
+        /* Executive Summary */
+        .tldr {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.08) 0%, rgba(74, 158, 255, 0.05) 100%);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-bottom: 3rem;
+            font-size: 1.35rem;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .tldr-label {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+
+        .unknowns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 3rem;
+        }
+
+        .unknown-card {
+            composes: card;
+            padding: 1.5rem;
+        }
+
+        .unknown-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: rgba(201, 168, 76, 0.15);
+            color: var(--accent-gold);
+            border-radius: 50%;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .unknown-title {
+            color: var(--accent-gold);
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        .unknown-text {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        /* Predictions Table */
+        .predictions-table-wrap {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+            border-radius: var(--radius);
+            border: 1px solid var(--border-card);
+        }
+
+        .predictions-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 700px;
+        }
+
+        .predictions-table thead {
+            background: rgba(0, 255, 136, 0.08);
+        }
+
+        .predictions-table th {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-align: left;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.15);
+        }
+
+        .predictions-table td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-card);
+            vertical-align: top;
+        }
+
+        .predictions-table tbody tr:nth-child(odd) {
+            background: rgba(255, 255, 255, 0.015);
+        }
+
+        .predictions-table tbody tr:hover {
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .prediction-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .prediction-rationale {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        .confidence-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.35rem 0.75rem;
+            border-radius: 999px;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .confidence-badge.high {
+            background: rgba(0, 200, 83, 0.15);
+            color: var(--badge-high);
+            border: 1px solid rgba(0, 200, 83, 0.3);
+        }
+
+        .confidence-badge.medium {
+            background: rgba(255, 179, 0, 0.12);
+            color: var(--badge-medium);
+            border: 1px solid rgba(255, 179, 0, 0.3);
+        }
+
+        .confidence-badge.low {
+            background: rgba(255, 82, 82, 0.12);
+            color: var(--badge-low);
+            border: 1px solid rgba(255, 82, 82, 0.3);
+        }
+
+        .confidence-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        /* Observer Commentary */
+        .observer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .observer-card {
+            composes: card;
+        }
+
+        .observer-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 0.25rem;
+        }
+
+        .observer-tagline {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-card);
+        }
+
+        .observer-text {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.85;
+        }
+
+        .observer-text p {
+            margin-bottom: 1rem;
+        }
+
+        .observer-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Cluster Sections */
+        .cluster {
+            margin-bottom: 4rem;
+        }
+
+        .cluster:last-child {
+            margin-bottom: 0;
+        }
+
+        .cluster-header {
+            margin-bottom: 1.75rem;
+        }
+
+        .cluster-title {
+            font-size: clamp(1.4rem, 3vw, 2rem);
+            color: var(--accent-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .cluster-meta {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .cluster-body {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .cluster-body .card p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .cluster-body .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .cluster-body .card strong {
+            color: var(--text-primary);
+        }
+
+        .subhead {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            color: var(--accent-emerald);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        .subhead:first-child {
+            margin-top: 0;
+        }
+
+        .human-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .human-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .human-name {
+            color: var(--accent-cyan);
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .human-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .lens-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .lens-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-card);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .lens-name {
+            color: var(--accent-gold);
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .lens-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.55;
+        }
+
+        /* Stories Grid */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .story-card {
+            composes: card;
+            padding: 1.5rem;
+        }
+
+        .story-number {
+            display: inline-block;
+            background: rgba(74, 158, 255, 0.12);
+            color: var(--accent-cyan);
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-title {
+            color: var(--text-primary);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .story-text {
+            color: var(--text-secondary);
+            font-size: 0.96rem;
+            line-height: 1.65;
+        }
+
+        .story-text p {
+            margin-bottom: 0.75rem;
+        }
+
+        .story-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Synthesis */
+        .synthesis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .synthesis-card {
+            composes: card;
+        }
+
+        .synthesis-lens {
+            color: var(--accent-emerald);
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        .synthesis-text {
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.7;
+        }
+
+        .big-picture {
+            background: linear-gradient(135deg, rgba(201, 168, 76, 0.08) 0%, rgba(74, 158, 255, 0.04) 100%);
+            border: 1px solid rgba(201, 168, 76, 0.15);
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .big-picture-title {
+            color: var(--accent-gold);
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .big-picture p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .big-picture p:last-child {
+            margin-bottom: 0;
+        }
+
+        .quotes {
+            margin-top: 2rem;
+            display: grid;
+            gap: 1rem;
+        }
+
+        .quote {
+            border-left: 3px solid var(--accent-emerald);
+            padding-left: 1.25rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            font-size: 1.05rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-secondary);
+            padding: 3rem 1.5rem;
+            text-align: center;
+            border-top: 1px solid var(--border-card);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+        }
+
+        .footer-divider {
+            color: var(--accent-gold);
+            margin: 0 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .observer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .hero {
+                min-height: 90vh;
+                padding: 1.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.05rem;
+            }
+
+            .card {
+                padding: 1.5rem;
+            }
+
+            .tldr {
+                font-size: 1.1rem;
+                padding: 1.5rem;
+            }
+
+            .predictions-table th,
+            .predictions-table td {
+                padding: 0.875rem;
+                font-size: 0.9rem;
+            }
+
+            .stories-grid,
+            .unknowns-grid,
+            .synthesis-grid,
+            .lens-grid,
+            .human-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .observer-name {
+                font-size: 1.25rem;
+            }
+
+            .cluster-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Accessibility: respect reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .scroll-hint {
+                animation: none;
+            }
+
+            .card:hover {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero" id="top">
+    <div class="hero-content">
+        <div class="hero-subtitle">NYT Master Briefing</div>
+        <h1 class="hero-title">NYT DAILY BRIEFING — June 25, 2026</h1>
+        <div class="hero-date">June 25, 2026</div>
+        <p class="hero-tagline">A crisis-saturated world: earthquakes, heat waves, inflation, political fracture, and institutional overload — with no single actor in control.</p>
+    </div>
+    <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- Executive Summary -->
+<section class="section" id="executive-summary">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Synthesis</div>
+            <h2 class="section-title">Executive Summary</h2>
+        </div>
+
+        <div class="tldr">
+            <div class="tldr-label">tl;dr</div>
+            Today&#x27;s landscape is crisis-saturated. Eleven of nineteen articles carry a dominantly negative tone. The day is defined by overlapping layers of instability: a major earthquake in Venezuela (164+ dead), a record-breaking European heat wave, entrenched U.S. inflation at 4.1% PCE, a bipartisan housing bill sabotaged by presidential whim, and a growing push on the right to prosecute women who obtain abortions. The Iran war truce offers the only genuine bright spot — oil prices returning to prewar levels — but underlying inflation remains stubbornly high. The question threaded through every story: Can our systems — political, economic, infrastructural, relational — withstand the accumulating pressure?
+        </div>
+
+        <h3 class="subhead">What We Don't Know — 5 Critical Unknowns</h3>
+        <div class="unknowns-grid">
+            <div class="unknown-card card">
+                <div class="unknown-number">1</div>
+                <div class="unknown-title">Whether the Iran truce holds</div>
+                <div class="unknown-text">Oil prices have returned to prewar levels, but the durability of the preliminary agreement and any collapse into renewed conflict remain open.</div>
+            </div>
+<div class="unknown-card card">
+                <div class="unknown-number">2</div>
+                <div class="unknown-title">Whether U.S. inflation can be tamed</div>
+                <div class="unknown-text">Core PCE hit a fresh high since 2023 at 3.4%; Fed officials are divided and underlying drivers (AI, housing, labor) show no quick relief.</div>
+            </div>
+<div class="unknown-card card">
+                <div class="unknown-number">3</div>
+                <div class="unknown-title">Whether the bipartisan housing bill survives</div>
+                <div class="unknown-text">Trump abruptly canceled the signing ceremony and tied the bill to unrelated voter-ID demands, throwing its fate into doubt.</div>
+            </div>
+<div class="unknown-card card">
+                <div class="unknown-number">4</div>
+                <div class="unknown-title">Whether Europe&#x27;s heat protections are enough</div>
+                <div class="unknown-text">Record June temperatures, 60,000+ homes without power in France, and 40 drownings suggest adaptation is lagging acceleration.</div>
+            </div>
+<div class="unknown-card card">
+                <div class="unknown-number">5</div>
+                <div class="unknown-title">Whether Mamdani&#x27;s leftward sweep reshapes New York politics</div>
+                <div class="unknown-text">Three DSA-backed primary wins signal ascendant power, but general elections and Hochul&#x27;s response will determine durability.</div>
+            </div>
+        </div>
+
+        <h3 class="subhead">7 Calibrated Predictions</h3>
+        <div class="predictions-table-wrap">
+            <table class="predictions-table">
+                <thead>
+                    <tr>
+                        <th>Prediction</th>
+                        <th>Confidence</th>
+                        <th>Rationale &amp; Key Sources</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div class="prediction-title">Death toll from Venezuela earthquakes exceeds 300 within one week</div></td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>70%</span></td>
+                        <td><div class="prediction-rationale">Rescuers still searching; fragile infrastructure means more collapses likely (Cluster 1.1)</div></td>
+                    </tr>
+<tr>
+                        <td><div class="prediction-title">All-time national temperature records broken in 3+ European countries this week</div></td>
+                        <td><span class="confidence-badge high"><span class="confidence-dot"></span>80%</span></td>
+                        <td><div class="prediction-rationale">France already set record; UK on edge; early severe heat wave (Cluster 1.2)</div></td>
+                    </tr>
+<tr>
+                        <td><div class="prediction-title">Oil holds below $80/barrel through Q3 2026</div></td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>70%</span></td>
+                        <td><div class="prediction-rationale">Truce holding, shipping resuming, strategic reserves available (Cluster 1.6)</div></td>
+                    </tr>
+<tr>
+                        <td><div class="prediction-title">At least one state passes a law criminalizing women who obtain abortions within 12 months</div></td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>65%</span></td>
+                        <td><div class="prediction-rationale">Texas GOP already endorsed; petition signals momentum (Cluster 2.1)</div></td>
+                    </tr>
+<tr>
+                        <td><div class="prediction-title">Trump signs the housing bill (with or without SAVE Act attached) within 30 days</div></td>
+                        <td><span class="confidence-badge low"><span class="confidence-dot"></span>45%</span></td>
+                        <td><div class="prediction-rationale">Political cost of vetoing first major housing bill in 30+ years is high (Cluster 2.4)</div></td>
+                    </tr>
+<tr>
+                        <td><div class="prediction-title">Core PCE remains above 3.0% through December 2026</div></td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>65%</span></td>
+                        <td><div class="prediction-rationale">Structural factors (AI investment, housing, labor costs) not responding quickly (Cluster 3.1)</div></td>
+                    </tr>
+<tr>
+                        <td><div class="prediction-title">Climate-related economic losses in 2026 exceed $200 billion globally</div></td>
+                        <td><span class="confidence-badge medium"><span class="confidence-dot"></span>70%</span></td>
+                        <td><div class="prediction-rationale">Early extreme heat, drought, crop loss, infrastructure damage compound (Cluster 3)</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- Observer Commentary -->
+<section class="section section-navy" id="observer-commentary">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Commentary</div>
+            <h2 class="section-title gold">Observer Commentary</h2>
+            <p class="section-intro">Three independent readings of the same news cycle, each tracing a different fault line in the global order.</p>
+        </div>
+
+        <div class="observer-grid">
+            <article class="observer-card card">
+                <h3 class="observer-name zh">翟东升</h3>
+                <div class="observer-tagline zh">平行体系加速生成，美元霸权结构性裂缝加深</div>
+                <div class="observer-text zh"><h4 class="subhead">翟东升观察：2026年6月25日简报评论</h4><h4 class="subhead">平行体系加速生成，美元霸权结构性裂缝加深</h4><p>今日简报中多条线索指向同一个深层趋势：<strong>美国主导的旧体系正在加速瓦解，平行体系在危机中被动或主动地生成。</strong></p><p>第一个信号来自霍尔木兹海峡。伊朗战争期间，全球被迫绕开这一关键咽喉要道——管道运输、战略储备释放、亚洲加速可再生能源转型，这些&quot;战时应急措施&quot;正在固化为<strong>永久性平行体系</strong>。正如简报所述，霍尔木兹&quot;不再是过去那样关键的咽喉要道&quot;。这条教训具有深刻的货币含义：<strong>能源通道的多元化，本质上是美元结算体系的去中心化。</strong> 当越来越多的石油交易绕过海峡、绕过美元，石油美元的回流机制就出现了结构性漏损。</p><p>第二个信号是美国自身的财政-货币矛盾。PCE通胀4.1%，核心PCE创2023年以来新高，而美联储内部仍在&quot;谁应该更耐心&quot;上分裂。这是一种<strong>决策瘫痪</strong>——反映的不是技术分歧，而是美联储在政治压力与通胀现实之间的结构性困局。0.4%的单月环比增速意味着：即便伊朗停火让油价回落至73美元，<strong>结构性通胀（AI投资热潮、住房成本、劳动力短缺）已经脱离能源周期的控制。</strong> 这正是我反复强调的：美元霸权的核心矛盾在于，既要通过增发货币维持财政扩张，又要维持美元购买力——二者越来越不可兼得。</p><p>第三个信号是伊拉克。美国切断对巴格达的美元运送作为政治杠杆，这看似是权力展示，实则暴露了<strong>美元工具化的两面性</strong>：当华盛顿把货币结算变成制裁和勒索工具，各国必然会加速&quot;去美元化&quot;的平行体系建设。从亚洲到中东，从能源贸易到双边结算，替代性支付通道正在被历史的&quot;倒逼机制&quot;催生出来。</p><p>特朗普将住房法案与选民身份证法案捆绑，本质上也是在用<strong>制度性勒索</strong>替代治理。这不是个人风格问题，而是统治集团财政-政治矛盾激化到无法调和时的症状——借新债还旧债的游戏越来越难以为继。</p><p>今日的新闻看似散乱，底层逻辑却很清晰：<strong>旧体系的维护成本已超过其产出收益，平行体系不是谁有意设计的，而是系统压力下的必然涌现。</strong></p></div>
+            </article>
+<article class="observer-card card">
+                <h3 class="observer-name zh">金灿荣</h3>
+                <div class="observer-tagline zh">百年变局里的&quot;装修困境&quot;</div>
+                <div class="observer-text zh"><h4 class="subhead">金灿荣看天下：百年变局里的&quot;装修困境&quot;</h4><p>昨天看这份简报，我有一个很强烈的感觉：现在的美国就像一个拍胸脯说要装修厨房的邻居，结果胶水没干就放水，最后池子绿了还怪有人半夜拿刀划的——这说的就是那个16.4亿美元的林肯纪念堂倒映池。</p><p>我常说百年未有之大变局，什么意思？就是以前美国出问题，好歹有个人出来擦地板。现在呢？联邦法官判了九次、赢了零次的查选民数据诉讼，川普还在打；两党三十年才凑出来的住房法案，总统说撕就撕；通胀4.1%，核心PCE创2023年以来新高，美联储自己内部还在吵架要不要加息——这就像你在厨房炒菜，油都冒烟了，几个厨师还在争论谁先放盐。</p><p><strong>战略僵局</strong>这个概念可以用一个很简单的例子理解：你开车进了泥坑，踩油门车不动，不踩油门你也出不来。美国现在就卡在那儿——想收拾伊朗，结果把人家打出民族主义来了（Pink jeans nationalism，这个很有意思，你本来恨政府，被美国一炸，改崇拜了）；想压油价，战争停了确实回到73美元，但AI那股通胀劲头还在，房价还在涨。</p><p>再看欧洲，40度的热浪，法国人往运河里跳，40个人淹死了。这是一个极有寓言感的画面：发达国家的老百姓，热得只能跳河里。我说百年未有之大变局，这个&quot;变&quot;很大一个含义是——北方国家的治理能力跟不上气候变化的速度。</p><p>我这人说话比较直，但我不是悲观。用中国古人的话说这叫&quot;事有必至，理有固然&quot;。美国内部矛盾到了这个程度，不是哪个总统能解决的，需要更深层的调整。我们中国这时候需要什么呢？四个字——<strong>稳住别浪</strong>。人家厨房着火，你站远点看火势，别上去添柴火，也别被溅一身油。</p></div>
+            </article>
+<article class="observer-card card">
+                <h3 class="observer-name zh">宋鸿兵</h3>
+                <div class="observer-tagline zh">美元潮汐、债务周期与外围危机</div>
+                <div class="observer-text zh"><h4 class="subhead">宋鸿兵观察：2026年6月25日全球金融周期简报</h4><h4 class="subhead">美元潮汐、债务周期与外围危机</h4><p>今天的数据再次印证了我多年来反复阐述的规律：<strong>美元潮汐的退潮期，必然以边缘地带的地震式崩塌为代价。</strong></p><p>美国4.1%的PCE通胀——核心PCE创2023年以来新高——意味着美联储陷入了经典的两难困境。加息则引爆国内债务泡沫，不加息则美元信用持续流失。这不是政策失误，这是<strong>60年康波周期末端的必然症状</strong>。当一个帝国的核心利率无法抑制通胀时，说明它的债务扩张已经走到了极限。</p><p>再看外围：委内瑞拉7.5级地震，164人死亡，数字还在上升。表面看是天灾，本质上是什么？是美元潮汐退潮后，资源型边缘国家的基建维护早已被财政紧缩掏空。建筑规范形同虚设，不是因为没钱，而是因为债务利息吃掉了所有维护预算。<strong>这不是自然灾害，这是债务周期的物理表现。</strong></p><p>霍尔木兹海峡的战争经济学值得深思。伊朗封锁海峡，油价最高冲到多少？从未超过让全球衰退的水平。为什么？因为美元体系背后的深层布局早在战争之前就已经开始——绕过海峡的管道、战略石油储备、替代能源路线。<strong>战争从来不是为了关闭通道，而是为了测试新通道的可靠性。</strong> 美国打这场仗，表面是军事行动，本质是金融基础设施的压力测试。</p><p>伊拉克新总理夹在美伊之间，美元供应被切断作为筹码。这是经典的&quot;债务即武器&quot;案例。美国可以随时掐断你卖油赚来的美元，这份恐惧比任何导弹都有效。</p><p>结论：<strong>高位利率不会很快下降，边缘地带的连环崩塌只是开始，战争经济学正在取代和平红利。</strong> 接下来12个月，关注新兴市场的债务违约潮——这是每一轮美元潮汐退潮时的标准剧情。历史不会重复，但押韵从未改变。</p></div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 1 -->
+<section class="section" id="cluster-1">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 1</div>
+                <h2 class="cluster-title">World &amp; Geopolitics</h2>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <p>*Seven articles covering Venezuela, Europe, and the Middle East — dominated by natural disaster, extreme climate, and the</p>
+<p>post-Iran-war reordering.*</p>
+<p>1.1 Venezuela Earthquakes — Nature as Strategic Attacker</p>
+<p>A pair of powerful earthquakes struck Venezuela on Thursday, killing at least 164 people as rescuers mounted a frantic search for</p>
+<p>survivors. The larger quake registered 7.5 magnitude — the biggest seismic event in Venezuela in more than a century, according to</p>
+<p>seismologists. A second, also powerful, compounded the damage and hampered rescue efforts.</p>
+<p>The disaster is the latest major challenge for President Delcy Rodríguez, who has faced a series of political and economic crises</p>
+<p>since taking office. The quakes caused widespread damage across multiple states, including near the capital Caracas and the coastal</p>
+<p>state of La Guaira. Buildings collapsed, roads buckled, and power outages were reported across affected regions. The death toll is</p>
+<p>expected to rise.</p>
+<p>Strategic assessment (Sun Tzu/Clausewitz): Venezuela&#x27;s fragile infrastructure is a terrain liability. The double-tap of two quakes</p>
+<p>maximizes friction — multiple shockwaves compound chaos, information is unreliable (&quot;death toll expected to rise&quot;), and rescue</p>
+<p>operations face every form of difficulty Clausewitz identified. Rodríguez must use the disaster to consolidate loyalty (Sun Tzu&#x27;s &quot;turn</p>
+<p>adversity into advantage&quot;), or her position collapses. Her center of gravity is *perception of control*.</p>
+<p>Systems view (Han Fei): The quake revealed a system already brittle — building codes unenforced, maintenance defunded. The</p>
+<p>disaster is not a natural event but a systemic failure made visible.</p>
+<p>Probability estimates:</p>
+<p>Death toll exceeds 300 within one week: 70% — Rescuers are still searching rubble; fragile infrastructure means more collapses</p>
+<p>likely. Rodríguez announces a state of emergency with international aid request within 72 hours: 85% — She has no choice; the system</p>
+<p>cannot absorb this alone.</p>
+<p>Political instability (protests or calls for resignation) triggered by mismanaged response: 40% — Depends entirely on execution; a</p>
+<p>well-run rescue could buy her time.</p>
+<p>Aftershock of magnitude 6.0+ in the next 7 days: 55% — Aftershock sequences for quakes this size are common and could</p>
+<p>further damage already weakened structures.</p>
+<p>Oil production disruptions from Venezuela affecting global supply (minor): 25% — Venezuela&#x27;s production is already minimal; the</p>
+<p>main risk is refinery damage near coastal areas.</p>
+<div class="subhead">NYT Master Briefing</div>
+<p>1.2 Western Europe Heat Wave — Infrastructure Designed for a World That No Longer Exists</p>
+<p>The second severe, and unusually early, heat wave in just two months held Europe in its &quot;oppressive grip&quot; on Wednesday, straining</p>
+<p>power grids and testing the resources of countries unaccustomed to extreme heat.</p>
+<p>Urgent heat warnings were in effect in more than a dozen countries, including France, which on Tuesday experienced its highest</p>
+<p>average temperature on record — not just for June, but for any time of year. Power grid failures there have left more than 60,000</p>
+<p>homes without electricity. On Wednesday, Britain&#x27;s weather service said in a provisional assessment that temperatures in a county</p>
+<p>outside London had reached 36°C (96.8°F), which would be the highest temperature ever recorded in the country in June.</p>
+<p>As global temperatures rise, Europe has been warming faster than any other continent. Officials have scrambled to react to heat</p>
+<p>waves that are increasingly intense and happen earlier in the year. Making matters worse, in much of Europe most buildings are not</p>
+<p>equipped with air-conditioning, and schools are no exception.</p>
+<p>Julie Green, 39: , playing in a North London park with her infant son, Roman, captured the tension: *&quot;We&#x27;ve got a typical London flat</p>
+<p>that just gets boiling inside. The buildings, they&#x27;re just not built for hot climates.&quot;*</p>
+<p>Polyvagal note (Connector): The mother-child dyad is a last refuge of Ventral safety under sympathetic assault — but Green&#x27;s quote</p>
+<p>reveals grim endurance rather than hope. The 2003 heat wave (15,000 dead in France) is the collective trauma now reactivated.</p>
+<p>Zeng Guofan lens: Where is the long-term discipline? Fifteen thousand died in 2003, yet France still has schools without AC and</p>
+<p>nuclear plants shutting down because river water is too hot. Twenty-three years of signal, unheeded.</p>
+<p>Probability estimates:</p>
+<p>All-time national temperature records broken in 3+ European countries this week: 80% — France already set its record; the UK is</p>
+<p>on the edge.</p>
+<p>Heat-related excess mortality exceeds 5,000 across Europe by end of July: 65% — The early onset and severity, combined with</p>
+<p>unprepared infrastructure, point to elevated death tolls.</p>
+<p>France announces emergency climate adaptation package (building retrofits, cooling centers): 45% — Political pressure is</p>
+<p>building, but fiscal constraints and bureaucratic inertia are high.</p>
+<p>Nuclear plant shutdowns in France expand beyond the one near Toulouse: 60% — River temperatures are rising across the</p>
+<p>country; multiple plants use river water for cooling.</p>
+<p>EU activates the Civil Protection Mechanism for heat wave response: 50% — The scale is becoming continental; coordinated</p>
+<p>response may be triggered.</p>
+<p>1.3 French Drownings — The Canal as Refuge and Grave</p>
+<p>With temperatures across France soaring above 40°C (104°F), thousands of people are turning to extreme measures: jumping into</p>
+<p>canals, rivers, and other waterways for relief. It can be a deadly choice. Forty people drowned in heat wave-related accidents</p>
+<p>between June 18 and June 23, according to the French government. NYT Master Briefing</p>
+<p>On the Canal Saint-Martin in Paris, Stéphane Guillaume, 44, a computer engineer, watched his children splash in the murky water —</p>
+<p>a rare Parisian who&#x27;d beaten the heat, but only fleetingly: *&quot;It&#x27;s going to get worse every year. It&#x27;s very worrying because we&#x27;re already</p>
+<p>at the limit of what&#x27;s bearable.&quot;*</p>
+<p>Many in France still recall the summer of 2003, when nearly 15,000 people in the country, most of them older, died in a freak heat</p>
+<p>wave. The mismatch between tropical heat and northern European infrastructure remains stark. The Louvre Museum and the Eiffel</p>
+<p>Tower announced they would close early on several days this week. Near Toulouse, authorities shut down a nuclear plant because</p>
+<p>the water temperature in the River Garonne, used to cool its reactor, was dangerously hot.</p>
+<p>Philosophical note (Laozi): When the system fails to adapt, people return to the most elemental response — water. The canal is</p>
+<p>simultaneously refuge and grave. &quot;Already at the limit of what&#x27;s bearable&quot; is the voice of someone who sees the Dao&#x27;s turning but</p>
+<p>cannot stop it.</p>
+<p>Probability estimates:</p>
+<p>Drowning toll exceeds 100 across France by end of summer: 55% — The heat wave is early; the season is long; the pattern of</p>
+<p>desperate swimming will continue.</p>
+<p>Paris mandates public cooling stations and extended pool hours: 75% — Political pressure from the drownings and the canal</p>
+<p>crowds will force municipal action.</p>
+<p>National awareness campaign on swimming safety during heat waves: 60% — The 40 drownings in 5 days are a sharp signal that</p>
+<p>will likely trigger a public health response.</p>
+<p>1.4 Strait of Hormuz — The Chokepoint That Learned to Be Bypassed</p>
+<p>When Iran shut down the Strait of Hormuz during its war with the United States and Israel, countries and companies responded in</p>
+<p>ways that stopped the price of oil from reaching &quot;stratospheric levels&quot; and shielded most economies from major shocks.</p>
+<p>More oil was pumped through pipelines, and nations around the world released their oil reserves, mitigating a global shortage.</p>
+<p>Countries in Asia, which were hardest hit by the war, took steps to consume less fossil fuel and increase their use of green energy</p>
+<p>sources. In recent weeks, the U.S. military helped tankers pass through the waterway.</p>
+<p>Some experts now believe those measures can be built upon to make the world much less vulnerable to any effort by Iran to close the</p>
+<p>strait in the future. Vidya Mani, an associate professor at the University of Virginia and an expert on supply chains: *&quot;The Strait of</p>
+<p>Hormuz is no longer going to remain as critical a choke point as it was before this war.&quot;*</p>
+<p>Iran gained an early advantage by attacking commercial ships. But the blow was not as big as it might have been. The price of oil,</p>
+<p>which closed at $73.74 a barrel on Wednesday, soared but never reached levels that could have led to a global recession.</p>
+<p>Strategic assessment (Sun Tzu): Iran attempted to &quot;hold the defile&quot; to strangle global oil. The U.S. response — pipelines, reserves,</p>
+<p>military escort — was the correct counter: *avoid the strong point, attack the vulnerable approach.* The lesson — reduce reliance —</p>
+<p>embodies Sun Tzu&#x27;s highest wisdom: *&quot;The supreme art of war is to subdue the enemy without fighting.&quot;*</p>
+<p>Maoist lens (On Practice): Before the war, the theory was: closing the Strait would cause $200/barrel oil and global recession.</p>
+<p>Practice proved otherwise. The war was a laboratory that tested a hypothesis and found it wrong.</p>
+<p>Probability estimates:</p>
+<p>Global strategic petroleum reserve levels rebuilt to pre-war levels within 12 months: 70% — The war demonstrated their value;</p>
+<p>nations will restock.</p>
+<p>Accelerated investment in non-Strait oil pipeline capacity (e.g., bypass routes): 65% — The vulnerability has been proven;</p>
+<p>redundant infrastructure will be funded.</p>
+<p>Asia accelerates renewable energy adoption at 15-20% above pre-war forecasts: 75% — Asia was hardest hit by the blockade;</p>
+<p>the incentive to reduce fossil fuel dependence is now existential.</p>
+<p>Iran attempts another Strait disruption within 5 years (if peace holds): 20% — The lesson cuts both ways; Iran saw its primary leverage neutralized.</p>
+<p>Global oil transit insurance premiums remain permanently elevated for Gulf routes: 80% — The war created a new risk premium</p>
+<p>that won&#x27;t fully dissipate.</p>
+<div class="subhead">NYT Master Briefing</div>
+<p>1.5 Iraq — The Prime Minister Caught Between Superpowers</p>
+<p>Iraq&#x27;s new prime minister, Ali al-Zaidi, has met with significant resistance as he attempts to bring Iran-backed militias under state</p>
+<p>control, after intense pressure from the Trump administration to rein in the armed groups.</p>
+<p>Al-Zaidi came to power in late April, shortly after the United States suspended shipments of dollars to Iraq that it had earned from its</p>
+<p>own oil sales and halted funding for the country&#x27;s security services. The measures reinforced U.S. demands for a crackdown on</p>
+<p>militias that operate outside of government control and for Iraq&#x27;s government to distance itself from Iran.</p>
+<p>Iraq has been caught in a tug of war for years between its two main allies — the United States and Iran. Al-Zaidi, a political</p>
+<p>newcomer, ordered all armed groups last month to come under direct state authority. Some of the most powerful Iran-linked militias</p>
+<p>rejected the demand. Chief among them is Kataib Hezbollah, a group that has attacked U.S. targets in Iraq in recent months and has</p>
+<p>claimed responsibility for high-profile kidnappings, including that of a U.S. journalist in Baghdad this year.</p>
+<p>Polyvagal assessment (Connector): Iraq is in dorsal freeze — paralyzed between two sympathetic superpowers. The PM&#x27;s attempt at</p>
+<p>Ventral control (bring militias under state authority) is met with sympathetic resistance from the most powerful armed actors.</p>
+<p>Han Fei diagnosis: Dual sovereignty means no sovereignty. The PM issues orders without the positional authority (势) to enforce</p>
+<p>them. Where law applies only to some actors and not others (Iran-linked militias operate outside it), the system fragments. The U.S.</p>
+<p>dollar suspension is an attempt to restore the PM&#x27;s *shi* by controlling resources — but the militias are funded by Iran, not Iraq.</p>
+<p>Probability estimates:</p>
+<p>Kataib Hezbollah launches a significant attack on U.S. personnel in Iraq within 3 months: 65% — The group has attacked U.S.</p>
+<p>targets recently; the PM&#x27;s push for control will likely provoke a response.</p>
+<p>Al-Zaidi survives in office for 12+ months: 45% — Political newcomers caught between superpowers have low survival rates; the</p>
+<p>militias have more guns than he has authority.</p>
+<p>Iraq&#x27;s government reaches a negotiated partial truce with some militias (splitting the opposition): 55% — Mao&#x27;s strategy: unite</p>
+<p>with the weaker, isolate the strongest. Al-Zaidi may negotiate with smaller militias while confronting Kataib Hezbollah.</p>
+<p>U.S. resumes dollar shipments to Iraq before year-end: 60% — The suspension is leverage; once compliance begins, the U.S.</p>
+<p>has an incentive to restore flow.</p>
+<p>The kidnapped U.S. journalist is released within 6 months: 35% — Hostage dynamics in Iraq are complex; the journalist is a</p>
+<p>significant bargaining chip for Kataib Hezbollah.</p>
+<p>1.6 Oil Prices — Back to Prewar Levels</p>
+<p>Oil prices fell on Thursday, testing levels not seen since the war in Iran started in February. After surging over the past four months,</p>
+<p>oil prices have retreated sharply since the United States and Iran reached a preliminary agreement this month to reopen the Strait of</p>
+<p>Hormuz, a critical trading route for oil and gas exports from the Middle East.</p>
+<p>The slide in oil prices has gathered pace as efforts to clear a backlog of ships trapped in the Persian Gulf have advanced, easing</p>
+<p>concerns about supply disruptions.</p>
+<p>Calibrated context: Oil at <strong>$73.74 a barrel</strong> — down from war peaks but still reflecting the market&#x27;s cautious assessment of the</p>
+<p>truce&#x27;s durability. The backlog clearing is a positive operational signal, but the underlying geopolitical risk premium has not fully</p>
+<p>dissipated. Probability estimates:</p>
+<p>Oil holds below $80/barrel through Q3 2026: 70% — The truce is holding, shipping is resuming, and strategic reserves remain</p>
+<p>available.</p>
+<p>Oil spikes above $95/barrel if Iran peace talks collapse: 30% — This is the tail risk; a return to hostilities would reverse the current</p>
+<p>trend.</p>
+<p>Global gasoline prices drop 10-15% by August 2026 in the U.S.: 65% — The pass-through from crude to pump prices typically</p>
+<p>takes 4-6 weeks; the decline is just beginning.</p>
+<div class="subhead">NYT Master Briefing</div>
+<p>1.7 Iran&#x27;s New Nationalism — Unveiled Women, United Front</p>
+<p>Dressed in a pink top and acid-washed jeans, the young woman in the video hardly looked the part of a pious loyalist to Iran&#x27;s clerical</p>
+<p>rulers, standing alongside a crowd of women draped in black from head to toe. *&quot;I was not a supporter of the Islamic Republic, nor the</p>
+<p>supreme leader,&quot;* she told a pro-government filmmaker. After the United States and Israel attacked in February, she said, she began</p>
+<p>to admire Iran&#x27;s hard-line forces.</p>
+<p>The woman is never identified in the video, but what is unmistakable is a new kind of nationalism that Iran&#x27;s government and its</p>
+<p>supporters are formulating — one that embraces those who once rebelled against it. By not only surviving the war, but emerging with</p>
+<p>a strong hand in ongoing peace talks, Iran&#x27;s government feels emboldened. Still, a national reckoning lies ahead, as the country sinks</p>
+<p>deeper into economic crisis and its population remains deeply divided after antigovernment protests that swept the country shortly</p>
+<p>before the war.</p>
+<p>Maoist lens: This is perhaps the most Maoist story in the set. The woman in pink jeans who hated the regime now admires Iran&#x27;s</p>
+<p>hardliners because *practice* (surviving a foreign attack together) transformed her consciousness. The war changed the material</p>
+<p>conditions; her consciousness followed. The government&#x27;s new inclusive nationalism is a recognition of this.</p>
+<p>Nietzschean lens: This is a *revaluation of values*. The old hierarchy (pious veiled woman = loyal citizen; unveiled woman = traitor) is</p>
+<p>inverted. But Nietzsche would also warn: this new nationalism may be another form of herd morality — a coerced unity that</p>
+<p>suppresses individual will.</p>
+<p>Probability estimates:</p>
+<p>Iran&#x27;s regime consolidates power through nationalist messaging for 12+ months: 75% — The war-unity playbook is working;</p>
+<p>economic crisis is the vulnerability.</p>
+<p>Renewed antigovernment protests break out within 6 months driven by economic conditions: 60% — The nationalist gloss will</p>
+<p>wear thin if bread prices keep rising; pre-war protests showed a deep well of dissent.</p>
+<p>Iranian peace talks produce a formal ceasefire agreement by September 2026: 55% — Iran is negotiating from a position of</p>
+<p>relative strength (the Strait reopening gives it leverage), but maximalist demands could stall progress.</p>
+<p>The &quot;pink jeans nationalism&quot; narrative is adopted as official state media framing within 3 months: 80% — The video is already</p>
+<p>circulating; the government will institutionalize this messaging.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 2 -->
+<section class="section section-navy" id="cluster-2">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 2</div>
+                <h2 class="cluster-title">U.S. Politics &amp; Policy</h2>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <p>*Seven articles covering abortion, gay marriage, Trump&#x27;s legal/political battles, the housing bill crisis, and a mysterious congressional</p>
+<p>disappearance. The dominant theme is institutional dysregulation — the American political nervous system running hot without</p>
+<p>resolution.* NYT Master Briefing</p>
+<p>2.1 Abortion Prosecution — The Fracture on the Right</p>
+<p>In its quest to outlaw abortion across the country, the antiabortion movement has been largely unified around a core idea: women who</p>
+<p>get the procedure should be spared punishment, while doctors and others who make it available should be prosecuted. But a growing</p>
+<p>number of conservative leaders are starting to argue that the only way to stop women from ending their pregnancies could be to</p>
+<p>arrest them.</p>
+<p>The shift comes as activists express frustration that the number of abortions happening now is higher than when Roe v. Wade was</p>
+<p>overturned, largely because of the growing availability of abortion pills even in states where the procedure is banned.</p>
+<p>Today — the fourth anniversary of the Supreme Court&#x27;s decision to overturn Roe — a group of more than 60 conservative influencers,</p>
+<p>antiabortion leaders, and pastors signed a petition to remove the &quot;legal immunities&quot; that have protected women who get abortions</p>
+<p>from prosecution. That follows a vote earlier this month by delegates to the Texas Republican Party&#x27;s state convention to endorse</p>
+<p>repealing the legal protections that exempt women from criminal penalties.</p>
+<p>Maoist lens: This represents a contradiction turning *antagonistic*. Previously, the movement maintained a non-antagonistic</p>
+<p>contradiction with women (spare the woman, prosecute the doctor). That unity is breaking. The rising abortion numbers despite bans</p>
+<p>prove that &quot;legal superstructure cannot fully determine social practice&quot; — a classic dialectical lesson.</p>
+<p>Sun Tzu assessment: The pivot to prosecuting women represents a *change of ground*. Previously the movement held the moral</p>
+<p>high ground (&quot;protect women&quot;); now they move to harsher terrain. *&quot;When you surround an army, leave an outlet&quot;* — criminalizing</p>
+<p>women creates desperate enemies with nothing to lose.</p>
+<p>Probability estimates:</p>
+<p>At least one state passes a law criminalizing women who obtain abortions within 12 months: 65% — Texas GOP has already</p>
+<p>endorsed it; the petition signals momentum.</p>
+<p>Federal courts block such a law (if passed) on constitutional grounds: 70% — The Supreme Court that overturned Roe may not</p>
+<p>go as far as criminalizing women; due process and equal protection challenges likely.</p>
+<p>Abortion numbers in the U.S. continue to rise year-over-year in 2026: 60% — Pill access via mail and telehealth continues to</p>
+<p>expand; enforcement capacity is limited.</p>
+<p>The antiabortion movement&#x27;s internal fracture (prosecute women vs. spare women) becomes a major public split: 55% — The</p>
+<p>60-signatory petition is a minority within a movement that has long maintained the &quot;protect women&quot; position.</p>
+<p>Public opinion shifts against the antiabortion movement as prosecution rhetoric intensifies: 45% — Criminalizing women is</p>
+<p>broadly unpopular; overreach could trigger a backlash that damages the movement&#x27;s broader goals.</p>
+<p>2.2 Gay Marriage — Republican Support Collapses</p>
+<p>In early June, Representative Andy Ogles, a Republican firebrand from Tennessee, posted on X: *&quot;Homosexuality has no place in</p>
+<div class="subhead">America. Happy Nuclear Family Month.&quot;*</div>
+<p>The post drew condemnation from many members of his own party, including Mike Johnson, the House speaker. Ogles deleted the</p>
+<p>post, which he said was sent by a staffer, and called it &quot;stupid&quot; and &quot;hurtful.&quot;</p>
+<p>The post&#x27;s brief life spoke to the divisions within the Republican Party on same-sex marriage. Obergefell v. Hodges, the Supreme</p>
+<p>Court decision protecting gay marriage, turns 11 this year, and there is little indication that establishment Republicans are questioning</p>
+<p>it. At the same time, Christian conservatives are pursuing that goal with renewed energy, often using the push for trans rights as a</p>
+<p>new front in the debate.</p>
+<p>Support for gay marriage is now declining, reversing a yearslong trend. Earlier this month, Gallup released a poll showing that Republi</p>
+<p>can support for gay marriage now stands at 37%, a decline of 18 percentage points from a high of 55% in 2022. Support among</p>
+<p>independents declined, too. NYT Master Briefing</p>
+<p>Polyvagal analysis (Connector): The 18-point drop represents Ventral connection (social acceptance of LGBTQ+ relationships)</p>
+<p>*withdrawing*. The party&#x27;s internal nervous system is dysregulated — unable to hold a settled Ventral position. Ogles&#x27; post deleted =</p>
+<p>social dorsal (withdrawal/erasure) as a conflict-resolution strategy.</p>
+<p>Sun Tzu assessment: A divided party is a weak party. Democrats should probe this fracture. Ogles&#x27; post and retreat was a *feint*</p>
+<p>abandoned when it drew enemy fire — poor execution of a probe.</p>
+<p>Probability estimates:</p>
+<p>Republican support for gay marriage falls below 30% by end of 2026: 40% — The trend is downward, but 37% is already low;</p>
+<p>floor effects may slow further decline.</p>
+<p>A Republican-sponsored federal bill targeting same-sex marriage is introduced in the House within 18 months: 50% — The</p>
+<p>renewed energy from Christian conservatives will find legislative expression; whether leadership allows a vote is another question.</p>
+<p>Obergefell v. Hodges is not overturned by the current Supreme Court: 75% — The conservative majority has shown reluctance to</p>
+<p>revisit settled social policy (e.g., avoiding a national abortion ban); Obergefell is less vulnerable than Roe was.</p>
+<p>The Ogles incident accelerates a broader GOP crackdown on anti-LGBTQ rhetoric by establishment leadership: 25% — Johnson</p>
+<p>condemned the post, but the trend is moving the other way; establishment pushback is weakening.</p>
+<p>Independent support for gay marriage drops below 60% within two years: 30% — The decline among independents is a new and</p>
+<p>worrying signal; if it continues, the overall majority may erode.</p>
+<p>2.3 Trump Voter Data — Nine Lawsuits, Zero Wins</p>
+<p>A federal appeals court on Wednesday rejected an effort by the Department of Justice to force Michigan to turn over its voter rolls,</p>
+<p>including sensitive voter information — the most significant rebuke yet by courts of the federal government&#x27;s effort to obtain private</p>
+<p>data.</p>
+<p>The decision deals a major blow to the Justice Department&#x27;s efforts to obtain such information from every state as it seeks to compile</p>
+<p>the largest set of national voter roll data ever collected. That effort is part of an administration-wide push by President Trump and his</p>
+<p>allies to find evidence of voter fraud. So far, they have not found anything substantial.</p>
+<p>Since the department began demanding voter rolls last year, more than half of all states have refused to comply. The department has</p>
+<p>since sued 30 states and Washington, D.C. to try to force them to hand over the data. The Justice Department has lost nine of the</p>
+<p>lawsuits so far in federal court, including one in Maryland last Thursday, and has won none. Wednesday&#x27;s decision marked the first</p>
+<p>time an appeals court had weighed in, setting the stage for a potential escalation to the Supreme Court.</p>
+<p>Drucker lens (The Effective Executive): The DOJ has sued 30 states and lost 9 of 9 cases. *If the results contradict your assumptions,</p>
+<p>change your assumptions.* Persisting in a losing strategy is not determination; it is refusal to learn from feedback.</p>
+<p>Polyvagal note: The appeals court ruling is a Ventral Vagal intervention — healthy boundary-setting by an institutional nervous system</p>
+<p>saying &quot;no&quot; to overreach.</p>
+<p>Probability estimates:</p>
+<p>Supreme Court agrees to hear the Michigan case (or a consolidated voter-roll case): 70% — The circuit split potential and the</p>
+<p>national importance make this a likely grant of certiorari.</p>
+<p>Supreme Court rules against the DOJ (upholding the appeals court): 65% — The 9-0 loss record at lower courts suggests weak</p>
+<p>legal footing; even a conservative Court may not endorse the sweeping data request.</p>
+<p>At least 5 more states join the refusal coalition within 6 months: 75% — The losing streak encourages resistance; more states will</p>
+<p>see the DOJ as beatable.</p>
+<p>The DOJ drops the voter-roll litigation effort entirely: 15% — Trump has made this a signature issue; abandoning it would be a</p>
+<p>political concession he is unlikely to accept.</p>
+<p>Congressional Republicans introduce legislation to mandate federal voter roll access: 35% — If the courts block the executive route, the legislative route becomes the next avenue.</p>
+<div class="subhead">NYT Master Briefing</div>
+<p>2.4 Housing Bill — Bipartisanship Sabotaged at the Signing Table</p>
+<p>The first major bill to address the nation&#x27;s housing crisis in more than three decades seemed headed for President Trump&#x27;s signature</p>
+<p>on Wednesday. But the bipartisan effort &quot;descended into chaos&quot; after Trump abruptly canceled a ceremony to sign the measure into</p>
+<p>law over a series of political grievances with Congress.</p>
+<p>Democrats and Republicans began the day on a &quot;jubilant&quot; note, as they prepared to commemorate a new set of policies meant to</p>
+<p>lower housing costs. But Trump swiftly and unexpectedly upended those plans. Hours after his own aides praised the bill and</p>
+<p>promised the president would sign it, Trump instead canceled a scheduled event at the Capitol. Eschewing an opportunity for rare</p>
+<p>bipartisan accord, the president opted to turn the bill into political leverage, aiming to force Congress to bow to unrelated demands</p>
+<p>over voting restrictions and the war with Iran.</p>
+<p>Trump insisted on social media that he would only sign the housing measure into law if Congress first approved the SAVE America</p>
+<p>Act, a divisive measure that would impose new requirements for voter identification and limits on mail-in ballots. The day ended with</p>
+<p>Republican leaders seeking to mollify Trump by holding a late-night vote. The White House declined to say if the president might sign</p>
+<p>the bill another time, or if he might take the more extreme step of vetoing the law.</p>
+<p>Maoist lens: This is the *negation of the negation*. The bill represented a temporary unity of opposites (Democrats and Republicans</p>
+<p>agreeing on housing). Trump negates this unity, reintroducing the original contradiction (partisan struggle over voting rights). The</p>
+<p>dialectic snaps back to an earlier, cruder stage.</p>
+<p>Drucker lens: Trump had an opportunity for contribution — sign a bipartisan bill addressing a genuine crisis. Instead, he used it as</p>
+<p>*leverage*. *&quot;The effective executive asks &#x27;what can I contribute?&#x27; Trump asks &#x27;what can I extract?&#x27;&quot;* The result: the housing crisis</p>
+<p>goes unaddressed.</p>
+<p>Sun Tzu assessment: Trump is changing the *ground* from &quot;housing policy&quot; to &quot;voter ID&quot; — terrain more favorable to his coalition.</p>
+<p>This is positional chess; the question is whether he overplays his hand.</p>
+<p>Probability estimates:</p>
+<p>Trump signs the housing bill (with or without SAVE America Act attached) within 30 days: 45% — The political cost of vetoing the</p>
+<p>first major housing bill in 30+ years is high; Trump may extract concessions and then sign.</p>
+<p>Trump vetoes the housing bill: 35% — If his demands are not met, a veto is the credible threat; but it would be politically</p>
+<p>damaging.</p>
+<p>The SAVE America Act passes the House but fails in the Senate: 60% — Voter ID legislation is popular with the GOP base but</p>
+<p>faces a filibuster hurdle in the Senate.</p>
+<p>Housing costs remain a top-3 voter concern through the 2026 midterms: 85% — The bill&#x27;s failure (or delay) ensures the housing</p>
+<p>crisis stays front and center.</p>
+<p>A slimmed-down version of the housing bill passes separately within 6 months (without voter ID attached): 35% — Congress may</p>
+<p>try to salvage the popular elements; Democratic leadership may peel off enough Republicans for a standalone bill.</p>
+<p>2.5 Trump&#x27;s Reflecting Pool — A $16.4 Million Failure</p>
+<p>President Trump says the peeling blue coating and algae blooms that mar his $16.4 million renovation of the Lincoln Memorial</p>
+<p>Reflecting Pool are the fault of vandals working with &quot;knives&quot; in the &quot;dark of night.&quot; But government documents obtained by The New</p>
+<p>York Times show a different story.</p>
+<p>National Park Service workers found two cuts in sections of foam between the pool&#x27;s expansion joints, but those were not directly</p>
+<p>related to the peeling blue coating or the algae that has turned the pool a bright shade of green. NYT Master Briefing</p>
+<p>The pool had been drained, resealed, and then refilled by June 5. Four days later, Park Service workers discovered holes, cracks,</p>
+<p>and peeling caulking in parts of the pool. While a June 9 report by the U.S. Park Police described the cuts as &quot;razor blade slashes,&quot;</p>
+<p>the administration has yet to present evidence supporting that assertion. By June 16, workers had noticed that chunks of blue sealant</p>
+<p>covering the pool&#x27;s bottom were peeling and floating to the surface.</p>
+<p>Nietzschean lens: The eternal return of *failed grandeur* — every monument built by the resentful man crumbles faster than it should.</p>
+<p>The algae bloom is not an accident; it is the truth of the deed returning. Every corner cut returns. Every lie returns. The green pool is</p>
+<p>the eternal return of bad faith.</p>
+<p>Zeng Guofan lens: The opposite of discipline. When something goes wrong, the disciplined person examines his own contribution.</p>
+<p>Trump blames external actors. A person who cannot examine his own errors cannot cultivate himself.</p>
+<p>Probability estimates:</p>
+<p>Congressional oversight hearing on the reflecting pool renovation is scheduled: 55% — The cost ($16.4M) and the failure pattern</p>
+<p>will attract scrutiny; Democrats will use it as a symbol of administrative incompetence.</p>
+<p>The administration&#x27;s vandalism narrative is formally debunked by an independent investigation: 70% — The NYT has already</p>
+<p>documented the disconnect; further reporting or a GAO investigation will likely follow.</p>
+<p>The pool requires an additional multimillion-dollar repair within 12 months: 85% — The sealant is failing; algae is blooming; a</p>
+<p>complete redo is probable.</p>
+<p>Trump continues to blame vandals in public remarks (denial strategy): 90% — The administration is locked into the vandalism</p>
+<p>narrative; backing down would be a political loss.</p>
+<p>2.6 Tom Kean — The Congressman Who Vanished</p>
+<p>Representative Thomas Kean Jr.: , who has been missing from Washington for nearly four months with little explanation, is back</p>
+<p>home in New Jersey. He could be seen from the street on Wednesday evening, standing in a brightly lit front room of his Westfield</p>
+<p>home just before 8:45 p.m.</p>
+<p>*&quot;It&#x27;s good to see you,&quot;* he said after a reporter for The New York Times rang his doorbell. He was wearing a dark suit and a red tie.</p>
+<p>*&quot;I&#x27;ll talk to you next week. Thank you.&quot;*</p>
+<p>His wife, Rhonda, stood in the background, smiling pleasantly. He declined additional comment and closed the door. Aides had said</p>
+<p>that Kean, 57, was being treated for a health condition and was expected to fully recover, but had offered no additional details as their</p>
+<p>boss missed more than 100 floor votes since the middle of March. Kean, a Republican, is running for a third term in November in one</p>
+<p>of the country&#x27;s most competitive midterm races.</p>
+<p>Polyvagal assessment: The Dorsal withdrawal is never explained. The story leaves us in unresolved uncertainty — the reader&#x27;s own</p>
+<p>nervous system remains slightly vigilant. The reporter&#x27;s ring of the doorbell was a Ventral reach that got a partial answer.</p>
+<p>Zeng Guofan lens: A failure of *sincerity* (诚). Whatever the health condition, the refusal to communicate honestly undermines trust.</p>
+<p>A disciplined leader would say: *&quot;I am unwell. Here is what I am doing. Here is when I will return.&quot;* The secrecy suggests either</p>
+<p>shame or calculation — neither is the path of a cultivated person.</p>
+<p>Probability estimates:</p>
+<p>Kean provides a full public explanation of his absence before the November election: 40% — The secrecy has become a</p>
+<p>campaign liability; his opponent will use it in ads.</p>
+<p>Kean wins re-election in November: 50% — The district is competitive; the disappearance could be a fatal liability or, if explained</p>
+<p>sympathetically, neutralized.</p>
+<p>A formal House Ethics Committee inquiry into Kean&#x27;s extended absence is opened: 35% — Missing 100+ votes without</p>
+<p>explanation is unusual; if other members press the issue, an inquiry could follow.</p>
+<p>Kean&#x27;s health condition is confirmed to be serious (cancer, heart condition, etc.): 55% — The length of absence and the secrecy suggest something more than a minor ailment.</p>
+<div class="subhead">NYT Master Briefing</div>
+<p>2.7 Mamdani&#x27;s Wins — The Left Ascendant in New York</p>
+<p>When Micah Lasher, an heir to the Manhattan Democratic establishment, won the primary in New York&#x27;s 12th Congressional District</p>
+<p>on Tuesday night, Gov. Kathy Hochul was by his side. But across New York City, candidates backed by Mayor Zohran Mamdani</p>
+<p>routed mainstream Democratic candidates, sending incumbents packing and bolstering the political power of the ascendant left.</p>
+<p>Two of the mayor&#x27;s preferred congressional candidates are members of the Democratic Socialists of America; all three sailed to</p>
+<p>primary victories, two of them over incumbents backed by Hochul herself. The results sent an &quot;unmistakable message&quot; to Hochul,</p>
+<p>who is seeking re-election this year against Bruce Blakeman, about where power now resides.</p>
+<p>Amit Bagga: , a strategist and a former member of the Hochul administration: *&quot;The message and the framing and the vision that was</p>
+<p>laid out by the mayor in his campaign last year are the message and vision and framing that Democratic voters are clamoring for.&quot;*</p>
+<p>Maoist lens (On Practice): The primary elections were *practice* that revealed the *real* distribution of power in New York politics.</p>
+<p>The theory (Hochul&#x27;s theory) was that establishment Democrats still control the party. Practice (voters electing Mamdani-backed DSA</p>
+<p>candidates) refuted this theory. Knowledge derived from practice.</p>
+<p>Drucker lens: The effective executive must know where the power is and align with it. Hochul can fight this (ineffective — she&#x27;ll lose)</p>
+<p>or align (effective — she can channel it). Build on what is strong.</p>
+<p>Probability estimates:</p>
+<p>Mamdani-backed candidates win at least 3 of their 3 primary races in the general election: 75% — New York City&#x27;s general</p>
+<p>elections heavily favor Democrats; primary wins in safe districts are tantamount to election.</p>
+<p>Hochul significantly adjusts her policy platform to incorporate Mamdani-style messaging before November: 55% — The primary</p>
+<p>results are a clear signal; ignoring them would be politically unwise.</p>
+<p>The DSA gains 2+ additional seats in the New York City Council in 2026: 50% — The momentum from the congressional wins will</p>
+<p>spill into local races.</p>
+<p>Hochul loses re-election to Bruce Blakeman: 30% — New York is heavily Democratic; a primary challenge from the right is</p>
+<p>unlikely to succeed, but the leftward shift complicates her general election positioning.</p>
+<p>Internal Democratic Party conflict between establishment and progressive wings escalates into a formal leadership challenge</p>
+<p>within 18 months: 40% — The Mamdani model is replicable; other progressive mayors and candidates will follow the playbook.</p>
+<div class="subhead">Probability Table — Cluster 2: U.S. Politics &amp; Policy
+#</div>
+<div class="subhead">Probability Statement</div>
+<div class="subhead">NYT Master Briefing</div>
+<div class="subhead">Estimate</div>
+<p>2.1.1</p>
+<div class="subhead">At least one state passes a law criminalizing women</div>
+<p>who obtain abortions within 12 months</p>
+<p>2.1.2</p>
+<div class="subhead">Federal courts block such a law on constitutional</div>
+<p>grounds</p>
+<p>2.1.3</p>
+<div class="subhead">U.S. abortion numbers continue to rise year-over-year</div>
+<p>in 2026</p>
+<p>2.1.4</p>
+<div class="subhead">Antiabortion movement publicly splits over prosecuting</div>
+<p>women</p>
+<p>2.2.1</p>
+<div class="subhead">Republican support for gay marriage falls below 30% by</div>
+<p>end of 2026</p>
+<p>2.2.2</p>
+<div class="subhead">Federal bill targeting same-sex marriage introduced in</div>
+<div class="subhead">House within 18 months</div>
+<p>2.2.3</p>
+<div class="subhead">Obergefell v. Hodges not overturned by current Supreme</div>
+<div class="subhead">Court</div>
+<p>2.3.1</p>
+<div class="subhead">Supreme Court agrees to hear Michigan voter-roll case</div>
+<p>2.3.2</p>
+<div class="subhead">Supreme Court rules against the DOJ</div>
+<p>2.4.1</p>
+<div class="subhead">Trump signs housing bill within 30 days</div>
+<p>2.4.2</p>
+<div class="subhead">Trump vetoes housing bill</div>
+<p>2.4.3</p>
+<div class="subhead">SAVE America Act passes House, fails in Senate</div>
+<p>2.5.1</p>
+<div class="subhead">Congressional oversight hearing on reflecting pool</div>
+<p>renovation</p>
+<p>2.5.2</p>
+<div class="subhead">Administration&#x27;s vandalism narrative debunked by</div>
+<p>independent investigation</p>
+<p>2.6.1</p>
+<div class="subhead">Kean provides full public explanation before November</div>
+<p>election</p>
+<p>2.6.2</p>
+<div class="subhead">Kean wins re-election</div>
+<p>2.7.1</p>
+<div class="subhead">Mamdani-backed candidates win general elections</div>
+<p>(district-dependent)</p>
+<p>2.7.2</p>
+<div class="subhead">Hochul adjusts platform toward Mamdani-style messaging</div>
+<p>before November 65%</p>
+<p>70%</p>
+<p>60%</p>
+<p>55%</p>
+<p>40%</p>
+<p>50%</p>
+<p>75%</p>
+<p>70%</p>
+<p>65%</p>
+<p>45%</p>
+<p>35%</p>
+<p>60%</p>
+<p>55%</p>
+<p>70%</p>
+<p>40%</p>
+<p>50%</p>
+<p>75%</p>
+<p>55%</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 3 -->
+<section class="section" id="cluster-3">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 3</div>
+                <h2 class="cluster-title">Economy &amp; Climate</h2>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <div class="subhead">NYT Master Briefing</div>
+<p>*Two primary articles with extensive cross-references. The dominant economic story is inflation that refuses to be tamed; the climate</p>
+<p>stories — covered in Cluster 1 for their geopolitical dimensions — are cross-referenced here for their economic implications.*</p>
+<p>3.1 U.S. Inflation — The Fed&#x27;s Long, Grinding War</p>
+<p>The Federal Reserve&#x27;s new chairman has vowed to deliver price stability, but officials are at odds over whether that will require higher</p>
+<p>borrowing costs.</p>
+<p>If a preliminary deal to end the war with Iran holds, the worst of the inflation surge that has followed in its wake could soon be over. Oil</p>
+<p>prices have dropped significantly since the announcement of a truce this month. Gasoline costs have, in turn, begun to fall, and</p>
+<p>airfares and shipping fees are poised to follow.</p>
+<p>But despite this reprieve, the U.S. inflation problem is &quot;far from fixed.&quot; Measures of underlying inflation were already showing little</p>
+<p>progress before the war began. The trend has only worsened as the fighting and other forces, like the boom in artificial intelligence,</p>
+<p>have stoked prices.</p>
+<p>On Thursday, data from the Commerce Department showed that the Federal Reserve&#x27;s preferred inflation gauge, the Personal</p>
+<p>Consumption Expenditures price index, accelerated again in May. Overall prices jumped 0.4% during the month, or 4.1% from a year</p>
+<p>earlier. Once food and energy prices are stripped out, &quot;core&quot; inflation notched a 3.4% annual pace, a fresh high since 2023.</p>
+<p>Alan Detmeister: , who worked at the Fed before joining UBS: It is possible that if the war with Iran has indeed ended, May or June</p>
+<p>data will mark the peak of the recent run-up. Yet even if these forecasts pan out, it will take <strong>two more years</strong> for the Fed to reach its</p>
+<p>2% target, having already overshot it for half a decade.</p>
+<p>The question that Fed officials are now grappling with is just how patient they can afford to be in waiting for underlying price pressures</p>
+<p>to ease — &quot;divisions dominating the central bank as it weighs the need to raise rates.&quot;</p>
+<p>Polyvagal assessment: Officials are &quot;at odds,&quot; &quot;grappling&quot; — sympathetic mobilization without resolution. Beneath it: dorsal</p>
+<p>exhaustion — &quot;far from over,&quot; &quot;two more years,&quot; &quot;already overshot for half a decade.&quot; The feeling of being trapped in a long, grinding</p>
+<p>process with no quick escape.</p>
+<p>Maoist lens: The contradiction: the war truce should reduce oil prices and thus inflation, but underlying inflation (3.4% core) remains</p>
+<p>high. The May PCE data is a *practice-test* of the hypothesis that &quot;ending the war will fix inflation.&quot; The data says: the hypothesis is</p>
+<p>incomplete. Other forces (AI boom, housing costs, structural labor shortages) are driving prices. *&quot;No investigation, no right to speak&quot;*</p>
+<p>applies directly to Fed officials.</p>
+<p>Drucker lens: *&quot;The Fed&#x27;s problem is not economic but decisional.&quot;* The question &quot;how patient can we afford to be?&quot; is the wrong</p>
+<p>question. The right question: *what is our contribution to price stability, and what decision serves that contribution?* A divided Fed that</p>
+<p>debates endlessly without acting is not making a decision — it is deferring one.</p>
+<p>Cross-reference — Climate &amp; Inflation: The European heat wave (Cluster 1.2) will add inflationary pressure through agricultural losses</p>
+<p>(crop damage, livestock stress), energy price spikes (nuclear plant shutdowns, surging cooling demand), and infrastructure repair</p>
+<p>costs. The 60,000 homes without power in France alone represent a real economic shock. These climate-driven costs compound the</p>
+<p>underlying inflation story.</p>
+<p>Cross-reference — Oil Prices (Cluster 1.6): Oil at $73.74 is a welcome relief, but the AI boom is an independent inflationary driver that</p>
+<p>the Fed cannot address through energy policy alone.</p>
+<p>Probability estimates:</p>
+<p>Fed raises interest rates at the July or September 2026 FOMC meeting: 55% — The 4.1% PCE reading (and 3.4% core, a fresh NYT Master Briefing</p>
+<p>high since 2023) will force the hawks&#x27; hand.</p>
+<p>Core PCE remains above 3.0% through December 2026: 65% — Structural factors (AI investment, housing, labor costs) are not</p>
+<p>responding to rate policy quickly.</p>
+<p>Fed achieves 2% PCE target before 2029: 30% — The half-decade of overshoot, plus new structural inflation drivers, makes a</p>
+<p>quick return to target unlikely.</p>
+<p>A recession is triggered by Fed tightening before inflation is tamed: 40% — The Fed is in Clausewitz&#x27;s dangerous zone where the</p>
+<p>culminating point of rate hikes may have passed — further action risks economic contraction.</p>
+<p>AI-related capital expenditure continues to drive business investment inflation through 2027: 75% — The AI boom is not cyclical;</p>
+<p>it is a structural transformation that will sustain demand for computing, energy, and talent.</p>
+<div class="subhead">Cross-Reference: Climate as an Economic Multiplier</div>
+<p>The climate crisis is not a separate story from the economy — it is a cost multiplier embedded in multiple narratives:</p>
+<div class="subhead">Climate Impact</div>
+<div class="subhead">Economic Consequence</div>
+<div class="subhead">Article Reference</div>
+<div class="subhead">European power grid</div>
+<p>failures (60,000+ homes)</p>
+<div class="subhead">French nuclear plant</div>
+<p>shutdown (Toulouse)</p>
+<div class="subhead">Agricultural losses from</div>
+<p>extreme heat</p>
+<div class="subhead">Infrastructure damage</div>
+<p>(roads, buildings)</p>
+<div class="subhead">Heat-related mortality (40</div>
+<p>drownings + projected</p>
+<p>excess deaths)</p>
+<p>Probability estimate:</p>
+<div class="subhead">Increased energy costs,</div>
+<p>business interruption</p>
+<div class="subhead">Reduced baseload power,</div>
+<p>higher wholesale</p>
+<p>electricity prices</p>
+<div class="subhead">Higher food prices,</div>
+<p>compounding inflation</p>
+<div class="subhead">Increased public</div>
+<p>spending, insurance</p>
+<p>claims</p>
+<div class="subhead">Reduced labor supply,</div>
+<p>healthcare costs</p>
+<div class="subhead">Cluster</div>
+<p>1.2</p>
+<div class="subhead">Cluster</div>
+<p>1.3</p>
+<div class="subhead">Cluster</div>
+<p>1.2</p>
+<div class="subhead">Cluster</div>
+<p>1.1</p>
+<p>(Venezuela)</p>
+<div class="subhead">Cluster</div>
+<p>1.3</p>
+<p>Climate-related economic losses in 2026 exceed $200 billion globally (insured + uninsured): 70% — The combination of</p>
+<p>early-season extreme heat, drought, and secondary effects (crop loss, infrastructure damage, health costs) points to a high-loss year.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 4 -->
+<section class="section section-navy" id="cluster-4">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 4</div>
+                <h2 class="cluster-title">Society &amp; Culture</h2>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <p>*Two articles — one about the anxiety of high-stakes artistic creation, one about the desire to change one&#x27;s eye color. Both are, at</p>
+<p>root, about identity: who we are, who we want to be, and the risks we take to become ourselves.* NYT Master Briefing</p>
+<p>4.1 Christopher Nolan — The Anxiety of Making &quot;The Odyssey&quot;</p>
+<p>Christopher Nolan was in an &quot;admitted state of anxiety.&quot; *&quot;It&#x27;s very nerve-racking,&quot;* the writer-director said, of the period before a film</p>
+<p>opens. *&quot;You work on something a long time, you care about it a lot, but movies belong to the audience.&quot;*</p>
+<p>His tension was particularly acute a few weeks before the July 17 debut of &quot;The Odyssey,&quot; his latest high-stakes adaptation after</p>
+<p>&quot;Oppenheimer,&quot; his 2023 biopic, won a slew of Oscars. *&quot;I don&#x27;t think I would have felt ready to take on this film until now,&quot;* Nolan</p>
+<p>said.</p>
+<p>The first commercial feature filmed completely in IMAX, &quot;The Odyssey&quot; is a three-hour sword-and-sandals epic shot in six countries</p>
+<p>with a cast and crew of thousands, and practical effects in lieu of full CGI. It stars Matt Damon as Odysseus and Anne Hathaway as</p>
+<p>his wife, Penelope, as well as Tom Holland as their son, John Leguizamo as a blind swineherd, and the rapper Travis Scott as a bard.</p>
+<p>IMAX screenings began selling out almost a year ago.</p>
+<p>For Nolan and his cinematographer, Hoyte van Hoytema, IMAX invented a &quot;blimp system&quot; to encase and maneuver its enormous</p>
+<p>camera. *&quot;Halfway through the shoot, Hoyte and I kind of looked at each other and realized, &#x27;Yep, this is gonna work,&#x27;&quot;* Nolan said.</p>
+<p>Nietzschean lens: &quot;The Odyssey&quot; is the story of eternal return told before the concept had a name. Odysseus does not want to</p>
+<p>escape; he wants to *return to the same* — the same wife, the same bed, the same island. Nolan&#x27;s anxiety is the weight of having to</p>
+<p>make something that *deserves to recur*.</p>
+<p>Drucker lens: Nolan&#x27;s approach perfectly illustrates concentration. One major project at a time. He built on his *strength* (practical</p>
+<p>effects, IMAX innovation, narrative complexity) rather than chasing what everyone else is doing. He made decisions about what *not*</p>
+<p>to do (no CGI). This is the essence of effectiveness: not making 100 decisions but making the few important ones right.</p>
+<p>Zeng Guofan lens: Nolan&#x27;s admission of anxiety shows a craftsman who cares deeply — this is *sincerity* (诚). The practical effects</p>
+<p>over CGI, the IMAX blimp system invented mid-shoot, the six-country shoot — this is *daily discipline* at scale.</p>
+<p>Probability estimates:</p>
+<p>&quot;The Odyssey&quot; opens to $100M+ domestic box office in its opening weekend: 70% — IMAX has been selling out for nearly a</p>
+<p>year; Nolan&#x27;s brand is at its peak post-Oppenheimer.</p>
+<p>The film is nominated for 8+ Academy Awards: 65% — The combination of Nolan&#x27;s track record, the technical innovation (first</p>
+<p>all-IMAX feature), and the scale of production creates a strong Oscar profile.</p>
+<p>The film grosses over $1 billion worldwide: 55% — Three-hour epics face headwinds; but Nolan&#x27;s audience is global and the</p>
+<p>IMAX exclusivity creates event-driven demand.</p>
+<p>Travis Scott&#x27;s casting as a bard becomes a major talking point (positive or negative): 80% — It is the most unusual casting choice</p>
+<p>in the film; it will generate significant media attention.</p>
+<p>The practical effects bet pays off critically (compared to CGI-heavy contemporaries): 75% — Nolan&#x27;s track record with practical</p>
+<p>effects (Tenet, Dunkirk, Oppenheimer) gives confidence, but a three-hour sword-and-sandals epic is a scale challenge unlike any</p>
+<p>before.</p>
+<p>4.2 Eye Color Surgery — The Desire to Be Seen Differently</p>
+<p>Dr. Francis Ferrari: , a French ophthalmologist at the New Eyes Paris clinic, invented a controversial cosmetic procedure called</p>
+<p><strong>FLAAK</strong> (Femtosecond Laser-Assisted Annular Keratopigmentation) that can change eye color. On a recent afternoon in Paris, a</p>
+<p>woman was having her eye color changed from brown to green.</p>
+<p>Ayşegül Kolvert, 35: , had traveled to Paris from Grenoble to have the procedure. She&#x27;d always dreamed of having green eyes. *&quot;I</p>
+<p>was tired of wearing contact lenses,&quot;* she said. She is one of more than <strong>2,500 people</strong> who have come to New Eyes Paris seeking</p>
+<p>the surgery. Many of Ferrari&#x27;s patients learned about keratopigmentation through social media, and often message the doctor directly</p>
+<p>on Instagram to book initial appointments. Most want to transition from dark to light shades, choosing among pigments that include NYT Master Briefing</p>
+<p>olive green, pistachio, &quot;Riviera blue,&quot; &quot;honey gold,&quot; and &quot;ocean.&quot;</p>
+<p>Laozi lens: A small but telling act of *forcing* (the opposite of wu wei). Thousands travel to Paris, pay money, risk blindness, to</p>
+<p>become what they are not by nature. The very names of the pigments evoke the exotic, the elsewhere, the not-here. The patient&#x27;s</p>
+<p>brown eyes — the most common eye color on Earth, the color of earth itself — rejected in favor of the rare. *&quot;This is the Daoist</p>
+<p>diagnosis of modern discontent: we cannot sit still with what we are.&quot;*</p>
+<p>Zeng Guofan lens: Dr. Ferrari can change eye color with a laser. The question *&quot;Should he?&quot;* is precisely the question Zeng would</p>
+<p>insist on. Technical discipline (mastering a difficult procedure) is necessary but not sufficient. It must be paired with moral discipline:</p>
+<p>*just because I can, does it mean I should?*</p>
+<p>Polyvagal note: The surgery is a sympathetic intervention (cutting into the body) in service of a Ventral goal (feeling seen, beautiful,</p>
+<p>aligned with one&#x27;s identity). The doctor&#x27;s question — &quot;Should he?&quot; — is the ethical shadow.</p>
+<p>Probability estimates:</p>
+<p>FLAAK or similar keratopigmentation is banned or heavily restricted in at least one European country within 2 years: 60% — The</p>
+<p>procedure&#x27;s novelty, the potential for vision loss, and the lack of long-term safety data will attract regulatory scrutiny.</p>
+<p>A major medical association (e.g., American Academy of Ophthalmology) issues a formal warning against cosmetic eye color</p>
+<p>change surgery: 85% — The procedure is already controversial; professional bodies will move to discourage it.</p>
+<p>The number of FLAAK procedures performed globally doubles within 12 months: 70% — Social media demand is driving growth;</p>
+<p>2,500 patients is a starting point, not a ceiling.</p>
+<p>At least one serious complication (vision loss, infection, pigment migration) results in a lawsuit within 18 months: 55% — With</p>
+<p>rapid growth comes risk; the regulatory gap creates liability exposure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cluster 5 -->
+<section class="section" id="cluster-5">
+    <div class="container">
+        <div class="cluster">
+            <div class="cluster-header">
+                <div class="section-label">Cluster 5</div>
+                <h2 class="cluster-title">Investigations &amp; Crime</h2>
+            </div>
+            <div class="cluster-body">
+                <div class="card">
+                    <p>*Two articles — one a deep dive into the boyhood of Jeffrey Epstein, the other a federal corruption case against a Brooklyn power</p>
+<p>broker. Both are about how systems fail to protect the vulnerable, whether from predation or exploitation.*</p>
+<p>5.1 Epstein&#x27;s Boyhood — The Making of a Predator</p>
+<p>Jeffrey Epstein grew up in Sea Gate, a gated neighborhood in Coney Island, where he became known as &quot;Bear.&quot; His father, Seymour</p>
+<p>, worked for the New York City Parks Department as a laborer, earning less than $8,000 a year. His mother, Paula, worked as a</p>
+<p>school aide. The Epsteins occupied a small rental apartment on the second floor of a three-story Dutch colonial on Maple Avenue.</p>
+<p>In Sea Gate, Epstein kept company with a few brainy boys. *&quot;He used to sleep a lot,&quot;* Mark Epstein, his younger brother, explained in</p>
+<p>an interview. *&quot;His friends used to come to play with him after school, and my mother would say, &#x27;Let him sleep.&#x27; So he was like a bear</p>
+<p>sleeping in the den.&quot;* On family visits, Epstein&#x27;s cousin Ronnie Goodman would observe Jeff at about 14 years old on his bed,</p>
+<p>reading a math textbook and blasting Beethoven. *&quot;Who reads calculus books to relax?&quot;* she said.</p>
+<p>To its residents, Sea Gate signified safety. A private police force patrolled its cabanas and community basketball courts. Kids had the</p>
+<p>run of the place, crowding the paths and the beaches, at home in one another&#x27;s houses. *&quot;It was like day camp all year round,&quot;*</p>
+<p>recalls Susan Danzig, who lived near Epstein on Maple Avenue. Adults &quot;seemed beside the point.&quot;</p>
+<p>Polyvagal analysis (Connector): The deep irony — the safe neighborhood produced a figure of profound unsafety. A Dorsal child</p>
+<p>(withdrawn, sleeping, reading calculus to relax) inside a Ventral environment (safe, connected, &quot;day camp all year round&quot;) that did not</p>
+<p>register his difference as a threat signal.</p>
+<p>Zeng Guofan lens: The boy who read calculus textbooks to relax while blasting Beethoven — a mind trained in discipline but without NYT Master Briefing</p>
+<p>the moral education to give it direction. Sea Gate gave Epstein safety but not moral formation. His parents were working-class and</p>
+<p>absent in their own way. *&quot;The result: a brilliant mind that became predatory because nobody taught him to be good.&quot;*</p>
+<p>Laozi lens: *&quot;Returning is the movement of the Dao.&quot;* To understand the monster, we look at the boy — not to excuse, but to see the</p>
+<p>seeds that grew. Epstein&#x27;s nickname &quot;Bear&quot; — a creature that hibernates, that sleeps in its den — is itself a Daoist image. The boy</p>
+<p>who slept while his friends played was cultivating a strange kind of emptiness.</p>
+<p>Probability estimates:</p>
+<p>The Epstein investigation (journalistic) leads to additional victims coming forward: 60% — Deep profiles of perpetrators often</p>
+<p>prompt new disclosures from people who recognized patterns.</p>
+<p>New civil lawsuits are filed against Epstein&#x27;s estate based on information from this investigation: 50% — The boyhood profile may</p>
+<p>surface previously unknown associates or enablers.</p>
+<p>Investigations into Epstein&#x27;s early network (Sea Gate period, early career) produce new named co-conspirators: 40% — The</p>
+<p>article focuses on childhood, but the pattern of predation began early; those who enabled it may be identified.</p>
+<p>The Epstein case leads to renewed scrutiny of private gated communities&#x27; policing structures: 25% — Sea Gate&#x27;s &quot;private police</p>
+<p>force&quot; and &quot;adults beside the point&quot; culture is a systemic factor; unlikely to drive policy change but possible as a secondary narrative.</p>
+<p>5.2 Frank Carone — The Brooklyn Power Broker Falls</p>
+<p>Frank V. Carone: , a Brooklyn power broker and longtime confidant of former Mayor <strong>Eric Adams</strong> of New York, was arrested on</p>
+<p>Wednesday on federal bribery and money laundering charges, along with his brother and a Queens developer.</p>
+<p>An indictment unsealed Wednesday accused Carone of using his influence while serving as chief of staff to the former mayor to steer</p>
+<p>an emergency shelter contract worth more than $6.8 million to developer Yan Po Zhu, in exchange for $120,000 in bribes.</p>
+<p>Prosecutors said city officials repeatedly rejected efforts by Zhu to obtain a contract to shelter migrants at his hotel before Carone</p>
+<p>intervened.</p>
+<p>The indictment, brought by prosecutors in the U.S. attorney&#x27;s office in Brooklyn, also includes charges of obstruction of justice, fraud,</p>
+<p>and tax crimes. In a news release, Michael Considine, the first assistant U.S. attorney in Brooklyn, said that those charged had &quot;exploi</p>
+<p>ted the city&#x27;s migrant crisis for their own personal gain.&quot;</p>
+<p>Han Fei lens: A $6.8M contract steered for $120,000 in bribes (1.8% of contract value). This is a control failure: the procurement</p>
+<p>system had gaps that a single chief of staff could exploit. The bribe relative to the contract value shows how *cheaply* a system with</p>
+<p>weak oversight can be corrupted. The solution is not more virtuous individuals but better *technique* (术) — audit trails, separation of</p>
+<p>duties, transparency requirements.</p>
+<p>Drucker lens: A failure of *management control systems*. Drucker wrote extensively about the need for integrity in organizations.</p>
+<p>*&quot;The test of an organization is not the absence of bad people but the presence of systems that prevent bad people from doing</p>
+<p>harm.&quot;* New York City&#x27;s migrant shelter contracting system lacked such controls.</p>
+<p>Polyvagal note: The migrant crisis (already a sympathetic/dorsal story) is further exploited — the vulnerable being used a second</p>
+<p>time. Dorsal compounding Dorsal.</p>
+<p>Probability estimates:</p>
+<p>Carone is convicted on at least one federal charge: 80% — The indictment is detailed; prosecutors have evidence of the contract</p>
+<p>steering and bribe payments.</p>
+<p>Carone&#x27;s cooperation leads to charges against additional individuals (including potentially Eric Adams associates): 45% —</p>
+<p>Carone was a longtime Adams confidant; the investigation may widen.</p>
+<p>New York City implements new procurement controls for emergency shelter contracts within 12 months: 70% — The scandal</p>
+<p>provides political cover for reform; the 1.8% bribe-to-contract ratio exposes a systemic vulnerability.</p>
+<p>The Carone case becomes a campaign issue in the 2026 New York governor&#x27;s race: 50% — Hochul faces re-election; the Adams administration corruption narrative could be weaponized by opponents.</p>
+<div class="subhead">NYT Master Briefing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What It Means -->
+<section class="section section-navy" id="what-it-means">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-label">Synthesis</div>
+            <h2 class="section-title">What It Means — Synthesis Across the Cycle</h2>
+        </div>
+
+        <div class="card" style="margin-bottom: 2rem;">
+            <p style="font-size: 1.15rem; color: var(--text-primary);">The June 25, 2026 news cycle presents a world saturated with simultaneous crises. Natural disaster, climate extremes, inflation, political fracture, and institutional overload are not separate stories — they are interlocking expressions of systems under accumulated pressure.</p>
+        </div>
+
+        <div class="synthesis-grid">
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Mao — Dialectical Materialism</div>
+                <div class="synthesis-text">The principal contradiction is institutional process versus personalized will. Trump cancels a bipartisan housing bill by fiat; the Fed debates without deciding; Iraq's prime minister issues orders he cannot enforce. Process is everywhere disrupted by will.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Laozi — Wu Wei</div>
+                <div class="synthesis-text">Forcing action often fails: heat-wave infrastructure built for a cooler continent, voter-roll litigation losing 9-0, a reflecting pool that turns green. Systems that adapt without forcing — reduced Hormuz dependence, canal refuge — survive better.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Nietzsche — Will to Power</div>
+                <div class="synthesis-text">Power revalues its symbols: Iran embraces unveiled women as nationalists; Americans consider prosecuting women for abortion; a doctor offers to rewrite identity through eye color. Old hierarchies invert before new ones settle.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Sun Tzu — Strategic Position</div>
+                <div class="synthesis-text">The U.S. is on dispersive ground: fighting Iran, inflation, political insurgency, and internal fracture simultaneously. China concentrates on batteries and manufacturing; Europe is trapped between old infrastructure and new climate.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Clausewitz — Friction</div>
+                <div class="synthesis-text">Friction accumulates: earthquake rescue in Venezuela, backlog clearing in the Gulf, housing negotiations, Fed decision-making. The gap between plan and execution widens with every stressed system.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Han Fei — Systems &amp; Law</div>
+                <div class="synthesis-text">Systems reveal themselves under pressure. France's elderly registry works; its school protections do not. New York's contracting system lets a chief of staff steer a $6.8M contract for $120,000. Law is only as strong as its enforcement mechanism.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Drucker — Executive Effectiveness</div>
+                <div class="synthesis-text">The effective question — "what can I contribute?" — is rarely asked. Trump extracts leverage from a housing bill. The Fed debates patience instead of deciding. Those who concentrate, like Nolan on one film, achieve what dispersed actors cannot.</div>
+            </div>
+            <div class="synthesis-card card">
+                <div class="synthesis-lens">Polyvagal — Emotional Architecture</div>
+                <div class="synthesis-text">The dominant state is sympathetic overload shading into dorsal exhaustion: crisis after crisis with no resolution. Small ventral anchors — a film premiere, a family by a canal, international cooperation — remain fragile but real.</div>
+            </div>
+        </div>
+
+        <div class="big-picture">
+            <div class="big-picture-title">The Big Picture</div>
+            <p>The connective insight across the cycle is that old systems of authority are losing their capacity to absorb stress faster than new systems can replace them. The Iran truce reduces oil prices but cannot fix inflation. The housing bill addresses scarcity but is held hostage to voting politics. Climate adaptation protects the elderly but not schoolchildren or swimmers.</p>
+            <p>No single actor is in control. The United States is divided against itself on nearly every major question. China advances in manufacturing but faces a world of constrained demand. Europe protects against the climate of 2003 while 2026 arrives earlier and hotter. The result is not collapse but precariousness — a global condition in which every major system is strained and the next shock is always closer than expected.</p>
+        </div>
+
+        <div class="quotes">
+            <div class="quote">"Everything in war is simple, but the simplest thing is difficult." — Clausewitz</div>
+            <div class="quote">"Know the enemy and know yourself, and victory is never in doubt, not in a hundred battles." — Sun Tzu</div>
+            <div class="quote">"The only real victory is the victory of practice over theory." — Mao Zedong</div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-text">
+        NYT Briefing <span class="footer-divider">·</span> June 25, 2026 <span class="footer-divider">·</span> Generated by Hermes Agent
+    </div>
+</footer>
+
+</body>
+</html>
