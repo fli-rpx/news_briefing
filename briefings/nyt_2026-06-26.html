@@ -1,553 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYT Daily Briefing — June 26, 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0a0a0f;
-  --bg-2: #101018;
-  --bg-3: #181825;
-  --text: #ffffff;
-  --text-muted: #b0b0c0;
-  --accent: #00ff88;
-  --accent-dim: rgba(0, 255, 136, 0.12);
-  --blue: #4a9eff;
-  --blue-dim: rgba(74, 158, 255, 0.12);
-  --border: rgba(255,255,255,0.08);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  padding: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Georgia, "Noto Serif", serif;
-  font-size: 17px;
-  line-height: 1.75;
-}
-h1, h2, h3, h4 {
-  font-family: Georgia, "Noto Serif", serif;
-  line-height: 1.25;
-  margin: 0 0 1rem;
-}
-[lang="zh-CN"], .chinese, .observer-card {
-  font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
-}
-a { color: var(--blue); text-decoration: none; }
-a:hover { color: var(--accent); }
-.container {
-  width: 92%;
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 4rem 0;
-}
-.hero {
-  position: relative;
-  min-height: 70vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: url('./assets/images/nyt_hero_bg.jpg') center/cover no-repeat;
-  overflow: hidden;
-}
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.72) 50%, rgba(0,255,136,0.12) 100%);
-  z-index: 1;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 120%, rgba(0,255,136,0.18), transparent 55%);
-  z-index: 1;
-  pointer-events: none;
-}
-.hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 2rem;
-  max-width: 900px;
-}
-.hero-kicker {
-  display: inline-block;
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  margin-bottom: 1rem;
-  border: 1px solid var(--accent);
-  padding: 0.35rem 0.9rem;
-  border-radius: 2px;
-}
-.hero h1 {
-  font-size: clamp(2.2rem, 6vw, 4.2rem);
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.6);
-}
-.hero .date {
-  color: var(--accent);
-  font-weight: 700;
-}
-.hero p {
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  max-width: 720px;
-  margin: 0 auto;
-}
-.section {
-  border-bottom: 1px solid var(--border);
-}
-.section:nth-child(even) { background: var(--bg-2); }
-.section:nth-child(odd) { background: var(--bg); }
-.section-title {
-  font-size: clamp(1.6rem, 4vw, 2.2rem);
-  color: var(--text);
-  margin-bottom: 0.25rem;
-}
-.section-title span {
-  color: var(--accent);
-}
-.section-intro {
-  color: var(--text-muted);
-  font-style: italic;
-  margin-bottom: 2rem;
-}
-.card {
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1.6rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-}
-.card h3 {
-  color: var(--accent);
-  font-size: 1.25rem;
-  margin-bottom: 0.75rem;
-}
-.card h4 {
-  color: var(--blue);
-  font-size: 1.05rem;
-  margin: 1.25rem 0 0.5rem;
-}
-.card p {
-  margin: 0 0 0.85rem;
-  color: #e8e8f0;
-}
-.card p:last-child { margin-bottom: 0; }
-.prob-section { background: var(--bg-2); }
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1rem;
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  overflow: hidden;
-}
-th, td {
-  padding: 0.85rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--border);
-}
-th {
-  background: var(--accent-dim);
-  color: var(--accent);
-  font-weight: 700;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-}
-tr:last-child td { border-bottom: none; }
-.td-prob { color: var(--accent); font-weight: 700; text-align: right; }
-.observer-section { background: var(--bg-2); }
-.observer-card {
-  background: var(--bg-3);
-  border-left: 4px solid var(--accent);
-  border-radius: 0 10px 10px 0;
-  padding: 1.8rem;
-  margin-bottom: 2rem;
-}
-.observer-card h3 {
-  color: var(--accent);
-  font-size: 1.4rem;
-  margin-bottom: 0.5rem;
-}
-.observer-card .observer-role {
-  color: var(--blue);
-  font-size: 0.95rem;
-  margin-bottom: 1.25rem;
-  display: block;
-}
-.observer-card .observer-body p {
-  margin: 0 0 0.9rem;
-  color: #e8e8f0;
-  font-size: 1.05rem;
-  line-height: 1.9;
-}
-.observer-card .observer-body p:last-child { margin-bottom: 0; }
-.observer-card .observer-body strong { color: var(--accent); }
-.cartoon-section { text-align: center; background: var(--bg); }
-.cartoon-frame {
-  display: inline-block;
-  background: var(--bg-3);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem;
-  max-width: 100%;
-}
-.cartoon-frame img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 6px;
-  display: block;
-  opacity: 0.5;
-}
- {
-  position: relative;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  color: var(--accent);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-::before {
-  content: "";
-  width: 64px;
-  height: 64px;
-  border: 2px dashed var(--accent);
-  border-radius: 8px;
-  opacity: 0.4;
-}
-.footer {
-  text-align: center;
-  padding: 2rem;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-}
-@media (max-width: 768px) {
-  .container { width: 92%; padding: 2.5rem 0; }
-  body { font-size: 16px; }
-  .hero { min-height: 55vh; }
-  .card { padding: 1.2rem; }
-  th, td { padding: 0.7rem; font-size: 0.9rem; }
-  .observer-card { padding: 1.2rem; }
-}
-@media (max-width: 480px) {
-  .td-prob { text-align: left; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYT Daily Briefing — Friday, June 26, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --accent: #00ff88;
+      --text: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --card-bg: #12121a;
+      --border: #1f1f2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    .chinese {
+      font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 65vh;
+      background: linear-gradient(135deg, rgba(10, 10, 15, 0.9) 0%, rgba(10, 10, 15, 0.65) 50%, rgba(10, 10, 15, 0.8) 100%), url('./assets/images/nyt_hero_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-overlay {
+      background: rgba(10, 10, 15, 0.55);
+      padding: 3rem 3.5rem;
+      border-radius: 16px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      max-width: 820px;
+      border: 1px solid rgba(0, 255, 136, 0.25);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero h1 {
+      font-size: 3.6rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-shadow: 0 2px 20px rgba(0, 255, 136, 0.2);
+    }
+
+    .hero .date {
+      font-size: 1.45rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .hero .byline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    main {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    .executive-summary {
+      margin-bottom: 3.5rem;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .executive-summary h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .executive-summary p {
+      margin-bottom: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    .cluster {
+      margin-bottom: 3.5rem;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .cluster h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    article {
+      margin-bottom: 2.5rem;
+    }
+
+    article:last-child {
+      margin-bottom: 0;
+    }
+
+    article h3 {
+      color: var(--text);
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    article p {
+      margin-bottom: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    article p strong {
+      color: var(--text);
+    }
+
+    .calibrated-view {
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      border-left: 4px solid var(--accent);
+      background: rgba(0, 255, 136, 0.06);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .calibrated-view strong {
+      color: var(--accent);
+    }
+
+    .cross-reference {
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      border-left: 3px solid #4a90d9;
+      background: rgba(74, 144, 217, 0.06);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 0.85rem;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .observer-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .observer {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.25rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .observer:last-child {
+      margin-bottom: 0;
+    }
+
+    .observer h3 {
+      color: var(--accent);
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .observer .subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .observer p {
+      margin-bottom: 1.1rem;
+      line-height: 1.85;
+    }
+
+    .daily-cartoon {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .daily-cartoon h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .daily-cartoon img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .daily-cartoon .caption {
+      margin-top: 1.25rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .sources {
+      margin-bottom: 3rem;
+      padding: 2.25rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .sources h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .sources p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 55vh;
+        padding: 1.25rem;
+      }
+
+      .hero-overlay {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+        letter-spacing: 1px;
+      }
+
+      .hero .date {
+        font-size: 1.15rem;
+      }
+
+      .hero .byline {
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .executive-summary, .cluster, .observer, .daily-cartoon, .sources {
+        padding: 1.5rem;
+      }
+
+      .executive-summary h2, .cluster h2, .daily-cartoon h2 {
+        font-size: 1.6rem;
+      }
+
+      article h3 {
+        font-size: 1.2rem;
+      }
+
+      .observer h3 {
+        font-size: 1.4rem;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      th, td {
+        padding: 0.55rem;
+      }
+
+      body {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+
+      .hero .date {
+        font-size: 1rem;
+      }
+
+      .executive-summary h2, .cluster h2, .daily-cartoon h2 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="hero">
-  <div class="hero-content">
-    <span class="hero-kicker">NYT A-Grade Daily Briefing</span>
-    <h1>NYT DAILY BRIEFING — <span class="date">June 26, 2026</span></h1>
-    <p>Source material: 15 articles from The New York Times, June 24–25, 2026. Five analytical lenses — connector, analytical, philosophical, strategic, operational — converge on a single diagnosis: the gap between formal power and institutional competence is widening.</p>
-  </div>
-</header>
-
-<section class="section">
-  <div class="container">
-    <h2 class="section-title">Executive Summary</h2>
-    <p>Across these fifteen articles, a single pattern holds. The United States holds more formal power — a governing trifecta, a conservative Supreme Court, a military operation that removed an adversary in Venezuela — than at any point in recent memory. Yet the system is consuming itself from within. Iran controls a chokepoint. NATO allies fear the alliance's own leader. The president's party cannot legislate. The central bank cannot communicate. Inflation persists. Natural disasters strike and find institutions hollowed out. An election in a neighboring country was won by methods that undermine the legitimacy of the victory.</p>
-    <p>Five analytical lenses — Connector, Analysis, Philosophy, Strategy, Operations — converge on the same diagnosis: the gap between what the system claims to be and what it can actually do is widening. The collective nervous system is in sympathetic overdrive, with dorsal collapse beneath. The material contradictions are sharpening. The friction is accumulating. The patterns of reversal and return are playing out. And the most effective executive in the entire news cycle — the one competent across all dimensions — is a Dutchman with a stack of charts, trying to keep a superpower from destroying its own alliance.</p>
-<p>The news is what happened. The analysis is what it means. The question — the one that threads through all fifteen articles and through all five analytical lenses — is what happens when the gap between power and competence becomes too wide to ignore. The probability that the November midterms will be a referendum not on the opposition but on the governing party's inability to govern, despite holding all the levers, is extremely high — and that, perhaps, is the single most important data point in this entire briefing.</p>
-<p><em>Prepared by NYT WRITER V1 | June 26, 2026</em></p>
-<p><em>Source data: 15 New York Times articles, June 24–25, 2026</em></p>
-<p>*Analytical frameworks: Connector (polyvagal), Analysis (categorical), Philosophy (Mao/Laozi/Nietzsche), Strategy (Sun</p>
-<p>三方观察</p>
-<p>翟东升（结构性分析）</p>
-<p>日期：: 2026年6月26日</p>
-<p>视角：: 结构性/货币体系分析</p>
-<p>本周新闻清晰显示：美元霸权裂缝正加速向结构性断裂演化。</p>
-<p>第一，主权信用货币的悖论在美自身显化。: 通胀攀升至4.1%，但共和党三权在手却连住房法案都通不过，美联储新主席对利率路径三</p>
-<p>缄其口。我反复强调：主权信用货币的最终锚定不是利率决议，而是主权治理能力本身。治理瘫痪时，货币信用根基就在加速风化。特</p>
-<p>朗普要把头像印上250美元纸币——这与其说是权力崇拜，不如说是一个衰落货币体的图腾式挽歌。</p>
-<p>第二，平行体系正从理论推演变为地缘坍缩的必然产物。: 伊朗无人机一击封锁霍尔木兹海峡，布伦特应声跳涨2%。全球每日约2000</p>
-<p>万桶石油经过这条水道，美国无力保证通行安全。美元-石油体系的物理节点暴露为脆弱目标。当能源生命线依赖一支战略收缩中的海</p>
-<p>军，交易者自然会思考替代路线、替代结算、替代能源。平行体系不是谁设计的，而是旧体系裂缝里长出来的。</p>
-<p>第三，裂缝不在汇率市场，在政治意志的衰退。: 鲁特用一张图表安抚了总统，但填不平盟友对美国可靠性的怀疑。哥伦比亚选举的粗</p>
-<p>暴干预，把"基于规则的国际秩序"剥成了赤裸裸的工具。一旦规则被视为工具而非承诺，各国就会加速构筑安全垫。我的核心判断不变</p>
-<p>：美元霸权的终结不来自一场危机，而来自一万次信任的小幅流失。本周新闻提供了密集样本。</p>
-<p>金灿荣（战略分析）</p>
-<p>纽约时报观察：金灿荣评论</p>
-<p>日期：: 2026年6月26日</p>
-<p>视角：: 美国政治与战略分析</p>
-<p>百年变局下的战略僵持：美国的"纸老虎"困境</p>
-<p>各位好，我是金灿荣。今天聊聊美国——这个"百年未有之大变局"中的关键变量。</p>
-<p>你看现在美国什么局面？伊朗在霍尔木兹海峡打了一架无人机，把全球油价打上去了；特朗普跟国会的拉锯战，把自家党派的住房法案</p>
-<p>给"拉"没了；北约盟友怕的不是俄罗斯，怕的是自己盟主掀桌子。用咱们老百姓的话说，这就好比——第一，你家里请了个装修队，队</p>
-<p>长天天跟工头吵架，活没干完，工具先砸了。这叫"制度内耗"，美国人管它叫"trifecta"（三连胜），我看是"trifail"（三连败）。</p>
-<p>再说这个货币的事。特朗普要在250美元钞票上印自己的头像。你想想——第二，这就跟小区楼下理发店，Tony老师非要把自己照片贴</p>
-<p>在招牌上，还说要取代原来那个造型师。活人上钞票，法律明文禁止的，他偏要干。这说明什么？说明美国的"虚体"（制度）已经被"实</p>
-<p>体"（个人野心）绑架了。</p>
-<p>第三，北约那个事更有意思。: 秘书长吕特去白宫，拿一堆图表摆出来，跟哄小孩似的说："总统先生，这是您的功劳！"——特朗普立</p>
-<p>马消气了。这跟什么呢？跟胡同口大爷哄孙子一模一样："乖，这糖是你自己挣的。"堂堂全球最强大军事联盟，要靠哄才能运转——这</p>
-<p>不是战略疲劳是什么？</p>
-<p>我经常说，美国现在处于一个战略僵持期：它力量还在，但使不出来，像一个人想打架，腿却抽筋了。伊朗知道这一点，欧洲也知道，</p>
-<p>拉美也知道。这就是"百年未有之大变局"的核心——不是美国变弱了，而是它变混乱了。混乱比弱更可怕，因为弱可以养，混乱是内伤</p>
-<p>。</p>
-<p>这个局怎么破？我的判断是：美国需要一次真正的战略收缩，但特朗普政府既没有这个意愿，也没有这个能力。所以我们还要继续看这</p>
-<p>场"大戏"——精彩着呢，别走开。</p>
-<p><em>——金灿荣，2026年6月</em></p>
-<p>宋鸿兵（周期分析）</p>
-<p>宋鸿兵观察：美元的退潮与康波冬天的降临</p>
-<p>2026年6月26日:</p>
-<p>又一轮美元潮汐正在退去。美联储核心PCE飙至4.1%，新的掌门人沃什却拒绝给出任何明确信号。这不是技术性犹豫，这是中央银行</p>
-<p>的系统性瘫痪——当印钞机无法再转，水龙头关不上也拧不开，全球体系就进入了康德拉季耶夫冬季最危险的阶段。</p>
-<p>看看外围发生了什么。伊朗在霍尔木兹海峡打了一架无人机，布伦特原油立刻弹到75美元。这不是偶发冲突，这是美元信用收缩时，资</p>
-<p>源国的必然反抗。外围世界正在崩解——委内瑞拉遭遇7.2和7.5双震，235人死亡，搜救队却到不了现场。为什么？因为国家能力已经</p>
-<p>被债务周期掏空了。拉瓜伊拉居民徒手扒开碎石寻找亲人，而美国嘴上说支援，USAID早就被裁掉了。套用我常说的一句话：债务周期</p>
-<p>的高潮退去，裸泳的人不是不想上岸，是根本没有岸了。</p>
-<p>美国的"三权全控"式府会，却连一个住房法案都推不动。特朗普把自己的头像印到250美元纸币上——这是美元信用最后的狂欢。当"活</p>
-<p>人不能上钞票"的法律都可以被绕开，你就能看出，帝国的货币体系已经从经济工具退化成个人崇拜的装饰品。这就是典型的"货币战争"</p>
-<p>第三章：当霸主开始消耗货币信用而非积累时，长波周期的下行期就不可逆转了。</p>
-<p>现在的问题不是美联储会不会降息，而是它即便降息也救不了谁。康波冬天的本质是结构性萧条，不是流动性短缺。外围已经塌了，核</p>
-<p>心正在空转。而那个最清醒的人，是一个拿着图表去安抚暴怒总统的荷兰人。这本身就说明了一切。</p>
-<p>——宋鸿兵</p>
-  </div>
-</section>
-
-<section class="section" id="geopolitics">
-  <div class="container">
-    <h2 class="section-title">Geopolitics — GEOPOLITICS &amp; CONFLICT — The Straits of Power</h2>
-    
-    <article class="card">
-  <h3>The Strait of Hormuz: Iran's Asymmetric Gambit</h3>
-  <p>Iran's Islamic Revolutionary Guards Corps struck a container ship passing through the Strait of Hormuz on Thursday, firing a drone that hit the vessel and brought maritime traffic through the world's most critical energy chokepoint to a halt. The attack, confirmed by both U.S. and Iranian officials, came just hours after Tehran warned ships that the only permissible route through the</p>
-<p>33-kilometer-wide waterway lay within Iranian waters — an implicit rejection of the alternative passage hugging the Omani coast that many vessels had adopted in recent months after earlier disruptions. The strike contradicted President Trump's public assurances that Iran did not control the strait and that it had reopened to normal shipping. Oil markets reacted instantly: Brent crude rose more than 2 percent, to roughly $75 a barrel, while West Texas Intermediate climbed a similar margin, to around $72 a barrel. The</p>
-<p>International Maritime Organization suspended its plan to evacuate seafarers from hundreds of ships left stranded in the Persian Gulf.</p>
-<p>The timing was particularly treacherous. The attack followed the announcement of a preliminary truce in the U.S.-Iran war, and it threw the durability of that ceasefire into deep doubt. Secretary of State Marco Rubio was in Bahrain on Thursday meeting with Gulf</p>
-<p>Arab leaders, trying to allay security concerns that the Strait crisis had reignited. The diplomatic architecture around the truce was always fragile — and now it has been pierced. The Operations analysis, drawing on Han Fei's concept of <em>shi</em> (positional advantage), rightly identifies the Strait as a textbook case of asymmetric power: Iran does not need to match U.S. naval capacity to control one of the world's great bottlenecks. It only needs to prove, repeatedly, that it <em>can</em> interdict, and the uncertainty alone does the work of a blockade. The Strategy analysis, through Clausewitz, identifies the Strait as the secondary center of gravity in the global energy system — the physical point where the mass of 20 percent of the world's oil transit concentrates. The U.S. has not neutralized it.</p>
-<p>Because the strike came after the truce was declared, the probability that the ceasefire holds through the NATO summit in July now appears low — roughly 30 percent in the estimation of this briefing. Both sides have demonstrated that the form of peace (the announced truce) and the substance of conflict (the strike) can coexist, a pattern the Philosophy analysis, through Mao's dialectics, identifies as a "paper truce" — the shell of resolution concealing continued struggle.</p>
-</article><article class="card">
-  <h3>The NATO Tightrope</h3>
-  <p>Three days before the Strait strike, NATO Secretary General Mark Rutte sat in the Oval Office and performed what may be the most consequential diplomatic intervention of the year. President Trump was mid-tirade about European allies, complaining about their slow defense spending and their refusal to support U.S. military operations against Iran, when Rutte — a former Dutch prime minister who has earned a reputation as the European leader most skilled at managing Trump — interrupted him. He set up posters around the room. One chart showed the "Trump Trillion," the surge in European and Canadian defense spending since Trump first took office. Another homed in on the past two years, when NATO spending had exceeded $250 billion. "This is your evidence," Rutte told the president, framing the entire increase as Trump's personal achievement — an approach that visibly defused the president's anger.</p>
-<p>The Connector analysis identifies this meeting as the single instance of successful "ventral vagal" co-regulation in the entire news cycle — a rare moment when a dysregulated nervous system (Trump's anger) was regulated back toward social engagement through skilled, non-threatening connection. The deeper strategic insight, however, is that Rutte's de-escalation did not resolve the underlying friction. European allies continue to see the Iran war as "ill-considered and illegal," as one diplomat put it, and the goal of the July 7</p>
-<p>NATO summit in Ankara, Turkey, has been reduced to the modest ambition of avoiding an explosion. The Operations analysis, through Peter Drucker's lens of executive effectiveness, identifies Rutte as the only actor across all 15 articles who operates competently across every dimension: he focuses on contribution (keeping the alliance intact), makes Trump's strengths productive</p>
-<p>(his vanity about driving spending), prepares alternatives, and uses disagreement productively ("I disagree slightly"). He is the counterexample that proves every other actor's failure is a choice.</p>
-</article><article class="card">
-  <h3>The Senate Surrender</h3>
-  <p>The Iran crisis also produced one of the most striking displays of institutional submission in recent memory. On Tuesday, the Senate had approved a bipartisan war powers resolution rebuking the president's handling of the Iran war and instructing him to end hostilities or seek congressional authorization. On Wednesday, Trump confronted Senate Republicans at a closed-door lunch, excoriating them for allowing the resolution to pass. By Wednesday night, Republican leaders had brought a nearly identical measure to the floor — and defeated it, 50 to 47, with one senator voting "present." Two senators who had voted for the resolution on Tuesday shifted: Bill Cassidy of Louisiana, who said he changed his vote after a White House briefing from Vice President JD Vance and envoy Steve Witkoff; and Rand Paul of Kentucky, who voted "present" and acknowledged that Trump's anger had influenced his decision.</p>
-<p>The Strategy analysis, through Mao's framework, identifies the Trump-GOP rift as an "antagonistic contradiction within the ruling camp" — one that cannot be resolved by compromise because Trump's method is unilateral disruption. The Connector analysis sees a party in a chronic sympathetic-dorsal loop: the Senate is either mobilizing to manage Trump's rage (sympathetic) or collapsing into surrender and adjournment (dorsal). The Philosophy analysis, through Laozi, observes the pattern of <em>yang</em> excess: Trump pushes so hard that the system breaks, and the party that holds all three branches of government leaves town unable to pass legislation.</p>
-<p>"When you try to control, you lose control" — the Dao's lesson plays out in real time on the Senate floor.</p>
-</article><article class="card">
-  <h3>Colombia's Razor-Thin Mandate</h3>
-  <p>Trump's influence also reached deep into Colombia's presidential election, where right-wing candidate Abelardo De La Espriella won by a razor-thin margin on Sunday. The victory was built on a three-part intervention: Trump's "complete and total endorsement" of De</p>
-<p>La Espriella; support from Republican members of Congress who helped mobilize conservative Colombians abroad; and the detention, just days before the election, of an activist critical of De La Espriella who had urged Colombians in the United States not to vote for him. The activist was detained under a memo signed by Secretary Rubio, asserting that the individual had been "interfering with U.S. foreign policy." Experts called the coordination unprecedented in the 21st century. "The attempt to quash dissent in a coordinated manner with the Trump administration, extending from Colombia to U.S. soil — I can't think of anything in recent times that resembles that," said Alexander Main of the Center for Economic and Policy Research.</p>
-<p>The Operations analysis, through Han Fei, diagnoses this as "rule-by-whim" — the decay of legal predictability (the <em>fa</em>) when the ruler's personal vendetta becomes the logic of state action. The Strategy analysis, through Sun Tzu, notes that the U.S. has occupied</p>
-<p>"interstate ground" without building alliances, instead acting unilaterally and creating resentment that will surface later. The razor-thin margin means this is not a stable victory but a contested mandate, and the activist's detention will be a rallying point.</p>
-</article><article class="card">
-  <h3>Venezuela: The Alliance Test</h3>
-  <p>Back-to-back earthquakes — a 7.2-magnitude tremor followed 39 seconds later by a 7.5 — have devastated Venezuela, killing at least 235 people and injuring more than 4,300. The doublet, one of the most powerful tectonic events to strike the country in a century, leveled entire buildings in the port city of La Guaira, where residents dug through rubble with their bare hands because no rescue workers arrived. The disaster is now testing the "forced alliance" between the United States and Venezuela — the arrangement that followed Trump's military operation to remove Nicolás Maduro, which redirected Venezuelan oil and gold to the</p>
-<p>United States. Rubio said rescue teams from Virginia and California would assist, and the Defense Department would help deliver aid.</p>
-<p>But he did not say how much money the U.S. would allocate, and the disbanding of USAID last year has hollowed out the institutional capacity to mount a large-scale humanitarian response.</p>
-<p>The Operations analysis, through Zeng Guofan's lens of discipline, sees the absence of organized rescue in La Guaira as proof that decades of decay have eroded the state's basic capacity for response. The Strategy analysis, through Clausewitz, identifies the gap between rhetoric and reality as the central friction in the U.S.-Venezuela relationship. The Connector analysis captures the human dimension: a woman named Yorliana Colmenares stood near a building reduced to rubble, heard tapping from underneath, and began digging alone, believing her boyfriend was trapped inside. No system arrived to help her. The probability that the death toll will exceed 1,000 before search operations conclude is estimated at roughly 70 percent, given that remote hillside towns have not yet been reached.</p>
-</article>
-  </div>
-</section>
-
-<section class="section" id="us-politics">
-  <div class="container">
-    <h2 class="section-title">US Politics — US POLITICS &amp; THE TRUMP TRIFECTA — Paralysis at the Peak</h2>
-    
-    <article class="card">
-  <h3>The Supreme Court's Deference Cascade</h3>
-  <p>Thursday was the most consequential day of the Supreme Court's current term, producing three rulings that collectively expanded conservative power across immigration, corporate liability, and gun rights. The most far-reaching was the immigration decision: a</p>
-<p>6-to-3 ruling, divided along ideological lines, that allowed the Trump administration to terminate Temporary Protected Status for</p>
-<p>350,000 Haitians and 6,100 Syrians, clearing a path for their potential deportation. The program, created by Congress with bipartisan support in 1990, had provided legal status to people from countries deemed unsafe due to war, natural disaster, or crisis. The United</p>
-<p>States has a long history of intervention in both Haiti and Syria — the 2010 earthquake that killed 220,000 Haitians prompted the original TPS extension; Syria's TPS was granted after civil war erupted in 2011. Now, with both countries still mired in violence and instability, the protections are being withdrawn.</p>
-<p>The Philosophy analysis, through Mao's dialectics, reads this as the old legal superstructure (Congress's 1990 bipartisan framework) being broken open by a new concentration of executive and judicial power. The contradiction between the theory of "temporary" protection and the reality of permanent displacement has forced a resolution — and the Court chose executive discretion over legislative intent. The Connector analysis notes the historical guilt cycling beneath the surface: the U.S. intervened in Haiti and Syria, and now it abandons the populations those interventions helped displace.</p>
-</article><article class="card">
-  <h3>The Trifecta That Cannot Govern</h3>
-  <p>The most politically revealing article in the entire batch may be Carl Hulse's analysis of the Trump trifecta, which depicts a Republican</p>
-<p>Party holding the presidency, the Senate, and the House yet unable to govern. The immediate precipitating event was Trump's decision to scuttle a major housing bill that Republicans had been preparing to claim as a midterm victory. Trump demanded that the bill include new voting restrictions — a nonstarter that effectively killed the legislation and embarrassed the party that was about to celebrate it. Republican senators, frustrated and bewildered, threw in the towel Wednesday night and left town until mid-July, leaving multiple consequential matters hanging: the housing bill, renewal of a critical terrorism surveillance measure, and the nomination of a new intelligence chief.</p>
-<p>The Strategy analysis, through Clausewitz, identifies this as the culminating point of attack having been passed. The trifecta should be advancing; instead it is paralyzed by the friction of Trump's own personality. The Operations analysis, through Drucker's *Effective</p>
-<p>Executive*, offers a devastating assessment: Trump's contribution is negative. His time is consumed by vendettas. His party cannot focus on first things first because it must constantly manage his moods. A trifecta that produces nothing is worse than divided government — it reveals the emptiness of institutional power without operational discipline. The probability that Republicans will lose at least one chamber in the November midterms has risen to an estimated 55 to 60 percent, in part because the party is visibly unable to deliver on its own agenda.</p>
-</article><article class="card">
-  <h3>The $250 Question</h3>
-  <p>Trump's reimagining of American identity continued with the revelation that the Treasury Department is working on design concepts for a $250 bill bearing his portrait — the biggest overhaul to U.S. currency in more than a century. The proposal faces a legal hurdle: a federal law forbids any living person from appearing on paper currency. Treasury Secretary Scott Bessent said last month he did not find "anything untoward" about having the current president on the 250th anniversary bill. The initiative is a fusion of Trump's personal brand with the nation's identity, and it has already drawn comparisons to the 2016 movement to replace Andrew Jackson with Harriet Tubman on the $20 bill — a proposal that stirred contentious national debate. As Shailendra Bhandare, an expert on the history of money at the University of Oxford, observed: "Currency designs can be controversial because they are imbued with a sense of national identity, therefore they are consumed with immense passion. In today's polarized world, this has the potential to become an instant fault line."</p>
-<p>The Philosophy analysis, through Nietzsche, reads the $250 bill as an ambiguous gesture: is Trump the Übermensch, stamping his image on the world and affirming himself so thoroughly that he fuses his identity with the nation? Or is he the Last Man, who cannot bear the thought of being forgotten by the eternal return? Laozi would laugh softly: water does not demand a coin with its face — it seeks the lowest ground. Cash itself is becoming a relic; Trump chases a symbol whose substance is already fading. The probability that the $250 bill becomes law before Trump leaves office is estimated at roughly 40 percent, contingent on whether Republicans can pass enabling legislation and whether the political cost of appearing monarchical outweighs the base-energizing benefit.</p>
-</article><article class="card">
-  <h3>The Abortion Prosecution Threshold</h3>
-  <p>On the fourth anniversary of the Supreme Court's decision to overturn Roe v. Wade, a group of more than 60 conservative influencers, antiabortion leaders, and pastors signed a petition calling for the removal of "legal immunities" that have protected women who get abortions from prosecution. The petition represents a significant shift within the antiabortion movement, which has been largely unified around the position that doctors — not women — should face punishment. But the movement is frustrated: more abortions are happening now than when Roe fell, driven largely by the growing availability of abortion pills that have made bans effectively unenforceable. The Texas Republican Party's state convention earlier this month endorsed repealing legal protections for women by a thunderous voice vote. And the largest antiabortion group in Texas is developing a strategy to target a narrower slice of women — those with medical licenses — by threatening to revoke their credentials if they are caught taking abortion pills.</p>
-<p>The Philosophy analysis, through Nietzsche's concept of the "ascetic ideal," identifies this as the will to power turned against life itself: the movement, frustrated that prohibition has failed, doubles down, creating ever-stricter laws and willing suffering — both its own</p>
-<p>(frustration, political losses) and others' (prosecution, imprisonment). The Philosophy analysis, through Mao, sees this as a textbook case of theory being negated by practice: the original theory (punish providers, not women) has failed to produce the desired result</p>
-<p>(fewer abortions), so the theory must change. Whether the new theory can succeed is another question entirely — prosecuting women may trigger a political backlash that reverses the movement's gains.</p>
-</article><article class="card">
-  <h3>The Democratic Civil War</h3>
-  <p>The Democratic Party finds itself squeezed between competing forces. Party leaders in Washington are pushing for moderate candidates who can compete in swing districts. But primary voters in New York City just defeated three establishment-backed candidates — including the chairman of the Congressional Hispanic Caucus — in favor of leftist and socialist challengers. House</p>
-<p>Speaker Mike Johnson gleefully proclaimed "the insurgent left is on the rise" and faulted Democrats for failing to defend against "the</p>
-<p>Marxist march around the country." House Republicans' campaign arm sent a bouquet of flowers and a sympathy card to Minority</p>
-<p>Leader Hakeem Jeffries, mocking him for backing two of the losing candidates.</p>
-<p>The Strategy analysis, through Sun Tzu, identifies this as "entangled ground" — Democrats are caught between the open plains (the center, where leadership wants to campaign) and fortified mountains (the progressive base, where primary voters are). The GOP is delighted to fight on terrain of its choosing, framing the midterms as a choice between socialism and American values. The Connector analysis sees the Democratic split as a party in sympathetic mobilization at the base (energized, defiant) and dorsal collapse at the leadership level (squeezed, unable to control outcomes). The Maoist reading — a "line struggle" between the vanguard and the masses — captures the dynamic precisely. The Party's central strategic question — whether these primary voters represent the general electorate or only a mobilized minority — remains unanswered but will determine November's outcome.</p>
-</article>
-  </div>
-</section>
-
-<section class="section" id="economy">
-  <div class="container">
-    <h2 class="section-title">Economy — ECONOMY &amp; MARKETS — The Persistence of Pressure</h2>
-    
-    <article class="card">
-  <h3>Inflation's Stubborn Grip</h3>
-  <p>The Commerce Department reported Thursday that the Federal Reserve's preferred inflation gauge, the Personal Consumption</p>
-<p>Expenditures price index, accelerated again in May. Overall prices jumped 0.4 percent during the month, reaching 4.1 percent on an annual basis. Core inflation — which strips out food and energy — notched 3.4 percent, a fresh high since 2023. The data arrived at a moment of deep uncertainty. A preliminary truce in the Iran war had raised hopes that the worst of the inflation surge might be over — oil prices have dropped since the truce announcement, gasoline costs are beginning to fall, and airfares and shipping fees are poised to follow. But the underlying trend was already troubling before the war began, and the conflict has only worsened it.</p>
-<p>Alan Detmeister, a former Fed economist now at UBS, offered a sobering forecast: even if all the positive scenarios pan out — the</p>
-<p>Iran truce holds, tariff effects fade, housing inflation decelerates, and AI-driven productivity gains materialize — it will still take two more years for the Fed to reach its 2 percent target, after having overshot it for half a decade. The risks, he added, are all pointing up.</p>
-<p>The new Fed chairman, Kevin M. Warsh, has vowed to deliver price stability but has refused to offer explicit signals about the path forward for policy — a stance that the Operations analysis, through Drucker, identifies as organizational paralysis. The Fed cannot agree on what the problem is (how patient can they be?), cannot agree on how to measure it (what is the best gauge of underlying pressure?), and cannot communicate a clear decision. The central bank's inability to reach an effective decision on its core function is a failure of contribution.</p>
-</article><article class="card">
-  <h3>The Oil-Inflation Nexus</h3>
-  <p>The Strait of Hormuz strike and the inflation data are connected by more than chronology. The attack pushed oil prices higher —</p>
-<p>Brent at $75, WTI at $72 — at the very moment when the preliminary Iran truce was supposed to be relieving price pressure. The</p>
-<p>Strategy analysis, through Mao, identifies the U.S.-Iran conflict as the "primary contradiction" of the moment, from which everything else radiates: oil prices drive inflation, inflation paralyzes the Fed, and the Fed's paralysis constrains the entire economy. The preliminary truce may yet reduce prices if it holds, but the Strait attack proved that the form of peace and the substance of conflict can coexist. The probability that the Fed will raise rates again in 2026 — rather than cutting — now stands at roughly 75 percent, given that core inflation is still accelerating and the new chairman has staked his credibility on price stability.</p>
-</article><article class="card">
-  <h3>The Roundup Reckoning</h3>
-  <p>In a separate but economically consequential ruling, the Supreme Court sided 7-to-2 with Bayer, the manufacturer of the Roundup weedkiller, overturning a $1.25 million jury award for John Durnell, a Missouri gardener who claimed that decades of exposure to the product caused his non-Hodgkin lymphoma. The majority, in an opinion by Justice Kavanaugh, held that federal pesticide law pre-empted Durnell's state-law failure-to-warn claim, because a cancer warning on Roundup's label would conflict with the label approved by the EPA. The decision is likely to determine the fate of thousands of similar lawsuits pending against Bayer across state and federal courts.</p>
-<p>The ruling featured an unusual cross-ideological alliance: Justice Ketanji Brown Jackson, a liberal, was joined in dissent by Justice</p>
-<p>Neil Gorsuch, a conservative. Justice Jackson wrote that the majority had left Durnell "without a remedy for the significant harms he has suffered." The Connector analysis identifies this Jackson-Gorsuch alliance as a rare micro-instance of principle bridging ideology</p>
-<p>— a fleeting ventral vagal connection in an otherwise polarized institution. The Operations analysis, through Drucker, raises a harder question: is the decision <em>effective</em> or merely <em>correct</em>? If Bayer faces global regulatory backlash and reputational damage regardless of the legal outcome, the Supreme Court's ruling was legally sound but operationally hollow.</p>
-</article>
-  </div>
-</section>
-
-<section class="section" id="society">
-  <div class="container">
-    <h2 class="section-title">Society — SOCIETY &amp; CLIMATE — The Unforgiving Earth</h2>
-    
-    <article class="card">
-  <h3>Venezuela's Doublet</h3>
-  <p>The earthquake doublet that struck Venezuela on Wednesday evening — a 7.2 followed 39 seconds later by a 7.5 — was one of the most powerful tectonic events to hit the country in a century. At least 235 people are confirmed dead, more than 4,300 injured, and the death toll is virtually certain to rise as rescuers reach remote hillside towns. La Guaira, the port city north of Caracas, took one of the heaviest blows: entire buildings crumbled to the ground; some apartments were reduced to skeletal walls. The Connector analysis captures the primal quality of the aftermath — residents digging through crushed walls and knotted wire and dust with their bare hands because no rescue workers, firefighters, or medical teams had arrived. Yorliana Colmenares stood near one collapsed building on Thursday morning and heard tapping. Her boyfriend was trapped inside, she believed. She began digging alone.</p>
-<p>The Philosophy analysis, through Nietzsche's eternal return, poses the ultimate test: if you had to live this moment — digging through rubble for a loved one's body, hearing tapping from under crushed concrete — <em>forever</em>, could you say yes? The woman who hears tapping and starts digging alone is amor fati in its most brutal form: she acts not out of hope but out of a sheer assertion of will. The</p>
-<p>Philosophy analysis, through Laozi, sees the Dao manifesting as <em>ziran</em> — nature-as-it-is — indifferent to human projects. The earth moved not because Maduro was bad or Trump is good, but because tectonic plates follow their own logic. "Heaven and Earth are not benevolent; they treat all things as straw dogs." The gap between Rubio's assurances and the scale of destruction is the gap between human naming and cosmic reality. The probability that the confirmed death toll will exceed 500 within two weeks is estimated at roughly 85 percent, given the scale of structural collapse and the slowness of rescue operations.</p>
-</article><article class="card">
-  <h3>Europe's Heat Wave: The Second Blow</h3>
-  <p>Europe is in the grip of its second heat wave since May, and the human toll is mounting. In Spain, where temperatures exceeded 38 degrees Celsius (100 Fahrenheit) over several days, statistical models from the Health Institute of Carlos III suggest more than 200 deaths may ultimately be attributable to the heat. In Italy, five people have died from heat exposure this week, including outdoor workers and a homeless man in Naples. In France, at least 40 people have drowned since the heat wave began, many of them teenagers swimming in unsupervised areas, and prosecutors have opened investigations into the deaths of three children found in parked cars.</p>
-<p>The heat wave is a structural contradiction — the second blow in a summer that is testing Europe's capacity to adapt to extreme weather. The Strategy analysis, through Mao, identifies it as a "secondary, structural contradiction" that will grow over time: heat waves expand year by year like guerrilla base areas, and the ruling class's inability to respond will eventually turn this into a primary contradiction. The Operations analysis, through Zeng Guofan's lens of disciplined response, finds mixed performance across Europe:</p>
-<p>Spain's statistical tracking of heat deaths is methodical and transparent; France's drowning deaths reveal gaps in public safety infrastructure; Italy's outdoor worker fatalities show the distance between policy and enforcement. A disciplined system, Zeng Guofan would argue, has mandatory heat breaks, shade stations, and hydration protocols for outdoor workers. Europe is not there yet.</p>
-</article><article class="card">
-  <h3>The Right to Carry</h3>
-  <p>The Supreme Court's third major ruling of the day struck down a Hawaii law that required gun owners to obtain permission before carrying concealed firearms onto private property open to the public — grocery stores, coffee shops, gas stations, and other spaces where daily life unfolds. The 6-to-3 decision, split along ideological lines, held that Hawaii's restriction violated the Second</p>
-<p>Amendment. Writing for the majority, Justice Alito argued that the law "hobbles what the Second Amendment protects: the right of</p>
-<p>Americans to carry arms for self-defense as they go about their daily lives." In dissent, Justice Jackson — joined by Justice</p>
-<p>Sotomayor — wrote that states could protect private property rights "by requiring those wishing to carry guns onto private property to get express consent from the property owner before doing so," and accused the majority of "protecting guns, not consistently preserving any principle of law."</p>
-<p>The Connector analysis identifies a subtle but significant social consequence: the decision may undermine the implicit sense of safety in shared public spaces. When anyone can carry concealed weapons into a grocery store or coffee shop, the social contract of safety</p>
-<p>— the ventral vagal trust that allows strangers to share space without hypervigilance — is disrupted. The Philosophy analysis, through</p>
-<p>Nietzsche, sees Justice Jackson's dissent as a moment of unmasking: she sees through the legal reasoning to the will beneath, recognizing that the majority's objective is protecting guns, not preserving any consistent principle. The Strategy analysis places this ruling in the context of a Supreme Court that is the institutional center of gravity for conservative power — one that will outlast Trump and continue to shape American life long after he leaves office.</p>
-</article>
-  </div>
-</section>
-
-<section class="section" id="deep-dive">
-  <div class="container">
-    <h2 class="section-title">Deep Dive — INVESTIGATIVE DEEP DIVE — The Heavy Hand in Colombia</h2>
-    <p class="section-intro">Among the fifteen articles in this cycle, the deepest investigative story — the one with the most significant implications for democratic norms, international law, and the character of American power — is the account of Trump's intervention in Colombia's presidential election. This is not a story about a tweet or a phone call. It is the story of a coordinated, multi-actor operation: the president's endorsement, the engagement of Republican members of Congress to mobilize diaspora voters, and the detention — on U.S. soil — of a Colombian activist who had urged Colombians in the United States not to vote for the Trump-endorsed candidate. The detention was authorized by a memo from Secretary of State Marco Rubio, who asserted that the activist had been interfering with U.S. foreign policy. This is the most legally and normatively significant detail in the entire news cycle. A foreign national, present in the United States, was detained by U.S. immigration authorities for expressing political opinions about a foreign election — an election in which the U.S. president had explicitly taken sides. The authority invoked was not a criminal statute but the secretary of state's foreign policy powers, a legal theory that, if stretched to its logical conclusion, could authorize the detention of any foreign national whose political speech displeases the administration. The Operations analysis, through Han Fei, is withering: "When the ruler's personal vendetta becomes the logic of state action, the <em>fa</em> decays and the system becomes unpredictable." This is rule-by-whim, the antithesis of rule-by-law. Alexander Main of the Center for Economic and Policy Research told the Times: "The attempt to quash dissent in a coordinated manner with the Trump administration, extending from Colombia to U.S. soil — I can't think of anything in recent times, in the 21st century, that resembles that." The Philosophy analysis, through Mao, offers a different critique: "No investigation, no right to speak." Did the Trump administration analyze whether detaining a critic of its preferred candidate would trigger backlash? Did it study the concrete conditions of Colombian public opinion? The article suggests the answer is no — the administration acted on Trump's impulse (the endorsement), then improvised (the Rubio memo). This is "practice without prior investigation" — blind action in Maoist terms. The razor-thin margin of victory — won in part through votes cast outside the country, mobilized by Republican lawmakers — means that De La Espriella's mandate is inherently contested. The activist's detention will be a rallying point for opposition. The U.S. has entangled itself not with a stable ally but with a leader whose electoral legitimacy will be questioned from the day he takes office. And it has done so through methods that, if applied in other elections, would constitute a systematic assault on the principle that peoples should choose their own leaders free from external coercion. The Connector analysis captures the polyvagal dimension: this is pure sympathetic mobilization — aggressive intervention, detention of dissent, assertion of dominance — with no social engagement, no diplomatic reciprocity, no trust. The relationship between the U.S. and Colombia, the Connector observes, is not an alliance; it is coercion wearing the costume of partnership. And in a hemisphere where the U.S. has spent decades trying to rebuild credibility after a long history of intervention, this operation may have undone more trust than the election victory is worth.</p>
-    
-  </div>
-</section>
-
-<section class="section prob-section">
-  <div class="container">
-    <h2 class="section-title">Probability Table</h2>
-    <table>
-      <thead>
-        <tr><th>Event</th><th>Estimated Probability</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>the death toll will
-
-exceed 1,000 before search operations conclude</td><td class="td-prob">70 percent</td></tr><tr><td>Republicans will lose
-
-at least one chamber in the November midterms</td><td class="td-prob">55 to 60 percent</td></tr><tr><td>the Fed will raise rates again in 2026 — rather than cutting</td><td class="td-prob">75 percent</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<section class="section observer-section">
-  <div class="container">
-    <h2 class="section-title">Observer Commentaries</h2>
-    <article class="observer-card" lang="zh-CN">
-  <h3>NYT Observer — 翟东升评论</h3>
-  <span class="observer-role">翟东升 · 结构性/货币体系分析</span>
-  <div class="observer-body">
-    <p><strong>日期：</strong> 2026年6月26日</p>
-    <p><p><strong>视角：</strong> 结构性/货币体系分析</p>
-    <p><p>---</p>
-    <p><p>本周新闻清晰显示：美元霸权裂缝正加速向结构性断裂演化。</p>
-    <p><p><strong>第一，主权信用货币的悖论在美自身显化。</strong> 通胀攀升至4.1%，但共和党三权在手却连住房法案都通不过，美联储新主席对利率路径三缄其口。我反复强调：主权信用货币的最终锚定不是利率决议，而是主权治理能力本身。治理瘫痪时，货币信用根基就在加速风化。特朗普要把头像印上250美元纸币——这与其说是权力崇拜，不如说是一个衰落货币体的图腾式挽歌。</p>
-    <p><p><strong>第二，平行体系正从理论推演变为地缘坍缩的必然产物。</strong> 伊朗无人机一击封锁霍尔木兹海峡，布伦特应声跳涨2%。全球每日约2000万桶石油经过这条水道，美国无力保证通行安全。美元-石油体系的物理节点暴露为脆弱目标。当能源生命线依赖一支战略收缩中的海军，交易者自然会思考替代路线、替代结算、替代能源。平行体系不是谁设计的，而是旧体系裂缝里长出来的。</p>
-    <p><p><strong>第三，裂缝不在汇率市场，在政治意志的衰退。</strong> 鲁特用一张图表安抚了总统，但填不平盟友对美国可靠性的怀疑。哥伦比亚选举的粗暴干预，把"基于规则的国际秩序"剥成了赤裸裸的工具。一旦规则被视为工具而非承诺，各国就会加速构筑安全垫。我的核心判断不变：美元霸权的终结不来自一场危机，而来自一万次信任的小幅流失。本周新闻提供了密集样本。
-  </div>
-</article>
-
-<article class="observer-card" lang="zh-CN">
-  <h3>纽约时报观察：金灿荣评论</h3>
-  <span class="observer-role">金灿荣 · 美国政治与战略分析</span>
-  <div class="observer-body">
-    <p><strong>日期：</strong> 2026年6月26日</p>
-    <p><p><strong>视角：</strong> 美国政治与战略分析</p>
-    <p><p>---</p>
-    <p><p>## 百年变局下的战略僵持：美国的"纸老虎"困境</p>
-    <p><p>各位好，我是金灿荣。今天聊聊美国——这个"百年未有之大变局"中的关键变量。</p>
-    <p><p>你看现在美国什么局面？伊朗在霍尔木兹海峡打了一架无人机，把全球油价打上去了；特朗普跟国会的拉锯战，把自家党派的住房法案给"拉"没了；北约盟友怕的不是俄罗斯，怕的是自己盟主掀桌子。用咱们老百姓的话说，这就好比——<strong>第一，你家里请了个装修队，队长天天跟工头吵架，活没干完，工具先砸了</strong>。这叫"制度内耗"，美国人管它叫"trifecta"（三连胜），我看是"trifail"（三连败）。</p>
-    <p><p>再说这个货币的事。特朗普要在250美元钞票上印自己的头像。你想想——<strong>第二，这就跟小区楼下理发店，Tony老师非要把自己照片贴在招牌上，还说要取代原来那个造型师</strong>。活人上钞票，法律明文禁止的，他偏要干。这说明什么？说明美国的"虚体"（制度）已经被"实体"（个人野心）绑架了。</p>
-    <p><p><strong>第三，北约那个事更有意思。</strong> 秘书长吕特去白宫，拿一堆图表摆出来，跟哄小孩似的说："总统先生，这是您的功劳！"——特朗普立马消气了。这跟什么呢？跟胡同口大爷哄孙子一模一样："乖，这糖是你自己挣的。"堂堂全球最强大军事联盟，要靠哄才能运转——这不是战略疲劳是什么？</p>
-    <p><p>我经常说，美国现在处于一个<strong>战略僵持期</strong>：它力量还在，但使不出来，像一个人想打架，腿却抽筋了。伊朗知道这一点，欧洲也知道，拉美也知道。这就是"百年未有之大变局"的核心——不是美国变弱了，而是它变混乱了。混乱比弱更可怕，因为弱可以养，混乱是内伤。</p>
-    <p><p>这个局怎么破？我的判断是：<strong>美国需要一次真正的战略收缩，但特朗普政府既没有这个意愿，也没有这个能力。所以我们还要继续看这场&quot;大戏&quot;——精彩着呢，别走开。</strong></p>
-    <p><p><em>——金灿荣，2026年6月</em>
-  </div>
-</article>
-
-<article class="observer-card" lang="zh-CN">
-  <h3>宋鸿兵观察：美元的退潮与康波冬天的降临</h3>
-  <span class="observer-role">宋鸿兵 · 周期分析</span>
-  <div class="observer-body">
-    <p><strong>2026年6月26日</strong></p>
-    <p><p>又一轮美元潮汐正在退去。美联储核心PCE飙至4.1%，新的掌门人沃什却拒绝给出任何明确信号。这不是技术性犹豫，这是中央银行的系统性瘫痪——当印钞机无法再转，水龙头关不上也拧不开，全球体系就进入了康德拉季耶夫冬季最危险的阶段。</p>
-    <p><p>看看外围发生了什么。伊朗在霍尔木兹海峡打了一架无人机，布伦特原油立刻弹到75美元。这不是偶发冲突，这是美元信用收缩时，资源国的必然反抗。外围世界正在崩解——委内瑞拉遭遇7.2和7.5双震，235人死亡，搜救队却到不了现场。为什么？因为国家能力已经被债务周期掏空了。拉瓜伊拉居民徒手扒开碎石寻找亲人，而美国嘴上说支援，USAID早就被裁掉了。套用我常说的一句话：债务周期的高潮退去，裸泳的人不是不想上岸，是根本没有岸了。</p>
-    <p><p>美国的"三权全控"式府会，却连一个住房法案都推不动。特朗普把自己的头像印到250美元纸币上——这是美元信用最后的狂欢。当"活人不能上钞票"的法律都可以被绕开，你就能看出，帝国的货币体系已经从经济工具退化成个人崇拜的装饰品。这就是典型的"货币战争"第三章：当霸主开始消耗货币信用而非积累时，长波周期的下行期就不可逆转了。</p>
-    <p><p>现在的问题不是美联储会不会降息，而是它即便降息也救不了谁。康波冬天的本质是结构性萧条，不是流动性短缺。外围已经塌了，核心正在空转。而那个最清醒的人，是一个拿着图表去安抚暴怒总统的荷兰人。这本身就说明了一切。</p>
-    <p><p>——宋鸿兵
-  </div>
-</article>
-  </div>
-</section>
-
-<section class="section cartoon-section">
-  <div class="container">
-    <h2 class="section-title">Daily Cartoon</h2>
-    <div class="cartoon-frame cartoon-coming-soon">
-      <img src="./assets/images/nyt_cartoon.jpg" alt="Daily Cartoon">
-      <p></p>
+  <header class="hero">
+    <div class="hero-overlay">
+      <h1>NYT DAILY BRIEFING — Friday, June 26, 2026</h1>
+      <p class="date">June 26, 2026</p>
+      <p class="byline">Power without competence — Iran tests the Hormuz truce, the Supreme Court expands executive authority, and the governing trifecta stalls | 15 articles across World, Politics, Economy, and Society</p>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer class="footer">
-  <p>Prepared by NYT WRITER V1 | June 26, 2026</p>
-  <p>Source data: 15 New York Times articles, June 24–25, 2026</p>
-  <p>Analytical frameworks: Connector (polyvagal), Analysis (categorical), Philosophy (Mao/Laozi/Nietzsche), Strategy (Sun Tzu/Mao/Clausewitz), Operations (Han Fei/Zeng Guofan/Mao/Drucker)</p>
-</footer>
+  <main>
+
+    <section class="executive-summary" id="executive-summary">
+      <h2>Executive Summary</h2>
+      <p>Across these fifteen articles, a single pattern holds. The United States holds more formal power — a governing trifecta, a conservative Supreme Court, a military operation that removed an adversary in Venezuela — than at any point in recent memory. Yet the system is consuming itself from within. Iran controls a chokepoint. NATO allies fear the alliance's own leader. The president's party cannot legislate. The central bank cannot communicate. Inflation persists. Natural disasters strike and find institutions hollowed out. An election in a neighboring country was won by methods that undermine the legitimacy of the victory.</p>
+      <p>Five analytical lenses — Connector, Analysis, Philosophy, Strategy, Operations — converge on the same diagnosis: the gap between what the system claims to be and what it can actually do is widening. The collective nervous system is in sympathetic overdrive, with dorsal collapse beneath. The material contradictions are sharpening. The friction is accumulating. The patterns of reversal and return are playing out. And the most effective executive in the entire news cycle — the one competent across all dimensions — is a Dutchman with a stack of charts, trying to keep a superpower from destroying its own alliance.</p>
+      <p>The news is what happened. The analysis is what it means. The question — the one that threads through all fifteen articles and through all five analytical lenses — is what happens when the gap between power and competence becomes too wide to ignore. The probability that the November midterms will be a referendum not on the opposition but on the governing party's inability to govern, despite holding all the levers, is extremely high — and that, perhaps, is the single most important data point in this entire briefing.</p>
+    </section>
+
+    <section class="cluster" id="geopolitics">
+      <h2>Geopolitics &amp; Conflict</h2>
+
+      <article>
+        <h3>The Strait of Hormuz: Iran's Asymmetric Gambit</h3>
+        <p>Iran's Islamic Revolutionary Guards Corps struck a container ship passing through the Strait of Hormuz on Thursday, firing a drone that hit the vessel and brought maritime traffic through the world's most critical energy chokepoint to a halt. The attack, confirmed by both U.S. and Iranian officials, came just hours after Tehran warned ships that the only permissible route through the 33-kilometer-wide waterway lay within Iranian waters — an implicit rejection of the alternative passage hugging the Omani coast that many vessels had adopted in recent months after earlier disruptions. The strike contradicted President Trump's public assurances that Iran did not control the strait and that it had reopened to normal shipping. Oil markets reacted instantly: Brent crude rose more than 2 percent, to roughly $75 a barrel, while West Texas Intermediate climbed a similar margin, to around $72 a barrel. The International Maritime Organization suspended its plan to evacuate seafarers from hundreds of ships left stranded in the Persian Gulf.</p>
+        <p>The timing was particularly treacherous. The attack followed the announcement of a preliminary truce in the U.S.-Iran war, and it threw the durability of that ceasefire into deep doubt. Secretary of State Marco Rubio was in Bahrain on Thursday meeting with Gulf Arab leaders, trying to allay security concerns that the Strait crisis had reignited. The diplomatic architecture around the truce was always fragile — and now it has been pierced. The Operations analysis, drawing on Han Fei's concept of <em>shi</em> (positional advantage), rightly identifies the Strait as a textbook case of asymmetric power: Iran does not need to match U.S. naval capacity to control one of the world's great bottlenecks. It only needs to prove, repeatedly, that it <em>can</em> interdict, and the uncertainty alone does the work of a blockade. The Strategy analysis, through Clausewitz, identifies the Strait as the secondary center of gravity in the global energy system — the physical point where the mass of 20 percent of the world's oil transit concentrates. The U.S. has not neutralized it.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated view:</strong> 30% probability the ceasefire holds through the NATO summit in July. Because the strike came after the truce was declared, both sides have demonstrated that the form of peace (the announced truce) and the substance of conflict (the strike) can coexist, a pattern the Philosophy analysis, through Mao's dialectics, identifies as a "paper truce" — the shell of resolution concealing continued struggle.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>The NATO Tightrope</h3>
+        <p>Three days before the Strait strike, NATO Secretary General Mark Rutte sat in the Oval Office and performed what may be the most consequential diplomatic intervention of the year. President Trump was mid-tirade about European allies, complaining about their slow defense spending and their refusal to support U.S. military operations against Iran, when Rutte — a former Dutch prime minister who has earned a reputation as the European leader most skilled at managing Trump — interrupted him. He set up posters around the room. One chart showed the "Trump Trillion," the surge in European and Canadian defense spending since Trump first took office. Another homed in on the past two years, when NATO spending had exceeded $250 billion. "This is your evidence," Rutte told the president, framing the entire increase as Trump's personal achievement — an approach that visibly defused the president's anger.</p>
+        <p>The Connector analysis identifies this meeting as the single instance of successful "ventral vagal" co-regulation in the entire news cycle — a rare moment when a dysregulated nervous system (Trump's anger) was regulated back toward social engagement through skilled, non-threatening connection. The deeper strategic insight, however, is that Rutte's de-escalation did not resolve the underlying friction. European allies continue to see the Iran war as "ill-considered and illegal," as one diplomat put it, and the goal of the July 7 NATO summit in Ankara, Turkey, has been reduced to the modest ambition of avoiding an explosion. The Operations analysis, through Peter Drucker's lens of executive effectiveness, identifies Rutte as the only actor across all 15 articles who operates competently across every dimension: he focuses on contribution (keeping the alliance intact), makes Trump's strengths productive (his vanity about driving spending), prepares alternatives, and uses disagreement productively ("I disagree slightly"). He is the counterexample that proves every other actor's failure is a choice.</p>
+      </article>
+
+      <article>
+        <h3>The Senate Surrender</h3>
+        <p>The Iran crisis also produced one of the most striking displays of institutional submission in recent memory. On Tuesday, the Senate had approved a bipartisan war powers resolution rebuking the president's handling of the Iran war and instructing him to end hostilities or seek congressional authorization. On Wednesday, Trump confronted Senate Republicans at a closed-door lunch, excoriating them for allowing the resolution to pass. By Wednesday night, Republican leaders had brought a nearly identical measure to the floor — and defeated it, 50 to 47, with one senator voting "present." Two senators who had voted for the resolution on Tuesday shifted: Bill Cassidy of Louisiana, who said he changed his vote after a White House briefing from Vice President JD Vance and envoy Steve Witkoff; and Rand Paul of Kentucky, who voted "present" and acknowledged that Trump's anger had influenced his decision.</p>
+        <p>The Strategy analysis, through Mao's framework, identifies the Trump-GOP rift as an "antagonistic contradiction within the ruling camp" — one that cannot be resolved by compromise because Trump's method is unilateral disruption. The Connector analysis sees a party in a chronic sympathetic-dorsal loop: the Senate is either mobilizing to manage Trump's rage (sympathetic) or collapsing into surrender and adjournment (dorsal). The Philosophy analysis, through Laozi, observes the pattern of <em>yang</em> excess: Trump pushes so hard that the system breaks, and the party that holds all three branches of government leaves town unable to pass legislation. "When you try to control, you lose control" — the Dao's lesson plays out in real time on the Senate floor.</p>
+      </article>
+
+      <article>
+        <h3>Venezuela: The Alliance Test</h3>
+        <p>Back-to-back earthquakes — a 7.2-magnitude tremor followed 39 seconds later by a 7.5 — have devastated Venezuela, killing at least 235 people and injuring more than 4,300. The doublet, one of the most powerful tectonic events to strike the country in a century, leveled entire buildings in the port city of La Guaira, where residents dug through rubble with their bare hands because no rescue workers arrived. The disaster is now testing the "forced alliance" between the United States and Venezuela — the arrangement that followed Trump's military operation to remove Nicolás Maduro, which redirected Venezuelan oil and gold to the United States. Rubio said rescue teams from Virginia and California would assist, and the Defense Department would help deliver aid. But he did not say how much money the U.S. would allocate, and the disbanding of USAID last year has hollowed out the institutional capacity to mount a large-scale humanitarian response.</p>
+        <p>The Operations analysis, through Zeng Guofan's lens of discipline, sees the absence of organized rescue in La Guaira as proof that decades of decay have eroded the state's basic capacity for response. The Strategy analysis, through Clausewitz, identifies the gap between rhetoric and reality as the central friction in the U.S.-Venezuela relationship. The Connector analysis captures the human dimension: a woman named Yorliana Colmenares stood near a building reduced to rubble, heard tapping from underneath, and began digging alone, believing her boyfriend was trapped inside. No system arrived to help her.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated view:</strong> 70% probability the death toll will exceed 1,000 before search operations conclude, given that remote hillside towns have not yet been reached.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="cluster" id="us-politics">
+      <h2>U.S. Politics &amp; The Trump Trifecta</h2>
+
+      <article>
+        <h3>The Supreme Court's Deference Cascade</h3>
+        <p>Thursday was the most consequential day of the Supreme Court's current term, producing three rulings that collectively expanded conservative power across immigration, corporate liability, and gun rights. The most far-reaching was the immigration decision: a 6-to-3 ruling, divided along ideological lines, that allowed the Trump administration to terminate Temporary Protected Status for 350,000 Haitians and 6,100 Syrians, clearing a path for their potential deportation. The program, created by Congress with bipartisan support in 1990, had provided legal status to people from countries deemed unsafe due to war, natural disaster, or crisis. The United States has a long history of intervention in both Haiti and Syria — the 2010 earthquake that killed 220,000 Haitians prompted the original TPS extension; Syria's TPS was granted after civil war erupted in 2011. Now, with both countries still mired in violence and instability, the protections are being withdrawn.</p>
+        <p>The Philosophy analysis, through Mao's dialectics, reads this as the old legal superstructure (Congress's 1990 bipartisan framework) being broken open by a new concentration of executive and judicial power. The contradiction between the theory of "temporary" protection and the reality of permanent displacement has forced a resolution — and the Court chose executive discretion over legislative intent. The Connector analysis notes the historical guilt cycling beneath the surface: the U.S. intervened in Haiti and Syria, and now it abandons the populations those interventions helped displace.</p>
+      </article>
+
+      <article>
+        <h3>The Trifecta That Cannot Govern</h3>
+        <p>The most politically revealing article in the entire batch may be Carl Hulse's analysis of the Trump trifecta, which depicts a Republican Party holding the presidency, the Senate, and the House yet unable to govern. The immediate precipitating event was Trump's decision to scuttle a major housing bill that Republicans had been preparing to claim as a midterm victory. Trump demanded that the bill include new voting restrictions — a nonstarter that effectively killed the legislation and embarrassed the party that was about to celebrate it. Republican senators, frustrated and bewildered, threw in the towel Wednesday night and left town until mid-July, leaving multiple consequential matters hanging: the housing bill, renewal of a critical terrorism surveillance measure, and the nomination of a new intelligence chief.</p>
+        <p>The Strategy analysis, through Clausewitz, identifies this as the culminating point of attack having been passed. The trifecta should be advancing; instead it is paralyzed by the friction of Trump's own personality. The Operations analysis, through Drucker's <em>Effective Executive</em>, offers a devastating assessment: Trump's contribution is negative. His time is consumed by vendettas. His party cannot focus on first things first because it must constantly manage his moods. A trifecta that produces nothing is worse than divided government — it reveals the emptiness of institutional power without operational discipline.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated view:</strong> 55–60% probability Republicans will lose at least one chamber in the November midterms, in part because the party is visibly unable to deliver on its own agenda.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>The $250 Question</h3>
+        <p>Trump's reimagining of American identity continued with the revelation that the Treasury Department is working on design concepts for a $250 bill bearing his portrait — the biggest overhaul to U.S. currency in more than a century. The proposal faces a legal hurdle: a federal law forbids any living person from appearing on paper currency. Treasury Secretary Scott Bessent said last month he did not find "anything untoward" about having the current president on the 250th anniversary bill. The initiative is a fusion of Trump's personal brand with the nation's identity, and it has already drawn comparisons to the 2016 movement to replace Andrew Jackson with Harriet Tubman on the $20 bill — a proposal that stirred contentious national debate. As Shailendra Bhandare, an expert on the history of money at the University of Oxford, observed: "Currency designs can be controversial because they are imbued with a sense of national identity, therefore they are consumed with immense passion. In today's polarized world, this has the potential to become an instant fault line."</p>
+        <p>The Philosophy analysis, through Nietzsche, reads the $250 bill as an ambiguous gesture: is Trump the Übermensch, stamping his image on the world and affirming himself so thoroughly that he fuses his identity with the nation? Or is he the Last Man, who cannot bear the thought of being forgotten by the eternal return? Laozi would laugh softly: water does not demand a coin with its face — it seeks the lowest ground. Cash itself is becoming a relic; Trump chases a symbol whose substance is already fading.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated view:</strong> 40% probability the $250 bill becomes law before Trump leaves office, contingent on whether Republicans can pass enabling legislation and whether the political cost of appearing monarchical outweighs the base-energizing benefit.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>The Abortion Prosecution Threshold</h3>
+        <p>On the fourth anniversary of the Supreme Court's decision to overturn Roe v. Wade, a group of more than 60 conservative influencers, antiabortion leaders, and pastors signed a petition calling for the removal of "legal immunities" that have protected women who get abortions from prosecution. The petition represents a significant shift within the antiabortion movement, which has been largely unified around the position that doctors — not women — should face punishment. But the movement is frustrated: more abortions are happening now than when Roe fell, driven largely by the growing availability of abortion pills that have made bans effectively unenforceable. The Texas Republican Party's state convention earlier this month endorsed repealing legal protections for women by a thunderous voice vote. And the largest antiabortion group in Texas is developing a strategy to target a narrower slice of women — those with medical licenses — by threatening to revoke their credentials if they are caught taking abortion pills.</p>
+        <p>The Philosophy analysis, through Nietzsche's concept of the "ascetic ideal," identifies this as the will to power turned against life itself: the movement, frustrated that prohibition has failed, doubles down, creating ever-stricter laws and willing suffering — both its own (frustration, political losses) and others' (prosecution, imprisonment). The Philosophy analysis, through Mao, sees this as a textbook case of theory being negated by practice: the original theory (punish providers, not women) has failed to produce the desired result (fewer abortions), so the theory must change. Whether the new theory can succeed is another question entirely — prosecuting women may trigger a political backlash that reverses the movement's gains.</p>
+      </article>
+
+      <article>
+        <h3>The Democratic Civil War</h3>
+        <p>The Democratic Party finds itself squeezed between competing forces. Party leaders in Washington are pushing for moderate candidates who can compete in swing districts. But primary voters in New York City just defeated three establishment-backed candidates — including the chairman of the Congressional Hispanic Caucus — in favor of leftist and socialist challengers. House Speaker Mike Johnson gleefully proclaimed "the insurgent left is on the rise" and faulted Democrats for failing to defend against "the Marxist march around the country." House Republicans' campaign arm sent a bouquet of flowers and a sympathy card to Minority Leader Hakeem Jeffries, mocking him for backing two of the losing candidates.</p>
+        <p>The Strategy analysis, through Sun Tzu, identifies this as "entangled ground" — Democrats are caught between the open plains (the center, where leadership wants to campaign) and fortified mountains (the progressive base, where primary voters are). The GOP is delighted to fight on terrain of its choosing, framing the midterms as a choice between socialism and American values. The Connector analysis sees the Democratic split as a party in sympathetic mobilization at the base (energized, defiant) and dorsal collapse at the leadership level (squeezed, unable to control outcomes). The Maoist reading — a "line struggle" between the vanguard and the masses — captures the dynamic precisely. The Party's central strategic question — whether these primary voters represent the general electorate or only a mobilized minority — remains unanswered but will determine November's outcome.</p>
+      </article>
+    </section>
+
+    <section class="cluster" id="economy">
+      <h2>Economy &amp; Markets</h2>
+
+      <article>
+        <h3>Inflation's Stubborn Grip</h3>
+        <p>The Commerce Department reported Thursday that the Federal Reserve's preferred inflation gauge, the Personal Consumption Expenditures price index, accelerated again in May. Overall prices jumped 0.4 percent during the month, reaching 4.1 percent on an annual basis. Core inflation — which strips out food and energy — notched 3.4 percent, a fresh high since 2023. The data arrived at a moment of deep uncertainty. A preliminary truce in the Iran war had raised hopes that the worst of the inflation surge might be over — oil prices have dropped since the truce announcement, gasoline costs are beginning to fall, and airfares and shipping fees are poised to follow. But the underlying trend was already troubling before the war began, and the conflict has only worsened it.</p>
+        <p>Alan Detmeister, a former Fed economist now at UBS, offered a sobering forecast: even if all the positive scenarios pan out — the Iran truce holds, tariff effects fade, housing inflation decelerates, and AI-driven productivity gains materialize — it will still take two more years for the Fed to reach its 2 percent target, after having overshot it for half a decade. The risks, he added, are all pointing up. The new Fed chairman, Kevin M. Warsh, has vowed to deliver price stability but has refused to offer explicit signals about the path forward for policy — a stance that the Operations analysis, through Drucker, identifies as organizational paralysis. The Fed cannot agree on what the problem is (how patient can they be?), cannot agree on how to measure it (what is the best gauge of underlying pressure?), and cannot communicate a clear decision. The central bank's inability to reach an effective decision on its core function is a failure of contribution.</p>
+      </article>
+
+      <article>
+        <h3>The Oil-Inflation Nexus</h3>
+        <p>The Strait of Hormuz strike and the inflation data are connected by more than chronology. The attack pushed oil prices higher — Brent at $75, WTI at $72 — at the very moment when the preliminary Iran truce was supposed to be relieving price pressure. The Strategy analysis, through Mao, identifies the U.S.-Iran conflict as the "primary contradiction" of the moment, from which everything else radiates: oil prices drive inflation, inflation paralyzes the Fed, and the Fed's paralysis constrains the entire economy. The preliminary truce may yet reduce prices if it holds, but the Strait attack proved that the form of peace and the substance of conflict can coexist.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated view:</strong> 75% probability the Fed will raise rates again in 2026 — rather than cutting — given that core inflation is still accelerating and the new chairman has staked his credibility on price stability.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>The Roundup Reckoning</h3>
+        <p>In a separate but economically consequential ruling, the Supreme Court sided 7-to-2 with Bayer, the manufacturer of the Roundup weedkiller, overturning a $1.25 million jury award for John Durnell, a Missouri gardener who claimed that decades of exposure to the product caused his non-Hodgkin lymphoma. The majority, in an opinion by Justice Kavanaugh, held that federal pesticide law pre-empted Durnell's state-law failure-to-warn claim, because a cancer warning on Roundup's label would conflict with the label approved by the EPA. The decision is likely to determine the fate of thousands of similar lawsuits pending against Bayer across state and federal courts.</p>
+        <p>The ruling featured an unusual cross-ideological alliance: Justice Ketanji Brown Jackson, a liberal, was joined in dissent by Justice Neil Gorsuch, a conservative. Justice Jackson wrote that the majority had left Durnell "without a remedy for the significant harms he has suffered." The Connector analysis identifies this Jackson-Gorsuch alliance as a rare micro-instance of principle bridging ideology — a fleeting ventral vagal connection in an otherwise polarized institution. The Operations analysis, through Drucker, raises a harder question: is the decision <em>effective</em> or merely <em>correct</em>? If Bayer faces global regulatory backlash and reputational damage regardless of the legal outcome, the Supreme Court's ruling was legally sound but operationally hollow.</p>
+      </article>
+    </section>
+
+    <section class="cluster" id="society">
+      <h2>Society &amp; Climate</h2>
+
+      <article>
+        <h3>Venezuela's Doublet</h3>
+        <p>The earthquake doublet that struck Venezuela on Wednesday evening — a 7.2 followed 39 seconds later by a 7.5 — was one of the most powerful tectonic events to hit the country in a century. At least 235 people are confirmed dead, more than 4,300 injured, and the death toll is virtually certain to rise as rescuers reach remote hillside towns. La Guaira, the port city north of Caracas, took one of the heaviest blows: entire buildings crumbled to the ground; some apartments were reduced to skeletal walls. The Connector analysis captures the primal quality of the aftermath — residents digging through crushed walls and knotted wire and dust with their bare hands because no rescue workers, firefighters, or medical teams had arrived. Yorliana Colmenares stood near one collapsed building on Thursday morning and heard tapping. Her boyfriend was trapped inside, she believed. She began digging alone.</p>
+        <p>The Philosophy analysis, through Nietzsche's eternal return, poses the ultimate test: if you had to live this moment — digging through rubble for a loved one's body, hearing tapping from under crushed concrete — <em>forever</em>, could you say yes? The woman who hears tapping and starts digging alone is <em>amor fati</em> in its most brutal form: she acts not out of hope but out of a sheer assertion of will. The Philosophy analysis, through Laozi, sees the Dao manifesting as <em>ziran</em> — nature-as-it-is — indifferent to human projects. The earth moved not because Maduro was bad or Trump is good, but because tectonic plates follow their own logic. "Heaven and Earth are not benevolent; they treat all things as straw dogs." The gap between Rubio's assurances and the scale of destruction is the gap between human naming and cosmic reality.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated view:</strong> 85% probability the confirmed death toll will exceed 500 within two weeks, given the scale of structural collapse and the slowness of rescue operations.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>Europe's Heat Wave: The Second Blow</h3>
+        <p>Europe is in the grip of its second heat wave since May, and the human toll is mounting. In Spain, where temperatures exceeded 38 degrees Celsius (100 Fahrenheit) over several days, statistical models from the Health Institute of Carlos III suggest more than 200 deaths may ultimately be attributable to the heat. In Italy, five people have died from heat exposure this week, including outdoor workers and a homeless man in Naples. In France, at least 40 people have drowned since the heat wave began, many of them teenagers swimming in unsupervised areas, and prosecutors have opened investigations into the deaths of three children found in parked cars.</p>
+        <p>The heat wave is a structural contradiction — the second blow in a summer that is testing Europe's capacity to adapt to extreme weather. The Strategy analysis, through Mao, identifies it as a "secondary, structural contradiction" that will grow over time: heat waves expand year by year like guerrilla base areas, and the ruling class's inability to respond will eventually turn this into a primary contradiction. The Operations analysis, through Zeng Guofan's lens of disciplined response, finds mixed performance across Europe: Spain's statistical tracking of heat deaths is methodical and transparent; France's drowning deaths reveal gaps in public safety infrastructure; Italy's outdoor worker fatalities show the distance between policy and enforcement. A disciplined system, Zeng Guofan would argue, has mandatory heat breaks, shade stations, and hydration protocols for outdoor workers. Europe is not there yet.</p>
+      </article>
+
+      <article>
+        <h3>The Right to Carry</h3>
+        <p>The Supreme Court's third major ruling of the day struck down a Hawaii law that required gun owners to obtain permission before carrying concealed firearms onto private property open to the public — grocery stores, coffee shops, gas stations, and other spaces where daily life unfolds. The 6-to-3 decision, split along ideological lines, held that Hawaii's restriction violated the Second Amendment. Writing for the majority, Justice Alito argued that the law "hobbles what the Second Amendment protects: the right of Americans to carry arms for self-defense as they go about their daily lives." In dissent, Justice Jackson — joined by Justice Sotomayor — wrote that states could protect private property rights "by requiring those wishing to carry guns onto private property to get express consent from the property owner before doing so," and accused the majority of "protecting guns, not consistently preserving any principle of law."</p>
+        <p>The Connector analysis identifies a subtle but significant social consequence: the decision may undermine the implicit sense of safety in shared public spaces. When anyone can carry concealed weapons into a grocery store or coffee shop, the social contract of safety — the ventral vagal trust that allows strangers to share space without hypervigilance — is disrupted. The Philosophy analysis, through Nietzsche, sees Justice Jackson's dissent as a moment of unmasking: she sees through the legal reasoning to the will beneath, recognizing that the majority's objective is protecting guns, not preserving any consistent principle. The Strategy analysis places this ruling in the context of a Supreme Court that is the institutional center of gravity for conservative power — one that will outlast Trump and continue to shape American life long after he leaves office.</p>
+      </article>
+    </section>
+
+    <section class="cluster" id="deep-dive">
+      <h2>Investigative Deep Dive</h2>
+
+      <article>
+        <h3>The Heavy Hand in Colombia</h3>
+        <p>Among the fifteen articles in this cycle, the deepest investigative story — the one with the most significant implications for democratic norms, international law, and the character of American power — is the account of Trump's intervention in Colombia's presidential election. This is not a story about a tweet or a phone call. It is the story of a coordinated, multi-actor operation: the president's endorsement, the engagement of Republican members of Congress to mobilize diaspora voters, and the detention — on U.S. soil — of a Colombian activist who had urged Colombians in the United States not to vote for the Trump-endorsed candidate.</p>
+        <p>Trump's influence reached deep into Colombia's presidential election, where right-wing candidate Abelardo De La Espriella won by a razor-thin margin on Sunday. The victory was built on a three-part intervention: Trump's "complete and total endorsement" of De La Espriella; support from Republican members of Congress who helped mobilize conservative Colombians abroad; and the detention, just days before the election, of an activist critical of De La Espriella who had urged Colombians in the United States not to vote for him. The activist was detained under a memo signed by Secretary Rubio, asserting that the individual had been "interfering with U.S. foreign policy." Experts called the coordination unprecedented in the 21st century. "The attempt to quash dissent in a coordinated manner with the Trump administration, extending from Colombia to U.S. soil — I can't think of anything in recent times that resembles that," said Alexander Main of the Center for Economic and Policy Research.</p>
+        <p>The detention was authorized by a memo from Secretary of State Marco Rubio, who asserted that the activist had been interfering with U.S. foreign policy. This is the most legally and normatively significant detail in the entire news cycle. A foreign national, present in the United States, was detained by U.S. immigration authorities for expressing political opinions about a foreign election — an election in which the U.S. president had explicitly taken sides. The authority invoked was not a criminal statute but the secretary of state's foreign policy powers, a legal theory that, if stretched to its logical conclusion, could authorize the detention of any foreign national whose political speech displeases the administration.</p>
+        <p>The Operations analysis, through Han Fei, is withering: "When the ruler's personal vendetta becomes the logic of state action, the <em>fa</em> decays and the system becomes unpredictable." This is rule-by-whim, the antithesis of rule-by-law.</p>
+        <p>The Philosophy analysis, through Mao, offers a different critique: "No investigation, no right to speak." Did the Trump administration analyze whether detaining a critic of its preferred candidate would trigger backlash? Did it study the concrete conditions of Colombian public opinion? The article suggests the answer is no — the administration acted on Trump's impulse (the endorsement), then improvised (the Rubio memo). This is "practice without prior investigation" — blind action in Maoist terms.</p>
+        <p>The razor-thin margin of victory — won in part through votes cast outside the country, mobilized by Republican lawmakers — means that De La Espriella's mandate is inherently contested. The activist's detention will be a rallying point for opposition. The U.S. has entangled itself not with a stable ally but with a leader whose electoral legitimacy will be questioned from the day he takes office. And it has done so through methods that, if applied in other elections, would constitute a systematic assault on the principle that peoples should choose their own leaders free from external coercion.</p>
+        <p>The Connector analysis captures the polyvagal dimension: this is pure sympathetic mobilization — aggressive intervention, detention of dissent, assertion of dominance — with no social engagement, no diplomatic reciprocity, no trust. The relationship between the U.S. and Colombia, the Connector observes, is not an alliance; it is coercion wearing the costume of partnership. And in a hemisphere where the U.S. has spent decades trying to rebuild credibility after a long history of intervention, this operation may have undone more trust than the election victory is worth.</p>
+      </article>
+    </section>
+
+    <section class="cluster" id="probability-table">
+      <h2>Consolidated Probability Table</h2>
+
+      <article>
+        <h3>Scenario Probabilities</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Scenario</th>
+              <th>Probability</th>
+              <th>Time Horizon</th>
+              <th>Basis</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Iran ceasefire holds through July NATO summit</td>
+              <td><strong>30%</strong></td>
+              <td>Through July 7, 2026</td>
+              <td>Strait attack after truce, Iran's asymmetric control, "paper truce" pattern</td>
+            </tr>
+            <tr>
+              <td>Fed raises rates again in 2026</td>
+              <td><strong>75%</strong></td>
+              <td>2026</td>
+              <td>Core PCE at 3.4% fresh high, Chairman Warsh committed to price stability</td>
+            </tr>
+            <tr>
+              <td>Republicans lose at least one chamber in midterms</td>
+              <td><strong>55–60%</strong></td>
+              <td>November 2026</td>
+              <td>Trifecta paralysis, inability to pass housing bill and surveillance renewal</td>
+            </tr>
+            <tr>
+              <td>$250 Trump bill becomes law</td>
+              <td><strong>40%</strong></td>
+              <td>Before Trump leaves office</td>
+              <td>Living-person ban on currency, political cost vs. base benefit</td>
+            </tr>
+            <tr>
+              <td>Venezuela death toll exceeds 1,000</td>
+              <td><strong>70%</strong></td>
+              <td>Before search operations conclude</td>
+              <td>Remote hillside towns unreached, hollowed rescue capacity</td>
+            </tr>
+            <tr>
+              <td>Venezuela confirmed death toll exceeds 500</td>
+              <td><strong>85%</strong></td>
+              <td>Within two weeks</td>
+              <td>Scale of structural collapse, slow rescue operations</td>
+            </tr>
+            <tr>
+              <td>Midterms become referendum on governing party incompetence</td>
+              <td><strong>Extremely high</strong></td>
+              <td>November 2026</td>
+              <td>Gap between power and competence widening across all five analytical lenses</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+    </section>
+
+    <section class="observer-section chinese" id="observer-commentaries">
+      <h2 style="color: var(--accent); font-size: 2.1rem; margin-bottom: 2rem; padding-bottom: 0.9rem; border-bottom: 2px solid var(--accent);">Observer Commentaries</h2>
+
+      <article class="observer">
+        <h3>翟东升</h3>
+        <p class="subtitle">2026年6月26日 · 结构性/货币体系分析</p>
+        <p>本周新闻清晰显示：美元霸权裂缝正加速向结构性断裂演化。</p>
+        <p><strong>第一，主权信用货币的悖论在美自身显化。</strong>通胀攀升至4.1%，但共和党三权在手却连住房法案都通不过，美联储新主席对利率路径三缄其口。我反复强调：主权信用货币的最终锚定不是利率决议，而是主权治理能力本身。治理瘫痪时，货币信用根基就在加速风化。特朗普要把头像印上250美元纸币——这与其说是权力崇拜，不如说是一个衰落货币体的图腾式挽歌。</p>
+        <p><strong>第二，平行体系正从理论推演变为地缘坍缩的必然产物。</strong>伊朗无人机一击封锁霍尔木兹海峡，布伦特应声跳涨2%。全球每日约2000万桶石油经过这条水道，美国无力保证通行安全。美元-石油体系的物理节点暴露为脆弱目标。当能源生命线依赖一支战略收缩中的海军，交易者自然会思考替代路线、替代结算、替代能源。平行体系不是谁设计的，而是旧体系裂缝里长出来的。</p>
+        <p><strong>第三，裂缝不在汇率市场，在政治意志的衰退。</strong>鲁特用一张图表安抚了总统，但填不平盟友对美国可靠性的怀疑。哥伦比亚选举的粗暴干预，把"基于规则的国际秩序"剥成了赤裸裸的工具。一旦规则被视为工具而非承诺，各国就会加速构筑安全垫。我的核心判断不变：美元霸权的终结不来自一场危机，而来自一万次信任的小幅流失。本周新闻提供了密集样本。</p>
+      </article>
+
+      <article class="observer">
+        <h3>金灿荣</h3>
+        <p class="subtitle">2026年6月26日 · 美国政治与战略分析</p>
+        <p style="font-size: 1.15rem; font-weight: 700; margin-bottom: 1.25rem;">百年变局下的战略僵持：美国的"纸老虎"困境</p>
+        <p>各位好，我是金灿荣。今天聊聊美国——这个"百年未有之大变局"中的关键变量。</p>
+        <p>你看现在美国什么局面？伊朗在霍尔木兹海峡打了一架无人机，把全球油价打上去了；特朗普跟国会的拉锯战，把自家党派的住房法案给"拉"没了；北约盟友怕的不是俄罗斯，怕的是自己盟主掀桌子。用咱们老百姓的话说，这就好比——<strong>第一，你家里请了个装修队，队长天天跟工头吵架，活没干完，工具先砸了</strong>。这叫"制度内耗"，美国人管它叫"trifecta"（三连胜），我看是"trifail"（三连败）。</p>
+        <p>再说这个货币的事。特朗普要在250美元钞票上印自己的头像。你想想——<strong>第二，这就跟小区楼下理发店，Tony老师非要把自己照片贴在招牌上，还说要取代原来那个造型师</strong>。活人上钞票，法律明文禁止的，他偏要干。这说明什么？说明美国的"虚体"（制度）已经被"实体"（个人野心）绑架了。</p>
+        <p><strong>第三，北约那个事更有意思。</strong>秘书长吕特去白宫，拿一堆图表摆出来，跟哄小孩似的说："总统先生，这是您的功劳！"——特朗普立马消气了。这跟什么呢？跟胡同口大爷哄孙子一模一样："乖，这糖是你自己挣的。"堂堂全球最强大军事联盟，要靠哄才能运转——这不是战略疲劳是什么？</p>
+        <p>我经常说，美国现在处于一个<strong>战略僵持期</strong>：它力量还在，但使不出来，像一个人想打架，腿却抽筋了。伊朗知道这一点，欧洲也知道，拉美也知道。这就是"百年未有之大变局"的核心——不是美国变弱了，而是它变混乱了。混乱比弱更可怕，因为弱可以养，混乱是内伤。</p>
+        <p>这个局怎么破？我的判断是：<strong>美国需要一次真正的战略收缩，但特朗普政府既没有这个意愿，也没有这个能力。所以我们还要继续看这场"大戏"——精彩着呢，别走开。</strong></p>
+        <p><em>——金灿荣，2026年6月</em></p>
+      </article>
+
+      <article class="observer">
+        <h3>宋鸿兵</h3>
+        <p class="subtitle">2026年6月26日 — 美元的退潮与康波冬天的降临</p>
+        <p>又一轮美元潮汐正在退去。美联储核心PCE飙至4.1%，新的掌门人沃什却拒绝给出任何明确信号。这不是技术性犹豫，这是中央银行的系统性瘫痪——当印钞机无法再转，水龙头关不上也拧不开，全球体系就进入了康德拉季耶夫冬季最危险的阶段。</p>
+        <p>看看外围发生了什么。伊朗在霍尔木兹海峡打了一架无人机，布伦特原油立刻弹到75美元。这不是偶发冲突，这是美元信用收缩时，资源国的必然反抗。外围世界正在崩解——委内瑞拉遭遇7.2和7.5双震，235人死亡，搜救队却到不了现场。为什么？因为国家能力已经被债务周期掏空了。拉瓜伊拉居民徒手扒开碎石寻找亲人，而美国嘴上说支援，USAID早就被裁掉了。套用我常说的一句话：债务周期的高潮退去，裸泳的人不是不想上岸，是根本没有岸了。</p>
+        <p>美国的"三权全控"式府会，却连一个住房法案都推不动。特朗普把自己的头像印到250美元纸币上——这是美元信用最后的狂欢。当"活人不能上钞票"的法律都可以被绕开，你就能看出，帝国的货币体系已经从经济工具退化成个人崇拜的装饰品。这就是典型的"货币战争"第三章：当霸主开始消耗货币信用而非积累时，长波周期的下行期就不可逆转了。</p>
+        <p>现在的问题不是美联储会不会降息，而是它即便降息也救不了谁。康波冬天的本质是结构性萧条，不是流动性短缺。外围已经塌了，核心正在空转。而那个最清醒的人，是一个拿着图表去安抚暴怒总统的荷兰人。这本身就说明了一切。</p>
+        <p>——宋鸿兵</p>
+      </article>
+    </section>
+
+    <section class="daily-cartoon" id="daily-cartoon">
+      <h2>Daily Cartoon</h2>
+      <img src="./assets/images/nyt_cartoon.jpg" alt="NYT Editorial Cartoon — June 26, 2026">
+      <p class="caption">NYT Editorial Cartoon — June 26, 2026</p>
+    </section>
+
+    <section class="sources" id="sources">
+      <h2>Sources</h2>
+      <p>All articles sourced from The New York Times, June 24–25, 2026 edition, prepared June 26, 2026. Named contributors and analytical frameworks: Connector (polyvagal), Analysis (categorical), Philosophy (Mao/Laozi/Nietzsche), Strategy (Sun Tzu/Mao/Clausewitz), Operations (Han Fei/Zeng Guofan/Mao/Drucker).</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>*End of Briefing | Prepared by NYT Writer*</p>
+  </footer>
 
 </body>
 </html>
