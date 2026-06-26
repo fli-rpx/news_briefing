@@ -333,5 +333,15 @@
         "./assets/images/wsj_cartoon.jpg"
       ]
     }
+  },
+  "2026-06-26": {
+    "wsj": {
+      "pdf": "wsj_briefing_2026-06-26.pdf",
+      "local": "briefings/wsj_2026-06-26.html",
+      "images": [
+        "./assets/images/wsj_hero_bg.jpg",
+        "./assets/images/wsj_cartoon.jpg"
+      ]
+    }
   }
 }
