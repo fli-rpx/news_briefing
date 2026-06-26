@@ -337,7 +337,7 @@
   "2026-06-26": {
     "wsj": {
       "pdf": "wsj_briefing_2026-06-26.pdf",
-      "local": "briefings/wsj_2026-06-26.html",
+      "local": "briefings/2026-06-26.html",
       "images": [
         "./assets/images/wsj_hero_bg.jpg",
         "./assets/images/wsj_cartoon.jpg"
@@ -345,7 +345,7 @@
     },
     "nyt": {
       "pdf": "nyt_briefing_2026-06-26.pdf",
-      "local": "briefings/nyt_2026-06-26.html",
+      "local": "briefings/2026-06-26.html",
       "images": [
         "./assets/images/nyt_hero_bg.jpg",
         "./assets/images/nyt_cartoon.jpg"
