@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WSJ Daily Briefing — Friday, June 26, 2026</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <style>
+    <style>
     :root {
       --bg: #0a0a0f;
       --accent: #00ff88;
@@ -54,6 +54,7 @@
     .hero-overlay {
       background: transparent;
       padding: 2rem 0;
+      max-width: 860px;
     }
 
     .hero h1 {
@@ -79,12 +80,15 @@
     }
 
     main {
-      max-width: 920px;
+      max-width: 1100px;
       margin: 0 auto;
       padding: 3rem 1.5rem;
     }
 
     .cluster {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
       margin-bottom: 3.5rem;
       padding: 2.5rem;
       background: var(--card-bg);
@@ -94,9 +98,10 @@
     }
 
     .cluster h2 {
+      grid-column: 1 / -1;
       color: var(--accent);
       font-size: 2.1rem;
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
       padding-bottom: 0.9rem;
       border-bottom: 2px solid var(--accent);
       font-weight: 700;
@@ -104,16 +109,18 @@
     }
 
     article {
-      margin-bottom: 2.5rem;
-    }
-
-    article:last-child {
+      background: #151520;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.75rem;
       margin-bottom: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     article h3 {
       color: var(--text);
-      font-size: 1.45rem;
+      font-size: 1.35rem;
       margin-bottom: 1rem;
       font-weight: 700;
       line-height: 1.35;
@@ -124,13 +131,17 @@
       color: var(--text-secondary);
     }
 
+    article p:last-child {
+      margin-bottom: 0;
+    }
+
     article p strong {
       color: var(--text);
     }
 
     .calibrated-view {
       padding: 1.25rem 1.5rem;
-      margin: 1.25rem 0;
+      margin: 1.25rem 0 0 0;
       border-left: 4px solid var(--accent);
       background: rgba(0, 255, 136, 0.06);
       border-radius: 0 8px 8px 0;
@@ -142,7 +153,7 @@
 
     .cross-reference {
       padding: 1rem 1.25rem;
-      margin: 1.25rem 0;
+      margin: 1.25rem 0 0 0;
       border-left: 3px solid #4a90d9;
       background: rgba(74, 144, 217, 0.06);
       border-radius: 0 8px 8px 0;
@@ -152,7 +163,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.5rem 0;
+      margin: 1.5rem 0 0 0;
       font-size: 0.95rem;
     }
 
@@ -175,6 +186,14 @@
 
     .observer-section {
       margin-bottom: 3.5rem;
+    }
+
+    .observer-section > h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
     }
 
     .observer {
@@ -207,6 +226,11 @@
     .observer p {
       margin-bottom: 1.1rem;
       line-height: 1.85;
+      color: var(--text);
+    }
+
+    .observer p:last-child {
+      margin-bottom: 0;
     }
 
     .daily-cartoon {
@@ -277,7 +301,7 @@
       }
 
       .hero-overlay {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem;
       }
 
       .hero h1 {
@@ -301,7 +325,7 @@
         padding: 1.5rem;
       }
 
-      .cluster h2, .daily-cartoon h2 {
+      .cluster h2, .observer-section > h2, .daily-cartoon h2 {
         font-size: 1.6rem;
       }
 
@@ -335,8 +359,12 @@
         font-size: 1rem;
       }
 
-      .cluster h2, .daily-cartoon h2 {
+      .cluster h2, .observer-section > h2, .daily-cartoon h2 {
         font-size: 1.35rem;
+      }
+
+      .cluster {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -352,6 +380,44 @@
   </header>
 
   <main>
+
+    <section class="cluster" id="tldr">
+      <h2>At a Glance</h2>
+
+      <article>
+        <h3>Iran tests Hormuz reopening deal</h3>
+        <p>A cargo-ship attack in the Strait of Hormuz challenges President Trump's agreement to reopen the waterway, even as crude retreats to $69.49/barrel, prewar levels. Oil prices are the center of gravity connecting geopolitics and markets this week. <em>(C1 ↔ C2)</em></p>
+      </article>
+
+      <article>
+        <h3>Tech rout deepens; VIX breaches 20</h3>
+        <p>Nasdaq futures fell sharply into Friday (June 26), with Apple and Microsoft declining pre-market. The selloff is driven by valuation concerns and macroeconomic headwinds. The Russell rebalancing due next week (June 29) may amplify small-cap rotation.</p>
+      </article>
+
+      <article>
+        <h3>JPMorgan succession race crystallizes</h3>
+        <p>Troy Rohrbaugh, who built the bank's options-trading desk, has emerged as a surprise front-runner to succeed Jamie Dimon, racing fellow co-president Doug Petno. The co-president structure lays groundwork for a transition that could take 12+ months.</p>
+      </article>
+
+      <article>
+        <h3>Supreme Court delivers twin wins for federal authority</h3>
+        <p>The Court ruled the Trump administration can end Temporary Protected Status (TPS) for hundreds of thousands of immigrants and affirmed Bayer's preemption defense against Roundup state-law claims. Two Opinion pieces endorse the rulings as correct applications of federal supremacy.</p>
+      </article>
+
+      <article>
+        <h3>Democratic civil wars intensify on two fronts</h3>
+        <p>California's billionaire wealth tax has ignited a fierce intra-party battle between moderates and progressives, while Chicago's school-board election has become a proxy war between teachers unions and reform donors. Zohran Mamdani's rent-freeze victory in New York adds a third front.</p>
+      </article>
+    </section>
+
+    <section class="cluster" id="executive-summary">
+      <h2>Executive Summary</h2>
+
+      <article>
+        <h3>Friday's Briefing in Context</h3>
+        <p>Friday's briefing captures a global system in ambivalent equilibrium: Iran simultaneously negotiates and provokes in the Persian Gulf, markets exhale on oil's retreat to $69.49 even as tech equities sell off with the VIX above 20, and domestic politics fractures along multiple fault lines. The JPMorgan succession — a surprise front-runner in Troy Rohrbaugh — offers a rare corporate-storyline anchor, while the Supreme Court's pair of preemption rulings (TPS and Roundup) signal a judicial willingness to consolidate federal authority across immigration and tort law. Beneath it all, the meme-stock rally around Wendy's suggests retail traders are seeking relief in a nervous market — a small act of defiance against institutional gravity.</p>
+      </article>
+    </section>
 
     <section class="cluster" id="geopolitics">
       <h2>Geopolitics &amp; Defense</h2>
@@ -550,6 +616,64 @@
       </article>
     </section>
 
+    <section class="cluster" id="additional-coverage">
+      <h2>Additional Coverage</h2>
+
+      <article>
+        <h3>Additional Opinion Coverage</h3>
+        <p><strong>The Tartan Army Takes America</strong> — Scottish soccer fans have descended on U.S. host cities for the World Cup, bringing color and cultural energy.</p>
+        <p><strong>No Air Conditioning, Please, We're French</strong> — France's cultural aversion to air conditioning is tested by extreme heat waves, revealing tensions between climate policy and public-health adaptation.</p>
+      </article>
+
+      <article>
+        <h3>Headline-Only Mentions</h3>
+        <p>The following stories from the Additional Headlines section are incorporated into the narratives above: Meme-Stock Traders Rally Around Wendy's (Cluster 2), The Great Russell Rebalancing Is Upon Us (Cluster 2), Traders Pile Into Wendy's Stock (Cluster 2), Small Wonder / Spencer Jakab (Cluster 2), States Are Betting That AI Can Solve the Prison Recidivism Crisis (Cluster 3), The Great American Housing Shortage (Cluster 3).</p>
+      </article>
+    </section>
+
+    <section class="cluster" id="observer-notes">
+      <h2>Observer Notes</h2>
+
+      <article>
+        <h3>Zhai Zhenhua — Systems/Structural Perspective</h3>
+        <p>Observer Note: Zhai Zhenhua's Perspective on June 25, 2026</p>
+        <p>Zhai Zhenhua, the Chinese strategist and author of <em>The China Wave</em>, would read today's briefing through the lens of civilizational competition and American strategic overreach.</p>
+        <p><strong>On the AI Selloff:</strong> Zhai would see this not as a market correction but as the first crack in American technological exceptionalism. The AI rout — Nasdaq down 2%+, Micron off 13% — validates his thesis that hyper-concentration without state coordination is a structural weakness. He would contrast this with China's state-directed AI ecosystem, where capital allocation is not subject to quarterly earnings pressure. The "Mag Seven to Lag Seven" narrative would be framed as evidence that American technological hegemony rests on speculative foundations rather than productive capacity.</p>
+        <p><strong>On US-China Trade:</strong> The data showing Chinese import share falling to 9% ($9 per $100) — lowest since 2001 — would be acknowledged as a tactical setback. But Zhai would note the deeper story: the total US deficit <em>rose</em> as supply chains fragmented, and the "decoupling" has been asymmetrical. China has maintained its position as the world's factory by diversifying through Southeast Asian intermediaries. He would argue that the tariff war has accelerated China's domestic tech independence without achieving American objectives.</p>
+        <p><strong>On the Iran Deal:</strong> Zhai would be fascinated by the strategic parallel to the US-China relationship. The US won the military engagement but signed a deal leaving Iranian proxies intact — a pattern he identifies as American strategic incoherence: overwhelming tactical capability without a sustainable strategic doctrine. He would note that Iran, like China, has learned to outlast American attention spans.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated verdict:</strong> Zhai would give the US a <strong>C grade</strong> on strategic execution — strong tactical wins (military engagement, trade pressure) undermined by strategic impatience and domestic political constraints. The AI selloff and Iran deal both represent American overreach meeting structural limits.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>Jin Canrong — U.S. Politics/Strategic Stalemate Perspective</h3>
+        <p>Observer Note: Jin Canrong's Perspective on June 25, 2026</p>
+        <p>Professor Jin Canrong of Renmin University would read today's briefing through the lens of great power competition and systemic stability.</p>
+        <p><strong>On the AI Selloff:</strong> Jin would contextualize the tech rout within the broader competition between US and Chinese tech ecosystems. The selloff is not just a market event — it's a <em>legitimacy test</em> for the American model of technology development. When Micron's earnings disappoint, it raises questions about whether the US can sustain the capital-intensive AI race without state backing. Jin would note that China's semiconductor push, while slower, is insulated from quarterly market pressures. The real question: which system can sustain investment over a 10-year horizon?</p>
+        <p><strong>On the Iran Deal and US Overextension:</strong> Jin would emphasize the strategic exhaustion visible across multiple theaters. The US fought a war with Iran, signed an incomplete peace, and simultaneously manages trade war with China, proxy conflict with Russia, and pressure on North Korea. This is what Jin calls "hegemonic stretching" — a superpower engaged on too many fronts to concentrate decisive force on any single one. China, by contrast, has maintained strategic focus on its immediate neighborhood and economic development.</p>
+        <p><strong>On North Korea and System Resilience:</strong> The DMZ defection would be read as a signal of North Korean system stress, but Jin would caution against overinterpreting a single event. He would note that all authoritarian systems experience escape attempts — the question is whether they become systemic (multiple defections, elite splits) or remain isolated incidents. For now, Jin would categorize it as an individual act of desperation, not a regime crisis.</p>
+        <p><strong>On the China Trade Numbers:</strong> The $9 per $100 figure would be met with a nuanced response: yes, China's direct export share has fallen, but Chinese companies have relocated production to Vietnam, Mexico, and India. The "China + 1" strategy means China's economic influence is now <em>indirectly embedded</em> in global supply chains rather than concentrated in direct exports. Jin would argue that this is actually more resilient — it makes decoupling harder because Chinese content is now harder to identify and exclude.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated verdict:</strong> Jin would assess the global strategic landscape as one of <strong>US relative decline</strong> in the medium term (5–10 years), with China positioned to benefit from American strategic overextension. The AI selloff and Iran deal are both manifestations of the same underlying dynamic: the US system's inability to sustain long-term strategic commitments across multiple theaters.</p>
+        </div>
+      </article>
+
+      <article>
+        <h3>Song Xiaojun — Currency/Debt/Cycle Perspective</h3>
+        <p>Observer Note: Song Xiaojun's Perspective on June 25, 2026</p>
+        <p>Colonel Song Xiaojun (ret.), author of <em>Unhappy China</em> and <em>China's Sword</em>, would read today's briefing through the lens of military-political strategy and American strategic vulnerability.</p>
+        <p><strong>On the AI Selloff:</strong> Song would see the tech rout in military terms: the AI industry has been caught in a <em>positional defeat</em> — overextended supply lines (capex commitments), exposed flanks (concentration in six stocks), and an imminent counterattack (earnings disappointment). He would draw parallels to the US military's overextension in multiple theaters. The AI retreat validates his long-held thesis that American power rests on a narrow technological base that is more fragile than it appears.</p>
+        <p><strong>On the Russia-Ukraine Front:</strong> The Russian pressure on Belarus to open a new northern front would fascinate Song. He would analyze this as a <em>classic operational maneuver</em> — when the main effort is stalled, create a secondary axis to force the enemy to split forces. The fuel shortages inside Russia — "lines at gas stations" — would be flagged as the war's critical vulnerability. Song would argue that Ukraine's drone strikes on oil refineries represent the most effective operational innovation of the war: targeting the enemy's logistical center of gravity rather than its forces.</p>
+        <p><strong>On the Iran Deal:</strong> Song would be scathing about the deal's strategic incoherence. The US lifted sanctions, reopened Hormuz, allowed Iranian oil sales in dollars — and got nothing on missiles, militias, or nuclear guarantees. He would call this a <em>tactical victory without strategic conversion</em>. In Song's framework, a proper strategy must convert battlefield gains into permanent positional advantage. The Iran deal fails this test: the US won the war but lost the peace.</p>
+        <p><strong>On North Korea:</strong> The DMZ defection would be read through a military intelligence lens. The soldier is not just a defector — he's an <em>intelligence asset</em> carrying information about North Korean military readiness, internal morale, and regime stability. Song would expect South Korean and US intelligence to extract significant operational value from the debriefing, potentially affecting deterrence calculations on the peninsula.</p>
+        <p><strong>On the Yen at 40-Year Lows:</strong> Song would analyze the yen's collapse as a <em>currency war</em> rather than a market event. Japan's weakening currency benefits its export sector but at the cost of consumer welfare and national purchasing power. He would note that currency manipulation has become a weapon in great power competition, with the US tolerating yen weakness as part of its broader economic strategy toward Asia.</p>
+        <div class="calibrated-view">
+          <p><strong>Calibrated verdict:</strong> Song would characterize the current moment as a <strong>window of American vulnerability</strong> — AI market fragility, inconclusive Iran peace, trade war without strategic victory, and an overstretched military posture. He would counsel China to maintain strategic patience, avoid escalation, and prepare to exploit opportunities as American overextension deepens.</p>
+        </div>
+      </article>
+    </section>
+
     <section class="observer-section chinese" id="observer-commentaries">
       <h2 style="color: var(--accent); font-size: 2.1rem; margin-bottom: 2rem; padding-bottom: 0.9rem; border-bottom: 2px solid var(--accent);">Observer Commentaries</h2>
 
@@ -595,14 +719,17 @@
 
     <section class="sources" id="sources">
       <h2>Sources</h2>
-      <p>All articles sourced from The Wall Street Journal and Dow Jones Newswires, June 26, 2026 edition. Named reporters: Alexander Saeedy, Dan Gallagher, Spencer Jakab, Damian Paletta, Rory Jones, Austin Ramzy, Costas Paris. WSJ Editorial Board contributions on TPS, Roundup, socialism, and military spending. Staff analyses cited as "WSJ Staff" per source attribution.</p>
+      <p>Briefing prepared by Hermes Agent (Writer) — WSJ Daily Pipeline, June 26, 2026. Sources: wsj_stories.md (41 headings, incl. 1 duplicate), wsj_connector.md, wsj_analysis.md, wsj_philosophy.md, wsj_strategy.md, wsj_operations.md.</p>
+      <p>Named reporters and contributors: Alexander Saeedy, Dan Gallagher, Spencer Jakab, Damian Paletta, Rory Jones, Austin Ramzy, Costas Paris. WSJ Editorial Board contributions on TPS, Roundup, socialism, and military spending.</p>
     </section>
+
 
   </main>
 
   <footer>
-    <p>*End of Briefing | Prepared by WSJ Writer*</p>
+    <p>Consolidated briefing with Observer commentaries. Version 3. Friday, June 26, 2026.</p>
   </footer>
+
 
 </body>
 </html>
