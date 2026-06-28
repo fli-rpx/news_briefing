@@ -364,5 +364,15 @@
       "pdf": "nyt_briefing_2026-06-27.pdf",
       "local": "briefings/nyt_2026-06-27.html"
     }
+  },
+  "2026-06-28": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-28.pdf",
+      "local": "briefings/nyt_2026-06-28.html",
+      "images": [
+        "./assets/images/nyt_hero_bg.jpg",
+        "./assets/images/nyt_cartoon.jpg"
+      ]
+    }
   }
 }
