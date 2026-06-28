@@ -373,6 +373,11 @@
         "./assets/images/nyt_hero_bg.jpg",
         "./assets/images/nyt_cartoon.jpg"
       ]
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-06-28.pdf",
+      "local": "briefings/wsj_2026-06-28.html",
+      "images": []
     }
   }
 }
