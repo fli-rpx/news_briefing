@@ -1,496 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NYT Briefing — June 28, 2026</title>
-<style>
-:root {
-  --bg: #0a0a0f;
-  --bg-2: #0d1320;
-  --navy: #111b2b;
-  --navy-light: #16253a;
-  --accent: #00ff88;
-  --accent-dim: rgba(0,255,136,0.14);
-  --amber: #ffb020;
-  --amber-dim: rgba(255,176,32,0.14);
-  --text: #e8e8ec;
-  --text-dim: #a0a8b8;
-  --glass: rgba(13,19,32,0.72);
-  --glass-border: rgba(255,255,255,0.08);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
-  line-height: 1.7;
-  font-size: 16px;
-}
-.zh { font-family: "Noto Sans SC", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif; }
-.hero {
-  position: relative;
-  min-height: 72vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(180deg, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.85) 100%), url('./assets/images/nyt_hero_bg.jpg');
-  background-size: cover;
-  background-position: center;
-  padding: 4rem 1.5rem;
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 50% 30%, rgba(0,255,136,0.08), transparent 55%);
-  pointer-events: none;
-}
-.hero-content { position: relative; z-index: 1; max-width: 900px; }
-.hero h1 {
-  margin: 0 0 1rem;
-  font-size: clamp(2.2rem, 6vw, 4.5rem);
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  line-height: 1.1;
-  text-shadow: 0 2px 30px rgba(0,0,0,0.7);
-}
-.hero h1 span { color: var(--accent); }
-.hero p.subtitle {
-  margin: 0 auto;
-  font-size: clamp(1.05rem, 2.5vw, 1.35rem);
-  color: var(--text-dim);
-  max-width: 680px;
-}
-.hero .meta {
-  margin-top: 1.5rem;
-  display: inline-flex;
-  gap: 0.75rem;
-  align-items: center;
-  font-size: 0.85rem;
-  color: var(--accent);
-  border: 1px solid rgba(0,255,136,0.35);
-  background: rgba(0,255,136,0.08);
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  backdrop-filter: blur(6px);
-}
-.container { max-width: 1120px; margin: 0 auto; padding: 0 1.5rem; }
-section { padding: 4rem 0; }
-section + section { border-top: 1px solid rgba(255,255,255,0.06); }
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-.section-header h2 {
-  margin: 0;
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-weight: 800;
-  color: var(--text);
-}
-.section-header .line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(90deg, var(--accent), transparent);
-  opacity: 0.45;
-}
-.glass-card {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  border-radius: 18px;
-  padding: 1.8rem;
-  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-.glass-card h3 {
-  margin: 0 0 1rem;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--accent);
-}
-.glass-card p { margin: 0 0 1rem; color: var(--text-dim); }
-.glass-card p:last-child { margin-bottom: 0; }
-.glass-card strong { color: var(--text); }
-.exec-summary .glass-card { border-left: 4px solid var(--accent); }
-.exec-summary p { color: var(--text); font-size: 1.05rem; }
-.observer-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-.observer-card { display: flex; flex-direction: column; }
-.observer-card .tag {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--amber);
-  margin-bottom: 0.5rem;
-}
-.observer-card h3 {
-  font-size: 1.15rem;
-  color: var(--text);
-  margin: 0 0 1rem;
-  line-height: 1.35;
-}
-.observer-body { font-size: 0.98rem; color: #c9cdd8; }
-.observer-body p { margin-bottom: 0.85rem; line-height: 1.85; }
-.observer-body strong { color: var(--accent); }
-.observer-body h2, .observer-body h3 { font-size: 1.05rem; color: var(--amber); margin: 1rem 0 0.5rem; }
-.cluster-grid { display: grid; gap: 1.5rem; }
-.cluster-card { border-left: 4px solid var(--amber); }
-.cluster-card h3 { color: var(--amber); font-size: 1.25rem; }
-.cluster-card p { color: #c9cdd8; }
-.prediction-grid { display: grid; gap: 1rem; }
-.prediction-card {
-  display: grid;
-  grid-template-columns: 3.2rem 1fr 5.5rem;
-  gap: 1.25rem;
-  align-items: center;
-  padding: 1.25rem 1.5rem;
-}
-.prediction-num {
-  width: 2.6rem; height: 2.6rem;
-  display: grid; place-items: center;
-  border-radius: 50%;
-  background: var(--accent-dim);
-  color: var(--accent);
-  font-weight: 800;
-  border: 1px solid rgba(0,255,136,0.35);
-}
-.prediction-text { font-size: 1rem; color: var(--text); }
-.prediction-text .rationale { font-size: 0.9rem; color: var(--text-dim); margin-top: 0.35rem; }
-.confidence {
-  text-align: center;
-  font-weight: 800;
-  color: var(--amber);
-  font-size: 1.1rem;
-}
-.dashboard-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 0.7rem;
-}
-.dashboard-table th, .dashboard-table td {
-  text-align: left;
-  padding: 1rem 1.1rem;
-  vertical-align: top;
-}
-.dashboard-table thead th {
-  color: var(--accent);
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  border-bottom: 1px solid rgba(0,255,136,0.25);
-}
-.dashboard-table tbody tr {
-  background: rgba(17,27,43,0.55);
-  border-radius: 12px;
-  overflow: hidden;
-}
-.dashboard-table tbody tr td:first-child { border-radius: 12px 0 0 12px; }
-.dashboard-table tbody tr td:last-child { border-radius: 0 12px 12px 0; }
-.dashboard-table td { color: #c9cdd8; font-size: 0.95rem; }
-.dashboard-table td strong { color: var(--text); }
-.align-high { color: var(--accent); }
-.align-med { color: var(--amber); }
-.align-low { color: #ff6b6b; }
-.cartoon-section { text-align: center; }
-.cartoon-section img {
-  max-width: 100%;
-  border-radius: 16px;
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-}
-.cartoon-caption {
-  margin-top: 1rem;
-  color: var(--text-dim);
-  font-style: italic;
-}
-.footer {
-  padding: 2.5rem 1.5rem;
-  text-align: center;
-  color: var(--text-dim);
-  font-size: 0.9rem;
-  border-top: 1px solid rgba(255,255,255,0.06);
-}
-.footer strong { color: var(--accent); }
-@media (max-width: 960px) {
-  .observer-grid { grid-template-columns: 1fr; }
-  .prediction-card { grid-template-columns: 2.8rem 1fr; }
-  .confidence { text-align: left; grid-column: 2; }
-  .dashboard-table thead { display: none; }
-  .dashboard-table tbody tr { display: block; margin-bottom: 1rem; border-radius: 12px; }
-  .dashboard-table tbody tr td { display: block; width: 100%; border-radius: 0; padding: 0.7rem 1rem; }
-  .dashboard-table tbody tr td:first-child { border-radius: 12px 12px 0 0; font-weight: 700; color: var(--amber); }
-  .dashboard-table tbody tr td:last-child { border-radius: 0 0 12px 12px; }
-  .dashboard-table tbody tr td::before {
-    content: attr(data-label);
-    display: block;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--accent);
-    margin-bottom: 0.15rem;
-  }
-}
-@media (max-width: 600px) {
-  section { padding: 2.5rem 0; }
-  .glass-card { padding: 1.25rem; }
-  .hero { min-height: 60vh; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYT Briefing - June 28, 2026</title>
+    <style>
+        :root { --bg: #0a0a0f; --panel: #14141b; --text: #e8e8ef; --accent: #00ff88; --muted: #9a9aad; }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        header { padding: 24px 0; border-bottom: 1px solid #222; }
+        header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); }
+        header .date { color: var(--muted); font-size: 0.9rem; }
+        .hero { position: relative; min-height: 420px; display: flex; align-items: flex-end; padding: 48px 0; background: url('./assets/images/nyt_hero_bg.jpg') center/cover no-repeat; }
+        .hero-overlay { background: rgba(10,10,15,0.55); padding: 32px; width: 100%; }
+        .hero h2 { margin: 0 0 12px; font-size: 2.2rem; }
+        .hero p { margin: 0; color: var(--muted); max-width: 700px; }
+        section { background: var(--panel); border-radius: 12px; margin: 24px 0; padding: 28px; }
+        h3 { color: var(--accent); margin-top: 0; }
+        .observer { margin-bottom: 24px; }
+        .observer h4 { margin: 0 0 8px; color: #fff; }
+        .observer-meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 12px; }
+        .cartoon { text-align: center; }
+        .cartoon img { max-width: 100%; border-radius: 8px; }
+        footer { padding: 32px 0; text-align: center; color: var(--muted); font-size: 0.85rem; }
+    </style>
 </head>
 <body>
-
-<header class="hero">
-  <div class="hero-content">
-    <h1>NYT Briefing — <span>June 28, 2026</span></h1>
-    <p class="subtitle">Institutional failure compounding faster than any single institution can repair. A dark-mirror reading of one edition of The New York Times.</p>
-    <div class="meta">NYT Master Briefing &nbsp;•&nbsp; 31 Articles Synthesized</div>
-  </div>
-</header>
-<main>
-
-<section class="exec-summary" aria-labelledby="exec-title">
-  <div class="container">
-    <div class="section-header"><h2 id="exec-title">Executive Summary</h2><span class="line"></span></div>
-    <div class="glass-card">
-      <p>The world on June 28, 2026 is defined by institutional failure compounding faster than any single institution can address. Venezuela survived a U.S. invasion and was reaching economic recovery, then twin earthquakes leveled what remained. A Supreme Court majority ruled that President Trump could deport more than 300,000 Haitians, declining to call his statements about them "overtly racial." A military trainee died during a flu outbreak at Lackland Air Force Base after the Secretary of Defense's ideological opposition to vaccines delayed a flu shot program for 42 days. The DEA let fentanyl flood New Mexico to build bigger cases.</p>
-      <p>Jeffrey Epstein died in federal custody because guards falsified rounds and cameras malfunctioned. The Iran war cost over $100 billion, damaged the U.S. basing system across the Middle East, and ended with the regime in place. A single year of the Trump second term received more space on White House gold plaques than Lincoln and FDR combined. These are not separate crises.</p>
-      <p>They are symptoms of a single principal contradiction: the gap between what institutions promise and what they deliver. The prevailing emotional register is fear — of deportation, of state violence, of institutional failure, of losing one's place. Moments of genuine creativity and connection are rare: a city worker in Maine counting feathers for a yearlong celebration, an unpaid headmaster in South Sudan who still loves his job, a filmmaker accepting the vulnerability of artistic creation. The question the edition poses is whether the system can produce enough institutional repair, enough disciplined accumulation, enough clarity of law, to reverse the reversals before the contradictions collapse inward.</p>
+    <div class="container">
+        <header>
+            <h1>NYT Briefing</h1>
+            <div class="date">June 28, 2026</div>
+        </header>
+        <div class="hero">
+            <div class="hero-overlay">
+                <h2>NYT Master Briefing — June 28, 2026</h2>
+                <p>Daily briefing compiled from NYT coverage and observer commentary.</p>
+            </div>
+        </div>
+        <section>
+            <h3>Briefing</h3>
+            <p>NYT Master Briefing — June 28, 2026</p><p>1. Framework Key — The Lenses Used</p><p>NYT Master Briefing</p><p>2026-06-28</p><p>Lens</p><p>**Connector**</p><p>**Analyst**</p><p>**Philosopher** (Mao, Laozi,</p><p>Nietzsche)</p><p>**Strategist** (Sun Tzu,</p><p>Mao, Clausewitz)</p><p>**Operator** (Han Fei, Zeng</p><p>Guofan, Mao on Practice,</p><p>Drucker)</p><p>Core Question</p><p>What hidden transmissions link</p><p>disparate stories into a single</p><p>system?</p><p>What do the data say and what is</p><p>missing?</p><p>What contradictions cycle, and</p><p>where does the will to power</p><p>express itself?</p><p>Who holds position, what phase of</p><p>conflict, where is the center of</p><p>gravity?</p><p>Where do claims and evidence</p><p>mismatch? What decisions are not</p><p>being made?</p><p>2. Executive Summary / tl;dr</p><p>3. What We Don't Know — 10 Specific Items</p><p>4. Calibrated Predictions (7)</p><p>Page 1/4</p><p>#</p><p>Prediction</p><p>Confiden</p><p>ce</p><p>Rationale</p><p>NYT Master Briefing</p><p>1</p><p>The U.S.-Iran</p><p>70%</p><p>Iran needs leverage but cannot afford</p><p>ceasefire will</p><p>hold through</p><p>July 4 but</p><p>remain fragile</p><p>full war; the 4-day cycle suggests</p><p>self-limitation (Analyst: airfare 35%</p><p>spike creates domestic pressure on both</p><p>sides).</p><p>2</p><p>The final</p><p>85%</p><p>Current confirmed: ≥920; "hundreds</p><p>Venezuela</p><p>earthquake</p><p>death toll</p><p>will exceed</p><p>1,500</p><p>still trapped" with volunteer rescue</p><p>lacking heavy machinery (Analyst: twin</p><p>7.2 and 7.5 magnitude quakes are the</p><p>strongest in a century).</p><p>3</p><p>Trump will not</p><p>80%</p><p>He characterized it as "minor</p><p>sign the</p><p>bipartisan</p><p>housing bill</p><p>before the</p><p>midterms</p><p>importance" and demanded the SAVE</p><p>America Act first, which judges have</p><p>ruled unconstitutional (Analyst: Senate</p><p>Republicans left town unable to resolve</p><p>the standoff).</p><p>4</p><p>Republicans</p><p>75%</p><p>Trump "squandering his own trifecta"</p><p>will lose at</p><p>least one</p><p>chamber in the</p><p>November</p><p>midterms</p><p>and distancing himself from voter</p><p>concerns on housing and the Iran war</p><p>(Analyst: no single poll cited, but</p><p>pattern of self-sabotage is clear</p><p>across 7 stories).</p><p>5</p><p>The heat dome</p><p>80%</p><p>Forecasters warn of "record-breaking</p><p>will break</p><p>temperature</p><p>records in at</p><p>least three</p><p>Northeast</p><p>cities</p><p>levels" with triple-digit temperatures</p><p>persisting through July 4 (Analyst:</p><p>conditions align with NOAA climate</p><p>trends).</p><p>6</p><p>At least one</p><p>90%</p><p>Several states already "declined to</p><p>7</p><p>state will</p><p>formally</p><p>decline to</p><p>participate in</p><p>Freedom 250</p><p>events</p><p>No major</p><p>federal</p><p>infrastructure</p><p>repair funding</p><p>bill will pass</p><p>in 2026</p><p>participate" citing partisan</p><p>appearances; pattern will accelerate as</p><p>July 4 nears (Analyst: state-level</p><p>commissions are operating independently</p><p>with small budgets).</p><p>85%</p><p>The 435-day GSA approval cycle and</p><p>congressional gridlock make action</p><p>impossible in an election year with a</p><p>paralyzed trifecta (Analyst: $50</p><p>billion backlog grows faster than</p><p>political will).</p><p>5. Confidence Dashboard — 8 Domains</p><p>Page 2/4</p><p>Domain</p><p>Confidence</p><p>Trend</p><p>Signal</p><p>Range</p><p>NYT Master Briefing</p><p>U.S.-Iran</p><p>Ceasefire</p><p>Stability</p><p>30–40%</p><p>→ Stable</p><p>4-day attack cycles are</p><p>at low</p><p>level</p><p>self-limiting but erode trust</p><p>Trump Domestic</p><p>20–30%</p><p>↓</p><p>Self-sabotage, judicial</p><p>Political</p><p>Standing</p><p>Republican</p><p>Midterm</p><p>Prospects</p><p>Venezuela</p><p>Rescue Success</p><p>U.S. Wildfire</p><p>Season Severity</p><p>AI Investment</p><p>Crowding-Out</p><p>Effect</p><p>Federal</p><p>Infrastructure</p><p>Repair Progress</p><p>National Unity</p><p>(250th</p><p>Birthday)</p><p>Declining</p><p>rebukes, family enrichment</p><p>exposure</p><p>25–35%</p><p>↓</p><p>Housing bill blocked, voting</p><p>Declining</p><p>measures voided, party</p><p>fractures</p><p>40–50%</p><p>↗</p><p>International aid arriving but</p><p>Improving</p><p>slowly</p><p>volunteer search-and-rescue is</p><p>makeshift</p><p>70–80%</p><p>↑</p><p>3 firefighters dead, 30,000</p><p>Increasing</p><p>acres burned, "particularly</p><p>dangerous" warnings</p><p>60–70%</p><p>↑</p><p>Land prices 17× normal;</p><p>Increasing</p><p>residential developers priced</p><p>out</p><p>10–20%</p><p>→</p><p>435-day approval cycle; cost</p><p>Stagnant</p><p>overruns of 400% on single</p><p>projects</p><p>25–35%</p><p>↓</p><p>Competing commissions, states</p><p>Declining</p><p>opting out, partisan branding</p><p>6. Cluster Analysis (5 Clusters)</p><p>Cluster 1: Geopolitical Crisis and Economic Fallout</p><p>Cluster 2: Trump's Governance Dysfunction and Self-Sabotage</p><p>Cluster 3: Self-Dealing and Partisan Exploitation</p><p>Cluster 4: Natural Disasters and Human Resilience</p><p>Cluster 5: American Identity, Inequality, and Economic Distortion</p><p>Page 3/4</p><p>7. Geographic Critique — Coverage Gaps</p><p>NYT Master Briefing</p><p>8. Alternative Scenarios (3+) with Triggers</p><p>Scenario A: Ceasefire Collapse and Wider War</p><p>Scenario B: Governance Reset — Republicans Override Trump</p><p>Scenario C: The National Unity Scenario — 250th Bridging the Divide</p><p>Scenario D: The Quiet Realignment — States Take Over</p><p>9. Top 3 Actions</p><p>For the Strategic Reader (Citizen / Voter)</p><p>For the Policymaker (Congressional / Agency Leader)</p><p>For the Investor</p><p>10. What It Means — Multi-Lens Closing Synthesis</p><p>观察者评论 (Observer Commentary)</p><p>翟东升 — 宏观经济学、主权信用理论</p><p>金灿荣 — 地缘政治、工业化</p><p>宋鸿兵 — 金融战、美元周期</p><p>Page 4/4</p>
+        </section>
+        <section>
+            <h3>Cartoon</h3>
+            <div class="cartoon">
+                <img src="./assets/images/nyt_cartoon.jpg" alt="Editorial cartoon">
+            </div>
+        </section>
+        <section>
+            <h3>Observer Commentary</h3>
+            <div class="observer"><h4>翟东升</h4><div class="observer-meta">宏观经济学、主权信用理论</div><p>各位朋友，这期NYT简报读来，底层逻辑透出的信号，实在是耐人寻味。表面上看，美国国内党派争斗、国际地缘危机、天灾人祸连番上演，但背后那个“结构性”的问题，不是简单的谁赢谁输，而是**美式全球化第三阶段的系统性钙化**。</p><p>我们以前谈过，美国霸权的物质基础正在系统性钙化。你看这个简报，伊朗在霍尔木兹海峡的冒险，本质上是利用一个物理天花板——全球能源的咽喉要道——在为本国争取谈判筹码。而特朗普政府的反应呢？是“自废武功”，为了个人政治利益和家族生意，不惜搅黄自家的房市法案、否决自己的投票法案。这不是X的问题，这是Y的问题：**这不是某个总统政治智商低下的问题，而是整个美国制度熵增、边际回报率归零的问题。**</p><p>你看，“基层逻辑”是什么？特朗普的行为，看似是在“挥霍三连胜”，实则是其执政集团内部“主权信用”的折价。当总统需要靠出卖公权力、借助哈萨克斯坦的钨矿生意来为儿子谋利时，就说明这个体制的“制度化”优势在快速流失。而地方各州在250周年庆典上与联邦政府“分家”，更是美式“平行体系”的写照——华盛顿管不了自己的后院，那么国家治理的重心就只能下沉。</p><p>所以，如果你还盯着美国国会山上的争吵，或是对伊朗局势忽紧忽松感到困惑，那就看漏了本质。**这不是一场短期的权力游戏，这是一个被自身债务和过度扩张压弯的霸权，正在经历的“分裂式”再生前夜。** 真正的投资信号，不在美联储的利率决议里，而在联邦大楼那435天都批不下来的维修周期里。美国的“物理天花板”正在压下来，而中国需要做的，是在这一轮“大崩坏”来临之前，稳稳地搭好自己那套以发展为主题的平行体系。</p></div>
+<div class="observer"><h4>金灿荣</h4><div class="observer-meta">地缘政治、工业化</div><p>各位朋友，今天聊一聊这份NYT简报。你们看啊，这几天的新闻很有意思，信息量很大。总结起来一句话：美国内部一团糟，外部也疲于奔命。</p><p>为什么会出现这种情况？这个事情其实很简单。用我们老百姓的话讲，就是“一个饭店老板，菜还没炒好就先掀桌子”。你看，特朗普同志，一边忙着跟伊朗搞军事对峙，一边又跟自己党内的同志闹别扭。连一个住房法案都通不过，自己提出的投票法案也被法官判了违宪。这不是自己拆自己的台吗？</p><p>这背后反映的是什么？是“百年未有之大变局”正在加速演进。美国的核心问题，坦白讲，就是工业化空心化。你工厂搬走了，工人失业了，中产阶级萎缩了，社会自然就分裂了。经济基础决定上层建筑，这不是马克思说的，这是常识。现在美国就像一个手忙脚乱的家庭主妇，顾了厨房就顾不了客厅。</p><p>再看看伊朗，在霍尔木兹海峡搞事，为什么？因为伊朗看准了美国国力的相对下降，知道美国没决心再打一场大规模战争。美国人现在很焦虑，他们发现自己的“组合拳”打不出效果了。</p><p>对于我们中国来说，这些信息给我们什么启示？很简单：第一，把自己的事情做好，专心搞工业化，搞产业升级，不要被外界噪音干扰。第二，战略定力很重要。你看美国现在这个乱象，我们更要稳坐钓鱼台。第三，我们要认清一个事实——美国的核心问题是内部矛盾的累积，不是中国造成的。我们不需要去“挑战”美国，只需要做好自己，时间在我们这一边。</p><p>所以，我对当前形势的判断是：东升西降的大趋势没有改变，我们赢了。这不是口号，这是客观现实。美国越是折腾，就越证明它的焦虑；而我们，只需要埋头苦干，继续推进我们人类历史上最大规模的工业化进程，未来一定是属于我们的。</p></div>
+<div class="observer"><h4>宋鸿兵</h4><div class="observer-meta">金融战、美元周期</div><p>各位读者，今天这份《纽约时报》简报，如果用我的“美元环流”模型来审视，你会发现一个惊人的事实：**美国这个金融帝国，其“心脏”和“血管”正同时遭受前所未有的系统性压力。**</p><p>你看，伊朗在霍尔木兹海峡“开火”，这看似是地缘政治冲突，但本质上，这是一次针对“石油美元”环流核心阀门的精准打击。油价飙升、航运受阻，直接动摇了美元作为全球贸易结算货币的物理基础。这不是孤立事件，而是“去美元化”浪潮中，资源国利用“咽喉”优势进行的系统性反制。历史上，1973年石油危机曾重创美元体系，今天这一幕，是历史的重演，但烈度更高，因为环流另一端的“信用锚”——美国国债——也在动摇。</p><p>再看美国国内，特朗普政府陷入内耗，政府失能，联邦大楼维修积压500亿美元。这不仅是行政问题，更是**美国“金融高边疆”的伦理基石在崩塌**。一个连自身基础设施都无法维护的“全球领导者”，其发行的国债如何能被视为“无风险资产”？当总统把家族生意（哈萨克斯坦钨矿交易）与国家权力捆绑，这不再是简单的腐败，而是对美元信用背书的“精准爆破”。货币发行是人类社会最重要的权力之一，但当掌权者将其视为私产，这个系统的“单点故障”就已经形成。</p><p>最后，AI投资年超1万亿美元，挤占住房和基建。这是典型的“资金虹吸”效应，是资本在寻找“稀缺叙事”时的自我强化，却导致实体经济的“血管”供血不足。当“美国梦”被包装成奢侈品，当数据中心的土地价格是住宅区的17倍，这个社会的“反馈回路”已经断裂——资本不流向创造价值的地方，而是流向制造泡沫的“想象空间”。</p><p>所以，这份简报描绘的不是碎片新闻，而是一幅“美元环流”系统崩溃的全景图。从霍尔木兹海峡的油价，到华盛顿的政治失序，再到硅谷的资金错配，每一个细节都在指向同一个结论：**全球金融秩序的“百年未有之大变局”，正在我们眼前加速演进。** 这不是周期性的波动，而是“三变六反”中，旧秩序向新秩序蜕变的阵痛。记住胡雪岩的教训：控制“物”（商品）不如控制“银”（资本），而控制“银”不如控制“信用”。当信用主体——美国自身——开始腐烂，这场“货币战争”的终局，也就不远了。</p></div>
+        </section>
+        <footer>Generated by NYT Briefing Pipeline</footer>
     </div>
-  </div>
-</section>
-
-<section class="observer-section" aria-labelledby="observer-title">
-  <div class="container">
-    <div class="section-header"><h2 id="observer-title">Observer Commentary</h2><span class="line"></span></div>
-    <div class="observer-grid">
-      <article class="glass-card observer-card">
-        <div class="tag">Observer</div>
-        <h3 class="zh">翟东升观察：美国制度信用坍塌与平行体系的加速</h3>
-        <div class="observer-body zh">
-<p class="zh">底层逻辑不是特朗普或拜登的个人失误，而是支撑美元体系的美国制度信用正在发生系统性钙化。</p>
-<p class="zh">同一期《纽约时报》暴露的七个制度性失败——最高法院6:3裁定驱逐30万海地人合法、国防部因意识形态延迟疫苗42天导致新兵死亡、缉毒局放任芬太尼泛滥以图大案——它们的共性不是个别人的无能，是"制度熵增"触及物理天花板后的结构性井喷。</p>
-<p class="zh">主权信用货币论反复强调：美元的锚不是美联储利率，而是美国制度的法律可执行性（legal enforceability）与政治确定性。当最高法院连总统言论是否构成种族歧视都无法给出可预测的司法标准，当军队疫苗决策可以被宗教意识形态绑架42天，当缉毒局自己违法执法——美元的信用根基就在流失。这不是货币政策的问题，这是主权信用质量的问题。Fed已经陷入结构性两难：加息则联邦债务利息爆炸，降息则通胀反弹。它帮不了美元。</p>
-<p class="zh">从民本主义视角看，美式全球化的第三阶段已走到尽头。美国消费、中国生产、美元循环的旧均衡被自身瓦解——美国既无法提供安全庇护（伊朗战争花费超千亿美元却未能推翻政权，中东基地体系遭受不可逆损害），也无法提供制度信用来维系盟友忠诚。卡塔尔学者玛丽亚姆·库瓦里问的是"是否值得继续接待美军基地"，这背后是平行体系的底层逻辑：各国正在从单一家园转向双系统居住。这不是脱钩，是系统性分叉（systemic bifurcation）。</p>
-<p class="zh">华尔街96%的股票近乎零回报、四家科技公司吞噬整个市场的财富——这是美元流动性过剩而实体经济空心化的结构镜像。当金融市场的边际回报率归零而民生福祉持续恶化，制度修复的窗口期正在关闭。平行体系的加速不是中国扩张的结果，而是美国制度熵增的必然代价。</p>
-        </div>
-      </article>
-      <article class="glass-card observer-card">
-        <div class="tag">Observer</div>
-        <h3 class="zh">金灿荣：6月28日《纽约时报》观察</h3>
-        <div class="observer-body zh">
-<p class="zh">各位朋友，今天聊一聊6月28号的《纽约时报》。头版很有意思——最高法院裁定驱逐三十万海地人，国防部长反疫苗导致新兵死于流感，缉毒局故意放芬太尼进城搞"大案子"，伊朗战争花了一千多亿、基地被打烂、政权还在。</p>
-<p class="zh">为什么会出现这种情况？这个事情其实很简单——美国的核心问题是工业化空心化。制度能力是靠钱撑的，钱是靠工业赚的。制造业没了，制度一定跟着垮。就像一个灶都塌了的厨房，你再好的菜谱也炒不出菜来。最高法院掉水里了，国防部掉水里了，缉毒局也在水里扑腾——不是因为他们突然变笨了，是没有工业基础兜底了。</p>
-<p class="zh">再看伊朗战争。106天，一千多亿美元，卡塔尔的基地废了，巴林的基地废了，盟友开始问"值不值得"，结果伊朗政权毫发无伤，核问题没解决。这叫什么？这叫<strong>战略相持</strong>——你一拳我一脚，谁也赢不了谁，但谁都消耗不起。美国人现在很焦虑，因为历史上他们没打过这种仗。B-52从1955年服役到今天还在飞，一摔死八个，总不能靠加价买旧飞机来对付新问题吧？</p>
-<p class="zh">大变局的本质就是：靠工业实力说话的时代回来了。东升西降不是口号，是工厂里的机器、实验室里的技术和老百姓的饭碗决定的。</p>
-        </div>
-      </article>
-      <article class="glass-card observer-card">
-        <div class="tag">Observer</div>
-        <h3 class="zh">宋鸿兵观察：2026年6月28日《纽约时报》简报评析</h3>
-        <div class="observer-body zh">
-<h3 class="zh">美元环流的压力测试——从制度塌方到货币秩序重构</h3>
-<p class="zh">如果你把2026年6月的世界看作一个系统，它的核心问题不是政治极化，不是移民危机，甚至不是战争——而是<strong>货币秩序正在经历第四轮大转型的压力测试</strong>。</p>
-<p class="zh">Bessembinder教授的数据说，96%的股票在过去一个世纪几乎没有创造财富，全部回报集中在Apple、Nvidia、Microsoft、Tesla这几家公司。这条新闻看似是金融市场的特征描述，实则是一份<strong>美元环流系统性失衡的诊断报告</strong>。当资本不再通过广泛的信贷传导机制流向实体经济，而是集中涌入极少数科技巨头的股权，这意味着美联储创造的流动性已经脱离了传统的货币乘数回路。这不是市场的问题，是整个系统的问题。</p>
-<p class="zh">伊朗战争打了106天，耗费超过1000亿美元，美国在中东的"珍珠链"军事基地网络遭受结构性损伤——卡塔尔的乌代德基地指挥中心瘫痪，巴林海军基地受损。如果你把军事基地看作美元体系的<strong>物理锚点</strong>（就像19世纪东印度公司的商站），那么这些锚点的失效意味着美元在石油贸易清算环节的<strong>杠杆支点</strong>正在松动。盟友开始问"值不值得"，这是美元环流逆转的前兆信号，和当年英镑在苏伊士运河危机后失去殖民清算地位是同一个系统动力学原理。</p>
-<p class="zh">再看委内瑞拉。美国入侵推翻了马杜罗，然后双地震来了。这个国家拥有"全球最高通胀率"——本身就是主权货币信用彻底崩溃的活标本。通货膨胀从来不是经济问题，是<strong>金融高边疆沦丧</strong>的终局症状。当委内瑞拉放弃自己的货币主权，美元并没有拯救它，而是把它的重建成本完全暴露在美元环流的外部性之下。这让我想起1883年胡雪岩的倒台——他控制了生丝（商品），却输给了控制白银（流动性）的对手。今天的委内瑞拉就是胡雪岩，只不过拿走它白银的人换成了华盛顿。</p>
-<p class="zh">黄金方面，特朗普第二任期一年获得的白宫金匾面积超过了林肯和罗斯福的总和。这是一种病态的金融图腾崇拜——当信用的尽头是鎏金的自恋。物以稀为贵乃是投资的天道。金价应当在这个周期中继续扮演终极中性资产的角色。</p>
-<p class="zh">制度的集体塌方——最高法院、国防部、禁毒署、监狱局——不是政治问题，是<strong>整个美元信用体系在非货币领域的镜像反射</strong>。当债务上限不断被突破，当回购市场在2019年差点崩溃，当央行互换额度成为常态化救生圈，国家的治理系统怎么可能不出现同样的故障模式？货币滥发的熵增定律，终将在公共治理的每一个子系统里找到等价形态。</p>
-<p class="zh">美元环流正在逆转。第四次货币秩序大转型（金本位→布雷顿森林→石油美元→？）正在加速到来。不是黑天鹅，是灰犀牛，而它的角已经顶进了这期新闻的每一页。</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="clusters-section" aria-labelledby="clusters-title">
-  <div class="container">
-    <div class="section-header"><h2 id="clusters-title">Clusters &amp; Thematic Sections</h2><span class="line"></span></div>
-    <div class="cluster-grid">
-      <article class="glass-card cluster-card">
-        <h3>Cluster A: The Collapse of Institutional Trust</h3>
-        <p>This cluster is the beating heart of the edition. Across at least seven articles, American institutions are documented failing at their most basic functions — and failing in ways that erode the legitimacy that sustains them. The Supreme Court: split 6-3 on whether race played a role in Trump's decision to deport 350,000 Haitians. Justice Samuel A. Alito Jr., writing for the majority, concluded that Trump's statements about Haitians were not "overtly racial." He did not cite a single example of those statements.</p>
-        <p>Justice Elena Kagan, in dissent, wrote that "the statements fairly shout, in their racial undertones and overtones alike, that race entered into the president's resolve to remove Haitians from this country." The clash, as Adam Liptak notes, mirrors the country's deeper division: how seriously to take a president's ugliest words. The military: — the U.S. institution with the highest public trust — saw a recruit die because ideological mandate delayed common sense. Defense Secretary Pete Hegseth made flu vaccines optional in April, framing it as protecting "religious freedom and medical autonomy." On May 5, the leaders of all four services asked for permission to vaccinate trainees. Permission did not come until June 16. By then, 275 trainees at Lackland Air Force Base were sick.</p>
-        <p>A trainee, Keon McDaniel, died. Then the policy was reversed. The Pentagon confirmed all services are once again requiring flu vaccinations for recruits. The DEA: in New Mexico intentionally allowed fentanyl pills to flood the streets from 2023 to 2025 while building larger cases against high-level smugglers, according to a whistleblower complaint. Gov. Michelle Lujan Grisham called for a criminal investigation of federal agents.</p>
-        <p>"The D.E.A. knew people would die if these pills made it into New Mexico communities, and the agency let it happen anyway," she said. D.E.A. administrator Terrance C. Cole asked the Justice Department inspector general for an independent review. The prison system: failed to hold Jeffrey Epstein. Guards Tova Noel and Ghitto Bonhomme falsified their rounds records.</p>
-        <p>The surveillance system partially failed. A suicide note was hidden for years. The Times investigation — spanning interviews with more than 40 inmates, jail employees, lawyers, and federal officials — concluded that the preponderance of evidence points to suicide enabled by "an unfortunate though not improbable convergence of longstanding institutional failures, human errors and chance events." The National Highway Traffic Safety Administration: was warned by the Transportation Department's Volpe Center in 2022 that large vehicles with big blind zones were killing hundreds of pedestrians annually. A senior NHTSA official disputed the data. Angie Byrne, a former Volpe Center employee, said: "There was just zero acknowledgement of the problem." The Times investigation found that hood height is a statistically significant predictor of pedestrian death (p=0.003), with a 2.8% increase in fatality odds per inch of hood height.</p>
-        <p>An estimated 3,000 pedestrians died from 2016 to 2024 because vehicles grew larger. The Reflecting Pool: — a small-f story that captures a large-f pattern. The National Park Service asked a contractor to remove $1.7 million nanobubbler purification systems ahead of a photo-op for President Trump's Ultimate Fighting Championship birthday celebration. The pool turned green. Aesthetic vanity defeated environmental maintenance.</p>
-        <p>Han Fei's assessment: The law is neither clear nor consistently enforced. When compliance is measured by paperwork rather than outcomes, the law becomes theater. When the DEA itself does not follow drug laws, the system's credibility collapses. When Alito and Kagan read the same presidential statements and reach opposite conclusions, the legal standard has failed its primary function — to provide a stable, predictable framework.</p>
-      </article>
-      <article class="glass-card cluster-card">
-        <h3>Cluster B: The Iran War's Global Shockwaves</h3>
-        <p>The 106-day war with Iran reaches every corner of this edition, though its most consequential article is buried in the Magazine section. The alliance question.: The U.S. basing system — the "string of pearls" surrounding Iran — has been badly damaged. The Navy's base in Bahrain was hastily evacuated before an Iranian attack. The Combined Air Operations Center at Al Udeid Air Base in Qatar is reportedly inoperable. Vali Nasr, a Johns Hopkins political scientist, notes: "The way in which the U.S. was not able to defend them, and the way that they were damaged, has a nonmonetary cost to it that is quite significant." Maryam Al-Kuwari, a scholar at Qatar University, wrote that the war forced the question: "whether hosting U.S. military bases was worth it." The Israeli anxiety.: Israelis see their most vital alliance slipping away.</p>
-        <p>President Trump's pursuit of a peace deal with Iran feels like betrayal. His repeated berating of Prime Minister Benjamin Netanyahu compounds the damage. Then three pro-Palestinian candidates backed by Mayor Zohran Mamdani of New York defeated moderates in Democratic congressional primaries. Asaf Zamir, a deputy mayor of Tel Aviv, said: "I'm extremely concerned." The candidates made fierce criticism of Israel central to their campaigns in "the most Jewish city in the world, after Jerusalem." The cocoa farmer.: Michel Bla, 52, in Ivory Coast, had built a cocoa plantation that was lifting his family out of poverty — his oldest son was at university. Then the Iran war closed the Strait of Hormuz.</p>
-        <p>Fertilizer prices soared. Cocoa prices plunged. He brought his son home. "This year has been a catastrophe," he said. "I have nothing in my pocket." The Pride Match.: Seattle's World Cup host committee designated the Iran-Egypt game as its official Pride Match — a progressive statement in a city that prides itself on inclusion.</p>
-        <p>Inside Lumen Field, the stands were filled with passionate fans focused on soccer, not the rainbow. The collision of ideals and reality captured the war's larger paradox: good intentions meet geopolitical complexity. Laozi's assessment: The harder the U.S. pushed — the invasion, the 106-day war, the declaration of victory — the more the system pushed back. The bases are damaged. The allies are questioning.</p>
-        <p>The government is still in place. "Almost every end of empire has been accompanied by a particular kind of wishful thinking," Linda Kinstler writes. The extreme of power contains the seed of its reversal.</p>
-      </article>
-      <article class="glass-card cluster-card">
-        <h3>Cluster C: Immigration Enforcement as Global Trauma</h3>
-        <p>The migration crisis appears on four continents in this edition, each story compounding the others. Venezuela: A nation already devastated by economic collapse, U.S. invasion, and political subjugation was hit by twin earthquakes. Francisco Rodríguez, a Venezuelan economist, said: "This is a country that already had massive reconstruction needs. Now, on top of that, they need to rebuild without having ready access to resources." The U.S., which invaded in January, must now provide "a whole-of-government response" — search-and-rescue teams from Fairfax County and Los Angeles, overhead imagery, damage assessment. Secretary of State Marco Rubio said the airport is "badly damaged" and the U.S. will "have to rely on the Department of War to deploy assets." Haiti / Little Haiti, Brooklyn: The same day Haiti played in the World Cup for the first time in 52 years, the Supreme Court ruled that President Trump could end Temporary Protected Status for more than 300,000 Haitians.</p>
-        <p>Yves Vilus, executive director of the Erasmus Neighborhood Federation, said his phone rang nonstop. "They know where we are," he said. "Will ICE be knocking?" NYC City Council employee: Rafael Andres Rubio Bohorquez, a Venezuelan data analyst working for the New York City Council, was freed after five months in ICE detention. He was granted asylum, freed on a $5,000 bond, and returned to his job. Then the federal government appealed.</p>
-        <p>"I'm still sad because there are still people in there," he said, crying during a telephone interview. South Africa: Thousands of migrants from other African nations are fleeing South Africa after anti-immigration activists threatened "untold consequences" for undocumented foreigners who remain past a Tuesday deadline. Mobs attacked homes and businesses. An encampment in Durban has become a desperate scene: migrants sitting on trash bags, women tucking babies under blankets, fences separating families. A fence now stands between Charles Paul, a migrant from Malawi, and his South African girlfriend Sanelisiwe Nxili and their son Kwakhanya.</p>
-        <p>Mexico: At least a dozen Mexican elected officials — governors and members of Congress — have been quietly offering themselves as informants to U.S. authorities against their own party members. The Drug Enforcement Administration initiated private contacts with Mexican officials. The government of President Claudia Sheinbaum has denounced the U.S. indictments as foreign interference, but behind the scenes, the trust is dissolving from within. Nietzsche's assessment: The immigration cluster is dominated by ressentiment — the strong turning against the even weaker. South Africa's activists scapegoat migrants for problems they cannot solve.</p>
-        <p>Trump channels ressentiment against Haitians through the machinery of the Court. The migrants themselves, like water in Laozi's metaphor, persist through the refusal to disappear quietly.</p>
-      </article>
-      <article class="glass-card cluster-card">
-        <h3>Cluster D: The Political Realignment — Left, Right, and the Fracturing Center</h3>
-        <p>The Democratic left.: Hakeem Jeffries, the New York Democrat in line to become the first Black speaker of the House, faces the same challenge Nancy Pelosi faced in 2018. Darializa Avila Chevalier, 32, a democratic socialist, defeated a longtime Jeffries ally in a New York primary. Emily Davies reports that the Democratic Socialists of America now surpass 100,000 members, with 1,000 more joining after the primary sweep. Bernie Sanders told the Times: "Economic stress is something I lived with as a kid, and I feel it in my guts. That's what makes me a democratic socialist." The party's anti-establishment flank could make a Jeffries majority "ungovernable," just as the far right made House Republicans ungovernable.</p>
-        <p>The Republican / Christian right.: The Freedom Con gathering in central Washington drew more than 4,500 men for a "testosterone-fueled celebration of Christianity and patriotism." Pastor Mark Driscoll told the crowd: "Heterosexual, sober men who marry girls and read Bibles, we're the new punk rock!" The movement frames itself as counter-cultural resistance, rejecting "woke secular gay paganism." Rick Slaughter, 44, camped overnight with a group of eight men and boys from around Orting, Washington. The movement's energy is high; its capacity to translate CrossFit competitions into durable political power is unproven. Europe's heat-denial politics.: Kemi Badenoch, the leader of Britain's Conservative Party, called for an end to "the war on oil and gas" while standing in Aberdeen. Eight days later, London hit nearly 100 degrees Fahrenheit. Schools closed.</p>
-        <p>Trains were canceled. London Climate Action Week's opening session was called off. Andrew Bowie, the Conservative energy policy official, said the party supports "a transition" to cleaner energy but "it makes no sense at all to pursue net zero targets while inflicting higher energy bills on households." Australia's regulatory arms race.: Prime Minister Anthony Albanese acknowledged the world's first under-16 social media ban was failing — seven in 10 parents reported their children still had accounts. The government doubled down, doubling maximum fines to about $70 million and expanding the online safety regulator's authority. Communications Minister Anika Wells said companies were "adopting tricks straight out of the big tech playbook and doing the bare minimum to get by." The Mexican informant pipeline.: More than a dozen Mexican officials — from the governing Morena party — have reached out to U.S. authorities to share information about fellow politicians.</p>
-        <p>The cooperation was partly set off by a DEA initiative to privately contact Mexican officials. The trust wound within Mexico's governing party may prove deeper than the U.S.-Mexico bilateral rift. Sun Tzu's assessment: The political landscape is disputed terrain where no side holds secure ground. Jeffries' establishment faces an insurgency from the left that cannot be defeated without proving the insurgents' point. The Christian right occupies the ground of counter-cultural authenticity.</p>
-        <p>Australia knows itself — it acknowledged its first failure and adjusted. Too many other actors, from Badenoch to Hegseth, fail Sun Tzu's first principle: know yourself.</p>
-      </article>
-      <article class="glass-card cluster-card">
-        <h3>Cluster E: Other Notable Stories</h3>
-        <p>Venezuela earthquake.: The disaster struck just as Venezuela's economy was showing signs of recovery — oil flowing again, energy executives in Caracas, ties mending with global lenders. Simon Romero and Emma Bubola report that the cash-strapped U.S.-installed administration must now clear rubble, shelter the homeless, and restore services atop the world's highest inflation rate. Ebola in the DRC.: Over 1,000 people sickened, more than 250 dead. The Bundibugyo virus may produce milder symptoms — 90% of patients show no bleeding, per Dr. Marie-Roseline Belizaire of the W.H.O. That is good for patients but dangerous for containment. Dr. Chikwe Ihekweazu, executive director of the W.H.O. Health Emergencies Program, said: "That's really what I'm a bit anxious about, that this might be an indicator for an outbreak that lasts a lot longer." Pete Buttigieg swatting.: The former transportation secretary was separated from his 4-year-old twins for 24 hours after an anonymous report falsely accused him of posing a threat to them. Michigan State Police and Child Protective Services deemed the report false.</p>
-        <p>Buttigieg wrote on Substack: "I've been through political attacks in office, death threats in public life, and rocket attacks in war. But this is the ugliest thing that has happened to me since my career in service began." Anthropic AI.: The Commerce Department, led by Secretary Howard Lutnick, loosened restrictions on Anthropic's Mythos 5 model after the company committed to working with the government on security protocols. Talks continue on restoring access to another model, Fable 5. The deal de-escalates a clash between the Trump administration and one of the country's leading A.I. companies. Utah wildfires.: The Cottonwood fire exploded to nearly 92,000 acres in southern Utah, destroying a ski lodge, condos, and cabins around Eagle Point.</p>
-        <p>Gov. Spencer Cox called it the "most destructive fire in the state's history" in terms of property loss. Zero percent contained. Trent Owen, a volunteer firefighter, saw smoke "coming straight toward us" while driving his daughter to a soccer game. "It's end-of-days-type stuff," he said. South Sudan education.: Paul Santino, headmaster of Gumbo Basic School in Juba, has not received a salary in more than a year.</p>
-        <p>Neither has any other teacher in the country. Average class size is 87. Only 40% of primary-school-aged children are enrolled. "I like my job too much," Santino said. The country is one of the most fragile in Africa, with a population that is about half 18 or under.</p>
-        <p>Presque Isle's celebration.: Kim Smith, 68, the grant writer and public information officer for Presque Isle, Maine, organized 12 full months of festivities for America's 250th anniversary. At 7:30 one spring morning she was counting feathers in Ziploc bags for a quill-pen-making workshop planned for September. "A quarter of a millennium felt too significant to cram into a day or a week," she said. Christopher Nolan's The Odyssey.: Nolan admitted to "nerve-racking" anxiety before the July 17 debut of his three-hour IMAX adaptation of Homer. "Movies belong to the audience," he said.</p>
-        <p>"I don't think I would have felt ready to take on this film until now." The film stars Matt Damon, Anne Hathaway, Tom Holland, John Leguizamo, and Travis Scott. Market concentration.: Hendrik Bessembinder, a finance professor at Arizona State University, found that 96% of stocks did virtually nothing for investors over the past century. A handful of tech companies — Apple, Nvidia, Microsoft, Tesla — created nearly all wealth. "The trend has been accelerating," Bessembinder said.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="predictions-section" aria-labelledby="predictions-title">
-  <div class="container">
-    <div class="section-header"><h2 id="predictions-title">Predictions &amp; Confidence Dashboard</h2><span class="line"></span></div>
-    <div class="prediction-grid">
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">1</div>
-        <div class="prediction-text">
-          <strong>The Ebola outbreak in DRC will persist beyond six months</strong>
-          <div class="rationale">Milder symptoms mean harder detection; 90% of patients show no bleeding; W.H.O.'s Dr. Chikwe Ihekweazu fears prolonged spread.</div>
-        </div>
-        <div class="confidence">85%</div>
-      </div>
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">2</div>
-        <div class="prediction-text">
-          <strong>The U.S. basing system in the Gulf will not return to pre-war capability within two years</strong>
-          <div class="rationale">Al Udeid Air Base in Qatar is inoperable; Bahrain base damaged; Maryam Al-Kuwari writes allies now ask "whether hosting U.S. military bases was worth it."</div>
-        </div>
-        <div class="confidence">85%</div>
-      </div>
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">3</div>
-        <div class="prediction-text">
-          <strong>Australia's toughened social media ban will still face widespread circumvention</strong>
-          <div class="rationale">Initial ban failed — 70% of children still on platforms; doubling fines to $70M addresses incentives but not technical circumvention.</div>
-        </div>
-        <div class="confidence">85%</div>
-      </div>
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">4</div>
-        <div class="prediction-text">
-          <strong>Democratic control of the House (if achieved) will be marked by significant intra-party conflict</strong>
-          <div class="rationale">Darializa Avila Chevalier and other DSA-backed candidates mirror the 2018 AOC-Pelosi dynamic; Jeffries "could make his job very difficult" with an anti-establishment flank.</div>
-        </div>
-        <div class="confidence">80%</div>
-      </div>
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">5</div>
-        <div class="prediction-text">
-          <strong>The Utah Cottonwood fire will exceed 100,000 acres before containment</strong>
-          <div class="rationale">Already 92,000 acres at 0% containment; 50 mph wind gusts and 15% humidity forecast; "most destructive fire in state history" per Gov. Spencer Cox.</div>
-        </div>
-        <div class="confidence">80%</div>
-      </div>
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">6</div>
-        <div class="prediction-text">
-          <strong>Venezuela earthquake relief will significantly strain the U.S.-installed administration</strong>
-          <div class="rationale">Country has "world's highest inflation rate"; economist Francisco Rodríguez says "they need to rebuild without having ready access to resources."</div>
-        </div>
-        <div class="confidence">80%</div>
-      </div>
-      <div class="glass-card prediction-card">
-        <div class="prediction-num">7</div>
-        <div class="prediction-text">
-          <strong>The Epstein institutional-failure narrative will dominate over murder-conspiracy explanations in court and policy circles</strong>
-          <div class="rationale">The Epstein Files Transparency Act has produced three million pages of documents; Times investigation finds "convergence of institutional failures" rather than conspiracy.</div>
-        </div>
-        <div class="confidence">75%</div>
-      </div>
-    </div>
-
-    <div class="section-header" style="margin-top:3rem;"><h2>Confidence Dashboard</h2><span class="line"></span></div>
-    <div class="glass-card" style="padding:1.2rem;">
-      <table class="dashboard-table">
-        <thead>
-          <tr><th>Domain</th><th>My Calibration</th><th>Data Analyst Cross-Check</th><th>Alignment</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td data-label="Domain">U.S. institutional trust erosion</td>
-            <td data-label="Calibration">High confidence (systemic, well-documented)</td>
-            <td data-label="Cross-Check">Analyst grades overall edition C+; notes institutional trust collapse as one of 4 thematic clusters</td>
-            <td data-label="Alignment" class="align-high">Aligned</td>
-          </tr>
-          <tr>
-            <td data-label="Domain">Iran war strategic consequences</td>
-            <td data-label="Calibration">High confidence (basing damage is physical fact)</td>
-            <td data-label="Cross-Check">Analyst flags Iran war article as "arguably the most strategically consequential story of the year" — buried in Magazine</td>
-            <td data-label="Alignment" class="align-high">Aligned; Analyst notes underweighting</td>
-          </tr>
-          <tr>
-            <td data-label="Domain">Pandemic/Ebola risk assessment</td>
-            <td data-label="Calibration">High confidence (W.H.O. warning explicit)</td>
-            <td data-label="Cross-Check">Analyst notes "milder symptoms make containment harder" — page 8 placement despite 1,000+ sickened, 250+ dead</td>
-            <td data-label="Alignment" class="align-high">Aligned</td>
-          </tr>
-          <tr>
-            <td data-label="Domain">Pedestrian death / vehicle size</td>
-            <td data-label="Calibration">Medium confidence</td>
-            <td data-label="Cross-Check">Analyst investigates the statistical model; notes p=0.003 significance; 3,000 deaths estimate is "conservative in many ways"</td>
-            <td data-label="Alignment" class="align-high">Aligned</td>
-          </tr>
-          <tr>
-            <td data-label="Domain">Venezuela earthquake impact</td>
-            <td data-label="Calibration">Medium confidence (damage still emerging)</td>
-            <td data-label="Cross-Check">Front page placement per Analyst; highest-visibility crisis</td>
-            <td data-label="Alignment" class="align-high">Aligned</td>
-          </tr>
-          <tr>
-            <td data-label="Domain">Social media regulation efficacy</td>
-            <td data-label="Calibration">Medium confidence (first-of-its-kind law, no precedent)</td>
-            <td data-label="Cross-Check">Analyst notes Australia story as neutral/policy analysis</td>
-            <td data-label="Alignment" class="align-high">Aligned</td>
-          </tr>
-          <tr>
-            <td data-label="Domain">Midterm electoral outcomes</td>
-            <td data-label="Calibration">Low confidence (November is five months away)</td>
-            <td data-label="Cross-Check">Analyst notes 6% U.S. Politics section; NY Primaries as mixed/ambiguous sentiment</td>
-            <td data-label="Alignment" class="align-med">Aligned; inherently uncertain</td>
-          </tr>
-        </tbody>
-      </table>
-      <p style="margin-top:1.5rem; color:var(--text-dim); font-size:0.95rem; border-top:1px solid rgba(255,255,255,0.06); padding-top:1rem;"><strong>Overall calibration note:</strong> The Data Analyst gave this edition a C+ for proportional weighting — excellent at documenting crises, poor at weighting long-tail systemic threats (climate, pandemic, alliance erosion) against immediate political drama. Predictions reflect the edition's own emphasis: high confidence on immediate, visible crises; lower confidence on any forward-looking electoral or regulatory outcome.</p>
-    </div>
-  </div>
-</section>
-
-<section class="cartoon-section" aria-labelledby="cartoon-title">
-  <div class="container">
-    <div class="section-header"><h2 id="cartoon-title">Daily Cartoon</h2><span class="line"></span></div>
-    <img src="./assets/images/nyt_cartoon.jpg" alt="Daily cartoon: a cracked neoclassical temple, broken scales, a fallen dollar sign, and a child planting a seed amid ruins." loading="lazy">
-    <p class="cartoon-caption">The institutional facade cracks; the scales are broken; a child still plants a seed in the rubble.</p>
-  </div>
-</section>
-</main>
-<footer class="footer">
-  <p><strong>NYT Briefing</strong> &nbsp;•&nbsp; June 28, 2026 &nbsp;•&nbsp; Synthesized from 31 articles.</p>
-  <p style="margin-top:0.5rem; opacity:0.7;">For analysis and commentary only. All source material © The New York Times.</p>
-</footer>
 </body>
 </html>
