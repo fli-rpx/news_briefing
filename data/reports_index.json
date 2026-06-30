@@ -393,5 +393,12 @@
       "local": "briefings/wsj_2026-06-29.html",
       "images": []
     }
+  },
+  "2026-06-30": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-06-30.pdf",
+      "local": "briefings/nyt_2026-06-30.html",
+      "images": []
+    }
   }
 }
