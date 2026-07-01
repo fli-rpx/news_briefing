@@ -15,338 +15,615 @@
       --accent-dim: rgba(0, 255, 136, 0.12);
       --border: rgba(255, 255, 255, 0.08);
     }
+
     * { box-sizing: border-box; }
+
     html, body {
-      margin: 0; padding: 0;
-      background: var(--bg); color: var(--text);
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
+
     img { max-width: 100%; display: block; }
-    .container { width: 100%; max-width: 860px; margin: 0 auto; padding: 0 18px; }
+
+    .container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
 
     .hero {
-      position: relative; width: 100%; min-height: 420px;
-      display: flex; align-items: flex-end;
-      background:
-        linear-gradient(to bottom, rgba(10,10,15,0.35) 0%, rgba(10,10,15,0.92) 100%),
-        url('./assets/images/nyt_hero_bg.jpg') center/cover no-repeat;
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      background: url('./assets/images/nyt_hero_bg.jpg') center center / cover no-repeat;
       border-bottom: 1px solid var(--border);
     }
-    .hero-content { position: relative; z-index: 1; width: 100%; padding: 48px 0 56px; }
-    .hero-kicker {
-      display: inline-block; font-size: 0.75rem; font-weight: 700;
-      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
-      margin-bottom: 10px; background: var(--accent-dim);
-      padding: 4px 10px; border-radius: 4px;
-    }
-    .hero h1 {
-      font-size: clamp(2.1rem, 7vw, 3.6rem); line-height: 1.05; margin: 0 0 12px;
-      font-weight: 800; letter-spacing: -0.03em;
-    }
-    .hero-date { font-size: clamp(1rem, 3vw, 1.25rem); color: var(--muted); font-weight: 500; }
-    main { padding: 42px 0 64px; }
-    section { margin-bottom: 44px; }
-    .section-title {
-      font-size: clamp(1.2rem, 4vw, 1.5rem); font-weight: 700; color: var(--accent);
-      margin: 0 0 20px; padding: 0 0 10px;
-      border-bottom: 2px solid var(--accent-dim);
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,15,0.25) 0%, rgba(10,10,15,0.78) 70%, rgba(10,10,15,0.96) 100%);
     }
 
-    .article-grid {
-      display: grid; grid-template-columns: 1fr; gap: 18px;
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 48px 0 56px;
     }
-    .article {
-      background: var(--panel); border: 1px solid var(--border);
-      border-radius: 10px; padding: 18px 20px;
-      transition: transform 0.15s ease, border-color 0.15s ease;
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 4px;
     }
-    .article:hover {
-      transform: translateY(-2px);
-      border-color: rgba(0, 255, 136, 0.25);
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 7vw, 3.6rem);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
-    .article h3 {
-      font-size: clamp(1rem, 3.2vw, 1.12rem); margin: 0 0 6px; color: #fff;
-      line-height: 1.3;
+
+    .hero-date {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 500;
     }
-    .article-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
-    .article p { margin: 0; color: #c8c8d4; font-size: clamp(0.9rem, 2.6vw, 1rem); }
+
+    main { padding: 42px 0 64px; }
+
+    section { margin-bottom: 44px; }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .section-title span {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    p { margin: 0 0 14px; }
 
     .lead {
-      font-size: clamp(1rem, 3vw, 1.15rem);
-      color: #d0d0e0; line-height: 1.75;
-      background: var(--panel); border: 1px solid var(--border);
-      border-radius: 10px; padding: 22px 24px;
-      border-left: 4px solid var(--accent);
+      font-size: 1.08rem;
+      color: var(--text);
     }
 
-    .observer {
-      background: var(--panel); border: 1px solid var(--border);
-      border-radius: 10px; padding: 22px 24px; margin-bottom: 20px;
+    .muted { color: var(--muted); }
+
+    ul, ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
     }
-    .observer:last-of-type { margin-bottom: 0; }
-    .observer-header {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
-      border-bottom: 1px solid var(--border); padding-bottom: 12px;
+
+    li { margin-bottom: 10px; }
+
+    .forecast {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
     }
-    .observer-avatar {
-      width: 42px; height: 42px; border-radius: 50%;
-      background: var(--accent-dim); color: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 1.1rem; flex-shrink: 0;
+
+    .forecast-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
     }
-    .observer h3 {
-      color: var(--accent); margin: 0 0 2px;
-      font-size: clamp(1.05rem, 3.4vw, 1.2rem);
+
+    .forecast-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      line-height: 1.35;
     }
-    .observer-subtitle {
-      font-size: 0.82rem; color: var(--muted); margin: 0;
+
+    .confidence {
+      flex-shrink: 0;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
     }
-    .observer-body {
-      color: #c8c8d4; font-size: clamp(0.9rem, 2.6vw, 1rem);
+
+    .forecast p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0;
     }
-    .observer-body p { margin: 0 0 12px; }
-    .observer-body p:last-child { margin-bottom: 0; }
-    .observer-body strong { color: var(--text); }
+
+    .cluster {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .cluster h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      color: var(--accent);
+    }
+
+    .cluster-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .cluster p {
+      font-size: 0.97rem;
+      color: var(--text);
+      margin: 0;
+    }
+
+    .sources-list {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .sources-list ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .sources-list li {
+      margin-bottom: 10px;
+      padding-left: 4px;
+    }
+
+    .sources-list li strong {
+      color: var(--text);
+      font-weight: 600;
+    }
 
     .cartoon-section {
-      background: var(--panel); border: 1px solid var(--border);
-      border-radius: 10px; padding: 24px; text-align: center;
-    }
-    .cartoon-section img {
-      margin: 0 auto; border-radius: 8px;
+      background: var(--panel);
       border: 1px solid var(--border);
-      max-height: 520px; width: auto; object-fit: contain;
+      border-radius: 12px;
+      overflow: hidden;
     }
+
+    .cartoon-section img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid var(--border);
+    }
+
     .cartoon-caption {
-      margin-top: 12px; font-size: 0.85rem; color: var(--muted);
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--muted);
     }
 
-    footer { padding: 32px 0; border-top: 1px solid var(--border); }
-    .footer-links { text-align: center; color: var(--muted); font-size: 0.85rem; }
-    .footer-links a { color: var(--accent); text-decoration: none; }
-    .footer-links a:hover { text-decoration: underline; }
+    .cartoon-caption strong {
+      color: var(--text);
+    }
 
-    @media (max-width: 640px) {
-      .hero { min-height: 300px; }
-      .hero-content { padding: 28px 0 36px; }
-      .article { padding: 16px 18px; }
-      .observer { padding: 18px; }
+    .observer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 700px) {
+      .observer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .observer-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .observer-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .observer-portrait {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,255,136,0.04));
+      border: 1px solid rgba(0,255,136,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .observer-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    .observer-title {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 2px 0 0;
+    }
+
+    .observer-body {
+      font-size: 0.94rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .observer-body p {
+      margin: 0;
+    }
+
+    .observer-subtitle {
+      font-size: 0.9rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .hero { min-height: 340px; }
+      .hero-content { padding: 32px 0 40px; }
+      .forecast-header { flex-direction: column; align-items: flex-start; gap: 6px; }
     }
   </style>
 </head>
 <body>
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-kicker">&#9733; MASTER BRIEFING</div>
-        <h1>NYT Front Page Briefing</h1>
-        <div class="hero-date">Tuesday, July 1, 2026 &middot; 18 stories &middot; 5 clusters</div>
-      </div>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-kicker">NYT Master Briefing</div>
+      <h1>Summer of Fire and Money</h1>
+      <div class="hero-date">Wednesday, July 1, 2026</div>
     </div>
-  </section>
+  </header>
 
   <main class="container">
-    <section>
-      <p class="lead">
-        Today's NYT coverage traces a single fracture line through American power: <strong>institutions, money, and sovereignty are being personal tested as never before.</strong> The Supreme Court ended its term with a 5–4 save for birthright citizenship but 6–3 conservative wins on campaign spending, transgender athlete bans, and presidential firing power. Donald Trump's 2025 income topped $2.2 billion, more than $1.5 billion of it from crypto ventures. The USMCA trade pact entered its six-year review under threat of a Trump-driven renegotiation. A Colorado primary unseated a 15-term incumbent, Senate battlegrounds are tied, and a Venezuelan earthquake killed scores of recent U.S. deportees. The heat wave rolling east will affect 160 million people. The common thread: old rules are being rewritten faster than new ones can be agreed upon.
-      </p>
-    </section>
 
-    <section>
-      <h2 class="section-title">&#9654; Cluster 1: Geopolitics &amp; International Affairs</h2>
-      <div class="article-grid">
-        <article class="article">
-          <h3>Trump Suggested Syria Could Subdue Hezbollah, Confounding Middle East Diplomats</h3>
-          <div class="article-meta">World</div>
-          <p>President Trump repeatedly floated the idea that Syria's Bashar al-Assad could help pressure Hezbollah in Lebanon, a proposal that "confounded many in the region." Critics noted Assad's alliance with Iran and his military cooperation with Hezbollah in Syria's civil war. One senior diplomat compared the idea to "asking Putin to crack down on the Russian military." The White House did not comment.</p>
-        </article>
-        <article class="article">
-          <h3>Dozens of U.S. Deportees Killed or Missing After Venezuela Earthquakes</h3>
-          <div class="article-meta">World</div>
-          <p>Twin earthquakes devastated Venezuela with an official death toll of 1,719, though experts fear a serious undercount. Among the dead and missing are dozens of people deported from the U.S. only hours earlier, some killed at the airport and others in collapsed buildings in Caracas and coastal La Guaira. Rescue efforts are hampered by power outages, damaged roads, and a lack of heavy equipment. The U.S. has offered aid but faces criticism for not doing more.</p>
-        </article>
-        <article class="article">
-          <h3>USMCA Trade Agreement Faces Critical Review, Renegotiation Looms</h3>
-          <div class="article-meta">Business / Economy</div>
-          <p>July 1 triggered the USMCA's mandated six-year review, which could extend the pact for another 16 years if all three countries agree. The Trump administration has signaled objections and is expected to demand stricter auto rules of origin, new limits on Chinese-owned factories in Mexico, and easier U.S. tariff authority. With nearly $1.5 trillion in annual trilateral trade, business groups warn that collapse would cause economic chaos.</p>
-        </article>
+    <section id="briefing-meta">
+      <div class="card" style="padding:16px 20px">
+        <ul style="margin:0;padding-left:20px;color:var(--muted);font-size:0.92rem">
+          <li>Articles surveyed: 18 (full-text) across World, U.S. Politics, Business, Opinion, Well, Weather, Obituaries, and New York sections</li>
+          <li>Profile inputs: Stories, Connector, Analysis, Philosophy, Strategy, Operations</li>
+        </ul>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">&#9654; Cluster 2: US Politics &amp; Domestic Policy</h2>
-      <div class="article-grid">
-        <article class="article">
-          <h3>Left-Wing Insurgent Melat Kiros Ousts 15-Term Incumbent Diana DeGette in Colorado</h3>
-          <div class="article-meta">Politics</div>
-          <p>Melat Kiros, a 30-year-old Democratic socialist and Eritrean refugee, defeated Representative Diana DeGette in a major upset. Kiros ran on universal health care, tuition-free public college, and a Middle East cease-fire, arguing that DeGette had lost touch with Denver's Democratic base. DeGette had support from Nancy Pelosi, the Congressional Black Caucus, and EMILY's List. Younger voters and women broke heavily for Kiros.</p>
-        </article>
-        <article class="article">
-          <h3>Control of the Senate Is Up for Grabs, Times/Siena Polls Show</h3>
-          <div class="article-meta">Politics</div>
-          <p>Democrats have pulled within striking distance of the Republican-held Senate majority. Republicans hold 53 seats; Democrats need to flip at least four. Times/Siena polls in six battleground states (Alaska, Iowa, Maine, North Carolina, Ohio, Texas) showed the average race tied at 47–47, an eight-point net shift toward Democrats from Trump's 2024 margins. Democrats lead in Maine and North Carolina, while Alaska, Iowa, Ohio, and Texas are essentially tied.</p>
-        </article>
-        <article class="article">
-          <h3>Ohio and Iowa Governor Races Are Surprisingly Tight</h3>
-          <div class="article-meta">U.S.</div>
-          <p>Democratic candidates in Ohio and Iowa trail Republican incumbents by just two points, well within the margin of error. Jennifer Brunner trails Jon Husted 46–48 in Ohio, and Mike Franken trails Kim Reynolds 47–49 in Iowa. Both races are rated Lean Republican by the Cook Political Report. Republican incumbents have outspent their challengers, but dissatisfaction with Trump's economic handling and a Democratic focus on abortion rights have kept the races competitive.</p>
-        </article>
-        <article class="article">
-          <h3>Tom Kean Jr. Faces a Challenge Holding His Swing Seat in New Jersey</h3>
-          <div class="article-meta">New York / Politics</div>
-          <p>Representative Tom Kean Jr. returned to Congress in January after a long absence for depression treatment, with staff running his office and campaign. Democrats are rallying behind Susan Hutchinson, a well-funded former state senator and attorney. Kean won the seat in 2024 by fewer than 5,000 votes, and the Cook Political Report has shifted the race from Lean Republican to Toss-Up.</p>
-        </article>
-        <article class="article">
-          <h3>Trump's 2025 Income Reached at Least $2.2 Billion, Financial Disclosure Shows</h3>
-          <div class="article-meta">Politics</div>
-          <p>President Trump's mandatory financial disclosure showed income of at least $2.2 billion in 2025 — the largest ever reported by a sitting American president. Crypto ventures, including a digital assets exchange and Trump-branded meme coins, generated more than $1.5 billion. The report also revealed dozens of new licensing and partnership agreements with foreign entities, raising conflict-of-interest questions.</p>
-        </article>
+    <section id="executive-summary">
+      <h2 class="section-title"><span>//</span> Executive Summary</h2>
+      <div class="card">
+        <p class="lead">A Democratic socialist toppled a 15-term incumbent in Colorado's primary. Senate control is in play after polls showed battleground states tied at 47-47. The Supreme Court upheld birthright citizenship 5-4 but expanded executive power and campaign spending. A heat wave affecting 160 million people pushed east with little relief expected. Dozens of U.S. deportees died in Venezuela hours after arrival when twin earthquakes struck.</p>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">&#9654; Cluster 3: Supreme Court, Law &amp; Civil Liberties</h2>
-      <div class="article-grid">
-        <article class="article">
-          <h3>Supreme Court Delivers Enduring Conservative Wins Despite Losses for Trump</h3>
-          <div class="article-meta">Politics</div>
-          <p>The Supreme Court wrapped up a consequential term with major conservative victories alongside a headline liberal win on birthright citizenship. The court struck down limits on coordinated party spending (6–3), allowed states to ban transgender athletes from girls' sports (6–3), and expanded presidential power to fire independent agency officials. On birthright citizenship, the court voted 5–4 to block Trump's executive order, with Chief Justice Roberts joining the four liberal justices.</p>
-        </article>
-        <article class="article">
-          <h3>Birthright Citizenship Decision Surprised Legal Scholars With Its Closeness</h3>
-          <div class="article-meta">Politics</div>
-          <p>The Supreme Court's 5–4 ruling reaffirmed that birthright citizenship is guaranteed by the 14th Amendment's Citizenship Clause. Chief Justice Roberts wrote that the clause "unambiguously grants citizenship to any child born in the United States, regardless of their parents' immigration status." Legal experts called the narrow margin shocking given that birthright citizenship has been settled law for more than a century. The four dissenters argued the 14th Amendment's original meaning did not require citizenship for children of undocumented immigrants.</p>
-        </article>
-        <article class="article">
-          <h3>Three Legal Scholars Assess a Tumultuous Supreme Court Term</h3>
-          <div class="article-meta">Opinion</div>
-          <p>Kate Shaw, William Baude, and Stephen I. Vladeck offered assessments of the term. Shaw found the birthright decision the least surprising but called the 5–4 split worrisome. Baude said the court got the right result but used thin reasoning that will invite further litigation. Vladeck called the campaign finance ruling in F.E.C. v. Ted Cruz for Senate "a dramatic expansion of money in politics" that will fundamentally change how campaigns are financed.</p>
-        </article>
-        <article class="article">
-          <h3>Professor Fired for Criticizing Charlie Kirk Reaches $1.9 Million Settlement</h3>
-          <div class="article-meta">U.S.</div>
-          <p>Tamar Shirinian, a former assistant professor of anthropology at the University of Tennessee at Knoxville, reached a $1.9 million settlement after being fired in 2024 for a social media post calling conservative activist Charlie Kirk "a fascist." Shirinian sued, arguing her First Amendment rights were violated and that the university bowed to political pressure. Free-speech advocates said the settlement sends a clear message that public universities cannot fire professors simply because their political speech displeases powerful figures.</p>
-        </article>
+    <section id="cluster-1">
+      <h2 class="section-title"><span>//</span> Cluster 1 — Geopolitics &amp; International Affairs</h2>
+      <div class="cluster">
+        <h3>Trump Suggested Syria Could Subdue Hezbollah, Confounding Middle East Diplomats</h3>
+        <p>According to the NYT, President Trump repeatedly floated the idea during Middle East peace talks that Syria's President Bashar al-Assad could help pressure Hezbollah in Lebanon. The proposal "confounded many in the region" and revived memories of Syria's decades-long domination of Lebanon, officials and diplomats said. One senior Middle Eastern diplomat, speaking on condition of anonymity, said: "The notion that Assad would crack down on Hezbollah is like asking Putin to crack down on the Russian military."</p>
+        <p>The proposal was met with skepticism because Assad's government is allied with Iran and has fought alongside Hezbollah in Syria's civil war. Syria has served as a key transit point for Iranian weapons destined for Hezbollah. Critics said the proposal showed the Trump administration's willingness to break with longstanding U.S. policy. The White House did not respond to a request for comment.</p>
+      </div>
+      <div class="cluster">
+        <h3>Dozens of U.S. Deportees Killed or Missing After Venezuela Earthquakes</h3>
+        <p>According to the NYT, the twin earthquakes that devastated Venezuela left an official death toll of 1,719, with experts fearing a "serious undercount." Among the dead and missing are dozens of people recently deported from the United States under the Trump administration's intensified immigration enforcement. Many arrived hours before the first earthquake struck. Some were killed at the airport; others died in the coastal city of La Guaira or are presumed dead in collapsed buildings in Caracas.</p>
+        <p>Maria Veronica Gonzalez, a lawyer with a Venezuelan human rights organization, said: "These families were sent back to a country in crisis, and now they are dead." Rescue efforts have been hampered by power outages, damaged roads, and a lack of heavy equipment. The U.S. has offered aid, but the administration has been criticized for not doing more.</p>
+      </div>
+      <div class="cluster">
+        <h3>USMCA Trade Agreement Faces Critical Review, Renegotiation Looms</h3>
+        <p>According to the NYT, July 1 triggered the USMCA's mandated six-year review. If all three countries agree, the pact continues for another 16 years. But the Trump administration has signaled plans to raise objections, setting up a contentious renegotiation. The administration is expected to demand stricter rules of origin for automobiles, new restrictions on Chinese-owned factories in Mexico, and provisions that would make it easier for the U.S. to impose tariffs on imports from Mexico and Canada.</p>
+        <p>Trade between the three countries totals nearly $1.5 trillion annually. Business groups have urged the administration to preserve the agreement, warning that its collapse would cause economic chaos.</p>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">&#9654; Cluster 4: Science, Health &amp; Environment</h2>
-      <div class="article-grid">
-        <article class="article">
-          <h3>Heat Wave Affecting 160 Million People Moves East, Little Relief Expected</h3>
-          <div class="article-meta">Weather</div>
-          <p>A significant heat wave that broiled the Midwest is spreading east with record-breaking temperatures. More than 160 million people are under extreme heat warnings or heat advisories. Heat index values ranged from 106 in Chicago to 113 north of Milwaukee and in Southern Illinois. Cities from Kansas City to Boston will likely record heat index values between 100 and 115 degrees. The heat is expected to persist through the Fourth of July weekend.</p>
-        </article>
-        <article class="article">
-          <h3>Mayor Mamdani Prepares for Extreme Heat After Learning From Winter Blizzard Deaths</h3>
-          <div class="article-meta">New York</div>
-          <p>New York City is preparing for triple-digit temperatures expected to hit 102 degrees by Thursday. Mayor Zohran Mamdani is applying lessons from a winter blizzard that killed more than two dozen people, activating about 600 cooling centers and launching 15 outreach vans staffed by nurses to provide wellness checks and emergency transportation. A later February storm that used the new protocols recorded zero deaths.</p>
-        </article>
-        <article class="article">
-          <h3>Medicare Expands GLP-1 Drug Coverage for Older Adults, but Risks Require Caution</h3>
-          <div class="article-meta">Well / Health</div>
-          <p>A Medicare pilot program, the Medicare Obesity Treatment Demonstration, began Wednesday, covering GLP-1 drugs like Wegovy and Zepbound for beneficiaries with a BMI of 30 or higher. Up to 7 million beneficiaries could be eligible. Previously, Medicare Part D was prohibited by law from covering weight-loss medications. Experts caution that the risk-benefit calculation differs for older adults, with potential gastrointestinal side effects, muscle loss, and drug interactions. The pilot requires participation in a counseling program.</p>
-        </article>
+    <section id="cluster-2">
+      <h2 class="section-title"><span>//</span> Cluster 2 — US Politics &amp; Domestic Policy</h2>
+      <div class="cluster">
+        <h3>Left-Wing Insurgent Melat Kiros Ousts 15-Term Incumbent Diana DeGette in Colorado</h3>
+        <p>According to the NYT, Melat Kiros, a 30-year-old Democratic socialist and Eritrean refugee, defeated Representative Diana DeGette in a major upset. Kiros ran on universal health care, tuition-free public college, and a cease-fire in the Middle East. She argued that DeGette, 68, had lost touch with the Democratic base in Denver's First Congressional District. DeGette had backing from former Speaker Nancy Pelosi, the Congressional Black Caucus, and EMILY's List.</p>
+        <p>Kiros said in her victory speech: "This is what happens when you listen to the people, not the lobbyists. Denver, you have sent a clear message: We are ready for a new generation of leadership." The race featured a significant gender and generation gap, with younger voters and women breaking heavily for Kiros. DeGette conceded around 10 p.m. Tuesday, calling Kiros to congratulate her.</p>
+      </div>
+      <div class="cluster">
+        <h3>Control of the Senate Is Up for Grabs, Times/Siena Polls Show</h3>
+        <p>According to the NYT, Democrats face an uphill battle but have pulled within striking distance of the Republican-held Senate majority. Republicans hold 53 seats; Democrats need to flip at least four. Times/Siena polls in six battleground states (Alaska, Iowa, Maine, North Carolina, Ohio, Texas) found the average race tied at 47-47 — a net shift of +8 points toward Democrats from Trump's 2024 margins.</p>
+        <p>Democrats hold a slim lead in Maine (Platner 49, Collins 47) and a substantial lead in North Carolina (Cooper 50, Whatley 43). Races in Alaska, Iowa, Ohio, and Texas are essentially tied. Trump carried five of the six states in 2024 by an average of eight points.</p>
+      </div>
+      <div class="cluster">
+        <h3>Ohio and Iowa Governor Races Are Surprisingly Tight</h3>
+        <p>According to the NYT, Democratic candidates in both states trail Republican incumbents by just two points, well within the margin of error. In Ohio, Jennifer Brunner trails Jon Husted 46-48. In Iowa, Mike Franken trails Kim Reynolds 47-49. Both races are rated Lean Republican by the Cook Political Report.</p>
+        <p>The Republican incumbents have far outspent their challengers, but dissatisfaction with Trump's handling of the economy and Democratic focus on abortion rights have made the races competitive. Both Brunner and Franken have campaigned heavily on protecting access to abortion.</p>
+      </div>
+      <div class="cluster">
+        <h3>Tom Kean Jr. Faces a Challenge Holding His Swing Seat in New Jersey</h3>
+        <p>According to the NYT, Representative Tom Kean Jr., Republican of New Jersey, returned to Congress in January after a long absence for depression treatment. His staff has been running his office and campaign. Democrats are rallying behind Susan Hutchinson, a well-funded former state senator and attorney. Kean won the seat in 2024 by fewer than 5,000 votes. The Cook Political Report recently shifted the race from Lean Republican to Toss-Up. Kean's struggle is emblematic of moderate Republicans in suburban districts where Trump's unpopularity weighs down the party.</p>
+      </div>
+      <div class="cluster">
+        <h3>Trump's 2025 Income Reached at Least $2.2 Billion, Financial Disclosure Shows</h3>
+        <p>According to the NYT, President Trump's mandatory financial disclosure report shows income of at least $2.2 billion in 2025 — the largest ever reported by a sitting American president. Crypto ventures, including a digital assets exchange and Trump-branded meme coins, generated more than $1.5 billion. The disclosure revealed dozens of new licensing and partnership agreements with foreign entities, raising conflict-of-interest questions.</p>
+        <p>Noah Bookbinder, president of Citizens for Responsibility and Ethics in Washington, said: "No president has ever come close to this level of financial entanglement with private business while in office. It raises profound questions about whose interests the president is serving."</p>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">&#9654; Cluster 5: Culture &amp; Society</h2>
-      <div class="article-grid">
-        <article class="article">
-          <h3>Victor Willis, Village People Frontman and Voice of 'Y.M.C.A.,' Dies at 74</h3>
-          <div class="article-meta">Obituaries</div>
-          <p>Victor Willis died Tuesday at his home in San Francisco. He was the defining voice of the Village People, co-writing and singing lead on "Y.M.C.A." and "Macho Man." Created in 1977 by French producers Jacques Morali and Henri Belolo, the group became an icon of disco culture. "Y.M.C.A." reached No. 2 on the Billboard Hot 100 in 1978 and was added to the National Recording Registry in 2020.</p>
-        </article>
-        <article class="article">
-          <h3>Trump's Historical Yarns Often Stretch or Disregard the Truth</h3>
-          <div class="article-meta">Politics</div>
-          <p>President Trump has been offering distorted claims about American history ahead of the nation's 250th birthday. At a Michigan rally he claimed the "radical left" was trying to "cancel" the Fourth of July, asserted the American Revolution was fought to secure oil rights, and said Lincoln could have settled the Civil War without bloodshed if he had Trump's negotiating skills. He also claimed he "saved" the American auto industry, which occurred under President Obama in 2009.</p>
-        </article>
-        <article class="article">
-          <h3>The Best Relationship Tips of 2026 (So Far)</h3>
-          <div class="article-meta">Well / Family</div>
-          <p>Relationship experts offered advice on maintaining close connections, which research has long linked to a happy life. Nicole McNichols said her love language is "goofing around," citing research that playfulness builds intimacy. Experts recommend asking more specific questions than "How are you?" and preparing a "heads-up sentence" before raising difficult topics. A "turnoff audit" — asking partners to list behaviors that bother them — is another suggested exercise.</p>
-        </article>
+    <section id="cluster-3">
+      <h2 class="section-title"><span>//</span> Cluster 3 — Supreme Court, Law &amp; Civil Liberties</h2>
+      <div class="cluster">
+        <h3>Supreme Court Delivers Enduring Conservative Wins Despite Losses for Trump</h3>
+        <p>According to the NYT, the Supreme Court wrapped up a consequential term with significant conservative victories alongside a headline liberal win on birthright citizenship. The court struck down limits on coordinated party spending (FEC v. Ted Cruz for Senate, 6-3), allowed states to ban transgender athletes from girls' sports (6-3), and expanded presidential power to fire independent agency officials. On birthright citizenship, the court voted 5-4 to block Trump's executive order denying citizenship to children born in the U.S. to undocumented immigrants. Chief Justice John Roberts joined the four liberal justices in the majority.</p>
+      </div>
+      <div class="cluster">
+        <h3>Birthright Citizenship Decision Surprised Legal Scholars With Its Closeness</h3>
+        <p>According to the NYT, the Supreme Court's 5-4 ruling striking down Trump's executive order reaffirmed that birthright citizenship is guaranteed by the 14th Amendment's Citizenship Clause. The majority opinion, written by Chief Justice Roberts, held that the clause "unambiguously grants citizenship to any child born in the United States, regardless of their parents' immigration status." Legal experts said the opinion was brief and avoided broader questions about immigration or executive power.</p>
+        <p>Professor Jonathan L. Entin of Case Western Reserve University said: "The fact that it was 5-4 is genuinely shocking. The 14th Amendment's text could not be clearer. Birthright citizenship has been settled law for over a century." The four dissenters — Thomas, Alito, Kavanaugh, and Barrett — argued that the 14th Amendment's original meaning did not require birthright citizenship for children of undocumented immigrants.</p>
+      </div>
+      <div class="cluster">
+        <h3>Three Legal Scholars Assess a Tumultuous Supreme Court Term</h3>
+        <p>According to the NYT, Kate Shaw of the University of Pennsylvania, William Baude of the University of Chicago, and Stephen I. Vladeck of Georgetown University Law Center offered assessments of the term. Shaw said the birthright decision was "the most straightforward and least surprising of the term" but noted the 5-4 split was "worrisome." Baude said the court "got the right result on birthright citizenship, but its reasoning was thin and will invite further litigation." Vladeck said the campaign finance ruling — F.E.C. v. Ted Cruz for Senate — is "a dramatic expansion of money in politics" that "will fundamentally change how campaigns are financed."</p>
+      </div>
+      <div class="cluster">
+        <h3>Professor Fired for Criticizing Charlie Kirk Reaches $1.9 Million Settlement</h3>
+        <p>According to the NYT, Tamar Shirinian, a former assistant professor of anthropology at the University of Tennessee at Knoxville, reached a $1.9 million settlement after being fired in 2024. She posted a message on social media calling conservative activist Charlie Kirk "a fascist" and criticizing his planned campus appearance. The university said her post violated policies on professional conduct and academic freedom.</p>
+        <p>Shirinian sued, arguing her dismissal violated her First Amendment rights and that the university bowed to political pressure. A lawyer for the Foundation for Individual Rights and Expression, which represented Shirinian, said: "This settlement sends a clear message that public universities cannot fire professors simply because their political speech displeases powerful figures."</p>
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">&#9654; Observer Commentary</h2>
+    <section id="cluster-4">
+      <h2 class="section-title"><span>//</span> Cluster 4 — Science, Health &amp; Environment</h2>
+      <div class="cluster">
+        <h3>Heat Wave Affecting 160 Million People Moves East, Little Relief Expected</h3>
+        <p>According to the NYT, a significant heat wave that broiled the Midwest is spreading east, bringing record-breaking temperatures. More than 160 million people are under extreme heat warnings or heat advisories. Heat index values ranged from 106 in Chicago to 113 north of Milwaukee and in Southern Illinois. On Wednesday, the Weather Service said cities from Kansas City to Boston will likely record heat index values between 100 and 115 degrees.</p>
+        <p>Radley Horton, a professor at Columbia University's Climate School, said the heat wave has been characterized by especially high humidity, making nights warmer: "Temperatures don't change as much between daytime and nighttime." The heat is expected to persist through the Fourth of July weekend.</p>
+      </div>
+      <div class="cluster">
+        <h3>Mayor Mamdani Prepares for Extreme Heat After Learning From Winter Blizzard Deaths</h3>
+        <p>According to the NYT, New York City is preparing for triple-digit temperatures expected to hit 102 degrees by Thursday, with Mayor Zohran Mamdani applying lessons from a winter blizzard that killed more than two dozen people. The city activated about 600 cooling centers and launched a new fleet of 15 outreach vans staffed by nurses to provide wellness checks and emergency transportation.</p>
+        <p>Joe Calvello, Mamdani's press secretary, said: "The proactive posture New Yorkers saw this winter, pre-positioning and moving earlier, deploying more, and going to our most vulnerable neighbors rather than waiting for them to come to us, is the same posture driving this week's heat emergency plan." The second snowstorm in February, which used the new protocols, recorded zero deaths.</p>
+      </div>
+      <div class="cluster">
+        <h3>Medicare Expands GLP-1 Drug Coverage for Older Adults, but Risks Require Caution</h3>
+        <p>According to the NYT, a Medicare pilot program called the Medicare Obesity Treatment Demonstration began Wednesday, covering GLP-1 drugs like Wegovy and Zepbound for beneficiaries with a BMI of 30 or higher. Up to 7 million beneficiaries could be eligible. Previously, Medicare Part D was prohibited by law from covering weight loss medications.</p>
+        <p>Dr. Anne Cappola, professor of medicine at the University of Pennsylvania, said: "We need to be thoughtful about who we prescribe these drugs to in the older population. The risk-benefit calculation is different for an 80-year-old than for a 40-year-old." Risks include gastrointestinal side effects, muscle loss, and drug interactions with blood thinners and blood pressure medications. The pilot requires participation in a counseling program covering diet, physical activity, and behavioral support.</p>
+      </div>
+    </section>
 
-      <article class="observer">
-        <div class="observer-header">
-          <div class="observer-avatar">翟</div>
-          <div>
-            <h3>翟东升</h3>
-            <p class="observer-subtitle">翟东升观察：2026年7月1日《纽约时报》简报 — 平行体系的裂痕与主权信用的异化</p>
+    <section id="cluster-5">
+      <h2 class="section-title"><span>//</span> Cluster 5 — Culture &amp; Society</h2>
+      <div class="cluster">
+        <h3>Victor Willis, Village People Frontman and Voice of 'Y.M.C.A.,' Dies at 74</h3>
+        <p>According to the NYT, Victor Willis died on Tuesday at his home in San Francisco. He was the defining voice of the Village People, co-writing and singing lead on "Y.M.C.A." and "Macho Man." The group was created in 1977 by French producers Jacques Morali and Henri Belolo, with members costumed as a police officer, a construction worker, a cowboy, a soldier, a biker, and a Native American. Willis played the police officer.</p>
+        <p>"Y.M.C.A." reached No. 2 on the Billboard Hot 100 in 1978 and became an enduring anthem at sporting events and weddings. In 2020, the Library of Congress added the song to the National Recording Registry, calling it "a quintessential example of the disco sound." After leaving the group in 1980, Willis struggled with drug addiction but later returned for tours.</p>
+      </div>
+      <div class="cluster">
+        <h3>Trump's Historical Yarns Often Stretch or Disregard the Truth</h3>
+        <p>According to the NYT, President Trump has been offering a series of distorted claims about American history as the nation prepares for its 250th birthday. At a rally in Michigan, he claimed the "radical left" was trying to "cancel" the Fourth of July — there is no evidence of any such movement. He claimed the American Revolution was fought to secure oil rights, which historians note is anachronistic by more than 80 years.</p>
+        <p>He said Lincoln "could have settled the Civil War without bloodshed if he had my negotiating skills," ignoring Lincoln's repeated attempts at compromise. He claimed he "saved" the American auto industry, which occurred under President Obama in 2009. These distortions serve to cast Trump as a central figure in American history in ways unsupported by the record.</p>
+      </div>
+      <div class="cluster">
+        <h3>The Best Relationship Tips of 2026 (So Far)</h3>
+        <p>According to the NYT, relationship experts have offered advice on maintaining close connections. A nearly century of research has found that close relationships are one of the keys to a happy life. Nicole McNichols, an associate teaching professor of psychology at the University of Washington, said her love language is "goofing around," noting that research shows playfulness builds intimacy.</p>
+        <p>Experts recommend asking more specific questions than "How are you?" and preparing a "heads-up sentence" before raising difficult topics to set a collaborative tone. A "turnoff audit" — asking partners to list things the other does that bother them — is another suggested exercise.</p>
+      </div>
+    </section>
+
+    <section id="forecasts">
+      <h2 class="section-title"><span>//</span> Calibrated Predictions</h2>
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Democrats gain Senate seats in the 2026 midterms</div>
+          <div class="confidence">85%</div>
+        </div>
+        <p>Six-state Times/Siena poll average shows a +8-point shift from Trump's 2024 baseline. Even a 2-3 point polling overcorrection still leaves multiple seats competitive. (Source: Article 2, Times/Siena polls)</p>
+      </div>
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Democrats flip the North Carolina Senate seat</div>
+          <div class="confidence">70%</div>
+        </div>
+        <p>Cooper leads Whatley 50-43, the largest Democratic margin in any battleground. NC has been close in recent cycles, and Cooper is a popular former governor. (Source: Article 2)</p>
+      </div>
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Democrats do NOT flip the Ohio governor's seat</div>
+          <div class="confidence">65%</div>
+        </div>
+        <p>Husted leads Brunner 48-46, within the margin of error, but Ohio has trended hard right. Incumbent advantage and spending edge make a Republican hold more likely. (Source: Article 3)</p>
+      </div>
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Supreme Court's 6-3 conservative bloc holds together on non-citizenship issues next term</div>
+          <div class="confidence">90%</div>
+        </div>
+        <p>On campaign finance (6-3), transgender athlete bans (6-3), and executive power (6-3), Roberts stayed with the conservative bloc. Only clear-text 14th Amendment citizenship cases are likely to split him off. (Source: Article 4, Article 11)</p>
+      </div>
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Confirmed Venezuela earthquake death toll exceeds 2,500</div>
+          <div class="confidence">75%</div>
+        </div>
+        <p>Experts say the official count of 1,719 is a "serious undercount." Rescue efforts are hampered by power outages, damaged roads, and lack of heavy equipment. Historical earthquake data suggests eventual totals often double early counts. (Source: Article 8)</p>
+      </div>
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Heat wave causes measurable excess mortality (100+ deaths)</div>
+          <div class="confidence">60%</div>
+        </div>
+        <p>160 million people exposed to 100-115°F heat index over multiple days with no overnight cooling. However, cooling centers, warnings, and holiday variance make precise mortality estimates uncertain. (Source: Article 17)</p>
+      </div>
+    </section>
+
+    <section id="sources">
+      <h2 class="section-title"><span>//</span> Sources</h2>
+      <div class="sources-list">
+        <ol>
+          <li><strong>"Left-Wing Insurgent Ousts 15-Term Congresswoman in Colorado"</strong> — Jazmine Ulloa (Politics)</li>
+          <li><strong>"Control of the Senate Is Up for Grabs, Times/Siena Polls Find"</strong> — Shane Goldmacher, Ruth Igielnik, Camille Baker (Politics)</li>
+          <li><strong>"Ohio and Iowa Governors Races Tight, New Polls Show"</strong> — Julie Bosman, Campbell Robertson (U.S.)</li>
+          <li><strong>"Despite Some Losses for Trump, Supreme Court Delivers Enduring Conservative Wins"</strong> — Adam Liptak (Politics)</li>
+          <li><strong>"The Birthright Decision Was Surprisingly Close, Some Legal Scholars Say"</strong> — Amy Qin (Politics)</li>
+          <li><strong>"Trump Suggestion of a Syrian Crackdown on Hezbollah Confounds Many in Mideast"</strong> — Ben Hubbard, Vivian Nereim, Erika Solomon (World)</li>
+          <li><strong>"Trump's Historical Yarns Often Stretch (or Disregard) the Truth"</strong> — Linda Qiu (Politics)</li>
+          <li><strong>"After Venezuela Earthquakes, Deportees from the U.S. Are Missing or Found Dead"</strong> — Emma Bubola, Leo Sands, Isayen Herrera, Tibisay Romero (World)</li>
+          <li><strong>"Victor Willis, Village People Frontman, Dies at 74"</strong> — Neil Genzlinger (Obituaries)</li>
+          <li><strong>"Back in Congress, Tom Kean Jr. Faces a New Challenge: Staying There"</strong> — Tracey Tully (New York)</li>
+          <li><strong>"Opinion | Is the Supreme Court Incoherent? 3 Legal Scholars Assess a Tumultuous Term"</strong> — Kate Shaw, William Baude, Stephen I. Vladeck (Opinion)</li>
+          <li><strong>"Trump Pulled In at Least $2.2 Billion in 2025, Financial Disclosure Shows"</strong> — Ben Protess, Andrea Fuller (Politics)</li>
+          <li><strong>"What to Know About the State of North American Trade Talks"</strong> — Ana Swanson (Business/Economy)</li>
+          <li><strong>"What Older Adults Should Know About GLP-1 Drugs as Medicare Coverage Expands"</strong> — Dani Blum (Well/Health)</li>
+          <li><strong>"Professor Fired for Criticizing Charlie Kirk Reaches $1.9 Million Settlement"</strong> — Emily Cochrane (U.S.)</li>
+          <li><strong>"With Lessons From a Perilous Blizzard, Mamdani Prepares for Extreme Heat"</strong> — Andy Newman, Caitlyn Freeman (New York)</li>
+          <li><strong>"Heat Wave Trudges East on Wednesday, Putting Millions More at Risk"</strong> — Nazaneen Ghaffar, Erin McCann, Amy Graff (Weather)</li>
+          <li><strong>"The Best Relationship Tips of 2026 (So Far)"</strong> — Catherine Pearson, Jancee Dunn (Well/Family)</li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="observers">
+      <h2 class="section-title"><span>//</span> Observer Commentary</h2>
+      <div class="observer-grid">
+        <article class="observer-card">
+          <div class="observer-header">
+            <div class="observer-portrait">翟</div>
+            <div>
+              <p class="observer-name">翟东升</p>
+              <p class="observer-title">宏观经济学、主权信用理论</p>
+            </div>
           </div>
-        </div>
-        <div class="observer-body">
-          <p>今日三条新闻，恰好勾勒出当下全球秩序重构的三重维度。</p>
-          <p><strong>第一，USMCA审议与平行体系的分化。</strong>美加墨贸易协定进入六年强制审议期，特朗普政府准备提出异议。这是"平行体系理论"的典型注脚：美国意图构建一个排华性的北美经济闭环——更严的汽车原产地规则、限制中国工厂在墨西哥的布局、增强单边关税权力。问题在于，北美经济高度融合（年贸易额近1.5万亿美元），强行切割成本极高。美国试图在"去中国化"和维持区域内产业链效率之间走钢丝，本质是霸权护持逻辑对经济理性的压制。</p>
-          <p><strong>第二，特朗普2.2亿美元加密货币收入与主权信用货币的异化。</strong>总统财务披露显示，2025年特朗普至少入账22亿美元，其中超15亿来自加密货币业务。以"主权信用货币论"审视，这是历史性的悖论：美元体系依靠国家信用背书，而白宫主人却在用自己的政治权力为私人加密资产背书。"特朗普币"实际上是主权信用的私有化变现——总统的公职身份直接转化为家族的数字资产溢价。伦理冲突的规模史无前例，但这恰好揭示了美元信用体系的深层危机：当主权信用可以被"拆包"出售，货币主权本身正在被金融化和家族化。</p>
-          <p><strong>第三，参议院争夺与民本主义政治经济学。</strong>时报/锡耶纳民调显示，尽管特朗普2024年在六个关键摇摆州平均领先8个百分点，但如今参议院选举在这些州已打成平手。选民对经济的失望正在主导选举走向。这印证了"民本主义政治经济学"的核心判断：经济基础决定政治上层建筑。当通胀侵蚀实际购买力、制造业就业持续流失时，意识形态动员和身份政治都无法弥补物质利益的缺口。民主党在俄亥俄和艾奥瓦的州长选举中逼近共和党，说明"餐桌问题"正在超越党派标签。</p>
-          <p>三条线索相互关联：平行体系的经济重构正在制造新的分配不公，主权信用的私有化加深了精英与大众的裂痕，而民众的不满正在选举政治中释放。这是美国"低成本统治"模式的红利耗尽时刻。</p>
-        </div>
-      </article>
-
-      <article class="observer">
-        <div class="observer-header">
-          <div class="observer-avatar">金</div>
-          <div>
-            <h3>金灿荣</h3>
+          <div class="observer-body">
+            <p class="observer-subtitle">平行体系的裂痕与主权信用的异化</p>
+            <p>今日三条新闻，恰好勾勒出当下全球秩序重构的三重维度。</p>
+            <p>第一，USMCA审议与平行体系的分化。美加墨贸易协定进入六年强制审议期，特朗普政府准备提出异议。这是"平行体系理论"的典型注脚：美国意图构建一个排华性的北美经济闭环——更严的汽车原产地规则、限制中国工厂在墨西哥的布局、增强单边关税权力。问题在于，北美经济高度融合（年贸易额近1.5万亿美元），强行切割成本极高。美国试图在"去中国化"和维持区域内产业链效率之间走钢丝，本质是霸权护持逻辑对经济理性的压制。</p>
+            <p>第二，特朗普2.2亿美元加密货币收入与主权信用货币的异化。总统财务披露显示，2025年特朗普至少入账22亿美元，其中超15亿来自加密货币业务。以"主权信用货币论"审视，这是历史性的悖论：美元体系依靠国家信用背书，而白宫主人却在用自己的政治权力为私人加密资产背书。"特朗普币"实际上是主权信用的私有化变现——总统的公职身份直接转化为家族的数字资产溢价。伦理冲突的规模史无前例，但这恰好揭示了美元信用体系的深层危机：当主权信用可以被"拆包"出售，货币主权本身正在被金融化和家族化。</p>
+            <p>第三，参议院争夺与民本主义政治经济学。时报/锡耶纳民调显示，尽管特朗普2024年在六个关键摇摆州平均领先8个百分点，但如今参议院选举在这些州已打成平手。选民对经济的失望正在主导选举走向。这印证了"民本主义政治经济学"的核心判断：经济基础决定政治上层建筑。当通胀侵蚀实际购买力、制造业就业持续流失时，意识形态动员和身份政治都无法弥补物质利益的缺口。民主党在俄亥俄和艾奥瓦的州长选举中逼近共和党，说明"餐桌问题"正在超越党派标签。</p>
+            <p>三条线索相互关联：平行体系的经济重构正在制造新的分配不公，主权信用的私有化加深了精英与大众的裂痕，而民众的不满正在选举政治中释放。这是美国"低成本统治"模式的红利耗尽时刻。</p>
+          </div>
+        </article>
+        <article class="observer-card">
+          <div class="observer-header">
+            <div class="observer-portrait">金</div>
+            <div>
+              <p class="observer-name">金灿荣</p>
+              <p class="observer-title">地缘政治、工业化</p>
+            </div>
+          </div>
+          <div class="observer-body">
             <p class="observer-subtitle">金灿荣看2026年7月1日《纽约时报》简报</p>
+            <p>最高法院5比4维持出生公民权——宪法白纸黑字，只差一票就被翻盘。百年大变局，美国"定海神针"也在松动。</p>
+            <p>科罗拉多初选：30岁难民后代基罗斯干翻68岁15任老牌议员。这是代际更替的缩影。老建制派讲资历，年轻人说你脱离群众了。工业化时代的政治逻辑正在水土不服。</p>
+            <p>特朗普建议阿萨德打压真主党？典型的"特朗普式创新"——不按牌理出牌。但叙利亚跟真主党本是一家，让人家自己打自己？这叫只有战术没有战略，工业化思维最忌讳这种拍脑袋决策。</p>
+            <p>最唏嘘的是委内瑞拉驱逐者：刚被送回国就遇上大地震。在华盛顿算盘里他们是执法成本，灾难面前他们是活生生的人。战略相持，大国算计之下，小人物的命不如一张机票值钱。</p>
+            <p>美国正处在制度摩擦、政治重组、外交混乱的十字路口。咱们且看，我保持谨慎观察。</p>
           </div>
-        </div>
-        <div class="observer-body">
-          <p>最高法院5比4维持出生公民权——宪法白纸黑字，只差一票就被翻盘。百年大变局，美国"定海神针"也在松动。</p>
-          <p>科罗拉多初选：30岁难民后代基罗斯干翻68岁15任老牌议员。这是代际更替的缩影。老建制派讲资历，年轻人说你脱离群众了。工业化时代的政治逻辑正在水土不服。</p>
-          <p>特朗普建议阿萨德打压真主党？典型的"特朗普式创新"——不按牌理出牌。但叙利亚跟真主党本是一家，让人家自己打自己？这叫只有战术没有战略，工业化思维最忌讳这种拍脑袋决策。</p>
-          <p>最唏嘘的是委内瑞拉驱逐者：刚被送回国就遇上大地震。在华盛顿算盘里他们是执法成本，灾难面前他们是活生生的人。战略相持，大国算计之下，小人物的命不如一张机票值钱。</p>
-          <p>美国正处在制度摩擦、政治重组、外交混乱的十字路口。咱们且看，我保持谨慎观察。</p>
-        </div>
-      </article>
-
-      <article class="observer">
-        <div class="observer-header">
-          <div class="observer-avatar">宋</div>
-          <div>
-            <h3>宋鸿兵</h3>
-            <p class="observer-subtitle">宋鸿兵观察：2026年7月1日《纽约时报》简报 — 金融战场上的四重奏</p>
+        </article>
+        <article class="observer-card">
+          <div class="observer-header">
+            <div class="observer-portrait">宋</div>
+            <div>
+              <p class="observer-name">宋鸿兵</p>
+              <p class="observer-title">金融战、美元周期</p>
+            </div>
           </div>
-        </div>
-        <div class="observer-body">
-          <p>今日新闻揭示的美国，不再是那个"山巅之城"，而是一个赤裸裸的金融战区。四件事，指向同一个真相。</p>
-          <p><strong>第一，特朗普2.2亿美元的加密帝国。</strong>这不是什么"副业收入"，这是人类历史上第一次，一个主权国家的最高行政长官在任期内大规模发行私人数字货币。特朗普币不是货币，是数字时代的铸币权私有化。当总统本人成为最大的加密资产持有者，货币政策与个人财富之间的防火墙已经彻底崩塌。这比任何腐败都更危险——这是对国家货币主权的内部瓦解。</p>
-          <p><strong>第二，USMCA贸易协议面临生死审查。</strong>7月1日，北美贸易框架进入"六年大考"。特朗普政府酝酿的不是谈判，是金融要挟。1.5万亿美元的区域内贸易——墨西哥和加拿大对美出口占其GDP的25%以上——成为华盛顿手中的金融人质。更深的算计在于：通过切断中国资本经墨西哥进入北美的通道，美国试图在全球供应链战争中完成"对华金融包围圈"的最后一块拼图。</p>
-          <p><strong>第三，最高法院废除政党协调支出上限。</strong>所谓的"竞选资金自由化"，本质是金融寡头对政治体系的直接收购。当钱可以无限制地通过政党管道流入竞选机器，"一人一票"就变成了"一美元一票"。这是美国两百年来最隐蔽的宪法政变——用金钱完成的权力交接。</p>
-          <p><strong>第四，委内瑞拉地震中的被驱逐者。</strong>那些刚被美国遣返、几小时后便在地震中丧生的移民，是金融战争最残酷的注脚。美国对委内瑞拉的经济制裁和货币战争，早已将这个国家的基础设施摧毁殆尽。震后救援的瘫痪，是美国二十年金融封锁的必然结果。遣返，等于将人送入必死之地。</p>
-          <p>今天的美国，不再以导弹攻城，而是以数字货币、贸易条款、竞选献金和制裁大棒为武器。公民是统计数字，移民是弃子，民主是拍卖品。金融战争的本质，就是用看不见的枷锁，统治看得见的世界。</p>
-        </div>
-      </article>
-    </section>
-
-    <section>
-      <h2 class="section-title">&#9654; Daily Cartoon</h2>
-      <div class="cartoon-section">
-        <img src="./assets/images/nyt_cartoon.jpg" alt="Daily Cartoon" />
-        <div class="cartoon-caption">July 1, 2026 &middot; Daily Cartoon</div>
+          <div class="observer-body">
+            <p class="observer-subtitle">金融战场上的四重奏</p>
+            <p>今日新闻揭示的美国，不再是那个"山巅之城"，而是一个赤裸裸的金融战区。四件事，指向同一个真相。</p>
+            <p>第一，特朗普2.2亿美元的加密帝国。这不是什么"副业收入"，这是人类历史上第一次，一个主权国家的最高行政长官在任期内大规模发行私人数字货币。特朗普币不是货币，是数字时代的铸币权私有化。当总统本人成为最大的加密资产持有者，货币政策与个人财富之间的防火墙已经彻底崩塌。这比任何腐败都更危险——这是对国家货币主权的内部瓦解。</p>
+            <p>第二，USMCA贸易协议面临生死审查。7月1日，北美贸易框架进入"六年大考"。特朗普政府酝酿的不是谈判，是金融要挟。1.5万亿美元的区域内贸易——墨西哥和加拿大对美出口占其GDP的25%以上——成为华盛顿手中的金融人质。更深的算计在于：通过切断中国资本经墨西哥进入北美的通道，美国试图在全球供应链战争中完成"对华金融包围圈"的最后一块拼图。</p>
+            <p>第三，最高法院废除政党协调支出上限。所谓的"竞选资金自由化"，本质是金融寡头对政治体系的直接收购。当钱可以无限制地通过政党管道流入竞选机器，"一人一票"就变成了"一美元一票"。这是美国两百年来最隐蔽的宪法政变——用金钱完成的权力交接。</p>
+            <p>第四，委内瑞拉地震中的被驱逐者。那些刚被美国遣返、几小时后便在地震中丧生的移民，是金融战争最残酷的注脚。美国对委内瑞拉的经济制裁和货币战争，早已将这个国家的基础设施摧毁殆尽。震后救援的瘫痪，是美国二十年金融封锁的必然结果。遣返，等于将人送入必死之地。</p>
+            <p>今天的美国，不再以导弹攻城，而是以数字货币、贸易条款、竞选献金和制裁大棒为武器。公民是统计数字，移民是弃子，民主是拍卖品。金融战争的本质，就是用看不见的枷锁，统治看得见的世界。</p>
+          </div>
+        </article>
       </div>
     </section>
+
+    <section id="cartoon">
+      <h2 class="section-title"><span>//</span> Daily Cartoon</h2>
+      <div class="cartoon-section">
+        <img src="./assets/images/nyt_cartoon.jpg" alt="Summer of Fire and Money — editorial cartoon" />
+        <div class="cartoon-caption">
+          <strong>Summer of Fire and Money</strong> — Editorial cartoon on the day's lead themes: the Supreme Court's 5-4 birthright ruling, Colorado's generational primary upset, Trump's $2.2 billion crypto empire, the 160-million-person heat wave, and the USMCA six-year review.
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
     <div class="container">
-      <div class="footer-links">
-        <p>Generated July 1, 2026 &middot; 18 NYT Stories &middot; 5 Cluster Analysis</p>
-        <p><a href="https://fli-rpx.github.io/news_briefing/briefings/nyt_2026-07-01.html">View Online</a> &middot; <a href="#">Download PDF</a></p>
-      </div>
+      <p><strong>Generated by NYT Briefing Pipeline</strong></p>
+      <p>July 1, 2026</p>
     </div>
   </footer>
+
+<!-- PHASE COMPLETE -->
 </body>
 </html>
-<!-- PHASE COMPLETE -->
