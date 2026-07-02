@@ -1,0 +1,23 @@
+{
+  "date": "2026-07-01",
+  "phases": {
+    "observer_sync": {
+      "status": "pending",
+      "retries": 0,
+      "error": null
+    },
+    "cartoon": {
+      "status": "pending",
+      "retries": 0,
+      "error": null
+    },
+    "publish": {
+      "status": "done",
+      "retries": 0,
+      "error": null
+    }
+  },
+  "config": {
+    "max_retries": 2
+  }
+}
