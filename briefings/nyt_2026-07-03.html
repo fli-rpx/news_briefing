@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NYT Briefing - July 3, 2026</title>
+    <style>
+        :root { --bg: #0a0a0f; --panel: #14141b; --panel2: #1a1a24; --text: #e8e8ef; --accent: #00ff88; --muted: #9a9aad; --border: rgba(255,255,255,0.08); }
+        * { box-sizing: border-box; }
+        body { margin: 0; font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: 860px; margin: 0 auto; padding: 0 18px; }
+        .hero { position: relative; width: 100%; min-height: 420px; display: flex; align-items: flex-end; background: url('./assets/images/nyt_hero_bg.jpg') center center / cover no-repeat; border-bottom: 1px solid var(--border); }
+        .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,10,15,0.25) 0%, rgba(10,10,15,0.78) 70%, rgba(10,10,15,0.96) 100%); }
+        .hero-content { position: relative; z-index: 1; width: 100%; padding: 48px 0 56px; }
+        .hero-kicker { display: inline-block; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; background: rgba(0,255,136,0.12); padding: 4px 10px; border-radius: 4px; }
+        .hero h1 { font-size: clamp(2.1rem,7vw,3.6rem); line-height: 1.05; margin: 0 0 12px; }
+        .hero-date { font-size: 1.05rem; color: var(--muted); }
+        main { padding: 42px 0 64px; }
+        .section-title { font-size: 1.5rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; border-bottom: 2px solid rgba(0,255,136,0.12); padding-bottom: 0.5rem; letter-spacing: 0.03em; }
+        .article { background: var(--panel); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+        .article h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+        .article p { color: #c8c8d4; line-height: 1.65; margin: 0 0 8px; }
+        .prediction { background: var(--panel2); border-left: 3px solid var(--accent); border-radius: 6px; padding: 0.8rem 1rem; margin: 0.8rem 0; }
+        .prediction strong { color: var(--accent); }
+        .cartoon-section { text-align: center; margin: 2rem 0; padding: 1.5rem; background: var(--panel); border-radius: 12px; border: 1px dashed var(--border); }
+        .cartoon-section img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+        .cartoon-section h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 12px; }
+        .cartoon-section p { color: var(--muted); margin-top: 10px; font-size: 0.9rem; }
+        .observer { background: var(--panel2); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+        .observer h4 { color: var(--accent); font-size: 1.1rem; margin-bottom: 6px; }
+        .observer-meta { color: var(--muted); font-size: 0.85rem; margin-bottom: 10px; }
+        .observer p { color: #c0c0d0; line-height: 1.8; font-size: 0.95rem; }
+        .observer p strong { color: var(--text); }
+        header { padding: 24px 0; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+        header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); }
+        header .date { color: var(--muted); font-size: 0.9rem; }
+        .exec-summary { background: var(--panel2); border-radius: 10px; padding: 1.5rem; margin-bottom: 2rem; }
+        .exec-summary h3 { color: var(--accent); margin-top: 0; font-size: 1.1rem; }
+        .exec-summary p { color: #c0c0d0; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+        th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+        th { background: var(--panel); color: var(--accent); font-weight: 600; }
+        td { color: #c8c8d4; }
+        footer { padding: 32px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.85rem; }
+        @media (max-width: 640px) { .hero { min-height: 35vh; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>NYT Briefing</h1>
+            <div class="date">July 3, 2026</div>
+        </header>
+        <div class="hero">
+            <div class="hero-content">
+                <span class="hero-kicker">NYT Master Briefing</span>
+                <h1>NYT Master Briefing — July 3, 2026</h1>
+                <div class="hero-date">July 3, 2026</div>
+            </div>
+        </div>
+        <main>
+            <div class="exec-summary">
+                <h3>TL;DR</h3>
+                <p>Iran buries its slain supreme leader as the regime fights to prove continuity. The Ukraine war passes 2 million total casualties. Trump disclosed $2.2 billion in first-year earnings, $636 million from a single memecoin. ICE arrests surged to 10,000 in five days. A record heat wave put 180 million Americans under warnings on July Fourth weekend. The Supreme Court struck down birthright citizenship repeal but expanded presidential power over regulators. Danish officials uninvited American delegates from their July Fourth celebration over the Greenland dispute.</p>
+            </div>
+            <h2 class="section-title">Geopolitics &amp; International Affairs</h2>
+            <p>NYT Master Briefing — July 3, 2026</p><p>Pipeline: Researcher → Connector → Analyst → Philosopher → Strategist → Operator → Writer</p><p>Date: 2026-07-03</p><p>Source: NYT Stories (25 articles) + 5 profiles</p><p>Doc Version: V1</p><p>TL;DR</p><p>NYT Master Briefing</p><p>2026-07-03</p><p>Iran buries its slain supreme leader as the regime fights to prove continuity. The Ukraine war passes 2 million total casualties with no</p><p>diplomatic off-ramp. Trump disclosed $2.2 billion in first-year earnings, $636 million from a single memecoin. ICE arrests surged to</p><p>10,000 in five days, doubling the daily rate. A record heat wave put 180 million Americans under warnings on July Fourth weekend.</p><p>The Supreme Court struck down birthright citizenship repeal but expanded presidential power over regulators. Danish officials</p><p>uninvited American delegates from their July Fourth celebration over the Greenland dispute.</p><p>Cluster 1: Geopolitics & International Affairs</p><p>Iran Buries Khamenei as Succession Tests the Regime</p><p>Long-delayed funeral ceremonies for Ayatollah Ali Khamenei — killed during U.S.-Israeli strikes at the war's outset — are set to begin</p><p>Friday. Workers in Tehran assembled scaffolding as the country prepared for a ritual described by the NYT as a "critical moment to</p><p>demonstrate that it has endured." The regime must execute flawless logistics, demonstrate continuity of command, and control the</p><p>narrative of martyrdom versus vulnerability. The funeral is an organizational stress test for an authoritarian institution facing the loss of</p><p>its founding leader.</p><p>Simultaneously, U.S. officials believed that Israel might have been plotting to kill Iran's top negotiators — Foreign Minister Abbas</p><p>Araghchi and Parliament Speaker Mohammad Ghalibaf — while Washington was engaged in delicate peace talks this spring. Any</p><p>Israeli attempt would have derailed the diplomatic track entirely, according to current and former American officials.</p><p>Detail</p><p>Element</p><p>Khamenei</p><p>killed by</p><p>Funeral</p><p>timeline</p><p>Israeli</p><p>target</p><p>Operational</p><p>risk</p><p>U.S.-Israeli strikes at war's outset</p><p>Long-delayed, begins Friday July 3</p><p>Iran's top negotiators during U.S. peace talks</p><p>Ally acting as rogue variable during active</p><p>negotiations</p><p>U.S. envoys</p><p>Witkoff and Kushner focused on Iran; no ambassador</p><p>in Moscow or Kyiv</p><p>Page 1/8</p><p>NYT Master Briefing</p><p>Ukraine War Crosses 2 Million Casualties</p><p>At least 27 people: were killed in drone and missile strikes on Kyiv that damaged multiple residential buildings. Total troop casualties</p><p>in the Ukraine war have topped **2 million** since February 2022. Russia has borne the heavier toll with **1.4 million** troops killed or</p><p>wounded (70% of total); Ukraine's casualties are estimated at ~600,000. Escalating drone strikes, fuel shortages, and power cuts in</p><p>annexed regions are turning up the heat on **President Vladimir Putin**, even as Russia's wider military campaign is "largely stalled."</p><p>A companion feature documented women giving birth in underground bunkers and shelters under constant bombardment, capturing</p><p>the extraordinary human cost of childbearing during wartime. Meanwhile, Steve Witkoff and Jared Kushner remain focused on Iran</p><p>diplomacy, and the posts of U.S. ambassador to Moscow and Kyiv are both vacant — raising questions about where the</p><p>administration's diplomatic attention is directed.</p><p>Middle East Pressure System: Iraq, Syria, Lebanon</p><p>The Trump administration restarted dollar shipments to Iraq, pausing a pressure campaign meant to push Baghdad to distance itself</p><p>from Iran. In a separate development, Trump suggested that Syria should crack down on Hezbollah — a proposal that confounded</p><p>many in the Middle East given the decades-long strategic ties between Damascus and the Iranian-backed militia.</p><p>Greece Bombings and India-Japan Alliance</p><p>Three bombings in Greece targeted members of the governing party, raising security concerns ahead of the Fourth of July holiday. In</p><p>the Indo-Pacific, India's Prime Minister Modi deepened ties with Japan's Sanae Takaichi, signing agreements on AI, energy, and</p><p>security in what both leaders described as "uncertain times."</p><p>Tibet Protest and Denmark Snub</p><p>Lobga Rangzen: , a 52-year-old resident of Queens, died after setting himself on fire outside the United Nations to protest Beijing's</p><p>policies, which he said were "destroying the Tibetan people." In Europe, furious at President Trump over **Greenland**, Danish</p><p>officials pressured organizers to cut American officials from Denmark's long-running Fourth of July celebration — an unprecedented</p><p>diplomatic exclusion.</p><p>> Prediction (75%): Iran's succession will hold through the funeral cycle but faces a 3–6 month danger window as the new supreme</p><p>leader consolidates power. (Rationale: regime has survived Khamenei's death and maintained diplomatic continuity, but the</p><p>assassination plot against negotiators reveals how thin the margin of survival is.)</p><p>> Prediction (85%): Russia will not achieve a major territorial breakthrough in Ukraine in the next 90 days, given 1.4M casualties and</p><p>a "largely stalled" ground campaign. (Rationale: Clausewitzian culmination point clearly passed; no reserves for strategic offensive.)</p><p>Cluster 2: US Politics & Domestic Policy</p><p>Trump's $2.2 Billion Disclosure</p><p>President Trump made at least $2.2 billion during his first year back in the White House, according to a mandatory disclosure</p><p>released this week. Of that total, $1.4 billion came from cryptocurrency ventures (63.6%), with $636 million from a single memecoin</p><p>that generated losses for hundreds of thousands of retail investors. The situation has "few known global precedents for any leader of</p><p>a liberal democracy," according to the NYT. The MAGA base has remained "largely quiet" about the disclosure, a silence that multiple</p><p>analytical lenses (Maoist, Nietzschean, strategic) identify as a pre-crisis signal rather than genuine acceptance.</p><p>Page 2/8</p><p>Supreme Court: Mixed Rulings, Net Expansion of Executive Power</p><p>The justices struck down Trump's order to end birthright citizenship but ruled that the president can fire independent federal</p><p>regulators, carving out an exception for the Federal Reserve. In a third press-freedom ruling, the Court allowed fines against former</p><p>Fox News reporter Catherine Herridge for refusing to disclose a source. Legal scholars were surprised by the close rulings, which</p><p>simultaneously constrain and empower the executive.</p><p>NYT Master Briefing</p><p>Ruling</p><p>Birthright citizenship</p><p>struck down</p><p>Firing independent</p><p>regulators upheld</p><p>Reporter source fine</p><p>allowed</p><p>ICE Enforcement Surge</p><p>Direction</p><p>Impact</p><p>Constrains Trump</p><p>Upholds 14th Amendment</p><p>Expands</p><p>presidential</p><p>power</p><p>Weakens press</p><p>confidentiality</p><p>guarantee</p><p>Includes Federal</p><p>Reserve exception</p><p>Herridge fined for</p><p>protecting source</p><p>ICE: doubled its daily arrest rate, reaching **10,000 arrests in five days** — an average of 2,000 per day — without the fanfare of last</p><p>year's large urban operations. The enforcement escalation is sowing widespread fear in immigrant communities nationwide. The</p><p>surge raises operational questions about whether the legal pipeline (courts, detention, removal capacity) can process this volume.</p><p>FBI Georgia Investigation and Trump Accounts</p><p>The FBI assigned scores of analysts to examine election records in Fulton County, Georgia, reflecting Trump's desire to prove his</p><p>baseless claims that the 2020 election was rigged. Separately, more than 6 million children have been signed up for "Trump Accounts</p><p>" — investment accounts opening for contributions on July 4 with a $1,000 initial government contribution — though significant uptake</p><p>gaps remain, leaving many children missing out.</p><p>> Prediction (80%): The MAGA base's silence on Trump's $2.2B disclosure will break within 6 months, producing either a legitimacy</p><p>crisis or a forced rationalization that reshapes the movement. (Rationale: Maoist analysis identifies this as a pre-explosion</p><p>contradiction; base cannot indefinitely suppress the theory-practice gap between</p>
+            <h2 class="section-title">Editorial Cartoon</h2>
+            <div class="cartoon-section">
+                <h3>July 3, 2026</h3>
+                <img src="./assets/images/nyt_cartoon.jpg" alt="Daily Cartoon">
+                <p>Editorial cartoon for July 3, 2026</p>
+            </div>
+            <h2 class="section-title">Observer Commentary</h2>
+            <div class="observer"><h4>金灿荣</h4><div class="observer-meta">地缘政治、工业化</div><p># 金灿荣观察：2026年7月3日《纽约时报》简报解读</p><p>## 百年大变局下的战略相持</p><p>今天看NYT简报，世界仍处于**百年未有之大变局**。西藏自焚事件和民族团结法争议，本质是美国打"民族牌"的老套路。美国越在西藏施压，越说明常规遏制已黔驴技穷。</p><p>**美伊战略僵局**值得关注。哈梅内伊下葬是政权"组织力测试"，以色列甚至可能在和谈期间暗杀伊朗谈判代表——美国连盟友都管不住，谈何领导世界？</p><p>**乌克兰战争**超200万伤亡，俄军140万，乌军60万，俄军只剩消耗战。美国却在伊朗、以色列上砸外交资源，连驻莫斯科、基辅大使都没有——顾头不顾腚。</p><p>**印日深化合作**是典型"大国对冲"，不选边站。**格陵兰/丹麦**冲突更有意思——丹麦为抗议特朗普买格陵兰，直接把美国官员从国庆名单上划掉，传统盟友裂痕明显。</p><p>总的来看，美国在政治、外交、盟友管理三个维度出现系统性疲惫。中国要坐稳工业化基本盘，让时间去说话。</p></div>
+<div class="observer"><h4>翟东升</h4><div class="observer-meta">宏观经济学、主权信用理论</div><p># 翟东升观察：7月3日《纽约时报》简报</p><p>## 特朗普加密暴利：主权信用的私有化掠夺</p><p>特朗普披露上任首年收入22亿美元，其中6.36亿来自单一memecoin，散户血亏。主权信用货币论视角：政治权力直接兑换为私人加密资产，美元信用的公共属性被内部人私有化。民本主义政治经济学：这不是市场行为，而是以国家权力为背书的财富转移，MAGA基本盘的沉默说明矛盾正在积累而非消解。</p><p>## 美元霸权作为经济战工具</p><p>美国恢复对伊拉克美元运输，暂停此前以切断美元供应逼其疏远伊朗的攻势。经济战框架：美元不仅是交易媒介，更是华盛顿维持平行体系主导地位的战略武器，以金融通道的开关施压主权国家。同时美方既谈和平协议又企图暗杀伊朗谈判对手——这是以美元为后盾的极限施压，也暴露了盟友作为"不可控变量"的风险。</p><p>## 私人信贷动荡与钨矿地缘政治</p><p>私人信贷市场"恐慌"暴露了无主权信用背书的金融脆弱性，影子银行的深层风险正在浮现。美国转向韩国钨矿以减少对华依赖——平行体系理论的现实映照：全球经济正分裂为两个相对独立的供应链区块，金融脱钩与产业脱钩同步加速。钨矿虽小，却是这场结构性博弈的缩影。</p></div>
+<div class="observer"><h4>宋鸿兵</h4><div class="observer-meta">金融战、美元周期</div><p># 宋鸿兵视角：2026年7月3日《纽约时报》简报观察</p><p>## 金融暗战的多重信号</p><p>特朗普披露的22亿美元收入中，14亿来自加密货币，仅一枚memecoin就贡献了6.36亿。这并非简单的道德问题——当国家元首既是货币政策制定者又是私人加密资产的直接受益者，主权信用与私人投机的界限已彻底模糊。从历史货币周期看，这标志着美元体系内部出现了"主权者捕获"的极端形态：不再是金融资本控制国家，而是国家元首本人成为加密赌场的最大庄家。</p><p>私人信贷市场的"恐慌"（freak out）是更深刻的系统性预警。影子银行体系中1.7万亿美元的资产在透明度几乎为零的环境下运行，当前动荡与2007年次贷危机前CDO市场出现的"无法定价"信号高度相似。下一次金融地震的震中很可能就在这里，而监管层对此几乎无能为力。</p><p>向伊拉克恢复运送美元，表面是施压伊朗政策的中止，实质是美元霸权的经典操作——切断石油美元的流动即切断一国经济命脉，恢复则意味着重新纳入体系。这是货币战争中最赤裸的武器。</p><p>韩国钨矿被列为关键矿产供应链的核心节点，揭示了更深层的结构性矛盾：美国试图在对华脱钩的5-10年窗口期内重建工业基础，但中国控制着全球80%以上的钨供应。没有钨，就没有高端制造业的切削工具和军事工业的穿甲弹——资源战争是货币战争的物理底座。</p><p>拒不续签USMCA则是贸易战升级的决定性信号。北美大陆的1.6万亿美元贸易链从"自由贸易"退化为"年度审查"，等于给整个区域供应链装上了定时炸弹。</p><p>这场金融战争的走向，将由这些看似分散的信号共同决定。美元体系的内部裂缝正在从多个方向同时扩大。</p></div>
+        </main>
+        <footer>
+            Generated by NYT Briefing Pipeline &mdash; July 3, 2026<br>
+            <span style="font-size:0.8rem;color:var(--muted);">Data sourced from NYT coverage · Analysis by 3 strategic observers</span>
+        </footer>
+    </div>
+</body>
+</html>
+<!-- PHASE COMPLETE -->
