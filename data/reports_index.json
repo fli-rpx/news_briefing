@@ -476,8 +476,26 @@
       ]
     },
     "wsj": {
-      "pdf": "reports/wsj_briefing_2026-07-04.pdf",
+      "pdf": "wsj_briefing_2026-07-04.pdf",
       "local": "briefings/wsj_2026-07-04.html",
+      "images": [
+        "./assets/images/wsj_hero_bg.jpg",
+        "./assets/images/wsj_cartoon.jpg"
+      ]
+    }
+  },
+  "2026-07-05": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-07-05.pdf",
+      "local": "briefings/nyt_2026-07-05.html",
+      "images": [
+        "./assets/images/nyt_hero_bg.jpg",
+        "./assets/images/nyt_cartoon.jpg"
+      ]
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-07-05.pdf",
+      "local": "briefings/wsj_2026-07-05.html",
       "images": [
         "./assets/images/wsj_hero_bg.jpg",
         "./assets/images/wsj_cartoon.jpg"
