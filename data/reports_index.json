@@ -510,6 +510,14 @@
         "./assets/images/nyt_hero_bg.jpg",
         "./assets/images/nyt_cartoon.jpg"
       ]
+    },
+    "wsj": {
+      "pdf": "reports/wsj_briefing_2026-07-06.pdf",
+      "local": "briefings/wsj_2026-07-06.html",
+      "images": [
+        "./assets/images/wsj_hero_bg.jpg",
+        "./assets/images/wsj_cartoon.jpg"
+      ]
     }
   }
 }
