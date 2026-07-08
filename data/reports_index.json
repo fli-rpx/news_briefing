@@ -541,7 +541,7 @@
   "2026-07-08": {
     "nyt": {
       "pdf": "nyt_briefing_2026-07-08.pdf",
-      "local": "briefings/2026-07-08.html",
+      "local": "briefings/nyt_2026-07-08.html",
       "images": [
         "./assets/images/nyt_hero_bg.jpg",
         "./assets/images/nyt_cartoon.jpg"
@@ -549,7 +549,7 @@
     },
     "wsj": {
       "pdf": "wsj_briefing_2026-07-08.pdf",
-      "local": "briefings/2026-07-08.html",
+      "local": "briefings/wsj_2026-07-08.html",
       "images": [
         "./assets/images/wsj_hero_bg.jpg",
         "./assets/images/wsj_cartoon.jpg"
