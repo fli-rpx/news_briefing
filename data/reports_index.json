@@ -605,5 +605,15 @@
       "pdf": "reports/wsj_briefing_2026-07-11.pdf",
       "local": "briefings/wsj_2026-07-11.html"
     }
+  },
+  "2026-07-12": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-07-12.pdf",
+      "local": "briefings/nyt_2026-07-12.html",
+      "images": [
+        "./assets/images/nyt_hero_bg.jpg",
+        "./assets/images/nyt_cartoon.jpg"
+      ]
+    }
   }
 }
