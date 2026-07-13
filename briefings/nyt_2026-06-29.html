@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYT Master Briefing — June 28–29, 2026</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #14141b;
+      --panel-2: #1a1a24;
+      --text: #e8e8ef;
+      --muted: #9a9aad;
+      --accent: #00ff88;
+      --accent-dim: rgba(0, 255, 136, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 18px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      display: flex;
+      align-items: flex-end;
+      background: url('./assets/images/nyt_hero_bg.jpg') center center / cover no-repeat;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,15,0.25) 0%, rgba(10,10,15,0.78) 70%, rgba(10,10,15,0.96) 100%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      padding: 48px 0 56px;
+    }
+
+    .hero-kicker {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+      background: var(--accent-dim);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.1rem, 7vw, 3.6rem);
+      line-height: 1.05;
+      margin: 0 0 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-date {
+      font-size: 1.1rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    /* Sections */
+    main { padding: 42px 0 64px; }
+
+    section {
+      margin-bottom: 44px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 0 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .section-title span {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+
+    .card p:last-child { margin-bottom: 0; }
+
+    p { margin: 0 0 14px; }
+
+    .lead {
+      font-size: 1.08rem;
+      color: var(--text);
+    }
+
+    .muted { color: var(--muted); }
+
+    /* Lists */
+    ul, ol {
+      margin: 0 0 14px;
+      padding-left: 22px;
+    }
+
+    li { margin-bottom: 10px; }
+
+    /* Unknowns table */
+    .unknowns-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+      margin-top: 8px;
+    }
+
+    .unknowns-table th,
+    .unknowns-table td {
+      text-align: left;
+      padding: 12px 10px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    .unknowns-table th {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      background: var(--panel-2);
+    }
+
+    .unknowns-table td:first-child {
+      width: 36px;
+      color: var(--accent);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .unknowns-table td:nth-child(2) {
+      width: 34%;
+      font-weight: 600;
+    }
+
+    /* Forecasts */
+    .forecast {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 14px;
+    }
+
+    .forecast-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .forecast-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      line-height: 1.35;
+    }
+
+    .confidence {
+      flex-shrink: 0;
+      background: var(--accent-dim);
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 3px 9px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .forecast p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    /* Clusters */
+    .cluster {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .cluster h3 {
+      margin: 0 0 8px;
+      font-size: 1.08rem;
+      color: var(--accent);
+    }
+
+    .cluster-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .cluster p {
+      font-size: 0.97rem;
+      color: var(--text);
+      margin: 0;
+    }
+
+    /* Scenarios */
+    .scenario h4 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .scenario-prob {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: var(--accent-dim);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+
+    /* Cartoon */
+    .cartoon-section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .cartoon-section img {
+      width: 100%;
+      height: auto;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cartoon-caption {
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .cartoon-caption strong {
+      color: var(--text);
+    }
+
+    /* Observer cards */
+    .observer-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+
+    @media (min-width: 700px) {
+      .observer-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .observer-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--accent);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .observer-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .observer-portrait {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-dim), rgba(0,255,136,0.04));
+      border: 1px solid rgba(0,255,136,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      color: var(--accent);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .observer-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0;
+      line-height: 1.25;
+    }
+
+    .observer-title {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin: 2px 0 0;
+    }
+
+    .observer-body {
+      font-size: 0.94rem;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .observer-body p {
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .hero { min-height: 340px; }
+      .hero-content { padding: 32px 0 40px; }
+      .unknowns-table { font-size: 0.88rem; }
+      .unknowns-table th,
+      .unknowns-table td { padding: 10px 8px; }
+      .forecast-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container hero-content">
+      <div class="hero-kicker">NYT Master Briefing</div>
+      <h1>America’s Four Simultaneous Crises</h1>
+      <div class="hero-date">June 29, 2026</div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section id="executive-summary">
+      <h2 class="section-title"><span>//</span> Executive Summary</h2>
+      <div class="card">
+        <p class="lead">
+          America faces four simultaneous crises: a fractured presidency, a fragile Iran cease-fire, a hollowing economy, and a partisan national birthday.
+        </p>
+        <p>
+          Trump’s personal obsessions block bipartisan housing legislation while his family profits from a <strong>$1.6 billion</strong> mining deal. Iran risks peace talks to preserve Strait of Hormuz leverage. Venezuela’s <strong>920+</strong> earthquake dead expose global rescue-capacity limits. The economy booms for AI and luxury while federal buildings decay and airfares spike <strong>35%</strong>. The 250th birthday has become a proxy war over national identity.
+        </p>
+      </div>
+    </section>
+
+    <section id="unknowns">
+      <h2 class="section-title"><span>//</span> What We Don’t Know — 10 Specific Items</h2>
+      <div style="overflow-x:auto;">
+        <table class="unknowns-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Gap</th>
+              <th>Why It Matters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>True death toll from Venezuela earthquakes</td>
+              <td>"Hundreds still trapped" – could exceed 2,000; alters humanitarian scale and political fallout.</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>Next U.S.-Iran negotiating venue and date</td>
+              <td>No meeting scheduled; breakdown could spike oil prices and worsen inflation.</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>Whether Iran’s Strait attacks were tactical or strategic</td>
+              <td>Determines if the cease-fire is salvageable or merely a pause in escalation.</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>Full extent of Trump family financial interests</td>
+              <td>Only a 20% stake in one entity disclosed; other deals likely exist.</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>Midterm polling impact of Trump’s self-sabotage</td>
+              <td>No survey data yet on voter response to blocked housing bill and party paralysis.</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>How many housing units were displaced by data center land grabs</td>
+              <td>Quantifying AI’s crowding-out effect on affordability.</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>Aggregate employee illness or productivity loss from $50B federal building backlog</td>
+              <td>Only anecdotal evidence of mold, leaks, and elevator entrapments.</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>Whether Republican senators will confront Trump or continue appeasing</td>
+              <td>Their strategy determines legislative functionality through midterms.</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>China’s actual aid package to Venezuela</td>
+              <td>Foreign ministry promise without specifics; strategic implications for U.S. influence.</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>Long-term durability of the Omani Strait route</td>
+              <td>If Iran can disrupt it, the cease-fire framework collapses.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="forecasts">
+      <h2 class="section-title"><span>//</span> Calibrated Predictions</h2>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">U.S.-Iran cease-fire will hold for 30 more days</div>
+          <div class="confidence">65%</div>
+        </div>
+        <p>Both sides need peace; Iran is maintaining leverage, not seeking full war. Risk: Iran may escalate again if talks don’t resume soon.</p>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Trump will not sign the housing bill before July 4 recess</div>
+          <div class="confidence">85%</div>
+        </div>
+        <p>He refused Wednesday and demanded SAVE America Act first; Senate left town. Pattern shows he prioritizes personal obsessions over party wins.</p>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">At least 1,500 total deaths in Venezuela earthquakes</div>
+          <div class="confidence">80%</div>
+        </div>
+        <p>920 confirmed, "hundreds still trapped" on Day 5. Rescue capacity limited; death toll historically triples initial counts in similar disasters.</p>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Commercial airfares will not decline before October</div>
+          <div class="confidence">75%</div>
+        </div>
+        <p>Jet fuel nearly doubled; airlines cut domestic capacity. No diplomatic breakthrough imminent to lower oil prices. Summer peak travel season locks in high fares.</p>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Republicans will lose at least 5 House seats in November</div>
+          <div class="confidence">70%</div>
+        </div>
+        <p>Trump undercuts party message on affordability, blocks housing bill, judges strike voting restrictions. Midterm headwinds typical for sitting president; self-sabotage accelerates losses.</p>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">At least one more federal judge will strike down a Trump election-related order</div>
+          <div class="confidence">60%</div>
+        </div>
+        <p>Judge Talwani’s ruling sets precedent. Other challenges pending. Trend of judicial pushback suggests pattern.</p>
+      </div>
+
+      <div class="forecast">
+        <div class="forecast-header">
+          <div class="forecast-title">Consequential AI regulation proposal will emerge in Congress by December 2026</div>
+          <div class="confidence">55%</div>
+        </div>
+        <p>Crowding-out effect gaining attention. Bipartisan concern about housing displacement, land costs, and energy use. Pressure building for guardrails.</p>
+      </div>
+    </section>
+
+    <section id="article-analysis">
+      <h2 class="section-title"><span>//</span> Article Cluster Analysis</h2>
+
+      <div class="cluster">
+        <h3>Cluster 1 — The Fractured Executive</h3>
+        <div class="cluster-meta">Stories #3, #4, #5, #6 · 4 stories</div>
+        <p>Trump’s personal enrichment and whims block his own party’s agenda, lose court battles, and alienate allies. The <strong>$400M</strong> ballroom, <strong>$1.6B</strong> family-linked mining deal, and blocked housing bill reveal governance as personal wealth extraction. The “trifecta” is actively weaponized against party goals.</p>
+      </div>
+
+      <div class="cluster">
+        <h3>Cluster 2 — Compounding Crises</h3>
+        <div class="cluster-meta">Stories #1, #2, #8, #9, #10, #11, #12 · 7 stories</div>
+        <p>Geopolitical standoff, earthquake disaster, wildfires, and impending heat wave simultaneously strain U.S. military, diplomatic, and humanitarian capacity. The Venezuelan community’s desperate search with a “single jackhammer” symbolizes global under-resourcing.</p>
+      </div>
+
+      <div class="cluster">
+        <h3>Cluster 3 — The Hollow Economy</h3>
+        <div class="cluster-meta">Stories #7, #17, #18, #19, #20 · 5 stories</div>
+        <p>AI investment is crowding out housing and infrastructure while <strong>35%</strong> airfare spikes punish ordinary travelers. Luxury goods (<strong>$40K</strong> Patek Philippe watches, Hamptons estates) thrive by exploiting invisible labor. The economy booms for the few and hollows out for the many.</p>
+      </div>
+
+      <div class="cluster">
+        <h3>Cluster 4 — Whose Birthday?</h3>
+        <div class="cluster-meta">Stories #13, #14, #15, #16 · 4 stories</div>
+        <p>Trump’s partisan “Freedom 250” commission competes with bipartisan local efforts. Multiple states refuse to participate in Washington’s Great American State Fair. The question “What does America mean?” is answered differently from Washington, state capitals, and local communities — becoming a cultural fault line.</p>
+      </div>
+
+      <div class="card">
+        <p class="lead">Alternative Scenarios</p>
+        <div class="scenario">
+          <h4>A. Cease-fire Collapse and Regional War — 30%</h4>
+          <p class="scenario-prob">Trigger</p>
+          <p>Another round of Iranian attacks on commercial shipping provokes a major U.S. retaliatory strike. Oil prices spike <strong>50%+</strong>; the <strong>35%</strong> airfare increase accelerates to <strong>60%</strong>; China and Russia gain diplomatic leverage.</p>
+        </div>
+        <div class="scenario" style="margin-top:18px;">
+          <h4>B. Trump Purges Party Dissent and Pivots to Base — 25%</h4>
+          <p class="scenario-prob">Trigger</p>
+          <p>Trump sees midterm polling showing base loyalty; he doubles down on SAVE America Act and embraces Freedom 250 as his personal brand for 2028. Housing bill dies; Republican Party splits further.</p>
+        </div>
+        <div class="scenario" style="margin-top:18px;">
+          <h4>C. AI Bubble Burst Triggers Recession — 20%</h4>
+          <p class="scenario-prob">Trigger</p>
+          <p>A major tech firm announces capex cuts and data-center cancellations due to overcapacity. <strong>$1T</strong> annual AI investment collapses; banking sector exposed to AI loans; recession compounds existing pain.</p>
+        </div>
+        <div class="scenario" style="margin-top:18px;">
+          <h4>D. Venezuela Humanitarian Opening Reshapes U.S.-Latin America Relations — 15%</h4>
+          <p class="scenario-prob">Trigger</p>
+          <p>U.S. aid (<strong>$150M</strong>) and rescue teams generate goodwill; Maduro’s successors cooperate; China and Russia fail to match the U.S. response. Temporary soft-power boost, but domestic dysfunction may squander it.</p>
+        </div>
+        <div class="scenario" style="margin-top:18px;">
+          <h4>E. Midterm Electoral Earthquake — Democrats Win Narrowly — 15%</h4>
+          <p class="scenario-prob">Trigger</p>
+          <p>Trump blocks housing bill; airfares remain high; heat dome triggers health crisis; Iran standoff continues. Enough swing voters punish Republicans. Gridlock deepens but Trump’s power erodes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="cartoon">
+      <h2 class="section-title"><span>//</span> Daily Cartoon</h2>
+      <div class="cartoon-section">
+        <img src="./assets/images/nyt_cartoon.jpg" alt="Daily Cartoon: a fractured pyramid rising from digital wreckage, rendered in editorial illustration style with neon green fault lines." />
+        <div class="cartoon-caption">
+          <strong>Daily Cartoon</strong> — The fractured pyramid: a visual echo of institutional stress, where the center no longer holds.
+        </div>
+      </div>
+    </section>
+
+    <section id="observers">
+      <h2 class="section-title"><span>//</span> Observer Commentary</h2>
+      <div class="observer-grid">
+
+        <article class="observer-card">
+          <div class="observer-header">
+            <div class="observer-portrait">翟</div>
+            <div>
+              <p class="observer-name">翟东升</p>
+              <p class="observer-title">宏观经济学、主权信用理论</p>
+            </div>
+          </div>
+          <div class="observer-body">
+            <p>这份NYT简报披露的看似是四个孤立危机，但其底层逻辑只有一个：美式全球化体系的信用基础正在经历制度熵增与系统性钙化，而特朗普却执意用一把金钳子给病人拔牙。这不是一次简单的政治混乱，而是主权信用货币论中所讲的那个“制度支撑”的物理性坍塌。当霸权的物质基础——军事投射、法律可执行性和政治稳定性所构成的信用抵押物——开始系统性钙化时，整个上层建筑必然出现结构性两难。伊朗在霍尔木兹海峡的博弈，本质上是敲打这个体系最脆弱的节点。当大国的边际回报率归零时，其内部冲突的演变速度将远远超出华尔街那些滞后指标所展现的估值。此刻北京的应对，应加速构建平行体系中的金融基础设施。</p>
+          </div>
+        </article>
+
+        <article class="observer-card">
+          <div class="observer-header">
+            <div class="observer-portrait">金</div>
+            <div>
+              <p class="observer-name">金灿荣</p>
+              <p class="observer-title">地缘政治、工业化</p>
+            </div>
+          </div>
+          <div class="observer-body">
+            <p>美国现在正经历的是典型的“百年未有之大变局”下半场——霸权走向衰落的内外交困。四个危机同时爆发：总统分裂、伊朗僵局、经济空心化、国庆变成内斗。美国的核心问题就是工业化空心化。现在是“战略相持阶段”：美国像一个手忙脚乱的家庭主妇，面对一屋子烂摊子——数据中心挤占住房、联邦大楼需要花五百亿维修、空运费飙升35%、伊朗在霍尔木兹海峡捏着能源命脉。特朗普还在搞家族矿业赚16亿美元，拦着住房法案不签。中国要做的就是把自己的事情做好。工业化才是硬道理，只要我们把产业链升级、技术突围、国内市场稳住，东升西降的大趋势就不会变。</p>
+          </div>
+        </article>
+
+        <article class="observer-card">
+          <div class="observer-header">
+            <div class="observer-portrait">宋</div>
+            <div>
+              <p class="observer-name">宋鸿兵</p>
+              <p class="observer-title">金融战、美元周期</p>
+            </div>
+          </div>
+          <div class="observer-body">
+            <p><strong>美元环流的“内部控制阀”失灵——从NYT简报看美国系统的“单点崩溃”</strong></p>
+            <p style="margin-top:10px;">如果我们把美国看作一个精密的金融-政治系统，这份NYT简报揭示了一个令人不安的“系统级故障”：白宫正在成为整个系统摩擦的最大来源。这不是简单的两党争斗，而是“美元环流”的内部控制机制出现了根本性断裂。AI投资以每年1万亿美元的速度挤压住房市场，这是货币洪流的结构性错配。联邦建筑维修等待时间长达435天，而特朗普家族却从1.6亿美元的矿业交易中获利。这是系统性的“反馈回路”失灵——政治资本不再用于维护系统基础设施，而是被提取为私人收益。最危险的信号不是某个市场的波动，而是“核心控制阀”的失效。系统的崩溃永远不是始于外部冲击，而是内部核心零件的磨损。</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p><strong>Generated by NYT Briefing Pipeline</strong></p>
+      <p>June 29, 2026</p>
+    </div>
+  </footer>
+
+<!-- PHASE COMPLETE -->
+</body>
+</html>

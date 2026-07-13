@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSJ Daily Briefing — June 13, 2026</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #14161b;
+      --surface-2: #1c1f27;
+      --surface-3: #252a33;
+      --text: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --muted: #5f6368;
+      --accent: #b38b59;
+      --accent-2: #c9a227;
+      --green: #34a853;
+      --yellow: #fbbc04;
+      --red: #ea4335;
+      --blue: #8ab4f8;
+      --border: #2e323b;
+      --font-serif: "Chronicle Display", Georgia, "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header {
+      background: linear-gradient(180deg, #101218 0%, var(--bg) 100%);
+      border-bottom: 3px solid var(--accent);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+    .masthead {
+      font-family: var(--font-serif);
+      font-size: clamp(2.2rem, 7vw, 4rem);
+      letter-spacing: -0.02em;
+      margin: 0;
+      color: var(--text);
+    }
+    .tagline {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .date-line {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+    }
+    .tone-pill {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.12);
+      color: var(--green);
+      border: 1px solid rgba(34, 197, 94, 0.35);
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(11, 12, 15, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    nav ul {
+      display: flex;
+      gap: 0.25rem;
+      list-style: none;
+      margin: 0 auto;
+      padding: 0.6rem 1rem;
+      max-width: 1200px;
+      min-width: max-content;
+    }
+    nav a {
+      display: block;
+      padding: 0.55rem 0.85rem;
+      color: var(--text-secondary);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+    nav a:hover, nav a.active {
+      background: var(--surface-2);
+      color: var(--accent);
+      text-decoration: none;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem;
+    }
+    section {
+      margin-bottom: 3rem;
+      scroll-margin-top: 5rem;
+    }
+    h2 {
+      font-family: var(--font-serif);
+      font-size: 1.75rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.85rem;
+      margin: 0 0 1.25rem;
+      color: var(--text);
+    }
+    h3 {
+      font-size: 1.2rem;
+      margin: 1.8rem 0 0.6rem;
+      color: var(--text);
+    }
+    h4 {
+      font-size: 1rem;
+      color: var(--accent-2);
+      margin: 1.4rem 0 0.5rem;
+    }
+    p { margin: 0.6rem 0; }
+    .lead {
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.1rem;
+    }
+    .card-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.35rem;
+    }
+    .card-value {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.75rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--surface-2);
+      color: var(--accent);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.02); }
+    .text-right { text-align: right; }
+    .badge {
+      display: inline-block;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      margin-right: 0.45rem;
+    }
+    .bg-green { background: var(--green); }
+    .bg-yellow { background: var(--yellow); }
+    .bg-red { background: var(--red); }
+    .article {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .article-meta {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.75rem;
+    }
+    .article h3 { margin-top: 0; }
+    .article ul, .article ol {
+      padding-left: 1.2rem;
+      margin: 0.5rem 0;
+    }
+    .article li { margin: 0.35rem 0; }
+    .signal-note {
+      background: rgba(251, 188, 4, 0.08);
+      border-left: 3px solid var(--yellow);
+      padding: 0.9rem 1rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+      color: var(--text-secondary);
+    }
+    .insights-list {
+      list-style: none;
+      padding: 0;
+      counter-reset: insight;
+    }
+    .insights-list li {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1rem;
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .insights-list li::before {
+      counter-increment: insight;
+      content: counter(insight);
+      position: absolute;
+      left: 0.85rem;
+      top: 0.85rem;
+      width: 1.35rem;
+      height: 1.35rem;
+      background: var(--accent);
+      color: #000;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+    @media (max-width: 640px) {
+      header { padding: 1.75rem 1rem 1.25rem; }
+      main { padding: 1rem 0.75rem 3rem; }
+      table { font-size: 0.85rem; }
+      th, td { padding: 0.6rem 0.65rem; }
+      .card-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="tagline">The Wall Street Journal · A-Grade Daily Briefing</p>
+    <h1 class="masthead">WSJ Daily Briefing</h1>
+    <p class="date-line">Saturday, June 13, 2026</p>
+    <span class="tone-pill">Market Tone: Broadly Positive (+0.3–0.8% major indices)</span>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#topstory">Top Story</a></li>
+      <li><a href="#markets">Markets</a></li>
+      <li><a href="#economy">Economy &amp; Policy</a></li>
+      <li><a href="#geopolitics">Geopolitics</a></li>
+      <li><a href="#tech">Tech &amp; AI</a></li>
+      <li><a href="#business">Business</a></li>
+      <li><a href="#outlook">Outlook</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <div class="card-grid">
+        <div class="card">
+          <div class="card-label">Date</div>
+          <div class="card-value">Saturday, June 13, 2026</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Market Mood</div>
+          <div class="card-value">Bullish — SpaceX debut lifts sentiment, small caps lead</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Dominant Narratives</div>
+          <div class="card-value">SpaceX historic IPO ($2.1T) · Iran peace hopes · AI price war · Inflation above 4%</div>
+        </div>
+        <div class="card">
+          <div class="card-label">Key Level</div>
+          <div class="card-value">S&P 500: 7,431 (+0.5%) · Dow: 51,202 (+0.7%)</div>
+        </div>
+      </div>
+      <p class="lead">Wall Street closed a turbulent week on a high note as SpaceX's record-shattering IPO and a sharp drop in oil prices on Iran deal hopes powered a broad market advance. The S&P 500 rose 0.5% to 7,431, the Dow added 0.7% to 51,202, and the Nasdaq gained 0.3% to 25,889. The Russell 2000 surged 3.9% for the week — the best performer YTD at +18.6% — as investors rotated into small caps and momentum plays.</p>
+    </section>
+
+    <section id="topstory">
+      <h2>Top Story</h2>
+      <article class="article">
+        <h3>SpaceX, Now Worth $2.1 Trillion, Pulls Off Goldilocks Debut</h3>
+        <div class="article-meta">WSJ Print Edition · Front Page · Saturday, June 13, 2026</div>
+        <p>SpaceX marked the largest IPO in history on Friday, rallying 19.2% in its first day of trading on the Nasdaq. The rocket company opened at $150 per share after pricing at $135, closing at $160.95 — making Elon Musk the world's first trillionaire.</p>
+        <h4>By the Numbers</h4>
+        <ul>
+          <li><strong>IPO size:</strong> $75 billion raised — largest ever, 4x oversubscribed</li>
+          <li><strong>Day 1 close:</strong> $160.95 (+19.2%) — market cap ~$2.1 trillion</li>
+          <li><strong>Musk net worth:</strong> Surpassed $1 trillion milestone</li>
+          <li><strong>Demand:</strong> Over $70 billion in retail orders</li>
+          <li><strong>Index entry:</strong> Set to join Nasdaq-100 in 15 trading days</li>
+        </ul>
+        <h4>What Analysts Are Saying</h4>
+        <ul>
+          <li><strong>CFRA:</strong> Issued a sell rating post-IPO, warning valuation may be stretched</li>
+          <li><strong>Wolfe Research:</strong> "Out-of-this-world" valuation supported by rocket launch moat</li>
+          <li><strong>Jay Woods (Freedom Capital):</strong> "Watch how we trade Monday, Tuesday, Wednesday"</li>
+          <li><strong>Walter Isaacson:</strong> "Beginning of a whole new economy"</li>
+        </ul>
+        <div class="signal-note">
+          <strong>Broader Signal:</strong> The Magnificent Seven traded sideways as investors likely sold Big Tech to free up capital for SpaceX. OpenAI and Anthropic are expected to go public later this year — this IPO serves as a bellwether.
+        </div>
+      </article>
+
+      <article class="article">
+        <h3>SpaceX's IPO Proves the Power of Musk's 'Superlative' Strategy</h3>
+        <p>The rocket company might never accomplish all it has told investors, but it has met the original goal of reigniting interest in space. SpaceX's New Millionaires have the power to reshape the Texas real estate market as employees cash out stock options.</p>
+      </article>
+    </section>
+
+    <section id="markets">
+      <h2>Markets</h2>
+      <article class="article">
+        <h3>Market Data — Friday Close</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Index</th>
+              <th class="text-right">Close</th>
+              <th class="text-right">Chg</th>
+              <th class="text-right">Week Chg</th>
+              <th>Signal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>S&P 500</td><td class="text-right">7,431.46</td><td class="text-right">+0.5%</td><td class="text-right">+0.6%</td><td><span class="badge bg-green"></span>Positive</td></tr>
+            <tr><td>Dow Jones</td><td class="text-right">51,202.26</td><td class="text-right">+0.7%</td><td class="text-right">+0.7%</td><td><span class="badge bg-green"></span>Positive</td></tr>
+            <tr><td>Nasdaq</td><td class="text-right">25,888.84</td><td class="text-right">+0.3%</td><td class="text-right">+0.7%</td><td><span class="badge bg-green"></span>Positive</td></tr>
+            <tr><td>Russell 2000</td><td class="text-right">2,943.99</td><td class="text-right">+0.8%</td><td class="text-right">+3.9%</td><td><span class="badge bg-green"></span>Small caps leading</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Commodities & Rates</h4>
+        <table>
+          <thead>
+            <tr><th>Asset</th><th class="text-right">Price</th><th class="text-right">Chg</th><th>Signal</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Brent Crude</td><td class="text-right">~$87</td><td class="text-right">-3.4%</td><td><span class="badge bg-green"></span>Peace premium</td></tr>
+            <tr><td>Gold</td><td class="text-right">~$4,237</td><td class="text-right">+2.5%</td><td><span class="badge bg-yellow"></span>Safe-haven + rally</td></tr>
+            <tr><td>US 10Y Yield</td><td class="text-right">4.48%</td><td class="text-right">Stable</td><td><span class="badge bg-yellow"></span>Elevated</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Key Themes</h4>
+        <ul>
+          <li><strong>Small caps outperform:</strong> Russell 2000 hit all-time highs, best YTD at +18.6%</li>
+          <li><strong>Big Tech lags:</strong> Mag 7 traded sideways for second straight week</li>
+          <li><strong>Chips rebound:</strong> SOXX up 11% for the week after tumbling 6% prior week</li>
+          <li><strong>Equal weight wins:</strong> Invesco S&P 500 Equal Weight ETF (RSP) outperforming</li>
+          <li><strong>Oil plunge:</strong> Brent below $90 on Iran deal hopes</li>
+        </ul>
+      </article>
+
+      <article class="article">
+        <h3>Worried About a Tech-Stock Bubble? Here's Where You Can Take Cover</h3>
+        <p>WSJ's Intelligent Investor argues European markets — left behind in the AI trade — deserve a fresh look for diversification against U.S. tech concentration risk.</p>
+      </article>
+    </section>
+
+    <section id="economy">
+      <h2>Economy &amp; Policy</h2>
+      <article class="article">
+        <h3>Inflation Hits 4% — First Time in Three Years</h3>
+        <p>This week's consumer prices data showed annual inflation climbing above 4% for the first time in three years, adding to conviction that the Fed will be unable to cut rates anytime soon.</p>
+      </article>
+
+      <article class="article">
+        <h3>Fed Meeting Preview: Kevin Warsh's First as Chair</h3>
+        <p>The Federal Reserve meets June 16-17 — the first helmed by Kevin Warsh. Expected to hold rates steady. Key watchpoints:</p>
+        <ul>
+          <li>Any removal of easing language from the statement</li>
+          <li>Summary of Economic Projections — first under Warsh</li>
+          <li>Communication style: Warsh opposes press conferences every meeting</li>
+        </ul>
+        <p>Odds of a rate cut this year: <strong>virtually zero</strong> (CME FedWatch).</p>
+      </article>
+
+      <article class="article">
+        <h3>Consumers More Upbeat as Gas Prices Ease</h3>
+        <p>Consumer sentiment improved as falling oil prices (Brent below $90) provided relief at the pump, with gas prices easing alongside Iran deal optimism.</p>
+      </article>
+    </section>
+
+    <section id="geopolitics">
+      <h2>Geopolitics</h2>
+      <article class="article">
+        <h3>How the U.S. and Iran Turned From Renewed War to the Cusp of Peace</h3>
+        <p>In a dramatic 24-hour reversal, President Trump cancelled planned strikes against Iran on Thursday amid renewed peace discussions. The U.S. sees an 80-85% chance of an Iran deal being signed. Oil markets are pricing in the possibility of Iranian supply returning to global markets, driving Brent crude down 3.4%.</p>
+      </article>
+
+      <article class="article">
+        <h3>Israel Plans Military Strikes Against Iran</h3>
+        <p>The Wall Street Journal reports that Israel has planned a series of military strikes against Iran over the next two weeks, adding another dimension to the Middle East situation.</p>
+      </article>
+
+      <article class="article">
+        <h3>Trump Says U.S. Killed Venezuelan Tren de Aragua Gang Leader</h3>
+        <p>President Trump announced that U.S. forces killed a leader of the Venezuelan Tren de Aragua criminal organization.</p>
+      </article>
+
+      <article class="article">
+        <h3>Kennedy Center Misses Deadline to Remove Trump's Name</h3>
+        <p>The Kennedy Center missed a deadline and is requesting more time to remove former President Trump's name from the institution.</p>
+      </article>
+    </section>
+
+    <section id="tech">
+      <h2>Technology &amp; AI</h2>
+      <article class="article">
+        <h3>Anthropic Halts Access to Top AI Models After U.S. Ban on Foreign Use</h3>
+        <p>Anthropic, valued at approximately $965 billion, has suspended access to its top-tier AI models following a U.S. government ban on foreign use of advanced AI systems. The move signals escalating AI export controls.</p>
+      </article>
+
+      <article class="article">
+        <h3>The AI Price War Is Here</h3>
+        <p>Startups and tech giants alike are mixing and matching AI models to avoid premium prices charged by industry leaders like OpenAI and Anthropic. This "price war" is piling pressure on frontier labs as competition intensifies across the ecosystem.</p>
+      </article>
+
+      <article class="article">
+        <h3>AI Needs Ajinomoto's Film, but Its CEO Won't Raise Prices Just Because</h3>
+        <p>The world's hunger for AI chips is straining the industry's ability to produce the materials they rely on, creating new pressure points that could slow the boom. Ajinomoto, a Japanese chemical company, produces critical film used in semiconductor manufacturing.</p>
+      </article>
+
+      <article class="article">
+        <h3>Rocket Lab and 4 Other Space Stocks Join the Nasdaq 100</h3>
+        <p>Space stocks continue to gain traction as Rocket Lab and four others are set to join the Nasdaq 100 index.</p>
+      </article>
+
+      <article class="article">
+        <h3>Pope Leo Compares AI Threat to Biblical 'Tower of Babel'</h3>
+        <p>In remarks published today, Pope Leo drew parallels between the risks of uncontrolled AI development and the biblical story of the Tower of Babel.</p>
+      </article>
+    </section>
+
+    <section id="business">
+      <h2>Business Highlights</h2>
+      
+      <article class="article">
+        <h3>🛏️ Sleep Number Files for Bankruptcy</h3>
+        <p>Mattress maker Sleep Number filed for Chapter 11 bankruptcy with a deal to be acquired by Sleep Country Canada for $415 million.</p>
+      </article>
+
+      <article class="article">
+        <h3>🍔 McDonald's & Coke: A Strained 70-Year Marriage</h3>
+        <p>Changing consumer tastes and increasing competition are challenging one of the most successful and oldest corporate partnerships in history.</p>
+      </article>
+
+      <article class="article">
+        <h3>🎬 Paramount-WBD Deal Cleared by DOJ</h3>
+        <p>The $81 billion acquisition of Paramount by Warner Bros. Discovery received Justice Department clearance. Still requires European regulatory approval.</p>
+      </article>
+
+      <article class="article">
+        <h3>💳 BlackRock Private-Credit Fund Faces 13% Redemption Requests</h3>
+        <p>Shareholders requested 13% redemptions — above last quarter's levels, though withdrawals will be capped at 5%.</p>
+      </article>
+
+      <article class="article">
+        <h3>📊 Flutter Entertainment (FanDuel) to Delist From London</h3>
+        <p>The FanDuel owner will trade solely in New York, citing higher trading volumes and lower regulatory costs in the U.S.</p>
+      </article>
+
+      <article class="article">
+        <h3>🔒 Blockworks Acquires Messari at a Discount</h3>
+        <p>Crypto-data provider Blockworks bought Messari for more than $10 million — a steep discount from its ~$300 million valuation in 2022.</p>
+      </article>
+
+      <article class="article">
+        <h3>🥩 JBS to Close Pennsylvania Beef Plant</h3>
+        <p>The world's largest meatpacker is closing a beef-processing plant amid a U.S. cattle shortage squeezing the industry.</p>
+      </article>
+
+      <article class="article">
+        <h3>🛡️ Bond Investor Ken Leech Pleads Guilty</h3>
+        <p>The former CIO of Western Asset Management pleaded guilty to obstructing an SEC probe into a cherry-picking fraud scheme.</p>
+      </article>
+
+      <article class="article">
+        <h3>🚗 Jeep Owners Face Growing Recall: Park Outside</h3>
+        <p>Stellantis' latest park-outside fire recall campaign now includes one million Jeep vehicles.</p>
+      </article>
+    </section>
+
+    <section id="outlook">
+      <h2>Week Ahead &amp; Outlook</h2>
+      <article class="article">
+        <h3>Key Events: June 15–19</h3>
+        <table>
+          <thead>
+            <tr><th>Day</th><th>Key Events</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Mon, Jun 15</td><td>Empire State Index · Industrial Production · NAHB Housing Index</td></tr>
+            <tr><td>Tue, Jun 16</td><td>Housing Starts · Import/Export Prices · <strong>FOMC begins</strong></td></tr>
+            <tr><td>Wed, Jun 17</td><td>Retail Sales · <strong>FOMC Decision + SEP at 2:00 PM ET</strong></td></tr>
+            <tr><td>Thu, Jun 18</td><td>Jobless Claims · Philly Fed Index · Earnings: Accenture, Kroger</td></tr>
+            <tr><td>Fri, Jun 19</td><td><strong>Markets closed for Juneteenth</strong></td></tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article class="article">
+        <h3>Signal Watch: What We're Tracking</h3>
+        <ol class="insights-list">
+          <li><strong>SpaceX aftermarket performance</strong> — IPO volatility will test whether the enthusiasm holds into next week.</li>
+          <li><strong>Fed's first Warsh meeting</strong> — Any hawkish shift in language or removal of easing bias could roil markets. Watch the SEP dot plot.</li>
+          <li><strong>Iran deal trajectory</strong> — Oil prices are pricing in a deal. Any breakdown in talks sends crude back above $90.</li>
+          <li><strong>Inflation data</strong> — CPI above 4% reinforces the rate-cut-camp's defeat. Next CPI release is July.</li>
+          <li><strong>Small cap momentum</strong> — Russell 2000 at all-time highs. If this rotates into a sustained trend, it signals broadening market health.</li>
+        </ol>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>WSJ A-Grade Daily Briefing · Saturday, June 13, 2026</p>
+    <p>Sources: The Wall Street Journal, Associated Press, CNBC, Barron's, Bloomberg</p>
+    <p>Curated by Hermes Agent — Nous Research</p>
+    <p style="margin-top:1rem;font-size:0.75rem"><a href="../briefings/gallery.html">View All Briefings →</a></p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYT Front Briefing — June 8, 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0b0d11; color: #e8e6e3; font-family: 'Inter', sans-serif; line-height: 1.7; }
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+  
+  /* Header */
+  .header { padding: 48px 0 32px; border-bottom: 1px solid #1e2026; text-align: center; }
+  .header .label { font-size: 11px; letter-spacing: 3px; color: #8b5e3c; text-transform: uppercase; margin-bottom: 8px; }
+  .header h1 { font-family: 'Noto Serif SC', serif; font-size: 42px; font-weight: 900; color: #d4a373; letter-spacing: 2px; }
+  .header .date { font-size: 13px; color: #6b7280; margin-top: 8px; }
+  .nav { display: flex; justify-content: center; gap: 4px; flex-wrap: wrap; margin-top: 24px; }
+  .nav a { padding: 8px 18px; font-size: 12px; font-weight: 500; color: #9ca3af; text-decoration: none; border-radius: 4px; transition: all .2s; letter-spacing: 1px; text-transform: uppercase; }
+  .nav a:hover, .nav a.active { color: #d4a373; background: rgba(212,163,115,.08); }
+
+  /* Sections */
+  .section { padding: 48px 0; border-bottom: 1px solid #16181f; }
+  .section:last-child { border-bottom: none; }
+  .section-label { font-size: 10px; letter-spacing: 3px; color: #8b5e3c; text-transform: uppercase; margin-bottom: 12px; }
+  .section h2 { font-family: 'Noto Serif SC', serif; font-size: 28px; font-weight: 700; color: #e8e6e3; margin-bottom: 20px; line-height: 1.3; }
+  .section h3 { font-family: 'Noto Serif SC', serif; font-size: 20px; font-weight: 600; color: #d4a373; margin: 28px 0 12px; }
+  .section p { font-size: 15px; color: #c4c2bf; margin-bottom: 16px; max-width: 700px; }
+
+  /* Executive Summary */
+  .hero { padding: 64px 0 40px; text-align: center; border-bottom: 1px solid #1e2026; }
+  .hero .eyebrow { font-size: 11px; letter-spacing: 3px; color: #8b5e3c; text-transform: uppercase; }
+  .hero h2 { font-family: 'Noto Serif SC', serif; font-size: 36px; font-weight: 900; color: #e8e6e3; margin: 16px 0; line-height: 1.2; }
+  .hero .sub { font-size: 14px; color: #6b7280; margin-bottom: 24px; }
+  .hero .highlights { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 20px; }
+  .hero .highlights span { padding: 6px 14px; border: 1px solid #1e2026; border-radius: 20px; font-size: 12px; color: #9ca3af; }
+
+  /* Article cards */
+  .article { padding: 24px 0; border-bottom: 1px solid #16181f; }
+  .article:last-child { border-bottom: none; }
+  .article .tag { display: inline-block; padding: 2px 10px; border-radius: 3px; font-size: 10px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 8px; }
+  .tag-conflict { background: rgba(239,68,68,.12); color: #ef4444; }
+  .tag-politics { background: rgba(59,130,246,.12); color: #3b82f6; }
+  .tag-economy { background: rgba(34,197,94,.12); color: #22c55e; }
+  .tag-world { background: rgba(168,85,247,.12); color: #a855f7; }
+  .article h3 { font-family: 'Noto Serif SC', serif; font-size: 22px; font-weight: 700; color: #e8e6e3; margin-bottom: 10px; line-height: 1.3; }
+  .article p { font-size: 14px; color: #9ca3af; line-height: 1.7; }
+
+  /* Predictions */
+  .predictions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 20px; }
+  .prediction-card { background: #111318; border: 1px solid #1e2026; border-radius: 8px; padding: 20px; }
+  .prediction-card .num { font-size: 28px; font-weight: 700; color: #d4a373; margin-bottom: 8px; }
+  .prediction-card .text { font-size: 13px; color: #9ca3af; margin-bottom: 12px; line-height: 1.5; }
+  .prediction-card .confidence { display: flex; align-items: center; gap: 8px; font-size: 11px; color: #6b7280; }
+  .prediction-card .bar { flex: 1; height: 4px; background: #1e2026; border-radius: 2px; overflow: hidden; }
+  .prediction-card .bar-fill { height: 100%; border-radius: 2px; background: linear-gradient(90deg, #8b5e3c, #d4a373); }
+
+  /* Observers */
+  .observer-tabs { display: flex; gap: 4px; margin-bottom: 24px; flex-wrap: wrap; }
+  .observer-tab { padding: 8px 20px; border: 1px solid #1e2026; border-radius: 4px; font-size: 12px; font-weight: 500; color: #9ca3af; cursor: pointer; transition: all .2s; background: transparent; }
+  .observer-tab:hover, .observer-tab.active { color: #d4a373; border-color: #d4a373; background: rgba(212,163,115,.06); }
+  .observer-content { display: none; }
+  .observer-content.active { display: block; }
+  .observer-content p { font-size: 14px; color: #c4c2bf; margin-bottom: 14px; }
+  .observer-content .quote { border-left: 2px solid #8b5e3c; padding: 16px 20px; margin: 16px 0; font-style: italic; color: #d4a373; font-size: 14px; background: rgba(139,94,60,.06); border-radius: 0 4px 4px 0; }
+  .observer-content .title { font-size: 12px; color: #8b5e3c; letter-spacing: 1px; margin-bottom: 16px; text-transform: uppercase; }
+  .observer-content h2 { font-size: 18px; }
+
+  /* Cartoon */
+  .cartoon-placeholder { background: #111318; border: 1px dashed #1e2026; border-radius: 8px; padding: 80px 40px; text-align: center; margin-top: 20px; }
+  .cartoon-placeholder .icon { font-size: 48px; margin-bottom: 12px; }
+  .cartoon-placeholder p { font-size: 13px; color: #6b7280; }
+
+  /* Footer */
+  .footer { padding: 32px 0; text-align: center; border-top: 1px solid #1e2026; }
+  .footer p { font-size: 11px; color: #4b5563; letter-spacing: 1px; }
+
+  @media (max-width: 640px) {
+    .header h1 { font-size: 28px; }
+    .hero h2 { font-size: 24px; }
+    .section h2 { font-size: 22px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="container">
+    <div class="label">Intelligence Briefing</div>
+    <h1>NYT FRONT BRIEFING</h1>
+    <div class="date">JUNE 8, 2026 — 21 ARTICLES • 6 ANALYSTS</div>
+    <nav class="nav">
+      <a href="#summary" class="active">Summary</a>
+      <a href="#conflicts">Conflicts</a>
+      <a href="#politics">Politics</a>
+      <a href="#economy">Economy</a>
+      <a href="#predictions">Predictions</a>
+      <a href="#observers">Observers</a>
+      <a href="#cartoon">Cartoon</a>
+    </nav>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Hero / Executive Summary -->
+<div class="hero" id="summary">
+  <div class="eyebrow">Executive Summary</div>
+  <h2>A World on Edge: Key Developments for June 8, 2026</h2>
+  <div class="sub">War erupted in the Middle East as Iran fired ballistic missiles at Israel. Trump denied his "no wars" promise — the cost: $29B and counting.</div>
+  <div class="highlights">
+    <span>🇮🇷 Iran Strikes Israel</span>
+    <span>💰 Pentagon $29B</span>
+    <span>🇺🇦 Ukraine Drones</span>
+    <span>🥇 Gold $3,409</span>
+    <span>📉 S&P -1.4%</span>
+  </div>
+</div>
+
+<!-- Iran / Israel War -->
+<div class="section" id="conflicts">
+  <div class="section-label">Breaking • War in the Middle East</div>
+  <h2>Iran Fires Missiles at Israel; Regional War Erupts</h2>
+  <div class="article">
+    <span class="tag tag-conflict">Missile Strikes</span>
+    <p>Iran launched approximately 30 ballistic missiles at Israel early Sunday, shattering a two-month ceasefire. Israel's Iron Dome intercepted most but several struck military targets near Tel Aviv. The attack follows the collapse of US-Iran nuclear talks in Geneva.</p>
+    <p>Trump called Israeli PM Netanyahu to urge restraint — reportedly telling him he would be "in prison without US support." The Pentagon raised Israel's counter-intelligence threat to "critical" after discovering listening devices in Israeli facilities.</p>
+  </div>
+  <div class="article">
+    <span class="tag tag-conflict">Strait of Hormuz</span>
+    <h3>Hormuz Blockade: 5 Months and Counting</h3>
+    <p>Iran effectively controls the Strait of Hormuz since February 28, cutting off 20% of global oil supply. OPEC output hit 35-year lows. The Pentagon's $29B war spending includes $8B on naval operations to reopen the waterway — with no success.</p>
+  </div>
+  <div class="article">
+    <span class="tag tag-conflict">Nuclear Threat</span>
+    <h3>Iran Retains Nuclear Breakout Capability</h3>
+    <p>Iran still holds 970 lbs of 60%-enriched uranium — enough for 10 nuclear weapons — stored in hardened underground facilities beyond the reach of US bunker busters. IAEA access remains denied.</p>
+  </div>
+</div>
+
+<!-- US Politics -->
+<div class="section" id="politics">
+  <div class="section-label">U.S. Politics</div>
+  <h2>Trump Denies "No Wars" Promise as Pentagon Spending Hits $29B</h2>
+  <div class="article">
+    <span class="tag tag-politics">White House</span>
+    <p>President Trump denied Sunday that he ever promised "no wars" — saying "I said I wouldn't start stupid wars. This is different." Video evidence from the 2024 campaign contradicts him. His endorsement also lost decisive power in South Carolina's gubernatorial primary, with voters saying "don't ride his coattails."</p>
+  </div>
+  <div class="article">
+    <span class="tag tag-politics">Congress</span>
+    <h3>FISA Section 702 Collapses 47-52</h3>
+    <p>The surveillance program expired after a bipartisan vote rejected renewal, marking a rare defeat for the intelligence establishment in a wartime environment.</p>
+  </div>
+  <div class="article">
+    <span class="tag tag-politics">HHS</span>
+    <h3>RFK Jr. MIA as Ebola Threat Looms</h3>
+    <p>27 NIH institutes: half run by "acting" directors. The HHS secretary has shown minimal engagement while Ebola outbreaks continue in Central Africa.</p>
+  </div>
+</div>
+
+<!-- Economy / Markets -->
+<div class="section" id="economy">
+  <div class="section-label">Markets & Economy</div>
+  <h2>Business & Economy</h2>
+  <div class="article">
+    <span class="tag tag-economy">Gold</span>
+    <h3>Gold Hits $3,409 as Investors Flee Risk</h3>
+    <p>Safe-haven demand surged amid the Iran-Israel escalation and Hormuz blockade. Bitcoin held at $104K while WTI crude stayed at $67.14/barrel — reflecting demand destruction offsetting supply fears.</p>
+  </div>
+  <div class="article">
+    <span class="tag tag-economy">Travel</span>
+    <h3>Major Airlines Suspend Mideast Flights</h3>
+    <p>Emirates, Qatar Airways, and British Airways suspended routes over Iranian airspace. The insurance industry warned one Houthi attack on the Red Sea could spike rates globally.</p>
+  </div>
+  <div class="article">
+    <span class="tag tag-economy">S&P 500</span>
+    <h3>Markets Sink on War Fears; S&P Drops 1.4%</h3>
+    <p>The Dow fell 1.0%, Nasdaq dropped 1.8%. The PHLX semiconductor index rebounded 6.8% on the week, while SpaceX's IPO targets a $1.77T valuation (Damodaran: $1.3T).</p>
+  </div>
+</div>
+
+<!-- Predictions -->
+<div class="section" id="predictions">
+  <div class="section-label">Forecasts</div>
+  <h2>Key Predictions</h2>
+  <p>Confidence-weighted forecasts based on multi-source intelligence synthesis.</p>
+  <div class="predictions-grid">
+    <div class="prediction-card">
+      <div class="num">01</div>
+      <div class="text">Iran-Israel ceasefire holds &lt;30 days; skirmishing continues</div>
+      <div class="confidence">60-70% <div class="bar"><div class="bar-fill" style="width:65%"></div></div></div>
+    </div>
+    <div class="prediction-card">
+      <div class="num">02</div>
+      <div class="text">Iran retains nuclear breakout capability through 2026</div>
+      <div class="confidence">85-95% <div class="bar"><div class="bar-fill" style="width:90%"></div></div></div>
+    </div>
+    <div class="prediction-card">
+      <div class="num">03</div>
+      <div class="text">Oil exceeds $100/barrel in Q3 2026</div>
+      <div class="confidence">55-70% <div class="bar"><div class="bar-fill" style="width:62%"></div></div></div>
+    </div>
+    <div class="prediction-card">
+      <div class="num">04</div>
+      <div class="text">Trump endorsement loses decisive power in GOP primaries</div>
+      <div class="confidence">60-70% <div class="bar"><div class="bar-fill" style="width:65%"></div></div></div>
+    </div>
+    <div class="prediction-card">
+      <div class="num">05</div>
+      <div class="text">Europe enters Ukraine peace talks as formal participant</div>
+      <div class="confidence">65-80% <div class="bar"><div class="bar-fill" style="width:72%"></div></div></div>
+    </div>
+    <div class="prediction-card">
+      <div class="num">06</div>
+      <div class="text">Strait of Hormuz reopens in 2026</div>
+      <div class="confidence">20-35% <div class="bar"><div class="bar-fill" style="width:27%"></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Observer Commentaries -->
+<div class="section" id="observers">
+  <div class="section-label">观察者评论</div>
+  <h2>Observer Commentaries</h2>
+  <div class="observer-tabs">
+    <button class="observer-tab active" onclick="showObserver('zhai')">翟东升</button>
+    <button class="observer-tab" onclick="showObserver('jin')">金灿荣</button>
+    <button class="observer-tab" onclick="showObserver('song')">宋鸿兵</button>
+  </div>
+
+  <div id="obs-zhai" class="observer-content active">
+    <div class="title">主权信用货币论 · 平行体系理论 · 经济战框架</div>
+    <p><strong>今天的头条看似是一场中东 ceasefire 的破碎与修复。但真正的大故事藏在价格信号和货币流动里。</strong></p>
+    <p>看油价。Brent 逼近 $95，OPEC 产能处于35年最低，但增产是象征性的——因为油出不来。Hormuz 封锁叠加 Houthi 对 Bab al-Mandab 的威胁，正在形成一张 <strong>two-chokepoint trap</strong>。这不是军事事件，这是全球能源体系的结构性断裂。美元石油体系的物理基础——霍尔木兹海峡的自由通行——正在被一个主权国家用最低成本的 asymmetrical warfare 瓦解。美国无法用航母解决这个问题，因为问题本质是 <strong>geography as leverage</strong>。</p>
+    <p>看钱流。美国每月烧 $29B 打一场没有退出策略的战争。Trump 的战争承诺——那个帮他赢得2024的 "no new wars"——已经被视频证据彻底戳穿。他的 endorsement 在 South Carolina 失去决定性力量。这不是个人危机，这是 <strong>Empire's credit default swap</strong>：当霸权国连自己的承诺都无法兑现，全球对美元的信任溢价就会折价。</p>
+    <p>看平行体系。欧盟给 Ukraine 的 $106B loan 不是援助，是 <strong>parallel financial architecture</strong> 的建设资金。Europe 正在 US distraction 中独立建设自己的安全与金融基础设施。伊朗的 new strategic doctrine 本质上是 <strong>de-dollarization of deterrence</strong>——不再接受美元体系下的不对称规则。</p>
+    <p>美国主导的秩序正在空心化——不是被对手打败，而是被自己的 overreach 和 credibility deficit 耗尽。</p>
+    <div class="quote">"The empire is not collapsing; it's bleeding out slowly, one $29B month at a time."</div>
+  </div>
+
+  <div id="obs-jin" class="observer-content">
+    <div class="title">百年未有之大变局 · 金式幽默</div>
+    <p>各位朋友，大家好，我是金灿荣。今天纽约时报的报道，用我的一句话概括就是：<strong>美国这场仗打成了"高价买车，堵在二环"——钱花了不少，人出不来了。</strong></p>
+    <p>先说个有意思的事：五角大楼把以色列的间谍威胁级别提到了"严重"——比任何盟友都高。以色列在美国防部装窃听器，在特勤局车上装监听设备，这是盟友干的事吗？我跟你说，<strong>就像你请朋友来家里吃饭，结果他在你床头柜上装摄像头。</strong></p>
+    <p>更麻烦的是HHS（卫生与公众服务部）。27个NIH研究所，一半的头是"代理"的。埃博拉爆发三周了，部长肯尼迪先生——人家压根没在管。340万美国人的命，交给一个不上班的上司。<strong>这就是我常说的"百年未有之大变局"在制度层面的表现：不是某个人不行，是整个系统失能了。</strong></p>
+    <p>伊朗是输了战术，赢了战略。第一，霍尔木兹海峡还在伊朗手里。全球五分之一的石油走这儿——你炸我的核设施没用，因为你炸不了33公里宽的海峡。第二，伊朗手里有970磅60%浓缩铀，够造10颗原子弹。第三，伊朗出了新战法——"你打我的小弟，我就打你"。这叫<strong>"非对称威慑"</strong>。<strong>你用几亿美元的飞机打我，我用几千块钱的无人机卡你的脖子。</strong></p>
+    <p>特朗普说"I didn't promise no war"——2024年他就靠"不打仗"上台的。现在一个月290亿美元，5万大军，没有退出计划。<strong>这就像一个人开车进死胡同，然后把导航扔了。</strong></p>
+    <p>百年未有之大变局，本质上是<strong>旧秩序的玩法失效了</strong>。美国以为能靠军事力量快速搞定伊朗——结果发现伊朗根本搞不定。你以为能靠盟友——结果盟友在监控你。</p>
+    <div class="quote">"伊朗现在是'穷得只剩核武'——经济爆炸，人民绝望，但手里还攥着能源命脉和核筹码。这个局，特朗普破不了。谁来都一样。"</div>
+  </div>
+
+  <div id="obs-song" class="observer-content">
+    <div class="title">美元环流的黄昏：藏在头条深处的债务火山与帝国透支</div>
+    <p>霍尔木兹海峡，宽仅33公里，承载全球约五分之一的能源供应。这条窄水道不仅是石油的通道，更是美元环流的命门——全球石油以美元计价、以美元结算，而霍尔木兹就是这条货币大动脉上最脆弱的一环。</p>
+    <p>从工程学系统思维看，全球能源体系设计了一个致命单点故障：一条33公里宽的海峡决定了美元—石油循环系统的运转。伊朗不费一兵一卒攻占华尔街，它只需要封锁一条水道，就能迫使全世界重新审视石油美元的底层架构。</p>
+    <p><strong>金融高边疆</strong>理论认为，21世纪国家主权的核心争夺不在陆疆、海疆，而在金融流动的控制权。伊朗在战略高地上打了一场不对称战争：它不是用导弹瞄准以色列的城市，而是用海峡封锁瞄准了全球石油美元的根基。</p>
+    <p>我的三变六反框架预测了这种反转。美国发动这场战争的目标是"政权更迭"和"去核威慑"；实际效果却是：伊朗保留85%-95%的核突破能力、440公斤60%浓缩铀足以制造10枚核弹、油气收入断流但政权未倒。</p>
+    <p>更关键的反转在金融层面：美国以为打赢伊朗能巩固中东主导权，却加速了全球去美元化的进程。阿联酋5月退出OPEC、金砖国家推动本币结算、中国加速人民币石油期货——霍尔木兹的封锁正从能源危机转化为美元霸权的结构性危机。</p>
+    <p>这不是一场地缘战争，这是一场金融高边疆的保卫战——只是这次，进攻方是伊朗，而美元环流的心脏正被自己的血管所窒息。</p>
+    <div class="quote">"霍尔木兹的封锁正从能源危机转化为美元霸权的结构性危机。美国以为打赢伊朗能巩固中东主导权，却加速了全球去美元化的进程。"</div>
+  </div>
+</div>
+
+<!-- Cartoon -->
+<div class="section" id="cartoon">
+  <div class="section-label">Daily Illustration</div>
+  <h2>Today's Cartoon</h2>
+  <div class="cartoon-placeholder">
+    <div class="icon">🎨</div>
+    <p>Cartoon illustration for June 8, 2026</p>
+    <p style="margin-top:8px;font-size:11px;color:#4b5563;">Generated via Kimi Docs as part of the MorningBriefing pipeline</p>
+  </div>
+</div>
+
+</div>
+
+<div class="footer">
+  <div class="container">
+    <p>Prepared by Hermes Agent • Sources: NYT, AP, Reuters, Bloomberg • For informational purposes only</p>
+  </div>
+</div>
+
+<script>
+function showObserver(name) {
+  document.querySelectorAll('.observer-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.observer-tab').forEach(el => el.classList.remove('active'));
+  document.getElementById('obs-' + name).classList.add('active');
+  document.querySelector(`.observer-tab[onclick="showObserver('${name}')"]`).classList.add('active');
+}
+// Smooth scroll for nav links
+document.querySelectorAll('.nav a').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+    document.querySelectorAll('.nav a').forEach(x => x.classList.remove('active'));
+    a.classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>

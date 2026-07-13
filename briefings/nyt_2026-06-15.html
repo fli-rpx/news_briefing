@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GLOBAL SIGNAL — NYT Briefing, June 15, 2026</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --base: #0a0e1a;
+      --surface: rgba(10, 14, 26, 0.72);
+      --surface-strong: rgba(18, 24, 40, 0.88);
+      --text: #ffffff;
+      --muted: #a8b2c8;
+      --accent: #00ff88;
+      --gold: #c9a84c;
+      --cyan: #4a9eff;
+      --border: rgba(255, 255, 255, 0.10);
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.7;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 0;
+      line-height: 1.25;
+    }
+
+    a {
+      color: var(--cyan);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s ease, color 0.2s ease;
+    }
+    a:hover {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
+
+    code, .mono {
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 62vh;
+      display: flex;
+      align-items: flex-end;
+      padding: 64px 0 80px;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(0,255,136,0.12), transparent 45%),
+        radial-gradient(circle at 80% 70%, rgba(74,158,255,0.10), transparent 45%),
+        linear-gradient(135deg, rgba(10,14,26,0.95) 0%, rgba(10,10,15,0.98) 100%),
+        var(--base);
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+    .hero-label {
+      display: inline-block;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(0,255,136,0.35);
+      padding: 6px 12px;
+      border-radius: 4px;
+      margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(44px, 8vw, 92px);
+      margin: 0 0 12px;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+      text-shadow: 0 0 40px rgba(0,255,136,0.15);
+    }
+    .hero .date {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      font-size: 18px;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .hero .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    /* Glass cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      margin-bottom: 32px;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.55);
+      border-color: rgba(201,168,76,0.25);
+    }
+
+    /* Section spacing */
+    section {
+      padding: 48px 0;
+    }
+    section h2 {
+      font-size: 32px;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    section h3 {
+      font-size: 22px;
+      margin-top: 28px;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+    section h4 {
+      font-size: 18px;
+      margin-top: 22px;
+      margin-bottom: 10px;
+      color: var(--cyan);
+    }
+
+    p { margin: 0 0 16px; }
+
+    ul, ol {
+      padding-left: 22px;
+      margin: 0 0 18px;
+    }
+    li { margin-bottom: 10px; }
+
+    strong { color: #fff; font-weight: 700; }
+
+    /* Tables */
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 24px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 15px;
+      background: var(--surface-strong);
+    }
+    th, td {
+      padding: 14px 16px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: rgba(0,255,136,0.08);
+      color: var(--accent);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255,255,255,0.03); }
+
+    /* Confidence bars */
+    .conf-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "SFMono-Regular", Consolas, monospace;
+      white-space: nowrap;
+    }
+    .conf-track {
+      width: 120px;
+      height: 8px;
+      background: rgba(255,255,255,0.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .conf-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), var(--cyan));
+    }
+
+    /* Tabs for observers */
+    .tabs {
+      margin-top: 18px;
+    }
+    .tab-input { display: none; }
+    .tab-labels {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .tab-label {
+      cursor: pointer;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      color: var(--muted);
+      transition: all 0.2s ease;
+    }
+    .tab-label:hover {
+      border-color: rgba(0,255,136,0.4);
+      color: var(--text);
+    }
+    .tab-input:checked + .tab-label {
+      background: rgba(0,255,136,0.12);
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+    .tab-panel {
+      display: none;
+      background: var(--surface-strong);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    #tab-zhao:checked ~ #panel-zhao,
+    #tab-jin:checked ~ #panel-jin,
+    #tab-song:checked ~ #panel-song {
+      display: block;
+    }
+
+    .placeholder {
+      color: var(--muted);
+      font-style: italic;
+      border-left: 3px solid var(--gold);
+      padding-left: 16px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0 64px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    footer .meta-key {
+      font-family: "SFMono-Regular", Consolas, monospace;
+      color: var(--accent);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body { font-size: 16px; }
+      .container { padding: 0 18px; }
+      .hero { min-height: 54vh; padding: 48px 0 56px; }
+      .card { padding: 22px; }
+      section { padding: 36px 0; }
+      section h2 { font-size: 26px; }
+      th, td { padding: 12px; font-size: 14px; }
+      .conf-track { width: 80px; }
+      .tab-label { padding: 10px 14px; font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="container hero-inner">
+      <span class="hero-label">A-grade NYT briefing</span>
+      <div class="date">June 15, 2026</div>
+      <h1>GLOBAL SIGNAL</h1>
+      <p class="subtitle">A daily analytical synthesis of the New York Times front page — Iran, Trump at 80, G7 fracture, rearmament, wealth surges, and the old order in pieces.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Framework Key -->
+    <section id="framework">
+      <div class="container">
+        <h2>Framework Key</h2>
+        <div class="card">
+          <p>This briefing synthesizes eight analytical lenses spanning classical Chinese strategy, Western philosophy, and modern management theory. Each lens asks a distinct question of the same news day.</p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Lens</th>
+                  <th>Core Question</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Mao's Dialectics</strong> (矛盾论)</td><td>What is the principal contradiction?</td></tr>
+                <tr><td><strong>Laozi's Wu Wei</strong> (无为)</td><td>Where has the extreme reversed into its opposite?</td></tr>
+                <tr><td><strong>Nietzsche's Will to Power</strong></td><td>Who asserts? Who moralizes from weakness?</td></tr>
+                <tr><td><strong>Sun Tzu's Position</strong> (兵者，诡道也)</td><td>Who holds the high ground?</td></tr>
+                <tr><td><strong>Mao's Phases</strong> (论持久战)</td><td>What phase of conflict is each actor in?</td></tr>
+                <tr><td><strong>Clausewitz's Friction</strong></td><td>What centers of gravity are vulnerable?</td></tr>
+                <tr><td><strong>Han Fei's Systems</strong> (韩非子)</td><td>Rule of law or rule by personal whim?</td></tr>
+                <tr><td><strong>Zeng Guofan's Discipline</strong> (曾国藩)</td><td>What methodical work produces real results?</td></tr>
+                <tr><td><strong>On Practice</strong> (实践论)</td><td>What assumptions are untested?</td></tr>
+                <tr><td><strong>Drucker's Effectiveness</strong></td><td>What one thing makes everything else easier?</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Executive Summary -->
+    <section id="executive-summary">
+      <div class="container">
+        <h2>Executive Summary</h2>
+
+        <div class="card">
+          <h3>tl;dr</h3>
+          <p>The United States and Iran signed a 60-day ceasefire on Sunday. The deal pauses the war that has gripped the Middle East since February. It does not resolve Iran's nuclear program. The Strait of Hormuz will reopen, but Iran will charge a service fee and retain de facto control. Israel is furious. Trump calls it a victory. Critics call it a retreat.</p>
+          <p>Trump turns 80 today. Six in 10 Americans think he is growing more erratic, per Reuters/Ipsos. He installed an MMA octagon on the South Lawn for his birthday. Cardiologists question the AI assessment of his cardiac age. The G7 meets in Évian. European leaders no longer see the U.S. as a partner. They see it as a threat. Germany and Japan rearm. Britain seized a Russian shadow fleet tanker. Switzerland rejected a population cap. Belfast burned. The Knicks won their first championship in 53 years.</p>
+          <p>The day's news radiates from one center: the Iran deal. The old order is fragmenting. The new one has not yet taken shape.</p>
+        </div>
+
+        <div class="card">
+          <h3>What We Don't Know</h3>
+          <ol>
+            <li><strong>Will the 60-day ceasefire hold?</strong> An Israeli airstrike nearly derailed the deal hours before signing. Both sides have spoilers.</li>
+            <li><strong>Can Geneva produce a verifiable nuclear framework?</strong> Iran has promised not to seek nuclear weapons before. No inspection regime appears in the MoU.</li>
+            <li><strong>Is Trump's health genuinely stable?</strong> White House data is selected. No independent medical review exists.</li>
+            <li><strong>Is "constructive strategic stability" real?</strong> No institutional architecture — summits, hotlines, working groups — has been built.</li>
+            <li><strong>Does Iran's supreme leader fully endorse the deal?</strong> Diplomats signed it. Khamenei's position is inferred, not stated.</li>
+          </ol>
+        </div>
+
+        <div class="card" id="predictions">
+          <h3>7 Calibrated Predictions</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Prediction</th>
+                  <th>Conf.</th>
+                  <th>Rationale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>The 60-day ceasefire holds but with at least one major violation</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">70%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:70%"></span></span>
+                    </span>
+                  </td>
+                  <td>Analyst: 70% initial hold probability. Israeli spoiler capacity + Iranian hardliner opposition create high friction.</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Geneva nuclear talks do NOT produce a verifiable framework in 60 days</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">75%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:75%"></span></span>
+                    </span>
+                  </td>
+                  <td>Analyst: 30% chance of nuclear framework. Iran has promised before without verification. No IAEA baseline exists.</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Strait of Hormuz oil traffic stays below 50% of pre-war through August</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">65%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:65%"></span></span>
+                    </span>
+                  </td>
+                  <td>Analyst: 50% chance of full reopening. Current U.S.-assisted traffic is ~3M barrels/day vs. 18M pre-war. Iran's "service fee" claim implies continued control.</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Trump completes his term (to age 82)</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">80%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:80%"></span></span>
+                    </span>
+                  </td>
+                  <td>Analyst: 65% (Low-Med confidence). The upgrade reflects: (a) no acute health event reported despite intense scrutiny, (b) the White House has strong incentives to manage visible decline as Biden's team did, and (c) the 25th Amendment has never been successfully invoked against a sitting president's will. The analyst's caution is warranted over a 2.5-year horizon, but for the immediate term, institutional and political barriers to removal are very high.</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td>Germany's military spending surpasses France+Britain combined by 2027</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">90%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:90%"></span></span>
+                    </span>
+                  </td>
+                  <td>Analyst: 90% (HIGH). Already legislated. Political momentum is structural, not cyclical.</td>
+                </tr>
+                <tr>
+                  <td>6</td>
+                  <td>The G7 produces no substantive action</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">85%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:85%"></span></span>
+                    </span>
+                  </td>
+                  <td>No specific analyst probability. Macron's challenge is keeping Trump in the room. The institution is hollow — European leaders manage damage, not policy.</td>
+                </tr>
+                <tr>
+                  <td>7</td>
+                  <td>At least two elite universities settle with Trump by September</td>
+                  <td>
+                    <span class="conf-bar">
+                      <span class="mono">70%</span>
+                      <span class="conf-track"><span class="conf-fill" style="width:70%"></span></span>
+                    </span>
+                  </td>
+                  <td>Cornell ($60M) and Penn (no penalty) set precedent. Harvard ($126.6M legal spend) is fighting. The cost of defense is itself a weapon.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>Dashboard:</strong> <span class="mono">90% ████████████████████ 85% ███████████████████ 80% █████████████████ 75% █████████████████ 70% ████████████████ 65% ███████████████.</span> Weighted average: <span class="mono">76.4%</span>. Predictions lean positive but no certainty exists. The 60-day window is managed uncertainty.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Story Clusters -->
+    <section id="clusters">
+      <div class="container">
+        <h2>Story Clusters</h2>
+
+        <article class="card" id="cluster-1">
+          <h3>Cluster 1: The Iran Deal — A Fragile Peace</h3>
+          <h4>What Happened</h4>
+          <p>The U.S. and Iran signed a 60-day memorandum of understanding on Sunday. Both sides cease hostilities. The Strait of Hormuz reopens. Nuclear talks begin Friday in Geneva. The deal leaves the nuclear question unresolved. Iran affirmed it will never seek nuclear weapons — a promise it has made before. <strong>Jonathan Swan, Farnaz Fassihi, and Ronen Bergman</strong> reported that an Israeli airstrike on Hezbollah near Beirut nearly derailed the signing. Trump expressed fury at Netanyahu. <strong>Isabel Kershner</strong> reported Israeli fury across the political spectrum. <strong>Peter Eavis</strong> reported oil traffic remains far below prewar levels. Iran's foreign minister said Iran will charge a "service fee" for Strait passage. Before the war, 130 ships passed daily. U.S. forces assist about six per day.</p>
+
+          <h4>Lens Analysis</h4>
+          <p><strong>Mao / Sun Tzu:</strong> The principal contradiction is between American military supremacy and American diplomatic retreat. Mao: the deal contains its own negation — it is a peace agreement and an admission of failure simultaneously. Sun Tzu: Iran holds the high ground. It controls the Strait chokepoint and retains nuclear ambiguity. The U.S. demanded unconditional surrender and got a negotiated ceasefire. Positional advantage belongs to Tehran. Mao's phases: the U.S. moved from strategic offensive to strategic defensive. Iran moved from defensive to stalemate, surviving intact.</p>
+          <p><strong>Laozi / On Practice:</strong> Trump demanded unconditional surrender. He accepted a 60-day pause. The extreme reversed into its opposite. The push produced the pull. On Practice: the central assumption — "Iran will not seek nuclear weapons" — is untested. IAEA inspectors must deploy immediately. Without verification, the deal is faith, not evidence.</p>
+          <p><strong>Nietzsche:</strong> Israeli discontent is ressentiment. An ally once powerful moralizes from diminished position. Netanyahu's war aims (regime change, nuclear destruction) were never achievable. The deal exposes the gap between ambition and capability.</p>
+          <p><strong>Clausewitz:</strong> The Israeli airstrike hours before signing is friction par excellence. Trump's vulnerability center: credibility as a dealmaker. The deal exposes it.</p>
+          <p><strong>Han Fei / Zeng Guofan:</strong> The war decision system failed. Maximalist aims had no enforcement mechanism short of total occupation. Personal incentives (reelection) diverged from institutional incentives (strategic stability). The hard work now is IAEA inspection protocols, not grand proclamations. Deploy monitors. Write checklists. Establish baselines.</p>
+          <p><strong>Drucker:</strong> The one decision that matters: what is the minimum verifiable nuclear restriction the U.S. will accept? Without this answer, Geneva is theater.</p>
+        </article>
+
+        <article class="card" id="cluster-2">
+          <h3>Cluster 2: Trump at 80 — The Aging Presidency</h3>
+          <h4>What Happened</h4>
+          <p>President Trump turns 80 today. <strong>Katie Rogers</strong> reported the MMA octagon on the South Lawn, the midnight G7 flight, 4-5 hours of sleep nightly, and 387 Truth Social posts in 14 days. Six in 10 Americans think he is growing more erratic (Reuters/Ipsos). He appeared to doze at a Knicks game. He leaned sideways in the Oval Office, eyes closed. His physician declared "excellent health" after a 22-specialist Walter Reed exam. Cardiologists questioned the AI cardiac age assessment (14 years younger than actual). He gained 14 pounds since his last physical. <strong>Tucker Carlson</strong> said Trump is "really uncomfortable" with the topic of his age. <strong>Edward Wong</strong> reported Trump's China pivot — embracing Xi, freezing Taiwan arms, allowing Nvidia chips. <strong>Mark Landler</strong> reported the G7 summit: European leaders no longer view the U.S. as a partner; some see it as a threat.</p>
+
+          <h4>Lens Analysis</h4>
+          <p><strong>Mao / Sun Tzu:</strong> The secondary contradiction between Trump's will to project strength and his body's physical decline is becoming the principal domestic story. Sun Tzu: "Know yourself." Trump does not. The White House obscures; the physician declares excellence; the public watches the president slump.</p>
+          <p><strong>Laozi / On Practice:</strong> The MMA octagon is the opposite of wu wei. It is forced performance. The more Trump tries to prove vitality, the more the public questions it. On Practice: the assumption — "Trump is in excellent health" — is contradicted by observable evidence (dozing, slumping, weight gain, limited schedule). An independent medical panel is the investigative imperative.</p>
+          <p><strong>Nietzsche:</strong> Trump's will to power is pure assertion against biology. The body rebels; the will refuses. The 60% who call him "erratic" practice ressentiment — collective moral judgment born of electoral impotence.</p>
+          <p><strong>Clausewitz:</strong> Trump's body is a friction factor no strategy accounts for. An aging commander-in-chief introduces uncertainty into every decision.</p>
+          <p><strong>Han Fei / Zeng Guofan:</strong> The presidential health disclosure system is failing. Selected data replaces transparent process. No calcium score released. No sleep apnea screening. Rule by managed narrative. The MMA octagon is grand gesture substituting for genuine health regimen. A disciplined leader demonstrates fitness through consistent schedule and transparent disclosure.</p>
+          <p><strong>Drucker:</strong> The decision no one wants to discuss: succession. What happens if the CEO is incapacitated? The plan should be documented and rehearsed. Pretending the question does not exist is the most dangerous non-decision in government.</p>
+        </article>
+
+        <article class="card" id="cluster-3">
+          <h3>Cluster 3: The Economic Anxiety Beneath the Surface</h3>
+          <h4>What Happened</h4>
+          <p>Elon Musk became the first trillionaire. SpaceX debuted at $2 trillion. <strong>Ben Casselman</strong> reported wages falling in real terms while billionaire wealth hits records. <strong>Ryan Mac, Kenneth Chang, and Kirsten Grind</strong> traced SpaceX from near-bankruptcy to dominance. <strong>Peter Eavis</strong> reported the Strait of Hormuz: pre-war 18M barrels/day is now ~3M with U.S. assistance. <strong>Ben Casselman</strong> also reported AI's hidden victims: customer service reps, bookkeepers, payroll clerks — roles held disproportionately by women and minorities — face the highest displacement risk.</p>
+
+          <h4>Lens Analysis</h4>
+          <p><strong>Mao / Sun Tzu:</strong> The contradiction between capital and labor intensifies. Musk becomes the first trillionaire while wages fall. Iran holds the economic high ground through the Strait. Every day it stays below capacity, global oil prices stay elevated.</p>
+          <p><strong>Laozi / On Practice:</strong> The simplest intervention — direct cash transfers, universal retraining — is politically impossible. The uncarved block is rejected because the political context is too corrupted. On Practice: the assumption that "AI displacement is manageable" is untested. The hidden workers are concentrated and vulnerable. Testing happens now, in back offices across America.</p>
+          <p><strong>Nietzsche:</strong> Musk embodies the Übermensch — creator who breaks old tables, builds new worlds. But his dominance concentrates extraordinary power in one person. A system that depends on one private citizen for space access, communications, and defense contracts is brittle.</p>
+          <p><strong>Clausewitz:</strong> The Knicks championship is unexpected positive friction — exogenous joy disrupting a negative news cycle. But concentrated wealth against falling wages creates social instability no championship can fix.</p>
+          <p><strong>Han Fei / Zeng Guofan:</strong> The retraining system fails those who need it most. The hard work is building training infrastructure: curricula, placement networks, income support. Unglamorous. Essential.</p>
+          <p><strong>Drucker:</strong> The one thing that makes everything easier: Geneva nuclear talks. If they succeed, oil moderates. If they fail, every economic problem becomes harder.</p>
+        </article>
+
+        <article class="card" id="cluster-4">
+          <h3>Cluster 4: Global Rearrangement — Alliances Upended</h3>
+          <h4>What Happened</h4>
+          <p><strong>Mark Landler</strong> reported the G7 in Évian: "Greenland and Iran are a double whammy." European leaders no longer trust the U.S. — some view it as a threat. Macron's goal is keeping Trump in the room. <strong>Jim Tankersley and Javier C. Hernández</strong> reported Germany and Japan rearming. Germany's military spending could exceed France and Britain combined. Japan deployed long-range missiles capable of reaching China. Tens of thousands protested in Tokyo. <strong>Stephen Castle</strong> reported British commandos seizing a Russian shadow fleet tanker in the English Channel. <strong>Jim Tankersley</strong> reported Switzerland rejecting a population cap 55-45. <strong>Stephen Castle</strong> reported Belfast riots: masked rioters targeted immigrants after a stabbing. Four hundred volunteers sheltered displaced families.</p>
+
+          <h4>Lens Analysis</h4>
+          <p><strong>Mao / Sun Tzu:</strong> The principal contradiction — American-led order vs. multipolar reality — manifests in every story here. The G7 fragments. Germany and Japan rearm. China ascends without firing a shot. The U.S. retrenches; Europe and Japan adapt. Sun Tzu: China gains position by not fighting — the highest form of strategic advantage.</p>
+          <p><strong>Laozi:</strong> Germany and Japan rearming 80 years after WWII is the cycle turning. What was forcibly suppressed after 1945 now voluntarily re-emerges. Belfast thought it transcended the Troubles. The cycle was merely dormant — old hatred in new form.</p>
+          <p><strong>Nietzsche:</strong> The G7 is master vs. slave morality in transition. European leaders "bit their tongue and were nice to Trump" — the weak before the strong. Now they say "no when necessary." But this is reactive, not creative. The truly powerful would build the post-American order rather than resist Trump's provocations.</p>
+          <p><strong>Clausewitz:</strong> The shadow fleet is friction weaponized — aging tankers with opaque ownership designed to evade sanctions. The UK commando seizure is friction responding to friction. Switzerland's nuanced 55-45 vote is the friction of direct democracy producing moderation against the European trend.</p>
+          <p><strong>Han Fei / Zeng Guofan:</strong> The G7 no longer coordinates aligned incentives. It is hollow. Swiss direct democracy, by contrast, works: clear laws, transparent process, measurable outcome. The hard work is weapons interoperability — standardizing systems, integrating command, running joint exercises. Belfast needs community reconciliation. The 400 volunteers are the model.</p>
+          <p><strong>On Practice / Drucker:</strong> Assumption: "The ceasefire will hold." It nearly didn't — Israeli airstrike hours before signing. Drucker's decision: repair the G7 or let it die and build minilateral structures. Half-measures that keep it alive but irrelevant are the worst option.</p>
+        </article>
+
+        <article class="card" id="cluster-5">
+          <h3>Cluster 5: Other Notable Stories</h3>
+          <p>The Knicks won their first NBA title in 53 years (Matt Flegenheimer). Sergio Gor is transforming the ambassador role with Trump-loyal directness (Anton Troianovski). Utah residents fought Kevin O'Leary's data center near the Great Salt Lake — an environmental vs. development flashpoint that halved the project (Jack Healy). Eight pro-Palestinian activists at U. Michigan face conspiracy charges; a judge rejected pretrial detention (Mitch Smith). Ivy League legal spending surged 37% to $333M — Harvard alone spent $126.6M (Alan Blinder). Twelve died in a Missouri skydiving crash, one of the deadliest in U.S. history (Christina Morales). Japan considers adopting male heirs from abolished royal branches to solve its succession crisis — rather than allowing female succession (Javier C. Hernández). The Bugis bissu priests of Sulawesi, transgender spiritual intermediaries recognized for a millennium, fear they are the last generation as Islamic conservatism rises (Sui-Lee Wee). SpaceX's $2 trillion IPO made Musk the first trillionaire (Ryan Mac). A Nature Communications study found that 80% of people veer counterclockwise when walking — a mystery researchers cannot explain. These stories share a quiet theme: each involves a small group asserting itself against a larger force — fans against cynicism, residents against capital, activists against state power, ancient tradition against religious change.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Geographic Critique -->
+    <section id="geographic-critique">
+      <div class="container">
+        <h2>Geographic Critique</h2>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Over-represented</th>
+                  <th>Articles</th>
+                  <th>Under-represented</th>
+                  <th>Articles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>United States</td><td>10 of 21</td><td>Africa</td><td>0</td></tr>
+                <tr><td>Middle East</td><td>3</td><td>Latin America</td><td>0</td></tr>
+                <tr><td>Europe</td><td>5</td><td>South Asia</td><td>0 (1 passing mention)</td></tr>
+                <tr><td></td><td></td><td>Oceania</td><td>0</td></tr>
+                <tr><td></td><td></td><td>Arctic</td><td>0</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The New York Times covers the war it is most invested in (Iran) and the country it operates from (U.S.). Africa, Latin America, and South Asia are invisible. Climate change receives zero dedicated coverage. AI regulation, global health, and migration from the migrant's perspective are absent. The geographic portrait is a Washington-centric globe with Europe as its near abroad and everything else as background.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alternative Scenarios -->
+    <section id="alternative-scenarios">
+      <div class="container">
+        <h2>Alternative Scenarios</h2>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Scenario</th>
+                  <th>Description</th>
+                  <th>Probability</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>A: Geneva Talks Fail</strong></td>
+                  <td>Ceasefire collapses. War resumes. Iran mines Strait or tests a nuclear device. Oil spikes. Trump faces political catastrophe.</td>
+                  <td><span class="mono">30%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>B: Deal Holds &amp; Expands</strong></td>
+                  <td>Ceasefire extends. Geneva produces IAEA inspection framework. Strait fully reopens. Oil moderates. Trump claims victory.</td>
+                  <td><span class="mono">25%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>C: G7 Fractures</strong></td>
+                  <td>Trump walks out. European leaders publicly break with U.S. Germany and Japan accelerate independent defense. U.S.-Europe relations enter cold phase.</td>
+                  <td><span class="mono">30%</span></td>
+                </tr>
+                <tr>
+                  <td><strong>D: Trump Health Incident</strong></td>
+                  <td>Medical event (fall, stroke, heart) during G7 or soon after. 25th Amendment invoked or discussed. Presidential succession becomes the story.</td>
+                  <td><span class="mono">15%</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Top 3 Actions -->
+    <section id="top-actions">
+      <div class="container">
+        <h2>Top 3 Actions for Today</h2>
+        <div class="card">
+          <ol>
+            <li><strong>Deploy IAEA inspectors to Iran immediately.</strong> Every day without a verification baseline is a day the agreement exists on faith. Establish centrifuge count, enrichment levels, stockpile volume before Geneva, not after.</li>
+            <li><strong>Establish an independent medical review protocol for the president.</strong> The 25th Amendment precedent exists. Normalize transparency before a crisis forces it. Americans deserve CEO-level disclosure from their commander-in-chief.</li>
+            <li><strong>Prepare G7 contingency frameworks.</strong> If the summit fails, have minilateral structures ready. Bilateral relationships (U.S.-Germany, U.S.-UK, U.S.-France) can survive a G7 collapse. The new arrangements, not the old institution's failure, should be the story.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- What It Means -->
+    <section id="what-it-means">
+      <div class="container">
+        <h2>What It Means</h2>
+        <div class="card">
+          <p><strong>Mao's Dialectics:</strong> The principal contradiction — American-led order vs. multipolar reality — is in transition. The old order is not dead; the new one is not born. In this interregnum, everything is improvised. The 60-day ceasefire is an improvisation. The G2 framing is an improvisation. The G7 damage management is an improvisation. The system produces ad hoc solutions because it cannot produce structural ones.</p>
+          <p><strong>Laozi's Wu Wei:</strong> Reversal governs every major story. Trump's unconditional surrender became a 60-day pause. American dominance became American isolation. SpaceX near-bankruptcy became $2 trillion. The uncarved block — the simple solution — is unavailable in every case because relationships are too damaged for simplicity to be trusted.</p>
+          <p><strong>Nietzsche:</strong> The day belongs to those who assert. Musk asserts through creation. Iran asserts through patience. Utah residents assert through organizing. British commandos assert through precision. Those who cannot assert moralize. Israeli anger, Belfast riots, the 60% who call Trump erratic — all ressentiment from diminished positions.</p>
+          <p><strong>Sun Tzu / Mao's Phases:</strong> Iran holds the high ground — Strait and nuclear ambiguity. The U.S. passed its culminating point and accepted strategic defensive. China ascends without fighting — the highest form of advantage. Germany and Japan are in the Long March phase: building capacity for future autonomy. Universities are in strategic defensive against an offensive administration.</p>
+          <p><strong>Clausewitz:</strong> Centers of gravity are exposed. Trump's dealmaker credibility. Israel's U.S. guarantee. Universities' federal funding. Friction is everywhere: Israeli airstrike, Trump's body, exogenous joy (Knicks), evasion technology (shadow fleet), judicial independence (Judge Patti). The fog of war: Iran's nuclear status, Trump's health, China's intentions. Uncertainty defines the next 60 days.</p>
+          <p><strong>Han Fei / Zeng Guofan:</strong> Rule by man dominates rule by law. Personal whim reverses Taiwan policy. Personal loyalty bypasses State Department channels. Prosecutorial discretion becomes political weapon. The predictable outcome: every interaction becomes a power negotiation. The antidote is methodical, unglamorous work: inspection protocols, training infrastructure, weapons interoperability, community reconciliation, strategic audit.</p>
+          <p><strong>On Practice:</strong> Five assumptions are being made without evidence: Iran will not weaponize. The ceasefire will hold. China seeks genuine stability. Trump is healthy. AI displacement is manageable. The 60-day window is the investigation period. If assumptions are confirmed, proceed. If refuted, adjust. Acting as if untested assumptions are proven is the most dangerous error.</p>
+          <p><strong>Drucker:</strong> The one thing that makes everything else easier: Geneva nuclear talks. Success opens the Strait, moderates oil, gives Trump breathing room, lets the G7 refocus. Failure collapses the ceasefire, elevates oil, and makes every problem harder. The question no one wants to answer: succession for an 80-year-old commander-in-chief. Not answering is the most dangerous non-decision in government.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Observer Commentaries -->
+    <section id="observer-commentaries">
+      <div class="container">
+        <h2>Observer Commentaries</h2>
+        <div class="card">
+          <div class="tabs">
+            <input type="radio" name="observer-tabs" id="tab-zhao" class="tab-input" checked>
+            <label for="tab-zhao" class="tab-label">翟东升</label>
+
+            <input type="radio" name="observer-tabs" id="tab-jin" class="tab-input">
+            <label for="tab-jin" class="tab-label">金灿荣</label>
+
+            <input type="radio" name="observer-tabs" id="tab-song" class="tab-input">
+            <label for="tab-song" class="tab-label">宋鸿兵</label>
+
+            <div class="tab-panel" id="panel-zhao">
+              <h3>翟东升</h3>
+              <div style="white-space:pre-wrap;font-size:14px;line-height:1.7"># 翟东升观察：2026年6月15日——平行体系加速成型<br>
+<br>
+## 伊朗停火：美元霸权的&quot;协议投降&quot;<br>
+<br>
+美伊60天停火协议不是外交胜利，而是主权信用货币体系的结构性溃败。Washington demanded unconditional surrender and got a 60-day pause with zero nuclear resolution. Why? Because the U.S. can no longer finance total war without destroying the dollar&#x27;s own foundation. 每打一天仗，沙特、东盟、金砖国家就多抛一天美债。Iran controls the Strait and charges a &quot;service fee&quot; — this is not extortion, it&#x27;s the logical consequence of a reserve currency issuer that has exhausted both its fiscal space and its moral authority. The Strait was never about mines; it was about who collects the rent on global energy flows. Iran now collects it.<br>
+<br>
+## 万亿富豪与跌落工资：民本主义的反面教材<br>
+<br>
+Musk hits $2 trillion while wages fall in real terms. 这还不是分配问题——这是体系问题。American financialization has created a parallel economy: capital circulates among the 0.1% while productive labor is devalued by design. The Fed prints, Wall Street extracts, and the hidden workers — bookkeepers, clerks, reps — absorb the cost through displacement and wage suppression. 民本主义政治经济学讲得很清楚：当货币信用脱离民生基础，它必然流向资产而非劳动。AI displacement is not a bug; it is the system&#x27;s preferred adjustment mechanism. Cut labor, protect capital.<br>
+<br>
+## G7空壳化与德日再武装：平行体系的双轨驱动<br>
+<br>
+The G7 is dead. European leaders no longer see the U.S. as partner — they see it as threat. This is not diplomatic drama; it is the institutional expression of平行体系理论. 世界正在分裂为两套平行的贸易、金融和安全架构。Germany and Japan rearming is not about Russia or China — it is the recognition that the dollar-based security umbrella has become contingent, transactional, and unreliable. 当盟友开始自己造盾牌，帝国的核心业务就外包了。<br>
+<br>
+Trump&#x27;s China pivot — freezing Taiwan arms, allowing Nvidia chips, calling Xi a peer — is the most rational structural move of his presidency. 主权信用货币的最终支撑是生产能力，不是航母。China has the factories, the supply chains, and the patience. The &quot;G2&quot; framing is premature but directionally correct: the parallel systems are negotiating coexistence, not convergence.<br>
+<br>
+## 瑞士的55%与贝尔法斯特的燃烧弹<br>
+<br>
+Switzerland rejects the population cap 55-45. Switzerland votes no; Belfast burns. 这两个故事指向同一个结构性焦虑：当主权信用货币体系无法为底层提供民生保障，移民就成了替罪羊。The uncarved block — redistributive policy, universal retraining, housing investment — is politically unavailable. So societies fight over who gets to stay rather than why some starve.<br>
+<br>
+60 days. The ceasefire is not the story; the parallel system reconfiguration it enables is the story.<br>
+</div>
+            </div>
+
+            <div class="tab-panel" id="panel-jin">
+              <h3>金灿荣</h3>
+              <div style="white-space:pre-wrap;font-size:14px;line-height:1.7"># 金灿荣观察员评论：百年未有之大变局下的2026年6月15日<br>
+<br>
+## 一、美伊停火协议——这哪是和平，这是&quot;大甩卖&quot;？<br>
+<br>
+各位朋友，今天最大的新闻，美国和伊朗签了一个60天的停火协议。怎么理解这个事？打个比方：你跟你邻居打架，你冲过去喊&quot;给我跪下！&quot;结果打了两三个月，你鼻青脸肿，最后坐下来签了个字——&quot;咱别打了，先休战两个月&quot;。这不叫胜利，这叫止损。<br>
+<br>
+**百年未有之大变局的核心：美国从战略进攻转入了战略防御。**<br>
+<br>
+川普一开始要的是&quot;无条件投降&quot;，结果呢？伊朗的核设施完好无损，霍尔木兹海峡的过路费照收不误，核问题一个字没解决。60天以后呢？没人知道。这不叫外交艺术，这叫&quot;打不赢就找个台阶下&quot;。像极了炒股亏了30%然后说&quot;我这是长期价值投资&quot;——自我安慰嘛。<br>
+<br>
+## 二、川普80大寿——皇上老了，但太监们还在喊&quot;万岁&quot;<br>
+<br>
+川普80岁了，白宫请了22个专家给他体检，结论是&quot;身体倍儿棒&quot;。但老百姓不傻——六成美国人觉得他越来越不稳定。在南草坪摆个MMA八角笼，这不叫活力四射，这叫&quot;老年人用力过猛&quot;。<br>
+<br>
+**用老百姓的话说：这是老人家不服老，非要去跳广场舞结果闪了腰。**<br>
+<br>
+西方媒体一片哀嚎，说&quot;民主灯塔&quot;出了大问题。我的看法：这是典型的制度性衰老。美国的问题不是一个80岁老头的问题，是整个政治系统出了问题——权力集中到一个人身上，这个人又老了，那整个国家就跟着一起老。<br>
+<br>
+## 三、德国日本重新武装——美国不想当大哥了，小弟们只能自己买刀<br>
+<br>
+德国军费要超过法英总和，日本部署能打到中国的导弹。这让我想起一个小区的故事：原来有个黑社会老大收保护费，大家虽然不爽但也安全。突然有一天老大说&quot;我不干了&quot;，那各家各户怎么办？只能自己买枪啊！<br>
+<br>
+**百年未有之大变局在这里的体现：二战后延续80年的安全体系，正在被美国亲手拆掉。**<br>
+<br>
+欧洲领导人不再把美国当伙伴，有人甚至把美国当威胁——这话不是我说的，是《纽约时报》自己报道的。一个盟主混到这个份上，也就别谈什么&quot;领导力&quot;了。<br>
+<br>
+## 四、中国——不打仗，赢了<br>
+<br>
+最有意思的在最后：中国什么都没做，什么都没打，但在这场大变局里占据了最有利的位置：<br>
+<br>
+- 台湾军售冻结了——美国自己停的<br>
+- 英伟达芯片可以卖了——美国自己批的<br>
+- &quot;G2&quot;框架出来了——川普自己提的<br>
+<br>
+**这就好比你跟人打麻将，你都没上桌，结果对手自己把牌推倒了，说&quot;你赢了&quot;。**<br>
+<br>
+百年未有之大变局说到底是西方主导时代的结束。美国在伊朗打不赢，在欧洲留不住，在亚太退着走。中国呢？继续发展，继续开放，继续做自己的事。等他们闹够了，我们已经是世界第一大经济体了。<br>
+<br>
+## 五、结论<br>
+<br>
+**60天的停火协议，改变不了一个本质事实：美国想要维持单极世界，但实力已经跟不上了。** 川普越是想证明美国还&quot;行&quot;，结果越是暴露美国已经&quot;不行了&quot;。<br>
+<br>
+这就是百年未有之大变局的真实面貌——不是一天形成的，但正在一天天变成现实。我们中国人要做的就是：保持清醒，埋头发展，别跟着西方的节奏跳舞。他们乱他们的，我们干我们的。<br>
+<br>
+等这60天结束，再看。<br>
+</div>
+            </div>
+
+            <div class="tab-panel" id="panel-song">
+              <h3>宋鸿兵</h3>
+              <div style="white-space:pre-wrap;font-size:14px;line-height:1.7"># 观察者评论：60天停火——美元环流系统的应力释放还是故障预警？<br>
+<br>
+**By 宋鸿兵 | June 15, 2026**<br>
+<br>
+---<br>
+<br>
+从工程系统视角看今天这份简报，最核心的信号不是&quot;伊朗达成了协议&quot;，而是**这套全球美元环流系统在承受极限应力后，终于产生了第一个控制回路的响应——尽管这个响应本身充满矛盾。**<br>
+<br>
+## 美元环流：霍尔木兹——系统的核心阀门<br>
+<br>
+霍尔木兹海峡从未如此清晰地展示它在美元环流系统中的位置：它不是一条水道，而是**石油美元体系的节流阀**。战前每日过货1800万桶，现在美国协助通航仅约300万桶/日。60天停火协议后，伊朗宣布收取&quot;服务费&quot;——这意味着阀门控制权没有回到美国手中，而是被正式让渡给了伊朗。从工程控制论角度，这是**系统关键节点的控制权转移**：美国保留了军事优势（输出功率），但失去了对能源定价信号的调节能力（反馈通道）。节流阀在对手手里，系统稳定性必然下降。<br>
+<br>
+全球GDP增速已降至2.5%，若局势持续可能跌至1.3%衰退区间——这不是经济预测，这是**系统输入-输出比率的工程学测算结果**：能源输入受阻，系统整体产出必然收缩。<br>
+<br>
+## 金融高边疆的三线承压<br>
+<br>
+这一天的新闻暴露了美元体系的金融高边疆正在三条战线上同时失守：<br>
+<br>
+**一线：盟友体系作为信任基础设施崩溃。** G7的报道标题已经说明一切：&quot;原本要团结，现在被特朗普分裂。&quot;欧洲不再视美国为伙伴，有些甚至视为威胁。德国军费将超英法总和，日本部署远程导弹——这是**高边疆的外围防御层被自己人放弃**。当盟友开始修筑自己的城墙，美元资产在全球的信任溢价就在下降。<br>
+<br>
+**二线：特朗普的身体成为不确定性变量。** 一个80岁、在观众席打瞌睡、站立时侧倾、AI评估心脏年龄比实际年轻14岁但独立专家质疑的总统——这不是八卦，这是**决策中枢系统的可靠性问题**。任何工程系统如果核心控制器的状态存在歧义，整个系统的风险评估都需要打折。<br>
+<br>
+**三线：内部制度反馈回路断裂。** 大学法律开支飙升37%至3.33亿美元，哈佛一家就花了1.266亿——这是高等教育系统被行政权力反复测试、无法形成有效负反馈的表现。当被攻击方只能用法律费用来抵抗，说明原有的制度保护机制已经失效。<br>
+<br>
+## 三变六反：反转信号密集涌现<br>
+<br>
+系统的反转已经不只是预言，而是正在发生的事实：<br>
+<br>
+1. **军事优势→外交退让**：特朗普曾要求&quot;无条件投降&quot;，60天后接受的是没有核解决方案的停火协议。这是典型的**极端反转**——最有为的战争动员变成了最无奈的接受。<br>
+2. **美国领导→美国孤立**：G7从制定规则变成&quot;把特朗普留在房间里&quot;。盟友从&quot;咬舌忍让&quot;到必须&quot;说不&quot;——权力循环的完整反转。<br>
+3. **资本集中→社会反弹**：马斯克成为首位万亿富翁，同日真实工资却在下降。隐藏的AI受害者——客服、簿记、工资核算岗位——集中在女性和少数族裔。这种**资本-劳动的应力差**不可能无限维持，社会反馈迟早到来。<br>
+4. **和平常态→贝尔法斯特暴乱**：一个自认为摆脱了北爱问题的城市发现，旧仇恨只是休眠，从未消失——周期的反转不是线性的。<br>
+5. **二战秩序→德日军扩**：80年后被压制者自愿重新武装——制度设计的约束力在结构性压力下终究失效。<br>
+<br>
+## 工程系统诊断：60天是检测窗口<br>
+<br>
+从系统工程师的角度，这份60天停火协议最好的解读方式是：**它是一次系统的诊断性停机。** 控制理论告诉我们，当系统出现未知故障模式时，第一步不是修复，而是隔离、检测、建立基线。<br>
+<br>
+日内瓦核谈能否形成可验证的检查框架，是未来60天最关键的控制变量。IAEA检查员需要立刻部署——每一分每秒都关乎后续决策的数据质量。伊朗的承诺已经被验证过（失败的），这次不能再把&quot;不会寻求核武器&quot;作为输入信号信任。<br>
+<br>
+而我作为工程系统分析师最关心的一个结构性信号是：**当美国总统的健康数据需要通过&quot;22名专家的私人检查&quot;而非独立医疗审查来发布，当司法部选举诉讼0胜8负仍持续起诉，当政策在数小时内从&quot;轰炸&quot;翻转为&quot;协议&quot;——这说明系统的反馈回路正在断裂。没有负反馈的系统，必然走向振荡放大。**<br>
+<br>
+未来60天，所有投资者的第一课不是看行情，而是看系统是否能重建自己的反馈回路。<br>
+<br>
+*-- 宋鸿兵，《货币战争》系列作者，金融工程系统分析*<br>
+</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="meta-grid">
+        <div>
+          <div class="meta-key">Date</div>
+          <div>June 15, 2026</div>
+        </div>
+        <div>
+          <div class="meta-key">Source</div>
+          <div>/tmp/nyt_source_text.txt</div>
+        </div>
+        <div>
+          <div class="meta-key">Observer Source</div>
+          <div>/tmp/nyt_observers.md</div>
+        </div>
+        <div>
+          <div class="meta-key">Output</div>
+          <div>/tmp/nyt_briefing_2026-06-15.html</div>
+        </div>
+      </div>
+      <p style="margin-top: 24px;">Self-contained static HTML. No external fonts, scripts, or CDN dependencies.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

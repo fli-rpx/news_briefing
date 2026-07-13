@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morning Briefing · Gallery</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .date-strip {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            margin: 0 -1.5rem;
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            scrollbar-width: thin;
+            scrollbar-color: var(--border) transparent;
+        }
+        .date-strip::-webkit-scrollbar {
+            height: 6px;
+        }
+        .date-strip::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 3px;
+        }
+        .date-chip {
+            flex-shrink: 0;
+            padding: 0.4rem 0.9rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--muted);
+            transition: all 0.2s;
+            user-select: none;
+        }
+        .date-chip:hover {
+            border-color: var(--muted);
+            color: var(--text);
+        }
+        .date-chip.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .date-display {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .source-bar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .source-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--surface);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+        }
+        .source-label {
+            font-size: 0.8rem;
+            color: var(--muted);
+            font-weight: 600;
+            min-width: 2.2rem;
+            text-align: center;
+        }
+        .source-group a {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .source-group a:hover {
+            text-decoration: underline;
+        }
+        .observer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        .observer-card {
+            background: var(--surface);
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
+            padding: 1.5rem;
+        }
+        .observer-card h2 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 0.25rem;
+        }
+        .observer-card .title {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .observer-card p {
+            margin-bottom: 0.8rem;
+        }
+        .observer-card .quote {
+            font-style: italic;
+            color: #bbb;
+            border-left: 2px solid #444;
+            padding-left: 1rem;
+            margin: 1rem 0;
+        }
+        .no-observers {
+            text-align: center;
+            padding: 3rem 1rem;
+            color: var(--muted);
+            background: var(--surface);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+        }
+        .no-observers a {
+            color: var(--accent);
+        }
+        .nav-arrows {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0 2rem;
+        }
+        .nav-arrow {
+            padding: 0.4rem 1rem;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+        .nav-arrow:hover:not(:disabled) {
+            background: #1e1e1e;
+            border-color: var(--muted);
+        }
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        .cartoon-image {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            margin: 1rem auto;
+            display: block;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .cartoon-wrapper {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .cartoon-wrapper .caption {
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Morning Briefing</h1>
+            <p class="date">Observer Commentary Gallery</p>
+            <a class="past-reports-link" href="archive.html">📋 Past Reports</a>
+        </header>
+
+        <div id="dateStrip" class="date-strip">
+            <div class="loading" style="padding:0;">Loading dates…</div>
+        </div>
+
+        <div class="nav-arrows">
+            <button id="prevBtn" class="nav-arrow" onclick="goPrev()">← Previous</button>
+            <button id="nextBtn" class="nav-arrow" onclick="goNext()">Next →</button>
+        </div>
+
+        <div id="dateDisplay" class="date-display"></div>
+
+        <div id="sourceBar" class="source-bar"></div>
+
+        <section id="contentArea">
+            <div class="loading">Loading briefing…</div>
+        </section>
+
+        <footer>
+            <p>Powered by Hermes Agent Pipeline · Observer Commentary</p>
+            <p style="margin-top:0.3rem;">Full briefing generated daily at 6:30 AM</p>
+        </footer>
+    </div>
+
+    <script>
+        const REPORTS_INDEX = 'data/reports_index.json';
+        const OBSERVERS_JSON = 'data/observers.json';
+        let reportsData = {};
+        let observersData = {};
+        let dates = [];
+        let currentIndex = 0;
+
+        function formatDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+
+        async function loadData() {
+            try {
+                const [r1, r2] = await Promise.all([
+                    fetch(REPORTS_INDEX + '?t=' + Date.now()),
+                    fetch(OBSERVERS_JSON + '?t=' + Date.now()).catch(() => null)
+                ]);
+
+                if (!r1.ok) throw new Error('Failed to load reports index');
+                reportsData = await r1.json();
+
+                if (r2 && r2.ok) {
+                    observersData = await r2.json();
+                }
+
+                dates = Object.keys(reportsData).sort((a, b) => b.localeCompare(a));
+
+                if (dates.length === 0) {
+                    document.getElementById('contentArea').innerHTML = '<div class="no-observers">No reports found.</div>';
+                    document.getElementById('dateStrip').innerHTML = '';
+                    return;
+                }
+
+                // Default to most recent date
+                currentIndex = 0;
+                renderDateStrip();
+                renderCurrent();
+            } catch (err) {
+                console.error(err);
+                document.getElementById('contentArea').innerHTML = '<div class="no-observers">Unable to load data. Please try again later.</div>';
+            }
+        }
+
+        function renderDateStrip() {
+            const strip = document.getElementById('dateStrip');
+            strip.innerHTML = '';
+            dates.forEach((dateStr, idx) => {
+                const chip = document.createElement('div');
+                chip.className = 'date-chip' + (idx === currentIndex ? ' active' : '');
+                const d = new Date(dateStr + 'T00:00:00');
+                chip.textContent = d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+                chip.title = formatDate(dateStr);
+                chip.onclick = () => { currentIndex = idx; renderCurrent(); };
+                strip.appendChild(chip);
+            });
+            // Scroll active chip into view
+            setTimeout(() => {
+                const active = strip.querySelector('.date-chip.active');
+                if (active) active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
+            }, 10);
+        }
+
+        function renderCurrent() {
+            const dateStr = dates[currentIndex];
+            const entry = reportsData[dateStr];
+
+            document.getElementById('dateDisplay').textContent = formatDate(dateStr);
+
+            // Source links
+            const sourceBar = document.getElementById('sourceBar');
+            sourceBar.innerHTML = '';
+            const sources = ['nyt', 'wsj'];
+            const labels = { nyt: 'NYT', wsj: 'WSJ' };
+            sources.forEach(source => {
+                const info = entry[source];
+                if (!info) return;
+                const group = document.createElement('div');
+                group.className = 'source-group';
+
+                const label = document.createElement('span');
+                label.className = 'source-label';
+                label.textContent = labels[source];
+                group.appendChild(label);
+
+                if (info.pdf) {
+                    const a = document.createElement('a');
+                    a.href = 'reports/' + info.pdf;
+                    a.target = '_blank';
+                    a.textContent = '📄 PDF';
+                    group.appendChild(a);
+                }
+                if (info.local) {
+                    const a = document.createElement('a');
+                    a.href = info.local;
+                    a.target = '_blank';
+                    a.textContent = '📖 Read';
+                    group.appendChild(a);
+                }
+                sourceBar.appendChild(group);
+            });
+
+            // Update nav buttons
+            document.getElementById('prevBtn').disabled = currentIndex >= dates.length - 1;
+            document.getElementById('nextBtn').disabled = currentIndex <= 0;
+
+            // Update active chip
+            document.querySelectorAll('.date-chip').forEach((chip, idx) => {
+                chip.classList.toggle('active', idx === currentIndex);
+            });
+            const strip = document.getElementById('dateStrip');
+            const active = strip.querySelector('.date-chip.active');
+            if (active) active.scrollIntoView({ inline: 'center', behavior: 'smooth', block: 'nearest' });
+
+            // Observers
+            const content = document.getElementById('contentArea');
+            const obs = observersData[dateStr];
+            if (obs && obs.zhai && obs.jin && obs.song) {
+                const cartoonHtml = obs.cartoon
+                    ? `<div class="cartoon-wrapper"><img src="${obs.cartoon}" alt="Daily briefing cartoon" class="cartoon-image" loading="lazy"><p class="caption">Daily briefing illustration</p></div>`
+                    : '';
+                content.innerHTML = `${cartoonHtml}
+                    <div class="observer-grid">
+                        <div class="observer-card">${obs.zhai}</div>
+                        <div class="observer-card">${obs.jin}</div>
+                        <div class="observer-card">${obs.song}</div>
+                    </div>
+                `;
+            } else {
+                const localPath = entry.nyt?.local || entry.wsj?.local;
+                content.innerHTML = `
+                    <div class="no-observers">
+                        <p>Observer commentary not yet archived for this date.</p>
+                        ${localPath ? `<p><a href="${localPath}" target="_blank">📖 Open briefing →</a></p>` : ''}
+                    </div>
+                `;
+            }
+        }
+
+        function goPrev() {
+            if (currentIndex < dates.length - 1) {
+                currentIndex++;
+                renderCurrent();
+            }
+        }
+
+        function goNext() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                renderCurrent();
+            }
+        }
+
+        loadData();
+    </script>
+</body>
+</html>
+<!-- CDN bust: 1782663661 -->

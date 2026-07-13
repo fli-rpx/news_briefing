@@ -1,0 +1,77 @@
+{
+  "nodes": [
+    {
+      "id": "file:scripts/generate_nyt_2026_06_12.py",
+      "type": "file",
+      "name": "generate_nyt_2026_06_12.py",
+      "filePath": "scripts/generate_nyt_2026_06_12.py",
+      "summary": "generate_nyt_2026_06_12.py \u2014 python code file (934 lines)",
+      "sizeLines": 934,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/update_index.py",
+      "type": "file",
+      "name": "update_index.py",
+      "filePath": "scripts/update_index.py",
+      "summary": "update_index.py \u2014 python code file (73 lines)",
+      "sizeLines": 73,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:serve.py",
+      "type": "file",
+      "name": "serve.py",
+      "filePath": "serve.py",
+      "summary": "serve.py \u2014 python code file (60 lines)",
+      "sizeLines": 60,
+      "language": "python",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:scripts",
+      "type": "module",
+      "name": "scripts",
+      "filePath": "scripts",
+      "summary": "Directory: scripts",
+      "sizeLines": 1007,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/generate_nyt_2026_06_12.py",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/update_index.py",
+      "type": "contains",
+      "weight": 1.0
+    }
+  ],
+  "batchIndex": 5
+}

@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WSJ Briefing Gallery — Hermes Agent</title>
+  <style>
+    :root {
+      --bg: #0b0c0f;
+      --surface: #14161b;
+      --surface-2: #1c1f27;
+      --text: #e8eaed;
+      --text-secondary: #9aa0a6;
+      --muted: #5f6368;
+      --accent: #b38b59;
+      --accent-2: #c9a227;
+      --green: #34a853;
+      --border: #2e323b;
+      --font-serif: "Chronicle Display", Georgia, "Times New Roman", serif;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+    header {
+      background: linear-gradient(180deg, #101218 0%, var(--bg) 100%);
+      border-bottom: 3px solid var(--accent);
+      padding: 2.5rem 1rem 1.5rem;
+      text-align: center;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 6vw, 3.2rem);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .tagline {
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+    }
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem 4rem;
+    }
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.85rem;
+      margin: 2rem 0 1.25rem;
+    }
+    .briefing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .briefing-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .briefing-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .briefing-date {
+      font-size: 0.85rem;
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .briefing-title {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      margin: 0.5rem 0;
+    }
+    .briefing-desc {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .briefing-links {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 0.4rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.15s;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+    }
+    .btn-primary:hover {
+      background: var(--accent-2);
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      color: var(--text);
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      margin-left: 0.5rem;
+    }
+    .badge-new {
+      background: rgba(52, 168, 83, 0.2);
+      color: var(--green);
+      border: 1px solid rgba(52, 168, 83, 0.35);
+    }
+    .empty-state {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--muted);
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="tagline">Briefing Archive</p>
+    <h1>Daily Briefing Gallery</h1>
+    <p class="subtitle">Curated A-Grade NYT &amp; WSJ Briefings by Hermes Agent</p>
+  </header>
+  <main>
+    <h2 class="section-title">2026 Briefings</h2>
+    <div class="briefing-grid">
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 12, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran cease-fire unravels at 3-day retaliation cycle. US domestic institutional cracks. Maine Senate crisis. Lindsey Graham dies at 71.</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-12.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-12.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+      <div class="briefing-card">
+        <div class="briefing-date">July 12, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran-Hormuz ceasefire dead. Market divergence (S&P500 vs Russell 2000). Lindsey Graham dies at 71. AI physical bottlenecks emerge. US fights on 3 fronts.</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-12.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-12.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 13, 2026 <span class="badge badge-new">NEW</span></div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">U.S.-Iran MOU collapses over Strait of Hormuz. China test-fires ICBM into Pacific. Senator Lindsey Graham dies at 71. Volkswagen's China market share collapses.</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-13.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-13.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 13, 2026 <span class="badge badge-new">NEW</span></div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">美伊全面升级·AI债券供给冲击·政治真空。Iran ceasefire declared dead, US strikes Hormuz. SK Hynix record drop (-8.22%). AI bond issuance >$2500B. Graham dies at 71.</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-13.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-13.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 11, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran re-escalates with 170+ targets, AI frenzy hits $3.2T, housing bill passes without signature</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-11.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-11.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 11, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran Crisis: Saturday Ultimatum at Hormuz • Ceasefire Dead • Chip Rally Masks Broad Selloff</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-11.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-11.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 8, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">NATO Ankara summit without U.S. · IOC lifts Russia's Olympic ban · Le Pen returns to French politics · Trump consolidates executive power · Platner rape accusation crisis</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-08.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-08.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 8, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran ceasefire collapses — Oil surges to $73.76 (+4.71%) — U.S. strikes 80+ targets — Europe's Carney project accelerates — Markets price volatility regime change</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-08.html" class="btn btn-primary">Read</a>
+          <a href="reports/wsj_briefing_2026-07-08.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 10, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">The headlines and analysis from today's NYT briefing pipeline</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-10.html" class="btn btn-primary">Read</a>
+          <a href="../reports/nyt_briefing_2026-07-10.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 10, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">The Multi-Front Crisis Deepens — Iran conflict expands across four fronts · Peace trade unwinds · WTI &gt; $90/bbl in play · SK Hynix tests AI appetite · Gaza force 99.9% short</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-10.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-07-10.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 9, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">US-Iran Cease-Fire Collapses — Global Fallout · IMF warns global slowdown to 3.0% · Platner drops Maine Senate bid · NATO summit reveals alliance cracks · AI reshapes corporate fortunes</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-09.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-09.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 9, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran ceasefire collapse — Oil surges steepest since May · Europe: "There Is No Going Back" · Structural realignment across three axes · Apple $30B U.S. chip commitment</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-09.html" class="btn btn-primary">Read</a>
+          <a href="reports/wsj_briefing_2026-07-09.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 7, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">NATO summit in Ankara · Iran succession crisis deepens · Trump personal lawyer judgeship · Microsoft unwinds Activision · America at 250 contested identity</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-07.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-07.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 7, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Atlantic Alliance fractures — Europe's rupture with America · Iran Hormuz gambit · Tech rotation · JPMorgan/BofA vs Visa/Mastercard · OpenAI Faustian bargain</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-07.html" class="btn btn-primary">Read</a>
+          <a href="reports/wsj_briefing_2026-07-07.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 6, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran succession crisis deepens · Crimea decisive front · China dual pressure · NATO existential clock · Markets rotate Europe</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-06.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-06.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 6, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Atlantic Alliance fractures — Europe's rupture with America · Iran Hormuz gambit · Tech rotation · JPMorgan/BofA vs Visa/Mastercard · OpenAI Faustian bargain</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-06.html" class="btn btn-primary">Read</a>
+          <a href="reports/wsj_briefing_2026-07-06.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 5, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Contested transitions: Tehran to Washington to Silicon Valley · Iran leadership divide · Australia-China pushback · Berlin Hitler bunker demolition</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-05.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-05.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 5, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">America's 250th · Xi's authoritarian consolidation · Khamenei funeral succession vacuum · Russia pounds Kyiv · NATO cash-to-munitions gap</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-05.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-05.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 30, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">SCOTUS unitary executive · Moscow drone attack · Venezuela earthquake · Heat wave · Strait of Hormuz recovery</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-06-30.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-06-30.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 30, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">US-Iran ceasefire fragile · Record $1T margin debt · Yen 40-year low · Comcast split · SCOTUS Fed ruling</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-30.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-06-30.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 1, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Democratic socialist upsets 15-term incumbent · SCOTUS birthright citizenship · Heat wave 160M · Venezuela quake deportees</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-01.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-01.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 1, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">S&P 500 best quarter in 6 years · Yen 40-year low 162.69 · Iran talks fragile · Saudi blocks Hormuz · SCOTUS birthright</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-01.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-01.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 3, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Iran buries Khamenei — regime stress test. Ukraine war 2M casualties. Trump $2.2B crypto profits. ICE arrests double. Heat wave 180M. SCOTUS birthright citizenship struck down. Greenland dispute with Denmark.</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-03.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-03.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 3, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Jobs miss 57K vs 115K expected — rotation trade out of AI chips. Hormuz diplomacy $100B Iranian assets. Warsh dodges rates. Tesla sales +25% but stock -7.5%. Trump $1B crypto profits. Martin Marietta $13.5B deal.</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-03.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-03.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 4, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">Two Americas on the 250th: Trump rally 850K fireworks vs Swift secret MSG wedding. SCOTUS immigration double victory. Pentagon strikes Iran. Senate war powers vote. Govt shutdown looming. Trump 21,000 trades.</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-04.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-04.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 4, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">America's 250th birthday — Dow record, Pentagon strikes Iran, SCOTUS immigration double victory, Trump brokerage trades, Big Tech AI capex divergence, shutdown hours away.</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-04.html" class="btn btn-primary">Read</a>
+          <a href="reports/wsj_briefing_2026-07-04.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 2, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">NATO drone incursions · Iran dual path · GOP Senate edge · Trump $2.2B crypto · Fed pivot deregulation · Heat dome 160M</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-07-02.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-07-02.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">July 2, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">US jobs +57K · Russia pounds Kyiv 17 dead · USMCA lapsed · DSA Colorado surge · Trump $1B crypto · Comcast breakup · Gold $4,149 ATH</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-07-02.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-07-02.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 28, 2026</div>
+        <h3 class="briefing-title">NYT A-Grade Briefing</h3>
+        <p class="briefing-desc">US-Iran conflict weekend · China AI cybersecurity · Warsh Fed · Stock market 5-day drop</p>
+        <div class="briefing-links">
+          <a href="nyt_2026-06-28.html" class="btn btn-primary">Read</a>
+          <a href="nyt_briefing_2026-06-28.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 28, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">US-Iran · China AI · Warsh Fed reform · Obamacare death spiral · Memory chip cycle</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-28.html" class="btn btn-primary">Read</a>
+          <a href="wsj_briefing_2026-06-28.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 15, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">US-Iran peace deal · SpaceX trillionaire · Warsh Fed debut · Global market rally</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-15.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-15.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 13, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">SpaceX historic IPO · Iran peace hopes · AI price war · Inflation above 4% · Fed preview</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-13.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-13.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 12, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">SpaceX IPO day · Iran deal breakthrough · World Cup 2026 launch · G-7 preview</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-12.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-12.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 11, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-11.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-11.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 10, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-10.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-10.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 9, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-09.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-09.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 8, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Markets, economy, geopolitics, and sector analysis</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-08.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-08.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+
+      <div class="briefing-card">
+        <div class="briefing-date">June 7, 2026</div>
+        <h3 class="briefing-title">WSJ A-Grade Briefing</h3>
+        <p class="briefing-desc">Weekend edition · Market wrap and outlook</p>
+        <div class="briefing-links">
+          <a href="wsj_2026-06-07.html" class="btn btn-primary">Read</a>
+          <a href="../reports/wsj_briefing_2026-06-07.pdf" class="btn btn-secondary">PDF</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <p>NYT &amp; WSJ Daily Briefing Gallery · Powered by Hermes Agent — Nous Research</p>
+    <p style="margin-top:0.5rem;font-size:0.75rem"><a href="wsj_2026-07-11.html">WSJ July 11 →</a> · <a href="nyt_2026-07-11.html">NYT July 11 →</a></p>
+  </footer>
+</body>
+</html>

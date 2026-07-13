@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WSJ Briefing — July 11, 2026</title>
+<style>
+
+:root { --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26; --accent: #00ff88; --accent-dim: #00cc6a; --text: #ffffff; --text-dim: #8888aa; --border: #2a2a3a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Georgia','Noto Serif SC','PingFang SC',serif; line-height: 1.7; font-size: 16px; }
+.hero { position: relative; min-height: 55vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg,#0a0a0f 0%,#0a1628 50%,#0a0a0f 100%); overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat; opacity: 0.6; }
+.hero-overlay { position: relative; z-index: 1; text-align: center; padding: 2rem; }
+.hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.75rem; text-shadow: 0 0 40px rgba(0,255,136,0.3); }
+.hero .subtitle { font-size: 1rem; color: var(--text-dim); letter-spacing: 0.08em; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+.section-title { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.cluster { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin-bottom: 1.5rem; }
+.cluster h3 { font-size: 1.2rem; color: var(--accent); margin: 1.2rem 0 0.5rem; }
+.cluster h3:first-child { margin-top: 0; }
+.cluster p { color: #d0d0e0; margin-bottom: 0.8rem; line-height: 1.7; }
+.cluster strong { color: var(--text); }
+.cluster blockquote { border-left: 3px solid var(--accent-dim); padding: 0.5rem 1rem; margin: 0.5rem 0; color: #a0a0c0; font-style: italic; background: rgba(0,255,136,0.03); border-radius: 0 6px 6px 0; }
+.cluster ul { margin: 0.5rem 0 1rem 1.25rem; color: #d0d0e0; }
+.cluster li { margin-bottom: 0.4rem; }
+.observer-card { background: var(--card); border-left: 3px solid var(--accent); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.2rem; }
+.observer-card h4 { color: var(--accent); font-size: 1.1rem; margin-bottom: 0.8rem; }
+.observer-card p { color: #c0c0d0; line-height: 1.8; font-size: 0.95rem; margin-bottom: 0.75rem; }
+.observer-card p:last-child { margin-bottom: 0; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: var(--surface); color: var(--accent); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+td { color: #c0c0d0; }
+.footer { text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+.cartoon-section { text-align: center; margin: 2rem 0; padding: 1.5rem; background: var(--surface); border-radius: 12px; border: 1px dashed var(--border); }
+.cartoon-section img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+.cartoon-section p { color: var(--text-dim); margin-top: 0.75rem; font-size: 0.9rem; }
+@media (max-width: 600px) { .container { padding: 1rem; } .cluster { padding: 1rem; } .observer-card { padding: 1rem; } table { font-size: 0.8rem; } th,td { padding: 0.4rem; } }
+
+/* Override hero for our image */
+.hero {
+    background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat;
+    min-height: 60vh;
+    position: relative;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,15,0.7);
+}
+.hero-content { position: relative; z-index: 1; }
+.observer-card { background: #111; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid #c8a84e; }
+.observer-card.jin { border-left-color: #e74c3c; }
+.observer-card.song { border-left-color: #3498db; }
+.observer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.observer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background: #c8a84e; color: #0a0a0f; }
+.observer-card.jin .observer-icon { background: #e74c3c; }
+.observer-card.song .observer-icon { background: #3498db; }
+.observer-body p { line-height: 1.8; margin-bottom: 0.8rem; }
+.cluster { margin: 2rem 0; }
+.cluster h3 { color: #c8a84e; margin-bottom: 0.5rem; font-size: 1.1rem; }
+.cluster p { line-height: 1.7; color: #ccc; }
+.pred-table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+.pred-table th { background: #1a1a2e; padding: 10px; text-align: left; color: #c8a84e; }
+.pred-table td { padding: 10px; border-bottom: 1px solid #222; }
+.prob { font-weight: bold; color: #c8a84e; }
+.market-table { width: 100%; border-collapse: collapse; }
+.market-table th, .market-table td { padding: 8px; border-bottom: 1px solid #222; text-align: right; }
+.market-table th:first-child, .market-table td:first-child { text-align: left; }
+.up { color: #00ff88; }
+.down { color: #ff4444; }
+.table-divider { border-top: 2px solid #c8a84e; }
+.cartoon-section { margin: 2rem 0; }
+.cartoon-section img { max-width: 100%; border-radius: 12px; }
+</style>
+</head>
+<body>
+<div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>WSJ Briefing — July 11, 2026</h1>
+            <p class="hero-subtitle">Iran Crisis: Saturday Ultimatum at Hormuz • Ceasefire Dead • Chip Rally Masks Broad Selloff</p>
+            <p class="hero-meta">Saturday Edition • S&P 500 7,575.39 (+0.42%) • DJIA 52,637.01 (+0.29%)</p>
+        </div>
+    </section>
+
+    <section class="content">
+        <h2>Geopolitics & Defense</h2>
+        
+            <div class="cluster">
+                <h3>Geopolitics & Defense</h3>
+                <p>The biggest story in the paper — and the one drawing the highest reader engagement at 1,575 comments — is the collapse of the U.S.-Iran ceasefire and escalating military confrontation in the Persian Gulf. "U.S., Iran Trade Fire in Largest Escalation Since Peace Deal," report Lara Seligman and Shelby Holliday, noting President Trump "warned the strikes will get worse if Tehran continues to target commercial shipping." Trump has declared the ceasefire over, and an exclusive (reported via Israel's briefing to the U.S.) reveals Iran hatched a fresh plot to assassinate the president.</p><p>The most precise timeline comes from Alexander Ward's reporting: "One senior U.S. official said Iran should vow to reopen the Strait of Hormuz by Saturday or will face the consequences." That deadline arrives today, July 11. Benoit Faucon and Rebecca Feng report that "Iran Is Rushing Its Own Ships Through a Snarled Strait of Hormuz" — Tehran can move cargo while everyone else is stalled, using the window between escalation rounds to restock. The "consequences" threat faces an operational reality: the Fifth Fleet sits 36 hours from Hormuz, but clearing the strait under fire requires a mine-countermeasure operation the Navy has not publicly rehearsed in a decade. A separate story notes that fears over a new luxury jet forced Trump back to an old Air Force One after an Israeli warning about potential threats.</p><p>The U.S. crude inventories are flirting with dangerous levels while gasoline and diesel exports hover near records, reports Collin Eaton ("The Global Oil Market Isn't Ready for the Iran Ceasefire to End"). David Uberti notes that "Wall Street's Peace Trade Collides With Renewed Iran Fighting" — the Dow fell intraday and oil prices posted their steepest climb since May.</p><p><strong>Calibrated view:</strong> 65% probability of a full or partial Strait of Hormuz closure persisting beyond 30 days. The Saturday deadline traps the U.S. in a no-win choice between escalation (costly, unpredictable) and extension (appearing weak, emboldening Iran). Crude inventories lack the buffer to absorb prolonged disruption, and the operational capacity to forcibly clear the strait under fire is unproven.</p><p>Additional geopolitical coverage: Eve Hartley and Sune Engel Rasmussen report from "On Board NATO's Arctic Aircraft Carrier" hunting for Russian threats in the High North. Paul Vieira covers the U.S.-Canada deal to open the Gordie Howe International Bridge in Detroit after resolving toll disputes. Shan Li reports from India, where "An Elite Club Is in the Firing Line of India's War on Its Colonial Past" — Delhi Gymkhana, once a social spot for British administrators, faces eviction as the Modi government pushes to expunge relics of foreign rule. The Editorial Board notes "The NATO Summit's Successes" and separately examines "Trump, Turkey and the F-35s," arguing that "Re
+
+        <h2>Markets & Macroeconomy</h2>
+        <table class="market-table">
+<tr><td>DJIA</td><td>52,637.01</td><td class="up">+0.29%</td></tr>
+<tr><td>S&P 500</td><td>7,575.39</td><td class="up">+0.42%</td></tr>
+<tr><td>NASDAQ</td><td>26,281.61</td><td class="up">+0.29%</td></tr>
+<tr><td>Russell 2000</td><td>2,977.81</td><td class="down">-0.49%</td></tr>
+<tr><td colspan="3" class="table-divider"></td></tr>
+<tr><th>Leaders</th><th>Change</th><th>Laggards</th><th>Change</th></tr>
+<tr><td>META</td><td class="up">+5.97%</td><td>MRNA</td><td class="down">-10.83%</td></tr>
+<tr><td>WY</td><td class="up">+4.22%</td><td>CRWD</td><td class="down">-5.66%</td></tr>
+<tr><td>SBAC</td><td class="up">+4.14%</td><td>DDOG</td><td class="down">-4.26%</td></tr>
+<tr><td>NVDA</td><td class="up">+4.03%</td><td>FTNT</td><td class="down">-3.80%</td></tr>
+<tr><td>CCI</td><td class="up">+3.89%</td><td>GILD</td><td class="down">-3.72%</td></tr>
+</table>
+
+        <h3>Predictions Table</h3>
+        <table class="pred-table"><tr><td>Full or partial Hormuz closure persists</td><td class="prob">65%</td><td>30 days</td><td>Saturday deadline traps U.S. in no-win escalation; crude inventories too thin</td></tr><tr><td>Q3 CPI surprise above consensus</td><td class="prob">60%</td><td>Aug–Sep 2026</td><td>Oil-to-CPI pass-through (6–8 week lag) from steepest oil climb since May</td></tr><tr><td>SK Hynix triggers additional Asian tech U.S. IPOs</td><td class="prob">55%</td><td>6 months</td><td>Successful debut validates U.S. listing path for Asian semiconductor firms</td></tr><tr><td>Russell 2000 correction >10% before year-end</td><td class="prob">50%</td><td>Dec 2026</td><td>Narrow large-cap leadership + weakening breadth + oil-inflation macro risk</td></tr><tr><td>Intel achieves >$5B annual foundry revenue</td><td class="prob">40%</td><td>2027</td><td>Government can force purchase orders but not successful tape-outs</td></tr></table>
+
+        <h2>Business & Tech Strategy</h2>
+        <div class="cluster">
+            <h3>Intel's Government-Backed Revival</h3>
+            <p>Washington's Bet on Intel Is Starting to Pay Off — the White House has twisted arms of potential customers including Apple and Nvidia to support Intel's foundry revival. But Intel's business is "improving" without supporting earnings data: the Ohio fab build-out is behind schedule, and advanced process nodes (18A, 14A) have not shipped at volume. The government can force purchase orders; it cannot force successful tape-outs.</p>
+        </div>
+        <div class="cluster">
+            <h3>Apple Sues OpenAI</h3>
+            <p>Apple Sues OpenAI, Alleging It Stole Trade Secrets — former Apple employees took confidential information to OpenAI. The lawsuit is less about infringement and more about positioning: Apple signals it is the incumbent whose property rights must be respected. Calibrated view: 55% probability that Apple v. OpenAI settles before trial within 18 months.</p>
+        </div>
+
+        <h2>Policy & Opinion</h2>
+        <div class="cluster">
+            <h3>Housing Bill Becomes Law by Presidential Silence</h3>
+            <p>The 10-day window for the president to either sign or veto the measure expired Saturday, July 11 — and it automatically became law under Article I, Section 7. A president who does not use the tools of office creates a decision vacuum that the administrative state fills.</p>
+        </div>
+        <div class="cluster">
+            <h3>Election Commission, TXSE, and Decentralization</h3>
+            <p>The Texas Stock Exchange is building an alternative venue, challenging the NYSE-Nasdaq duopoly. Calibrated view: 30% probability that TXSE captures >10% of U.S. IPO volume within 3 years. The cold-start liquidity problem is the killer.</p>
+        </div>
+    </section>
+
+    <h2>Observed commentaries</h2>
+    <section class="observers">
+        
+            <div class="observer-card zhai">
+                <div class="observer-header">
+                    <span class="observer-icon">翟</span>
+                    <h3>翟东升——体系/结构视角</h3>
+                </div>
+                <div class="observer-body">
+                    <p>今天WSJ的核心信号：美元体系的物质基础正在加速裂解。霍尔木兹海峡非军事冲突，而是"石油-美元"循环的物理天花板。周六最后通牒把美国逼入无解困境——升级成本不可控，退让暴露虚弱。原油库存零缓冲，第五舰队扫雷能力十年未实操。当储备货币的能源保障需用硬实力维护，体系已到"系统性钙化"。</p>
+                    <p>SK海力士IPO表象是亚洲芯片企业的胜利，实质暴露美国产业政策的deep contradiction——华盛顿逼苹果买Intel产能，却靠韩国芯片撑市场sentiment。TXSE挑战纽交所垄断方向正确，但cold-start流动性是物理规律，政治热情解决不了。</p>
+                    <p>最危险信号：Russell 2000与S&P 500近1%分化。金融资产价格是主权信用的滞后指标——大盘靠几支芯片股撑门面时，实物经济已在卖出。这不是市场波动，是平行体系加速成型的信号。</p>
+                </div>
+            </div>
+            <div class="observer-card jin">
+                <div class="observer-header">
+                    <span class="observer-icon">金</span>
+                    <h3>金灿荣——美国政治/战略相持视角</h3>
+                </div>
+                <div class="observer-body">
+                    <p>今天这个简报，信息量很大。我给大家提炼一个核心判断：美国现在正处于战略相持阶段的深度焦虑期。</p>
+                    <p>霍尔木兹海峡这个事。特朗普给伊朗下了最后通牒——今天到期。美国人说"周六之前不投降就开打"，结果伊朗趁这窗口期拼命往外运货，第五舰队离海峡36小时航程，扫雷演练十年没搞过。美国的军事威慑在波斯湾已经破产了。嘴上狠话，手上没活。</p>
+                    <p>半导体这条线。SK海力士在纽约IPO，一天涨了4%，带着英伟达涨了4%。但英特尔到现在18A工艺还没量产。华盛顿可以逼着苹果、英伟达去下单，但逼不出成功流片。拉塞尔2000指数跌0.49%，标普500涨0.42%，91个基点的差距。美国战略困境：军事上打不赢，工业上追不上，政治上搞不定。今天中国可重复使用火箭成功发射部分回收，这是工业实力的直接体现。</p>
+                </div>
+            </div>
+            <div class="observer-card song">
+                <div class="observer-header">
+                    <span class="observer-icon">宋</span>
+                    <h3>宋鸿兵——货币/债务/周期视角</h3>
+                </div>
+                <div class="observer-body">
+                    <p>如果你把当前全球金融体系看作一个液压系统，核心问题是压力失衡——美元环流正在经历结构性逆转，市场的注意力却被半导体IPO的烟花吸引。</p>
+                    <p>霍尔木兹海峡最后通牒，是这个系统最危险的阀门节点。美国原油库存处于危险低位，汽油和柴油出口接近纪录，国内缓冲库存已被出口抽干。SK海力士IPO点燃半导体狂欢，但Russell 2000与标普500之间91基点背离是经典的"窄桥"结构。我在《货币战争》中反复讲过：每一次重大金融危机的起点，都不是黑天鹅，而是一个你看见了却假装没看见的背离。</p>
+                    <p>更大的结构性问题是美元环流的输出端正在收窄。中国成功发射可重复使用火箭，从货币体系角度看，这是"去美元化"在技术维度的延伸。油价向CPI传导有6到8周时滞——这是系统延迟，不是风险消失。美元环流正在逆转的信号已经摆上了台面。</p>
+                </div>
+            </div>
+    </section>
+
+    <section class="cartoon-section">
+        <h2>Daily Cartoon</h2>
+        <img src="./assets/images/wsj_cartoon.jpg" alt="WSJ Daily Cartoon — July 11, 2026" />
+    </section>
+
+    <footer>
+        <p>WSJ Briefing — July 11, 2026 (Saturday Edition)</p>
+        <p>Consolidated briefing with Observer commentaries. Version 3.</p>
+        <p>Generated by Hermes Agent pipeline</p>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSJ Daily Briefing — June 18, 2026</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0f; color: #ffffff; line-height: 1.7; }
+
+/* Hero Section */
+.hero {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(135deg, rgba(10,10,15,0.92) 0%, rgba(10,10,15,0.6) 50%, rgba(10,10,15,0.3) 100%);
+}
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 2rem;
+    max-width: 900px;
+}
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #00ff88;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 40px rgba(0,255,136,0.3);
+}
+.hero-date {
+    font-size: 1.3rem;
+    color: #00ff88;
+    opacity: 0.8;
+    margin-bottom: 0.3rem;
+    letter-spacing: 2px;
+}
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: #cccccc;
+    max-width: 700px;
+    margin: 0.5rem auto 0;
+    line-height: 1.6;
+}
+.hero-badge {
+    display: inline-block;
+    background: rgba(0,255,136,0.15);
+    border: 1px solid rgba(0,255,136,0.3);
+    color: #00ff88;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin-top: 1rem;
+}
+
+/* Container */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+}
+
+/* Section Titles */
+.section-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #00ff88;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0,255,136,0.3);
+    letter-spacing: 1px;
+}
+.section-title::before {
+    content: '▌';
+    margin-right: 0.5rem;
+    color: #00ff88;
+}
+
+.cluster-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #00ff88;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cluster-subtitle {
+    font-size: 0.9rem;
+    color: #888888;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* Content */
+p {
+    margin-bottom: 1rem;
+    color: #dddddd;
+    font-size: 1rem;
+}
+
+strong {
+    color: #ffffff;
+}
+
+em {
+    color: #aaaaaa;
+}
+
+/* Executive Summary */
+.exec-summary {
+    background: linear-gradient(135deg, rgba(0,255,136,0.05) 0%, rgba(0,0,0,0) 100%);
+    border-left: 3px solid #00ff88;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    border-radius: 0 8px 8px 0;
+}
+.exec-summary p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+/* Story Card */
+.story-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: border-color 0.3s;
+}
+.story-card:hover {
+    border-color: rgba(0,255,136,0.2);
+}
+.story-card h4 {
+    color: #00ff88;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+}
+.story-card .calibrated {
+    display: inline-block;
+    background: rgba(0,255,136,0.1);
+    border: 1px solid rgba(0,255,136,0.2);
+    padding: 0.3rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    color: #00ff88;
+    margin-top: 0.5rem;
+}
+.story-card .side-dev {
+    font-size: 0.9rem;
+    color: #999999;
+    border-left: 2px solid #444;
+    padding-left: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Markets Data Table */
+.markets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+.market-item {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    text-align: center;
+}
+.market-item .label {
+    font-size: 0.75rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.market-item .value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0.3rem 0;
+}
+.market-item .change {
+    font-size: 0.85rem;
+}
+.market-item .change.up { color: #00ff88; }
+.market-item .change.down { color: #ff4455; }
+
+/* Probability Table */
+.prob-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+}
+.prob-table th {
+    background: rgba(0,255,136,0.1);
+    color: #00ff88;
+    padding: 0.8rem 1rem;
+    text-align: left;
+    border-bottom: 2px solid rgba(0,255,136,0.2);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+.prob-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cccccc;
+    vertical-align: top;
+}
+.prob-table tr:hover td {
+    background: rgba(255,255,255,0.02);
+}
+.prob-table .prob-value {
+    color: #00ff88;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+/* Observer Section */
+.observer-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(0,255,136,0.1);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+.observer-card h3 {
+    color: #00ff88;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+.observer-card h4 {
+    color: #bbbbbb;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+.observer-card p {
+    margin-bottom: 0.8rem;
+    line-height: 1.8;
+}
+.observer-card blockquote {
+    border-left: 3px solid rgba(0,255,136,0.3);
+    padding-left: 1rem;
+    margin: 1rem 0;
+    color: #aaaaaa;
+    font-style: italic;
+}
+.observer-card strong {
+    color: #00ff88;
+}
+
+/* Cartoon Section */
+.cartoon-section {
+    text-align: center;
+    margin: 3rem 0;
+}
+.cartoon-section img {
+    max-width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+.cartoon-section .caption {
+    color: #888;
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+/* Divider */
+.divider {
+    border: none;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0,255,136,0.2), transparent);
+    margin: 2rem 0;
+}
+
+/* Sub-cluster items */
+.item-list {
+    list-style: none;
+    padding: 0;
+}
+.item-list li {
+    background: rgba(255,255,255,0.02);
+    border-left: 2px solid rgba(0,255,136,0.15);
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0 4px 4px 0;
+    color: #cccccc;
+    font-size: 0.95rem;
+}
+.item-list li strong {
+    color: #ffffff;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: #555;
+    font-size: 0.8rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin-top: 3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero { min-height: 40vh; }
+    .hero-title { font-size: 2.2rem; letter-spacing: 3px; }
+    .hero-date { font-size: 1rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    .section-title { font-size: 1.4rem; }
+    .container { padding: 1.5rem 1rem; }
+    .markets-grid { grid-template-columns: repeat(2, 1fr); }
+    .prob-table { font-size: 0.8rem; }
+    .prob-table th, .prob-table td { padding: 0.5rem; }
+    .observer-card { padding: 1rem; }
+    .exec-summary { padding: 1rem; }
+}
+@media (max-width: 480px) {
+    .hero-title { font-size: 1.6rem; }
+    .markets-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-title">WSJ DAILY BRIEFING</div>
+        <div class="hero-date">June 18, 2026 — Thursday</div>
+        <div class="hero-subtitle">U.S.-Iran interim peace deal signed at G-7 · Oil plunges, gas below $4 · Fed's Warsh rattles markets · SpaceX buys Cursor for $60B · 22+ articles across 4 clusters · 5 calibrated probabilities</div>
+        <div class="hero-badge">4 Clusters · 5 Probabilities · 22+ Articles</div>
+    </div>
+</section>
+
+<div class="container">
+
+<!-- Executive Summary -->
+<h2 class="section-title">Executive Summary</h2>
+<div class="exec-summary">
+<p>June 18, 2026, marks a pivot point across four dimensions. The U.S.-Iran interim peace deal — signed Wednesday (June 17) at the G-7 summit in Évian-les-Bains, France — has triggered a cascade of economic effects: oil prices falling to their lowest since the war began, gasoline dropping below $4 a gallon for the first time since April, and stock futures pointing to a rebound after Wednesday's Fed-driven sell-off. But beneath the relief, structural stresses remain: Fed Chairman Kevin Warsh's hawkish communication overhaul keeps rate-hike risk alive, SpaceX's $60 billion AI acquisition signals a frothy investment environment, and the Iran deal has split the GOP heading into midterm elections. This briefing organizes 22+ articles across four clusters, with five calibrated probability estimates and cross-cluster cross-references.</p>
+</div>
+
+<!-- Markets & Data -->
+<h2 class="section-title">Markets &amp; Data</h2>
+<div class="markets-grid">
+    <div class="market-item">
+        <div class="label">Brent Crude</div>
+        <div class="value">~$80</div>
+        <div class="change down">&#9660; 2.1%</div>
+    </div>
+    <div class="market-item">
+        <div class="label">WTI Crude</div>
+        <div class="value">Slid 2.4%</div>
+        <div class="change down">&#9660; 2.4%</div>
+    </div>
+    <div class="market-item">
+        <div class="label">Gasoline (AAA)</div>
+        <div class="value">Below $4</div>
+        <div class="change down">&#9660; First time in 2 months</div>
+    </div>
+    <div class="market-item">
+        <div class="label">VIX</div>
+        <div class="value">17.15</div>
+        <div class="change down">&#9660; 7%</div>
+    </div>
+    <div class="market-item">
+        <div class="label">S&P 500</div>
+        <div class="value">~7,484</div>
+        <div class="change neutral">Current level</div>
+    </div>
+    <div class="market-item">
+        <div class="label">BOE Rate</div>
+        <div class="value">3.75%</div>
+        <div class="change neutral">Held steady</div>
+    </div>
+    <div class="market-item">
+        <div class="label">Gold</div>
+        <div class="value">$4,268</div>
+        <div class="change down">&#9660; 2.59%</div>
+    </div>
+    <div class="market-item">
+        <div class="label">Intel (Premarket)</div>
+        <div class="value">+10%</div>
+        <div class="change up">&#9650; On Apple partnership</div>
+    </div>
+</div>
+
+<!-- Cluster 1: Geopolitics & Defense -->
+<h2 class="section-title">Geopolitics &amp; Defense</h2>
+<p class="cluster-subtitle">Coverage: Iran deal fallout, G-7 dynamics, NATO posture, Ukraine, Strait of Hormuz</p>
+
+<div class="story-card">
+    <h4>1.1 The Iran Interim Deal — A 60-Day Pause</h4>
+    <p>President Donald Trump signed an interim peace deal with Iran on Wednesday (June 17), saying he wanted to avoid an "economic catastrophe" from the prolonged conflict. Noemie Bisserbe and Alexander Ward reported that the deal allows Tehran to immediately resume oil sales and calls for the Strait of Hormuz to be fully opened by Friday (June 19). Trump defended the agreement at the G-7 summit, facing criticism from allies who questioned the terms. The full text of the deal has not been released to the public at Iran's request, according to senior U.S. officials who have read the text. Trump said he is giving Iran 60 days to negotiate a final agreement, or the U.S. would resume bombing — an acknowledgment, as Alexander Ward, Natalie Andrews, and Vera Bergengruen reported, that Trump's decisions were swayed by the global reaction to the three-month conflict (since approximately March 2026), which pushed up energy costs during a midterm election year.</p>
+    <div class="calibrated">Calibrated View: 55% probability — interim deal holds through 60-day window (thru ~mid-Aug 2026)</div>
+</div>
+
+<div class="story-card">
+    <h4>1.2 The Iran Deal: Oil Sales, Strait of Hormuz, and Consumer Impact</h4>
+    <p>The interim deal permits Iran to immediately resume oil exports — a key concession that analysts view as a significant economic win for Tehran while providing short-term relief to global oil markets. Trump said the Strait of Hormuz will be fully open by Friday (June 19); the waterway typically handles roughly one-fifth of global oil shipments. The "memorandum of understanding" would see Tehran reopen the strait after the U.S. lifts sanctions on Iran's oil sales, though the agreement hasn't been publicly released.</p>
+    <p>A separate line-by-line examination of the U.S. draft ("An Annotated Analysis of Trump's Iran Deal") details the deal's provisions, while "What This Iran Deal Might Mean for American Consumers" traces the consumer-side implications of falling energy costs and supply-chain normalization — including the gasoline price drop below $4. A behind-the-scenes piece, "The Race to Land an Iran Deal Loomed Large Behind Trump's UFC Birthday," recounts the diplomacy that culminated in the agreement, and "Five Things the Hormuz Crisis Taught Us About the Global Economy" (WSJ Print Edition, June 18) draws structural lessons from the three-month disruption of the critical waterway.</p>
+</div>
+
+<div class="story-card">
+    <h4>1.3 G-7 Dynamics: A Subdued Trump, Allies' Relief, and the Ukraine Push</h4>
+    <p>At the G-7 summit in Évian-les-Bains, Natalie Andrews, Noemie Bisserbe, and Alexander Ward reported that President Trump stood at the head of the oval table and joked: "I'm the boss." He then stepped aside so French President Emmanuel Macron could run the meeting. Trump was notably less confrontational with allies after months of acrimony over Iran and Greenland — his tone signaled relief among U.S. allies who had braced for a more combative summit.</p>
+    <p>A parallel piece, "After Iran Tensions, Europe Is Just Trying to Avoid a Fight at G-7," captures the European strategy of damage limitation. Simultaneously, U.S. allies used the G-7 to focus Trump's attention back to Ukraine, seeking to prevent the Iran deal from crowding out support for Kyiv.</p>
+</div>
+
+<div class="story-card">
+    <h4>1.4 Hegseth Threatens NATO Cuts</h4>
+    <p>Defense Secretary Pete Hegseth announced a sweeping review of U.S. military forces stationed in Europe, threatening significant reductions in the U.S. troop presence if NATO allies do not increase their defense spending commitments. The review signals a major shift in U.S. defense posture on the continent and was reported across WSJ's national security coverage.</p>
+</div>
+
+<p style="color: #888; font-style: italic; font-size: 0.9rem; border-left: 2px solid #444; padding-left: 1rem;">Cross-Cluster Reference: The Iran deal's economic effects are the primary driver of Cluster 2 (Markets &amp; Macroeconomy). The GOP political split over the deal is covered in Cluster 4 (Policy &amp; Opinion).</p>
+
+<hr class="divider">
+
+<!-- Cluster 2: Markets & Macroeconomy -->
+<h2 class="section-title">Markets &amp; Macroeconomy</h2>
+<p class="cluster-subtitle">Coverage: Fed communication overhaul, oil/commodities, stock market reaction, central banks (Fed, BOE), earnings, investing</p>
+
+<div class="story-card">
+    <h4>2.1 The Fed Under Warsh: Hawkish Signals, Market Sell-Off, and Communication Overhaul</h4>
+    <p>Federal Reserve Chairman Kevin Warsh is overhauling how the Fed communicates. The Fed held rates steady at its latest meeting on Wednesday (June 17), but more officials now see higher rates as the next move. Warsh hinted at changes including potentially fewer press conferences, and the Fed is setting up task forces to survey topics including communications, the balance sheet, data sources, productivity and jobs, and inflation.</p>
+    <p>Hannah Erin Lang, Sam Goldfarb, and David Uberti reported that the Federal Reserve's first statement under Warsh clocked in at only 132 words. Wall Street was troubled by the final six of them: "The Committee will deliver price stability." Stocks fell and bond yields jumped after central-bank officials signaled rates could rise by the end of the year. The Nasdaq slid after the Fed meeting.</p>
+    <p>Separately, Warsh's overhaul and the market reaction are the subject of "Warsh Rattles Markets — Heard on the Street Wednesday Recap" and "Changes at the Fed Might Include Fewer Press Conferences," both of which detail the communication strategy shift and its market impact.</p>
+</div>
+
+<div class="story-card">
+    <h4>2.2 Oil Prices Plunge, Gasoline Below $4</h4>
+    <p>Oil prices retreated sharply in Asian trading on Thursday (June 18) as traders bet on a swift reopening of the Strait of Hormuz. Ronnie Harui reported that front-month West Texas Intermediate crude oil futures slid 2.4%, and front-month Brent crude oil futures dropped 2.1%. Brent crude traded around $80 a barrel — near its lowest level since the first few days of the Iran war (approximately March 2026).</p>
+    <p>Caitlin McCabe reported that stock futures pointed to a rebound on Thursday (June 18) as gasoline prices fell below $4 a gallon for the first time in two months (since approximately April 2026), according to AAA. The VIX dropped 7% to 17.15, signaling calming systemic anxiety.</p>
+    <div class="side-dev">Side development reported in "Grok Flubbed This Investing Test, Even With a Crystal Ball. I Did Too." by Spencer Jakab (Markets A.M. newsletter): The International Energy Agency now says today's shortage could turn into a glut — a future-tense warning that investors should not convert to past certainty. The same article notes that the Iran deal has sent oil prices plunging and stock futures point to a rebound after stocks got spooked on Wednesday (June 17) by Warsh's tough inflation rhetoric.</div>
+    <div class="side-dev" style="margin-top:0.5rem;">Side development reported in "Stock Market Today: Nasdaq Set to Rebound, Gasoline Prices Fall Below $4": Intel stock is up nearly 10% in premarket trading after President Trump said Apple agreed to work with Intel to design and build chips in the U.S. The Fed is setting up task forces to survey potential changes.</div>
+</div>
+
+<div class="story-card">
+    <h4>2.3 The Earnings Mirage: Turbocharged Growth, Imploding Cash Flow</h4>
+    <p>Jonathan Weil (Heard on the Street) reported that analysts expect S&P 500 companies' earnings growth to top 20% for a second consecutive quarter — but there's a catch: much of the growth is due to a lag in when the costs of huge AI investments hit the books. For 2026, the combined free cash flow at the five hyperscalers is expected to drop 91% to about $16 billion, while net income is projected to rise 25% to $506 billion. Jonathan Weil's analysis reveals this free cash flow divergence is the "catch" behind the turbocharged headline numbers.</p>
+    <div class="calibrated">Calibrated View: 60% probability — S&P 500 finishes 2026 higher than current ~7,484</div>
+</div>
+
+<div class="story-card">
+    <h4>2.4 BOE Holds Rates at 3.75%, Signals Caution</h4>
+    <p>Paul Hannon reported that the Bank of England left its key interest rate at 3.75% but indicated it may yet raise borrowing costs to tame inflation triggered by the Mideast conflict. With many details of the final U.S.-Iran peace agreement still unsettled, it is unclear how quickly energy supplies through the Persian Gulf will return to prewar levels. For BOE policymakers, the risk of sustained inflation has been reduced but not entirely eliminated.</p>
+</div>
+
+<div class="story-card">
+    <h4>2.5 U.S. Jobless Claims and the Broader Macro Picture</h4>
+    <p>U.S. jobless claims fell last week, per the latest labor market data reported by WSJ. Combined with falling gasoline prices and lower oil costs, the labor market strength provides a counterweight to Fed hawkishness — though the three-month Iran conflict's economic drag has not fully dissipated.</p>
+</div>
+
+<!-- Probability-Weighted Outlook Table -->
+<h2 class="section-title">Probability-Weighted Outlook</h2>
+<table class="prob-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Probability Estimate</th>
+            <th>Prob.</th>
+            <th>Timeframe</th>
+            <th>Key Drivers</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Iran interim deal holds through negotiation window</td>
+            <td class="prob-value">55%</td>
+            <td>60 days (thru ~mid-Aug 2026)</td>
+            <td>Mutual economic benefit vs. deep mistrust; 60-day "resume bombing" ultimatum is high-risk bluff</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Fed raises rates at least once before end of 2026</td>
+            <td class="prob-value">40%</td>
+            <td>By Dec. 2026</td>
+            <td>Warsh's hawkish signal is credible; oil price decline reduces headline inflation pressure, potentially giving cover to hold</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>SpaceX-Cursor $60B deal closes without major regulatory blockage</td>
+            <td class="prob-value">70%</td>
+            <td>6-12 months</td>
+            <td>Trump administration favorable to tech M&amp;A; timing during G-7/Iran distraction limits scrutiny</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>S&P 500 finishes 2026 higher than current ~7,484</td>
+            <td class="prob-value">60%</td>
+            <td>By Dec. 31, 2026</td>
+            <td>Iran deal relief, AI wave, earnings support upside; Fed hawkishness + 91% FCF drop at hyperscalers are downside risks</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>GOP loses control of at least one chamber in November midterms</td>
+            <td class="prob-value">45%</td>
+            <td>Nov. 2026</td>
+            <td>Iran deal splits the party; improving economy (lower gas prices) could help incumbents; early read</td>
+        </tr>
+    </tbody>
+</table>
+
+<hr class="divider">
+
+<!-- Cluster 3: Business & Tech Strategy -->
+<h2 class="section-title">Business &amp; Tech Strategy</h2>
+<p class="cluster-subtitle">Coverage: AI mega-deals, semiconductor/supply chain, corporate leadership, insurance tech disruption, auto/industrial restructuring</p>
+
+<div class="story-card">
+    <h4>3.1 AI Mega-Deals: SpaceX Buys Cursor for $60 Billion</h4>
+    <p>SpaceX has agreed to a $60 billion deal to acquire Cursor, an AI coding startup, giving it more AI computing power. The deal is one of the largest AI acquisitions in history and signals SpaceX's ambition to integrate advanced AI capabilities into its operations. The purchase comes as SpaceX prepares for its highly anticipated IPO, which is expected to be the first in a string of AI public-market debuts. The timing — during the G-7 summit and Iran deal announcement — echoes Sun Tzu's principle of striking when competitors' attention is elsewhere.</p>
+    <div class="calibrated">Calibrated View: 70% probability — deal closes without major regulatory blockage</div>
+</div>
+
+<div class="story-card">
+    <h4>3.2 Baseten: The $13 Billion AI Startup Betting on Cheaper AI</h4>
+    <p>Angel Au-Yeung reported that Baseten, which specializes in providing software and computing capacity for lower-cost AI models, is finalizing a $1.5 billion fundraising round in a dual-tiered structure — some investors at an $11 billion valuation, others at $13 billion. CEO Tuhin Srivastava said: "open-source AI models are getting very, very good." Tech executives have touted this as the year inference — the process by which AI models use computing power to respond to queries — will dominate the AI industry.</p>
+</div>
+
+<div class="story-card">
+    <h4>3.3 Anthropic: Government Negotiations and the Safety Hacker</h4>
+    <p>President Trump said negotiations with Anthropic are continuing nearly a week after they started, following a lunch at the G-7 with world leaders and AI executives including Anthropic's Dario Amodei. Commerce Secretary Howard Lutnick joined Trump in telling reporters that talks between the two sides are progressing. The negotiations center on restoring access to Anthropic's powerful AI models, which have been restricted.</p>
+    <p>In a separate profile, WSJ examines Nicholas Carlini — the renowned hacker and safety researcher deployed by Anthropic to engage with government officials about AI safety and security. The piece explores how Anthropic is using technical expertise to navigate an increasingly complex regulatory landscape.</p>
+</div>
+
+<div class="story-card">
+    <h4>3.4 Apple's Price Increases, Memory Chip Crunch, and the Intel Partnership</h4>
+    <p>CEO Tim Cook announced that Apple will raise prices due to a global memory chip supply crunch. The price increases are expected to affect a range of Apple products. Separately, President Trump announced that Apple has agreed to work with Intel to design and build chips in the U.S., sending Intel shares up nearly 10% in premarket trading. The Intel-Apple partnership marks a significant boost for U.S. chip manufacturing ambitions and was covered in the Intel shares surge article on WSJ Tech.</p>
+</div>
+
+<div class="story-card">
+    <h4>3.5 Corporate Leadership: CME Group CEO Succession</h4>
+    <p>Alexander Osipovich and Krystal Hur reported that CME Group's longtime leader, Terry Duffy, plans to step down as chief executive of the world's most valuable exchange operator on March 1, 2027. Duffy — chairman since 2002 and CEO since 2016 — will hand the reins to Lynne Fitzpatrick, currently president and CFO. The succession marks the end of an era for the derivatives exchange.</p>
+</div>
+
+<div class="story-card">
+    <h4>3.6 Corporate Restructuring and Deal Activity</h4>
+    <ul class="item-list">
+        <li><strong>State Farm's AI Plan for Sales Agents Sparks Uproar:</strong> State Farm's plan to deploy AI for sales agents has triggered backlash, with agents quoted calling it "a real slap in the face." The dispute highlights the tension between cost-cutting through automation and workforce displacement.</li>
+        <li><strong>Volkswagen Pushes Ahead With Restructuring:</strong> VW says the next few years will be critical as it pushes ahead with restructuring under mounting pressure.</li>
+        <li><strong>Evonik to Cut 3,200 Jobs:</strong> The German specialty chemicals company is cutting 3,200 jobs and discontinuing its polyester unit as part of a restructuring plan.</li>
+        <li><strong>EQT Agrees to Buy Intertek Group for $12.36 Billion:</strong> The private-equity firm's acquisition of the testing and inspection company marks a significant deal in the industrial services sector.</li>
+        <li><strong>Kroger Seeing Costs Outrun Sales Growth:</strong> The grocery chain reported profit rising with higher sales but flagged that costs are outpacing revenue growth.</li>
+        <li><strong>Waymo Recalling More Than 3,800 Robotaxis:</strong> Waymo is recalling robotaxis over the risk of entering construction zones, a safety setback for autonomous vehicle deployment.</li>
+        <li><strong>OPEC Sees Oil Demand Growing With No Peak In Sight:</strong> OPEC's latest outlook projects continued oil demand growth, countering narratives of peak oil demand driven by the energy transition.</li>
+    </ul>
+</div>
+
+<hr class="divider">
+
+<!-- Cluster 4: Policy & Opinion -->
+<h2 class="section-title">Policy &amp; Opinion</h2>
+<p class="cluster-subtitle">Coverage: Domestic politics, Supreme Court, cultural commentary</p>
+
+<div class="story-card">
+    <h4>4.1 "French Twist": Trump's Iran Deal Upends GOP Plans</h4>
+    <p>President Trump's Iran deal has upended Republican Party plans heading into the November 2026 midterm elections, creating a split between Trump loyalists and traditional GOP hawks who oppose the agreement. The article "French Twist: Trump Upends GOP Plans" details how the deal — negotiated and signed at the G-7 in France — has created a "front within the front" as the party struggles to unify around a midterm message. Some of Trump's own allies turned against him, saying he abandoned his America First policies.</p>
+    <div class="calibrated">Calibrated View: 45% probability — GOP loses control of at least one chamber in November 2026 midterms</div>
+</div>
+
+<div class="story-card">
+    <h4>4.2 Supreme Court Expands Gun Rights: Drug Users May Own Firearms</h4>
+    <p>The Supreme Court issued a major Second Amendment ruling, holding that the federal government cannot broadly ban all illegal drug users from owning firearms. The decision continues the Court's trend of expanding gun rights under the Second Amendment, continuing the conservative majority's dorsal vagal consistency on this question.</p>
+</div>
+
+<div class="story-card">
+    <h4>4.3 Opinion: "Who Killed the Patriotic American Movie?"</h4>
+    <p>Mary Julia Koch, writing in the Free Expression daily newsletter, examines the decline of patriotic American cinema. Americans' pride in their nation is sinking to new lows as the U.S. approaches its 250th birthday. Koch examines the kinds of stories Hollywood has stopped telling — cinema that once made audiences swell with pride has given way to a cultural shift where many are now questioning the flag. <em>(This piece is from the Opinion section and reflects the author's cultural analysis, not news reporting.)</em></p>
+</div>
+
+<div class="story-card">
+    <h4>4.4 Opinion: Malpass on Fed Reform</h4>
+    <p>In a commentary titled "Trump Is Right: The Fed's Economic Models Punish Growth," David Malpass argues that Chairman Kevin Warsh should pursue reforms to rebuild market confidence. The piece aligns with Cluster 2's coverage of the Fed communication overhaul but is placed here as an opinion piece arguing for specific policy direction.</p>
+</div>
+
+<div class="story-card">
+    <h4>4.5 Pepper&hellip;and Salt</h4>
+    <p>WSJ's regular cartoon feature appears in the June 18, 2026 edition.</p>
+</div>
+
+<div class="story-card">
+    <h4>4.6 Shinnecock: Golf's Most Maddening Test</h4>
+    <p>A sports feature examines whether the Shinnecock Hills Golf Club's U.S. Open setup has gone too far in difficulty — a cultural/human-interest piece that rounds out the briefing's lighter side.</p>
+</div>
+
+<hr class="divider">
+
+<!-- Observer Commentaries -->
+<h2 class="section-title">Observer Commentaries</h2>
+
+<div class="observer-card">
+<h4>翟东升——体系/结构视角</h4>
+<h3>翟东升观察：6月18日WSJ简报 — 水面之下的系统力与资金流</h3>
+<p>今天的头条是伊朗协议，但真正的主角是<strong>石油美元的重新校准</strong>。特朗普签下这份60天停火协议，不是因为爱好和平，而是因为他发现打这场仗正在输掉midterm election。三月的轰炸推高了油价，油价推高了通胀，通胀推高了支持率流失速度。这是一个<strong>系统自反性</strong>的经典案例：你发动战争来展示力量，结果经济数据打了你的脸，你被迫用和平来止损。</p>
+<p>伊朗协议表面上是地缘政治和解，本质上是<strong>资金流的重新定向</strong>。伊朗立刻恢复石油出口，布伦特原油跌破80美元，全美汽油价格三周内从$4.20降到$4以下。这波资金流向的变化——从能源板块挤出，流入消费端——才是今天纳指反弹的真正驱动力。Vix从18.5跌到17.15，不是"风险偏好回归"，而是<strong>系统性焦虑的暂时麻醉</strong>。麻醉剂有效期：60天。</p>
+<p>再看美联储。Warsh的132字声明，最后六个字"The Committee will deliver price stability"让市场大跌。我的判断：这是<strong>credibility theater</strong>。Warsh是新人，他用最低限度的沟通来建立权威——不说废话，不解释，不道歉。这是sovereign credit的逻辑：货币的价值不在于你说了多少，而在于你是否有能力兑现承诺。但他面临一个根本矛盾：石油价格暴跌正在缓解通胀压力，如果CPI数据随后走低，他的鹰派立场就失去了经济基础。市场在给他投票，也在等他出丑。</p>
+<p>SpaceX用600亿美元收购Cursor，这是<strong>AI泡沫的登峰造极</strong>。但请各位看看Jonathan Weil的数据：五大hyperscalers的净利润预计增长25%，但自由现金流暴跌91%。从1780亿美元降到160亿美元。钱去哪了？全部烧在了AI基础设施建设上。这是典型的<strong>capital misallocation — 资本错配</strong>。当Earnings看起来很好，但Cash Flow在流血，你要相信哪个？我相信现金流。泡沫的最后一公里，往往就是以"战略收购"的名义，把别人的泡沫接到自己的资产负债表上。</p>
+<p>Tim Cook说苹果要涨价，原因是全球memory chip crunch。这里面有一个更深层的结构性问题：<strong>中美科技脱钩的滞后成本正在兑现</strong>。特朗普宣布苹果和Intel合作，Intel股价涨了10%——但仔细想想，Intel的芯片制造能力真的能替代台积电吗？这更像是政治操弄下的短期show，而非真正的supply chain resilience。苹果涨价，最终买单的是美国消费者——而这些消费者，恰好是十一月要投票的。</p>
+<p>系统层面，今天简报揭示了<strong>三重flow的重新排序</strong>：</p>
+<p>1. <strong>Energy flow</strong> — 中东石油重新流入市场，打破了过去三个月的供应紧缩</p>
+<p>2. <strong>Capital flow</strong> — 从能源股流向AI赛道和消费板块，但AI自身的FCF崩塌是定时炸弹</p>
+<p>3. <strong>Political flow</strong> — 伊朗协议分裂了共和党，Trump用"avoid economic catastrophe"的叙事换取了60天的政治喘息，但hawks的resentment不会消失</p>
+<p>我的结论：今天的反弹是<strong>relief rally, not structural recovery</strong>。水面之下的矛盾——Fed的credibility困境、AI的资本效率危机、芯片供应链的脆弱性——一个都没有解决。聪明的投资者应该利用这个窗口期减杠杆，而不是加仓。</p>
+<p><strong>Systemic forces don't forgive. They only defer.</strong> 60天后，我们再看。</p>
+<p><em>— 翟东升，巴黎政治学院博士，中国人民大学国际关系学院教授</em></p>
+</div>
+
+<div class="observer-card">
+<h4>金灿荣——美国政治/战略相持视角</h4>
+<h3>观察者网独家 | 金灿荣：特朗普签了个"停火协议"，但美国内部的"火"谁来灭？</h3>
+<p><strong>文/观察者网专栏作者 金灿荣教授</strong></p>
+<p>今天华尔街日报的头条，戏剧性十足。特朗普在法国G-7上签了伊朗临时和平协议，说为了避免"经济灾难"。老特这话说得很实在——打了仨月，油价飙了仨月，老百姓加油破四美元，中期选举还要不要选了？这就是典型的<strong>战略相持</strong>打不下去了，主动认栽。</p>
+<p>但各位注意关键细节：协议文本不公布、60天谈判窗口、谈不拢就恢复轰炸。这哪里是和平协议？这就是一个"暂停键"，说不好听点，就是个技术性回调。按我这"百年未有之大变局"的分析框架，美国在中东的战略攻势已经阶段性见顶，现在是收缩休整阶段。</p>
+<p>更有意思的是G-7现场——特朗普说"I'm the boss"，然后让马克龙主持。像不像你去朋友家吃饭，进门说"今天我请客"，然后让人家老婆下厨？场面话说得漂亮，面子也有了，里子呢？<strong>战略姿态在调整，但实力支撑跟不上。</strong></p>
+<p>再看国防部长赫格塞斯威胁削减驻北约美军——这就更逗了。你这边刚在中东签了休战协议，转头跟欧洲盟友说"不给钱我就撤军"，等于左手刚把刀放下，右手又举起来了。这不叫战略，这叫<strong>手忙脚乱</strong>。</p>
+<p>美联储还是个大看点。沃什上任第一份声明，132个字，最后六个字"委员会将实现物价稳定"把市场吓崩了。纳斯达克直接跳水。我打个比方：家里煤气泄漏了，新来的修理工不说怎么修，只说了句"这房子一定会安全"，你说业主慌不慌？</p>
+<p>最后说苹果跟英特尔合作——这纯粹是政治联姻。砍菜刀找卖肉的合作，不是因为他刀好，是因为特朗普在中间牵线。但芯片供应链焦虑是真实的，这也是"百年未有之大变局"的一个缩影：全球化分工正在被地缘政治撕裂，谁都怕被卡脖子。</p>
+<p>一句话总结：美国在国际上想收缩又放不下架子，在国内共和党自己先打起来了——伊朗协议导致共和党内部大分裂，鹰派骂特朗普背弃美国优先。这就是我常说的<strong>战略相持阶段</strong>的内部矛盾外溢。美国现在的问题不是跟谁打，而是自己内部这摊子事儿能不能收拾干净。</p>
+<p>好戏还在后头。</p>
+</div>
+
+<div class="observer-card">
+<h4>宋鸿兵——货币/债务/周期视角</h4>
+<h3>Observer Commentary — 宋鸿兵视野</h3>
+<h3>货币战争框架下的2026年6月18日WSJ简报</h3>
+<h4>石油停战与债务周期的假面</h4>
+<p>伊朗60天停火协议、原油跌破$74、汽油重返$4以下——表面是"和平红利"，实则是一条经典的<strong>债务货币周期</strong>暗线。</p>
+<p>我在《货币战争》中反复论证过：<strong>每一次大规模军事冲突的终结，都对应着一轮债务扩张的阶段性顶点。</strong> 2026年这场三个月的中东冲突，本质上是美联储紧缩周期（利率高位）与地缘供给冲击的碰撞。特朗普选择"经济灾难"式停火，恰恰暴露了美国债务体系的脆弱性——联邦债务已突破$36万亿，若油价长期高企带动CPI反弹，Warsh的"价格稳定"六字箴言就必须兑现为加息，而这将直接引爆<strong>企业债市场的定时炸弹</strong>。</p>
+<p>关键信号在AI板块：五大Hyperscalers预期FCF骤降91%，Net Income却涨25%——这是典型的<strong>债务驱动型资产泡沫</strong>特征。SpaceX以$600亿收购Cursor、Baseten估值$130亿，从货币战争视角来看，不是"创新"而是<strong>过剩流动性寻找出口</strong>。当实体经济无法吸收天量债务，资本就涌向AI等叙事性赛道，这是历史上每一次债务周期末期的标准剧本。</p>
+<h4>Warsh的困境：鹰派言辞，鸽派宿命</h4>
+<p>Warsh以132字宣言震慑市场，但历史告诉我：<strong>没有哪个央行行长能在债务高企时真正持续紧缩。</strong> 1980年代沃尔克可以，是因为当时联邦债务/GDP仅32%；今天这个数字超过120%。BOE停在3.75%不动，恰恰是英国版的"不敢动"——全球央行都被债务绑架了。</p>
+<p>Apple的memory chip涨价则透露了另一层真相：<strong>去全球化正在制造结构性通胀。</strong> 这不是周期性波动，而是货币战争的深层表现——各国争相建立独立供应链，意味着过去30年"低成本全球贸易压制通胀"的黄金时代已经结束。</p>
+<h4>黄金的沉默</h4>
+<p>有趣的是，金价当日跌2.59%至$4,268。市场沉浸在"和平-降息-风险偏好"的短期叙事中。但正如我在历次周期分析中指出的：<strong>当债务不可持续时，黄金总是最后说话的那一个。</strong> 当前这轮看似漂亮的"停火反弹"，不过是下一轮债务危机前奏的序曲。</p>
+<p>&gt; "历史从不重复，但押韵。"（Mark Twain）——而货币战争的历史，押的都是债务清算的韵脚。</p>
+<p>——宋鸿兵，2026年6月18日</p>
+<p><em>Currency Wars framework applied to WSJ June 18 briefing. Core insight: Iran ceasefire, AI mega-deals, and Fed posturing are all surface symptoms of an underlying debt super-cycle approaching its inflection point.</em></p>
+<p><em>Consolidated briefing with Observer commentaries. Version 3. June 18, 2026.</em></p>
+</div>
+
+<hr class="divider">
+
+<!-- Daily Cartoon -->
+<h2 class="section-title">Daily Cartoon</h2>
+<div class="cartoon-section">
+    <img src="./assets/images/wsj_cartoon.jpg" alt="WSJ Daily Cartoon — June 18, 2026">
+    <p class="caption">Pepper&hellip;and Salt &mdash; WSJ's regular cartoon feature, June 18, 2026</p>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    <p>WSJ Daily Briefing &mdash; June 18, 2026</p>
+    <p>Generated from 6 source files: wsj_stories.md &middot; wsj_connector.md &middot; wsj_analysis.md &middot; wsj_philosophy.md &middot; wsj_strategy.md &middot; wsj_operations.md</p>
+    <p style="margin-top:0.5rem; color: #333;">WSJ DAILY BRIEFING</p>
+</div>
+
+</div>
+</body>
+</html>

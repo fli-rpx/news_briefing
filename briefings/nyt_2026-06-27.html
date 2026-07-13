@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYT Daily Briefing — Saturday, June 27, 2026</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --accent: #00ff88;
+      --text: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --card-bg: #12121a;
+      --border: #1f1f2e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      font-size: 17px;
+    }
+
+    .chinese {
+      font-family: 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 65vh;
+      background: linear-gradient(135deg, rgba(10, 10, 15, 0.92) 0%, rgba(10, 10, 15, 0.7) 50%, rgba(10, 10, 15, 0.85) 100%), url('./assets/images/nyt_hero_bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero-overlay {
+      background: transparent;
+      padding: 2rem 0;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 3.4rem;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      letter-spacing: 3px;
+      font-weight: 700;
+      text-shadow: 0 2px 20px rgba(0, 255, 136, 0.2);
+    }
+
+    .hero .date {
+      font-size: 1.45rem;
+      color: var(--text);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .hero .byline {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 255, 136, 0.12);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 0.45rem 1.1rem;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .card {
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    h3 {
+      color: var(--text);
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      line-height: 1.35;
+    }
+
+    h4 {
+      color: var(--accent);
+      font-size: 1.15rem;
+      margin: 1.75rem 0 1rem;
+      font-weight: 700;
+    }
+
+    p {
+      margin-bottom: 1.1rem;
+      color: var(--text-secondary);
+    }
+
+    p strong {
+      color: var(--text);
+    }
+
+    ul, ol {
+      margin: 1rem 0 1.5rem 1.5rem;
+      color: var(--text-secondary);
+    }
+
+    li {
+      margin-bottom: 0.75rem;
+      line-height: 1.7;
+    }
+
+    li strong {
+      color: var(--text);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 0.85rem;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: rgba(0, 255, 136, 0.1);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .framework-table td:first-child {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .prediction-table td:first-child {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .calibrated-view {
+      padding: 1.25rem 1.5rem;
+      margin: 1.25rem 0;
+      border-left: 4px solid var(--accent);
+      background: rgba(0, 255, 136, 0.06);
+      border-radius: 0 8px 8px 0;
+    }
+
+    .calibrated-view strong {
+      color: var(--accent);
+    }
+
+    .reading-note {
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+      border-left: 3px solid #4a90d9;
+      background: rgba(74, 144, 217, 0.06);
+      border-radius: 0 8px 8px 0;
+      font-size: 0.95rem;
+    }
+
+    .observer-section {
+      margin-bottom: 3.5rem;
+    }
+
+    .observer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .observer-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .observer-card h3 {
+      color: var(--accent);
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .observer-card .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      margin-bottom: 1.25rem;
+      font-style: italic;
+    }
+
+    .observer-card p {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      margin-bottom: 0.9rem;
+    }
+
+    .observer-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .cluster {
+      margin-bottom: 3.5rem;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .cluster h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    article {
+      margin-bottom: 2.5rem;
+    }
+
+    article:last-child {
+      margin-bottom: 0;
+    }
+
+    .story-list {
+      list-style: none;
+      margin-left: 0;
+    }
+
+    .story-list li {
+      padding-left: 1.25rem;
+      position: relative;
+    }
+
+    .story-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    .daily-cartoon {
+      text-align: center;
+      margin-bottom: 3.5rem;
+      padding: 2.5rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    }
+
+    .daily-cartoon h2 {
+      color: var(--accent);
+      font-size: 2.1rem;
+      margin-bottom: 1.75rem;
+      padding-bottom: 0.9rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .daily-cartoon img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      display: block;
+      margin: 0 auto;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .daily-cartoon .caption {
+      margin-top: 1.25rem;
+      color: var(--text-secondary);
+      font-style: italic;
+      font-size: 1rem;
+    }
+
+    .sources {
+      margin-bottom: 3rem;
+      padding: 2.25rem;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--border);
+    }
+
+    .sources h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .sources p {
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 1024px) {
+      .observer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        min-height: 55vh;
+        padding: 1.25rem;
+      }
+
+      .hero-overlay {
+        padding: 2rem 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.2rem;
+        letter-spacing: 1px;
+      }
+
+      .hero .date {
+        font-size: 1.15rem;
+      }
+
+      .hero .byline {
+        font-size: 0.9rem;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .card, .cluster, .observer-card, .daily-cartoon, .sources {
+        padding: 1.5rem;
+      }
+
+      h2, .cluster h2, .daily-cartoon h2 {
+        font-size: 1.6rem;
+      }
+
+      h3 {
+        font-size: 1.2rem;
+      }
+
+      .observer-card h3 {
+        font-size: 1.35rem;
+      }
+
+      table {
+        font-size: 0.8rem;
+      }
+
+      th, td {
+        padding: 0.55rem;
+      }
+
+      body {
+        font-size: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.85rem;
+      }
+
+      .hero .date {
+        font-size: 1rem;
+      }
+
+      h2, .cluster h2, .daily-cartoon h2 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-overlay">
+      <div class="badge">A-Grade Briefing</div>
+      <h1>NYT DAILY BRIEFING — Saturday, June 27, 2026</h1>
+      <p class="date">June 27, 2026</p>
+      <p class="byline">Source: 36 articles from The New York Times, June 24–26, 2026. Analytical frameworks: 8 lenses across Connector, Analyst, Philosophy, Strategy, and Operations readings.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="card" id="framework-key">
+      <h2>Analytical Framework</h2>
+      <p>This briefing applies eight analytical lenses drawn from the companion readings. Each lens illuminates a different dimension of the news cycle.</p>
+      <table class="framework-table">
+        <thead>
+          <tr>
+            <th>Lens</th>
+            <th>Source</th>
+            <th>Core Question</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Polyvagal / Connector</td>
+            <td>Porges via Connector analysis</td>
+            <td>What is the autonomic nervous system state of each actor?</td>
+          </tr>
+          <tr>
+            <td>Calibration / Analyst</td>
+            <td>Quantitative analysis</td>
+            <td>Are probability claims evidence-based and well-calibrated?</td>
+          </tr>
+          <tr>
+            <td>Dialectics / Mao</td>
+            <td>矛盾论 (On Contradiction)</td>
+            <td>What is the principal contradiction, and is it antagonistic or non-antagonistic?</td>
+          </tr>
+          <tr>
+            <td>Reversal / Laozi</td>
+            <td>道德经 (Dao De Jing)</td>
+            <td>Where is 物极必反 operating? Where does the weak overcome the strong?</td>
+          </tr>
+          <tr>
+            <td>Will to Power / Nietzsche</td>
+            <td>Beyond Good and Evil</td>
+            <td>Who is creating new values (Übermensch) vs. seeking comfort (Last Man)? Where is ressentiment?</td>
+          </tr>
+          <tr>
+            <td>Position / Sun Tzu</td>
+            <td>孙子兵法</td>
+            <td>Who holds the 势 (shì / strategic momentum)? Who wins without fighting?</td>
+          </tr>
+          <tr>
+            <td>Friction / Clausewitz</td>
+            <td>On War</td>
+            <td>Where is the fog? What is the center of gravity? Has anyone reached the culminating point?</td>
+          </tr>
+          <tr>
+            <td>Systems / Han Fei</td>
+            <td>韩非子 + 刑名 (xíng-míng)</td>
+            <td>What is the gap between formal rules (míng) and actual incentives (xíng)?</td>
+          </tr>
+          <tr>
+            <td>Discipline / Zeng Guofan</td>
+            <td>曾国藩 (拙诚)</td>
+            <td>Where is "stupid person's diligence" — persistent, unglamorous, effective action?</td>
+          </tr>
+          <tr>
+            <td>Effectiveness / Drucker</td>
+            <td>The Effective Executive</td>
+            <td>What is the right thing to do — not just doing things right?</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="card" id="executive-summary">
+      <h2>Executive Summary</h2>
+
+      <article>
+        <h3>tl;dr</h3>
+        <p>Venezuela's twin earthquakes killed thousands and collapsed infrastructure. The US struck Iran after a Strait of Hormuz attack. Oil prices fell anyway. Myanmar's forgotten civil war grinds on. Ukraine forced a Crimea state of emergency with drone strikes. A Beijing plane crash into the tallest building remains unexplained. The Ebola outbreak in DRC could become the largest ever. The Supreme Court ended TPS for 1.3 million people. Yale is negotiating with the Trump DOJ over admissions. John Bolton pleaded guilty to mishandling classified information. The DSA won NYC primaries and passed a landmark rent freeze. Tesla sales surged 77% in Europe despite Musk's unpopularity. Texas mandated Bible reading for five million students. OpenAI delayed its IPO. A mistrial left the Palisades Fire unresolved. Paris banned alcohol and sports during a record heat wave.</p>
+      </article>
+
+      <article>
+        <h3>What We Don't Know</h3>
+        <ol>
+          <li><strong>Beijing plane crash:</strong> Was it an accident, a suicide, or an attack? The pilot's identity and motive remain unknown. Calls to Shuangyue General Aviation went unanswered. No casualty count has been confirmed.</li>
+          <li><strong>Venezuela death toll:</strong> The full scope of casualties from the twin 7.2- and 7.5-magnitude earthquakes is not yet known. Hundreds of aftershocks continue to hamper search efforts.</li>
+          <li><strong>Iran escalation trajectory:</strong> The US described Friday's strikes as "not a restart of major combat operations" — but Iran's IRGC warned that "if repeated, our response will be more extensive." The fragile cease-fire is now in question.</li>
+          <li><strong>TPS implementation timeline:</strong> The Supreme Court ruling allows deportation of 1.3 million people — but the pace, scope, and legal challenges to enforcement are unresolved. Stephen Miller promised mass deportations.</li>
+          <li><strong>Palisades Fire origin:</strong> Despite 9,000 videos and an intensive investigation, the jury split 10-2 for acquittal. No one can prove how the fire started — accident or arson remains formally unknown.</li>
+        </ol>
+      </article>
+
+      <article>
+        <h3>7 Calibrated Predictions</h3>
+        <table class="prediction-table">
+          <thead>
+            <tr>
+              <th>Prediction</th>
+              <th>Confidence</th>
+              <th>Rationale</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>The TPS ruling will result in tens of thousands of deportations within 12 months, but not the full 1.3M</td>
+              <td>85%</td>
+              <td>Supreme Court ruling is final; enforcement mechanism (ICE check-ins, detention) is operational. Lower courts blocked removals for a decade — SCOTUS reversal unlocks the pipeline. But logistical capacity and legal challenges (individual hardship claims, sanctuary cities) will slow full implementation. (Evidence: Art 9, Art 31 — Miller: "victory 10 years in the making"; Arulanantham: "thousands now vulnerable")</td>
+            </tr>
+            <tr>
+              <td>US-Iran cease-fire will hold through Q3 2026 despite periodic tit-for-tat strikes</td>
+              <td>75%</td>
+              <td>Both sides frame strikes as limited responses, not escalations. Oil markets priced in the disruption — prices fell 4.3% to $71.99, suggesting traders expect containment. But the phrase "not a restart of major combat" is fragile; any miscalculation could break the equilibrium. (Evidence: Art 2 — 90-minute strike; Art 25 — prices below prewar levels)</td>
+            </tr>
+            <tr>
+              <td>The Ebola outbreak in DRC will become the largest in history</td>
+              <td>80%</td>
+              <td>Contact tracing is at 30% vs. 80% needed. Dr. Kaseya warned "huge, huge community transmission" and evidence of asymptomatic transmission undermines existing playbooks. The 20,000 workers being recruited represent a delayed counterattack — the question is whether it arrives before the outbreak peaks. (Evidence: Art 16 — Africa CDC warning, 30% tracing vs. 80% target)</td>
+            </tr>
+            <tr>
+              <td>The DSA's NYC primary victories will translate into at least one significant state-level policy win within six months</td>
+              <td>70%</td>
+              <td>Mamdani's rent freeze passed 7-1 immediately after the primary wins. The DSA refused Heastie's plea to stop primarying incumbents. Momentum and governing control are aligned — but the state legislature remains a friction point. (Evidence: Art 20 — Mausser: "That's not something we can do"; Art 35 — 7-1 rent freeze vote)</td>
+            </tr>
+            <tr>
+              <td>OpenAI will not complete its IPO before Q1 2027</td>
+              <td>80%</td>
+              <td>Named sources inside deliberations confirm the lean toward delay. SpaceX's post-IPO slide ($202 to $153) serves as a cautionary tale. Choppy markets and adviser warnings reinforce the hesitation. Altman's $1 trillion ambition remains, but timing has shifted. (Evidence: Art 24 — "three people involved in the company's deliberations" cited; SpaceX decline; adviser caution)</td>
+            </tr>
+            <tr>
+              <td>The Ukraine drone campaign will force a significant Russian redeployment from front-line positions within 90 days</td>
+              <td>65%</td>
+              <td>660 drones in one Crimea strike; 992 in the Moscow attack. Fuel shortages, cancelled summer camps, rolling blackouts — Crimea's occupation infrastructure is degrading. But Russia has shown no willingness to negotiate under pressure, and Putin's existential calculus may not respond to cost-benefit pressure. (Evidence: Art 14 — Crimea state of emergency, gas stations run out of fuel, children evacuated)</td>
+            </tr>
+            <tr>
+              <td>The Trump administration's multi-front offensive (Yale, Smith, Texas Bible, DNI, antitrust) will produce at least one significant legal setback before year-end 2026</td>
+              <td>75%</td>
+              <td>The Supreme Court already struck down Trump's emergency tariff authority (Feb 2026). Courts are a recurring friction point. Yale's settlement approach may succeed, but the Texas Bible mandate faces church-state challenges, and the Norton appointment to DNI may trigger Senate resistance. Overreach creates vulnerability. (Evidence: Art 22 — SCOTUS blocked tariffs; Art 28 — Warner statement; Art 27 — critics cite separation of church and state)</td>
+            </tr>
+          </tbody>
+        </table>
+      </article>
+
+      <article>
+        <h3>Confidence Dashboard</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Calibration Band</th>
+              <th>Count</th>
+              <th>Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>≥80%</td>
+              <td>3</td>
+              <td>TPS deportations, Ebola trajectory, OpenAI IPO delay — supported by named sources, institutional finality, and operational data</td>
+            </tr>
+            <tr>
+              <td>70–79%</td>
+              <td>3</td>
+              <td>US-Iran cease-fire, DSA policy win, Trump legal setback — plausible but conditional on variables in motion</td>
+            </tr>
+            <tr>
+              <td>60–69%</td>
+              <td>1</td>
+              <td>Ukraine redeployment — high confidence in drone capability, low confidence in Russian response</td>
+            </tr>
+          </tbody>
+        </table>
+        <p><em>Note: All predictions should be read against the calibration analysis in the Analyst companion file, which noted that NYT probability claims are best-calibrated on legal/policy outcomes (TPS, IPO) and weakest on conflict trajectories (Ukraine, Iran).</em></p>
+      </article>
+    </section>
+
+
+    <section class="observer-section chinese" id="observer-commentaries">
+      <h2>Observer Commentary</h2>
+      <div class="observer-grid">
+
+        <article class="observer-card">
+          <h3>翟东升</h3>
+          <p class="subtitle">主权信用货币论</p>
+          <p>本周最值得关注的金融现象，不是美国对伊朗的90分钟打击，而是油价在霍尔木兹海峡被攻击后反而下跌了4.3%，Brent原油跌破72美元，低于战前水平。</p>
+          <p>底层逻辑是什么？不是地缘政治风险被消化了，而是边际定价权发生了转移。美式全球化第三阶段（1991–2008）的核心特征是石油美元闭环：中东石油必须用美元交易，盈余回流美债。但这个闭环的物理天花板——美国从石油净进口国变成净出口国——已经在2010年代触顶。今天，全球原油的边际买家已经不是西方基金，而是中国和印度。当供给侧冲击发生时，需求侧的预期走弱压倒了供给溢价。这不是一个"风险定价正常化"的故事，而是一个货币锚切换的故事。</p>
+          <p>再看特朗普对欧洲征收100%数字服务税关税的威胁。形式上这是贸易战，本质上这是主权信用竞争。欧洲的数字服务税（DST）本质上是欧盟试图对跨境数据流动征收"铸币税"——FANG的数据在欧盟产生利润，税收却流向美国。特朗普的回应是用关税工具反制，但这里有一个平行体系的结构性矛盾：美国的物理霸权（关税、海军、SWIFT）可以打击欧洲，却无法阻止欧洲和中国之间正在加速的数字人民币跨境测试和本币互换网络扩张。你封锁一个渠道，资本就流向另一个渠道。</p>
+          <p>纽约DSA的租金冻结胜利——对近100万套公寓实施双轨冻租——在国内政治叙事中是进步主义浪潮，但从民本主义政治经济学的视角看，这是在房地产金融化到达物理天花板之后的必然回摆。当租金收入比超过40%，租客的消费能力被抽干，整个城市的经济循环就会陷入通缩螺旋。这不是道德问题，是资产负债表的结构约束。</p>
+          <p>这些看似无关的事件，指向同一个底层逻辑：美式全球化三阶段的红利已经耗尽，主权信用货币体系正在经历震荡。旧的锚（石油美元、FDI循环、安全红利）在松脱，新的锚（数字人民币、本币互换、大宗商品本币结算）尚未完成构建。中间状态就是我们所见的——高波动、低增长、方向不明。</p>
+        </article>
+
+        <article class="observer-card">
+          <h3>金灿荣</h3>
+          <p class="subtitle">百年大变局</p>
+          <p>各位朋友好，我是金灿荣。</p>
+          <p>今天的世界新闻很有意思。美国刚打完伊朗，油价反而跌了。这个事情其实很简单——市场已经不相信美国能打赢任何一场战争了。</p>
+          <p>你看，特朗普一边在伊朗海峡放烟花，一边跟耶鲁大学、得克萨斯州、一百三十万移民同时开战。一个厨房同时烧七口锅，你说哪口先糊？美国现在七八条战线同时开打，最后哪个都打不赢。</p>
+          <p>美国人现在很焦虑。为什么？因为他的工业化根基已经不行了。台积电掌握着全球最先进的AI芯片封装技术，美国想搞搞不出来，得看台湾脸色。这叫什么事？这就叫百年未有之大变局——工业化的重心已经转移到东方了。</p>
+          <p>北京飞机坠楼事件，很多人问为什么不透明。我说个道理——你家后院起火了，你会第一时间站门口大喊吗？查清楚自然会公布，急什么。</p>
+          <p>中国现在处于战略相持阶段。美国在伊朗消耗战略资源，在国内消耗政治资源，而我们专心搞产业升级。等美国回过头来，发现我们已经跨过门槛了。</p>
+          <p>所以结论很简单：我们赢了。</p>
+        </article>
+
+        <article class="observer-card">
+          <h3>宋鸿兵</h3>
+          <p class="subtitle">美元环流压力测试</p>
+          <p>如果你把全球金融体系看作一套液压系统，那么过去72小时发生的事情，就是对美元环流（Dollar Circulation Cycle）的一次极限压力测试。</p>
+          <p>最反常的信号来自石油市场。美国对伊朗发动了90分钟的精确打击，目标是霍尔木兹海峡的沿岸雷达站——全球20%石油运输的咽喉阀门被敲了一下。按照教科书，布伦特原油应该跳涨。结果呢？油价下跌4.3%至71.99美元，低于战前水平。这不是市场的淡定，而是美元环流中的一个阀门失效了。</p>
+          <p>传统逻辑是：地缘政治风险 → 油价上涨 → 美元需求上升（石油美元结算）→ 美债获得买盘。但现在这个回路出现了短路。油价对海峡袭击的"免疫反应"说明，石油美元的边际定价权在转移。新兴市场央行在过去18个月里加速购入黄金（2025年全球央行购金量创纪录的1,045吨），同时在减少美债持仓——这是对美元结算体系（CHIPS和SWIFT）被武器化的系统性对冲。</p>
+          <p>再看欧洲那条线。特朗普威胁对征收数字服务税的国家加征100%关税。这看起来是贸易战，实质上是税收主权与美元霸权的正面碰撞。欧盟的数字服务税是对GAFA（Google, Apple, Facebook, Amazon）利润征税——但GAFA利润的本质是美元铸币税在数字空间的延伸。当欧洲说"我要分一杯税"，华盛顿的答复是"那我就关掉你的市场准入阀门"。这是金融高边疆（Financial High Frontier）的数字化版本。</p>
+          <p>TSMC先进封装的技术瓶颈，暴露了整个AI产业链的单点故障风险（single point of failure）。当全球最关键的芯片都要经过台湾一个节点才能出货，这就变成了可被武器化的供应链杠杆——比霍尔木兹海峡更精密的战略扼流圈。</p>
+          <p>从三变六反（Three Transformations, Six Reversals）的框架看，当前正处于"金融霸权边际收益递减"的阶段。每一次美元武器的使用都在加速对手方的去美元化（de-dollarization），而每一次去美元化的推进又在压缩美元环流的压力空间。历史周期告诉我们：当主导货币的军事保护成本超过了它带来的铸币税收益，体系就会进入结构性衰退。我们可能正在目睹这个临界点的逼近。</p>
+        </article>
+
+      </div>
+    </section>
+
+
+    <section id="clusters-analysis">
+      <h2 style="color: var(--accent); font-size: 2.1rem; margin-bottom: 2rem; padding-bottom: 0.9rem; border-bottom: 2px solid var(--accent);">Clusters &amp; Analysis</h2>
+
+      <article class="cluster" id="cluster-1">
+        <h2>Cluster 1: Global Pressure Points — War, Disaster, and Existential Risk</h2>
+        <p><em>(9 articles: 1, 2, 3, 6, 7, 14, 15, 16, 25)</em></p>
+        <p><strong>Narrative arc:</strong> The world's most acute crises — earthquakes, military strikes, forgotten civil wars, disease outbreaks — are unfolding simultaneously, each demanding resources the international system cannot supply in equal measure. The pattern is not collapse but <em>competitive suffering</em>: one catastrophe crowds out attention for another.</p>
+
+        <h4>Named human stories</h4>
+        <ul>
+          <li><strong>Juan David Arsia, 17</strong> — Spent 21 hours under rubble in La Guaira, Venezuela, with a fractured leg, hearing his mother scream. "Don't give up, mom, have faith — don't give up." Neighbors pulled them both free. (Art 1)</li>
+          <li><strong>Aliria Álvarez, 61</strong> — Sat on a plastic chair on a Caracas sidewalk with five relatives, too afraid to sleep in their apartment. "We'll stay here, best to be safe because there have been many aftershocks." (Art 6)</li>
+          <li><strong>Jorge Erazo, 35</strong> — Deported from the US to Venezuela under Trump's crackdown, then went missing in the earthquakes. His Miami employer John Mendoza: "He's such a hard worker." (Art 7)</li>
+          <li><strong>Dr. Lone Lone</strong> — A rebel commander in Myanmar, a former doctor leading outgunned fighters evading drones and fighter jets. "A drone somewhere in the distance was not Dr. Lone Lone's biggest concern." (Art 3)</li>
+          <li><strong>Dr. Jean Kaseya</strong> — Director general of Africa CDC, warning that the Ebola outbreak "for sure it will be the largest Ebola outbreak ever" if contact tracing stays at 30%. "There is huge, huge community transmission." (Art 16)</li>
+          <li><strong>Stéphane Guillaume, 44</strong> — Parisian computer engineer watching his children splash in the Canal Saint-Martin during record heat. "It's going to get worse every year. It's very worrying because we're already at the limit of what's bearable." (Art 13)</li>
+        </ul>
+
+        <h4>Key developments</h4>
+        <ul>
+          <li><strong>Venezuela (Art 1, Art 6, Art 7):</strong> Twin 7.2- and 7.5-magnitude earthquakes toppled at least 250 buildings, left nearly 3,000 families homeless. Rescue teams from 10 countries face damaged airport and split roads. The government dispatched 100 heavy machines but residents accuse it of doing too little. Aftershocks numbered in the hundreds.</li>
+          <li><strong>US-Iran (Art 2, Art 25):</strong> US launched 90-minute retaliatory strikes on four Iranian sites along the Strait of Hormuz. Trump called Iran's attack on a container ship "foolish." Iran's IRGC warned: "if repeated, our response will be more extensive." Oil prices fell 4.3% to $71.99 Brent, below prewar levels — the market absorbed the shock.</li>
+          <li><strong>Myanmar (Art 3):</strong> A 50-million-person nation "quietly collapsed" — a civil war forgotten while the world focuses on Iran, Ukraine, and Lebanon. The junta bombs from the air; rebels evade through jungle. Dr. Lone Lone and his men have fought for five years.</li>
+          <li><strong>Ukraine/Crimea (Art 14):</strong> 660 Ukrainian drones intercepted in a single night over Crimea — one of the largest strikes since the war began. Fuel shortages, cancelled summer camps, rolling blackouts. Last week, 992 drones targeted Moscow, killing an 8-year-old girl and forcing four airport closures.</li>
+          <li><strong>Beijing plane crash (Art 15):</strong> A small aircraft from Shuangyue General Aviation flew into Beijing's tallest building. The plane circled before flying west into the city center. Debris fell dozens of stories. Pilot identity and motive unknown. Calls to the airline went unanswered.</li>
+          <li><strong>Ebola (Art 16):</strong> Contact tracing at 30% vs. 80% target in DRC's Ituri Province. 20,000 workers being recruited. Evidence of asymptomatic transmission changes the outbreak's dynamics.</li>
+          <li><strong>Oil markets (Art 25):</strong> Prices resumed decline despite the Strait of Hormuz attack, at $71.99 Brent and $69.23 WTI. "Trading has been jittery" but the fundamental direction is downward — bearishness overriding geopolitical risk.</li>
+        </ul>
+        <p><em>Citations: Articles 1, 2, 3, 6, 7, 14, 15, 16, 25</em></p>
+      </article>
+
+      <article class="cluster" id="cluster-2">
+        <h2>Cluster 2: Immigration and the TPS Reckoning</h2>
+        <p><em>(2 articles: 9, 31; plus Article 7's deportation angle)</em></p>
+        <p><strong>Narrative arc:</strong> The Supreme Court's TPS ruling is not a policy shift — it is the culmination of a 10-year legal campaign by immigration hard-liners who lost every lower-court battle and won the war. For 1.3 million people who built lives in the United States over decades, the ground has vanished beneath them.</p>
+
+        <h4>Named human stories</h4>
+        <ul>
+          <li><strong>Rev. Reginald Jean-Mary</strong> — At Notre Dame d'Haiti in Miami, his congregation gathered in "intense prayer" for TPS preservation. After the ruling, "He seemed in shock. He declined to comment." (Art 9)</li>
+          <li><strong>Stephen Miller</strong> — White House deputy chief of staff, celebrating on Fox News: "This is a victory 10 years in the making. We can finally remove these Haitian illegal migrants from the United States." (Art 31)</li>
+          <li><strong>Ahilan Arulanantham</strong> — Attorney in the TPS litigation: "Thousands of people protected from immigration detention and deportation are now vulnerable to it. At their next check-in, or if they encounter an ICE officer on the street, they could be detained and deported." (Art 31)</li>
+        </ul>
+
+        <h4>Key developments</h4>
+        <ul>
+          <li>1.3 million TPS holders from more than a dozen countries are now vulnerable to deportation, including over 330,000 Haitians and hundreds of Syrians.</li>
+          <li>The ruling directly affects Haitians and Syrians now, with El Salvador, Lebanon, Ukraine, and others potentially following.</li>
+          <li>Lower courts had blocked TPS dismantlement for years. The Supreme Court reversed.</li>
+          <li>The administration now has "a large new pool to target in its mass deportation plan."</li>
+          <li>Colorado, New York, and sanctuary cities may provide partial resistance, but the legal foundation for protection is gone.</li>
+        </ul>
+
+        <div class="reading-note">
+          <p><strong>Nietzsche reading:</strong> Stephen Miller's "10 years in the making" is the will to power as persistence — the longest sustained assertion in the cycle. The TPS community's "intense prayer" followed by "shock" is the dorsal vagal collapse of a community that just lost everything.</p>
+        </div>
+        <p><em>Citations: Articles 9, 31</em></p>
+      </article>
+
+      <article class="cluster" id="cluster-3">
+        <h2>Cluster 3: Trump's Multi-Front Domestic Offensive</h2>
+        <p><em>(7 articles: 4, 8, 22, 27, 28, 33, 18)</em></p>
+        <p><strong>Narrative arc:</strong> The Trump administration is prosecuting a coordinated campaign across seven fronts — elite universities, K-12 schools, the intelligence community, antitrust enforcement, trade policy, foreign policy doctrine, and cultural curriculum — simultaneously. Each front is a battle in a larger war to reshape American institutions.</p>
+
+        <h4>Named human stories and key developments</h4>
+        <ul>
+          <li><strong>Yale vs. DOJ (Art 4):</strong> The Justice Department investigation spans medical school, undergraduate, and law school admissions. Yale moved to settle "before the fight" — a six-page letter in May was the only public evidence. Yale's statement said it was "confident in the rigorous admissions process."</li>
+          <li><strong>Defending Education vs. Smith College (Art 8):</strong> Sarah Parshall Perry, senior attorney at the conservative parents' rights group, initiated a civil rights investigation into Smith College's transgender admission policy after learning Dr. Rachel Levine was a graduation speaker. "I saw Levine was speaking and thought that was a curious choice for an all-women's institution." Smith now risks losing millions in federal funding.</li>
+          <li><strong>Trump tariff threats (Art 22):</strong> Trump threatened 100% tariffs on any European country imposing digital services taxes, in all-caps on Truth Social: "This TARIFF will supersede Trade Deals made with the Country." The Supreme Court struck down his emergency tariff authority in February — other legal pathways (Section 301) exist but are slower.</li>
+          <li><strong>Texas Bible mandate (Art 27):</strong> The Texas State Board of Education (10-5 Republican majority) approved a reading list mandating Bible excerpts at most grade levels for five million students — 11% of the US public school population. Critics cite separation of church and state. "It is highly unusual — perhaps unprecedented — for a state to mandate a reading list."</li>
+          <li><strong>Pulte and the DNI (Art 28):</strong> Acting DNI Bill Pulte installed Christina Norton, an RNC election operative who oversaw a poll-watcher program including Jack Posobiec, as his chief of staff. Senator Mark Warner: importing "election denialism into the intelligence community is a dangerous idea."</li>
+          <li><strong>Antitrust appointment (Art 33):</strong> Trump plans to nominate Adam Candeub, a Project 2025 author, to lead the DOJ antitrust division. The Oval Office meeting included Todd Blanche and FTC chair Andrew Ferguson.</li>
+          <li><strong>GOP softening on Iran (Art 18):</strong> The party that stood for "Death to Iran" for 40 years is now calling Iran's leaders "strong people, smart people." Vice President JD Vance has emerged as the pivot's main proponent. The shift is generational, isolationist, and Trump-driven.</li>
+        </ul>
+
+        <div class="reading-note">
+          <p><strong>Sun Tzu reading:</strong> The administration uses <em>bureaucratic warfare</em> — investigations, appointments, mandates, threats — rather than direct confrontation. Yale's desire to settle "before the fight" shows the administration has won without fighting: the threat alone produces compliance.</p>
+          <p><strong>Han Fei reading:</strong> Each institution's formal role (míng) has been inverted: the DNI chief of staff is a midterm election operative; the DOJ Civil Rights division is a political intimidation tool; a school reading mandate is a cultural curriculum war.</p>
+        </div>
+        <p><em>Citations: Articles 4, 8, 22, 27, 28, 33, 18</em></p>
+      </article>
+
+      <article class="cluster" id="cluster-4">
+        <h2>Cluster 4: The NYC Progressive Wave — DSA Ascendancy</h2>
+        <p><em>(3 articles: 19, 20, 35)</em></p>
+        <p><strong>Narrative arc:</strong> The Democratic Socialists of America had a banner week. Three House primary wins, multiple state legislative victories, and Mayor Zohran Mamdani's historic rent freeze passed in a single news cycle. The establishment asked them to stop; they refused. The momentum is real, and the question is whether they can govern as well as they campaign.</p>
+
+        <h4>Named human stories</h4>
+        <ul>
+          <li><strong>Darializa Avila Chevalier</strong> — Celebrated victory over Representative Adriano Espaillat, a decade-long pro-Israel incumbent, with chants of "Free, free Palestine!" (Art 19)</li>
+          <li><strong>Claire Valdez</strong> — Defeated Brooklyn Borough President Antonio Reynoso, promising: "We will stand up to the genocide." (Art 19)</li>
+          <li><strong>Brad Lander</strong> — Former NYC comptroller defeated Representative Dan Goldman by staking his campaign on opposing Goldman as insufficiently critical of Israel. (Art 19)</li>
+          <li><strong>Grace Mausser</strong> — Co-chairwoman of the DSA's NYC chapter, refusing Speaker Carl Heastie's request to stop primarying Democrats: "That's not something we can do. We have to continue to grow our numbers and grow our influence, and that means challenging incumbents." (Art 20)</li>
+          <li><strong>Zohran Mamdani</strong> — NYC mayor, after the Rent Guidelines Board voted 7-1 to freeze rents on nearly one million apartments: "This is a historic victory for New York City tenants." Tenants cried. "We Are the Champions" played. Pizzas were passed around. (Art 35)</li>
+        </ul>
+
+        <h4>Key developments</h4>
+        <ul>
+          <li>DSA-backed candidates won two House primaries, unseating an incumbent, plus three state legislative races against incumbents.</li>
+          <li>The rent freeze covers both one- and two-year leases — the first ever on both — affecting more than 40% of NYC apartments.</li>
+          <li>Heastie's plea to stop primary challenges was publicly refused. The DSA is not moderating.</li>
+          <li>Mamdani's endorsement power proved decisive: three left-leaning candidates he endorsed won congressional primaries the same week.</li>
+        </ul>
+
+        <div class="reading-note">
+          <p><strong>Nietzsche reading:</strong> The DSA's refusal to stop is the will to power stated without apology. The rent freeze celebration — tenants crying from happiness — is the will to power <em>experienced as joy</em>. The DSA does not resent the establishment; they want to <em>replace</em> it. This is not ressentiment; it is the ascending master.</p>
+          <p><strong>Mao reading:</strong> This cluster shows <em>non-antagonistic contradictions among the people</em> — all parties operate within the same system. The DSA's primary challenges are the "correct method" of resolving intra-party contradictions: electoral competition, not suppression.</p>
+        </div>
+        <p><em>Citations: Articles 19, 20, 35</em></p>
+      </article>
+
+      <article class="cluster" id="cluster-5">
+        <h2>Cluster 5: Other Notable Stories</h2>
+        <p><em>(15 articles: 5, 10, 11, 12, 13, 17, 21, 23, 24, 26, 29, 30, 32, 34, 36)</em></p>
+        <p>This cluster covers stories that do not fit the four thematic clusters but are individually significant — legal accountability, market signals, climate stress, cultural inflection points, and institutional friction.</p>
+
+        <h4>5a. Legal Accountability — Bolton, Epstein, Kirk, Palisades</h4>
+        <ul>
+          <li><strong>John Bolton guilty plea (Art 10):</strong> Former Trump national security adviser pleaded guilty to mishandling classified information in notes for a book excoriating Trump. "I'm sorry for it," he told Judge Theodore Chuang. Sentencing Oct. 28; up to five years; $2.25 million fine; forfeited federal pension. FBI's Roman Rozhavsky: "When guardians of our nation's secrets play fast and loose with classified information, it opens the door for foreign adversaries to get their hands on it, which is exactly what happened."</li>
+          <li><strong>Epstein panel / Leon Black (Art 23):</strong> House Oversight Committee subpoenaed private equity billionaire Leon Black mid-testimony after he refused to answer questions about NDAs with women linked to Jeffrey Epstein. Black walked out. He must return July 16 for a sworn deposition. Chairman James Comer: "We believe that information is vital to our investigation." Representative Robert Garcia: "It was clear... Leon Black was not going to answer critical questions."</li>
+          <li><strong>Kirk case contempt (Art 21):</strong> Judge Tony Graf held prosecutors in the Charlie Kirk murder trial in contempt for telling TMZ they had "ample evidence" for conviction. The judge refused to drop the death penalty as a remedy, calling that "grossly disproportionate." Tyler J. Robinson, 23, is accused of gunning down Kirk at Utah Valley University.</li>
+          <li><strong>Palisades Fire mistrial (Art 30):</strong> Jury split 10-2 for acquittal in the trial of Jonathan Rinderknecht, accused of setting the deadly Palisades Fire that killed 12 and destroyed thousands of homes. Juror Syrena Boneck: "There's not enough evidence. There's no way to pin it on him and that's a lot to pin on a person and my conscience would not allow that." The foreman underlined "cannot" in the note. Prosecutors argued "societal revenge" — Rinderknecht, an Uber driver with no New Year's plans, resented the affluent. Bill Essayli, top federal prosecutor, will retry. Len Kendall, who lost his home, said the question of who or what started the fire was less important than how it was allowed to rage out of control.</li>
+          <li><strong>German Christmas market sentencing (Art 17):</strong> A 51-year-old psychiatrist born in Saudi Arabia was sentenced to life in prison for driving a rented BMW into a crowd in Magdeburg in December 2024, killing six including a 9-year-old child and wounding more than 300. The attack "shook Germans' sense of security and contributed to a rise in support for the Alternative for Germany."</li>
+        </ul>
+
+        <h4>5b. Markets, Tech, and AI</h4>
+        <ul>
+          <li><strong>Tesla sales surge (Art 11):</strong> European sales rose 77% January through May despite widespread dislike of Elon Musk. Tesla sold 22,000 cars in Europe in May alone — more than Ford, Nissan, or Honda combined. Model Y can be leased for under 300 euros a month. Analyst Matthias Schmidt: "Once you go down the pricing scale, people pay less attention to ethics or morality." Hansjoerg Quilitzsch's bumper sticker on his Model Y: "I bought this before Elon went crazy."</li>
+          <li><strong>AI chip bottleneck (Art 12):</strong> TSMC packages nearly all advanced AI chips — a dependency the US cannot easily break. Subramanian Iyer, 72, UCLA professor and former IBM technologist: "The bottom line is they've thrown the baby out with the bathwater. We've ended up in a place where we are even more dependent on TSMC." The Biden-era $1.1 billion packaging R&amp;D center for Arizona was killed by the Trump administration.</li>
+          <li><strong>OpenAI IPO delay (Art 24):</strong> OpenAI leans toward waiting until next year for its IPO, despite Sam Altman pushing for a $1 trillion valuation (up from $730 billion private). SpaceX's post-IPO slide from $202 to $153 is a cautionary tale. Choppy markets and adviser warnings reinforced the hesitation.</li>
+          <li><strong>NYT v OpenAI (Art 34):</strong> The Times amended its lawsuit against OpenAI and Microsoft, dropping a weaker claim and strengthening the accusation against Microsoft. Times spokesman Graham James: "As we have long alleged, Microsoft actively encouraged OpenAI to steal our copyrighted works."</li>
+          <li><strong>Uber background checks (Art 32):</strong> After a Times investigation revealed Uber approved drivers with violent felony convictions, the company expanded disqualifications to include violent felonies, sexual crimes, stalking, and strangulation at any point in life. Background checks now cover anywhere a driver has ever lived. Annual re-checks for current drivers.</li>
+        </ul>
+
+        <h4>5c. Climate and Extreme Heat</h4>
+        <ul>
+          <li><strong>Paris heat wave (Art 13, Art 26):</strong> Temperatures exceeded 40°C (104°F) — the highest June levels ever recorded. 40 people drowned in heat-related accidents between June 18 and June 23. Paris Police Chief Patrice Faure banned alcohol consumption in public and suspended sports events. "My job is to ensure the emergency response and hospital care systems are not overwhelmed." The Louvre and Eiffel Tower closed early. A nuclear plant near Toulouse shut down because river water used for cooling was too hot. Parisians swam in the Canal Saint-Martin anyway — a "mild insurrection."</li>
+          <li><strong>Oregon climate lawsuit (Art 29):</strong> Multnomah County's $50 billion lawsuit against oil companies over the 2021 heat dome deaths took a $50 billion step forward this week. Lawyer David C. Greenstone: "Our case seeks to hold the defendants responsible under Oregon law for their deceptions and misrepresentations and failures to warn." One of nearly 40 similar cases nationwide — but unique in its focus on a single disaster.</li>
+          <li><strong>Penn Station renovation (Art 5):</strong> Amtrak released renderings for a $7–8 billion, six-year rebuild of Penn Station — a "vaulted, daylit, stone-and-bronze civic gateway" to replace the current "miserable, dangerous, subterranean dumpster fire." The plan removes 100 columns, adds more than 100,000 square feet of circulation space, and opens sightlines.</li>
+        </ul>
+
+        <h4>5d. Culture and Closure</h4>
+        <ul>
+          <li><strong>David Clayton-Thomas obituary (Art 36):</strong> Lead singer of Blood, Sweat &amp; Tears died at 84. A homeless Toronto runaway who "learned guitar in prison" became a stadium-filling frontman. Clive Davis described him as "almost animalistic." Mike Jahn wrote that he "lumbers around stage happily screaming into the microphone."</li>
+        </ul>
+        <p><em>Citations: Articles 5, 10, 11, 12, 13, 17, 21, 23, 24, 26, 29, 30, 32, 34, 36</em></p>
+      </article>
+
+
+      <article class="cluster" id="geographic-critique">
+        <h2>Geographic Critique</h2>
+
+        <h4>Overcovered Regions</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Articles</th>
+              <th>% of Total</th>
+              <th>Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>United States</td>
+              <td>21</td>
+              <td>58.3%</td>
+              <td><strong>Heavily overrepresented.</strong> Within the US, Washington DC and New York City dominate (10+ articles). The rest of the country appears only when disaster strikes (Palisades Fire, Oregon climate case, Texas Bible mandate, Utah Kirk trial).</td>
+            </tr>
+            <tr>
+              <td>Western Europe</td>
+              <td>4</td>
+              <td>11.1%</td>
+              <td>France (Paris heat wave) dominates. Germany (Christmas market sentencing) is the only other European country covered.</td>
+            </tr>
+            <tr>
+              <td>Latin America</td>
+              <td>3</td>
+              <td>8.3%</td>
+              <td>All Venezuela earthquake coverage — one event, one country.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Undercovered Regions</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Region</th>
+              <th>Articles</th>
+              <th>Assessment</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Africa</td>
+              <td>1 (Ebola in DRC)</td>
+              <td>A continent of 1.4 billion people gets one disease outbreak story. No coverage of North Africa, the Sahel, the Horn of Africa, or Sub-Saharan political/economic developments.</td>
+            </tr>
+            <tr>
+              <td>South Asia</td>
+              <td>0</td>
+              <td>India (1.4B people), Pakistan, Bangladesh — zero coverage despite major geopolitical significance.</td>
+            </tr>
+            <tr>
+              <td>Southeast Asia</td>
+              <td>1 (Myanmar)</td>
+              <td>One forgotten war — but no Thailand, Vietnam, Indonesia, Philippines coverage.</td>
+            </tr>
+            <tr>
+              <td>East Asia</td>
+              <td>2 (Beijing crash, TSMC/Taiwan)</td>
+              <td>China and Taiwan only. No Japan, South Korea, or broader regional dynamics.</td>
+            </tr>
+            <tr>
+              <td>Oceania / Pacific</td>
+              <td>0</td>
+              <td>Zero coverage despite climate vulnerability and strategic importance.</td>
+            </tr>
+            <tr>
+              <td>Middle East</td>
+              <td>2 (Iran-focused)</td>
+              <td>Iran dominates; no Israel/Palestine, Gulf states, or broader regional stories.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="calibrated-view">
+          <p><strong>Assessment:</strong> The NYT's geographic lens is overwhelmingly American with a Eurocentric tilt. Events in the Global South are covered almost exclusively through crisis frames (earthquake, Ebola, forgotten war). The complete absence of South Asia, Oceania, and most of Africa represents a significant blind spot — these regions contain the majority of the world's population and an increasing share of its economic and strategic weight.</p>
+        </div>
+      </article>
+
+      <article class="cluster" id="alternative-scenarios">
+        <h2>Alternative Scenarios</h2>
+
+        <h4>Scenario A: The Escalation Spiral (Probability: 25%)</h4>
+        <p>The US-Iran cease-fire fractures completely. Iran's next Strait of Hormuz attack is larger and more lethal. The US responds with strikes beyond coastal radar sites — hitting the IRGC command structure or nuclear-related facilities. Oil spikes above $120. Global recession risk compounds. The GOP's softening on Iran (Art 18) becomes politically untenable. <strong>Trigger:</strong> Iran perceives market indifference (oil prices falling despite the attack) as permission to escalate further to "be heard."</p>
+
+        <h4>Scenario B: The Institutional Breakthrough (Probability: 20%)</h4>
+        <p>Ukraine's drone campaign reaches its strategic objective. Putin, facing a Crimea that is functionally ungovernable (no fuel, no power, no water, cancelled summer camps, evacuated children), agrees to a ceasefire that includes a phased withdrawal from occupied territories. The 8-year-old girl killed in the Moscow strike becomes a Russian domestic pressure point. <strong>Trigger:</strong> Cumulative infrastructure collapse in Crimea forces a Russian political reckoning. <strong>Obstacle:</strong> Putin has shown zero willingness to negotiate under pressure (per On Practice analysis).</p>
+
+        <h4>Scenario C: The Democratic Realignment (Probability: 15%)</h4>
+        <p>The DSA's NYC victories trigger a national wave. Progressive candidates in Chicago, Los Angeles, and Portland adopt the DSA playbook of primarying incumbents. The Democratic establishment fractures: some join the transformation (adopting popular progressive policies); others dig in. The 2026 midterms become a referendum not on Trump vs. Democrats but on establishment vs. progressive Democrats — within an already polarized electorate. <strong>Trigger:</strong> Mamdani's rent freeze proves popular and replicable. <strong>Risk:</strong> Overreach — if NYC governance falters, the entire model collapses.</p>
+      </article>
+
+      <article class="cluster" id="top-actions">
+        <h2>Top 3 Actions</h2>
+
+        <h4>For Citizens</h4>
+        <ol>
+          <li><strong>Prepare for the TPS aftermath.</strong> If you or someone you know is a TPS holder, do not wait. Contact an immigration attorney immediately. Explore individual asylum claims, state-level sanctuary protections, and family-based petitions. The litigation strategy is dead; community organization is the new front. (Art 9, 31; Operations recommendation)</li>
+          <li><strong>Demand transparency on Yale and the DOJ.</strong> The administration's "six-page letter" with no public evidence is the prototype for institutional intimidation. Call your representatives. Demand the DOJ release the evidence behind the Yale investigation. If the case is weak, sunlight kills it. If it's strong, the public deserves to know. (Art 4; Operations recommendation)</li>
+          <li><strong>Pay attention to the forgotten crises.</strong> Myanmar's civil war has quietly collapsed a 50-million-person nation. The DRC's Ebola outbreak could become the largest in history. These are not abstract humanitarian concerns — they are strategic vulnerabilities that will eventually reach the US. Donate to Médecins Sans Frontières for Ebola. Call for renewed diplomatic attention to Myanmar. (Art 3, Art 16)</li>
+        </ol>
+
+        <h4>For Policymakers</h4>
+        <ol>
+          <li><strong>Abandon the pretense that the US-Iran cease-fire is a "cease-fire."</strong> It is a limited-escalation regime. Labeling it accurately changes the operational framework from "enforcing peace" to "managing limited conflict" — which changes resource allocation, diplomatic strategy, and risk assessment. Accelerate alternative Hormuz bypass infrastructure. Accept the oil market signal (prices fell despite attack) and reduce strategic dependence on the strait. (Art 2, 25; Operations recommendation)</li>
+          <li><strong>Pre-position for the Ebola worst case.</strong> The outbreak may become uncontrollable. Contact tracing at 30% vs. 80% target, with asymptomatic transmission suspected, means the existing playbook may fail. Pre-position treatment capacity for 50,000+ cases now. Negotiate vaccine manufacturing licenses. Activate military logistics for supply chains. Plan for failure while working to prevent it. (Art 16; Operations recommendation)</li>
+          <li><strong>Yale should not settle.</strong> Drucker's principle: if the other side's strategy depends on your fear, your only winning move is to not be afraid. Yale should demand the DOJ produce the evidence behind the "six-page letter." Fight the investigation in court. Make the administration spend political capital to prove its case. Settling now emboldens the DOJ to target the next university. (Art 4; Operations recommendation)</li>
+        </ol>
+
+        <h4>For Investors</h4>
+        <ol>
+          <li><strong>Oil markets have repriced Iran risk — but that could change.</strong> Brent at $71.99, below prewar levels, despite a Strait of Hormuz attack, suggests the market has priced in continued disruption as the new normal. This is fragile. A single miscalculation (Iran hits a US warship; US strikes the IRGC directly) could reverse the entire pricing structure within hours. Maintain energy hedges; consider strategic petroleum reserve proxies. (Art 25; Strategy analysis)</li>
+          <li><strong>AI supply chain concentration is a systemic risk.</strong> TSMC packages nearly all advanced AI chips, and the Trump administration killed the $1.1 billion domestic packaging R&amp;D center. The US dependency has deepened, not lessened. Monitor TSMC's Taiwan position, China-Taiwan tensions, and any signs of packaging capacity expansion outside Taiwan. The risk clock is ticking, and the "strategic race against the friction of time" is not going well. (Art 12; Strategy analysis)</li>
+          <li><strong>The DSA wave is not a NYC anomaly.</strong> The primary victories and rent freeze signal a national template: primary incumbents, win on housing and affordability, refuse compromise. This affects real estate (rent control spreads), defense contracting (Israel skepticism), and tech regulation (Candeub's antitrust appointment). Rebalance portfolios accordingly — real estate in rent-controlled cities faces headwinds; defense stocks with Israel exposure face political risk. (Art 19, Art 20, Art 33, Art 35)</li>
+        </ol>
+      </article>
+    </section>
+
+
+    <section class="card" id="what-it-means">
+      <h2>What It Means — Synthesis Across All 8 Lenses</h2>
+
+      <article>
+        <h3>Polyvagal / Connector — The Nervous System of the News Cycle</h3>
+        <p>The dominant autonomic state across the 36-story corpus is sympathetic (fight/flight) at approximately 40% — driven by wars, investigations, culture war, and litigation. Ventral vagal (social engagement, safety, connection) registers at roughly 25% — visible in the Venezuelan community's mutual aid, the Penn Station vision, the NYC rent freeze celebration, and Uber's reform consultations. Dorsal vagal (freeze/collapse) appears at about 20% — the Myanmar war's "quietly collapsed" society, the TPS community's shock-declined-to-comment priest, the institutional dread at politicized intelligence agencies, the Beijing plane crash's information vacuum. The remaining 15% are mixed or hybrid states — cognitive dissonance (Europeans buying Tesla while disliking Musk), approach-avoidance (OpenAI's IPO hesitation).</p>
+        <p>The critical finding is that ventral vagal moments are rare, brief, and localized — the rent freeze celebration, the Penn Station design hope, the Venezuelan neighbors pulling survivors from rubble. They do not scale. The nervous system of the entire ecosystem is repeatedly pulled back into threat response (sympathetic) by the next escalation, ruling, or disaster. The polyvagal hierarchy — the natural progression from dorsal (threat) through sympathetic (mobilization) to ventral (connection) — is under constant upward pressure that keeps failing to stabilize. This is a world that <em>wants</em> to regulate into safety but cannot sustain it.</p>
+        <p>Geographically, the polyvagal map shows a stark asymmetry: the Global North (US, Europe) operates in sympathetic-vigilant states — activated by threats but possessing resources to respond. The Global South (Venezuela, Myanmar, DRC) shows dominant dorsal vagal patterns — the collapse of state capacity, the abandonment of international attention, the quiet dying of the forgotten. The Miami-Venezuelan diaspora (Art 7) is a rare bridge: sympathetic distress mediated through phones (WhatsApp, social media) — a distal attempt at ventral vagal connection across a gulf of distance and power.</p>
+      </article>
+
+      <article>
+        <h3>Calibration / Analyst — Probability Under the Microscope</h3>
+        <p>The Analyst reading identified seven explicit or implicit probability claims across the corpus. The calibration is strongest on legal and policy outcomes: the TPS ruling's impact (80–90% — well-calibrated, as Supreme Court rulings are final and enforcement mechanisms exist), OpenAI's IPO delay (65–75% — well-calibrated, based on named sources), and the Penn Station timeline (30–50% — appropriately cautious, as the author himself notes optimism). Calibration is weakest on conflict trajectories: the Ukraine negotiating confidence (40–50% — potentially overconfident, as Putin has shown zero willingness), the Iran escalation risk (60–70% — moderate, but the "not a restart" framing is fragile), and the Ebola "for sure" declaration (85–95% — overconfident declarative language in a high-uncertainty domain, despite strong evidence of 30% vs. 80% tracing).</p>
+        <p>The methodological lesson: the NYT's best-calibrated claims occur where institutional constraints are visible and stable (courts, corporate boards) and its weakest where human will and contingency interact (war, disease, infrastructure). This is not a criticism — it is a structural feature of journalism. Good calibration requires acknowledging that conflict trajectories are inherently less predictable than regulatory timelines. The briefing's own predictions have been adjusted against this finding: the TPS deportation prediction (85%) is buoyed by the Supreme Court's finality; the Ukraine redeployment prediction (65%) is marked down precisely because conflict calibration is weak.</p>
+      </article>
+
+      <article>
+        <h3>Mao Zedong / Dialectics — The Principal Contradiction of the Cycle</h3>
+        <p>Mao's 矛盾论 reveals a single overriding principal contradiction across all 36 stories: the old order (institutions, hierarchies, norms, alliances) resisting its dissolution through force, law, and culture — while new forces (social movements, technologies, generational change, insurgent politics) press for transformation.</p>
+        <p>This manifests in three domains:</p>
+        <ul>
+          <li><strong>Geopolitical:</strong> The post-WWII order is fraying — US-Iran strikes reveal a bipolar stalemate where neither side can win (antagonistic contradiction held in suspension); the GOP's Iran pivot shows the "principal aspect" of Republican foreign policy reversing (the isolationist secondary contradiction becoming primary); Ukraine's deep strikes into Crimea demonstrate the dialectical reversal where the weaker power (Ukraine's conventional disadvantage) produces its own strength (drone innovation).</li>
+          <li><strong>Domestic:</strong> The post-1960s liberal consensus is being dismantled — Yale's settlement instinct, the Texas Bible mandate, the Smith College transgender investigation, the DSA's primary insurgency. Mao would classify most of these as non-antagonistic (resolvable through courts, elections, negotiation) but note that the administration is <em>treating</em> them as antagonistic, which risks making them so. The Texas Bible mandate and MAGA school investigations are non-antagonistic contradictions being unnecessarily weaponized — a "mistake in the handling of contradictions."</li>
+          <li><strong>Structural:</strong> The post-industrial economic settlement is being restructured — TSMC dependency (U.S. cannot resolve its AI supply chain vulnerability because the previous administration's solution was politically rejected), OpenAI's IPO caution (valuation ambition meets market reality), climate litigation (the contradiction between fossil fuel profits and climate accountability moving from the political sphere to the legal sphere).</li>
+        </ul>
+        <p>Mao's critical insight for this cycle: the distinction between antagonistic and non-antagonistic contradictions is being deliberately blurred by the administration. Treating Yale's admissions process (non-antagonistic) as akin to Iran's missile strikes (antagonistic) is a political strategy, not an analytical error. By conflating the two, the administration justifies maximal force against domestic opponents. The correct political art — distinguishing friends from enemies — has been replaced by the strategy of <em>turning everyone into an enemy</em>.</p>
+      </article>
+
+      <article>
+        <h3>Laozi / Reversal — 物极必反 Everywhere</h3>
+        <p>Laozi's central teaching — when something reaches its extreme, it turns into its opposite — is visible across almost every story cluster:</p>
+        <ul>
+          <li><strong>The US-Iran strike was "limited" but contains the seed of the unlimited:</strong> The 90-minute strike designed to be restrained may provoke the unrestrained. Oil prices fell 4.3% <em>despite</em> the Strait of Hormuz attack — the threat-proxy relationship has inverted. The market's indifference is itself a dangerous signal: if Iran feels "unheard," the next attack will be harder.</li>
+          <li><strong>The GOP's 40-year Iran hawkishness reversed into its opposite:</strong> The party of Reagan-Cheney neoconservatism now calls Iran's leaders "strong people, smart people." The strength of the commitment (party loyalty to a leader) contained the seed of its inversion — when Trump shifted, the whole structure flipped.</li>
+          <li><strong>Ukraine's weakness (no air force, no navy) produced strength (asymmetric drone capability):</strong> 660 drones in one night. Russia's fortress (air defense) becomes a cage. The 8-year-old girl killed in Moscow is the tragic underside of this reversal — the weak can also harm the innocent.</li>
+          <li><strong>The TPS hard-liners' 10 years of losing became winning:</strong> Stephen Miller's "victory 10 years in the making" is 物极必反 at the institutional level: the constant denial of their position built pressure that eventually, at the Supreme Court, released.</li>
+          <li><strong>The Palisades Fire prosecution's certainty met the jury's doubt:</strong> 9,000 videos. Intensive investigation. Three-week trial. The jury returned 10-2 for <em>acquittal</em>. The more evidence gathered, the more gaps appeared. "My conscience would not allow that."</li>
+          <li><strong>Tesla: moral outrage yields to price:</strong> Europeans hated Musk — sales plummeted. Then Tesla cut prices, and sales surged 77%. "Once you go down the pricing scale, people pay less attention to ethics or morality." The bumper sticker — "I bought this before Elon went crazy" — is the consumer denying the reversal they are participating in.</li>
+        </ul>
+        <p>Laozi's wu-wei (strategic non-action) is visible in the oil market's non-reaction (prices fell despite attack — the system self-regulated), the jury's non-decision (the mistrial as the system leaving the contradiction unresolved rather than resolving it badly), Dr. Lone Lone's evasion (don't meet the superior force head-on), Yale's settlement approach (yield and survive), and the Penn Station design (improvement through <em>removal</em> — clear obstacles rather than add structure). Wu-wei <em>fails</em> in the world's forgetting of Myanmar (not strategic restraint but abandonment) and in Trump's performative aggression (the all-caps Truth Social posts that fight the grain and create resistance that the system eventually pushes back against — e.g., the Supreme Court blocking tariffs).</p>
+      </article>
+
+      <article>
+        <h3>Nietzsche / Will to Power — Who Creates, Who Resents, Who Sleeps</h3>
+        <p>The Nietzsche reading reveals the news cycle's deepest structure: the will to power as the engine of every story. The 36 articles are not random events but expressions of individuals and movements asserting, blocking, or resenting power.</p>
+
+        <h4>The Übermenschen — those creating new values</h4>
+        <ul>
+          <li><strong>Trump</strong> appears in seven articles as the center of gravity around which power organizes. Each instance is a different facet: military will (Art 2 — ordering strikes), institutional will (Art 4, Art 28, Art 33 — reshaping the state from within through Yale investigation, Norton appointment, Candeub nomination), cultural will (Art 8 — MAGA apparatus as enforcement arm), economic will (Art 22 — tariff threats), party will (Art 18 — reversing 40 years of foreign policy by fiat).</li>
+          <li><strong>The DSA collectively</strong> creates a new progressive politics that refuses the establishment's bargain. Grace Mausser's "That's not something we can do" is the will to power stated without apology.</li>
+          <li><strong>Stephen Miller</strong> creates a post-1965 immigration regime through persistence — "a victory 10 years in the making." The will to expel, to purify, to dominate.</li>
+          <li><strong>Sam Altman</strong> pushes for a $1 trillion valuation — the will to power as financial ambition, deferred but not abandoned.</li>
+          <li><strong>Ukraine's drone campaign</strong> creates new military possibility from material weakness.</li>
+          <li><strong>Dr. Lone Lone</strong> creates rebel governance in a forgotten war — dignity where the world offers only abandonment.</li>
+        </ul>
+
+        <h4>The Last Men — those seeking comfort</h4>
+        <ul>
+          <li>European Tesla buyers who buy the cheap car and slap on a bumper sticker to soothe their conscience. "Once you go down the pricing scale, people pay less attention to ethics."</li>
+          <li>The world ignoring Myanmar — the comfort of inattention, of not being disturbed by suffering.</li>
+          <li>Yale settling to avoid disruption — institutional safety over principle.</li>
+          <li>Leon Black hiding behind NDAs.</li>
+          <li>The Palisades mistrial jurors protecting their conscience — "my conscience would not allow that" is the last man's morality.</li>
+        </ul>
+
+        <h4>Ressentiment — the slave morality in action</h4>
+        <ul>
+          <li>The purest case: Jonathan Rinderknecht, an Uber driver with no New Year's plans, alleged to have set the Palisades Fire as "societal revenge" against the affluent. Ressentiment finding a lighter and a dry hillside.</li>
+          <li>Sarah Parshall Perry of Defending Education — her "curiosity" about Dr. Rachel Levine at Smith College curdled into a formal civil rights investigation. Ressentiment as bureaucracy: the culturally defeated use the law — a tool created by their opponents — to punish the powerful.</li>
+          <li>The Texas Bible mandate — Christians who cannot compel belief through the church compel exposure through the state. "The meek shall inherit the earth" — and if they cannot inherit it, they will legislate it.</li>
+          <li>The Oregon climate lawsuit — the victims of climate change using the state's legal apparatus to punish oil companies. Ressentiment formalized as litigation.</li>
+        </ul>
+        <p>The deepest Nietzschean insight: the same figure can be master or slave depending on the relation. Trump relative to the GOP establishment is the Übermensch (creating new values); Trump relative to the Iranian regime is the master asserting dominance. The DSA relative to Heastie is the ascending master; the DSA's tenants relative to landlords are the slaves who won. Power is a <em>relation</em>, not a property.</p>
+      </article>
+
+
+      <article>
+        <h3>Sun Tzu / Position — Who Holds the 势</h3>
+        <p>The strategic landscape reveals a system in fragmented stalemate with local offensives.</p>
+
+        <h4>Who holds the high ground</h4>
+        <ul>
+          <li><strong>Ukraine</strong> has seized the initiative. After years of defending, Kyiv now strikes deep into Crimea — the psychological high ground has shifted. Russia's strategy of insulating its society from war has been pierced. Crimea is becoming <em>death ground</em> (死地) for occupied forces: fuel shortages, cancelled camps, rolling blackouts.</li>
+          <li><strong>The DSA</strong> holds the momentum (shì) in NYC politics. Three House primary wins, state legislative victories, a mayoral rent freeze. The establishment is on its heels. The DSA builds a <em>vertical alliance</em> — from mayor's office through state legislature to Congress.</li>
+          <li><strong>Trump's administration</strong> holds the initiative across multiple fronts — but Sun Tzu would warn: <em>He who defends everything defends nothing.</em> Attacking Yale, Smith, Texas schools, intelligence agencies, trade partners, and immigration simultaneously creates logistical friction — do the DOJ, DHS, and Education Department have the personnel to prosecute all these battles?</li>
+          <li><strong>TSMC/Taiwan</strong> holds the high ground in the AI supply chain. The US gave away its packaging leadership. Sun Tzu's classic warning: <em>do not depend on the enemy for your weapons.</em></li>
+          <li><strong>The virus</strong> holds the high ground in DRC. Ebola is winning the contact tracing war — 30% vs. 80% needed.</li>
+        </ul>
+
+        <h4>Who wins without fighting</h4>
+        <ul>
+          <li>The Trump administration uses <em>bureaucratic warfare</em> — investigations, appointments, mandates, threats — rather than direct confrontation. Yale's desire to settle "before the fight" shows the administration has won without fighting: the threat alone produces compliance.</li>
+          <li>The TPS hard-liners won through <em>legal maneuver</em>, not battlefield victory — a decade of lower-court losses, one Supreme Court win. War by jurisprudence.</li>
+          <li>International rescue teams in Venezuela win influence through aid, not arms.</li>
+          <li>The Myanmar junta wins strategic advantage through <em>invisibility</em> — by making the war forgotten, they avoid international pressure.</li>
+        </ul>
+        <p>Sun Tzu's most important warning for this cycle: <em>When the people don't trust the ruler, the foundation is lost.</em> Venezuela's government is accused of abandoning its people. The Chinese government's information control on the Beijing crash creates its own anxiety. The DSA's rent freeze success comes from being <em>trusted</em> by tenants who feel the establishment failed them. Trust — the foundation of shì — is the scarcest resource in the system.</p>
+      </article>
+
+      <article>
+        <h3>Clausewitz / Friction — Centers of Gravity and Culminating Points</h3>
+
+        <h4>The fog of war is thickest in three places</h4>
+        <ul>
+          <li><strong>Beijing plane crash</strong> — no confirmed casualties, no pilot identity, no motive. The fog <em>is</em> the story. Until categorization is possible (accident, suicide, or attack?), all responses are potentially wrong.</li>
+          <li><strong>US-Iran conflict</strong> — both sides claim retaliation; Iran's counter-strike claims are unconfirmed; the oil market's indifference (prices fell despite attack) creates economic fog. The "fragile cease-fire" is a holding pattern that no one is willing to transform into either peace or war.</li>
+          <li><strong>Myanmar</strong> — the war is "forgotten by the world." No foreign journalists, no international monitors, no satellite attention. Invisibility as friction taken to an extreme — without observation, strategy becomes blind.</li>
+        </ul>
+
+        <h4>Centers of gravity identified</h4>
+        <ul>
+          <li><strong>The Strait of Hormuz</strong> — not a military unit but a geographic chokepoint. Whoever controls it controls 20% of global oil. Iran's only asymmetric advantage.</li>
+          <li><strong>Crimea</strong> — Putin's strategic prize. Losing it would collapse his domestic legitimacy. Ukraine has made it the Schwerpunkt of the deep-strike campaign.</li>
+          <li><strong>President Trump himself</strong> — every front of the multi-front offensive traces back to his political will. Personality-centric centers of gravity are both strong (decisive leadership) and fragile (single point of failure).</li>
+          <li><strong>TSMC's advanced packaging facilities in Taiwan</strong> — the single point through which nearly all advanced AI chips pass. If disrupted, the entire US AI industry stops.</li>
+          <li><strong>The precedent value of the Oregon climate case</strong> — if Multnomah County wins, 40 similar lawsuits gain momentum; if it loses on procedural grounds, the entire climate litigation strategy weakens.</li>
+          <li><strong>NYC as the DSA's laboratory</strong> — if the DSA governs NYC successfully, it becomes a national model; if NYC becomes a cautionary tale, the movement's center of gravity collapses.</li>
+          <li><strong>Trust between health workers and DRC communities</strong> — if trust can be built, contact tracing works; if it fails, the virus spreads invisibly.</li>
+        </ul>
+
+        <h4>Culminating points</h4>
+        <ul>
+          <li><strong>US-Iran: reciprocal culminating point.</strong> Both sides did what they felt they had to (90-minute strike; Strait of Hormuz attack) and neither wants to go further. The "not a restart of major combat" framing is a mutual recognition of limits.</li>
+          <li><strong>Ukraine: not yet at its culminating point.</strong> Drone production is increasing; strikes are getting larger. But the air defense shortage creates vulnerability. The culminating point will arrive when Ukraine's deep-strike capability grows faster than Russia can adapt — or when Russia adapts faster than Ukraine can scale.</li>
+          <li><strong>Trump administration: not reached.</strong> The administration is in its ascending phase — second term, compliant Congress on key issues, Supreme Court victories. The culminating point will arrive when midterms reduce Republican power, the economy falters, or overreach collapses the coalition.</li>
+          <li><strong>DSA: not reached.</strong> Still in offensive phase with accelerating momentum. Culminating point comes when they are forced to govern unpopular choices and lose voter confidence, or when they succeed too fast and overreach.</li>
+          <li><strong>US semiconductor packaging: already passed.</strong> The US gave away its advantage and now depends on TSMC. The question is whether it can re-cross the culminating point by rebuilding domestic capacity before a crisis forces the issue.</li>
+          <li><strong>Ebola: not reached, but the race is underway.</strong> Winner determined by whether the 20,000 workers arrive before the outbreak becomes uncontrollable.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Han Fei / Systems — The Gaps Between Names and Realities</h3>
+        <p>The Han Fei reading reveals the master pattern of the entire news cycle: every institution is experiencing a gap between what it claims to do (míng) and what it actually does (xíng).</p>
+
+        <h4>The most consequential xíng-míng gaps</h4>
+        <table>
+          <thead>
+            <tr>
+              <th>Title (Míng)</th>
+              <th>Actual Role (Xíng)</th>
+              <th>Gap Amplitude</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>"Cease-fire" (US-Iran)</td>
+              <td>Calibrated tit-for-tat escalation</td>
+              <td>Both sides strike but neither escalates to full war — but the name implies a cessation that does not exist</td>
+            </tr>
+            <tr>
+              <td>DNI Chief of Staff</td>
+              <td>Midterm election operative</td>
+              <td>Complete role inversion — an intelligence position staffed for political purposes</td>
+            </tr>
+            <tr>
+              <td>DOJ Civil Rights Investigation (Yale/Smith)</td>
+              <td>Political intimidation tool</td>
+              <td>Function follows politics, not law</td>
+            </tr>
+            <tr>
+              <td>School Reading Mandate (Texas)</td>
+              <td>Cultural curriculum war</td>
+              <td>Education serving identity politics, not literacy</td>
+            </tr>
+            <tr>
+              <td>"Primary challenge" (DSA)</td>
+              <td>Hostile takeover through electoral attrition</td>
+              <td>The title implies internal party contest; the actual performance is replacement war</td>
+            </tr>
+            <tr>
+              <td>"Temporary Protected Status"</td>
+              <td>30+ year residence for hundreds of thousands</td>
+              <td>The "temporary" name concealed the permanent reality — both sides used it strategically</td>
+            </tr>
+            <tr>
+              <td>Emergency tariff authority</td>
+              <td>Bluff warfare tool</td>
+              <td>The Supreme Court struck it down; Trump continues to threaten as if it exists</td>
+            </tr>
+            <tr>
+              <td>"Cease-fire" in Iran context</td>
+              <td>Dynamic calibration regime</td>
+              <td>The word keeps being used even though everyone knows it doesn't describe the reality</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h4>Feedback loops</h4>
+        <ul>
+          <li><strong>Positive loop (escalation):</strong> Each US-Iran strike reinforces the other side's need to respond — but both sides limit scope, creating a containment equilibrium. The fragility is in the calibration: if either side miscalculates, the loop breaks into escalation.</li>
+          <li><strong>Positive loop (institutional capture):</strong> Each Trump administration success (Yale negotiating, Norton appointed, Candeub confirmed) feeds the incentive for <em>more</em> captures. The administration is in a positive feedback loop of increasing aggression because each victory validates the strategy and lowers resistance.</li>
+          <li><strong>Negative loop (market discipline):</strong> Oil prices declining <em>despite</em> the Strait of Hormuz attack is a market signal that the geopolitical-price relationship has decoupled. This is dangerous — it tells Iran their attacks are not costly enough to change behavior, incentivizing further escalation.</li>
+        </ul>
+        <p>The perverse incentive pattern: The administration benefits from <em>prolonged litigation</em> even when losing. Each lower-court loss on TPS generated a ruling that conservative media could attack, fueling the "activist judges" narrative — which itself became a feedback loop driving voter turnout. Losing in court was a win in the court of public opinion.</p>
+        <p><strong>Han Fei's operational recommendation:</strong> The most urgent action is to <em>accurately label systems</em>. The US-Iran "cease-fire" should be called what it is — a limited-escalation regime. The DNI chief of staff role should be named for what it is — a political appointment influencing midterm elections. The Texas reading list should be called what it is — a religious curriculum mandate. Labeling accurately changes the operational framework from "enforcing norms" to "managing conflicts," which changes resource allocation, diplomatic strategy, and legal strategy.</p>
+      </article>
+
+      <article>
+        <h3>Zeng Guofan / 拙诚 — Where Discipline and Persistent Action Win</h3>
+        <p>Zeng Guofan's "stupid person's diligence" — the commitment to persistent, unglamorous, concrete action — is visible in the corners of the news cycle where institutions fail and individuals persist:</p>
+        <ul>
+          <li><strong>Ukraine's drone campaign</strong> — no knockout blow, no single decisive strike, just relentless infrastructure degradation (fuel, power, water, camps). Each drone is individually primitive. The cumulative effect is a Crimea state of emergency. This is 拙诚 in warfare: doing the boring, hard, repetitive work that collectively achieves strategic effect.</li>
+          <li><strong>The TPS hard-liners' legal strategy</strong> — 10 years of losing in lower courts, continuing to appeal, building the legal team, waiting for the Supreme Court. The method is 拙诚 even if the goal is unattractive.</li>
+          <li><strong>The Venezuelan diaspora's mutual aid</strong> — while governments failed (both Venezuela's and the US's), Miami's Venezuelan community bought bandages and diapers, shared WhatsApp fliers, coordinated rescue donations. Small, concrete, persistent action where institutions fail.</li>
+          <li><strong>The DRC Ebola response</strong> — recruiting 20,000 workers for contact tracing. The work is grinding: community outreach, trust-building, door-to-door testing. No glory, no quick win. Just the relentless work of finding cases before they spread.</li>
+          <li><strong>The Penn Station design</strong> — removing 100 columns, opening sightlines, letting in daylight. Improvement through <em>removal</em> rather than addition. The Daoist-Drucker-Zeng insight: sometimes the right action is to clear obstacles, not build more.</li>
+        </ul>
+
+        <h4>Where 拙诚 is absent</h4>
+        <ul>
+          <li>The international community's neglect of Myanmar is not strategic restraint — it is abandonment disguised as non-interference. No satellite imagery funding, no encrypted comms support, no diplomatic pressure. The "boring work" of witnessing, documenting, and supporting is not being done.</li>
+          <li>The Palisades Fire investigation gathered 9,000 videos but could not prove the ignition. The prosecution's theory ("societal revenge") was more narrative than evidence. 拙诚 would mean accepting the evidentiary limits and shifting accountability to the systemic failure (how was the fire allowed to rage out of control?) rather than pursuing a retrial with the same evidence.</li>
+          <li>OpenAI's IPO hesitation is not 拙诚 — it is decision paralysis masked as prudence. Deferring a difficult decision (when and at what valuation to go public) is the opposite of the "stupid person's diligence" that makes a decision and executes it.</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>Drucker / Effectiveness — The Right Things to Do</h3>
+        <p>Drucker's question — "What is the right thing to do, not just doing things right?" — cuts across the entire news cycle:</p>
+        <ul>
+          <li><strong>For the US-Iran situation:</strong> The wrong thing is managing the cease-fire, calibrating retaliatory strikes, maintaining naval patrol density. The right thing is to <em>reduce the strategic value of the Strait of Hormuz</em>. Invest in strategic petroleum reserve expansion, alternative pipeline routes, and diplomatic normalization with Iran. Stop defending the chokepoint; make it irrelevant.</li>
+          <li><strong>For the Democratic establishment vs. the DSA:</strong> The wrong thing is negotiating with Heastie, asking the DSA to stop primary challenges. The right thing is to <em>accept that the Democratic Party is being remade</em> and either join the transformation (by adopting popular progressive policies preemptively) or face extinction. The right question is not "How do we stop the DSA?" but "What policies would make their challenges fail because incumbents are actually delivering?"</li>
+          <li><strong>For the TSMC/AI supply chain:</strong> The wrong thing is subsidizing one packaging plant at a time. The right thing is to <em>treat semiconductor packaging as a national security emergency</em>. Fund 3–5 competing packaging facilities simultaneously. Accept that some will fail. The cost of overbuilding is a fraction of the cost of supply chain collapse.</li>
+          <li><strong>For the Ebola response:</strong> The wrong thing is recruiting 20,000 new workers through normal hiring pipelines. The right thing is to <em>plan for failure while working to prevent it</em>. Pre-position treatment centers for 50,000+ cases. Negotiate vaccine manufacturing licenses in advance. Activate military logistics. Prepare for the worst case because if the outbreak becomes "the largest ever," the failure to prepare will compound the disaster.</li>
+          <li><strong>For Yale:</strong> The wrong thing is settling before the fight. The right thing is to <em>demand the DOJ produce the evidence</em>. Settling now only emboldens the administration to target the next university. Drucker: if the other side's strategy depends on your fear, your only winning move is to <em>not be afraid</em>.</li>
+        </ul>
+
+        <h4>What should be abandoned</h4>
+        <ul>
+          <li>The pretense that the US-Iran cease-fire is a "cease-fire." Call it a limited-escalation regime and operate accordingly.</li>
+          <li>Yale's negotiation strategy. Fight the investigation in court.</li>
+          <li>The search for a "smoking gun" in the Palisades Fire. Drop the charges; investigate the systemic failure.</li>
+          <li>The assumption that immigration enforcement can be defeated in court. The Supreme Court has ruled. Shift resources to state-level sanctuary protections, individual asylum claims, and political mobilization.</li>
+          <li>The expectation that China will provide full transparency on the Beijing plane crash. Operate under the worst plausible assumption while publicly accepting the best.</li>
+          <li>The one-size-fits-all Ebola playbook. Rewrite it based on this outbreak's asymptomatic transmission evidence.</li>
+        </ul>
+        <p><strong>The Drucker synthesis:</strong> Across all 36 stories, the most common failure mode is not a lack of analysis — it is a lack of <em>decision</em>. The US-Iran cease-fire is a holding pattern no one will transform. The AI chip supply chain has no decision-maker. Myanmar is abandoned by a decision not to decide. OpenAI defers. The Palisades prosecutors face a decision with only bad options and will likely choose paralysis. The most effective actors in this cycle — the DSA (deciding to refuse Heastie), the TPS hard-liners (deciding to sustain the fight for 10 years), Ukraine (deciding to build drones at scale) — are those who <em>make decisions and execute them</em>. The rest are caught in the fog, waiting for clarity that will never arrive.</p>
+      </article>
+    </section>
+
+    <section class="daily-cartoon" id="daily-cartoon">
+      <h2>Daily Cartoon</h2>
+      <img src="./assets/images/nyt_cartoon.jpg" alt="NYT Editorial Cartoon — June 27, 2026">
+      <p class="caption">NYT Editorial Cartoon — June 27, 2026</p>
+    </section>
+
+    <section class="sources" id="sources">
+      <h2>Sources</h2>
+      <p>All articles sourced from The New York Times, June 24–26, 2026 edition, compiled June 27, 2026. Named contributors and analytical frameworks: Connector (polyvagal), Analyst (calibration), Philosophy (Mao/Laozi/Nietzsche), Strategy (Sun Tzu/Clausewitz), Operations (Han Fei/Zeng Guofan/Drucker).</p>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Generated from NYT June 27, 2026 — Hermes Agent 8-profile pipeline</p>
+  </footer>
+
+</body>
+</html>
