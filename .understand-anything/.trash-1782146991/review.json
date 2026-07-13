@@ -1,0 +1,30 @@
+{
+  "issues": [],
+  "warnings": [
+    "Node 'document:README.md' has no edges (orphan)",
+    "Node 'document:REQUIREMENTS.md' has no edges (orphan)",
+    "Node 'file:archive.html' has no edges (orphan)",
+    "Node 'config:reports_index.json' has no edges (orphan)",
+    "Node 'file:.understand-anything/.understandignore' has no edges (orphan)",
+    "Node 'file:demo/index.html' has no edges (orphan)",
+    "Node 'file:images/.gitkeep' has no edges (orphan)",
+    "Node 'file:serve.py' has no edges (orphan)"
+  ],
+  "stats": {
+    "totalNodes": 87,
+    "totalEdges": 79,
+    "totalLayers": 8,
+    "tourSteps": 10,
+    "nodeTypes": {
+      "document": 2,
+      "file": 77,
+      "config": 3,
+      "module": 5
+    },
+    "edgeTypes": {
+      "imports": 1,
+      "contains": 72,
+      "reads_from": 6
+    }
+  }
+}

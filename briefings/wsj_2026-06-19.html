@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WSJ Daily Briefing — 2026-06-19</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0a0a0f; color: #ffffff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; }
+  .hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0a0f 0%, #0d1b2a 30%, #1a0a2e 60%, #0a0a0f 100%); }
+  .hero-bg::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(0,255,136,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 50%, rgba(0,100,255,0.06) 0%, transparent 60%); }
+  .hero-bg .shapes { position: absolute; inset: 0; overflow: hidden; }
+  .hero-bg .shapes div { position: absolute; border: 1px solid rgba(0,255,136,0.1); border-radius: 50%; }
+  .hero-bg .shapes div:nth-child(1) { width: 600px; height: 600px; top: -200px; right: -100px; }
+  .hero-bg .shapes div:nth-child(2) { width: 400px; height: 400px; bottom: -150px; left: -50px; border-color: rgba(0,100,255,0.08); }
+  .hero-bg .shapes div:nth-child(3) { width: 200px; height: 200px; top: 30%; left: 20%; border-color: rgba(0,255,136,0.05); }
+  .hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; }
+  .hero-content .label { display: inline-block; border: 1px solid #00ff88; color: #00ff88; padding: 0.3rem 1rem; border-radius: 4px; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 1.5rem; text-transform: uppercase; }
+  .hero-content h1 { font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; letter-spacing: -1px; margin-bottom: 0.5rem; }
+  .hero-content h1 span { color: #00ff88; }
+  .hero-content .date { color: rgba(255,255,255,0.5); font-size: 1.1rem; }
+  .hero-content .subtitle { color: rgba(255,255,255,0.6); font-size: 1rem; max-width: 600px; margin: 1rem auto; }
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
+  section { margin-bottom: 3rem; }
+  h2 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1.5rem; padding-bottom: 0.5rem; border-bottom: 2px solid #00ff88; display: inline-block; }
+  h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.75rem; color: #00ff88; }
+  p { margin-bottom: 1rem; color: rgba(255,255,255,0.85); }
+  .market-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  .market-table th { text-align: left; padding: 0.6rem 1rem; border-bottom: 1px solid #1a1a2e; color: rgba(255,255,255,0.5); font-weight: 400; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+  .market-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #1a1a2e; font-size: 0.95rem; }
+  .market-table tr:hover { background: rgba(0,255,136,0.03); }
+  .prob-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+  .prob-table th { text-align: left; padding: 0.6rem 1rem; background: #0d1b2a; color: #00ff88; font-weight: 500; font-size: 0.85rem; }
+  .prob-table td { padding: 0.6rem 1rem; border-bottom: 1px solid #1a1a2e; font-size: 0.9rem; }
+  .prob-table tr:hover { background: rgba(0,255,136,0.03); }
+  .highlight { color: #00ff88; font-weight: 600; }
+  .observer { background: linear-gradient(135deg, #0d1b2a 0%, #1a0a2e 100%); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem; border-left: 3px solid #00ff88; }
+  .observer h3 { margin-bottom: 0.5rem; }
+  .observer p { font-size: 0.95rem; }
+  .cartoon-section { text-align: center; padding: 2rem 0; }
+  .cartoon-section img { max-width: 100%; border-radius: 8px; border: 1px solid #1a1a2e; }
+  .tl-dr { background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.15); padding: 1.5rem; border-radius: 8px; margin-bottom: 2rem; }
+  .tl-dr ul { list-style: none; padding: 0; }
+  .tl-dr li { padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
+  .tl-dr li::before { content: '▸'; position: absolute; left: 0; color: #00ff88; }
+  .calibrated { background: rgba(0,100,255,0.05); border: 1px solid rgba(0,100,255,0.15); padding: 0.8rem 1rem; border-radius: 6px; margin: 1rem 0; font-size: 0.9rem; }
+  footer { text-align: center; padding: 3rem; color: rgba(255,255,255,0.3); font-size: 0.8rem; border-top: 1px solid #1a1a2e; margin-top: 3rem; }
+  @media (max-width: 768px) { .container { padding: 1rem; } .hero { min-height: 40vh; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-bg">
+    <div class="shapes">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="hero-content">
+    <div class="label">The Wall Street Journal</div>
+    <h1>WSJ <span>Daily Briefing</span></h1>
+    <div class="date">2026-06-19</div>
+    <div class="subtitle">Geopolitics · Markets · Business & Tech · Policy & Opinion</div>
+  </div>
+</div>
+
+<div class="container">
+
+<div class="tl-dr">
+  <h3>▸ TL;DR</h3>
+  <ul>
+    <li>US and Iran sign interim peace deal at Versailles — stock markets rally, gasoline falls below $4/gallon, but Israel-Hezbollah clashes (4 soldiers, 18+ Lebanese killed) test the deal</li>
+    <li>Fed hawkish pivot dominates — 70% probability of rate hike by September; dollar hits one-year high</li>
+    <li>Hegseth announces review of US forces in Europe, threatens NATO funding cuts</li>
+    <li>Pentagon requests $80 billion emergency war funding</li>
+    <li>AI race intensifies — SpaceX buys Cursor for $60B; Accenture plummets 18%</li>
+  </ul>
+</div>
+
+<section>
+  <h2>Market Data</h2>
+  <table class="market-table">
+    <tr><th>Index / Asset</th><th>Value</th><th>Change</th></tr>
+    <tr><td>DJIA</td><td>51,700.01</td><td>+0.40%</td></tr>
+    <tr><td>S&amp;P 500</td><td>7,480.06</td><td>+0.81%</td></tr>
+    <tr><td>Nasdaq</td><td>26,282.62</td><td>+1.00%</td></tr>
+    <tr><td>Nasdaq (Weekly)</td><td>—</td><td>+2.4%</td></tr>
+    <tr><td>2-Year Treasury Yield</td><td>4.177%</td><td>Highest in &gt;1yr</td></tr>
+    <tr><td>10-Year Treasury Yield</td><td>4.432%</td><td>—</td></tr>
+    <tr><td>Dollar Index</td><td>97.07</td><td>+0.18%</td></tr>
+    <tr><td>Gold</td><td>$4,170.30</td><td>-1.78%</td></tr>
+    <tr><td>Crude Oil (Brent)</td><td>$73.79</td><td>-3.91%</td></tr>
+    <tr><td>VIX</td><td>16.40</td><td>-11.06%</td></tr>
+    <tr><td>Bitcoin</td><td>$62,570.99</td><td>-0.50%</td></tr>
+    <tr><td>Gasoline (National Avg)</td><td>&lt;$4.00/gal</td><td>First time in &gt;2 months</td></tr>
+  </table>
+  <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">U.S. markets closed Friday, June 19 for Juneteenth. Data reflects Thursday, June 18 close and Friday currency/commodity trading.</p>
+</section>
+
+<section>
+  <h2>Geopolitics &amp; Defense</h2>
+  
+  <h3>US-Iran Interim Peace Deal Signed at Versailles</h3>
+  <p>President Trump signed an interim peace agreement with Iran at the Chateau de Versailles, flanked by French President Emmanuel Macron. The deal sidesteps key reasons the U.S. went to war with Iran — which began after Iran launched a missile barrage at Israel in 2024 following Israel's killing of Hezbollah leader Hassan Nasrallah.</p>
+  <p>Vice President JD Vance has emerged as the deal's primary defender, arguing it is a "win for the U.S. no matter what happens next." Vance postponed travel to Switzerland for talks with Tehran. He acknowledged that "not every detail has been put in writing."</p>
+  
+  <div class="calibrated">
+    <strong>Calibrated view:</strong> <strong class="highlight">55% probability</strong> the interim deal holds through the full 60-day negotiation period — Vance's political investment and economic relief (falling gas prices, Hormuz reopening) create incentives for both sides, but Israel-Hezbollah clashes and Tehran hardliners pose material risks.
+  </div>
+  
+  <h3>Israel-Hezbollah Clashes Test Deal's Durability</h3>
+  <p>Four Israeli soldiers and at least 18 people in Lebanon were killed in renewed fighting. The violence underscores the deal's fragility — Hezbollah operates independently of Tehran's diplomatic calculus.</p>
+  
+  <h3>Vance Slams Israeli Critics; Hegseth Threatens NATO Cuts</h3>
+  <p>Vice President Vance took a combative stance against Israeli critics, with WSJ's politics desk noting he "now owns the agreement as talks enter a difficult new phase." Separately, Defense Secretary Hegseth announced a review of U.S. forces in Europe, threatening NATO funding cuts if European members don't increase defense spending.</p>
+  <p>Military officials told lawmakers the <strong>Pentagon needs $80 billion</strong> for the Iran war and other expenses — the services could run out of money this summer without a new wartime spending bill.</p>
+  
+  <div class="calibrated">
+    <strong>Calibrated view:</strong> <strong class="highlight">40% probability</strong> of significant U.S. troop reduction in Europe within 12 months — Hegseth's review provides the mechanism, and the $80B funding gap strengthens the case, but NATO allies will resist.
+  </div>
+</section>
+
+<section>
+  <h2>Markets &amp; Macroeconomy</h2>
+  
+  <h3>Fed Hawkish Pivot Reshapes Rate Expectations</h3>
+  <p>The Fed held its benchmark rate at 3.5%-3.75% on Wednesday, but the Summary of Economic Projections showed nine of 19 officials penciled in at least one rate rise by year-end — up from none in March. Markets now price a nearly 70% chance of a Fed rate hike by September (CME data).</p>
+  <p>Chairman Kevin Warsh's first postmeeting press conference discussed the decision and his appointment of task forces to examine Fed communications, the balance sheet, and inflation frameworks. The 2-year Treasury yield rose to 4.177%, its highest in more than a year.</p>
+  
+  <h3>Dollar Hits One-Year High; Global Central Banks Respond</h3>
+  <p>The dollar index reached 97.07, a one-year high. Gold fell to $4,170.30 (-1.78%). Bank Indonesia and the Philippine central bank both raised rates to defend their currencies. The U.S. launched a trade probe into Germany over drug pricing.</p>
+  
+  <h3>Chinese Export Flood Tests Europe</h3>
+  <p>A growing chorus of European leaders say subsidized Chinese products and a cheap yuan are putting the bloc's economy at risk — testing Europe's willingness to retaliate against Beijing.</p>
+  
+  <div class="calibrated">
+    <strong>Calibrated view:</strong> <strong class="highlight">65% probability</strong> the Fed delivers at least one quarter-point rate hike by December 2026 — the dot plot signal is unusually strong, but Warsh's task forces and falling oil prices (disinflationary) could shift the trajectory.
+  </div>
+  
+  <h3>Probability-Weighted Outlook</h3>
+  <table class="prob-table">
+    <tr><th>Scenario</th><th>Probability</th><th>Time Horizon</th><th>Basis</th></tr>
+    <tr><td>US-Iran interim deal holds through 60-day negotiation</td><td class="highlight">55%</td><td>60 days</td><td>Vance's political investment, economic relief; Hezbollah violence and Tehran hardliners are countervailing risks</td></tr>
+    <tr><td>Fed delivers ≥1 rate hike by December 2026</td><td class="highlight">65%</td><td>Dec 2026</td><td>9/19 FOMC officials penciled in hike (dot plot); Warsh task forces could adjust trajectory</td></tr>
+    <tr><td>Significant U.S. troop reduction in Europe within 12 months</td><td class="highlight">40%</td><td>12 months</td><td>Hegseth review provides mechanism; $80B funding gap; NATO allies will resist</td></tr>
+    <tr><td>AI IPO wave (OpenAI/Anthropic) begins before year-end</td><td class="highlight">45%</td><td>Dec 2026</td><td>Goldman/MS forming separate teams; market conditions supportive; regulatory timing uncertain</td></tr>
+    <tr><td>Brent crude stabilizes $70-80 range by Q3 2026</td><td class="highlight">60%</td><td>Q3 2026</td><td>Hormuz reopening, Iran deal ease supply fears; OPEC+ discipline provides floor</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Business &amp; Tech Strategy</h2>
+  
+  <h3>AI Competition Intensifies</h3>
+  <p><strong>SpaceX buys Cursor for $60B</strong> — Elon Musk is unleashing SpaceX's war chest to solve his AI problem. SpaceX shares dropped 3.6% after falling for the first time. Three major credit ratings agencies issued initial SpaceX ratings.</p>
+  <p><strong>Google challenges Nvidia</strong> using financial guarantees to encourage data centers to use its AI chips — a significant escalation in the AI chip war.</p>
+  <p><strong>Accenture falls 18%</strong> — the CEO said revenue will be lower than expected as enterprise AI adoption proves slower and more complex than anticipated.</p>
+  <p><strong>Databricks releases general AI agents</strong> for businesses. <strong>Baseten</strong> ($13B valuation) is raising $1.5B for cheaper AI alternatives to OpenAI/Anthropic.</p>
+  
+  <h3>IPOs: Bankers Pick Teams for OpenAI, Anthropic</h3>
+  <p>Goldman Sachs and Morgan Stanley are forming separate teams for the impending IPOs of OpenAI and Anthropic to prevent information sharing.</p>
+  
+  <div class="calibrated">
+    <strong>Calibrated view:</strong> <strong class="highlight">45% probability</strong> that either OpenAI or Anthropic files for IPO before year-end 2026 — banker team formation is a strong signal, but regulatory and market conditions create uncertainty.
+  </div>
+  
+  <h3>Apple to Raise Prices</h3>
+  <p>CEO Tim Cook said Apple will raise prices due to a memory chip crunch. The iPhone 18 Pro could cost $1,299. WSJ notes Apple is "the only trillion-dollar tech company without a major foothold in AI."</p>
+</section>
+
+<section>
+  <h2>Policy &amp; Opinion</h2>
+  
+  <h3>Trump Tests His Power, Frustrates the GOP</h3>
+  <p>President Trump refuses to sign FISA reauthorization — a GOP priority — until an unspecified demand is met. As Trump turns 80, the WSJ Editorial Report asks: "Is presidential health a legitimate issue?"</p>
+  
+  <h3>California Billionaire Tax; Supreme Court Gun Ruling</h3>
+  <p>A proposed 5% California billionaire tax cleared a key ballot hurdle; the union behind it offered to drop it for a smaller tax. The Supreme Court ruled 9-0 in U.S. v. Hemani that illegal drug users have Second Amendment rights.</p>
+  
+  <h3>Opinion Highlights</h3>
+  <p><strong>Peggy Noonan:</strong> "Can 'We the People' Survive the AI Revolution?"<br>
+  <strong>Kimberley Strassel:</strong> "The Die-on-This-Hill Presidency"<br>
+  <strong>WSJ Editorial:</strong> "Three Cheers for Kevin Warsh's Task Forces"<br>
+  <strong>WSJ Editorial:</strong> "What Iran Gets From Its U.S. Deal, Even if It Gives Nothing"</p>
+</section>
+
+<div class="cartoon-section">
+  <h2>Daily Cartoon</h2>
+  <img src="./assets/images/wsj_cartoon.jpg" alt="Editorial Cartoon — Oil rig handshake">
+  <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;margin-top:0.5rem;">Editorial cartoon: Two figures in suits shake hands before a burning oil rig — commentary on the US-Iran peace deal and war profiteering.</p>
+</div>
+
+<section>
+  <h2>观察者评论</h2>
+  
+  <div class="observer">
+    <h3>翟东升——体系/结构视角</h3>
+    <p>伊朗停火协议在凡尔赛宫签署，这不仅是战场停火，更是全球货币体系的一次结构性重组信号。石油美元环流的核心环节——霍尔木兹海峡——重新开放，意味着美元回流机制获得喘息。但美联储的鹰派转向（9/19官员勾画加息路径）揭示了更深层的矛盾：美国需要弱势美元来维系出口竞争力和债务可持续性，却因国内通胀压力被迫接受强势美元。这个悖论无解。</p>
+    <p>中国对欧出口洪流正在测试欧洲的贸易战承受力。欧洲夹在中美之间，既想对中国商品设限，又担心美国同时加压（药价贸易调查、北约军费要求）。这是典型的"平行体系"压力测试——当美国主导的旧体系无法容纳中国的产能过剩，区域化、阵营化的新体系就会加速形成。</p>
+    <p>Warsh的Fed工作组（沟通、资产负债表、通胀框架）本质上是美元信用体系的制度修缮。但修缮解决不了结构性问题：当全球贸易从美元单一体系向多元化储备体系演变时，任何Fed改革都只是延缓而非阻止这一进程。</p>
+  </div>
+  
+  <div class="observer">
+    <h3>金灿荣——美国政治/战略相持视角</h3>
+    <p>川普80岁了还在打"笼中格斗"，这哥们是真能折腾。伊朗协议在凡尔赛签了——打了好几个月，花了几千亿，最后回到谈判桌。这叫什么？这叫"百年未有之大变局"里的正常操作。美国打不起持久战了，这点连金政委都看得明白。</p>
+    <p>有意思的是万斯跳出来骂以色列。以前美国哪敢这么跟以色列说话？现在不但说了，还说得很难听。这说明啥？说明美国的中东战略正在发生根本性调整——从"无条件支持以色列"转向"先搞定自己的利益"。</p>
+    <p>Hegseth威胁砍北约经费，这招叫"极限施压"的欧洲版。欧洲兄弟现在两头受气：美国要他们加军费，中国货冲击他们的市场。欧洲人的脸色比酸菜还难看。</p>
+    <p>美联储那边，9个官员要加息，Warsh搞工作组。这让我想起中国的一句老话："麻秆打狼——两头怕"。加息的怕经济衰退，不加息的怕通胀反弹。</p>
+  </div>
+  
+  <div class="observer">
+    <h3>宋鸿兵——货币/债务/周期视角</h3>
+    <p>凡尔赛协议的核心不是地缘政治，而是石油。霍尔木兹海峡重新开放意味着每桶原油的战争溢价正在快速蒸发。Brent从战争高位跌至$73，汽油跌破$4——这是全球通胀压力的最大单一变量。Fed敢于释放鹰派信号，前提就是油价回落给了他们政策空间。</p>
+    <p>但美元指数飙升至一年新高97.07是个危险信号。历史上，美元强势周期往往伴随新兴市场债务危机。印尼、菲律宾已经被迫加息保卫本币——这正是"美元潮汐"收割周期的第三阶段：加息吸引美元回流，脆弱经济体被抽干流动性。</p>
+    <p>Pentagon要$80亿紧急拨款——战争打了，钱没了。美国在伊朗战争中消耗了惊人的弹药库存和财政资源，而最终的"和平红利"（油价下跌）却被美联储的加息预期部分抵消。</p>
+    <p>SpaceX花$600亿买Cursor，Allbirds改名Smartbird——科技公司的"AI军备竞赛"本质上是货币现象。当全球流动性充裕时，资本追逐AI故事；当Fed开始紧缩，最先跌的是Accenture这种讲故事能力不足的中间商（-18%）。AI泡沫的钟声已经隐约可闻。</p>
+  </div>
+</section>
+
+</div>
+
+<footer>
+  WSJ Daily Briefing — 2026-06-19 · Source: The Wall Street Journal · A-Grade Edition<br>
+  Generated by Hermes Agent · Nous Research
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,441 @@
+{
+  "nodes": [
+    {
+      "id": "file:briefings/gallery.html",
+      "type": "file",
+      "name": "gallery.html",
+      "filePath": "briefings/gallery.html",
+      "summary": "gallery.html \u2014 html markup file (254 lines)",
+      "sizeLines": 254,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-04.html",
+      "type": "file",
+      "name": "nyt_2026-06-04.html",
+      "filePath": "briefings/nyt_2026-06-04.html",
+      "summary": "nyt_2026-06-04.html \u2014 html markup file (65 lines)",
+      "sizeLines": 65,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-05.html",
+      "type": "file",
+      "name": "nyt_2026-06-05.html",
+      "filePath": "briefings/nyt_2026-06-05.html",
+      "summary": "nyt_2026-06-05.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-06.html",
+      "type": "file",
+      "name": "nyt_2026-06-06.html",
+      "filePath": "briefings/nyt_2026-06-06.html",
+      "summary": "nyt_2026-06-06.html \u2014 html markup file (65 lines)",
+      "sizeLines": 65,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-07.html",
+      "type": "file",
+      "name": "nyt_2026-06-07.html",
+      "filePath": "briefings/nyt_2026-06-07.html",
+      "summary": "nyt_2026-06-07.html \u2014 html markup file (11 lines)",
+      "sizeLines": 11,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-08.html",
+      "type": "file",
+      "name": "nyt_2026-06-08.html",
+      "filePath": "briefings/nyt_2026-06-08.html",
+      "summary": "nyt_2026-06-08.html \u2014 html markup file (302 lines)",
+      "sizeLines": 302,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-09.html",
+      "type": "file",
+      "name": "nyt_2026-06-09.html",
+      "filePath": "briefings/nyt_2026-06-09.html",
+      "summary": "nyt_2026-06-09.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-10.html",
+      "type": "file",
+      "name": "nyt_2026-06-10.html",
+      "filePath": "briefings/nyt_2026-06-10.html",
+      "summary": "nyt_2026-06-10.html \u2014 html markup file (15 lines)",
+      "sizeLines": 15,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-11.html",
+      "type": "file",
+      "name": "nyt_2026-06-11.html",
+      "filePath": "briefings/nyt_2026-06-11.html",
+      "summary": "nyt_2026-06-11.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-12.html",
+      "type": "file",
+      "name": "nyt_2026-06-12.html",
+      "filePath": "briefings/nyt_2026-06-12.html",
+      "summary": "nyt_2026-06-12.html \u2014 html markup file (547 lines)",
+      "sizeLines": 547,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-13.html",
+      "type": "file",
+      "name": "nyt_2026-06-13.html",
+      "filePath": "briefings/nyt_2026-06-13.html",
+      "summary": "nyt_2026-06-13.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-14.html",
+      "type": "file",
+      "name": "nyt_2026-06-14.html",
+      "filePath": "briefings/nyt_2026-06-14.html",
+      "summary": "nyt_2026-06-14.html \u2014 html markup file (240 lines)",
+      "sizeLines": 240,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-15.html",
+      "type": "file",
+      "name": "nyt_2026-06-15.html",
+      "filePath": "briefings/nyt_2026-06-15.html",
+      "summary": "nyt_2026-06-15.html \u2014 html markup file (817 lines)",
+      "sizeLines": 817,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-16.html",
+      "type": "file",
+      "name": "nyt_2026-06-16.html",
+      "filePath": "briefings/nyt_2026-06-16.html",
+      "summary": "nyt_2026-06-16.html \u2014 html markup file (432 lines)",
+      "sizeLines": 432,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-17.html",
+      "type": "file",
+      "name": "nyt_2026-06-17.html",
+      "filePath": "briefings/nyt_2026-06-17.html",
+      "summary": "nyt_2026-06-17.html \u2014 html markup file (793 lines)",
+      "sizeLines": 793,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-18.html",
+      "type": "file",
+      "name": "nyt_2026-06-18.html",
+      "filePath": "briefings/nyt_2026-06-18.html",
+      "summary": "nyt_2026-06-18.html \u2014 html markup file (224 lines)",
+      "sizeLines": 224,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-19.html",
+      "type": "file",
+      "name": "nyt_2026-06-19.html",
+      "filePath": "briefings/nyt_2026-06-19.html",
+      "summary": "nyt_2026-06-19.html \u2014 html markup file (120 lines)",
+      "sizeLines": 120,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-21.html",
+      "type": "file",
+      "name": "nyt_2026-06-21.html",
+      "filePath": "briefings/nyt_2026-06-21.html",
+      "summary": "nyt_2026-06-21.html \u2014 html markup file (99 lines)",
+      "sizeLines": 99,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-22.html",
+      "type": "file",
+      "name": "nyt_2026-06-22.html",
+      "filePath": "briefings/nyt_2026-06-22.html",
+      "summary": "nyt_2026-06-22.html \u2014 html markup file (672 lines)",
+      "sizeLines": 672,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-07.html",
+      "type": "file",
+      "name": "wsj_2026-06-07.html",
+      "filePath": "briefings/wsj_2026-06-07.html",
+      "summary": "wsj_2026-06-07.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:briefings",
+      "type": "module",
+      "name": "briefings",
+      "filePath": "briefings",
+      "summary": "Directory: briefings",
+      "sizeLines": 4726,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/gallery.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-04.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-05.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-06.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-07.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-08.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-09.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-10.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-11.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-12.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-13.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-14.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-15.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-16.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-17.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-18.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-19.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-21.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-22.html",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-07.html",
+      "type": "contains",
+      "weight": 1.0
+    }
+  ],
+  "batchIndex": 2
+}

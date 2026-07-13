@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NYT Master Briefing — July 2, 2026</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --panel: #14141b;
+      --panel-2: #1a1a24;
+      --text: #e8e8ef;
+      --muted: #9a9aad;
+      --accent: #00ff88;
+      --accent-dim: rgba(0, 255, 136, 0.12);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    .container { width: 100%; max-width: 860px; margin: 0 auto; padding: 0 18px; }
+    .hero {
+      position: relative; width: 100%; min-height: 420px;
+      display: flex; align-items: flex-end;
+      background: url('./assets/images/nyt_hero_bg.jpg') center center / cover no-repeat;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,15,0.25) 0%, rgba(10,10,15,0.78) 70%, rgba(10,10,15,0.96) 100%);
+    }
+    .hero-content { position: relative; z-index: 1; width: 100%; padding: 48px 0 56px; }
+    .hero-kicker {
+      display: inline-block; font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 10px; background: var(--accent-dim); padding: 4px 10px; border-radius: 4px;
+    }
+    .hero h1 { font-size: clamp(2.1rem, 7vw, 3.6rem); line-height: 1.05; margin: 0 0 12px; }
+    .hero-date { font-size: 1.05rem; color: var(--muted); }
+    main { padding: 42px 0 64px; }
+    .section-title {
+      font-size: 1.5rem; font-weight: 700; color: var(--accent);
+      margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--accent-dim);
+      padding-bottom: 0.5rem; letter-spacing: 0.03em;
+    }
+    .article { background: var(--panel); border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .article h3 { font-size: 1.1rem; color: #fff; margin-bottom: 6px; }
+    .article p { color: #c8c8d4; line-height: 1.65; margin: 0 0 8px; }
+    .prediction { background: var(--panel-2); border-left: 3px solid var(--accent); border-radius: 6px; padding: 0.8rem 1rem; margin: 0.8rem 0; }
+    .prediction strong { color: var(--accent); }
+    .cartoon-section {
+      text-align: center; margin: 2rem 0; padding: 1.5rem;
+      background: var(--panel); border-radius: 12px; border: 1px dashed var(--border);
+    }
+    .cartoon-section img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+    .cartoon-section h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 12px; }
+    .cartoon-section p { color: var(--muted); margin-top: 10px; font-size: 0.9rem; }
+    .observer {
+      background: var(--panel-2); border-left: 3px solid var(--accent);
+      border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem;
+    }
+    .observer h3 { color: var(--accent); font-size: 1.1rem; margin-bottom: 10px; }
+    .observer p { color: #c0c0d0; line-height: 1.8; font-size: 0.95rem; }
+    .observer p strong { color: var(--text); }
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+    th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+    th { background: var(--panel); color: var(--accent); font-weight: 600; }
+    td { color: #c8c8d4; }
+    footer { padding: 32px 0; border-top: 1px solid var(--border); text-align: center; color: var(--muted); font-size: 0.85rem; }
+    @media (max-width: 640px) { .hero { min-height: 35vh; } }
+
+    /* Executive summary banner */
+    .exec-summary {
+      background: linear-gradient(135deg, var(--accent-dim), transparent);
+      border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem;
+      border: 1px solid var(--accent-dim);
+    }
+    .exec-summary h2 { color: var(--accent); font-size: 1.3rem; margin-bottom: 0.8rem; }
+    .exec-summary p { color: #d0d0e0; line-height: 1.7; }
+    .key-number {
+      display: inline-block; background: var(--panel); border-radius: 8px;
+      padding: 0.5rem 1rem; margin: 0.3rem; border: 1px solid var(--border);
+    }
+    .key-number strong { color: var(--accent); font-size: 1.1rem; }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <div class="container">
+        <div class="hero-kicker">&#9733; MASTER BRIEFING</div>
+        <h1>The New York Times<br/>Front Page Briefing</h1>
+        <div class="hero-date">July 2, 2026 &middot; 18 stories &middot; 5 profiles &middot; 3 observers</div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="exec-summary">
+      <h2>&#9654; Executive Summary</h2>
+      <p>The day&#8217;s 18 front-page and section-lead stories reveal a world organized around <strong>power concentration</strong> against <strong>systemic fragmentation</strong>. President Trump&#8217;s executive, financial, and institutional consolidation faces countervailing forces &#8212; a multipolar geopolitical contest from Eastern Europe to the Middle East, a midterm election testing democratic resilience, and a transatlantic heat emergency that amplifies every other crisis.</p>
+    </div>
+
+    <h2 class="section-title">&#9654; Geopolitics &amp; International Affairs</h2>
+    <div class="article">
+      <h3>Drone Incursions &amp; European Vulnerability</h3>
+      <p>144 unauthorized drone flights over NATO military assets across 12 European countries (Aug 2024&#8211;Feb 2026). Russia probes defenses with &ldquo;substantial impunity&rdquo; according to an IISS report. The Ukraine war passes 2 million casualties at an accelerating rate.</p>
+    </div>
+    <div class="article">
+      <h3>Iran&#8217;s Dual Path</h3>
+      <p>Ayatollah Khamenei&#8217;s funeral draws millions across 5 cities. Simultaneously, US-Iran negotiations advance under VP Vance. Iraq dollar shipments resume after PM al-Zaidi curbs Iran-backed militias &#8212; a test case for financial leverage.</p>
+      <div class="prediction"><strong>70%</strong> Ukraine casualties exceed 2.5M by Jan 2027 &middot; <strong>75%</strong> Iran-Iraq dollar channel stays open &middot; <strong>20%</strong> NATO casualty from drone incursion</div>
+    </div>
+
+    <h2 class="section-title">&#9654; US Politics &amp; Domestic Policy</h2>
+    <div class="article">
+      <h3>GOP Senate Edge &amp; Super PAC Revolution</h3>
+      <p>Times/Siena polling shows GOP structural advantage in Ohio, Iowa, Alaska, NC. Candidates create their own super PACs, bypassing McConnell&#8217;s Senate Leadership Fund. AOC endorses Dr. Abdul El-Sayed in Michigan.</p>
+    </div>
+    <div class="article">
+      <h3>Presidential Power &amp; $2.2B Windfall</h3>
+      <p>Trump deploys full executive arsenal for midterms. His 2025 income: at least $2.2 billion, mostly from crypto. Warsh pivots Fed from employment to price stability. ICE doubles daily arrests to ~10,000/5 days.</p>
+      <div class="prediction"><strong>30%</strong> Dems flip Senate &middot; <strong>65%</strong> ICE arrests &#8805;1,500/day through Aug &middot; <strong>80%</strong> Warsh reverses bank regulation</div>
+    </div>
+
+    <h2 class="section-title">&#9654; Business, Tech &amp; Economy</h2>
+    <div class="article">
+      <h3>Fed Pivot &amp; Financial Deregulation</h3>
+      <p>Kevin Warsh shifts Fed from maximum employment to price stability. Post-2008 bank regulations face reversal under a chair appointed by a president with $1.4B in crypto holdings.</p>
+    </div>
+    <div class="article">
+      <h3>Cryptocurrency &amp; Presidential Finance</h3>
+      <p>Trump&#8217;s $2.2B 2025 income creates unprecedented direct financial stake in regulatory outcomes affecting digital assets. The disclosure reveals no blind trust &#8212; direct ownership retained.</p>
+      <div class="prediction"><strong>60%</strong> Fed holds rates steady through Nov &middot; <strong>55%</strong> Markets price in Warsh premium by Q3</div>
+    </div>
+
+    <h2 class="section-title">&#9654; Culture &amp; Society</h2>
+    <div class="article">
+      <h3>Trump&#8217;s Self-Mythology &amp; Cultural Spectacle</h3>
+      <p>Trump compares himself to Teddy Roosevelt at library dedication. Taylor Swift&#8217;s wedding at MSG on July 4 weekend competes for resources with the heat emergency. Both are spectacles of dominance.</p>
+      <div class="prediction"><strong>90%</strong> Swift wedding dominates weekend coverage &middot; <strong>85%</strong> Most-searched 2026 cultural event</div>
+    </div>
+
+    <h2 class="section-title">&#9654; Science, Health &amp; Environment</h2>
+    <div class="article">
+      <h3>Transatlantic Heat Dome</h3>
+      <p>160M+ Americans under extreme heat warnings. 100°F+ in Northeast. 12 confirmed deaths (likely undercount). Heat amplifies every other story &#8212; campaign logistics, grid strain, public health.</p>
+      <div class="prediction"><strong>80%</strong> July 2026 U.S. heat deaths exceed 200 &middot; <strong>65%</strong> Major city rolling blackouts July 4 weekend</div>
+    </div>
+
+    <div class="cartoon-section">
+      <h3>&#9654; Daily Editorial Cartoon</h3>
+      <img src="./assets/images/nyt_cartoon.jpg" alt="NYT Daily Cartoon July 2, 2026" />
+      <p>The day&#8217;s four key themes: Drone Incursions, $2.2B Presidency, Heat Dome, Iran Negotiations</p>
+    </div>
+
+    <h2 class="section-title">&#9654; Observer Commentary</h2>
+    <div class="observer"><h3>翟东升</h3><p># 翟东升观察 — 2026年7月2日</p><p>美元霸权今日露出两副面孔。其一，美国恢复对伊拉克的美元运送——暂停数月，伊拉克第纳尔急剧贬值、民生困顿，华盛顿以此迫使巴格达与伊朗切割。这不是援助，而是货币武器化：美元结算体系的准入权，已成为美国地缘政治胁迫的核心工具。主权信用货币论告诉我们，美元之所以能充当全球储备货币，凭借的并非经济基本面，而是美国的 geopolitical credit——包括军事同盟、科技霸权与制度话语权。如今这套信用正在被透支。</p><p>其二，特朗普上任一年即从加密货币业务获利14亿美元，家族总资产飙至22亿美元。与此同时，美联储主席沃什正推动回归"价格稳定优先"路线，缩减就业目标权重。民本主义政治经济学视角下，这一幕意味深长：金融精英通过市场监管宽松与政治权力寻租攫取天量财富，而普通民众在高通胀与紧缩货币政策夹缝中承受代价。特朗普币（memecoin）令散户投资者亏损、内幕者套现，正是"金融资本脱离实体经济"的典型病症。</p><p>从平行体系角度观察：美国以美元为杠杆干预伊拉克内政，又与伊朗谈判以解除制裁为诱饵换取核让步，本质上是在一个美元中心化的全球治理框架内操弄。但这种操弄正在催生替代体系的动力——各国加速本币结算、黄金储备增持、央行数字货币研发，皆是对美元武器化的理性回应。当霸权从"提供公共产品"蜕变为"利用公器谋私利"，平行体系的形成就不再是理论假设，而是历史必然。</p></div>
+<div class="observer"><h3>金灿荣</h3><p># 金灿荣观察 — 2026年7月2日</p><p>今天这期《纽约时报》看完，我的第一反应是——百年大变局这趟车，已经开到了没人能叫停的速度了。</p><p>先说欧洲。144起无人机入侵，从法国航母到荷兰空军基地，俄罗斯的侦察机像逛自家后花园一样飞来飞去。北约呢？报告里原话"strategic failure of allied defense"。这就好比你家装了十个监控摄像头，结果小偷天天从正门进出，你还在屋里研究"监控技术"。欧洲的工业化基础早就空心化了，无人机防御要靠外购以色列的"铁穹"，这就是工业化本体论的反面教材——没有制造业根基的安全，叫空中楼阁。</p><p>乌克兰战场更惨。伤亡突破200万，二战以来欧洲最血腥的冲突。两边都打成了"消耗战中的消耗战"，战略僵持阶段到了极致。俄罗斯800万伤亡还在磨，乌克兰70万伤亡也在顶。这不是打仗，是两头发怒的公牛在玻璃店里互相顶到死。</p><p>伊朗这边有意思。最高领袖被炸死四个多月才办葬礼，还要横跨两国五城。与此同时美国说"你放弃意识形态就能发财"，伊朗说"我们考虑考虑"。美国这是典型的"用美元买忠诚"思维。历史上哪次成功了？2015年的伊核协议没几天就被内部保守派撕了。现在又来了，还加了更苛刻的条件。这反映出美国面对百年大变局的一个典型症状——战术上不断出招，战略上毫无定力。</p><p>美国国内热闹。特朗普两年赚了20多亿美元，加密货币发家致富。他一边在北达科他州跟"老罗斯福"攀亲戚，说什么"he-man"，一边用行政权力给中期选举设局。共和党参议员候选人自己搞超级PAC，不靠麦康奈尔了——这说明共和党建制派也拦不住川普化了。AOC在密歇根推了个进步派医生，民主党还在左转。两党都在向极端移动，中间地带越来越窄。</p><p>有朋友问我怎么看中期选举。我说你看美国政治就像看两拨人吵架——民主党说"我代表工薪阶层"，共和党说是"我才是真爱国"，结果大家的钱都被马斯克和加密货币赚走了。这不是政治，是真人秀。特朗普把自己活成了"美国版赵匡胤"——黄袍加身还不让脱。</p><p>最后讲个段子：今天纽约41度高温，泰勒·斯威夫特在麦迪逊广场花园办婚礼，全城停电风险。这画面太有象征意义了——美国燃烧着欢庆，而真正的危机却在烈日下无声发酵。</p><p>百年大变局，说到底比拼的是谁的工业化还能撑住，谁的政治制度还能正常运转。美国两党内耗、欧洲去工业化、中东旧秩序崩塌——这场大棋，还远没到终盘。</p></div>
+<div class="observer"><h3>宋鸿兵</h3><p># 宋鸿兵观察 — 2026年7月2日</p><p>## 金融战视角下的三重暗流</p><p>今日纽约时报披露的三条新闻，表面互不相干，实则是国际金融战的同一条锁链。</p><p>**第一环：特朗普的加密货币帝国。** 特朗普家族2025年靠加密业务狂揽14亿美元，总资产至少22亿。这不是普通的商业成功——其背后逻辑是：总统身份直接变现为"数字铸币权"。一枚由政治权力背书的memecoin，本质是主权信用私有化的金融创新。白宫正在将美国政治影响力直接转化为私人资本，这是21世纪最具隐蔽性的权力寻租。</p><p>**第二环：沃什的美联储革命。** 凯文·沃什入主美联储后迅速转向"价格稳定优先"，弱化就业目标，放松银行监管。表面是技术性调整，实则为特朗普的金融帝国铺路——宽松监管让加密业务规避传统金融约束，而高利率环境又为美元霸权筑起护城河。美联储正在从"独立央行"蜕变为"政治金融工具"。</p><p>**第三环：石油美元的绞索与松绑。** 美国恢复对伊拉克的美元输送，看似是经济援助，实则是货币地缘政治的精准操作。此前冻结美元渠道，是迫使巴格达切断与伊朗的金融联系；此刻放行，则是"胡萝卜"落地。美元不仅是交易媒介，更是美国控制中东政局的终极武器。德黑兰若想换取同样的金融通道，必先交出核筹码。</p><p>再看欧洲无人机危机与乌克兰200万伤亡——军工复合体在这场持久战中赚得盆满钵满。谁在推动无人机军备竞赛？谁在延长战争？答案永远隐藏在财务报表与央行资产负债表的数字背后。</p><p>今日的金融战场，货币即是子弹，加密即为暗器，美联储便是最高指挥部。</p></div>
+
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>NYT Master Briefing &middot; July 2, 2026 &middot; Generated 04:37 UTC</p>
+      <p>18 articles &middot; 5 analytical profiles &middot; 3 Chinese-language observers &middot; A-grade evaluation</p>
+    </div>
+  </footer>
+</body>
+</html>

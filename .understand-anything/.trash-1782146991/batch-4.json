@@ -1,0 +1,620 @@
+{
+  "nodes": [
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": ".understandignore \u2014 unknown code file (41 lines)",
+      "sizeLines": 41,
+      "language": "unknown",
+      "tags": [
+        "unknown",
+        "code",
+        "internal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-B7QnFapy.js",
+      "type": "file",
+      "name": "index-B7QnFapy.js",
+      "filePath": "briefings/assets/index-B7QnFapy.js",
+      "summary": "index-B7QnFapy.js \u2014 javascript code file (82 lines)",
+      "sizeLines": 82,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-BCAAm0vL.js",
+      "type": "file",
+      "name": "index-BCAAm0vL.js",
+      "filePath": "briefings/assets/index-BCAAm0vL.js",
+      "summary": "index-BCAAm0vL.js \u2014 javascript code file (124 lines)",
+      "sizeLines": 124,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-BkaggUKK.js",
+      "type": "file",
+      "name": "index-BkaggUKK.js",
+      "filePath": "briefings/assets/index-BkaggUKK.js",
+      "summary": "index-BkaggUKK.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BMAzdbAe.js",
+      "type": "file",
+      "name": "index-BMAzdbAe.js",
+      "filePath": "briefings/assets/index-BMAzdbAe.js",
+      "summary": "index-BMAzdbAe.js \u2014 javascript code file (11 lines)",
+      "sizeLines": 11,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BN0rYByS.js",
+      "type": "file",
+      "name": "index-BN0rYByS.js",
+      "filePath": "briefings/assets/index-BN0rYByS.js",
+      "summary": "index-BN0rYByS.js \u2014 javascript code file (88 lines)",
+      "sizeLines": 88,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-C-Z0inli.js",
+      "type": "file",
+      "name": "index-C-Z0inli.js",
+      "filePath": "briefings/assets/index-C-Z0inli.js",
+      "summary": "index-C-Z0inli.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-CrDxPNo2.js",
+      "type": "file",
+      "name": "index-CrDxPNo2.js",
+      "filePath": "briefings/assets/index-CrDxPNo2.js",
+      "summary": "index-CrDxPNo2.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-CtVMf-Mu.js",
+      "type": "file",
+      "name": "index-CtVMf-Mu.js",
+      "filePath": "briefings/assets/index-CtVMf-Mu.js",
+      "summary": "index-CtVMf-Mu.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-Cu7y5OTe.js",
+      "type": "file",
+      "name": "index-Cu7y5OTe.js",
+      "filePath": "briefings/assets/index-Cu7y5OTe.js",
+      "summary": "index-Cu7y5OTe.js \u2014 javascript code file (131 lines)",
+      "sizeLines": 131,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-CuFudCbM.js",
+      "type": "file",
+      "name": "index-CuFudCbM.js",
+      "filePath": "briefings/assets/index-CuFudCbM.js",
+      "summary": "index-CuFudCbM.js \u2014 javascript code file (11 lines)",
+      "sizeLines": 11,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-DgTG6Exq.js",
+      "type": "file",
+      "name": "index-DgTG6Exq.js",
+      "filePath": "briefings/assets/index-DgTG6Exq.js",
+      "summary": "index-DgTG6Exq.js \u2014 javascript code file (4253 lines)",
+      "sizeLines": 4253,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "very-complex"
+    },
+    {
+      "id": "file:briefings/assets/index-DJNigZ9b.js",
+      "type": "file",
+      "name": "index-DJNigZ9b.js",
+      "filePath": "briefings/assets/index-DJNigZ9b.js",
+      "summary": "index-DJNigZ9b.js \u2014 javascript code file (40 lines)",
+      "sizeLines": 40,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-DQkAxoPd.js",
+      "type": "file",
+      "name": "index-DQkAxoPd.js",
+      "filePath": "briefings/assets/index-DQkAxoPd.js",
+      "summary": "index-DQkAxoPd.js \u2014 javascript code file (12 lines)",
+      "sizeLines": 12,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-DwiaFw4y.js",
+      "type": "file",
+      "name": "index-DwiaFw4y.js",
+      "filePath": "briefings/assets/index-DwiaFw4y.js",
+      "summary": "index-DwiaFw4y.js \u2014 javascript code file (4233 lines)",
+      "sizeLines": 4233,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "very-complex"
+    },
+    {
+      "id": "file:briefings/assets/index-KL5agRJB.js",
+      "type": "file",
+      "name": "index-KL5agRJB.js",
+      "filePath": "briefings/assets/index-KL5agRJB.js",
+      "summary": "index-KL5agRJB.js \u2014 javascript code file (11 lines)",
+      "sizeLines": 11,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/sdk-seed.js",
+      "type": "file",
+      "name": "sdk-seed.js",
+      "filePath": "briefings/assets/sdk-seed.js",
+      "summary": "sdk-seed.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:data/observers.json",
+      "type": "config",
+      "name": "observers.json",
+      "filePath": "data/observers.json",
+      "summary": "observers.json \u2014 json config file (92 lines)",
+      "sizeLines": 92,
+      "language": "json",
+      "tags": [
+        "json",
+        "config",
+        "data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:data/reports_index.json",
+      "type": "config",
+      "name": "reports_index.json",
+      "filePath": "data/reports_index.json",
+      "summary": "reports_index.json \u2014 json config file (283 lines)",
+      "sizeLines": 283,
+      "language": "json",
+      "tags": [
+        "json",
+        "config",
+        "data"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:demo/assets/index-C0yImpgo.css",
+      "type": "file",
+      "name": "index-C0yImpgo.css",
+      "filePath": "demo/assets/index-C0yImpgo.css",
+      "summary": "index-C0yImpgo.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:demo/assets/index-CRlGGo-N.js",
+      "type": "file",
+      "name": "index-CRlGGo-N.js",
+      "filePath": "demo/assets/index-CRlGGo-N.js",
+      "summary": "index-CRlGGo-N.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:demo/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "demo/index.html",
+      "summary": "index.html \u2014 html markup file (15 lines)",
+      "sizeLines": 15,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:images/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "images/.gitkeep",
+      "summary": ".gitkeep \u2014 unknown code file (0 lines)",
+      "sizeLines": 0,
+      "language": "unknown",
+      "tags": [
+        "unknown",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/build_combined.py",
+      "type": "file",
+      "name": "build_combined.py",
+      "filePath": "scripts/build_combined.py",
+      "summary": "build_combined.py \u2014 python code file (282 lines)",
+      "sizeLines": 282,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/daily_update.py",
+      "type": "file",
+      "name": "daily_update.py",
+      "filePath": "scripts/daily_update.py",
+      "summary": "daily_update.py \u2014 python code file (627 lines)",
+      "sizeLines": 627,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "module:briefings-assets",
+      "type": "module",
+      "name": "briefings/assets",
+      "filePath": "briefings/assets",
+      "summary": "Directory: briefings/assets",
+      "sizeLines": 9041,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:data",
+      "type": "module",
+      "name": "data",
+      "filePath": "data",
+      "summary": "Directory: data",
+      "sizeLines": 375,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:demo-assets",
+      "type": "module",
+      "name": "demo/assets",
+      "filePath": "demo/assets",
+      "summary": "Directory: demo/assets",
+      "sizeLines": 10,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:scripts",
+      "type": "module",
+      "name": "scripts",
+      "filePath": "scripts",
+      "summary": "Directory: scripts",
+      "sizeLines": 909,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-B7QnFapy.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BCAAm0vL.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BkaggUKK.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BMAzdbAe.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BN0rYByS.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-C-Z0inli.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CrDxPNo2.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CtVMf-Mu.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-Cu7y5OTe.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CuFudCbM.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DgTG6Exq.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DJNigZ9b.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DQkAxoPd.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DwiaFw4y.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-KL5agRJB.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/sdk-seed.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:data",
+      "target": "config:data/observers.json",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:data",
+      "target": "config:data/reports_index.json",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:demo-assets",
+      "target": "file:demo/assets/index-C0yImpgo.css",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:demo-assets",
+      "target": "file:demo/assets/index-CRlGGo-N.js",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/build_combined.py",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/daily_update.py",
+      "type": "contains",
+      "weight": 1.0
+    },
+    {
+      "source": "file:scripts/build_combined.py",
+      "target": "config:data/observers.json",
+      "type": "reads_from",
+      "weight": 0.6
+    },
+    {
+      "source": "file:scripts/build_combined.py",
+      "target": "config:data/reports_index.json",
+      "type": "reads_from",
+      "weight": 0.6
+    },
+    {
+      "source": "file:scripts/daily_update.py",
+      "target": "config:data/observers.json",
+      "type": "reads_from",
+      "weight": 0.6
+    },
+    {
+      "source": "file:scripts/daily_update.py",
+      "target": "config:data/reports_index.json",
+      "type": "reads_from",
+      "weight": 0.6
+    },
+    {
+      "source": "module:scripts",
+      "target": "config:data/observers.json",
+      "type": "reads_from",
+      "weight": 0.6
+    },
+    {
+      "source": "module:scripts",
+      "target": "config:data/reports_index.json",
+      "type": "reads_from",
+      "weight": 0.6
+    }
+  ],
+  "batchIndex": 4
+}

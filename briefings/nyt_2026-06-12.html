@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NYT Global Signal Briefing — June 12, 2026</title>
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --panel: #12141a;
+      --panel-2: #181b24;
+      --text: #e4e6eb;
+      --muted: #9aa0a8;
+      --accent: #00d4aa;
+      --accent-2: #00a8e8;
+      --critical: #ff2e2e;
+      --elevated: #ff9f1c;
+      --stable: #2ecc71;
+      --border: #252a36;
+      --shadow: rgba(0,0,0,0.45);
+      --font-mono: "SF Mono", Monaco, "Cascadia Code", Consolas, monospace;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      line-height: 1.55;
+      min-height: 100vh;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--accent-2); }
+    header {
+      background: linear-gradient(180deg, #0f1117 0%, var(--panel) 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 1rem 0.8rem;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .brand {
+      display: flex; align-items: baseline; gap: 0.75rem;
+      justify-content: center; flex-wrap: wrap;
+    }
+    .brand h1 {
+      margin: 0; font-size: 1.25rem; letter-spacing: 0.08em; text-transform: uppercase;
+      font-weight: 800; color: var(--text);
+    }
+    .brand .glyph {
+      width: 10px; height: 10px; background: var(--accent);
+      display: inline-block; border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+    .brand .date { color: var(--accent); font-family: var(--font-mono); font-size: 0.9rem; }
+    nav {
+      display: flex; justify-content: center; gap: 0.5rem;
+      margin-top: 0.9rem; flex-wrap: wrap;
+    }
+    nav a {
+      padding: 0.45rem 1rem; border: 1px solid var(--border);
+      border-radius: 999px; font-size: 0.78rem; letter-spacing: 0.06em;
+      color: var(--muted); font-weight: 700; text-transform: uppercase;
+      transition: all .15s ease;
+    }
+    nav a:hover, nav a.active {
+      background: var(--accent); color: #000; border-color: var(--accent);
+      text-decoration: none;
+    }
+    .ticker {
+      background: #090a0e; border-bottom: 1px solid var(--border);
+      overflow: hidden; white-space: nowrap; position: relative; padding: 0.55rem 0;
+    }
+    .ticker-wrap {
+      display: inline-block; padding-left: 100%;
+      animation: ticker 45s linear infinite;
+    }
+    .ticker-item {
+      display: inline-block; padding: 0 2.5rem;
+      font-family: var(--font-mono); font-size: 0.82rem; color: var(--accent);
+    }
+    .ticker-item b { color: var(--text); margin-right: 0.4rem; }
+    .ticker-item.crit { color: var(--critical); }
+    .ticker-item.elev { color: var(--elevated); }
+    @keyframes ticker { 0%{transform:translate3d(0,0,0)} 100%{transform:translate3d(-100%,0,0)} }
+    main { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1rem 4rem; }
+    section { margin-bottom: 2.8rem; }
+    h2 {
+      margin: 0 0 1rem; font-size: 0.92rem; letter-spacing: 0.1em;
+      text-transform: uppercase; color: var(--accent);
+      border-bottom: 1px solid var(--border); padding-bottom: 0.45rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    h2::before {
+      content: ""; width: 6px; height: 6px; background: var(--accent);
+      display: inline-block; transform: rotate(45deg);
+    }
+    h3 { margin: 1.4rem 0 0.6rem; font-size: 1.15rem; color: var(--text); }
+    h4 { margin: 1.1rem 0 0.4rem; font-size: 0.95rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+    p { margin: 0.6rem 0; }
+    .exec-summary {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.4rem; box-shadow: 0 8px 24px var(--shadow);
+    }
+    .exec-summary > p:first-of-type::first-letter {
+      float: left; font-size: 3.6rem; line-height: 0.85; padding-right: 0.55rem;
+      font-weight: 800; color: var(--accent); text-transform: uppercase;
+    }
+    .tagbar {
+      display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 1rem 0 0;
+    }
+    .tag {
+      font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.05em;
+      padding: 0.22rem 0.55rem; border-radius: 4px; border: 1px solid;
+      text-transform: uppercase; font-weight: 700;
+    }
+    .tag.critical { color: var(--critical); border-color: var(--critical); background: rgba(255,46,46,0.08); }
+    .tag.elevated { color: var(--elevated); border-color: var(--elevated); background: rgba(255,159,28,0.08); }
+    .tag.stable { color: var(--stable); border-color: var(--stable); background: rgba(46,204,113,0.08); }
+    .tag.cat { color: var(--accent-2); border-color: var(--accent-2); background: rgba(0,168,232,0.08); }
+    .tag.prob { color: var(--text); border-color: var(--muted); background: rgba(255,255,255,0.05); }
+    .cards {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;
+    }
+    .card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem; box-shadow: 0 6px 18px var(--shadow);
+      display: flex; flex-direction: column;
+    }
+    .card .meta {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+      margin-bottom: 0.7rem;
+    }
+    .card h3 { margin: 0 0 0.4rem; font-size: 1.05rem; }
+    .card h4 { margin: 1rem 0 0.35rem; font-size: 0.78rem; color: var(--accent-2); }
+    .card ul, .card ol { margin: 0.4rem 0; padding-left: 1.2rem; }
+    .card li { margin: 0.35rem 0; }
+    .card .small { font-size: 0.9rem; color: var(--muted); }
+    .risks { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0.75rem; }
+    .risk {
+      background: var(--panel-2); border-left: 4px solid var(--elevated);
+      padding: 0.8rem 1rem; border-radius: 0 8px 8px 0;
+    }
+    .risk.critical { border-left-color: var(--critical); }
+    .risk.high { border-left-color: var(--elevated); }
+    .risk.medium { border-left-color: #f1c40f; }
+    .risk .title { font-weight: 700; color: var(--text); }
+    .risk .detail { font-size: 0.85rem; color: var(--muted); }
+    .watchlist, .themes {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem;
+    }
+    .watchlist li, .themes li { margin: 0.5rem 0; }
+    .observer {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.2rem; margin-bottom: 1rem;
+    }
+    .observer .zh { color: var(--accent); font-size: 1.15rem; font-weight: 700; }
+    .observer .roman { color: var(--muted); font-size: 0.85rem; font-family: var(--font-mono); }
+    .observer h4 { color: var(--accent-2); font-size: 0.85rem; }
+    .observer ol { padding-left: 1.2rem; }
+    .cartoon {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1.5rem; text-align: center;
+    }
+    .cartoon-frame {
+      border: 2px dashed var(--border); border-radius: 8px;
+      min-height: 260px; display: flex; align-items: center; justify-content: center;
+      background: repeating-linear-gradient(45deg, #12141a, #12141a 10px, #151824 10px, #151824 20px);
+    }
+    .cartoon-frame svg { max-width: 100%; height: auto; opacity: 0.85; }
+    .cartoon-caption {
+      margin-top: 0.8rem; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted);
+    }
+    .archive-list {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.6rem;
+    }
+    .archive-list a {
+      display: block; background: var(--panel-2); border: 1px solid var(--border);
+      padding: 0.55rem; text-align: center; border-radius: 6px;
+      font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted);
+    }
+    .archive-list a:hover { border-color: var(--accent); color: var(--accent); }
+    footer {
+      border-top: 1px solid var(--border); padding: 1.5rem 1rem; text-align: center;
+      color: var(--muted); font-size: 0.8rem; font-family: var(--font-mono);
+    }
+    @media (max-width: 640px) {
+      .brand h1 { font-size: 1rem; }
+      .exec-summary > p:first-of-type::first-letter { font-size: 2.8rem; }
+      .cards { grid-template-columns: 1fr; }
+      .ticker-item { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+  <header style="background: linear-gradient(rgba(10,11,14,0.65),rgba(10,11,14,0.85)), url('./assets/hero_bg_nytjune12.jpg') center center / cover no-repeat; padding-bottom: 2.5rem;">
+    <div class="brand">
+      <span class="glyph" aria-hidden="true"></span>
+      <h1>Global Signal — NYT Daily Briefing</h1>
+      <span class="date">2026-06-12</span>
+    </div>
+    <nav>
+      <a href="#dashboard" class="active">Dashboard</a>
+      <a href="#signals">Signals</a>
+      <a href="#archives">Archives</a>
+    </nav>
+  </header>
+
+  <div class="ticker" aria-label="Live signal ticker">
+    <div class="ticker-wrap">
+      <span class="ticker-item crit"><b>CRITICAL</b> FISA Section 702 expires at midnight Friday — intelligence gap imminent</span>
+      <span class="ticker-item crit"><b>CRITICAL</b> Iran deal denied by Tehran; escalation risk returns this weekend</span>
+      <span class="ticker-item elev"><b>ELEVATED</b> UK Defense Secretary Healey resigns over funding shortfall</span>
+      <span class="ticker-item elev"><b>ELEVATED</b> ECB raises rates as eurozone inflation hits 3.2%</span>
+      <span class="ticker-item"><b>SIGNAL</b> World Bank cuts global growth to 2.5%; inflation at 4%</span>
+      <span class="ticker-item"><b>SIGNAL</b> Oil prices up 30% since Iran war began; Kharg Island rhetoric intensifies</span>
+      <span class="ticker-item"><b>SIGNAL</b> World Cup opens in Mexico amid 18,000 protesters</span>
+      <span class="ticker-item"><b>SIGNAL</b> Jay Clayton nominated DNI after bipartisan revolt against Bill Pulte</span>
+    </div>
+  </div>
+
+  <main>
+    <section id="dashboard">
+      <h2>Executive Summary</h2>
+      <div class="exec-summary">
+        <p>The world on June 12, 2026 is caught in a <strong>dangerous oscillation between escalation and withdrawal</strong>. President Trump threatens Iran, retracts, claims a deal, then contradicts himself — all in one day. The global economy is slowing (World Bank: 2.5% growth, 4% inflation). The UK’s defense secretary resigns over funding. American intelligence agencies face institutional collapse — FISA expiring, DNI in crisis, surveillance authority lapsing within 48 hours. And yet: the World Cup opens in Mexico with celebration, the Knicks stage an epic comeback, and a generation of young politicians rises to challenge the housing crisis.</p>
+        <p>This is a paper of <strong>deep contradictions</strong> — between war and sport, between institutional decay and generational renewal, between the old order’s collapse and the new one’s uncertain emergence. The collective nervous system (what Polyvagal theory calls “ventral vagal” — the capacity for social engagement and safety) is under constant threat activation. Every moment of connection is shadowed by stress.</p>
+        <div class="tagbar">
+          <span class="tag critical">Global Threat Level: ELEVATED</span>
+          <span class="tag cat">CONFLICT</span>
+          <span class="tag cat">ENERGY</span>
+          <span class="tag cat">POLITICS</span>
+          <span class="tag prob">Systemic Instability: HIGH</span>
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.8rem">Cross-Cutting Themes</h3>
+      <div class="themes">
+        <ol>
+          <li><strong>The Trump Oscillator:</strong> Every story is touched by Trump’s daily cycle of escalation and withdrawal. His pattern — threaten, claim victory, contradict — is the single most destabilizing force in the news.</li>
+          <li><strong>Institutional Calibration Collapse:</strong> Diplomatic (Iran), economic (World Bank, ECB), and legislative (FISA, UK defense) mechanisms are all failing simultaneously.</li>
+          <li><strong>Generational Nervous System Split:</strong> The old guard (80% homeowner lawmakers) defends what it has. The young (majority renters) demand change. Structural, not rhetorical.</li>
+          <li><strong>Joy Under Siege:</strong> Every moment of collective joy is shadowed by threat.</li>
+          <li><strong>The Economic Scar:</strong> 4.2% inflation, 30% oil price increase, 2.5% global growth.</li>
+        </ol>
+      </div>
+
+      <h3 style="margin-top:1.8rem">Next 48 Hours: Critical Watchlist</h3>
+      <div class="watchlist">
+        <ul>
+          <li><strong>FISA Section 702 expiration:</strong> Midnight Friday — intelligence gap imminent</li>
+          <li><strong>Iran “deal”:</strong> This weekend — if no MOU by Sunday, escalation risk returns</li>
+          <li><strong>UK defense secretary replacement:</strong> This week — Starmer’s pick signals direction</li>
+          <li><strong>ECB rate hike ripple effects:</strong> Next trading days — EM debt stress</li>
+          <li><strong>World Cup continues:</strong> Daily — security challenges at scale</li>
+          <li><strong>Clayton DNI hearing:</strong> June 17 — Senate confirmation trajectory</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="signals">
+      <h2>Active Signals</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="meta">
+            <div>
+              <span class="tag critical">CRITICAL</span>
+              <span class="tag cat">CONFLICT</span>
+              <span class="tag cat">ENERGY</span>
+            </div>
+            <span class="tag prob">85%</span>
+          </div>
+          <h3>CLUSTER 1: The Iran Pivot — Negotiation by Escalation</h3>
+          <h4>The Story</h4>
+          <p>President Trump’s Thursday was a masterclass in volatility: he began threatening a third night of bombing and seizing Kharg Island (Iran’s main oil export hub, handling 90% of crude exports), then called off strikes claiming a deal with Iran — which Iran promptly denied as “speculative.” The U.S. and Israel have been attacking Iran since late February, disrupting the Strait of Hormuz and sending oil prices up 30%.</p>
+          <h4>Key Facts</h4>
+          <ul>
+            <li>Trump claimed a “conceptual” Memorandum of Understanding — Iran called it “speculative, nothing finalized”</li>
+            <li>Pakistan mediated talks; Netanyahu briefed but Israel not party to the deal</li>
+            <li>Hegseth: “If we need to negotiate with bombs, we’ll negotiate with bombs”</li>
+            <li>Iran’s Ghalibaf warned: impulsive decisions “create an endless quagmire”</li>
+            <li>April cease-fire rendered “meaningless” by this week’s strikes</li>
+            <li>Kharg Island is 400 miles from Hormuz — even if seized, Iran still controls the waterway</li>
+          </ul>
+          <h4>Strategic Assessment</h4>
+          <p>This is not a negotiation — it’s a <strong>pattern of escalation-withdrawal</strong> that satisfies neither party. Iran cannot trust Trump’s threats or his promises. The U.S. military posture — bomb, threaten, retract — confuses allies and emboldens adversaries. The Clausewitzian culminating point may be approaching: after months of war, the U.S. has not achieved its objectives.</p>
+          <h4>What This Means for Decision-Makers</h4>
+          <ul>
+            <li><strong>Energy markets:</strong> Oil prices (already +30%) could spike if Kharg Island rhetoric becomes action. Hedge against Hormuz disruption scenarios.</li>
+            <li><strong>Diplomacy:</strong> Watch for signals from Pakistan and Iran this weekend — a signed MOU would validate Trump’s claim; continued denial means escalation risk returns.</li>
+            <li><strong>Military posture:</strong> Iran has fortified Kharg Island defenses. Any assault would be costly and expose ground troops.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <div>
+              <span class="tag critical">CRITICAL</span>
+              <span class="tag cat">POLITICS</span>
+            </div>
+            <span class="tag prob">90%</span>
+          </div>
+          <h3>CLUSTER 2: The Three Crises of American State Capacity</h3>
+          <h4>The Stories</h4>
+          <p><strong>1. Intelligence Leadership Crisis</strong> — Trump nominated Jay Clayton (former SEC chair, Manhattan US Attorney) as DNI after a <strong>rare bipartisan revolt</strong> against Bill Pulte, a housing official with zero intelligence experience whom both parties called unqualified. Pulte will serve as acting DNI for 8 days (June 19–27). Senate hearings begin June 17. Clayton, 59, was recommended by CIA Director Ratcliffe. Sen. Schumer: “Pulte has to go. Our national security is too important.”</p>
+          <p><strong>2. Surveillance Authority Crisis</strong> — The House rejected a three-week extension of Section 702 of FISA, which <strong>expires Friday June 12 at midnight</strong> — within 48 hours. Congress is out of town; some lawmakers are overseas. Reconvening before the deadline is logistically nearly impossible. The expiration was triggered by the Pulte appointment controversy, showing how a single personnel failure cascaded into a systemic vulnerability.</p>
+          <p><strong>3. Election Integrity Crisis</strong> — Trump’s administration is investigating California elections without presenting evidence of fraud. Clayton, his DNI pick, echoed this on CNBC, saying “the American people are right to question” election integrity — a signal that politicization of intelligence may continue.</p>
+          <p><strong>4. USPS Voting</strong> — Postal service changes affecting mail-in ballots are mobilizing Democratic resistance ahead of the 2026 midterms.</p>
+          <p><strong>5. Alabama Execution</strong> — A state execution by nitrogen gas proceeds, continuing the national debate on capital punishment methods.</p>
+          <h4>Key Facts</h4>
+          <ul>
+            <li>FISA Section 702 expires within 48 hours — no extension, no replacement</li>
+            <li>80% of lawmakers are homeowners (vs. vast majority of under-35 Americans who rent)</li>
+            <li>US inflation: 4.2% in May — fastest since April 2023</li>
+            <li>House rejected 702 extension despite bipartisan support for the underlying program</li>
+          </ul>
+          <h4>Strategic Assessment</h4>
+          <p>Three pillars of state capacity — intelligence leadership, surveillance authority, and electoral integrity — are failing simultaneously. The Clayton nomination is the one stabilizing signal (bipartisan praise), but it cannot fix the FISA expiration or the election trust deficit.</p>
+          <h4>What This Means for Decision-Makers</h4>
+          <ul>
+            <li><strong>National security:</strong> Without FISA 702, the intelligence community loses a primary tool for foreign surveillance. Emergency reauthorization will dominate the next week.</li>
+            <li><strong>Markets:</strong> FISA expiration signals a dysfunctional Congress. Watch for ripple effects on defense and tech stocks.</li>
+            <li><strong>Campaigns:</strong> The election integrity narrative will intensify. California voting procedures become a central midterm issue.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <div>
+              <span class="tag elevated">ELEVATED</span>
+              <span class="tag cat">POLITICS</span>
+            </div>
+            <span class="tag prob">65%</span>
+          </div>
+          <h3>CLUSTER 3: The Generational Divide — Who Gets to Have a Future?</h3>
+          <h4>The Story</h4>
+          <p>Young Millennial and Gen Z politicians (Morales, 27, Providence; Igo, 30, Minnesota; Rutinel, 31, Colorado; Azeem, 29, Massachusetts) are running on housing affordability — the defining economic pain of their generation. The divide is <strong>more generational than partisan</strong>: Republicans argue against local zoning controls; Democrats for rent control. Both face an older political class where 80% are homeowners.</p>
+          <h4>Related Stories</h4>
+          <ul>
+            <li><strong>Australia social media ban:</strong> Under-16 ban floundering — enforcement technology failures, platform pushback.</li>
+            <li><strong>Education vouchers:</strong> National debate continues as states adopt competing models of school choice.</li>
+            <li><strong>NYC schools chancellor:</strong> Under investigation for contract awards — governance questions in the nation’s largest school system.</li>
+            <li><strong>Texas data centers:</strong> Gov. Abbott pursuing regulation of AI infrastructure’s growing energy and water demands.</li>
+          </ul>
+          <h4>Key Facts</h4>
+          <ul>
+            <li>Housing is voters’ #1 affordability concern in midterm polls</li>
+            <li>Young renters can’t buy because older homeowners won’t sell (locked in by low fixed-rate mortgages)</li>
+            <li>“Golden Girls” laws (allow renting rooms to non-relatives) spreading across states</li>
+            <li>Rutinel’s family lost their home in 2008 foreclosure — personal experience driving policy</li>
+          </ul>
+          <h4>Strategic Assessment</h4>
+          <p>This is the political fault line of the next decade. The generation that lived through 2008 and the pandemic housing crisis is now old enough to run for office. They bring lived experience — not just policy expertise — and they’re not deferring to existing party structures. Watch for this cohort to reshape both parties’ platforms by 2028.</p>
+          <h4>What This Means for Decision-Makers</h4>
+          <ul>
+            <li><strong>Real estate:</strong> Rent control and zoning reform are coming to more jurisdictions. Long-term property valuations may need recalibration.</li>
+            <li><strong>Politics:</strong> These candidates cross party lines. Don’t assume they’ll follow established party positions.</li>
+            <li><strong>Policy:</strong> Watch the “Golden Girls” model — it’s gaining traction as a low-cost solution.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <div>
+              <span class="tag elevated">ELEVATED</span>
+              <span class="tag cat">POLITICS</span>
+              <span class="tag cat">CONFLICT</span>
+            </div>
+            <span class="tag prob">70%</span>
+          </div>
+          <h3>CLUSTER 4: Global Realignment — Old Alliances Under New Pressure</h3>
+          <h4>The UK Crisis</h4>
+          <p>John Healey resigned as Defense Secretary, accusing Starmer of underfunding the military (2.68% vs. 3.0% of GDP by 2030). Healey, a lifelong Labour loyalist, said the Treasury “has been unwilling” to commit resources. His resignation is a <strong>significant blow to Starmer</strong>, who faces a leadership challenge this summer. The backdrop: NATO intelligence suggests Russia could attack by 2030; Trump has mocked the British Navy; Britain’s sluggish economy leaves no good options.</p>
+          <h4>Other Global Shifts</h4>
+          <ul>
+            <li><strong>Canada-Mexico trade (USMCA):</strong> Trump pressuring partners, complicated by Iran war energy impact and World Cup summitry</li>
+            <li><strong>Northern Ireland stabbing:</strong> Immigration debate reignited in UK</li>
+            <li><strong>Canada crypto fraud:</strong> Major investigation into digital asset scheme — regulatory gaps exposed</li>
+            <li><strong>Israel settlements:</strong> West Bank expansion continues during Iran war — cynical opportunism</li>
+            <li><strong>ECB rate hike:</strong> First major central bank to raise rates in response to Iran war — 3.2% eurozone inflation</li>
+          </ul>
+          <h4>Key Facts</h4>
+          <ul>
+            <li>UK defense: current 2.3% of GDP, planned 2.68% by 2030, needed 3.0%</li>
+            <li>Russia-NATO attack possible by 2030 (UK intelligence assessment)</li>
+            <li>EU inflation: 3.2% in May — ECB raised rates</li>
+            <li>18,000 protesters at World Cup opening in Mexico City</li>
+          </ul>
+          <h4>Strategic Assessment</h4>
+          <p>The post-WWII alliance system is under dual pressure: from Trump’s demand that allies pay more, and from the material reality that they can’t afford to. The UK crisis is not an outlier — it’s the first domino.</p>
+          <h4>What This Means for Decision-Makers</h4>
+          <ul>
+            <li><strong>NATO:</strong> Expect more allied defense ministers to test their governments’ commitment.</li>
+            <li><strong>UK markets:</strong> Political instability + defense underspending = potential sterling volatility.</li>
+            <li><strong>EU:</strong> ECB rate hike signals tightening cycle. Emerging market debt stress likely.</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="meta">
+            <div>
+              <span class="tag stable">STABLE</span>
+              <span class="tag cat">POLITICS</span>
+            </div>
+            <span class="tag prob">40%</span>
+          </div>
+          <h3>CLUSTER 5: Sports as Cultural Thermometer — Joy and Its Contaminants</h3>
+          <h4>The Stories</h4>
+          <p><strong>1. World Cup Opens in Mexico</strong> — Mexico beats South Africa 2–0 at Estadio Azteca. 18,000 protesters and riot police present. Sheinbaum: “Everything is under control.” Mexico becomes first nation to host three World Cups.</p>
+          <p><strong>2. Knicks Epic Comeback</strong> — Down big in Game 4 NBA Finals at MSG, the Knicks roar back. Crowd goes from forlorn to electric.</p>
+          <p><strong>3. Conor McGregor’s Drugs Scandal</strong> — NYT investigation reveals McGregor took banned PEDs with support of Dr. Neal ElAttrache. Triggered split between UFC and USADA. Suspended 18 months, eligible July 2026.</p>
+          <p><strong>4. Manhattan DA vs. Dolan</strong> — Legal feud between Bragg’s office and Knicks owner James Dolan.</p>
+          <h4>Key Facts</h4>
+          <ul>
+            <li>World Cup: Mexico’s third hosting; 2–0 over South Africa</li>
+            <li>McGregor PED use confirmed by NYT investigation</li>
+            <li>UFC streaming deal: $7.7B over 7 years (Paramount)</li>
+            <li>Trump hosts White House fights Sunday</li>
+            <li>Knicks Game 4: down big → comeback win → electric crowd</li>
+          </ul>
+          <h4>Strategic Assessment</h4>
+          <p>Sport is the culture’s emotional regulator. The World Cup is genuine collective joy, but even here shadows intrude: protests, doping, legal feuds. <strong>There are no pure moments</strong> — only contaminated ones.</p>
+        </article>
+      </div>
+
+      <h3 style="margin-top:1.8rem">Risk Warnings</h3>
+      <div class="risks">
+        <div class="risk critical">
+          <div class="title">FISA expires</div>
+          <div class="detail">&lt;48 hours · CRITICAL</div>
+        </div>
+        <div class="risk critical">
+          <div class="title">Iran deal collapses</div>
+          <div class="detail">This weekend · CRITICAL</div>
+        </div>
+        <div class="risk high">
+          <div class="title">UK leadership crisis</div>
+          <div class="detail">Weeks · HIGH</div>
+        </div>
+        <div class="risk high">
+          <div class="title">Global recession</div>
+          <div class="detail">Months · HIGH (World Bank 1.3% worst-case)</div>
+        </div>
+        <div class="risk high">
+          <div class="title">Oil price surge</div>
+          <div class="detail">Ongoing · HIGH (+30%, Kharg spike risk)</div>
+        </div>
+        <div class="risk medium">
+          <div class="title">ECB hike → EM debt stress</div>
+          <div class="detail">Weeks · MEDIUM-HIGH</div>
+        </div>
+        <div class="risk medium">
+          <div class="title">US election integrity crisis</div>
+          <div class="detail">2026 midterms · MEDIUM-HIGH</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="observers">
+      <h2>Observer Commentaries</h2>
+
+      <article class="observer">
+        <p><span class="zh">翟东升</span> <span class="roman">(Zhai Dongsheng)</span></p>
+        <h4>全球权力重构中的美国困局</h4>
+        <h4>一、伊朗战争的本质：美国霸权的消耗战</h4>
+        <p>今天的《纽约时报》头版看似是关于特朗普与伊朗的谈判，实质上是<strong>美国全球霸权加速衰退的体检报告</strong>。特朗普的“威胁-撤回-声称达成协议”循环不是个人性格问题，而是<strong>美国战略能力结构性衰退的症状</strong>。</p>
+        <p><strong>军事层面：</strong>美国轰炸伊朗两夜——为了报复一架阿帕奇被击落——然后威胁夺取哈格岛，随后又撤回。这展示了武力投射能力与实际政治目标之间的脱节。</p>
+        <p><strong>经济层面：</strong>世界银行将全球增长预期下调至2.5%，通胀升至4%。霍尔木兹海峡的封锁使商品价格上涨22%，欧洲央行不得不加息。美国自身通胀升至4.2%。</p>
+        <p><strong>外交层面：</strong>巴基斯坦作为美伊调停人——当全球唯一超级大国需要巴基斯坦来调停时，美国的中东霸权已经实质性地转移了。</p>
+        <h4>二、特朗普模式的本质</h4>
+        <p>特朗普不是谈判——他是在<strong>表演给国内观众看</strong>。他需要展示强硬（威胁轰炸）和胜利（声称达成协议）。两者都服务于国内政治需求，而非国家利益。</p>
+        <h4>三、给中国决策者的启示</h4>
+        <ol>
+          <li>美国干预能力将持续下降——中国扩大全球影响力的战略窗口期</li>
+          <li>能源安全是第一要务——霍尔木兹冲突是中国最大的地缘政治脆弱点</li>
+          <li>英国防务危机是北约瓦解的前兆——同盟解体的经典模式</li>
+          <li>年轻政客的住房运动是美国左翼的政治重组</li>
+        </ol>
+        <h4>四、未来展望</h4>
+        <p>“概念性谅解备忘录”很可能本周末签署——不是因为协议，而是因为<strong>双方都需要暂停</strong>。但这不是和平——只是下一轮对抗前的重新调整。</p>
+      </article>
+
+      <article class="observer">
+        <p><span class="zh">金灿荣</span> <span class="roman">(Jin Canrong)</span></p>
+        <h4>美国的制度疲劳与全球乱局</h4>
+        <h4>一、美国今天暴露的三重制度疲劳</h4>
+        <p><strong>第一重：情报系统的崩溃</strong>——比尔·普尔特，一个管住房的官员，被提名担任国家情报总监，引起两党一致反对。当忠诚替代能力成为选拔标准时，这个系统必然出问题。FISA 702条款因一个人事问题而过期——美国的制度已经无法自我纠错了。</p>
+        <p><strong>第二重：军事与经济的脱节</strong>——英国国防大臣辞职不是英国的问题，是整个西方世界的共同问题。美国也在面对同样的问题：伊朗战争导致通胀从2.4%上升到4.2%。</p>
+        <p><strong>第三重：政治代际断裂</strong>——80%的议员是房主，绝大多数35岁以下美国人租房。这不是政策分歧，是<strong>阶级矛盾</strong>。年轻政客不再是传统政党的传声筒——他们在创造新的政治语言。</p>
+        <h4>二、特朗普伊朗政策的深层逻辑</h4>
+        <p>特朗普的政治逻辑与战略逻辑完全脱钩。政治逻辑：我需要向基本盘展示强硬，同时展示“只有我能解决”。战略逻辑：伊朗战争不受欢迎，继续打伤害经济。两者之间的张力就是<strong>美国的战略困境</strong>。</p>
+        <h4>三、对中美关系的启示</h4>
+        <p>美国短期内不会改变对华强硬路线，但实际执行能力会下降。中国应利用这个窗口期加速能源多元化。北约解体将对欧洲安全格局产生深远影响。</p>
+      </article>
+
+      <article class="observer">
+        <p><span class="zh">宋鸿兵</span> <span class="roman">(Song Hongbing)</span></p>
+        <h4>石油美元体系的裂痕与全球金融暗战</h4>
+        <h4>一、伊朗战争的真实目的：石油美元的保卫战</h4>
+        <p>石油价格自战争以来上涨30%——这可能是<strong>战争的目的之一</strong>。霍尔木兹海峡的封锁动摇了全球对美元渠道可靠性的信心，这正是人民币石油结算的战略机遇。</p>
+        <h4>二、世界银行报告中的潜台词</h4>
+        <p>全球增长预测降至2.5%，通胀升至4%。商品价格上涨22%。这不是调整——这是<strong>拐点</strong>。欧洲央行加息遇上增长放缓 = <strong>滞胀</strong>。最坏情景1.3% = 全球经济衰退。</p>
+        <h4>三、FISA过期与金融暗战</h4>
+        <p>FISA 702条款是华尔街情报体系的关键节点。到期会造成情报盲区。在这个盲区中，人民币跨境支付系统（CIPS）的交易会加速增长。</p>
+        <h4>四、加密货币与体系逃逸</h4>
+        <p>加密货币的本质是对主权货币体系的逃逸。伊朗战争推高通胀，全球增长放缓——推动资金从传统金融体系流向加密资产。</p>
+        <h4>五、SpaceX与401(k)——被动投资的地缘政治风险</h4>
+        <p>SpaceX进入指数基金意味着：公共和私人资本的界限正在模糊；指数投资创造系统性金融脆弱性；科技巨头拥有天然政治保护伞。</p>
+        <h4>六、未来展望</h4>
+        <p>石油美元体系加速裂解，黄金价格将突破前期高点，加密货币市场将经历“监管清洗”后的第二波增长，被动投资的系统性风险加剧。<strong>旧体系的裂痕正在扩大</strong>。</p>
+      </article>
+    </section>
+
+    <section id="cartoon">
+      <h2>Daily Cartoon</h2>
+      <div class="cartoon">
+        <div class="cartoon-frame">
+          <img src="./assets/cartoon_nytjune12.jpg" alt="Daily Cartoon — June 12, 2026" style="width:100%; border-radius:8px; display:block;">
+        </div>
+        <div class="cartoon-caption">DAILY CARTOON — June 12, 2026 · Global Reckoning</div>
+      </div>
+    </section>
+
+    <section id="archives">
+      <h2>Archives</h2>
+      <div class="archive-list">
+        <a href="nyt_2026-06-04.html">2026-06-04</a>
+        <a href="nyt_2026-06-05.html">2026-06-05</a>
+        <a href="nyt_2026-06-06.html">2026-06-06</a>
+        <a href="nyt_2026-06-07.html">2026-06-07</a>
+        <a href="nyt_2026-06-08.html">2026-06-08</a>
+        <a href="nyt_2026-06-09.html">2026-06-09</a>
+        <a href="nyt_2026-06-10.html">2026-06-10</a>
+        <a href="nyt_2026-06-11.html">2026-06-11</a>
+        <a href="nyt_2026-06-12.html" style="border-color:var(--accent);color:var(--accent)">2026-06-12</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    GLOBAL SIGNAL BRIEFING · NYT DAILY BRIEFING — JUNE 12, 2026 · ALL SOURCE MATERIAL FROM /USERS/FUDONGLI/.HERMES/NYT_BRIEFING_FINAL.MD
+  </footer>
+</body>
+</html>

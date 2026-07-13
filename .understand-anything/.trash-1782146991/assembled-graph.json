@@ -1,0 +1,2122 @@
+{
+  "version": "1.0.0",
+  "project": {
+    "name": "MorningBriefing",
+    "languages": [
+      "html",
+      "css",
+      "javascript",
+      "python",
+      "json",
+      "markdown"
+    ],
+    "frameworks": [],
+    "description": "Daily news briefing with Observer Commentary. Tracks NYT and WSJ briefings with PDF and Web version support.",
+    "analyzedAt": "2026-06-22T16:49:16.544Z",
+    "gitCommitHash": "b12d4647c422a4807aae5309d34fd48a696c336a"
+  },
+  "nodes": [
+    {
+      "id": "document:README.md",
+      "type": "document",
+      "name": "README.md",
+      "filePath": "README.md",
+      "summary": "README.md \u2014 markdown docs file (46 lines)",
+      "sizeLines": 46,
+      "language": "markdown",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "document:REQUIREMENTS.md",
+      "type": "document",
+      "name": "REQUIREMENTS.md",
+      "filePath": "REQUIREMENTS.md",
+      "summary": "REQUIREMENTS.md \u2014 markdown docs file (83 lines)",
+      "sizeLines": 83,
+      "language": "markdown",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:archive.html",
+      "type": "file",
+      "name": "archive.html",
+      "filePath": "archive.html",
+      "summary": "archive.html \u2014 html markup file (135 lines)",
+      "sizeLines": 135,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "index.html",
+      "summary": "index.html \u2014 html markup file (362 lines)",
+      "sizeLines": 362,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "config:reports_index.json",
+      "type": "config",
+      "name": "reports_index.json",
+      "filePath": "reports_index.json",
+      "summary": "reports_index.json \u2014 json config file (22 lines)",
+      "sizeLines": 22,
+      "language": "json",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:style.css",
+      "type": "file",
+      "name": "style.css",
+      "filePath": "style.css",
+      "summary": "style.css \u2014 css markup file (192 lines)",
+      "sizeLines": 192,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-BLKeZuY7.css",
+      "type": "file",
+      "name": "index-BLKeZuY7.css",
+      "filePath": "briefings/assets/index-BLKeZuY7.css",
+      "summary": "index-BLKeZuY7.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BQEknNIh.css",
+      "type": "file",
+      "name": "index-BQEknNIh.css",
+      "filePath": "briefings/assets/index-BQEknNIh.css",
+      "summary": "index-BQEknNIh.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BaKF91cf.css",
+      "type": "file",
+      "name": "index-BaKF91cf.css",
+      "filePath": "briefings/assets/index-BaKF91cf.css",
+      "summary": "index-BaKF91cf.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BavH-IQc.css",
+      "type": "file",
+      "name": "index-BavH-IQc.css",
+      "filePath": "briefings/assets/index-BavH-IQc.css",
+      "summary": "index-BavH-IQc.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-C1fFgFBf.css",
+      "type": "file",
+      "name": "index-C1fFgFBf.css",
+      "filePath": "briefings/assets/index-C1fFgFBf.css",
+      "summary": "index-C1fFgFBf.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-CAhUiIVZ.css",
+      "type": "file",
+      "name": "index-CAhUiIVZ.css",
+      "filePath": "briefings/assets/index-CAhUiIVZ.css",
+      "summary": "index-CAhUiIVZ.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-CD6x4bSu.css",
+      "type": "file",
+      "name": "index-CD6x4bSu.css",
+      "filePath": "briefings/assets/index-CD6x4bSu.css",
+      "summary": "index-CD6x4bSu.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-D_rC8OMO.css",
+      "type": "file",
+      "name": "index-D_rC8OMO.css",
+      "filePath": "briefings/assets/index-D_rC8OMO.css",
+      "summary": "index-D_rC8OMO.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-DnGA641s.css",
+      "type": "file",
+      "name": "index-DnGA641s.css",
+      "filePath": "briefings/assets/index-DnGA641s.css",
+      "summary": "index-DnGA641s.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-DymaOaEY.css",
+      "type": "file",
+      "name": "index-DymaOaEY.css",
+      "filePath": "briefings/assets/index-DymaOaEY.css",
+      "summary": "index-DymaOaEY.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-IHnN5M64.css",
+      "type": "file",
+      "name": "index-IHnN5M64.css",
+      "filePath": "briefings/assets/index-IHnN5M64.css",
+      "summary": "index-IHnN5M64.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-MhNm8dzV.css",
+      "type": "file",
+      "name": "index-MhNm8dzV.css",
+      "filePath": "briefings/assets/index-MhNm8dzV.css",
+      "summary": "index-MhNm8dzV.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-ob4TXiS4.css",
+      "type": "file",
+      "name": "index-ob4TXiS4.css",
+      "filePath": "briefings/assets/index-ob4TXiS4.css",
+      "summary": "index-ob4TXiS4.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-uZ4_Rrpx.css",
+      "type": "file",
+      "name": "index-uZ4_Rrpx.css",
+      "filePath": "briefings/assets/index-uZ4_Rrpx.css",
+      "summary": "index-uZ4_Rrpx.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-y74eMlZk.css",
+      "type": "file",
+      "name": "index-y74eMlZk.css",
+      "filePath": "briefings/assets/index-y74eMlZk.css",
+      "summary": "index-y74eMlZk.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:briefings-assets",
+      "type": "module",
+      "name": "briefings/assets",
+      "filePath": "briefings/assets",
+      "summary": "Directory: briefings/assets",
+      "sizeLines": 9041,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/gallery.html",
+      "type": "file",
+      "name": "gallery.html",
+      "filePath": "briefings/gallery.html",
+      "summary": "gallery.html \u2014 html markup file (254 lines)",
+      "sizeLines": 254,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-04.html",
+      "type": "file",
+      "name": "nyt_2026-06-04.html",
+      "filePath": "briefings/nyt_2026-06-04.html",
+      "summary": "nyt_2026-06-04.html \u2014 html markup file (65 lines)",
+      "sizeLines": 65,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-05.html",
+      "type": "file",
+      "name": "nyt_2026-06-05.html",
+      "filePath": "briefings/nyt_2026-06-05.html",
+      "summary": "nyt_2026-06-05.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-06.html",
+      "type": "file",
+      "name": "nyt_2026-06-06.html",
+      "filePath": "briefings/nyt_2026-06-06.html",
+      "summary": "nyt_2026-06-06.html \u2014 html markup file (65 lines)",
+      "sizeLines": 65,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-07.html",
+      "type": "file",
+      "name": "nyt_2026-06-07.html",
+      "filePath": "briefings/nyt_2026-06-07.html",
+      "summary": "nyt_2026-06-07.html \u2014 html markup file (11 lines)",
+      "sizeLines": 11,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-08.html",
+      "type": "file",
+      "name": "nyt_2026-06-08.html",
+      "filePath": "briefings/nyt_2026-06-08.html",
+      "summary": "nyt_2026-06-08.html \u2014 html markup file (302 lines)",
+      "sizeLines": 302,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-09.html",
+      "type": "file",
+      "name": "nyt_2026-06-09.html",
+      "filePath": "briefings/nyt_2026-06-09.html",
+      "summary": "nyt_2026-06-09.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-10.html",
+      "type": "file",
+      "name": "nyt_2026-06-10.html",
+      "filePath": "briefings/nyt_2026-06-10.html",
+      "summary": "nyt_2026-06-10.html \u2014 html markup file (15 lines)",
+      "sizeLines": 15,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-11.html",
+      "type": "file",
+      "name": "nyt_2026-06-11.html",
+      "filePath": "briefings/nyt_2026-06-11.html",
+      "summary": "nyt_2026-06-11.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-12.html",
+      "type": "file",
+      "name": "nyt_2026-06-12.html",
+      "filePath": "briefings/nyt_2026-06-12.html",
+      "summary": "nyt_2026-06-12.html \u2014 html markup file (547 lines)",
+      "sizeLines": 547,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-13.html",
+      "type": "file",
+      "name": "nyt_2026-06-13.html",
+      "filePath": "briefings/nyt_2026-06-13.html",
+      "summary": "nyt_2026-06-13.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-14.html",
+      "type": "file",
+      "name": "nyt_2026-06-14.html",
+      "filePath": "briefings/nyt_2026-06-14.html",
+      "summary": "nyt_2026-06-14.html \u2014 html markup file (240 lines)",
+      "sizeLines": 240,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-15.html",
+      "type": "file",
+      "name": "nyt_2026-06-15.html",
+      "filePath": "briefings/nyt_2026-06-15.html",
+      "summary": "nyt_2026-06-15.html \u2014 html markup file (817 lines)",
+      "sizeLines": 817,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-16.html",
+      "type": "file",
+      "name": "nyt_2026-06-16.html",
+      "filePath": "briefings/nyt_2026-06-16.html",
+      "summary": "nyt_2026-06-16.html \u2014 html markup file (432 lines)",
+      "sizeLines": 432,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-17.html",
+      "type": "file",
+      "name": "nyt_2026-06-17.html",
+      "filePath": "briefings/nyt_2026-06-17.html",
+      "summary": "nyt_2026-06-17.html \u2014 html markup file (793 lines)",
+      "sizeLines": 793,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-18.html",
+      "type": "file",
+      "name": "nyt_2026-06-18.html",
+      "filePath": "briefings/nyt_2026-06-18.html",
+      "summary": "nyt_2026-06-18.html \u2014 html markup file (224 lines)",
+      "sizeLines": 224,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-19.html",
+      "type": "file",
+      "name": "nyt_2026-06-19.html",
+      "filePath": "briefings/nyt_2026-06-19.html",
+      "summary": "nyt_2026-06-19.html \u2014 html markup file (120 lines)",
+      "sizeLines": 120,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-21.html",
+      "type": "file",
+      "name": "nyt_2026-06-21.html",
+      "filePath": "briefings/nyt_2026-06-21.html",
+      "summary": "nyt_2026-06-21.html \u2014 html markup file (99 lines)",
+      "sizeLines": 99,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/nyt_2026-06-22.html",
+      "type": "file",
+      "name": "nyt_2026-06-22.html",
+      "filePath": "briefings/nyt_2026-06-22.html",
+      "summary": "nyt_2026-06-22.html \u2014 html markup file (672 lines)",
+      "sizeLines": 672,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-07.html",
+      "type": "file",
+      "name": "wsj_2026-06-07.html",
+      "filePath": "briefings/wsj_2026-06-07.html",
+      "summary": "wsj_2026-06-07.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "module:briefings",
+      "type": "module",
+      "name": "briefings",
+      "filePath": "briefings",
+      "summary": "Directory: briefings",
+      "sizeLines": 6066,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-08.html",
+      "type": "file",
+      "name": "wsj_2026-06-08.html",
+      "filePath": "briefings/wsj_2026-06-08.html",
+      "summary": "wsj_2026-06-08.html \u2014 html markup file (15 lines)",
+      "sizeLines": 15,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-09.html",
+      "type": "file",
+      "name": "wsj_2026-06-09.html",
+      "filePath": "briefings/wsj_2026-06-09.html",
+      "summary": "wsj_2026-06-09.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-10.html",
+      "type": "file",
+      "name": "wsj_2026-06-10.html",
+      "filePath": "briefings/wsj_2026-06-10.html",
+      "summary": "wsj_2026-06-10.html \u2014 html markup file (14 lines)",
+      "sizeLines": 14,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-11.html",
+      "type": "file",
+      "name": "wsj_2026-06-11.html",
+      "filePath": "briefings/wsj_2026-06-11.html",
+      "summary": "wsj_2026-06-11.html \u2014 html markup file (11 lines)",
+      "sizeLines": 11,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-12.html",
+      "type": "file",
+      "name": "wsj_2026-06-12.html",
+      "filePath": "briefings/wsj_2026-06-12.html",
+      "summary": "wsj_2026-06-12.html \u2014 html markup file (741 lines)",
+      "sizeLines": 741,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-13.html",
+      "type": "file",
+      "name": "wsj_2026-06-13.html",
+      "filePath": "briefings/wsj_2026-06-13.html",
+      "summary": "wsj_2026-06-13.html \u2014 html markup file (564 lines)",
+      "sizeLines": 564,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-15.html",
+      "type": "file",
+      "name": "wsj_2026-06-15.html",
+      "filePath": "briefings/wsj_2026-06-15.html",
+      "summary": "wsj_2026-06-15.html \u2014 html markup file (1076 lines)",
+      "sizeLines": 1076,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-16.html",
+      "type": "file",
+      "name": "wsj_2026-06-16.html",
+      "filePath": "briefings/wsj_2026-06-16.html",
+      "summary": "wsj_2026-06-16.html \u2014 html markup file (812 lines)",
+      "sizeLines": 812,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-17.html",
+      "type": "file",
+      "name": "wsj_2026-06-17.html",
+      "filePath": "briefings/wsj_2026-06-17.html",
+      "summary": "wsj_2026-06-17.html \u2014 html markup file (409 lines)",
+      "sizeLines": 409,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-18.html",
+      "type": "file",
+      "name": "wsj_2026-06-18.html",
+      "filePath": "briefings/wsj_2026-06-18.html",
+      "summary": "wsj_2026-06-18.html \u2014 html markup file (678 lines)",
+      "sizeLines": 678,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-19.html",
+      "type": "file",
+      "name": "wsj_2026-06-19.html",
+      "filePath": "briefings/wsj_2026-06-19.html",
+      "summary": "wsj_2026-06-19.html \u2014 html markup file (231 lines)",
+      "sizeLines": 231,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-21.html",
+      "type": "file",
+      "name": "wsj_2026-06-21.html",
+      "filePath": "briefings/wsj_2026-06-21.html",
+      "summary": "wsj_2026-06-21.html \u2014 html markup file (569 lines)",
+      "sizeLines": 569,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:briefings/wsj_2026-06-22.html",
+      "type": "file",
+      "name": "wsj_2026-06-22.html",
+      "filePath": "briefings/wsj_2026-06-22.html",
+      "summary": "wsj_2026-06-22.html \u2014 html markup file (932 lines)",
+      "sizeLines": 932,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup",
+        "briefing"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.understand-anything/.understandignore",
+      "type": "file",
+      "name": ".understandignore",
+      "filePath": ".understand-anything/.understandignore",
+      "summary": ".understandignore \u2014 unknown code file (41 lines)",
+      "sizeLines": 41,
+      "language": "unknown",
+      "tags": [
+        "unknown",
+        "code",
+        "internal"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-B7QnFapy.js",
+      "type": "file",
+      "name": "index-B7QnFapy.js",
+      "filePath": "briefings/assets/index-B7QnFapy.js",
+      "summary": "index-B7QnFapy.js \u2014 javascript code file (82 lines)",
+      "sizeLines": 82,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-BCAAm0vL.js",
+      "type": "file",
+      "name": "index-BCAAm0vL.js",
+      "filePath": "briefings/assets/index-BCAAm0vL.js",
+      "summary": "index-BCAAm0vL.js \u2014 javascript code file (124 lines)",
+      "sizeLines": 124,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-BkaggUKK.js",
+      "type": "file",
+      "name": "index-BkaggUKK.js",
+      "filePath": "briefings/assets/index-BkaggUKK.js",
+      "summary": "index-BkaggUKK.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BMAzdbAe.js",
+      "type": "file",
+      "name": "index-BMAzdbAe.js",
+      "filePath": "briefings/assets/index-BMAzdbAe.js",
+      "summary": "index-BMAzdbAe.js \u2014 javascript code file (11 lines)",
+      "sizeLines": 11,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-BN0rYByS.js",
+      "type": "file",
+      "name": "index-BN0rYByS.js",
+      "filePath": "briefings/assets/index-BN0rYByS.js",
+      "summary": "index-BN0rYByS.js \u2014 javascript code file (88 lines)",
+      "sizeLines": 88,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-C-Z0inli.js",
+      "type": "file",
+      "name": "index-C-Z0inli.js",
+      "filePath": "briefings/assets/index-C-Z0inli.js",
+      "summary": "index-C-Z0inli.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-CrDxPNo2.js",
+      "type": "file",
+      "name": "index-CrDxPNo2.js",
+      "filePath": "briefings/assets/index-CrDxPNo2.js",
+      "summary": "index-CrDxPNo2.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-CtVMf-Mu.js",
+      "type": "file",
+      "name": "index-CtVMf-Mu.js",
+      "filePath": "briefings/assets/index-CtVMf-Mu.js",
+      "summary": "index-CtVMf-Mu.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-Cu7y5OTe.js",
+      "type": "file",
+      "name": "index-Cu7y5OTe.js",
+      "filePath": "briefings/assets/index-Cu7y5OTe.js",
+      "summary": "index-Cu7y5OTe.js \u2014 javascript code file (131 lines)",
+      "sizeLines": 131,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-CuFudCbM.js",
+      "type": "file",
+      "name": "index-CuFudCbM.js",
+      "filePath": "briefings/assets/index-CuFudCbM.js",
+      "summary": "index-CuFudCbM.js \u2014 javascript code file (11 lines)",
+      "sizeLines": 11,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-DgTG6Exq.js",
+      "type": "file",
+      "name": "index-DgTG6Exq.js",
+      "filePath": "briefings/assets/index-DgTG6Exq.js",
+      "summary": "index-DgTG6Exq.js \u2014 javascript code file (4253 lines)",
+      "sizeLines": 4253,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-DJNigZ9b.js",
+      "type": "file",
+      "name": "index-DJNigZ9b.js",
+      "filePath": "briefings/assets/index-DJNigZ9b.js",
+      "summary": "index-DJNigZ9b.js \u2014 javascript code file (40 lines)",
+      "sizeLines": 40,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-DQkAxoPd.js",
+      "type": "file",
+      "name": "index-DQkAxoPd.js",
+      "filePath": "briefings/assets/index-DQkAxoPd.js",
+      "summary": "index-DQkAxoPd.js \u2014 javascript code file (12 lines)",
+      "sizeLines": 12,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/index-DwiaFw4y.js",
+      "type": "file",
+      "name": "index-DwiaFw4y.js",
+      "filePath": "briefings/assets/index-DwiaFw4y.js",
+      "summary": "index-DwiaFw4y.js \u2014 javascript code file (4233 lines)",
+      "sizeLines": 4233,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:briefings/assets/index-KL5agRJB.js",
+      "type": "file",
+      "name": "index-KL5agRJB.js",
+      "filePath": "briefings/assets/index-KL5agRJB.js",
+      "summary": "index-KL5agRJB.js \u2014 javascript code file (11 lines)",
+      "sizeLines": 11,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:briefings/assets/sdk-seed.js",
+      "type": "file",
+      "name": "sdk-seed.js",
+      "filePath": "briefings/assets/sdk-seed.js",
+      "summary": "sdk-seed.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "briefing",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "config:data/observers.json",
+      "type": "config",
+      "name": "observers.json",
+      "filePath": "data/observers.json",
+      "summary": "observers.json \u2014 json config file (92 lines)",
+      "sizeLines": 92,
+      "language": "json",
+      "tags": [
+        "json",
+        "config",
+        "data"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "config:data/reports_index.json",
+      "type": "config",
+      "name": "reports_index.json",
+      "filePath": "data/reports_index.json",
+      "summary": "reports_index.json \u2014 json config file (283 lines)",
+      "sizeLines": 283,
+      "language": "json",
+      "tags": [
+        "json",
+        "config",
+        "data"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:demo/assets/index-C0yImpgo.css",
+      "type": "file",
+      "name": "index-C0yImpgo.css",
+      "filePath": "demo/assets/index-C0yImpgo.css",
+      "summary": "index-C0yImpgo.css \u2014 css markup file (1 lines)",
+      "sizeLines": 1,
+      "language": "css",
+      "tags": [
+        "css",
+        "markup",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:demo/assets/index-CRlGGo-N.js",
+      "type": "file",
+      "name": "index-CRlGGo-N.js",
+      "filePath": "demo/assets/index-CRlGGo-N.js",
+      "summary": "index-CRlGGo-N.js \u2014 javascript code file (9 lines)",
+      "sizeLines": 9,
+      "language": "javascript",
+      "tags": [
+        "javascript",
+        "code",
+        "asset"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:demo/index.html",
+      "type": "file",
+      "name": "index.html",
+      "filePath": "demo/index.html",
+      "summary": "index.html \u2014 html markup file (15 lines)",
+      "sizeLines": 15,
+      "language": "html",
+      "tags": [
+        "html",
+        "markup"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:images/.gitkeep",
+      "type": "file",
+      "name": ".gitkeep",
+      "filePath": "images/.gitkeep",
+      "summary": ".gitkeep \u2014 unknown code file (0 lines)",
+      "sizeLines": 0,
+      "language": "unknown",
+      "tags": [
+        "unknown",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/build_combined.py",
+      "type": "file",
+      "name": "build_combined.py",
+      "filePath": "scripts/build_combined.py",
+      "summary": "build_combined.py \u2014 python code file (282 lines)",
+      "sizeLines": 282,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/daily_update.py",
+      "type": "file",
+      "name": "daily_update.py",
+      "filePath": "scripts/daily_update.py",
+      "summary": "daily_update.py \u2014 python code file (627 lines)",
+      "sizeLines": 627,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "module:data",
+      "type": "module",
+      "name": "data",
+      "filePath": "data",
+      "summary": "Directory: data",
+      "sizeLines": 375,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:demo-assets",
+      "type": "module",
+      "name": "demo/assets",
+      "filePath": "demo/assets",
+      "summary": "Directory: demo/assets",
+      "sizeLines": 10,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "module:scripts",
+      "type": "module",
+      "name": "scripts",
+      "filePath": "scripts",
+      "summary": "Directory: scripts",
+      "sizeLines": 1007,
+      "language": "directory",
+      "tags": [
+        "directory",
+        "module"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/generate_nyt_2026_06_12.py",
+      "type": "file",
+      "name": "generate_nyt_2026_06_12.py",
+      "filePath": "scripts/generate_nyt_2026_06_12.py",
+      "summary": "generate_nyt_2026_06_12.py \u2014 python code file (934 lines)",
+      "sizeLines": 934,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:scripts/update_index.py",
+      "type": "file",
+      "name": "update_index.py",
+      "filePath": "scripts/update_index.py",
+      "summary": "update_index.py \u2014 python code file (73 lines)",
+      "sizeLines": 73,
+      "language": "python",
+      "tags": [
+        "python",
+        "code",
+        "script"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:serve.py",
+      "type": "file",
+      "name": "serve.py",
+      "filePath": "serve.py",
+      "summary": "serve.py \u2014 python code file (60 lines)",
+      "sizeLines": 60,
+      "language": "python",
+      "tags": [
+        "python",
+        "code"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:index.html",
+      "target": "file:style.css",
+      "type": "imports",
+      "weight": 0.7,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BLKeZuY7.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BQEknNIh.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BaKF91cf.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BavH-IQc.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-C1fFgFBf.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CAhUiIVZ.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CD6x4bSu.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-D_rC8OMO.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DnGA641s.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DymaOaEY.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-IHnN5M64.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-MhNm8dzV.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-ob4TXiS4.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-uZ4_Rrpx.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-y74eMlZk.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/gallery.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-04.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-05.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-06.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-07.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-08.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-09.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-10.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-11.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-12.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-13.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-14.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-15.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-16.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-17.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-18.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-19.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-21.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/nyt_2026-06-22.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-07.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-08.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-09.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-10.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-11.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-12.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-13.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-15.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-16.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-17.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-18.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-19.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-21.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings",
+      "target": "file:briefings/wsj_2026-06-22.html",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-B7QnFapy.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BCAAm0vL.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BkaggUKK.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BMAzdbAe.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-BN0rYByS.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-C-Z0inli.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CrDxPNo2.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CtVMf-Mu.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-Cu7y5OTe.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-CuFudCbM.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DgTG6Exq.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DJNigZ9b.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DQkAxoPd.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-DwiaFw4y.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/index-KL5agRJB.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:briefings-assets",
+      "target": "file:briefings/assets/sdk-seed.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:data",
+      "target": "config:data/observers.json",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:data",
+      "target": "config:data/reports_index.json",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:demo-assets",
+      "target": "file:demo/assets/index-C0yImpgo.css",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:demo-assets",
+      "target": "file:demo/assets/index-CRlGGo-N.js",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/build_combined.py",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/daily_update.py",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "file:scripts/build_combined.py",
+      "target": "config:data/observers.json",
+      "type": "reads_from",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:scripts/build_combined.py",
+      "target": "config:data/reports_index.json",
+      "type": "reads_from",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:scripts/daily_update.py",
+      "target": "config:data/observers.json",
+      "type": "reads_from",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "file:scripts/daily_update.py",
+      "target": "config:data/reports_index.json",
+      "type": "reads_from",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "module:scripts",
+      "target": "config:data/observers.json",
+      "type": "reads_from",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "module:scripts",
+      "target": "config:data/reports_index.json",
+      "type": "reads_from",
+      "weight": 0.6,
+      "direction": "forward"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/generate_nyt_2026_06_12.py",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    },
+    {
+      "source": "module:scripts",
+      "target": "file:scripts/update_index.py",
+      "type": "contains",
+      "weight": 1.0,
+      "direction": "forward"
+    }
+  ],
+  "layers": [
+    {
+      "id": "layer:documentation",
+      "name": "Documentation",
+      "description": "Project documentation files including README and requirements",
+      "nodeIds": [
+        "document:README.md",
+        "document:REQUIREMENTS.md"
+      ]
+    },
+    {
+      "id": "layer:web-frontend",
+      "name": "Web Frontend",
+      "description": "Main HTML pages, styles, and archive for the briefing website",
+      "nodeIds": [
+        "file:archive.html",
+        "file:index.html",
+        "file:style.css"
+      ]
+    },
+    {
+      "id": "layer:briefing-pages",
+      "name": "Briefing Pages",
+      "description": "Daily NYT and WSJ briefing HTML pages with observer commentary",
+      "nodeIds": [
+        "file:briefings/gallery.html",
+        "file:briefings/nyt_2026-06-04.html",
+        "file:briefings/nyt_2026-06-05.html",
+        "file:briefings/nyt_2026-06-06.html",
+        "file:briefings/nyt_2026-06-07.html",
+        "file:briefings/nyt_2026-06-08.html",
+        "file:briefings/nyt_2026-06-09.html",
+        "file:briefings/nyt_2026-06-10.html",
+        "file:briefings/nyt_2026-06-11.html",
+        "file:briefings/nyt_2026-06-12.html",
+        "file:briefings/nyt_2026-06-13.html",
+        "file:briefings/nyt_2026-06-14.html",
+        "file:briefings/nyt_2026-06-15.html",
+        "file:briefings/nyt_2026-06-16.html",
+        "file:briefings/nyt_2026-06-17.html",
+        "file:briefings/nyt_2026-06-18.html",
+        "file:briefings/nyt_2026-06-19.html",
+        "file:briefings/nyt_2026-06-21.html",
+        "file:briefings/nyt_2026-06-22.html",
+        "file:briefings/wsj_2026-06-07.html",
+        "file:briefings/wsj_2026-06-08.html",
+        "file:briefings/wsj_2026-06-09.html",
+        "file:briefings/wsj_2026-06-10.html",
+        "file:briefings/wsj_2026-06-11.html",
+        "file:briefings/wsj_2026-06-12.html",
+        "file:briefings/wsj_2026-06-13.html",
+        "file:briefings/wsj_2026-06-15.html",
+        "file:briefings/wsj_2026-06-16.html",
+        "file:briefings/wsj_2026-06-17.html",
+        "file:briefings/wsj_2026-06-18.html",
+        "file:briefings/wsj_2026-06-19.html",
+        "file:briefings/wsj_2026-06-21.html",
+        "file:briefings/wsj_2026-06-22.html"
+      ]
+    },
+    {
+      "id": "layer:assets",
+      "name": "Bundled Assets",
+      "description": "Auto-generated CSS and JavaScript assets from Kimi web integration",
+      "nodeIds": [
+        "file:briefings/assets/index-BLKeZuY7.css",
+        "file:briefings/assets/index-BQEknNIh.css",
+        "file:briefings/assets/index-BaKF91cf.css",
+        "file:briefings/assets/index-BavH-IQc.css",
+        "file:briefings/assets/index-C1fFgFBf.css",
+        "file:briefings/assets/index-CAhUiIVZ.css",
+        "file:briefings/assets/index-CD6x4bSu.css",
+        "file:briefings/assets/index-D_rC8OMO.css",
+        "file:briefings/assets/index-DnGA641s.css",
+        "file:briefings/assets/index-DymaOaEY.css",
+        "file:briefings/assets/index-IHnN5M64.css",
+        "file:briefings/assets/index-MhNm8dzV.css",
+        "file:briefings/assets/index-ob4TXiS4.css",
+        "file:briefings/assets/index-uZ4_Rrpx.css",
+        "file:briefings/assets/index-y74eMlZk.css",
+        "file:briefings/assets/index-B7QnFapy.js",
+        "file:briefings/assets/index-BCAAm0vL.js",
+        "file:briefings/assets/index-BkaggUKK.js",
+        "file:briefings/assets/index-BMAzdbAe.js",
+        "file:briefings/assets/index-BN0rYByS.js",
+        "file:briefings/assets/index-C-Z0inli.js",
+        "file:briefings/assets/index-CrDxPNo2.js",
+        "file:briefings/assets/index-CtVMf-Mu.js",
+        "file:briefings/assets/index-Cu7y5OTe.js",
+        "file:briefings/assets/index-CuFudCbM.js",
+        "file:briefings/assets/index-DgTG6Exq.js",
+        "file:briefings/assets/index-DJNigZ9b.js",
+        "file:briefings/assets/index-DQkAxoPd.js",
+        "file:briefings/assets/index-DwiaFw4y.js",
+        "file:briefings/assets/index-KL5agRJB.js",
+        "file:briefings/assets/sdk-seed.js"
+      ]
+    },
+    {
+      "id": "layer:scripts",
+      "name": "Python Scripts",
+      "description": "Server and automation scripts for building and serving briefings",
+      "nodeIds": [
+        "file:scripts/build_combined.py",
+        "file:scripts/daily_update.py",
+        "file:scripts/generate_nyt_2026_06_12.py",
+        "file:scripts/update_index.py",
+        "file:serve.py"
+      ]
+    },
+    {
+      "id": "layer:data-config",
+      "name": "Data & Configuration",
+      "description": "JSON data files for reports index and observer configuration",
+      "nodeIds": [
+        "config:reports_index.json",
+        "config:data/observers.json",
+        "config:data/reports_index.json"
+      ]
+    },
+    {
+      "id": "layer:demos",
+      "name": "Demo Pages",
+      "description": "Sample/demo HTML pages and their assets",
+      "nodeIds": [
+        "file:demo/assets/index-C0yImpgo.css",
+        "file:demo/assets/index-CRlGGo-N.js",
+        "file:demo/index.html"
+      ]
+    },
+    {
+      "id": "layer:miscellaneous",
+      "name": "Miscellaneous",
+      "description": "Other project files not fitting other layers",
+      "nodeIds": [
+        "file:.understand-anything/.understandignore",
+        "file:images/.gitkeep"
+      ]
+    }
+  ],
+  "tour": [
+    {
+      "order": 1,
+      "title": "Project Overview",
+      "description": "MorningBriefing is a daily news briefing system that tracks NYT and WSJ articles with Chinese observer commentary. Start here to understand the project's purpose and structure.",
+      "nodeIds": [
+        "document:README.md"
+      ]
+    },
+    {
+      "order": 2,
+      "title": "Requirements & Architecture",
+      "description": "Review the detailed requirements document that outlines the full architecture, including the three-observer analysis system, PDF management, and deployment considerations.",
+      "nodeIds": [
+        "document:REQUIREMENTS.md"
+      ]
+    },
+    {
+      "order": 3,
+      "title": "Web Server Entry Point",
+      "description": "The Python HTTP server that serves the briefing website, mounting external PDF directories under /reports/ for browser access.",
+      "nodeIds": [
+        "file:serve.py"
+      ]
+    },
+    {
+      "order": 4,
+      "title": "Main Website Pages",
+      "description": "The main index.html provides today's NYT and WSJ links with three observer analysis sections. archive.html allows browsing past briefings by date.",
+      "nodeIds": [
+        "file:index.html",
+        "file:archive.html"
+      ]
+    },
+    {
+      "order": 5,
+      "title": "Styling System",
+      "description": "Dark-themed CSS stylesheet that defines the visual presentation of the briefing website, including observer analysis sections and PDF link formatting.",
+      "nodeIds": [
+        "file:style.css"
+      ]
+    },
+    {
+      "order": 6,
+      "title": "Daily Update Automation",
+      "description": "The main automation script that generates daily NYT and WSJ briefing pages with observer commentary sections. This is the core content pipeline.",
+      "nodeIds": [
+        "file:scripts/daily_update.py"
+      ]
+    },
+    {
+      "order": 7,
+      "title": "Combined HTML Builder",
+      "description": "Builds a combined NYT + WSJ HTML page from the latest source files for consolidated reading.",
+      "nodeIds": [
+        "file:scripts/build_combined.py"
+      ]
+    },
+    {
+      "order": 8,
+      "title": "Index Management",
+      "description": "CLI tools for updating the reports index JSON and generating sample briefing content.",
+      "nodeIds": [
+        "file:scripts/update_index.py",
+        "file:scripts/generate_nyt_2026_06_12.py"
+      ]
+    },
+    {
+      "order": 9,
+      "title": "Data Layer",
+      "description": "JSON indices that track all briefing entries by date and source, plus the observer configuration data.",
+      "nodeIds": [
+        "config:data/reports_index.json",
+        "config:data/observers.json"
+      ]
+    },
+    {
+      "order": 10,
+      "title": "Briefing Gallery",
+      "description": "A gallery-style HTML page that displays all available briefing entries with visual navigation.",
+      "nodeIds": [
+        "file:briefings/gallery.html"
+      ]
+    }
+  ]
+}
