@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WSJ Briefing — July 13, 2026</title>
+<style>
+:root { --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26; --accent: #00ff88; --accent-dim: #00cc6a; --text: #ffffff; --text-dim: #8888aa; --border: #2a2a3a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Georgia','Noto Serif SC','PingFang SC',serif; line-height: 1.7; font-size: 16px; }
+.hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,10,15,0.7); }
+.hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; max-width: 900px; }
+.hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.75rem; text-shadow: 0 0 40px rgba(0,255,136,0.3); }
+.hero-subtitle { font-size: 1.1rem; color: #d0d0e0; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.hero-meta { font-size: 0.95rem; color: var(--text-dim); letter-spacing: 0.08em; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+.section-title { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.cluster { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+.cluster h3 { color: #c8a84e; margin-bottom: 0.75rem; font-size: 1.1rem; }
+.cluster p { line-height: 1.8; color: #ccc; margin-bottom: 0.9rem; }
+.cluster p:last-child { margin-bottom: 0; }
+.cluster ul { margin: 0.5rem 0 0 1.25rem; color: #d0d0e0; }
+.cluster li { margin-bottom: 0.5rem; line-height: 1.7; }
+.calibrated-cluster { border-left: 3px solid var(--accent-dim); }
+.calibrated { background: rgba(0,255,136,0.05); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; color: #d0e0d0; }
+.tldr { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--border); }
+.tldr ul { margin-left: 1.25rem; color: #d0d0e0; }
+.tldr li { margin-bottom: 0.75rem; line-height: 1.7; }
+.observer-card { background: #111; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid #c8a84e; }
+.observer-card.jin { border-left-color: #e74c3c; }
+.observer-card.song { border-left-color: #3498db; }
+.observer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.observer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background: #c8a84e; color: #0a0a0f; }
+.observer-card.jin .observer-icon { background: #e74c3c; color: #fff; }
+.observer-card.song .observer-icon { background: #3498db; color: #fff; }
+.observer-body p { line-height: 1.8; margin-bottom: 0.8rem; color: #c0c0d0; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: var(--surface); color: var(--accent); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+td { color: #c0c0d0; }
+.market-table th:first-child, .market-table td:first-child { text-align: left; }
+.market-table th, .market-table td { text-align: right; }
+.up { color: #00ff88; }
+.down { color: #ff4444; }
+.table-divider { border-top: 2px solid #c8a84e; }
+.pred-table .prob { font-weight: bold; color: #c8a84e; }
+.cartoon-section { text-align: center; margin: 2rem 0; padding: 1.5rem; background: var(--surface); border-radius: 12px; border: 1px dashed var(--border); }
+.cartoon-section img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+.cartoon-section p { color: var(--text-dim); margin-top: 0.75rem; font-size: 0.9rem; }
+.footer { text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+@media (max-width: 600px) { .container { padding: 1rem; } .cluster { padding: 1rem; } .observer-card { padding: 1rem; } table { font-size: 0.8rem; } th,td { padding: 0.4rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>美伊全面升级·AI债券供给冲击·政治真空</h1>
+            <p class="hero-subtitle">霍尔木兹停火死亡，美军新打击伊朗；科技巨头$2500亿AI债压垮纳斯达克；格雷厄姆去世，两党制度真空</p>
+            <p class="hero-meta">WSJ Briefing — July 13, 2026 · Monday Edition</p>
+        </div>
+    </section>
+
+    <section class="tldr">
+    <h2 class="section-title">tl;dr</h2>
+    <ul>
+        <li><strong>美伊全面升级：</strong>特朗普政府宣布伊朗停火协议"死亡"，美军对霍尔木兹海峡周边伊朗目标发动新打击，伊朗同时被曝策划刺杀特朗普新阴谋。原油单日飙升3.30%至$73.77，全球20%油气运输咽喉面临实质性威胁。</li>
+        <li><strong>AI板块剧烈分化：</strong>纳斯达克下跌0.97%，SK海力士创历史最大单日跌幅（-8.22%），但AI基础设施仍在加速——科技巨头年内已发行超$2500亿AI债券，Intel投资€50亿建设爱尔兰芯片厂，Brookfield以$35亿押注曼哈顿科技中心。</li>
+        <li><strong>政治真空双线打开：</strong>参议员林赛·格雷厄姆突发去世（71岁，主动脉撕裂），亲乌克兰阵营失去关键人物；密歇根民主党初选将测试进步派能否在工业心脏地带获胜。两党同时面临领导层换代的不确定性。</li>
+        <li><strong>联储面临方向抉择：</strong>新主席沃什本周国会听证，将是其首次重大政策表态——经济企稳但通胀顽固，市场开始定价加息可能。10年期美债收益率4.591%已隐含50-75bp未来加息预期。</li>
+        <li><strong>中国航天里程碑：</strong>成功发射可重复使用火箭并部分回收，直接挑战SpaceX垄断地位；希音（Shein）清除香港IPO障碍，中国资本市场即将迎来跨境消费巨头。</li>
+    </ul>
+</section>
+
+<h2 class="section-title">第1集群：地缘政治与国防</h2>
+<div class="cluster">
+<h3>霍尔木兹海峡：停火已死，新的战争形态浮现</h3>
+<p>核心事件：美国对伊朗发动新一轮打击，此前伊朗拒绝了有关重新开放霍尔木兹海峡的要求。特朗普总统宣布停火协议"作废"，并表示美国将"接管"该水道并收取服务补偿费。"这场战斗归结为特朗普协议中措辞不当的一个条款，"WSJ分析指出——一纸文本瑕疵足以瓦解数月的外交努力。</p>
+<p>与此同时，以色列向美国通报了伊朗策划刺杀特朗普的新情报（独家报道）。约翰·博尔顿在评论文章中直言："伊朗已弱到无法缔结和平——美以打击如此成功地斩首了领导层，以至于已无人拥有谈判权限。"这与伊朗新刺杀阴谋的报道形成张力：伊朗究竟是弱到无法谈判，还是保留着足以威胁美国总统的第二打击能力？</p>
+<p>操作层面的残酷现实远超战略叙事。美军在霍尔木兹的持续行动面临三重约束：第一，<strong>美国海军兵力分散</strong>——同时覆盖霍尔木兹、乌克兰后勤、印太威慑，舰队的造船积压和维护周期问题长期未解；第二，<strong>战略石油储备（SPR）已老化</strong>——WSJ调查报道揭示，频繁抽油导致墨西哥湾盐穴油库出现裂缝、泵浦泄漏等物理损伤，"老系统正被推向断裂点"；第三，<strong>商业原油库存处于危险区间</strong>，任何长期中断都将反噬执行打击任务的军队自身燃料供给。</p>
+<p>伊朗的策略是经典的"间接路线"——它不需要击沉一艘美国军舰，只需让海峡变得<em>足够昂贵</em>，直至保险飙升、航运改道、美国被迫从弱势地位谈判。数据显示，WTI原油当日上涨3.30%至$73.77（1.8σ波动），但自2019年以来六次"伊朗封锁霍尔木兹"头条事件的中位1周回报仅为+1.2%，中位1月回报为-0.3%。市场正在定价中等程度的风险溢价，而非全面封锁场景。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：60%概率霍尔木兹局势在未来30天内维持"高紧张+低封锁"稳态，原油交易区间$70-85——（依据：伊朗持续骚扰但不触发美军全面海上对抗的战略选择；历史基线显示类似威胁倾向于降级而非升级；但SPR储备损耗将放大每次供给恐慌的结构性溢价，使油价中枢上移。）</strong></p>
+</div>
+<div class="cluster">
+<h3>乌克兰：远程无人机改写战争经济学</h3>
+<p>乌克兰的远程无人机正在抵达西伯利亚深处。WSJ通过可视化报道展示了这些攻击如何打击俄罗斯炼油设施，引发俄罗斯国内的燃料危机。特朗普罕见地对乌克兰表示了赞扬——这标志着一个关键转变：乌克兰的能源消耗战策略正在获得华盛顿的政治认可。</p>
+<p>但这并非决定性的战略突破，而是成本施加能力的展示。乌克兰通过打击俄罗斯能源基础设施来威胁其战争融资现金流，这与伊朗在霍尔木兹的策略异曲同工——都是通过使对手的能源收入不稳定来改变战争经济学。然而，操作层面的问题在于：乌克兰能否维持无人机生产速率以快于俄罗斯适应反制措施的速度？西方先进系统的供应一直存在政治波动性，格雷厄姆之死正移除了一位关键的援乌倡导者。</p>
+<p>霍曼·詹金斯（Holman Jenkins）的判断值得深思："俄乌战争的决战不会在顿巴斯或西伯利亚打响——它将在克里姆林宫的走廊里进行。"普京的寡头集团可能正在计算战争的ROI是否已转为负值。乌克兰的战略是加速这一内部计算，但这一假设自2022年以来屡经检验，尚未产生决定性结果。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：35%概率在未来6个月内出现实质性和平谈判窗口——（依据：乌克兰远程打击能力提升了其谈判筹码，但俄罗斯内部政治断裂点不可预测且不可规划；格雷厄姆之死削弱了美国援乌政治力量，但特朗普对乌的罕见赞扬暗示政策可能发生不符合常规的调整。）</strong></p>
+</div>
+<div class="cluster">
+<h3>欧洲制裁俄罗斯：15年网络战的总清算</h3>
+<p>欧盟指控莫斯科发动了一场持续15年、针对政府和关键基础设施的大规模网络攻击活动，并以此为由实施新制裁。这一举动的时间节点耐人寻味——恰逢霍尔木兹紧张升级和乌克兰无人机深入打击之际。欧洲正在用法律工具弥补军事手段的不足，但操作层面的问题是：制裁的执行能力是否跟得上意图？15年的积累意味着俄罗斯的网络能力根深蒂固，制裁更多是信号传递而非功能性阻断。</p>
+</div>
+<div class="cluster">
+<h3>林赛·格雷厄姆的最后使命：一位"牧师"的陨落</h3>
+<p>格雷厄姆（71岁，死于主动脉撕裂）在完成一次艰苦的海外之旅——聚焦于"拯救乌克兰"——后返回家中，"享受了最后一次政治胜利的荣光"。WSJ讣告式报道将其塑造为"全球自由的损失"，社论版称其"拥有所有正确的敌人"。</p>
+<p>从战略角度看，格雷厄姆之死不仅是一位参议员的离去。他是旧体制国际主义共和党人的代表——一个相信美国力量是全球秩序无条件善的力量的"濒危物种"。他没有任何以自己命名的标志性立法成就，他的价值在于交易型立法的个人网络和跨党派运作能力，而这种能力无法通过委员会任命或党团职位替代。"争夺格雷厄姆继任者的混乱局面"是对参议院制度机器无法复制其功能的诚实承认。</p>
+<p>麦康奈尔同时打破沉默通报自己的住院情况（跌倒和肺炎）——两党制度性记忆的守护者同时缺席，加剧了华盛顿的制度不确定性。</p>
+</div>
+<div class="cluster">
+<h3>体育地缘政治：温网与世界杯</h3>
+<p><strong>温网：</strong>扬尼克·辛纳（Jannik Sinner）在温网男单比赛中以四盘战胜亚历山大·兹维列夫（Alexander Zverev）。琳达·诺斯科娃（Linda Noskova）夺得女单冠军，为赛事增添了情感高潮。网球世界正见证新一代球星的崛起——辛纳的稳健表现与诺斯科娃的突破式夺冠，预示着后三巨头时代的格局正在加速形成。</p>
+<p><strong>世界杯：</strong>赛事已产生"值得铭记的四强"——进入半决赛阶段，竞争达到白热化。与此同时，一个有趣的制度对比正在上演：当全球足球界已广泛采纳VAR（视频助理裁判）技术时，瑞典成为唯一禁止其使用的国家。"每个人都讨厌世界杯的即时回放——这个国家直接禁止了它。"这一反例提醒我们，技术统一性并非不可避免，制度选择仍然存在。</p>
+</div>
+<div class="cluster">
+<h3>曼谷酒吧大火</h3>
+<p>导致至少27人死亡、70余人受伤、45人失踪，这是当日主要的国际人文新闻。</p>
+</div>
+<div class="cluster">
+<h3>中国的新奢侈产业</h3>
+<p>中国年产11,000吨鹅肝——已是法国的两倍——而价格仅为法国产的一半。这不仅是消费升级的指标，也是中国农业工业化能力的又一次展示——类似此前的太阳能、电动汽车和锂电池。</p>
+</div>
+<div class="cluster">
+<h3>区域注脚</h3>
+<p><strong>古巴：</strong>玛丽·安娜斯塔西亚·奥格雷迪（Mary Anastasia O'Grady）的"美洲专栏"发出了"来自古巴人民的SOS"信号，提醒读者西半球的人道危机并未消失。</p>
+<p><strong>以色列的缓冲区战略：</strong>乔纳森·斯派尔（Jonathan Spyer）评论阐释了以色列在黎巴嫩、叙利亚和加沙应对以伊朗和土耳其为首的伊斯兰主义威胁的军事逻辑，为霍尔木兹紧张的大背景提供了区域性注脚。</p>
+</div>
+<div class="cluster">
+<h3>第1集群交叉引用</h3>
+<p>伊朗故事是今天《华尔街日报》的引力中心——它直接影响第2集群（石油市场、通胀、和平交易平仓）、第3集群（芯片贸易、能源运输成本）和第4集群（格雷厄姆去世后的援乌议程、特朗普政治叙事）。乌克兰远程打击与俄罗斯网络制裁共同构成对莫斯科的战争成本施加网络，但其效果受美国国内政治真空制约。</p>
+</div>
+
+<h2 class="section-title">第2集群：市场与宏观经济</h2>
+<div class="cluster">
+<h3>AI情绪冲击波：纳指下跌，但故事不在股市</h3>
+<p>纳斯达克当天下跌0.97%至26,027点，VIX上升8.18%至16.26。单看这些数字，市场似乎在因"AI担忧"而抛售。但WSJ数据深度分析揭示了一个完全不同的故事。</p>
+<p><strong>真正的故事在债券市场。</strong>萨姆·戈德法布（Sam Goldfarb）报道：科技巨头今年已发行超$2500亿AI相关债券——"比预期更多"，正在压垮债券价格。这不是一个信心危机，而是一个<strong>固定收益通道的技术性供需失衡</strong>。当$2500亿的新公司债涌入同一个板块时，机械效应就是利差扩大，从而提高每只AI相关股票的资本成本。纳指下跌可能是<strong>债务市场容量限制的反映</strong>，而非对AI基本面的信心崩溃。</p>
+<p><strong>证据支持这一解读：</strong></p>
+<ul>
+<li>标普500当日跌幅前五名均为半导体和科技公司：APP（-8.87%）、SNDK（-8.22%）、MRVL（-6.50%）、STX（-6.40%）——这些正是在高收益债供给激增环境中再融资风险最高的企业。</li>
+<li>道琼斯指数基本持平（+0.08%），该指数几乎不含科技股。</li>
+<li>10年期美债收益率4.591%仅比30日均值高出5bp——利率并未确认股市的恐慌。</li>
+<li>VIX仅16.26，远低于危机阈值25+和历史恐慌基准35+。期权市场在说"这是噪音"。</li>
+</ul>
+<p><strong>更深层信号：</strong>斯宾塞·贾卡布（Spencer Jakab）的市场早间专栏直指SK海力士华尔街上市首日即遭遇史上最大单日跌幅。同日另一专栏"芯片贸易帮助华尔街摆脱伊朗打击"——前一天芯片股还是地缘风险的对冲工具，今天就变成了风险的源头。当一项资产从"安全港"变成"风险集中点"只需一天，投资者应重新审视其相关性假设。</p>
+<p>乔纳森·韦尔（Jonathan Weil）在"读读细字"中提醒：标普500的市盈率取决于谁在定义那个"E"。当最赚钱的公司正在借入$2500亿用于AI资本支出、而这些支出尚未产生相应盈利时，P/E中的"E"更像是虚构而非事实。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：75%概率AI相关半导体股的抛售在2-4周内出现均值回归——（依据：历史基线显示类似公司债供给冲击后，股市先重新定价、随后在收益稳定后企稳；10Y未确认恐慌；VIX低价位意味着期权市场未定价尾部风险。）但若10Y突破4.75%，则债券供给冲击将升级为真正的宏观紧缩事件，概率由当前的~18%快速上升。</strong></p>
+</div>
+<div class="cluster">
+<h3>沃什的第一次重大抉择：否，还是削？</h3>
+<p>尼克·蒂米罗斯（Nick Timiraos）报道：新美联储主席凯文·沃什本周国会听证将是其首次重大政策表态。面临的核心问题：是否要逆转去年的降息？经济企稳但通胀顽固（CPI约3.2%），加息选项已被摆上台面。</p>
+<p>但数据持有不同看法。联邦基金期货定价显示，未来60天内加息概率约为18%——市场没有定价加息，而是在定价暂停。自1979-80年沃尔克时代以来，美联储从未在开启降息周期后的6个月内逆转方向。10年期收益率4.591%已经隐含了50-75bp的未来加息预期——即使沃什什么都不做，市场已经在替他紧缩。</p>
+<p><strong>关键联动：</strong>沃什的表态将同时触及所有四个集群——能源价格（通过通胀传导）、AI资本成本（通过债务服务）、政治稳定（通过政府信用）和资产估值（通过贴现率）。他是系统中唯一能同时拨动所有杠杆的人。</p>
+<p>詹姆斯·麦金托什（James Mackintosh）的Streetwise专栏"当全球危机永不停止时如何投资"捕捉了这一困境的后果："在一个战争、贸易战和歉收的世界里，债券收益率需要更高。"风险溢价正在每一项资产类别中重新定价。</p>
+</div>
+<div class="cluster">
+<h3>跨市场扫描</h3>
+<p><strong>石油：</strong>WTI $73.77（+3.30%），1.8σ单日波动，为5月以来最大涨幅。但扣除美元弱势（DXY 97.31）的约0.8%货币尾风后，"真实"涨幅约+2.5%。仍属重大波动，但并非恐慌性反应。</p>
+<p><strong>黄金：</strong>$4,051（-1.51%）。在霍尔木兹危机升级的背景下黄金下跌，暗示市场不认为这是系统性危机——资金在流向美元和美债而非传统避险资产。</p>
+<p><strong>比特币：</strong>$62,255（-3.02%）。风险偏好收窄环境下数字资产承受压力。</p>
+<p><strong>VIX：</strong>16.26（+8.18%）。在如此多危机同日的背景下仅升至16，历史经验显示当VIX在多头危机中保持在20以下时，标普500未来30日中位回报为+1.8%。</p>
+<p><strong>宏观背景：</strong>本周期待银行财报和通胀数据。能源供给冲击（波斯湾关闭+俄罗斯炼油破坏）叠加创造了反转向降息预期的精确条件。</p>
+</div>
+<div class="cluster">
+<h3>第2集群交叉引用</h3>
+<p>AI债券供给冲击（第2集群）直接塑造第3集群的半导体估值与AI基础设施投资节奏。霍尔木兹溢价通过油价和通胀预期传导至沃什的政策抉择，而沃什的利率信号又反向决定科技资本支出的贴现率。黄金下跌与比特币承压共同指向"流动性抽离"而非"避险涌入"——这与宋鸿兵的货币环流分析形成呼应。</p>
+</div>
+
+<h2 class="section-title">第3集群：商业与科技战略</h2>
+<div class="cluster">
+<h3>苹果诉OpenAI："热核"防御背后的信号</h3>
+<p>蒂姆·库克对OpenAI发起诉讼，指控其窃取商业机密。WSJ将其称为"熟悉的剧本"——押注诉讼可以延迟颠覆者打破iPhone时代。这呼应了史蒂夫·乔布斯当年对安卓的"热核战争"威胁。</p>
+<p><strong>哲学层面的张力</strong>在于：全球最有价值的公司正利用国家法律工具来压制竞争对手。WSJ报道这一策略时带着心照不宣的赞许——"颇具特色"、"聪明"。这揭示了精英自由市场思想中的一个深层矛盾：抽象的自由竞争理想与具体在位企业将用尽一切制度杠杆巩固地位的现实之间的张力。</p>
+<p>值得注意的是，苹果诉OpenAI当日，科技公司正发行$2500亿AI债券，纳指下跌，SK海力士创历史最大跌幅。这是资本主义生命周期压缩进同一天报纸的写照：大规模资本部署 → 投资者怀疑 → 在位企业急于保护护城河。</p>
+</div>
+<div class="cluster">
+<h3>AI基础设施的物理约束：当指数增长遇上线性供应</h3>
+<p>AI繁荣正在以与粮食生产、居民用水竞争的速率消耗土地、水资源和电力。帕特里克·托马斯（Patrick Thomas）的报道"数据中心的新对手：农民"揭示了这一张力——农民和牧场主正在抗议AI基础设施侵占农田和消耗水资源。"这不仅仅是商业纠纷，"运营分析指出，"这是物理经济在重申对数字'无重量'幻想的否决权。"</p>
+<p><strong>新闻中的三重信号：</strong></p>
+<ul>
+<li><strong>Intel投资€50亿在爱尔兰建厂</strong>，增加AI芯片产能并强化欧洲半导体供应链——华盛顿对Intel的押注"正在开始见效"。</li>
+<li><strong>Brookfield以$35亿收购曼哈顿Hudson Square综合项目股权</strong>，押注科技和AI企业对A级写字楼的需求——商业地产并非"全面死亡"，而是A级建筑与B/C级建筑的"大分化"。</li>
+<li><strong>Meta扩大路易斯安那AI数据中心规模</strong>——超大规模企业正在双线下注：AI需求虽真，物理约束也真。</li>
+</ul>
+<p>贾斯汀·拉哈特（Justin Lahart）的劳动力市场分析提供了一个不同的叙事框架：AI可能不是取代工作的威胁，而是填补劳动力缺口的手段。新经济研究正在将AI叙事从"劳动力需求破坏者"转变为"劳动力供给解决方案"——如果这种框架转换被政策制定者采纳，AI的监管前景将完全不同。</p>
+</div>
+<div class="cluster">
+<h3>迪士尼《莫阿娜》翻拍：IP疲劳的代价</h3>
+<p>距离原版动画仅10年就推出的真人版遭遇票房惨败。这是对IP过度提取的警告——迪士尼期待品牌忠诚度支撑翻拍，但观众用脚投票。斯宾塞·贾卡布的"媒体交易"专栏构成了主题变奏：对银行家有利的交易，通常对投资者不利。表面吸引力掩盖结构性衰退——无论是媒体的并购盛宴还是迪士尼的经典翻拍。</p>
+</div>
+<div class="cluster">
+<h3>中国可重复使用火箭：安静的战略里程碑</h3>
+<p>中国成功发射并部分回收了一枚火箭，直接挑战SpaceX在可重复使用发射领域的垄断。数据视角的冷静评估："追赶是真实的，但差距是一个十年而非一年。"SpaceX已完成300+次可重复使用发射，第二梯队航天大国（俄罗斯、中国）从首次测试到运营可重复使用通常需要5-8年。</p>
+</div>
+<div class="cluster">
+<h3>电动汽车电池超预期长寿</h3>
+<p>WSJ读者分享了电动汽车电池的亲身经验——电池寿命超出预期。这对EV行业的二手市场价值、总拥有成本、消费者信心产生了积极信号。在中国这一全球最大EV市场，这意味着存量车队的耐用性改善将延缓换购周期。</p>
+</div>
+<div class="cluster">
+<h3>其他商业动态</h3>
+<p><strong>希音（Shein）清除香港IPO障碍</strong>——在历经多重监管审查后，快时尚巨头Shein终于为香港上市扫清道路。在美国市场波动加剧、中概股审计争议持续的背景下，这一跨境快时尚巨头选择香港，将考验中国资本市场的深度。</p>
+<p><strong>Alex Karp（Palantir CEO）发声</strong>——"每个愤怒CEO对AI的心里话"，预示AI行业的竞争与道德张力正在从幕后走向台前。</p>
+<p><strong>Vinod Khosla的"运气vs技能"之辩</strong>——亿万富翁风投家在WSJ金钱访谈中讨论"美国梦靠运气还是技能"，映射出在不确定性飙升时代，最成功的资本分配者也在重新审视信念体系。</p>
+<p><strong>媒体交易对银行家有利，对投资者不利</strong>（Spencer Jakab）——并购交易量创造费用但不一定创造价值。</p>
+<p><strong>"投资者无法停止的心理游戏"</strong>（Jason Zweig）——追涨杀跌的诱惑在多重危机中尤为危险，行为金融学的经典警告在此时尤为贴切。</p>
+</div>
+<div class="cluster">
+<h3>第3集群交叉引用</h3>
+<p>苹果诉OpenAI与$2500亿AI债券供给冲击发生在同一天，揭示旧护城河守护与新资本部署之间的张力。Intel爱尔兰芯片厂与中国可重复使用火箭共同指向"非美元技术基础设施"的扩张。AI数据中心土地-水资源冲突为第4集群的监管与政策辩论提供素材，而Brookfield的曼哈顿押注则与第2集群中A级/B级商业地产分化的宏观主题相连。</p>
+</div>
+
+<h2 class="section-title">第4集群：政策与观点</h2>
+<div class="cluster">
+<h3>格雷厄姆之后的参议院：谁将接棒？对华政策与援乌议程何去何从</h3>
+<p>WSJ社论版认定格雷厄姆的死亡是"全球自由的损失"，赞扬其是以色列、乌克兰和美国联盟体系的有影响力的支持者。马修·亨尼西（Matthew Hennessey）的自由表达专栏补充道"格雷厄姆拥有所有正确的敌人"。</p>
+<p>但真正的问题在于：谁来接替他的位置？格雷厄姆是参议院中促成对外军援立法不可或缺的交易型人物——他的个人网络无法由委员会任命替代。"争夺继任者的混乱竞争"将测试老体制国际主义派能否在格雷厄姆死后存活，还是共和党已完全成为特朗普的党。</p>
+</div>
+<div class="cluster">
+<h3>JD Vance：令人震惊、糟糕至极的一周</h3>
+<p>阿莉西亚·芬利（Allysia Finley）的文章标题一语中的：JD Vance度过了一个"可怕的、糟糕的、非常糟糕的一周"。他与伊朗达成的"谅解"已成泡影，特朗普在武装乌克兰问题上与他出现分歧。作为特朗普亲手挑选的副总统，Vance在核心外交政策议题上被总统本人冷落，这在中信专业读者看来意味着特朗普第二任期的政策执行面临内部不可预测性。</p>
+</div>
+<div class="cluster">
+<h3>密歇根民主党初选：进步派的真正考验</h3>
+<p>这场初选将衡量民主党在工业心脏地带愿意走多远——纽约式的左翼激进主义（如佐兰·马姆达尼——社论"马姆达尼政治成功的一个秘密"指出高收入夫妇离开纽约、年轻社会主义者涌入的现象）能否在中西部的选票箱中复制。</p>
+<p>威廉·戴利（William M. Daley）在评论文章中警告"社会主义者正引导民主党走入茶党的陷阱"——极端候选人让政党更难获胜，即使赢了也对该国构成危险。但耐人寻味的是，茶党本身也是同一股反建制能量——保守派版本的反映。两党都在经历反建制力量对中间派的挤压。</p>
+</div>
+<div class="cluster">
+<h3>制度拆解进行时</h3>
+<p><strong>特朗普解雇联邦选举委员会：</strong>引发恐慌——社论记录了这一事件。这不仅仅是政治斗争，而是对2028年选举基础设施的直接干预。</p>
+<p><strong>特朗普关税的真正"运作方式"：</strong>WSJ社论长期反对关税政策，但其证据基础上的批判在当前能源危机和供应链压力下获得了新的紧迫性。</p>
+<p><strong>学生贷款：$910亿补贴政府：</strong>社论版批评针对公共和非营利部门工作者的贷款减免耗费纳税人$910亿。但数据分析显示，这仅占~$6.2万亿联邦年度开支的0.3%，属于"财政噪音"级别。真正的争议不在于总量而在于分配——受益者是高学历、高终身收入的政府律师、医生和教授，这是一项按终身收入分位计算的累退性转移支付。</p>
+<p><strong>英国残障福利爆炸式增长：</strong>被视为英国衰退的标志之一，反映了福利国家在全球老龄化背景下的结构压力。</p>
+</div>
+<div class="cluster">
+<h3>其他值得关注的观点</h3>
+<p><strong>加德·萨阿德（Gad Saad）谈"自杀式共情与西方衰落"</strong>——周六访谈将西方困境归因于共情的非理性扩张。</p>
+<p><strong>史密森尼学会"失去美国叙事"</strong>——文化机构定位之争。</p>
+<p><strong>阿肯色州"学校选择"成功</strong>——教育政策的分权实践。</p>
+<p><strong>"美国人的悲观主义危机"（Kyle Smith）</strong>——精英呼吁停止焦虑、信任制度，却恰好忽视了制度正在被系统性地削弱。</p>
+<p><strong>"资本主义受到不公正指责"（Emma Camp）</strong>——自由表达专栏捍卫市场秩序。</p>
+<p><strong>"假摔不仅发生在足球场上"（Andy Kessler）</strong>——发人深省的社会观察。</p>
+</div>
+<div class="cluster">
+<h3>凯瑟琳·鲁姆勒（Kathryn Ruemmler）在高盛的困境</h3>
+<p>高盛总法律顾问为其与杰弗里·爱泼斯坦的长期关系进行辩护，并将泄密归咎于高盛内部人士。这一事件涉及法律、声誉风险与华尔街治理的交汇——对于一个中国企业高管密切关注的对美金融窗口而言，高盛内部治理的结构性摩擦值得警惕。</p>
+</div>
+<div class="cluster">
+<h3>布拉德·格斯特纳（Brad Gerstner）：从科技播客到特朗普账户推销</h3>
+<p>对冲基金经理格斯特纳此前以科技投资播客闻名，如今积极推介特朗普投资账户。这是华尔街资金向政治光谱一侧流动的缩影，也反映了科技投资者阶层的地缘政治觉醒。</p>
+</div>
+<div class="cluster">
+<h3>文化与体育速览</h3>
+<p><strong>温网：</strong>扬尼克·辛纳（Jannik Sinner）在温布尔登男单决赛中以四盘激战击败亚历山大·兹维列夫（Alexander Zverev），赢得一场"喧闹的胜利"。琳达·诺斯科娃（Linda Noskova）则赢得女单冠军。在多重地缘政治和市场危机的背景下，体育报道提供了一扇短暂的窗口——竞争与卓越的不变叙事。</p>
+<p><strong>世界杯：</strong>赛事已产生"属于时代的四强阵容"。欧洲足球的VAR争议持续——瑞典成为唯一禁止视频助理裁判（VAR）的欧洲国家，球迷运动成功将其排除在外。在技术全面渗透的时代，瑞典的选择本身就是一个社会实验。</p>
+<p><strong>美食地缘：</strong>中国已超越法国成为世界上最大的鹅肝生产国——年产量11,000吨，价格仅为法国同类产品的一半多一点。这一"安静的农业革命"与中国的可重复使用火箭发射形成有趣呼应：在高端食品和前沿航天两个方向上，中国的"追赶叙事"正在被"并驾齐驱"甚至"超越"所替代。</p>
+</div>
+<div class="cluster">
+<h3>第4集群交叉引用</h3>
+<p>格雷厄姆之死直接影响第1集群（援乌政治力量削弱）和第2集群（财政与利率预期）。特朗普解雇联邦选举委员会与JD Vance被边缘化共同揭示行政当局内部的政策不可预测性。学生贷款和英国福利议题是跨越所有集群的资产负债表问题——在家庭与国家财政约束的背景下，AI资本支出和霍尔木兹军事存在都在争夺有限资源。</p>
+</div>
+
+<h2 class="section-title">附录：助学贷款与福利国家——跨越所有集群的资产负债表问题</h2>
+<p>学生贷款减免$910亿、英国残障福利激增——这些议题看似是孤立的社会政策争议，实则是同一个债务超级周期在不同国家、不同人群中的表现。老年借款人、年轻毕业生、福利依赖者共同指向一个结构性现实：当资产价格膨胀与工资增长脱节时，家庭和国家都依靠债务和转移支付维持生活水平。在这些结构性负债的阴影下，$2500亿AI债券、霍尔木兹能源溢价、以及参议院制度真空——所有这些都发生在资产负债表约束收紧的背景中。正如宋鸿兵所言：每一次从降息预期到加息可能的摇摆，都是债务再融资压力的一次血管破裂测试。</p>
+
+<h2 class="section-title">总结：周一市场的全景图</h2>
+<p>2026年7月13日的WSJ呈现了一个多重范式同时承压的交易日。地缘政治范式——霍尔木兹的旧有威慑框架失效，伊朗正在以"间接路线"赢得一场无需击沉一舰的战斗；乌克兰用低成本无人机改写消耗战的经济学。金融范式——$2500亿AI债券供给正在系统性地重塑资本成本，纳斯达克的抛售反映的不是信心危机，而是固定收益通道的技术性瓶颈。政治范式——格雷厄姆之死、麦康奈尔住院、密歇根初选——两党同时面临领导层换代，在需要经验丰富外交手腕的时刻创造了不确定性真空。技术范式——AI的指数级故事撞上了线性工业产能的硬约束——土地、水、涡轮机、建筑工人，任何软件都无法绕开物理限制。</p>
+<p>沃什本周的证词是全系统最重要的信号——它是唯一能同时触及能源价格、AI资本成本、政治信用和资产价值的杠杆。其他所有噪声都围绕这一轴心展开。</p>
+
+<h2 class="section-title">Predictions Table</h2>
+<table class="pred-table">
+<tr><th>预测</th><th>概率</th><th>时间框架</th><th>核心依据</th></tr>
+<tr><td>AI半导体板块均值回归（收复抛售跌幅）</td><td class="prob">75%</td><td>2-4周</td><td>10Y未确认恐慌；VIX仅16.26；技术性供给冲击而非基本面崩溃</td></tr>
+<tr><td>霍尔木兹维持"高紧张+低封锁"稳态</td><td class="prob">60%</td><td>30天</td><td>伊朗间接路线策略；历史基线的降级倾向；但SPR老化放大了每次恐慌的结构性溢价</td></tr>
+<tr><td>俄乌方向出现实质性和平谈判窗口</td><td class="prob">35%</td><td>6个月</td><td>乌远程打击提升筹码；俄内部断裂点不可预测；格雷厄姆之死削弱西方援乌政治力量</td></tr>
+<tr><td>美联储在2026年底前加息至少一次</td><td class="prob">18%</td><td>至2026年底</td><td>联邦基金期货定价；沃什需至少一次暂停/观望信号；CPI 3.2%和能源供给冲击增加粘性</td></tr>
+<tr><td>布伦特原油突破$90并维持两周以上</td><td class="prob">40%</td><td>60天</td><td>霍尔木兹溢价+俄罗斯炼油中断叠加；SPR缓冲能力下降；但全球需求前景疲弱限制上行</td></tr>
+</table>
+
+<h2 class="section-title">市场数据汇总</h2>
+<table class="market-table">
+<tr><th>指标</th><th>收盘</th><th>日内变化</th></tr>
+<tr><td>道琼斯工业平均指数</td><td>52,677</td><td class="up">+0.08%</td></tr>
+<tr><td>标普500指数</td><td>7,553</td><td class="down">-0.30%</td></tr>
+<tr><td>纳斯达克综合指数</td><td>26,027</td><td class="down">-0.97%</td></tr>
+<tr><td>10年期美债收益率</td><td>4.591%</td><td>基本持平</td></tr>
+<tr><td>VIX恐慌指数</td><td>16.26</td><td class="up">+8.18%</td></tr>
+<tr><td>黄金</td><td>$4,051</td><td class="down">-1.51%</td></tr>
+<tr><td>比特币</td><td>$62,255</td><td class="down">-3.02%</td></tr>
+<tr><td>WTI原油</td><td>$73.77</td><td class="up">+3.30%</td></tr>
+</table>
+
+    <section class="observers">
+    <h2 class="section-title">观察者评论</h2>
+
+    <div class="observer-card zhai">
+        <div class="observer-header">
+            <span class="observer-icon">翟</span>
+            <h3>翟东升 — 体系/结构视角</h3>
+        </div>
+        <div class="observer-body">
+            <p>今天华尔街最大的新闻不是霍尔木兹的炮声，而是$2500亿的AI债券供给压垮了纳斯达克。但底层逻辑不是AI泡沫破裂——是美元流动性的物理天花板到了。美式全球化第三阶段的核心机制是：美元信用支撑全球资本循环，全球资本循环反哺美国资产价格。但当科技巨头一年内借入$2500亿用于AI军备竞赛时，问题就变成了：这些债谁来买？答案很残酷——没有新的增量买家了。日本央行已经在收紧，中东主权基金在囤积现金应对能源危机，美联储自己还在缩表。</p>
+            <p>再看联储的处境。沃什本周听证面临的是一个无解三角：通胀粘在3.2%下不来，霍尔木兹随时再推油价，但10年期美债收益率4.591%已经隐含了两次加息预期。真正值得关注的是平行体系的加速。中国成功发射可重复使用火箭，Shein清除香港IPO障碍，欧洲在爱尔兰砸€50亿建芯片厂——这不是去美元化的宣言式运动，而是全球资本在美元流动性饱和后，被迫寻找第二条基础设施融资通道。</p>
+        </div>
+    </div>
+
+    <div class="observer-card jin">
+        <div class="observer-header">
+            <span class="observer-icon">金</span>
+            <h3>金灿荣 — 美国政治/战略相持视角</h3>
+        </div>
+        <div class="observer-body">
+            <p>各位朋友，今天这一期WSJ，信息量很大。我们冷静看，美国人现在很焦虑。首先，政治真空问题。格雷厄姆走了，麦康奈尔住院了，两个老人同时倒下，参议院制度性记忆突然断档。为什么这个问题严重？因为老派国际主义共和党人是一个濒危物种。他们退场了，谁来谈军援？谁来谈同盟体系？没有人。美国政治正在经历集体退休式的权力真空——这不是换一个参议员的问题，是操作能力断层的问题。</p>
+            <p>再看霍尔木兹。特朗普宣布停火协议死亡，美军又打伊朗。但打又能怎样？美国海军舰队分散在全球三条战线，战略石油储备的老化裂缝被WSJ亲自曝光，商业库存处于危险区间。伊朗不需要击沉军舰，让海峡变得足够贵就行了。还有内部拆台。特朗普解雇了联邦选举委员会——2028年大选的基础设施正在被人为破坏。两党都在忙着内耗，谁还有余力搞对外战略？那中国怎么办？很简单——把自己的事情做好。我们的可重复使用火箭发射成功了，Shein马上要在香港上市。美国人自己乱，我们不参与，我们专心搞工业化。</p>
+        </div>
+    </div>
+
+    <div class="observer-card song">
+        <div class="observer-header">
+            <span class="observer-icon">宋</span>
+            <h3>宋鸿兵 — 货币/债务/周期视角</h3>
+        </div>
+        <div class="observer-body">
+            <p>今天WSJ简报的封面之下，隐藏着一个美元环流正在悄然逆转的信号。科技巨头年内发行超$2500亿AI债券——这个数字本身就是一个压力读数。当$2500亿新增供给涌入同一个固定收益通道，利差自然扩大，资本成本自然上升。纳斯达克的抛售不是对AI信心的崩溃，而是美元环流的一个中间阀门正在发出过载的金属疲劳声。</p>
+            <p>真正让我警觉的是黄金——霍尔木兹升级、美伊停火死亡，黄金却跌了1.51%。这是反常的。黄金在战争危机中下跌只有一个合理解释：流动性正在被抽走。机构投资者被迫抛售黄金以填补其他头寸的保证金缺口。这不是避险失效，这是美元环流的虹吸效应——当债务供给大到足以吸干市场中的每一滴流动性时，连最硬的资产也会被拖下水。</p>
+            <p>从货币战争的框架看，我们正在接近债务超级周期的终端阶段。每一次从降息预期到加息可能的摇摆，都是债务再融资压力的一次血管破裂测试。</p>
+        </div>
+    </div>
+</section>
+
+    <section class="cartoon-section">
+        <h2>Daily Cartoon</h2>
+        <img src="./assets/images/wsj_cartoon.jpg" alt="WSJ Daily Cartoon — July 13, 2026" />
+        <p>WSJ Daily Cartoon — July 13, 2026</p>
+    </section>
+
+    <footer class="footer">
+        <p>WSJ Briefing — July 13, 2026 (Monday Edition)</p>
+        <p>Consolidated briefing with Observer commentaries</p>
+        <p>Generated by Hermes Agent pipeline</p>
+    </footer>
+</div>
+</body>
+</html>
+
+<!-- PHASE COMPLETE -->
