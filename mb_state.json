@@ -12,7 +12,7 @@
       "error": "Kimi Docs React state desync - submit lockout across multiple tabs, text enters but all submit methods silently fail. 5th generation in 5h window."
     },
     "publish": {
-      "status": "pending",
+      "status": "done",
       "retries": 0,
       "error": null
     }
