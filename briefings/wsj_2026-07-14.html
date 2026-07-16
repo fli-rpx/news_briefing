@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>WSJ Briefing — July 14, 2026</title>
+<style>
+:root { --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26; --accent: #00ff88; --accent-dim: #00cc6a; --text: #ffffff; --text-dim: #8888aa; --border: #2a2a3a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Georgia','Noto Serif SC','PingFang SC',serif; line-height: 1.7; font-size: 16px; }
+.hero { position: relative; min-height: 60vh; display: flex; align-items: center; justify-content: center; background: url('./assets/images/wsj_hero_bg.jpg') center/cover no-repeat; overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,10,15,0.7); }
+.hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; max-width: 900px; }
+.hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.75rem; text-shadow: 0 0 40px rgba(0,255,136,0.3); }
+.hero-subtitle { font-size: 1.1rem; color: #d0d0e0; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.hero-meta { font-size: 0.95rem; color: var(--text-dim); letter-spacing: 0.08em; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+.section-title { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.cluster { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+.cluster h3 { color: #c8a84e; margin-bottom: 0.75rem; font-size: 1.1rem; }
+.cluster p { line-height: 1.8; color: #ccc; margin-bottom: 0.9rem; }
+.cluster p:last-child { margin-bottom: 0; }
+.cluster ul { margin: 0.5rem 0 0 1.25rem; color: #d0d0e0; }
+.cluster li { margin-bottom: 0.5rem; line-height: 1.7; }
+.calibrated-cluster { border-left: 3px solid var(--accent-dim); }
+.calibrated { background: rgba(0,255,136,0.05); padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; color: #d0e0d0; }
+.tldr { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin-bottom: 2rem; border: 1px solid var(--border); }
+.tldr ul { margin-left: 1.25rem; color: #d0d0e0; }
+.tldr li { margin-bottom: 0.75rem; line-height: 1.7; }
+.observer-card { background: #111; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid #c8a84e; }
+.observer-card.jin { border-left-color: #e74c3c; }
+.observer-card.song { border-left-color: #3498db; }
+.observer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.observer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background: #c8a84e; color: #0a0a0f; }
+.observer-card.jin .observer-icon { background: #e74c3c; color: #fff; }
+.observer-card.song .observer-icon { background: #3498db; color: #fff; }
+.observer-body p { line-height: 1.8; margin-bottom: 0.8rem; color: #c0c0d0; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: var(--surface); color: var(--accent); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+td { color: #c0c0d0; }
+.market-table th:first-child, .market-table td:first-child { text-align: left; }
+.market-table th, .market-table td { text-align: right; }
+.up { color: #00ff88; }
+.down { color: #ff4444; }
+.table-divider { border-top: 2px solid #c8a84e; }
+.pred-table .prob { font-weight: bold; color: #c8a84e; }
+.cartoon-section { text-align: center; margin: 2rem 0; padding: 1.5rem; background: var(--surface); border-radius: 12px; border: 1px dashed var(--border); }
+.cartoon-section img { max-width: 100%; border-radius: 8px; display: block; margin: 0 auto; }
+.cartoon-section p { color: var(--text-dim); margin-top: 0.75rem; font-size: 0.9rem; }
+.footer { text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+@media (max-width: 600px) { .container { padding: 1rem; } .cluster { padding: 1rem; } .observer-card { padding: 1rem; } table { font-size: 0.8rem; } th,td { padding: 0.4rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+    <section class="hero">
+        <div class="hero-content">
+            <h1>霍尔木兹海峡崩溃·油价飙涨10%</h1>
+            <p class="hero-subtitle">停火破裂·华尔街创纪录·AI基础设施进入摩擦期</p>
+            <p class="hero-meta">WSJ Briefing — July 14, 2026 · Tuesday Edition</p>
+        </div>
+    </section>
+
+    <section class="tldr">
+    <h2 class="section-title">tl;dr</h2>
+    <ul>
+        <li><strong>霍尔木兹停火崩溃：</strong>特朗普正式宣布伊朗停火协议失效，伊朗夜间袭击三艘油轮，美国海军重新实施封锁。原油单日飙升近10%，创2020年以来最大单日涨幅，市场定价"海峡不会恢复正常"的长期预期。</li>
+        <li><strong>CPI 3.5%是虚假喘息：</strong>6月CPI同比降至3.5%，但采样窗口在油价飙升前关闭。7月CPI几乎必然回升至4%以上，债券市场的反弹是基于过期数据的行情。</li>
+        <li><strong>华尔街与主街断裂：</strong>摩根大通+41%、高盛+78%、花旗+45%，华尔街银行创下创纪录利润；与此同时近100万学生贷款借款人月供增加$200-400，年化消费拖累$20-40亿。</li>
+        <li><strong>AI基础设施进入摩擦期：</strong>IBM暴跌25%揭示企业IT预算零和博弈；数据中心建设方面临抛售、监管禁止、农民起诉、债券市场消化不良四重压力。</li>
+        <li><strong>中俄关系结构性重组：</strong>四年战争将俄罗斯从习近平的"榜样"降级为"小伙伴"，西方战略家尚未充分消化这一后冷战时期最具影响力的双边关系变化。</li>
+    </ul>
+</section>
+
+<h2 class="section-title">第1集群：地缘政治与国防</h2>
+<div class="cluster">
+<h3>霍尔木兹海峡：停火崩溃，封锁重启</h3>
+<p>伊朗停火宣告死亡。总统特朗普正式宣布伊朗停火协议失效，此前伊朗夜间袭击了三艘油轮。美国海军随即重新实施封锁。原油价格飙升近10%，创2020年以来最大单日涨幅——市场定价的不仅是短期中断，而是"海峡不会恢复正常"的长期预期。</p>
+<p><strong>法律与军事维度：</strong></p>
+<ul>
+<li>特朗普原始伊朗协议中一条措辞模糊的条款成为当前争端的新引爆点。法律歧义使后续外交陷入双方各执一词的死局。</li>
+<li>美国部署海上无人机作为对抗伊朗的新型非对称工具。</li>
+<li>以色列向美国通报：伊朗策划了新的暗杀特朗普阴谋（独家报道）。</li>
+</ul>
+<p><strong>编辑部立场：</strong>WSJ编辑委员会称伊朗签署的谅解备忘录是"一场骗局"。Walter Russell Mead撰文称美伊冲突"不可抑制"。</p>
+<p><strong>伊朗国内动态：</strong>冲突期间煽动起的一波伊朗民族主义浪潮正在淹没其外交官，使得妥协难上加难，强硬派阻挠进展变得轻而易举。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：70%的概率霍尔木兹海峡的军事状态将在2026年内成为结构性特征而非偶发性危机——（依据：停火被宣布死亡且被编辑委员会称为"骗局"；伊朗策划新的暗杀阴谋；美国重新实施封锁并部署海上无人机——这是持久战而非快速解决；"不可抑制"的冲突定性；石油市场已将永久风险溢价纳入定价。）</strong></p>
+</div>
+<div class="cluster">
+<h3>普京与习近平：从榜样到"小伙伴"</h3>
+<p>中俄力量对比发生根本性转变。四年的战争和经济孤立将俄罗斯总统从习近平的"榜样"降级为小伙伴。Emma Tucker的10-Point专栏将其框架定性为："习近平如何从仰慕普京转变为管理普京。"</p>
+<p>这是后冷战时期最具影响力的双边关系的结构性重组——西方战略家尚未充分消化这一变化。</p>
+</div>
+<div class="cluster">
+<h3>中国出口激增</h3>
+<p>中国6月出口超过市场预期，为仍受国内需求疲软拖累的经济提供了关键支撑。数据分析师指出：这可能是"经典的出口导向型库存清算"——如果只是去库存行为，Q3数据将令人失望。</p>
+</div>
+<div class="cluster">
+<h3>林赛·格雷厄姆：权力掮客的落幕</h3>
+<p>南卡罗来纳州参议员林赛·格雷厄姆去世，他的姐姐达琳·格雷厄姆被任命接替其参议院席位。在华盛顿，他是权力掮客；在家乡，他"只是林赛"。Gerard Baker的纪念文章称他的"顺从是为了更高尚的目的"——以奉承换取维护联盟和促进全球自由的空间。</p>
+</div>
+<div class="cluster">
+<h3>第1集群交叉引用</h3>
+<p>霍尔木兹海峡的崩溃是今天WSJ的引力中心——它直接影响第2集群（油价、通胀、美联储政策）、第3集群（能源运输成本、全球供应链）和第4集群（行政-司法关系、国际法律架构）。中俄关系的结构性重组与乌克兰对俄罗斯炼油厂的远程打击共同构成对莫斯科的成本施加网络。</p>
+</div>
+
+<h2 class="section-title">第2集群：市场与宏观经济</h2>
+<div class="cluster">
+<h3>CPI 3.5%：虚假的喘息</h3>
+<p>6月CPI同比降至3.5%，汽油价格下跌，核心物价"基本持平"。然而——这只是一个数据采样窗口内的幻觉。<strong>7月油价飙升发生在CPI采样周期之后。</strong>鉴于石油是约60%的CPI运输成分的直接输入以及几乎所有运输商品的间接成本渠道，7月CPI几乎肯定会回升至4%以上。</p>
+<p><strong>关键信号：</strong>债券市场因"CPI降温"而反弹，收益率下降，股市小幅上涨——但这是基于过期数据的行情。冷静的投资者应在8月下次CPI发布前重新评估。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：75%的概率7月CPI将回升至4.0-4.3%区间——（时间：2026年8月发布；依据：6月CPI采样窗口在油价飙升之前；石油是约60%CPI运输成分的直接输入；沃什的"零容忍"证词是为利率回应做铺垫，而市场尚未为这一回应定价。）</strong></p>
+</div>
+<div class="cluster">
+<h3>沃什对国会作证：美联储"零容忍"</h3>
+<p>美联储主席凯文·沃什在国会作证，声明对高通胀"零容忍"。计算机软件价格创下有史以来最大同比涨幅——通胀黏性正从商品转向商业服务。沃什正在为市场尚未看到的数据的利率回应做铺垫。</p>
+<p>油价每上涨10%相当于25个基点的加息，但它是无差别、非定向的。沃什的"零容忍"立场意味着即使通胀来源完全是供给侧，美联储也会用加息来应对——这正在制造华盛顿和美联储都无法单独解决的地缘政治与货币政策的碰撞。</p>
+</div>
+<div class="cluster">
+<h3>石油与黄金的异常背离</h3>
+<table>
+<tr><th>资产</th><th>变动</th><th>信号</th></tr>
+<tr><td>原油</td><td class="up"><strong>单日+10%</strong>（2020年以来最大涨幅）</td><td>伊朗风险溢价全面重新定价</td></tr>
+<tr><td>黄金</td><td class="down">从历史高位<strong>下滑</strong></td><td>反常——地缘政治危机通常提振黄金</td></tr>
+</table>
+<p>数据分析师解读：黄金下跌表明市场定价此次冲突为地区性事件（霍尔木兹海峡石油中断）而非系统性全球风险。如果金油比继续分化，历史上预示着更广泛的避险转风险偏好轮动；如果重新趋同（黄金反弹），则市场在定价升级。关注未来5个交易日的金油比。</p>
+</div>
+<div class="cluster">
+<h3>华尔街银行创纪录季度</h3>
+<table>
+<tr><th>银行</th><th>利润变动</th><th>主要驱动因素</th></tr>
+<tr><td>摩根大通</td><td class="up">+41%</td><td>净利息收入+投行费用</td></tr>
+<tr><td>高盛</td><td class="up">+78%</td><td>股权承销费用因SpaceX IPO翻倍</td></tr>
+<tr><td>花旗</td><td class="up">+45%</td><td>机构客户业务</td></tr>
+<tr><td>美银</td><td class="up">创纪录的销售与交易收入</td><td>固收+股票</td></tr>
+</table>
+<p><strong>分析：</strong>Spencer Jakab警告"花钱更多未必带来全明星投资回报"；"媒体交易：对银行家有利，通常对你无益"。高盛78%的利润增长过度依赖单一IPO（SpaceX），属集中风险，两季度内约60-70%的增幅可能回吐。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：65%的概率高盛Q3-Q4盈利增长将回落至环比-30%至-50%——（时间：2026年Q3-Q4；依据：78%的增幅过度依赖SpaceX IPO单一事件；投行收入具有周期性且均值回归特性；历史季度波动率显示约40-60个百分点的超调幅度将在两季度内修正。）</strong></p>
+</div>
+<div class="cluster">
+<h3>AI债券：$2500亿的考验</h3>
+<p>科技巨头发行了超过$2500亿的AI债券，借款"甚至超出预期"，压低了债券价格。Telis Demos的"街头听闻"专栏指出："公司债券收益率创多年新高，但仍然不够。更高的长期收益率可能不足以补偿更高风险。"James Mackintosh的"街谈巷议"专栏发出更广泛的警告："在一个战争、贸易战和农作物歉收的世界里，债券收益率必须更高，因为它们提供的保护比过去少得多。"</p>
+</div>
+<div class="cluster">
+<h3>企业债券："最好的收益率，仍然不够"</h3>
+<p>当$2500亿新增供给涌入同一个固定收益通道，利差自然扩大，资本成本自然上升。纳斯达克的抛售不是对AI信心的崩溃，而是美元环流的一个中间阀门正在发出过载的金属疲劳声。</p>
+</div>
+<div class="cluster">
+<h3>第2集群交叉引用</h3>
+<p>霍尔木兹溢价通过油价和通胀预期传导至沃什的政策抉择，而沃什的利率信号又反向决定科技资本支出的贴现率。AI债券供给冲击（第2集群）直接塑造第3集群的半导体估值与AI基础设施投资节奏。黄金下跌与华尔街银行利润增长共同指向"流动性抽离"而非"避险涌入"——这与宋鸿兵的货币环流分析形成呼应。</p>
+</div>
+
+<h2 class="section-title">第3集群：商业与科技战略</h2>
+<div class="cluster">
+<h3>IBM暴跌25%：AI资本支出的"金丝雀"</h3>
+<p>IBM股价暴跌高达25%，公司发布盈利预警，称客户支出正从软件转向AI硬件和内存芯片。这是今日数据集中最被低估的信号。数据分析师和战略分析师一致认为：IBM的暴跌揭示了企业IT预算的零和博弈本质。当一家公司花$1000万购买NVIDIA GPU和数据中心机房时，这笔钱并非凭空出现——它从软件许可、咨询合同和传统硬件升级周期中抽走。</p>
+<p><strong>战略影响：</strong>IBM只是第一块倒下的多米诺骨牌。Oracle、SAP、Adobe等传统企业软件供应商将紧随其后。做多AI硬件、做空传统软件的息差交易方向明确。</p>
+</div>
+<div class="cluster">
+<h3>AI数据中心：从繁荣到摩擦的转折点</h3>
+<p>AI数据中心建设正同时面临来自四个方向的压力：</p>
+<table>
+<tr><th>信号</th><th>来源</th><th>含义</th></tr>
+<tr><td>建设方<strong>抛售数十亿美元股权</strong></td><td>独家报道</td><td>聪明钱在需求高峰退出</td></tr>
+<tr><td>纽约州<strong>暂时禁止新建数据中心</strong></td><td>监管动态</td><td>监管反制已至</td></tr>
+<tr><td>农民<strong>起诉数据中心</strong>（水资源、土地争夺）</td><td>土地争议</td><td>城乡土地战争</td></tr>
+<tr><td>一户农家以<strong>$2200万出售农田</strong>暴富</td><td>交易报道</td><td>财富被土地捕获，而非创新</td></tr>
+</table>
+<p><strong>媒介分析师观点：</strong>数据中心建设热潮是"19世纪50年代铁路热潮的2020年代翻版——一个变革性的基础设施浪潮，让早期参与者致富，颠覆既有企业，并在实际生产力实现之前引发监管和土地利用的反弹。"</p>
+</div>
+<div class="cluster">
+<h3>派拉蒙-华纳合并：蓝色州的阻截</h3>
+<p>加利福尼亚州等12个蓝色州试图阻止派拉蒙-华纳合并，认为该交易反竞争、损害影院利益、推高电视套餐价格。</p>
+</div>
+<div class="cluster">
+<h3>Frontier-Starlink合作</h3>
+<p>廉航Frontier Airlines（最后坚持不提供WiFi的航空公司之一）宣布与SpaceX的Starlink合作，正在推出更多附加服务以吸引愿意为优质旅行付费的客户。</p>
+</div>
+<div class="cluster">
+<h3>$9.99：零售业最具说服力的价格</h3>
+<p>公司正在重新设计包装、削减营销预算，以维持$9.99这个心理阈值价格。数据分析师指出：在固定名义点上长期锚定价格等同于实际通缩——按CPI调整后，今天的$9.99比五年前的$9.99更便宜。当足够多的SKU面临这一约束，企业利润率将机械性压缩。</p>
+</div>
+<div class="cluster">
+<h3>学生贷款：百万人逃离SAVE计划</h3>
+<p>近100万人（约20%的SAVE计划借款人）已退出并转入老式还款计划（独家报道），而这些老式计划也将在2028年前被逐步淘汰。借款人每人月供增加约$200-400，年化消费拖累$20-40亿——集中在25-40岁年龄段，正是住房、汽车和耐用品需求的主力。</p>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：60%的概率2026年Q3-Q4零售消费数据将出现显著疲软——（时间：2026年Q3-Q4；依据：100万学生贷款借款人转入更高还款计划，年化$20-40亿消费拖累；$9.99价格锚定压缩企业利润，抑制消费信心；银行创纪录盈利所掩盖的消费端压力将在假日季暴露。）</strong></p>
+</div>
+<div class="cluster">
+<h3>第3集群交叉引用</h3>
+<p>IBM暴跌与$2500亿AI债券供给冲击发生在同一天，揭示旧护城河守护与新资本部署之间的张力。数据中心土地-水资源冲突为第4集群的监管与政策辩论提供素材。学生贷款还款压力与第2集群的消费疲软预测相连，而$9.99价格锚定则是通胀黏性的微观注脚。</p>
+</div>
+
+<h2 class="section-title">第4集群：政策与观点</h2>
+<div class="cluster">
+<h3>编辑部与评论版</h3>
+<p><strong>伊朗：</strong>编辑部主张"伊朗毁约，特朗普重启封锁"，希望总统认识到伊朗签署的谅解备忘录是一场骗局。</p>
+<p><strong>Medicaid支出激增：</strong>Medicaid支出本财年迄今增长10%，编辑部称这驳斥了民主党关于"严苛削减"的说法。</p>
+<p><strong>芝加哥养老金"肺炎"：</strong>伊利诺伊州审计长警告，股市下跌将给芝加哥养老金带来"大麻烦"——市政财政距离危机仅一步之遥。</p>
+<p><strong>Lindsey Graham遗产：</strong>编辑部和Gerard Baker一致认为格雷厄姆的去世是"全球自由的损失"，他的顺从服务了"更高尚的目的"——维护联盟以促进全球自由。</p>
+</div>
+<div class="cluster">
+<h3>马可·鲁比奥：瓦解国际刑事法院</h3>
+<p>"为什么我们要瓦解国际刑事法院"（评论文章，766条评论）。鲁比奥的论点：美国从未同意一个可以凌驾于我们本国法院和宪法之上的世界法庭。这是对二战后建立的国际法律架构的直接挑战——与重新实施军事封锁的同一届政府同步进行。</p>
+</div>
+<div class="cluster">
+<h3>舒默的悲剧</h3>
+<p>William McGurn的"主街"专栏：犹太民主党人发现他们对党的忠诚没有得到回报——正在撕裂传统民主党联盟。</p>
+</div>
+<div class="cluster">
+<h3>法官痛斥特朗普</h3>
+<p>一名法官裁定特朗普试图通过IRS诉讼操纵法律体系（1,034条评论——今日评论量最高的故事）。这一裁决建立了$18亿基金和无审计承诺。</p>
+</div>
+<div class="cluster">
+<h3>战略石油储备：老化的系统</h3>
+<p>频繁从美国战略石油储备中抽取石油正在导致盐穴裂缝、油泵泄漏等老化损耗（316条评论）。专门设计用于吸收石油冲击的系统本身已功能受损——这对正在重新实施封锁的管理机构而言是一个严重的操作摩擦。</p>
+</div>
+<div class="cluster">
+<h3>中美之外的全球动态</h3>
+<ul>
+<li><strong>古巴移民的"新迈阿密"：</strong>因特朗普收紧移民政策，古巴移民在巴西南部建造"新迈阿密"。</li>
+<li><strong>乌克兰打击俄罗斯炼油厂：</strong>远程无人机攻击引发了俄罗斯的燃油危机，并赢得特朗普的罕见赞扬。</li>
+<li><strong>德国默茨的经济改革：</strong>Joseph C. Sternberg的专栏称其"比无所作为好"。</li>
+</ul>
+</div>
+<div class="cluster calibrated-cluster">
+<p class="calibrated"><strong>Calibrated view：55%的概率未来12个月内将发生至少一次重要的美国市政信用事件——（时间：2026年Q3-2027年Q2；依据：芝加哥养老金"肺炎"警告；Medicaid支出以GDP增速2倍增长；下一场衰退将发现各级政府的财政弹药耗尽；华尔街盈利与消费者现实之间的差距意味着税收基础弱于资产价格所显示的水平。）</strong></p>
+</div>
+<div class="cluster">
+<h3>第4集群交叉引用</h3>
+<p>战略石油储备老化直接影响第1集群的霍尔木兹封锁操作能力。法官对特朗普的裁决与鲁比奥瓦解ICC的倡议共同揭示行政-司法-国际法律架构的紧张。芝加哥养老金和Medicaid支出是跨越所有集群的资产负债表问题——在家庭与国家财政约束的背景下，AI资本支出和霍尔木兹军事存在都在争夺有限资源。</p>
+</div>
+
+<h2 class="section-title">综合评估：今日的关键信号</h2>
+<div class="cluster">
+<h3>信号一：霍尔木兹海峡现在是货币变量</h3>
+<p>任何停火崩溃既是地缘政治事件，也是美联储输入变量。油价每上涨10%相当于25个基点的加息，但它是无差别、非定向的。沃什的"零容忍"立场意味着即使通胀来源完全是供给侧，美联储也会用加息来应对——这正在制造华盛顿和美联储都无法单独解决的地缘政治与货币政策的碰撞。</p>
+</div>
+<div class="cluster">
+<h3>信号二：AI基础设施从"建设"进入"摩擦"阶段</h3>
+<p>当建设方出售、监管方禁止、农民起诉、债券市场消化不良时——共识交易已达顶峰。投机性资本应转向瓶颈环节（能源输送、专业建设、芯片供应），而非持有建设方自身的资产。</p>
+</div>
+<div class="cluster">
+<h3>信号三：华尔街与主街生活在不同的经济体制中</h3>
+<p>54.7%的平均银行利润增长（摩根大通/高盛/花旗非加权均值）与$20-40亿的消费拖累并存。银行的创纪录盈利并非经济健康的信号——而是金融部门从断裂系统中提取最大价值的信号。</p>
+</div>
+<div class="cluster">
+<h3>信号四：机构同时耗尽是元趋势</h3>
+<p>ICC、美伊协议、中俄关系、工会、司法-行政关系、Medicaid、养老金——所有这些继承的制度框架同时在压力之下。用战略分析师的话说："这不是向新秩序的过渡时期；这是多种秩序以不同速度同时失败的时期。"</p>
+</div>
+
+<h2 class="section-title">Predictions Table</h2>
+<table class="pred-table">
+<tr><th>预测</th><th>概率</th><th>时间框架</th><th>核心依据</th></tr>
+<tr><td>7月CPI回升至4.0-4.3%区间</td><td class="prob">75%</td><td>2026年8月发布</td><td>6月CPI采样窗口在油价飙升前；石油是约60%CPI运输成分的直接输入；沃什"零容忍"为利率回应铺垫</td></tr>
+<tr><td>高盛Q3-Q4盈利增长回落至环比-30%至-50%</td><td class="prob">65%</td><td>2026年Q3-Q4</td><td>78%增幅过度依赖SpaceX IPO单一事件；投行收入周期性均值回归；历史季度波动率约40-60个百分点超调</td></tr>
+<tr><td>2026年Q3-Q4零售消费数据显著疲软</td><td class="prob">60%</td><td>2026年Q3-Q4</td><td>100万学生贷款借款人月供增加$200-400，年化$20-40亿消费拖累；$9.99价格锚定压缩利润</td></tr>
+<tr><td>未来12个月发生至少一次重要美国市政信用事件</td><td class="prob">55%</td><td>2026年Q3-2027年Q2</td><td>芝加哥养老金"肺炎"警告；Medicaid支出以GDP增速2倍增长；政府财政弹药耗尽</td></tr>
+<tr><td>霍尔木兹海峡军事状态在2026年内成为结构性特征</td><td class="prob">70%</td><td>2026年Q3-Q4</td><td>停火被称"骗局"；伊朗新暗杀阴谋；美国重新封锁并部署海上无人机；石油市场已纳入永久风险溢价</td></tr>
+</table>
+
+<h2 class="section-title">市场数据汇总</h2>
+<table class="market-table">
+<tr><th>指标</th><th>数据</th><th>信号/变动</th></tr>
+<tr><td>WTI原油</td><td>—</td><td class="up">单日+10%（2020年以来最大涨幅）</td></tr>
+<tr><td>黄金</td><td>历史高位附近</td><td class="down">下滑</td></tr>
+<tr><td>6月CPI同比</td><td>3.5%</td><td>短暂降温，但采样窗口在油价飙升前</td></tr>
+<tr><td>IBM</td><td>—</td><td class="down">暴跌高达25%</td></tr>
+<tr><td>摩根大通利润</td><td>—</td><td class="up">+41%</td></tr>
+<tr><td>高盛利润</td><td>—</td><td class="up">+78%</td></tr>
+<tr><td>花旗利润</td><td>—</td><td class="up">+45%</td></tr>
+<tr><td>AI债券发行</td><td>&gt;$2500亿</td><td>超出预期，压低债券价格</td></tr>
+</table>
+
+    <section class="observers">
+    <h2 class="section-title">观察者评论</h2>
+
+    <div class="observer-card zhai">
+        <div class="observer-header">
+            <span class="observer-icon">翟</span>
+            <h3>翟东升 — 体系/结构视角</h3>
+        </div>
+        <div class="observer-body">
+            <p>今日简报中最值得追问的不是油价为什么涨了10%，而是：为什么市场花了四个月才承认波斯湾已经无法恢复正常？这不是一次停火破裂，这是美国主权信用中的军事执行力和法律约束力两个支柱同时暴露断裂——底层逻辑是，美元体系的物质基础正在系统性钙化。</p>
+            <p>霍尔木兹海峡的封锁与恢复封锁，表面看是地缘冲突，实则是主权信用货币体系的一次压力测试。油价每涨10%相当于25个基点加息，但沃什的"零容忍"加息无法区分供给侧冲击和需求侧通胀——美联储正在被自己无法控制的变量绑架。这不是政策选择的问题，这是结构性两难的问题：加息压不住地缘溢价，不加息压不住物价预期。同一个通胀，两套因果，一套工具。</p>
+            <p>再看6月CPI的3.5%。华尔街为之欢呼，但采样窗口在油价飙升之前就关闭了。7月CPI几乎必然回升到4%以上——但债券市场的反弹告诉我们，金融资产定价已经与物理现实脱钩。这不是周期性问题，这是制度熵增的典型症状：当信息传导链条被政治周期和样本窗口切割成碎片，市场共识本身就变成了滞后指标。</p>
+            <p>与此同时，华尔街银行创下54.7%的平均利润增长，而100万学生贷款借款人被迫月供增加$200-400。这不是同一轮经济周期的两个侧面——这是同一个系统正在同时产生两个不同的分配方向。银行从断裂中提取价值，消费者为断裂支付成本。只要美元循环中的分配漏斗不变，所谓"AI繁荣"和"消费韧性"都只是统计幻觉。</p>
+            <p>中俄关系的结构性重组也值得关注：普京从习近平的"榜样"降级为"小伙伴"。这不是个人关系的温度变化，这是平行体系内部权力梯度的一次自然校正。当一方长期消耗而另一方长期积累，双边关系的物理天花板就会显现。俄罗斯正在经历的，是系统性钙化中相对位置的下移，而非中国"背弃盟友"。</p>
+            <p>今天的四个信号指向同一个方向：这不是过渡期，这是多种秩序以不同速度同时失败的时期。聪明钱不会押注哪一方赢——它会押注断裂本身对每一种秩序的不同冲击程度。</p>
+        </div>
+    </div>
+
+    <div class="observer-card jin">
+        <div class="observer-header">
+            <span class="observer-icon">金</span>
+            <h3>金灿荣 — 美国政治/战略相持视角</h3>
+        </div>
+        <div class="observer-body">
+            <p>各位朋友，今天头版很有意思。</p>
+            <p>霍尔木兹海峡停火又崩了，伊朗打油轮，油价一天涨10%。为什么？特朗普嫌奥巴马买的西瓜不甜，砸了摊子自己又买了个更生的。一个协议出来又废，废了又签，签了又撕——这是战略能力出问题了。</p>
+            <p>更关键的是，美国一边打仗一边说"零容忍通胀"。这个事情其实很简单，你加息能打出石油来吗？打不出来。工业化空心化才是根子。没有工厂，没有供应链，再好的金融工具也解决不了物质短缺。华尔街银行利润涨了百分之七八十，老百姓月供多掏两三百美元——同一个国家，两种生活。</p>
+            <p>再看普京。四年战争把俄罗斯从"榜样"打成"小伙伴"。为什么？因为工业化才是大国地位的根。俄罗斯有资源，但中国有工厂。这个结构性变化，西方战略家还没完全看明白。</p>
+            <p>美国在中东越陷越深，俄罗斯在消耗中日渐虚弱，中国工业出口持续增长——这就是2026年7月14日的真实格局。谁工业化基础扎实，谁就能站稳。</p>
+            <p>我们赢了。</p>
+        </div>
+    </div>
+
+    <div class="observer-card song">
+        <div class="observer-header">
+            <span class="observer-icon">宋</span>
+            <h3>宋鸿兵 — 货币/债务/周期视角</h3>
+        </div>
+        <div class="observer-body">
+            <p>今天的数据呈现了一个经典的系统性压力信号：美元环流的两个关键阀门——石油贸易和国债市场——同时承受异常荷载。</p>
+            <p>先看霍尔木兹海峡。停火崩溃，油价单日飙升10%，这不仅仅是地缘政治事件，而是美元环流的一次结构测试。石油是美元霸权的地基：石油-美元-美债的回流回路是布雷顿森林体系解体后货币体系的核心管道。现在这条管道被伊朗掐住了咽喉。更关键的是，黄金在这次危机中不涨反跌——金油比出现异常背离。如果你把全球流动看作一套液压系统，这就是"压力阀错位"信号：市场在定价"这是一场地区性的石油中断，而非全球系统性危机"。但如果伊朗民族主义浪潮继续淹没外交空间，这个判断将在未来30天内被证伪。</p>
+            <p>再看第二组信号：华尔街银行的创纪录利润与消费者承受的$20-40亿还款压力并存。摩根大通+41%、高盛+78%、花旗+45%——这组数字不是经济健康的指标，而是金融高边疆上的租金提取强度创下新高。当金融部门的利润增长依赖SpaceX单笔IPO和净利息收入扩张时，它的80%涨幅将在两个季度内均值回归。这不是个别公司的问题，而是整个系统的稳定性问题——金融部门从断裂中提取价值的能力越强，经济体的其他部分就越脆弱。</p>
+            <p>把这两个信号并排放置：外部是美元环流的石油管道遭物理性破坏，内部是金融高边疆的租金提取利率创历史新高。这不是一种危机与另一种危机的选择——这是一个系统的两个反馈回路同时触发了故障模式。真正的风险不是这两个问题各自恶化，而是它们在某一个压力点上耦合、共振。</p>
+        </div>
+    </div>
+</section>
+
+    <section class="cartoon-section">
+        <h2>Daily Cartoon</h2>
+        <img src="./assets/images/wsj_cartoon.jpg" alt="WSJ Daily Cartoon — July 14, 2026" />
+        <p>WSJ Daily Cartoon — July 14, 2026</p>
+    </section>
+
+    <footer class="footer">
+        <p>WSJ Briefing — July 14, 2026 (Tuesday Edition)</p>
+        <p>WSJ 综合简报</p>
+        <p>Generated by Hermes Agent pipeline</p>
+    </footer>
+</div>
+</body>
+</html>
+
+<!-- PHASE COMPLETE -->
