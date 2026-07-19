@@ -726,5 +726,15 @@
         "./assets/images/wsj_cartoon.jpg"
       ]
     }
+  },
+  "2026-07-19": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-07-19.pdf",
+      "local": "briefings/2026-07-19.html"
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-07-19.pdf",
+      "local": "briefings/2026-07-19.html"
+    }
   }
 }
