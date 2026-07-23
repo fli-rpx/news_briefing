@@ -769,8 +769,10 @@
   },
   "2026-07-23": {
     "nyt": {
-      "pdf": "nyt_briefing_2026-07-23.pdf",
-      "local": "briefings/nyt_2026-07-23.html"
+      "pdf": "nyt_briefing_2026-07-23.pdf"
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-07-23.pdf"
     }
   }
 }

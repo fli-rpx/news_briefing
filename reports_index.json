@@ -214,5 +214,17 @@
     "type": "wsj",
     "title": "WSJ Briefing - July 22, 2026",
     "url": "briefings/wsj_briefing_2026-07-22.html"
+  },
+  {
+    "date": "2026-07-23",
+    "type": "nyt",
+    "title": "NYT Briefing - July 23, 2026",
+    "url": "briefings/nyt_2026-07-23.html"
+  },
+  {
+    "date": "2026-07-23",
+    "type": "wsj",
+    "title": "WSJ Briefing - July 23, 2026",
+    "url": "briefings/wsj_briefing_2026-07-23.html"
   }
 ]
