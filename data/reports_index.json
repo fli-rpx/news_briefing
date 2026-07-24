@@ -780,11 +780,11 @@
   "2026-07-24": {
     "nyt": {
       "pdf": "nyt_briefing_2026-07-24.pdf",
-      "local": "briefings/nyt_2026-07-24.html"
+      "local": "briefings/2026-07-24.html"
     },
     "wsj": {
-      "pdf": "reports/wsj_briefing_2026-07-24.pdf",
-      "local": "briefings/wsj_briefing_2026-07-24.html"
+      "pdf": "wsj_briefing_2026-07-24.pdf",
+      "local": "briefings/2026-07-24.html"
     }
   }
 }
