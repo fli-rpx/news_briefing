@@ -810,7 +810,11 @@
   "2026-07-27": {
     "nyt": {
       "pdf": "nyt_briefing_2026-07-27.pdf",
-      "local": "briefings/nyt_2026-07-27.html"
+      "local": "briefings/2026-07-27.html"
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-07-27.pdf",
+      "local": "briefings/2026-07-27.html"
     }
   },
   "2026-07-27": {
