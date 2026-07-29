@@ -831,6 +831,10 @@
     "nyt": {
       "pdf": "nyt_briefing_2026-07-29.pdf",
       "local": "briefings/nyt_2026-07-29.html"
+    },
+    "wsj": {
+      "pdf": "wsj_briefing_2026-07-29.pdf",
+      "local": "briefings/wsj_briefing_2026-07-29.html"
     }
   }
 }
