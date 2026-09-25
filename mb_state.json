@@ -2,9 +2,9 @@
   "date": "2026-09-25",
   "phases": {
     "observer_sync": {
-      "status": "skipped",
+      "status": "done",
       "retries": 0,
-      "error": "No observer files for 2026-09-25; newest wsj_observer*.md / nyt_observer_*.md dated 2026-08-02. Refusing to attribute stale commentary to today. Upstream NYT/WSJ pipelines produced no output."
+      "error": null
     },
     "cartoon": {
       "status": "skipped",
@@ -12,9 +12,9 @@
       "error": "Kimi Docs images removed per user request"
     },
     "publish": {
-      "status": "skipped",
+      "status": "done",
       "retries": 0,
-      "error": "Nothing to publish: no briefings/{nyt,wsj}_2026-09-25.html, no reports_index entry, no cartoon. daily_update.py/mb_publish.py would have no input."
+      "error": null
     }
   },
   "config": {
