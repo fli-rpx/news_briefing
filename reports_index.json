@@ -244,5 +244,11 @@
     "type": "nyt",
     "title": "NYT Briefing - September 26, 2026",
     "url": "briefings/nyt_2026-09-26.html"
+  },
+  {
+    "date": "2026-09-26",
+    "type": "wsj",
+    "title": "WSJ Briefing - September 26, 2026",
+    "url": "briefings/wsj_briefing_2026-09-26.html"
   }
 ]
