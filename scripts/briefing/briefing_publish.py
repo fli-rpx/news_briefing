@@ -7,7 +7,8 @@ Usage:
         [--skip-state] [--json]
 
 Exit codes: 0 ok, 1 verify/pdf failure, 3 environment, 5 git sync conflict,
-6 CDN verification failed (commit NOT rolled back), 7 pipeline-state update failed.
+6 CDN verification failed (commit NOT rolled back), 7 pipeline-state update failed,
+8 another publish holds the lock (do not run two pipelines concurrently).
 """
 import argparse
 import json
@@ -132,6 +133,79 @@ def _cdn_expect(repo, pipeline, iso):
             "local": os.path.join(repo, p["pdf"]),
         },
     }
+LOCK_PATH = os.path.join(HERMES, "state", "briefing_publish.lock")
+LOCK_STALE_SECONDS = 900
+
+
+def _pid_alive(pid):
+    """True when a process with this pid exists (signal 0 probe).
+
+    PermissionError means the pid exists but belongs to another user: that is
+    still alive, and treating it as dead would let a running publish be stolen.
+    """
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    except OSError:
+        return False
+    return True
+
+
+def _lock_holder():
+    """Read the lock file. Returns (is_stale, description)."""
+    try:
+        with open(LOCK_PATH, encoding="utf-8") as fh:
+            held = json.load(fh)
+        pid = int(held.get("pid", -1))
+        age = time.time() - float(held.get("started", 0))
+    except (OSError, ValueError, TypeError):
+        return True, "unreadable lock file"
+    desc = "pid %s (%s), %.0fs old" % (pid, held.get("pipeline"), age)
+    if not _pid_alive(pid):
+        return True, desc + " - holder is gone"
+    if age > LOCK_STALE_SECONDS:
+        return True, desc + " - older than %ss" % LOCK_STALE_SECONDS
+    return False, desc
+
+
+def acquire_lock(pipeline):
+    """Advisory lock so two publishes never rewrite the shared gallery at once.
+
+    The gallery and both reports_index.json files are shared by both pipelines. If
+    two publishes overlap, each builds a new gallery from its own snapshot and the
+    later rebase silently drops the other's card edit. Returns a release callable,
+    or None when another live publish holds the lock (caller should exit 8).
+    """
+    for attempt in (1, 2):
+        try:
+            fd = os.open(LOCK_PATH, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+        except FileExistsError:
+            stale, desc = _lock_holder()
+            if stale and attempt == 1:
+                try:
+                    os.unlink(LOCK_PATH)
+                except OSError:
+                    pass
+                continue
+            sys.stderr.write("PUBLISH_LOCKED: %s held by %s\n" % (LOCK_PATH, desc))
+            return None
+        with os.fdopen(fd, "w", encoding="utf-8") as fh:
+            json.dump({"pid": os.getpid(), "pipeline": pipeline,
+                       "started": time.time()}, fh)
+
+        def release():
+            try:
+                if os.path.exists(LOCK_PATH):
+                    os.unlink(LOCK_PATH)
+            except OSError:
+                pass
+        return release
+    return None
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description="Publish one briefing end to end")
     ap.add_argument("--pipeline", required=True, choices=["nyt", "wsj"])
@@ -150,6 +224,18 @@ def main(argv=None):
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
 
+    if args.dry_run:
+        return _run(args)
+    release = acquire_lock(args.pipeline)
+    if release is None:
+        return 8
+    try:
+        return _run(args)
+    finally:
+        release()
+
+
+def _run(args):
     iso = args.date or today_iso()
     pipeline = args.pipeline
     p = paths(pipeline, iso)
