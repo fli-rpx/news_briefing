@@ -306,7 +306,13 @@ def _render_wsj(v3):
         for p in paras[1:]:
             content += "<p>%s</p>\n" % md_inline(p)
         content += "</div>\n"
-    for key in ("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4", "Confirmations"):
+    # Rendered top-level sections, in page order. 'Consolidated Prediction Table'
+    # is a prescribed H2 in the V3 (an Evaluator required promoting it out of
+    # Cluster 2 for cluster purity — see daily-wsj-briefing
+    # references/phase-c-writer-eval.md). Omitting it here silently drops the
+    # table from the page; verify_html then fails on '<tr>' count.
+    for key in ("Cluster 1", "Cluster 2", "Cluster 3", "Cluster 4",
+                "Consolidated Prediction Table", "Confirmations"):
         k, v = get_sec(key)
         if k:
             content += _render_section(k, v)
