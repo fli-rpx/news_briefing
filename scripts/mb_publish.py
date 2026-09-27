@@ -64,8 +64,14 @@ def _find_cartoon_path():
 
 
 def run_daily_update(cartoon_rel):
-    """Run daily_update.py with today's cartoon path."""
-    cmd = ["python3", "scripts/daily_update.py", "--cartoon-path", cartoon_rel]
+    """Run daily_update.py, passing today's cartoon path when one exists.
+
+    The cartoon is optional: Kimi Docs image generation was removed, so the
+    publish path must work without one.
+    """
+    cmd = ["python3", "scripts/daily_update.py"]
+    if cartoon_rel:
+        cmd += ["--cartoon-path", cartoon_rel]
     _run(cmd)
 
 
@@ -90,7 +96,22 @@ def fix_read_links():
             continue
 
         local = source_entry.get("local", "")
+
+        # Never break a link that already resolves to a file on disk: the WSJ
+        # pipeline names its page briefings/wsj_briefing_<date>.html, not
+        # briefings/wsj_<date>.html.
+        if local and os.path.exists(os.path.join(REPO_ROOT, local)):
+            continue
+
         expected = f"briefings/{source}_{TODAY}.html"
+
+        # The WSJ pipeline writes briefings/wsj_briefing_<date>.html; prefer it
+        # when the shorter name does not exist.
+        if source == "wsj" and not os.path.exists(os.path.join(REPO_ROOT, expected)):
+            alt = f"briefings/wsj_briefing_{TODAY}.html"
+            if os.path.exists(os.path.join(REPO_ROOT, alt)):
+                expected = alt
+
         if local != expected:
             source_entry["local"] = expected
             changed = True
@@ -151,23 +172,56 @@ def _git_file_committed_today(rel_path):
 
 
 def verify_commit_artifacts(cartoon_rel):
-    """Check that observers.json and the cartoon image are committed today."""
+    """Check that observers.json and (when present) the cartoon are committed today."""
     observers_ok = _git_file_committed_today("data/observers.json")
-    cartoon_ok = _git_file_committed_today(cartoon_rel)
+    cartoon_ok = _git_file_committed_today(cartoon_rel) if cartoon_rel else True
     return observers_ok, cartoon_ok
+
+
+def _already_published():
+    """True when today's per-source pages and index entries already exist on disk.
+
+    The NYT/WSJ briefing pipelines publish their own HTML, PDFs, index entries
+    and commits. Running daily_update.py after that would write a shared
+    briefings/<date>.html fallback, so the legacy copy path must be skipped.
+    """
+    idx_path = os.path.join(REPO_ROOT, "data", "reports_index.json")
+    if not os.path.exists(idx_path):
+        return False
+
+    try:
+        entry = _read_json(idx_path).get(TODAY, {})
+    except Exception:
+        return False
+
+    if not isinstance(entry, dict):
+        return False
+
+    for source in ("nyt", "wsj"):
+        source_entry = entry.get(source)
+        if not isinstance(source_entry, dict):
+            return False
+        local = source_entry.get("local", "")
+        if not local or not os.path.exists(os.path.join(REPO_ROOT, local)):
+            return False
+
+    return True
 
 
 def main():
     cartoon_rel = _find_cartoon_path()
     if not cartoon_rel:
-        _error(f"Cartoon image not found for {TODAY}: images/cartoon_{TODAY}.jpg/.png")
-        return 1
+        print(f"No cartoon for {TODAY} (Kimi Docs images removed) — publishing without one.")
 
     try:
         print(f"=== Morning Briefing Publish for {TODAY} ===")
 
-        print("Step 1: Running daily_update.py...")
-        run_daily_update(cartoon_rel)
+        if _already_published():
+            print("Step 1: Today's briefings were already published by the pipelines"
+                  " — skipping daily_update.py.")
+        else:
+            print("Step 1: Running daily_update.py...")
+            run_daily_update(cartoon_rel)
 
         print("Step 2: Fixing Read links...")
         fixed = fix_read_links()
@@ -194,7 +248,7 @@ def main():
             _error(f"{cartoon_rel} was not committed today")
         if not (observers_ok and cartoon_ok):
             return 1
-        print("  observers.json and cartoon image are committed.")
+        print("  observers.json and cartoon image are committed." if cartoon_rel else "  observers.json is committed.")
 
         print("=== Publish complete ===")
         return 0
