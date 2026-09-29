@@ -339,7 +339,16 @@ def _render_wsj(v3):
 
 # ---------------------------------------------------------------- template splice
 
-def _splice(pipeline, iso, template, content, hero=None, footer_prose=None):
+def _audio_for(pipeline, iso):
+    """Absolute path of the day's mp3 under <repo>/briefings/audio, or None
+    when the file is absent (pages without audio stay byte-identical)."""
+    path = os.path.join(resolve_repo(), "briefings", "audio",
+                        "%s_briefing_%s.mp3" % (pipeline, iso))
+    return path if os.path.exists(path) else None
+
+
+def _splice(pipeline, iso, template, content, hero=None, footer_prose=None,
+            audio=None):
     with open(template, encoding="utf-8") as f:
         tpl = f.read()
     if '<div class="container">' not in tpl:
@@ -387,7 +396,24 @@ def _splice(pipeline, iso, template, content, hero=None, footer_prose=None):
         tail = re.sub(r"<p>Prepared from [^<]*</p>",
                       lambda m: "<p>%s</p>" % footer_prose, tail, count=1)
 
-    html = head + '<div class="container">\n' + content + "\n" + tail
+    # audio bar: immediately after the hero </section>, before the container.
+    # Inline styles only — the template's <style> block is never touched; when
+    # the day's mp3 is missing, nothing is emitted (byte-identical output).
+    audio_bar = ""
+    if audio:
+        name = os.path.basename(audio)
+        audio_bar = (
+            '<div class="audio-bar" style="max-width:900px;margin:0 auto;'
+            'padding:1.25rem 1.5rem 0;text-align:center">\n'
+            '<span style="display:block;color:#c8a84e;letter-spacing:.08em;'
+            'font-size:.95rem;margin-bottom:.6rem">🎧 Listen to this briefing</span>\n'
+            '<audio controls preload="none" src="audio/%s" '
+            'style="width:100%%;max-width:520px"></audio>\n'
+            '<div style="margin-top:.6rem"><a href="audio/%s" download '
+            'style="color:#d0d0e0;font-size:.85rem">Download MP3</a></div>\n'
+            '</div>\n'
+        ) % (name, name)
+    html = head + audio_bar + '<div class="container">\n' + content + "\n" + tail
 
     # remove escaped PHASE COMPLETE artifacts (with or without wrapping <p>)
     html = html.replace("<p>&lt;!-- PHASE COMPLETE --&gt;</p>\n", "")
@@ -428,8 +454,9 @@ def build_html(pipeline, iso, template=None, out=None, hero=None, desc=None):
         content = _render_wsj(v3)
     if template is None:
         template = newest_template(resolve_repo(), pipeline, iso)
+    audio = _audio_for(pipeline, iso)
     html = _splice(pipeline, iso, template, content, hero=hero,
-                   footer_prose=footer_prose)
+                   footer_prose=footer_prose, audio=audio)
     leaks = []
     for lit, msg in (("<img", "image tag leaked into output"),
                      ("assets/images", "image path leaked into output"),
@@ -442,7 +469,7 @@ def build_html(pipeline, iso, template=None, out=None, hero=None, desc=None):
         with open(out, "w", encoding="utf-8") as f:
             f.write(html)
     return {"html": html, "template": template, "out": out, "bytes": len(html),
-            "hero": hero, "desc": desc}
+            "hero": hero, "desc": desc, "audio": audio}
 
 
 def main(argv=None):
