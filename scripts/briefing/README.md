@@ -23,6 +23,11 @@ are loud and exit codes are a contract.
 - V3 markdown sources: `~/.hermes/nyt_briefing_v3.md`,
   `~/.hermes/wsj_briefing_v3.md`. WSJ observer commentary is NOT in the V3 —
   it is read from `~/.hermes/wsj_observer{,2,3}.md`.
+- Audio: `briefings/audio/{pipeline}_briefing_{date}.mp3` (32 kbps mono,
+  synthesised verbatim from the published page by `briefing_audio.py`).
+  Pages link it with a relative `audio/<name>.mp3` src from a self-styled
+  bar inserted right after the hero section; no bar is emitted when the mp3
+  is absent, so audio-free pages stay byte-identical.
 - Run log (all stages of every tool append here):
   `~/.hermes/state/briefing_runs.jsonl` (one JSON object per line with `ts`,
   `pipeline`, `date`, `stage`, `ok`, `detail`).
@@ -39,6 +44,29 @@ are loud and exit codes are a contract.
 `root_index_apply`, `data_index_apply`, `git_commit_push`, `cdn_verify`,
 `run_log`. No side effects at import.
 
+### `briefing_audio.py` — briefing page → spoken MP3
+
+```
+python3 scripts/briefing/briefing_audio.py --pipeline {nyt,wsj} --date ISO \
+    [--out DIR] [--json]
+```
+
+Deterministic, verbatim TTS — no AI summarisation. Reads the published page
+(`briefings/nyt_<date>.html` / `briefings/wsj_briefing_<date>.html`), strips
+markup to speakable sentences (lines with no letter/digit/CJK are dropped —
+edge-tts rejects near-empty input), and reads it with `en-US-AriaNeural`
+(`zh-CN-XiaoxiaoNeural` for CJK-dominant lines: ≥ 6 CJK chars and > 15 %
+CJK). Chunks at line boundaries, max 2500 chars per request; fragments
+shorter than 12 chars fold into the previous chunk; each chunk retries up to
+3 times. Chunks are stitched with `ffmpeg -f concat -safe 0 -c copy` and
+re-encoded to 32 kbps mono (`-ac 1 -b:a 32k`) to keep the repo small. Default
+output is `<repo>/briefings/audio/{pipeline}_briefing_<date>.mp3`
+(`--out` overrides the directory); the directory is created if missing.
+edge-tts binary: `$EDGE_TTS`, else the pinned venv path in the module.
+Exit 0 on success; failures print one line on stderr (3 = environment,
+1 = synthesis/ffmpeg failure). `--json` prints
+`{"ok", "path", "seconds", "chunks"}`.
+
 ### `briefing_build.py` — V3 markdown → briefing HTML
 
 ```
@@ -54,7 +82,12 @@ weekday-date literals in head+tail with today's date, replace the footer ISO
 date, remove escaped `&lt;!-- PHASE COMPLETE --&gt;` artifacts, then place
 exactly one real `<!-- PHASE COMPLETE -->` immediately before `</body>`.
 Asserts text-only output (no `<img` / `assets/images` / `url(`) and runs
-`verify_html`. Default output is `/tmp/<html name>` — it never writes into the
+`verify_html`. When `<repo>/briefings/audio/{pipeline}_briefing_<date>.mp3`
+exists, a self-styled audio bar (inline styles only — the template's
+`<style>` block is untouched) is inserted right after the hero `</section>`,
+before `<div class="container">`; absent mp3 → no bar, byte-identical output.
+The build result dict carries the resolved mp3 path (or `None`) under the
+`"audio"` key. Default output is `/tmp/<html name>` — it never writes into the
 repo on its own.
 
 ### `briefing_publish.py` — end-to-end publish
@@ -62,7 +95,7 @@ repo on its own.
 ```
 python3 scripts/briefing/briefing_publish.py --pipeline {nyt,wsj} [--date ISO] \
     [--html PATH] [--pdf PATH] [--make-pdf] [--hero TEXT] [--desc TEXT] \
-    [--dry-run] [--no-push] [--skip-state] [--json]
+    [--dry-run] [--no-push] [--skip-state] [--no-audio] [--json]
 ```
 
 Steps (each recorded in the run log): freshness gate → build/verify HTML →
@@ -71,8 +104,13 @@ PDF (`--make-pdf` renders the repo HTML via headless Chrome,
 --no-pdf-header-footer --print-to-pdf=<out> --virtual-time-budget=8000
 file://<abs html>`, polls up to 30 s, asserts > 50 KB, Chrome stderr ignored;
 otherwise copies `--pdf` or `~/.hermes/<pdf name>`) → copy HTML+PDF into the
-repo → `gallery_upsert` + `index_upsert` (badges on) → `git_commit_push` with
-an explicit file list (HTML, PDF, `briefings/gallery.html`, both
+repo → `gallery_upsert` + `index_upsert` (badges on) → briefing audio (unless
+`--no-audio`): when `briefings/audio/{pipeline}_briefing_<date>.mp3` is
+missing, `briefing_audio.py` is invoked as a subprocess with a 15-min
+timeout — best effort, any failure or timeout is an `AUDIO_WARN` and never
+blocks or fails the publish → `git_commit_push` with
+an explicit file list (HTML, PDF, the mp3 when present,
+`briefings/gallery.html`, both
 `reports_index.json` files — **never** `git add -A`/`git add .`; on push
 rejection: `git pull --rebase --autostash`, retry once, on conflict abort the
 rebase and exit 5 with instructions) → `cdn_verify` of gallery + HTML + PDF

@@ -40,6 +40,7 @@ except ImportError:  # run as plain scripts
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PDF_MIN_BYTES = 50 * 1024
 PDF_POLL_SECONDS = 30
+AUDIO_TIMEOUT_SECONDS = 900
 
 
 def _clip(text, n=80):
@@ -110,6 +111,34 @@ def make_pdf(repo_html_path, repo_pdf_path):
         % (out_pdf, PDF_POLL_SECONDS, PDF_MIN_BYTES)
     )
     sys.exit(1)
+
+
+def _ensure_audio(pipeline, iso, log_ctx):
+    """Best-effort briefing audio: invoke the generator when the mp3 is
+    missing. Any failure or timeout is a warning only — audio must never
+    block or fail a publish."""
+    script = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                          "briefing_audio.py")
+    cmd = [sys.executable, script, "--pipeline", pipeline, "--date", iso, "--json"]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True,
+                           timeout=AUDIO_TIMEOUT_SECONDS)
+    except subprocess.TimeoutExpired:
+        sys.stderr.write("AUDIO_WARN: generation timed out after %ds — "
+                         "continuing without audio\n" % AUDIO_TIMEOUT_SECONDS)
+        run_log(dict(log_ctx, stage="audio", ok=False, detail="timeout"))
+        return
+    except OSError as exc:
+        sys.stderr.write("AUDIO_WARN: could not run generator: %s\n" % exc)
+        run_log(dict(log_ctx, stage="audio", ok=False, detail=str(exc)))
+        return
+    if r.returncode != 0:
+        tail = (r.stderr.strip().splitlines() or ["unknown error"])[-1]
+        sys.stderr.write("AUDIO_WARN: generation failed: %s\n" % tail)
+        run_log(dict(log_ctx, stage="audio", ok=False, detail=tail))
+        return
+    run_log(dict(log_ctx, stage="audio", ok=True,
+                 detail=(r.stdout.strip() or "generated")))
 
 
 def _cdn_expect(repo, pipeline, iso):
@@ -221,6 +250,9 @@ def main(argv=None):
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--skip-state", action="store_true")
+    ap.add_argument("--no-audio", action="store_true",
+                    help="skip best-effort audio generation (still commits an "
+                         "existing mp3)")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
 
@@ -250,6 +282,7 @@ def _run(args):
     # -- 2. obtain + verify HTML -------------------------------------------
     tmp_html = None
     hero_resolved = args.hero
+    audio_built = None
     if args.html:
         html_path = args.html
         if not os.path.exists(html_path):
@@ -263,6 +296,7 @@ def _run(args):
             result = build_html(pipeline, iso, out=tmp_html,
                                 hero=args.hero, desc=args.desc)
             hero_resolved = result.get("hero")
+            audio_built = result.get("audio")
         except SystemExit:
             raise
         except BuildError as exc:
@@ -284,6 +318,10 @@ def _run(args):
     desc = args.desc if args.desc is not None else derive_desc(pipeline, iso)
     files = [p["html"], p["pdf"], "briefings/gallery.html",
              "reports_index.json", "data/reports_index.json"]
+    audio_rel = "briefings/audio/%s_briefing_%s.mp3" % (pipeline, iso)
+    audio_abs = os.path.join(repo, audio_rel)
+    if audio_built is not None or os.path.exists(audio_abs):
+        files.append(audio_rel)
     commit_msg = "%s briefing %s — publish" % (pipeline.upper(), iso)
 
     # -- dry run: steps 1-5 in memory only ---------------------------------
@@ -349,6 +387,12 @@ def _run(args):
     gallery_upsert(repo, pipeline, iso, desc, badges=True)
     index_upsert(repo, pipeline, iso)
     run_log(dict(log_ctx, stage="gallery_index", ok=True, detail=desc))
+
+    # -- 5b. briefing audio (best effort: never blocks or fails a publish) --
+    if not args.no_audio and not os.path.exists(audio_abs):
+        _ensure_audio(pipeline, iso, log_ctx)
+    if os.path.exists(audio_abs) and audio_rel not in files:
+        files.append(audio_rel)
 
     # -- 6. commit + push ----------------------------------------------------
     res = git_commit_push(repo, files, commit_msg, push=not args.no_push)
