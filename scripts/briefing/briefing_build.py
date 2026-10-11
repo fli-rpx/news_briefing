@@ -347,10 +347,46 @@ def _audio_for(pipeline, iso):
     return path if os.path.exists(path) else None
 
 
+AUDIO_BAR_OPEN = re.compile(r'<div class="audio-bar"[^>]*>', re.S)
+
+
+def _strip_audio_bars(html):
+    """Remove every pre-existing audio-bar block. The bar wraps a nested
+    <div> (the download link), so the matching </div> is found by depth
+    counting, not a non-greedy regex. Tolerant of attribute order/spacing
+    and blocks spanning lines; an unbalanced open tag drops just the tag.
+    Without this, _splice() would inherit the template's bar — a player
+    naming some earlier day's mp3 — into the new page."""
+    out = []
+    pos = 0
+    while True:
+        m = AUDIO_BAR_OPEN.search(html, pos)
+        if m is None:
+            out.append(html[pos:])
+            return "".join(out)
+        out.append(html[pos:m.start()])
+        depth = 1
+        end = None
+        for tag in re.finditer(r"<div\b[^>]*>|</div>", html[m.end():], re.S):
+            if tag.group(0).startswith("</"):
+                depth -= 1
+                if depth == 0:
+                    end = m.end() + tag.end()
+                    break
+            else:
+                depth += 1
+        if end is None:
+            end = m.end()
+        if html[end:end + 1] == "\n":
+            end += 1
+        pos = end
+
+
 def _splice(pipeline, iso, template, content, hero=None, footer_prose=None,
             audio=None):
     with open(template, encoding="utf-8") as f:
         tpl = f.read()
+    tpl = _strip_audio_bars(tpl)
     if '<div class="container">' not in tpl:
         sys.stderr.write("TEMPLATE_INVALID: no <div class=\"container\"> in %s\n" % template)
         sys.exit(3)

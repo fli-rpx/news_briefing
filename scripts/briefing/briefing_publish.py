@@ -141,6 +141,44 @@ def _ensure_audio(pipeline, iso, log_ctx):
                  detail=(r.stdout.strip() or "generated")))
 
 
+def _assert_audio_bar(repo_html_path, audio_abs, pipeline, iso, log_ctx):
+    """Post-build assertion: when the day's mp3 exists the page must carry
+    exactly one audio-bar naming that file; when it does not, none. Any
+    violation is an AUDIO_WARN only — audio must never fail a publish."""
+    try:
+        with open(repo_html_path, encoding="utf-8") as f:
+            page = f.read()
+    except OSError as exc:
+        sys.stderr.write("AUDIO_WARN: audio-bar check could not read %s: %s\n"
+                         % (repo_html_path, exc))
+        return
+    bars = len(re.findall(r'<div class="audio-bar"[^>]*>', page))
+    srcs = re.findall(r'src="audio/([^"]+)"', page)
+    expected = os.path.basename(audio_abs)
+    if os.path.exists(audio_abs):
+        bad = [s for s in srcs if s != expected]
+        if bars != 1 or bad:
+            sys.stderr.write(
+                "AUDIO_WARN: %s: mp3 %s exists but page has %d audio-bar(s), "
+                "offending src(s): %s\n"
+                % (os.path.basename(repo_html_path), expected, bars,
+                   ", ".join(bad or srcs) or "none"))
+            run_log(dict(log_ctx, stage="audio_bar_check", ok=False,
+                         detail={"bars": bars, "srcs": srcs}))
+            return
+    elif bars or srcs:
+        sys.stderr.write(
+            "AUDIO_WARN: %s: no mp3 for %s but page has %d audio-bar(s), "
+            "offending src(s): %s\n"
+            % (os.path.basename(repo_html_path), iso, bars,
+               ", ".join(srcs) or "none"))
+        run_log(dict(log_ctx, stage="audio_bar_check", ok=False,
+                     detail={"bars": bars, "srcs": srcs}))
+        return
+    run_log(dict(log_ctx, stage="audio_bar_check", ok=True,
+                 detail={"bars": bars}))
+
+
 def _cdn_expect(repo, pipeline, iso):
     """CDN urls -> what the served bytes must match locally.
 
@@ -393,6 +431,49 @@ def _run(args):
         _ensure_audio(pipeline, iso, log_ctx)
     if os.path.exists(audio_abs) and audio_rel not in files:
         files.append(audio_rel)
+
+    # -- 5c. rebuild the page now the audio exists -----------------------------
+    # The first build ran before 5b: on the run that generates the mp3 the
+    # page went out with no bar (and otherwise could inherit a stale one).
+    # When the mp3 exists now and the page on disk does not reference it,
+    # rebuild with the same arguments and publish the rebuilt page instead.
+    if tmp_html is not None and os.path.exists(audio_abs):
+        want_src = 'src="audio/%s"' % os.path.basename(audio_abs)
+        try:
+            with open(repo_html, encoding="utf-8") as f:
+                page_now = f.read()
+        except OSError:
+            page_now = ""
+        if page_now.count(want_src) != 1:
+            try:
+                fd, rebuilt = tempfile.mkstemp(suffix=".html",
+                                               prefix="briefing_audio_")
+                os.close(fd)
+                build_html(pipeline, iso, out=rebuilt,
+                           hero=args.hero, desc=args.desc)
+                vok2, verrs2 = verify_html(rebuilt, pipeline, iso,
+                                           text_only=True)
+                if not vok2:
+                    raise BuildError("rebuilt page failed verify: %s"
+                                     % "; ".join(verrs2))
+                shutil.copy2(rebuilt, repo_html)
+                html_path = rebuilt
+                run_log(dict(log_ctx, stage="rebuild_audio", ok=True,
+                             detail=os.path.basename(audio_abs)))
+            except SystemExit as exc:
+                sys.stderr.write(
+                    "AUDIO_WARN: rebuild after audio exited (code %s) — "
+                    "keeping original page\n" % exc.code)
+                run_log(dict(log_ctx, stage="rebuild_audio", ok=False,
+                             detail="exit %s" % exc.code))
+            except Exception as exc:  # noqa: BLE001 - never fail a publish
+                sys.stderr.write("AUDIO_WARN: rebuild after audio failed: %s\n"
+                                 % exc)
+                run_log(dict(log_ctx, stage="rebuild_audio", ok=False,
+                             detail=str(exc)))
+
+    # -- 5d. post-build audio-bar assertion (best effort: warn, never fail) --
+    _assert_audio_bar(repo_html, audio_abs, pipeline, iso, log_ctx)
 
     # -- 6. commit + push ----------------------------------------------------
     res = git_commit_push(repo, files, commit_msg, push=not args.no_push)
