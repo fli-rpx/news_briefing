@@ -136,9 +136,44 @@ def _read_links_ok():
     return True
 
 
+def _live_json_has_today(rel_path):
+    """True if the DEPLOYED copy of *rel_path* carries today's key.
+
+    A bare HEAD on the gallery root returns 200 even when Pages has not
+    deployed yet or is serving yesterday's data — checking the live JSON is
+    what actually proves today's edition reached the CDN.
+    """
+    url = CDN_URL.rstrip("/") + "/" + rel_path
+    try:
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "mb-checkpoint/1.0", "Cache-Control": "no-cache"}
+        )
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            if resp.status != 200:
+                return False
+            data = json.loads(resp.read().decode("utf-8", "replace"))
+    except Exception:
+        return False
+
+    entry = data.get(TODAY)
+    if not isinstance(entry, dict):
+        return False
+
+    if rel_path.endswith("observers.json"):
+        return all(entry.get(k) for k in ("zhai", "jin", "song"))
+
+    return any(isinstance(entry.get(s), dict) for s in ("nyt", "wsj"))
+
+
 def check_publish():
-    """True if today's commit, CDN, and Read links are all good."""
-    return _git_has_commit_today() and _cdn_reachable() and _read_links_ok()
+    """True if today's commit, CDN, Read links, and live CDN data are all good."""
+    return (
+        _git_has_commit_today()
+        and _cdn_reachable()
+        and _read_links_ok()
+        and _live_json_has_today("data/observers.json")
+        and _live_json_has_today("data/reports_index.json")
+    )
 
 
 def main():
