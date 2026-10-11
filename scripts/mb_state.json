@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-09",
+  "date": "2026-10-11",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -19,5 +19,11 @@
   },
   "config": {
     "max_retries": 2
+  },
+  "notes": {
+    "observer_source": "wsj (zhai 755 / jin 668 / song 630 chars html)",
+    "observers_commit": "f63e893",
+    "pages_deploy": "38157852435 (success)",
+    "live_verified": "gallery renders 3 Observer blocks + nyt/wsj 2026-10-11 links; live data/observers.json has 2026-10-11"
   }
 }
