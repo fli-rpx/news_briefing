@@ -3,10 +3,13 @@
 
 Deletes older mp3s under briefings/audio and strips the player from their pages,
 so a published page never offers a control pointing at a file that is gone.
+It also prunes the rolling 'briefing-audio' GitHub release: any mp3 asset
+whose embedded date is outside the keep window is deleted, so the release
+mirrors the local keep policy (audio is hosted as a release asset, not in git).
 
-Note: this keeps the WORKING TREE small. It does not reclaim git history - each
-mp3 stays in the object store forever once committed, so the repository keeps
-growing until the history is rewritten or the audio is hosted outside git.
+Note: this keeps the WORKING TREE and the release small. It does not reclaim
+git history - each mp3 committed before the move to release assets stays in
+the object store forever.
 
 Usage:
     briefing_audio_prune.py [--keep-days N] [--dry-run] [--json]
@@ -17,6 +20,7 @@ import argparse
 import json
 import os
 import re
+import subprocess
 import sys
 
 try:
@@ -34,6 +38,7 @@ except ImportError:
 
 AUDIO_RX = re.compile(r"^(nyt|wsj)_briefing_(\d{4}-\d{2}-\d{2})\.mp3$")
 BAR_RX = re.compile(r'<div class="audio-bar"[^>]*>', re.S)
+AUDIO_RELEASE_TAG = "briefing-audio"
 
 
 def _depth_strip(html):
@@ -61,6 +66,45 @@ def page_rel(pipeline, iso):
     return ("nyt_%s.html" % iso) if pipeline == "nyt" else ("wsj_briefing_%s.html" % iso)
 
 
+def _prune_release_assets(kept_pairs, dry_run):
+    """Best-effort pruning of the rolling 'briefing-audio' GitHub release:
+    every mp3 asset whose embedded (pipeline, date) is outside the local keep
+    window is deleted. Failures are reported on stderr and never fail the
+    prune run. Returns the list of deleted — or, in dry-run, would-delete —
+    asset names."""
+    deleted = []
+    try:
+        r = subprocess.run(["gh", "release", "view", AUDIO_RELEASE_TAG,
+                            "--json", "assets"],
+                           capture_output=True, text=True, timeout=120)
+        if r.returncode != 0:
+            raise RuntimeError("gh release view failed: %s"
+                               % (r.stderr.strip() or "unknown error"))
+        assets = json.loads(r.stdout or "{}").get("assets", [])
+    except Exception as exc:  # noqa: BLE001 - release pruning is best effort
+        sys.stderr.write("AUDIO_WARN: release asset listing failed: %s\n" % exc)
+        return deleted
+    for asset in assets:
+        name = asset.get("name", "")
+        m = AUDIO_RX.match(name)
+        if not m or (m.group(1), m.group(2)) in kept_pairs:
+            continue
+        if dry_run:
+            deleted.append(name)
+            continue
+        try:
+            r = subprocess.run(["gh", "release", "delete-asset",
+                                AUDIO_RELEASE_TAG, name, "--yes"],
+                               capture_output=True, text=True, timeout=120)
+            if r.returncode != 0:
+                raise RuntimeError(r.stderr.strip() or "unknown error")
+            deleted.append(name)
+        except Exception as exc:  # noqa: BLE001 - best effort per asset
+            sys.stderr.write("AUDIO_WARN: release asset %s not deleted: %s\n"
+                             % (name, exc))
+    return deleted
+
+
 def prune(repo, keep_days, dry_run=False):
     adir = os.path.join(repo, "briefings", "audio")
     if not os.path.isdir(adir):
@@ -71,11 +115,13 @@ def prune(repo, keep_days, dry_run=False):
         if m:
             by_pipe.setdefault(m.group(1), []).append((m.group(2), name))
     pruned, kept = [], []
+    kept_pairs = set()
     for pipeline in sorted(by_pipe):
         entries = sorted(by_pipe[pipeline], reverse=True)      # newest first
         keep = entries[:keep_days]
         drop = entries[keep_days:]
         kept.extend([n for _, n in keep])
+        kept_pairs.update((pipeline, iso) for iso, _ in keep)
         for iso, name in drop:
             page = page_rel(pipeline, iso)
             page_path = os.path.join(repo, "briefings", page)
@@ -95,8 +141,10 @@ def prune(repo, keep_days, dry_run=False):
             pruned.append({"file": "briefings/audio/%s" % name,
                            "page": page if bars_removed else None,
                            "page_changed": bool(bars_removed)})
+    deleted_assets = _prune_release_assets(kept_pairs, dry_run)
     return {"ok": True, "kept": sorted(kept), "pruned": pruned,
             "kept_count": len(kept), "pruned_count": len(pruned),
+            "deleted_assets": deleted_assets,
             "dry_run": dry_run, "repo": repo}
 
 
@@ -128,6 +176,10 @@ def main(argv=None):
         for p in res["pruned"]:
             extra = "  (+player removed from %s)" % p["page"] if p["page_changed"] else ""
             print("  %s%s" % (p["file"], extra))
+        if res["deleted_assets"]:
+            verb = "would delete" if res["dry_run"] else "deleted"
+            print("%s %d release asset(s): %s"
+                  % (verb, len(res["deleted_assets"]), ", ".join(res["deleted_assets"])))
     return 0
 
 

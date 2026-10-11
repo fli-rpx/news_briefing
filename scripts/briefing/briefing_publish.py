@@ -19,6 +19,7 @@ import subprocess
 import sys
 import tempfile
 import time
+import urllib.request
 
 try:
     from .briefing_lib import (
@@ -27,7 +28,7 @@ try:
         paths, require_fresh, resolve_repo, root_index_apply, run_log,
         split_sentences_safe, today_iso, verify_html,
     )
-    from .briefing_build import BuildError, build_html
+    from .briefing_build import AUDIO_URL_BASE, BuildError, build_html
 except ImportError:  # run as plain scripts
     from briefing_lib import (
         HERMES, PIPELINE_STATE, SITE_BASE, STATE_LOG, data_index_apply,
@@ -35,12 +36,16 @@ except ImportError:  # run as plain scripts
         paths, require_fresh, resolve_repo, root_index_apply, run_log,
         split_sentences_safe, today_iso, verify_html,
     )
-    from briefing_build import BuildError, build_html
+    from briefing_build import AUDIO_URL_BASE, BuildError, build_html
 
 CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PDF_MIN_BYTES = 50 * 1024
 PDF_POLL_SECONDS = 30
 AUDIO_TIMEOUT_SECONDS = 900
+AUDIO_RELEASE_TAG = "briefing-audio"
+AUDIO_RELEASE_TITLE = "Briefing audio"
+AUDIO_RELEASE_NOTES = ("Rolling asset store for briefing MP3s; "
+                       "published pages link these URLs.")
 
 
 def _clip(text, n=80):
@@ -141,10 +146,54 @@ def _ensure_audio(pipeline, iso, log_ctx):
                  detail=(r.stdout.strip() or "generated")))
 
 
+def _upload_audio(audio_abs, log_ctx):
+    """Best-effort upload of the day's mp3 to the rolling 'briefing-audio'
+    GitHub release, followed by a serve check of the asset URL (HTTP 200 and
+    the served byte length equals the local file's size). Any failure is an
+    AUDIO_WARN only — audio must never block or fail a publish."""
+    name = os.path.basename(audio_abs)
+    url = AUDIO_URL_BASE + name
+    try:
+        r = subprocess.run(["gh", "release", "view", AUDIO_RELEASE_TAG],
+                           capture_output=True, text=True, timeout=120)
+        if r.returncode != 0:
+            r = subprocess.run(
+                ["gh", "release", "create", AUDIO_RELEASE_TAG,
+                 "--title", AUDIO_RELEASE_TITLE, "--notes", AUDIO_RELEASE_NOTES],
+                capture_output=True, text=True, timeout=120)
+            if r.returncode != 0:
+                raise RuntimeError("gh release create failed: %s"
+                                   % (r.stderr.strip() or "unknown error"))
+        r = subprocess.run(["gh", "release", "upload", AUDIO_RELEASE_TAG,
+                            audio_abs, "--clobber"],
+                           capture_output=True, text=True, timeout=600)
+        if r.returncode != 0:
+            raise RuntimeError("gh release upload failed: %s"
+                               % (r.stderr.strip() or "unknown error"))
+        req = urllib.request.Request(
+            url, headers={"User-Agent": "briefing-publish/1.0"})
+        with urllib.request.urlopen(req, timeout=60) as resp:
+            status = resp.status
+            body = resp.read()
+        if status != 200:
+            raise RuntimeError("asset URL %s returned HTTP %s" % (url, status))
+        local_bytes = os.path.getsize(audio_abs)
+        if len(body) != local_bytes:
+            raise RuntimeError("served %d bytes but local file %s is %d bytes"
+                               % (len(body), name, local_bytes))
+    except Exception as exc:  # noqa: BLE001 - never fail a publish
+        sys.stderr.write("AUDIO_WARN: audio upload failed: %s\n" % exc)
+        run_log(dict(log_ctx, stage="audio_upload", ok=False, detail=str(exc)))
+        return
+    run_log(dict(log_ctx, stage="audio_upload", ok=True,
+                 detail={"ok": True, "url": url, "bytes": local_bytes}))
+
+
 def _assert_audio_bar(repo_html_path, audio_abs, pipeline, iso, log_ctx):
     """Post-build assertion: when the day's mp3 exists the page must carry
-    exactly one audio-bar naming that file; when it does not, none. Any
-    violation is an AUDIO_WARN only — audio must never fail a publish."""
+    exactly one audio-bar whose src ends with today's filename; when it does
+    not, none. Any violation is an AUDIO_WARN only — audio must never fail a
+    publish."""
     try:
         with open(repo_html_path, encoding="utf-8") as f:
             page = f.read()
@@ -153,11 +202,12 @@ def _assert_audio_bar(repo_html_path, audio_abs, pipeline, iso, log_ctx):
                          % (repo_html_path, exc))
         return
     bars = len(re.findall(r'<div class="audio-bar"[^>]*>', page))
-    srcs = re.findall(r'src="audio/([^"]+)"', page)
+    srcs = [s for s in re.findall(r'src="([^"]+)"', page) if s.endswith(".mp3")]
     expected = os.path.basename(audio_abs)
     if os.path.exists(audio_abs):
-        bad = [s for s in srcs if s != expected]
-        if bars != 1 or bad:
+        matching = [s for s in srcs if s.endswith(expected)]
+        bad = [s for s in srcs if not s.endswith(expected)]
+        if bars != 1 or len(matching) != 1 or bad:
             sys.stderr.write(
                 "AUDIO_WARN: %s: mp3 %s exists but page has %d audio-bar(s), "
                 "offending src(s): %s\n"
@@ -289,8 +339,7 @@ def main(argv=None):
     ap.add_argument("--no-push", action="store_true")
     ap.add_argument("--skip-state", action="store_true")
     ap.add_argument("--no-audio", action="store_true",
-                    help="skip best-effort audio generation (still commits an "
-                         "existing mp3)")
+                    help="skip best-effort audio generation and release upload")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args(argv)
 
@@ -320,7 +369,6 @@ def _run(args):
     # -- 2. obtain + verify HTML -------------------------------------------
     tmp_html = None
     hero_resolved = args.hero
-    audio_built = None
     if args.html:
         html_path = args.html
         if not os.path.exists(html_path):
@@ -334,7 +382,6 @@ def _run(args):
             result = build_html(pipeline, iso, out=tmp_html,
                                 hero=args.hero, desc=args.desc)
             hero_resolved = result.get("hero")
-            audio_built = result.get("audio")
         except SystemExit:
             raise
         except BuildError as exc:
@@ -358,8 +405,6 @@ def _run(args):
              "reports_index.json", "data/reports_index.json"]
     audio_rel = "briefings/audio/%s_briefing_%s.mp3" % (pipeline, iso)
     audio_abs = os.path.join(repo, audio_rel)
-    if audio_built is not None or os.path.exists(audio_abs):
-        files.append(audio_rel)
     commit_msg = "%s briefing %s — publish" % (pipeline.upper(), iso)
 
     # -- dry run: steps 1-5 in memory only ---------------------------------
@@ -429,16 +474,17 @@ def _run(args):
     # -- 5b. briefing audio (best effort: never blocks or fails a publish) --
     if not args.no_audio and not os.path.exists(audio_abs):
         _ensure_audio(pipeline, iso, log_ctx)
-    if os.path.exists(audio_abs) and audio_rel not in files:
-        files.append(audio_rel)
+    if not args.no_audio and os.path.exists(audio_abs):
+        _upload_audio(audio_abs, log_ctx)
 
     # -- 5c. rebuild the page now the audio exists -----------------------------
     # The first build ran before 5b: on the run that generates the mp3 the
     # page went out with no bar (and otherwise could inherit a stale one).
-    # When the mp3 exists now and the page on disk does not reference it,
-    # rebuild with the same arguments and publish the rebuilt page instead.
+    # When the mp3 exists now and the page on disk does not reference its
+    # release URL exactly once, rebuild with the same arguments and publish
+    # the rebuilt page instead.
     if tmp_html is not None and os.path.exists(audio_abs):
-        want_src = 'src="audio/%s"' % os.path.basename(audio_abs)
+        want_src = 'src="%s"' % (AUDIO_URL_BASE + os.path.basename(audio_abs))
         try:
             with open(repo_html, encoding="utf-8") as f:
                 page_now = f.read()

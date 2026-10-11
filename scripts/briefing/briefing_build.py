@@ -29,6 +29,11 @@ except ImportError:  # run as a plain script
 
 FOOTER_MARKERS = ('<footer class="footer">', '<div class="footer">')
 
+# Audio is hosted on the rolling 'briefing-audio' GitHub release, never in
+# the repo: both player URLs are AUDIO_URL_BASE + the mp3 basename.
+AUDIO_URL_BASE = ("https://github.com/fli-rpx/news_briefing/releases/download/"
+                  "briefing-audio/")
+
 
 class BuildError(Exception):
     pass
@@ -435,20 +440,22 @@ def _splice(pipeline, iso, template, content, hero=None, footer_prose=None,
     # audio bar: immediately after the hero </section>, before the container.
     # Inline styles only — the template's <style> block is never touched; when
     # the day's mp3 is missing, nothing is emitted (byte-identical output).
+    # The mp3 is served from the 'briefing-audio' GitHub release, so both the
+    # player src and the download href are absolute release URLs.
     audio_bar = ""
     if audio:
-        name = os.path.basename(audio)
+        url = AUDIO_URL_BASE + os.path.basename(audio)
         audio_bar = (
             '<div class="audio-bar" style="max-width:900px;margin:0 auto;'
             'padding:1.25rem 1.5rem 0;text-align:center">\n'
             '<span style="display:block;color:#c8a84e;letter-spacing:.08em;'
             'font-size:.95rem;margin-bottom:.6rem">🎧 Listen to this briefing</span>\n'
-            '<audio controls preload="none" src="audio/%s" '
+            '<audio controls preload="none" src="%s" '
             'style="width:100%%;max-width:520px"></audio>\n'
-            '<div style="margin-top:.6rem"><a href="audio/%s" download '
+            '<div style="margin-top:.6rem"><a href="%s" download '
             'style="color:#d0d0e0;font-size:.85rem">Download MP3</a></div>\n'
             '</div>\n'
-        ) % (name, name)
+        ) % (url, url)
     html = head + audio_bar + '<div class="container">\n' + content + "\n" + tail
 
     # remove escaped PHASE COMPLETE artifacts (with or without wrapping <p>)
