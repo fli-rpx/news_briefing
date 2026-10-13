@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-12",
+  "date": "2026-10-13",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -21,9 +21,9 @@
     "max_retries": 2
   },
   "notes": {
-    "observer_source": "wsj (zhai 707 / jin 771 / song 726 chars html)",
-    "observers_commit": "a2204b1",
-    "pages_deploy": "38281339884 (success)",
-    "live_verified": "gallery renders 3 Observer blocks + nyt/wsj 2026-10-12 Read links; live data/observers.json and data/reports_index.json carry 2026-10-12"
+    "observer_source": "wsj (zhai 722 / jin 792 / song 636 chars html)",
+    "observers_commit": "4f3b2bc",
+    "pages_deploy": "38435191805 (success)",
+    "live_verified": "gallery CDN live data/observers.json carries 2026-10-13 (zhai/jin/song) and data/reports_index.json carries nyt briefings/nyt_2026-10-13.html + wsj briefings/wsj_briefing_2026-10-13.html"
   }
 }
