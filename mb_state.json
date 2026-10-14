@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-13",
+  "date": "2026-10-14",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -12,7 +12,7 @@
       "error": "Kimi Docs images removed per user request"
     },
     "publish": {
-      "status": "done",
+      "status": "pending",
       "retries": 0,
       "error": null
     }
@@ -21,9 +21,9 @@
     "max_retries": 2
   },
   "notes": {
-    "observer_source": "wsj (zhai 722 / jin 792 / song 636 chars html)",
-    "observers_commit": "4f3b2bc",
-    "pages_deploy": "38435191805 (success)",
-    "live_verified": "gallery CDN live data/observers.json carries 2026-10-13 (zhai/jin/song) and data/reports_index.json carries nyt briefings/nyt_2026-10-13.html + wsj briefings/wsj_briefing_2026-10-13.html"
+    "observer_source": "wsj (zhai 802 / jin 777 / song 968 chars html)",
+    "observers_commit": null,
+    "pages_deploy": null,
+    "live_verified": null
   }
 }
