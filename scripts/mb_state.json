@@ -1,29 +1,10 @@
 {
-  "date": "2026-10-11",
+  "date": "2026-10-15",
   "phases": {
-    "observer_sync": {
-      "status": "done",
-      "retries": 0,
-      "error": null
-    },
-    "cartoon": {
-      "status": "skipped",
-      "retries": 0,
-      "error": "Kimi Docs images removed per user request"
-    },
-    "publish": {
-      "status": "done",
-      "retries": 0,
-      "error": null
-    }
+    "observer_sync": {"status": "done", "retries": 0, "error": null},
+    "cartoon": {"status": "skipped", "retries": 0, "error": "Kimi Docs images removed per user request"},
+    "publish": {"status": "pending", "retries": 0, "error": null}
   },
-  "config": {
-    "max_retries": 2
-  },
-  "notes": {
-    "observer_source": "wsj (zhai 755 / jin 668 / song 630 chars html)",
-    "observers_commit": "f63e893",
-    "pages_deploy": "38157852435 (success)",
-    "live_verified": "gallery renders 3 Observer blocks + nyt/wsj 2026-10-11 links; live data/observers.json has 2026-10-11"
-  }
+  "config": {"max_retries": 2},
+  "notes": {"observer_source": "wsj (zhai 785 / jin 747 / song 771 chars html)"}
 }
