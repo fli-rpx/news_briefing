@@ -1,10 +1,16 @@
 {
-  "date": "2026-10-15",
+  "date": "2026-10-16",
   "phases": {
     "observer_sync": {"status": "done", "retries": 0, "error": null},
     "cartoon": {"status": "skipped", "retries": 0, "error": "Kimi Docs images removed per user request"},
-    "publish": {"status": "pending", "retries": 0, "error": null}
+    "publish": {"status": "done", "retries": 0, "error": null}
   },
   "config": {"max_retries": 2},
-  "notes": {"observer_source": "wsj (zhai 785 / jin 747 / song 771 chars html)"}
+  "notes": {
+    "observer_source": "wsj (zhai 848 / jin 819 / song 782 chars html)",
+    "observers_commit": "6f16ec6",
+    "pages_deploy": "38936427504 (success, sha 6f16ec6)",
+    "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines, Read links correct, observers.json committed, CDN HTTP 200",
+    "live_verified": "live data/observers.json carries 2026-10-16 (zhai/jin/song) and data/reports_index.json carries nyt briefings/nyt_2026-10-16.html + wsj briefings/wsj_briefing_2026-10-16.html"
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-14",
+  "date": "2026-10-16",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -21,11 +21,11 @@
     "max_retries": 2
   },
   "notes": {
-    "observer_source": "wsj (zhai 802 / jin 777 / song 968 chars html)",
-    "observers_commit": "1cad8bb",
-    "pages_deploy": "38603024278 (success)",
-    "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines, Read links correct, observers.json committed",
-    "live_verified": "live data/observers.json carries 2026-10-14 (zhai/jin/song) and data/reports_index.json carries nyt briefings/nyt_2026-10-14.html + wsj briefings/wsj_briefing_2026-10-14.html",
+    "observer_source": "wsj (zhai 848 / jin 819 / song 782 chars html)",
+    "observers_commit": "6f16ec6",
+    "pages_deploy": "38936427504 (success, sha 6f16ec6)",
+    "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines, Read links correct, observers.json committed, CDN HTTP 200",
+    "live_verified": "live data/observers.json carries 2026-10-16 (zhai/jin/song) and data/reports_index.json carries nyt briefings/nyt_2026-10-16.html + wsj briefings/wsj_briefing_2026-10-16.html",
     "note": "mb_checkpoint.py still reports cartoon pending because no cartoon image exists — cartoon is intentionally skipped (Kimi Docs images removed); state file is authoritative"
   }
 }
