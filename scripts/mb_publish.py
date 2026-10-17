@@ -10,6 +10,7 @@ Usage:
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import time
@@ -21,6 +22,10 @@ TODAY = datetime.now().strftime("%Y-%m-%d")
 CDN_URL = "https://fli-rpx.github.io/news_briefing/"
 CDN_POLL_RETRIES = 3
 CDN_POLL_INTERVAL = 15
+SOURCE_DIR = os.path.join(os.path.expanduser("~"), ".hermes")
+REPORTS_DIR = os.path.join(REPO_ROOT, "reports")
+BRIEFINGS_DIR = os.path.join(REPO_ROOT, "briefings")
+SOURCES = ("nyt", "wsj")
 
 
 def _error(msg):
@@ -75,6 +80,36 @@ def run_daily_update(cartoon_rel):
     _run(cmd)
 
 
+def sync_pdfs():
+    """Mirror today's per-source PDFs into reports/ so gallery PDF links resolve.
+
+    daily_update.py used to copy ~/.hermes/<source>_briefing_<date>.pdf into
+    reports/, but publish now skips daily_update when the pipelines have
+    already published their pages — which left reports/ stale since
+    2026-08-03 and made the gallery's "PDF" button 404 on every later
+    edition. The briefing pipelines write their PDFs to briefings/ (and
+    ~/.hermes), so copy from either location.
+
+    Returns the list of filenames newly copied into reports/.
+    """
+    copied = []
+    for source in SOURCES:
+        filename = f"{source}_briefing_{TODAY}.pdf"
+        dst = os.path.join(REPORTS_DIR, filename)
+        if os.path.exists(dst):
+            continue
+        for src in (
+            os.path.join(BRIEFINGS_DIR, filename),
+            os.path.join(SOURCE_DIR, filename),
+        ):
+            if os.path.exists(src):
+                os.makedirs(REPORTS_DIR, exist_ok=True)
+                shutil.copy2(src, dst)
+                copied.append(filename)
+                break
+    return copied
+
+
 def fix_read_links():
     """Ensure today's entries in data/reports_index.json use source-prefixed paths.
 
@@ -127,13 +162,22 @@ def _has_changes_to_commit():
     return result.returncode != 0
 
 
-def git_commit_and_push_fix():
-    """Stage, commit, and push the Read-links fix if there are changes."""
+def git_commit_and_push_fix(pdf_names=None):
+    """Stage, commit, and push the Read-links fix and any newly copied PDFs."""
+    pdf_names = pdf_names or []
+
+    _run(["git", "add", "data/reports_index.json"])
+    for name in pdf_names:
+        _run(["git", "add", os.path.join("reports", name)])
+
     if not _has_changes_to_commit():
         return False
 
-    _run(["git", "add", "data/reports_index.json"])
-    _run(["git", "commit", "-m", f"Fix Read links for {TODAY}"])
+    parts = []
+    if pdf_names:
+        parts.append("PDFs")
+    parts.append("Read links")
+    _run(["git", "commit", "-m", f"Publish {' + '.join(parts)} for {TODAY}"])
     _run(["git", "push", "origin", "main"])
     return True
 
@@ -223,24 +267,31 @@ def main():
             print("Step 1: Running daily_update.py...")
             run_daily_update(cartoon_rel)
 
-        print("Step 2: Fixing Read links...")
+        print("Step 2: Syncing PDFs into reports/...")
+        synced_pdfs = sync_pdfs()
+        if synced_pdfs:
+            print("  Copied: " + ", ".join(synced_pdfs))
+        else:
+            print("  No new PDFs for today.")
+
+        print("Step 3: Fixing Read links...")
         fixed = fix_read_links()
         if fixed:
             print("  Read links fixed.")
         else:
             print("  Read links already correct.")
 
-        print("Step 3: Committing/pushing Read-links fix...")
-        pushed = git_commit_and_push_fix()
+        print("Step 4: Committing/pushing Read-links fix and PDFs...")
+        pushed = git_commit_and_push_fix(synced_pdfs)
         print("  Pushed fix." if pushed else "  No fix to push.")
 
-        print("Step 4: Verifying CDN...")
+        print("Step 5: Verifying CDN...")
         if not verify_cdn():
             _error(f"CDN did not return HTTP 200 after {CDN_POLL_RETRIES} attempts")
             return 1
         print("  CDN is live (HTTP 200).")
 
-        print("Step 5: Verifying committed artifacts...")
+        print("Step 6: Verifying committed artifacts...")
         observers_ok, cartoon_ok = verify_commit_artifacts(cartoon_rel)
         if not observers_ok:
             _error("data/observers.json was not committed today")
