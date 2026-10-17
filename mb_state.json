@@ -26,6 +26,7 @@
     "pages_deploy": "39051910126 (success)",
     "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines, Read links correct, observers.json committed, CDN HTTP 200",
     "live_verified": "checkpoint publish=done (live observers.json + reports_index.json carry 2026-10-17)",
-    "note": "mb_checkpoint.py still reports cartoon pending because no cartoon image exists — cartoon intentionally skipped (Kimi Docs images removed); state file is authoritative"
+    "note": "mb_checkpoint.py still reports cartoon pending because no cartoon image exists — cartoon intentionally skipped (Kimi Docs images removed); state file is authoritative",
+    "pdf_fix": "Reports PDF 404 fixed: sync_pdfs() added to mb_publish.py (copies briefings/ or ~/.hermes PDFs into reports/ before commit); today's nyt+wsj PDFs committed (7be68a8) and live reports/ PDFs return 200; backfilled 44 PDFs for 2026-08-03..2026-10-16 (b5f6ad0). 9 historical PDFs remain unrecoverable (no source file ever existed)."
   }
 }
