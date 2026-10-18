@@ -163,10 +163,14 @@ def _has_changes_to_commit():
 
 
 def git_commit_and_push_fix(pdf_names=None):
-    """Stage, commit, and push the Read-links fix and any newly copied PDFs."""
+    """Stage, commit, and push the Read-links fix, observers, and new PDFs."""
     pdf_names = pdf_names or []
 
     _run(["git", "add", "data/reports_index.json"])
+    # Gallery commentary must ride the same push: a second push moments later
+    # races the first Pages deploy ("in progress deployment" -> deploy fails).
+    if os.path.exists(os.path.join(REPO_ROOT, "data", "observers.json")):
+        _run(["git", "add", "data/observers.json"])
     for name in pdf_names:
         _run(["git", "add", os.path.join("reports", name)])
 
