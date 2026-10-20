@@ -1031,5 +1031,11 @@
       "pdf": "wsj_briefing_2026-10-19.pdf",
       "local": "briefings/wsj_briefing_2026-10-19.html"
     }
+  },
+  "2026-10-20": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-10-20.pdf",
+      "local": "briefings/nyt_2026-10-20.html"
+    }
   }
 }
