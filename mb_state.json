@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-19",
+  "date": "2026-10-21",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -19,10 +19,5 @@
   },
   "config": {
     "max_retries": 2
-  },
-  "notes": {
-    "observer_source": "wsj (zhai 706 / jin 717 / song 660 chars html)",
-    "publish_script": "scripts/mb_publish.py exit 0 — PDFs synced, Read links ok, pushed c12c89a, CDN 200",
-    "live_verified": "observers.json + reports_index.json live with 2026-10-19; nyt/wsj html 200; nyt/wsj PDFs 200; index.html 200"
   }
 }

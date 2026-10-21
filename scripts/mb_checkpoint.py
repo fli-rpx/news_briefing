@@ -176,12 +176,35 @@ def check_publish():
     )
 
 
+def _state_phase_status(phase):
+    """Status recorded for *phase* in mb_state.json for today, else None."""
+    path = os.path.join(REPO_ROOT, "mb_state.json")
+    if not os.path.exists(path):
+        return None
+    try:
+        state = _read_json(path)
+    except (json.JSONDecodeError, OSError):
+        return None
+    if state.get("date") != TODAY:
+        return None
+    entry = state.get("phases", {}).get(phase)
+    if isinstance(entry, dict):
+        return entry.get("status")
+    return None
+
+
 def main():
     phases = {
         "observer_sync": "done" if check_observer_sync() else "pending",
         "cartoon": "done" if check_cartoon() else "pending",
         "publish": "done" if check_publish() else "pending",
     }
+
+    # A phase marked "skipped" in state (e.g. cartoon images disabled) is settled:
+    # never report it as pending work, or the next tick will retry it forever.
+    for phase in phases:
+        if _state_phase_status(phase) == "skipped" and phases[phase] != "done":
+            phases[phase] = "skipped"
 
     # Determine next pending phase.
     next_phase = None
