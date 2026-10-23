@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-21",
+  "date": "2026-10-23",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -19,5 +19,13 @@
   },
   "config": {
     "max_retries": 2
+  },
+  "notes": {
+    "observer_source": "wsj (zhai 729 / jin 761 / song 781 chars html), heading date 2026年10月23日",
+    "observers_commit": "c3b26c5",
+    "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines (ecaeb3e nyt, 86a8a63 wsj), PDFs synced into reports/, Read links correct, observers.json committed, CDN HTTP 200",
+    "pages_deploy": "39991574268 success (sha c3b26c5)",
+    "live_verified": "fli-rpx.github.io/news_briefing/data/observers.json carries 2026-10-23 (68 dates, keys jin/song/zhai); nyt_2026-10-23.html and wsj_briefing_2026-10-23.html HTTP 200; both PDFs under reports/ HTTP 200",
+    "helpers": "scripts/mb_seed_state.py (seed) + scripts/mb_observer_sync.py --date (observer sync) + scripts/mb_phase.py <phase> <status> [error] (update) — python3 -c is blocked by the cron security scanner"
   }
 }
