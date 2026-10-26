@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-25",
+  "date": "2026-10-26",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -19,13 +19,5 @@
   },
   "config": {
     "max_retries": 2
-  },
-  "notes": {
-    "observer_source": "wsj (zhai 926 / jin 761 / song 801 chars html) via scripts/mb_observer_sync.py --date 2026-10-25",
-    "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines (nyt 05:00, wsj 08:00), PDFs synced to reports/, Read links already correct, observers.json committed, CDN HTTP 200",
-    "publish_commit": "0264e98",
-    "pages_deploy": "40214389743 success (Deploy Pages, sha 0264e98, 22s)",
-    "live_verified": "fli-rpx.github.io/news_briefing — data/observers.json 200 with 2026-10-25 (70 entries, keys jin/song/zhai); briefings/nyt_2026-10-25.html + briefings/wsj_briefing_2026-10-25.html 200; reports/nyt_briefing_2026-10-25.pdf + reports/wsj_briefing_2026-10-25.pdf 200 after deploy",
-    "cartoon": "skipped — Kimi Docs images removed per user request"
   }
 }
