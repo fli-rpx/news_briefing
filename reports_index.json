@@ -610,5 +610,11 @@
     "type": "wsj",
     "title": "WSJ Briefing - October 26, 2026",
     "url": "briefings/wsj_briefing_2026-10-26.html"
+  },
+  {
+    "date": "2026-10-27",
+    "type": "nyt",
+    "title": "NYT Briefing - October 27, 2026",
+    "url": "briefings/nyt_2026-10-27.html"
   }
 ]
