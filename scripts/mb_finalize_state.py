@@ -8,21 +8,47 @@ import mb_state  # noqa: E402
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+
+def _head_commit():
+    import subprocess
+
+    try:
+        return subprocess.check_output(
+            ["git", "-C", REPO, "rev-parse", "--short", "HEAD"], text=True
+        ).strip()
+    except Exception:
+        return None
+
+
+def _observer_lens(date_str):
+    import json
+
+    path = os.path.join(REPO, "data", "observers.json")
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            entry = json.load(f).get(date_str, {})
+    except Exception:
+        return {}
+    return {k: len(v) for k, v in entry.items()}
+
+
 state = mb_state.load_state(REPO)
+date_str = state["date"]
 mb_state.update_phase(state, "observer_sync", "done")
 mb_state.update_phase(
     state, "cartoon", "skipped", "Kimi Docs images removed per user request"
 )
 mb_state.update_phase(state, "publish", "done")
+lens = _observer_lens(date_str)
 state["notes"] = {
-    "observer_source": "wsj (zhai 905 / jin 704 / song 907 chars html)",
-    "observers_commit": "9448183",
-    "publish_script": "scripts/mb_publish.py exit 0 — briefings already published by pipelines, PDFs synced, Read links correct, observers committed, CDN HTTP 200",
-    "live_verified": "checkpoint+liveness: observers.json 200 with 2026-10-18, nyt/wsj html 200, nyt/wsj PDFs 200, reports_index has 5 refs to 2026-10-18, index.html 200",
-    "pages_deploy": "39147641382 rerun success + 39147820200 success",
-    "fix_deploy_race": "mb_publish.py now stages data/observers.json in the same commit as Read links/PDFs -> one push per day instead of two, which removes the 'in progress deployment' failure that hit today (two pushes 7s apart). Deploy 39147641382 initially failed on that race and was re-run after the earlier run finished.",
-    "pending_manual": "pages.yml concurrency group (serialize deploys) NOT applied: pushed via OAuth token without 'workflow' scope (gh scopes: gist, read:org, repo). Needs a token with workflow scope.",
-    "helpers": "scripts/mb_seed_state.py (seed) + scripts/mb_phase.py <phase> <status> [error] (update) — python3 -c is blocked by the cron security scanner",
+    "observer_source": "wsj ("
+    + " / ".join(f"{k} {v}" for k, v in sorted(lens.items()))
+    + " chars html)"
+    if lens
+    else "none",
+    "observers_commit": _head_commit(),
+    "publish_script": "scripts/mb_publish.py — see run output for CDN status",
+    "helpers": "scripts/mb_seed_state.py (seed) + scripts/mb_phase.py <phase> <status> [error] (update)",
 }
 mb_state.save_state(state, REPO)
 print("state finalized:", state["date"])
