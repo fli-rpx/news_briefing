@@ -118,13 +118,48 @@ def make_pdf(repo_html_path, repo_pdf_path):
     sys.exit(1)
 
 
+def _audio_python():
+    """Pick an interpreter that can actually import edge_tts.
+
+    A cron shell can run a bare system python (/usr/bin/python3, 3.9) while
+    PYTHONPATH exposes a 3.14 venv's site-packages; edge_tts then dies on
+    import and audio silently never gets generated. Prefer the venv python
+    that owns the active site-packages, verified by a real import probe.
+    """
+    cands = [sys.executable]
+    try:
+        import site as _site
+        for p in _site.getsitepackages():
+            cand = os.path.join(os.path.dirname(os.path.dirname(p)),
+                                "bin", "python3")
+            if os.path.exists(cand):
+                cands.append(cand)
+    except Exception:  # noqa: BLE001 - probe order is best effort
+        pass
+    cands.append("/opt/homebrew/bin/python3")
+    seen = set()
+    for cand in cands:
+        if cand in seen:
+            continue
+        seen.add(cand)
+        try:
+            r = subprocess.run([cand, "-c", "import edge_tts"],
+                               capture_output=True, timeout=60)
+        except Exception:  # noqa: BLE001 - a bad candidate is skipped
+            continue
+        if r.returncode == 0:
+            return cand
+    return sys.executable
+
+
 def _ensure_audio(pipeline, iso, log_ctx):
     """Best-effort briefing audio: invoke the generator when the mp3 is
     missing. Any failure or timeout is a warning only — audio must never
     block or fail a publish."""
     script = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                           "briefing_audio.py")
-    cmd = [sys.executable, script, "--pipeline", pipeline, "--date", iso, "--json"]
+    cmd = [_audio_python(), script, "--pipeline", pipeline, "--date", iso,
+           "--json"]
     try:
         r = subprocess.run(cmd, capture_output=True, text=True,
                            timeout=AUDIO_TIMEOUT_SECONDS)
