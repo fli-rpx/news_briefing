@@ -712,5 +712,11 @@
     "type": "nyt",
     "title": "NYT Briefing - November 4, 2026",
     "url": "briefings/nyt_2026-11-04.html"
+  },
+  {
+    "date": "2026-11-04",
+    "type": "wsj",
+    "title": "WSJ Briefing - November 4, 2026",
+    "url": "briefings/wsj_briefing_2026-11-04.html"
   }
 ]
