@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-05",
+  "date": "2026-11-06",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -19,5 +19,11 @@
   },
   "config": {
     "max_retries": 2
+  },
+  "notes": {
+    "observer_source": "wsj (jin 751 / song 753 / zhai 859 chars html)",
+    "observers_commit": "19f47e7",
+    "publish_script": "scripts/mb_publish.py — see run output for CDN status",
+    "helpers": "scripts/mb_seed_state.py (seed) + scripts/mb_phase.py <phase> <status> [error] (update)"
   }
 }
