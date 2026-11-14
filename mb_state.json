@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-13",
+  "date": "2026-11-14",
   "phases": {
     "observer_sync": {
       "status": "done",
@@ -21,9 +21,8 @@
     "max_retries": 2
   },
   "notes": {
-    "observer_source": "wsj (jin 740 / song 749 / zhai 707 chars html)",
-    "observers_commit": "ee64481",
-    "publish_script": "scripts/mb_publish.py — see run output for CDN status",
-    "helpers": "scripts/mb_seed_state.py (seed) + scripts/mb_phase.py <phase> <status> [error] (update)"
+    "observer_source": "wsj (zhai 867 / jin 792 / song 853 chars html)",
+    "publish_script": "scripts/mb_publish.py — CDN 200, observers.json live after ~75s Pages deploy",
+    "helpers": "scripts/mb_seed_state.py (seed) + mb_phase.py <phase> <status> (update) + mb_checkpoint.py (verify)"
   }
 }
