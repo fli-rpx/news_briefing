@@ -30,11 +30,41 @@ try:
 except ImportError:  # run as a plain script
     from briefing_lib import resolve_repo
 
-EDGE_TTS = os.environ.get(
-    "EDGE_TTS",
+_PINNED_EDGE_TTS = (
     "/Users/fudongli/.hermes/installs/544e24d9950f205f/environments/"
-    "720b66c5e093421c9c4aa73b27c4b09c/venv/bin/edge-tts",
+    "720b66c5e093421c9c4aa73b27c4b09c/venv/bin/edge-tts"
 )
+
+
+def _find_edge_tts():
+    """$EDGE_TTS, else the pinned venv path, else any live install venv.
+
+    Hermes re-creates its install environments with new hashes, which strands
+    a hardcoded path and silently disables audio. Fall back to the newest
+    edge-tts binary that actually exists under ~/.hermes/installs.
+    """
+    env = os.environ.get("EDGE_TTS")
+    if env:
+        return env
+    if os.path.exists(_PINNED_EDGE_TTS):
+        return _PINNED_EDGE_TTS
+    root = os.path.expanduser("~/.hermes/installs")
+    try:
+        found = [
+            os.path.join(root, d, "environments", e, "venv", "bin", "edge-tts")
+            for d in os.listdir(root)
+            for e in os.listdir(os.path.join(root, d, "environments"))
+        ]
+    except OSError:
+        found = []
+    live = [p for p in found if os.access(p, os.X_OK)]
+    if not live:
+        return _PINNED_EDGE_TTS
+    live.sort(key=lambda p: os.path.getmtime(p), reverse=True)
+    return live[0]
+
+
+EDGE_TTS = _find_edge_tts()
 VOICE = "en-US-AriaNeural"
 VOICE_ZH = "zh-CN-XiaoxiaoNeural"   # CJK-dominant lines (observer sections)
 CJK = re.compile(r"[\u4e00-\u9fff]")
