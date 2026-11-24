@@ -1,10 +1,11 @@
 {
-  "date": "2026-11-23",
+  "date": "2026-11-24",
   "phases": {
     "observer_sync": {
       "status": "done",
       "retries": 0,
-      "error": null
+      "error": null,
+      "source": "wsj (zhai 697 / jin 606 / song 720 chars)"
     },
     "cartoon": {
       "status": "skipped",
@@ -14,7 +15,8 @@
     "publish": {
       "status": "done",
       "retries": 0,
-      "error": null
+      "error": null,
+      "note": "mb_publish.py exit 0 — PDFs synced, Read links OK, observers.json committed; Pages deploy run 45454924388 failed with transient 'No artifacts' error, rerun succeeded"
     }
   },
   "config": {
