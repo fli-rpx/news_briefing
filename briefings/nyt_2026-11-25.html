@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NYT Briefing — November 25, 2026 (Wednesday)</title>
+<style>
+
+:root { --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26; --accent: #c8a84e; --accent-dim: #a8882e; --text: #ffffff; --text-dim: #8888aa; --border: #2a2a3a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Georgia','Noto Serif SC','PingFang SC',serif; line-height: 1.7; font-size: 16px; }
+.hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%); overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.6) 100%); }
+.hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; max-width: 900px; }
+.hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.75rem; text-shadow: 0 0 40px rgba(200,168,78,0.3); }
+.hero-subtitle { font-size: 1.1rem; color: #d0d0e0; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.hero-meta { font-size: 0.95rem; color: var(--text-dim); letter-spacing: 0.08em; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+.section-title { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.cluster { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+.cluster h3 { color: #c8a84e; margin-bottom: 0.75rem; font-size: 1.1rem; }
+.cluster p { line-height: 1.8; color: #ccc; margin-bottom: 0.9rem; }
+.cluster p:last-child { margin-bottom: 0; }
+.cluster ul { margin: 0.5rem 0 0 1.25rem; color: #d0d0e0; }
+.cluster li { margin-bottom: 0.5rem; line-height: 1.7; }
+.observer-card { background: #111; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid #c8a84e; }
+.observer-card.zhai { border-left-color: #8b2252; }
+.observer-card.jin { border-left-color: #e74c3c; }
+.observer-card.song { border-left-color: #3498db; }
+.observer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.observer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background: #c8a84e; color: #0a0a0f; }
+.observer-card.zhai .observer-icon { background: #8b2252; color: #fff; }
+.observer-card.jin .observer-icon { background: #e74c3c; color: #fff; }
+.observer-card.song .observer-icon { background: #3498db; color: #fff; }
+.observer-body p { line-height: 1.8; margin-bottom: 0.8rem; color: #c0c0d0; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: var(--surface); color: var(--accent); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+td { color: #c0c0d0; }
+.footer { text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+@media (max-width: 600px) { .container { padding: 1rem; } .cluster { padding: 1rem; } .observer-card { padding: 1rem; } table { font-size: 0.8rem; } th,td { padding: 0.4rem; } }
+
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="hero-content">
+<h1>NYT Daily Briefing</h1>
+<p class="hero-subtitle">Alice Huang reached Nvidia's inner circle · Huawei convicted of stealing US trade secrets · Iran lashed a singer 74 times · 26 dead in Indonesian factory fire · Ukraine's war carried by noncombatants</p>
+<p class="hero-meta">Wednesday, November 25, 2026</p>
+</div>
+</section>
+
+<div class="audio-bar" style="max-width:900px;margin:0 auto;padding:1.25rem 1.5rem 0;text-align:center">
+<span style="display:block;color:#c8a84e;letter-spacing:.08em;font-size:.95rem;margin-bottom:.6rem">🎧 Listen to this briefing</span>
+<audio controls preload="none" src="https://github.com/fli-rpx/news_briefing/releases/download/briefing-audio/nyt_briefing_2026-11-25.mp3" style="width:100%;max-width:520px"></audio>
+<div style="margin-top:.6rem"><a href="https://github.com/fli-rpx/news_briefing/releases/download/briefing-audio/nyt_briefing_2026-11-25.mp3" download style="color:#d0d0e0;font-size:.85rem">Download MP3</a></div>
+</div>
+<div class="container">
+
+<h2 class="section-title">Cluster 1: Geopolitics &amp; International Affairs</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>China's intelligence services reached the top of America's most important company, and Washington's response was to put him back in the chair.</p>
+</div>
+<div class="cluster">
+<h3>From Chinese Factory Town to the Nvidia Scandal (#6)</h3>
+<p>The Times traced Alice Huang from State-Owned Factory No. 282 in Hunan — a complex that made hand grenades and guided-missile parts — to the inner circle of the AI boom. U.S. intelligence believes she was in contact with a Ministry of State Security officer from spring 2025 through this year, overlapping her alleged affair with Jensen Huang. Her business partner Kang Wei, often introduced as her husband, is alleged to have worked with the same agency. This is the biography the Nvidia board was weighing when it voted to accept a resignation.</p>
+</div>
+<div class="cluster">
+<h3>Huawei Found Guilty of Stealing Trade Secrets (#19)</h3>
+<p>A Brooklyn jury convicted Huawei on 10 of 12 counts after an 11-week trial, including bank fraud and conspiracy to steal trade secrets, while acquitting on the racketeering conspiracy charge that was the government's central theory. The verdict landed in the same week Washington restored a CEO whose lover is alleged to have done what Huawei was just convicted of doing. The asymmetry will be quoted in Beijing for years.</p>
+</div>
+<div class="cluster">
+<h3>Iraq's Prime Minister Aims to Wrest More Power From Kurdistan (#11)</h3>
+<p>Ali al-Zaidi ordered a federal takeover of border crossings and disputed oil fields this week, days after sending federal forces into territory held by the country's most powerful Iran-backed militia. He is sequencing his fights rather than opening two fronts — but both targets have external patrons, and his success depends on Tehran and Washington staying distracted.</p>
+</div>
+<div class="cluster">
+<h3>Woman in Iran Lashed 74 Times for Singing With No Hijab (#12)</h3>
+<p>Parastoo Ahmadi, 29, was flogged in Qom for a 2024 video of herself singing without a veil, viewed 3.3 million times. She was also banned from performing and from leaving Iran for two years. The severity of the sentence measures how little authority the state believes it still has over the thing it is punishing.</p>
+</div>
+<div class="cluster">
+<h3>Dozens Unaccounted for Days After Factory Fire in Indonesia (#13)</h3>
+<p>The death toll at a candy factory in Serang reached 26 with 28 still missing, as rescuers worked toward a second-floor stairwell they suspect holds more bodies. Police opened a criminal investigation.</p>
+</div>
+<div class="cluster">
+<h3>Prince William and Catherine's Country Home Is Broken Into (#14) / 'Nonroyal Royals' (#15)</h3>
+<p>Two men were arrested after a break-in at Anmer Hall while the Waleses were away — the latest security scare for a family simultaneously renegotiating its public role. Harry and Meghan, meanwhile, are quietly re-establishing a British foothold, buying proximity without duties.</p>
+</div>
+<div class="cluster">
+<h3>Diary of a Pope (#16)</h3>
+<p>Excerpts from Francis's private journals offer an unusually intimate view of a pontiff given to self-examination and, at times, sharp judgment about the resistance he has met inside the Vatican.</p>
+</div>
+<div class="cluster">
+<h3>These Ukrainians Aren't in Combat (#17) / The Steppe Wolves (#18)</h3>
+<p>A doctor, a gravedigger, a therapist and a pathologist carry the war without firing a weapon, while a volunteer unit of men past conscription age serves close to the front. Nearly four years in, Ukraine's manpower squeeze has redrawn who fights and who merely endures.</p>
+</div>
+<h2 class="section-title">Cluster 2: US Politics &amp; Domestic Policy</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>The president has made himself the underwriter of a private company's valuation, and the bill for that is now a congressional hearing.</p>
+</div>
+<div class="cluster">
+<h3>Trump's Extraordinary Nvidia Intervention Sidelines National Security Concerns (#1)</h3>
+<p>By his own account, Trump watched the market slide and decided to stop it. Nvidia's board had voted 10–0 to accept Jensen Huang's resignation and its chair said publicly it did not intend to reinstate him; six days later the same board voted 10–0 the other way. Roughly $1 trillion in shareholder value was restored Monday, including to the president's own holdings. "I'm doing it for the country," he told CNBC.</p>
+</div>
+<div class="cluster">
+<h3>Account Funding Trump's D.C. Makeover Got $300 Million Boost (#7)</h3>
+<p>A National Park Service account received a $300 million deposit in September with no disclosed source, on top of a total of about $790 million since Trump returned to office — against less than $100 million per year historically. The money funds the White House ballroom, the Reflecting Pool and design work on a triumphal arch. The administration declined to say who gave it.</p>
+</div>
+<div class="cluster">
+<h3>Trump Awards Giuliani the Presidential Medal of Freedom (#8)</h3>
+<p>The nation's highest civilian honor went, in a private ceremony, to a man federal investigators named a co-conspirator in the attempt to overturn the 2020 election and who was found to have defamed two Georgia election workers. The medal's value to its next recipient fell the moment this one was pinned on.</p>
+</div>
+<div class="cluster">
+<h3>Abrego Garcia Voluntarily Leaves U.S. (#3)</h3>
+<p>The Salvadoran immigrant wrongfully deported to a prison in 2025 left for Spain on Tuesday night, facing the alternative of deportation to Liberia. DHS called it self-deportation; his lawyer called the end of a "retaliatory deportation campaign." "I am leaving with my freedom," he said.</p>
+</div>
+<div class="cluster">
+<h3>Families Fleeing the U.S. Are Being Separated at the Canadian Border (#4)</h3>
+<p>Keyla François and Noelson Pierre drove from Springfield, Ohio toward Canada after protections for 300,000 Haitians were terminated. Because the Safe Third Country Agreement's family exception excludes in-laws, François was barred at the border; she is now in a New Mexico detention center, 2,000 miles from her husband and two toddlers in Montreal. More than 1,300 people were turned back at the northern border between Jan. 1 and Nov. 16.</p>
+</div>
+<div class="cluster">
+<h3>Democrat Flips Tennessee House Seat (#10)</h3>
+<p>Victoria Broderick, a tech-support worker who spent $90,000 and aired no television ads, unseated an eight-term Republican in a district Trump carried by 24 points, giving Democrats their 259th seat and their largest majority since the early 1990s. Her opponent spent $508,000. Three districts remain uncalled, all in Trump territory with Democrats leading narrowly.</p>
+</div>
+<div class="cluster">
+<h3>Judges Open Door for Trump to Win Appeal in Stormy Daniels Case (#20)</h3>
+<p>A Second Circuit panel revived the path to move his 34-count Manhattan conviction into federal court, where presidential immunity would become the argument. The district judge who had blocked the move died last month.</p>
+</div>
+<div class="cluster">
+<h3>Democrats Can't Own This War (#30)</h3>
+<p>Robert Malley and Stephen Wertheim urge Democrats to use the Dec. 11 government-funding deadline to bar hostilities with Iran — including the naval blockade, which they call an act of war that risks escalation. They acknowledge the risk of a shutdown and argue it is smaller than the cost of failing to end a war the party denounced and voters rejected.</p>
+</div>
+<div class="cluster">
+<h3>When You're a Star They Let You Compromise National Security (#31)</h3>
+<p>Michelle Goldberg reads the Nvidia affair as a study in how deference to wealth operates inside this administration: intelligence findings become an inconvenience when the market wants a different answer.</p>
+</div>
+<div class="cluster">
+<h3>Prediction</h3>
+<p>The congressional hearings on Nvidia beginning next week will not produce a criminal referral against Jensen Huang within 30 days. <em>(Rationale: Trump has already supplied the board an assurance that no charges are pending, and the House majority gavels in only in January; the near-term hearings are staged for testimony, not referral.)</em> <strong>Confidence: 72%</strong> (high confidence)</p>
+</div>
+<div class="cluster">
+<h3>For Immigrant Construction Workers in New York, Danger Is Part of the Job (#22)</h3>
+<p>An investigation finds elevated injury and death rates among immigrant construction workers, with many afraid to report unsafe conditions because of their immigration status.</p>
+</div>
+<h2 class="section-title">Cluster 3: Business, Tech &amp; Economy</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>The AI trade is now a political instrument, and it is being priced accordingly — twice in two sessions.</p>
+</div>
+<div class="cluster">
+<h3>Markets Slide as Tech Stocks Partly Reverse Nvidia-Sparked Rally (#23)</h3>
+<p>The S&amp;P fell half a percent and the Nasdaq more than 1% Tuesday as Nvidia gave back nearly 6% of Monday's 30% gain. Anthropic, which broke IPO records last week, fell more than 6% and dropped below its offer price for the first time. Bernstein's note on the board's reversal used the word "clown-like" — when sell-side research abandons valuation language, the analyst has concluded there is no model.</p>
+</div>
+<div class="cluster">
+<h3>Jensen Huang's Return Shows How Nvidia's Board Bowed to Trump (#24)</h3>
+<p>Chair Harvey Jones said six days ago that the board "does not intend to reinstate" Huang; on Monday it voted unanimously to do it. Harvard's David Yoffie: "It neuters the board. It makes the board look like lackeys of the president." The board's compensation and the durability of its decisions are now the market's open question.</p>
+</div>
+<div class="cluster">
+<h3>Jensen Huang Apologizes to Nvidia Employees and Says He Is in Therapy (#2)</h3>
+<p>In his first all-hands since returning, Huang told employees "I made some terrible mistakes," said he was unfaithful to his wife, and disclosed 90 minutes of daily therapy. He is expected to testify in congressional hearings next week.</p>
+</div>
+<div class="cluster">
+<h3>Elon Musk Faces an A.I. Dilemma at SpaceX (#25)</h3>
+<p>SpaceX earns billions a month leasing compute to Anthropic and Google while its own Grok products lag. Musk renamed the group chat "Sell compute because we can't compete" and warned that "anyone wasting GPUs on bullshit while we are failing to compete will be asked to leave immediately."</p>
+</div>
+<div class="cluster">
+<h3>Young New Yorkers Are Losing on Kalshi (#27)</h3>
+<p>A City Council investigation found 18-to-20-year-olds are about one-tenth of New York accounts but one-sixth of individual losses — $8.9 million — while NYC individuals netted −$52 million against +$340 million for institutions. Nearly 500,000 accounts are registered to city addresses, 27% held by users under 25.</p>
+</div>
+<div class="cluster">
+<h3>Pressure Builds at American Airlines as It Lags Delta and United (#26)</h3>
+<p>Revenue rose nearly 20% last quarter and the airline still lost money; it is projected to lose about $1 billion this year while Delta and United make roughly $3 billion each. CEO Robert Isom told staff: "We produced a loss for the quarter, and we're projecting a loss for the year. All right, that's just the plain old facts."</p>
+</div>
+<div class="cluster">
+<h3>Top Aviation Officials Were Traveling When Flights Were Halted Nationwide (#9)</h3>
+<p>The Nov. 13 ground stop — the longest halt to U.S. air travel since 2001 — followed a contractor's router installation in El Dorado, Arkansas, performed on a Friday, when such upgrades had historically been done overnight. Transportation Secretary Sean Duffy was himself mid-flight from Dallas. The FAA still has not announced a cause.</p>
+</div>
+<div class="cluster">
+<h3>Jensen Huang's Startling Comeback at Nvidia (#32)</h3>
+<p>The editorial board argues that the reinstatement collapses any remaining separation between corporate governance and presidential preference — and asks what it means for any company whose leader becomes politically useful. This is the sharpest line in today's paper: the problem is not that one CEO was restored, it is that the mechanism now exists and is publicly demonstrated.</p>
+</div>
+<div class="cluster">
+<h3>Putting Socially Conscious Investments in 401(k) Plans Could Get Harder (#28)</h3>
+<p>Labor proposes new restrictions on E.S.G. options in retirement plans — the third reversal in three administrations, described by the department itself as ending a "regulatory ping-pong."</p>
+</div>
+<div class="cluster">
+<h3>Judge Orders Release of OpenAI Engineer (#29)</h3>
+<p>A federal magistrate freed Abdulrahman Alfozan on a $1 million bond, saying "There is no spy story that we are talking about right now" — a notable refusal to let a national-security framing carry a single wiretapping charge.</p>
+</div>
+<div class="cluster">
+<h3>Rein in A.I., but Don't Pause It (#33)</h3>
+<p>DealBook's task force, convening 25 years after the summit's founding, wants guardrails — transparency, liability rules — rather than a moratorium.</p>
+</div>
+<div class="cluster">
+<h3>Prediction</h3>
+<p>Anthropic will still be trading below its IPO price at the close on December 4. <em>(Rationale: it broke below the offer price within roughly a week of a record IPO, on a session with no company-specific news — the AI complex is now levered to Nvidia's governance, not to Anthropic's fundamentals.)</em> <strong>Confidence: 62%</strong> (moderate confidence)</p>
+</div>
+<h2 class="section-title">Cluster 4: Culture &amp; Society</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>The paper's cultural pages are unusually full of people who built something, next to a ceremony honoring a man who tried to cancel an election.</p>
+</div>
+<div class="cluster">
+<h3>A Pioneering Harlem Museum Leader Is Stepping Down (#38)</h3>
+<p>Thelma Golden, who made the Studio Museum in Harlem the center of contemporary Black art, will leave after more than two decades. She manufactured cultural capital that did not previously exist, which is a different act than receiving an award for one.</p>
+</div>
+<div class="cluster">
+<h3>Marcia Ann Gillespie Has Died (#34)</h3>
+<p>The first Black woman to lead a major national women's magazine, she edited Essence and later Ms., reshaping coverage of race and gender across two decades of American publishing.</p>
+</div>
+<div class="cluster">
+<h3>A Riveting 'Seven Guitars' (#36) / 'Melania: The Series' (#35)</h3>
+<p>A revival of August Wilson's play lands with unusual force — its cast treating the language as music. The Melania series, by contrast, is "a bloodless, instantly dated travelogue of power" that mistakes access for insight.</p>
+</div>
+<div class="cluster">
+<h3>Writers Frustrated Over PEN America's Israel Stance Form Alternate Group (#37)</h3>
+<p>Authors and translators are building a rival free-expression organization, arguing PEN America lost credibility over Gaza and its handling of internal dissent.</p>
+</div>
+<div class="cluster">
+<h3>Find Serenity in Grand Theft Auto VI (#39) / A Cooking Show Wunderkind Grows Up and Slings Ramen (#40)</h3>
+<p>A notebook on the most expensive entertainment product ever made and what its reception says about the culture's appetite for scale; and a former child cooking-show star now running a Manhattan ramen counter.</p>
+</div>
+<h2 class="section-title">Cluster 5: Science, Health &amp; Environment</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>Two numbers frame the day — 148 square miles and a narrowing mortality gap.</p>
+</div>
+<div class="cluster">
+<h3>Out of Options, Army Moves to Detonate Old Explosives as Weather Raises Risks (#5)</h3>
+<p>Explosives that have degraded in bunkers for more than twenty years will be detonated at 9 a.m. Wednesday at the Iowa Army Ammunition Plant. Residents of Middletown, population 363, were told at 8:30 Tuesday morning they <em>might</em> be evacuated; the evacuation zone described was five miles southwest, the stay-indoors radius twenty miles, and the published plume model 148 square miles and roughly 350 farms. Acting Army Secretary Adam Telle: "We don't believe the public should be in a panic. We are very calm about this."</p>
+</div>
+<div class="cluster">
+<h3>The Mortality Gap Between Black and White Americans Is Shrinking (#21)</h3>
+<p>New research shows substantial narrowing, driven by cardiovascular and cancer outcomes, while infant mortality and several chronic-condition disparities persist.</p>
+</div>
+<div class="cluster">
+<h3>Prediction</h3>
+<p>The Iowa detonation will proceed on Nov. 26 as scheduled, and no evacuation will be ordered beyond the five-mile zone. <em>(Rationale: the Army has committed publicly and the freeze is the stated trigger; the political cost of a late evacuation exceeds the modeled plume risk in an administration that has already said it is calm.)</em> <strong>Confidence: 68%</strong> (moderate confidence)</p>
+</div>
+<h2 class="section-title">Predictions</h2>
+<table>
+<thead>
+<tr><th>#</th><th>Prediction</th><th>Confidence</th><th>Rationale</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>No criminal referral against Jensen Huang within 30 days of the hearings</td><td>72%</td><td>Trump already assured the board no charges were pending; hearings are staged testimony, referral requires a seated majority</td></tr>
+<tr><td>2</td><td>Anthropic still below its IPO price at close on Dec. 4</td><td>62%</td><td>Broke below offer price within a week on no company news; AI complex now trades on Nvidia governance</td></tr>
+<tr><td>3</td><td>Iraq's federal takeover of Kurdish crossings triggers armed resistance or formal KRG legal challenge within 30 days</td><td>65%</td><td>Both targets have external patrons; al-Zaidi's sequencing depends on Tehran and Washington staying distracted</td></tr>
+<tr><td>4</td><td>Iowa detonation proceeds Nov. 26 with no evacuation beyond five miles</td><td>68%</td><td>Army publicly committed; freeze is the stated trigger; reversal cost exceeds modeled plume risk politically</td></tr>
+<tr><td>5</td><td>Democrats finish with 261 or more House seats after the Minnesota recount and Louisiana runoffs</td><td>55%</td><td>Democrats lead narrowly in all three outstanding Trump-won districts; recounts often shift under 1 point</td></tr>
+</tbody>
+</table>
+<div class="observer-card zhai">
+<div class="observer-header">
+<div class="observer-icon">翟</div>
+<div><strong>翟东升</strong> (Zhai Dongsheng) — CDP Fellow, Renmin University</div>
+</div>
+<div class="observer-body">
+<p>从主权信用的角度看，今天这组新闻讲的其实是同一件事：美国正在把国家信用当作短期流动性来花。</p>
+<p>特朗普亲自把黄仁勋按回英伟达的椅子上，周一市值涨回近一万亿美元，周二又跌掉百分之六。这百分之六才是真正的信息。它说明市场并不相信这个安排是可持续的——市场相信的是"总统会兜底"，而不是"英伟达的基本面变好了"。把一家公司的估值锚定在白宫的一通电话上，本质上是把企业信用并入了主权信用，再用主权信用去支撑一个资产泡沫。这在短期内能稳住指数，长期却是在消耗美元的信用存量。</p>
+<p>更值得注意的是国家公园管理局那个账户。九月一笔三亿美元入账，不留捐赠人姓名；本届政府上任以来该账户进账约七亿九千万美元，而此前每年不到一亿。这意味着在美国的预算体系之外，已经长出一条约八亿美元的准财政通道，用来支付白宫宴会厅、凯旋门这类项目。主权信用货币体系的底层逻辑是"国家以未来税收为抵押发行负债"，而这条通道是反过来的：私人资金以国家账户为壳，换取政策期权。谁付钱、换什么，都不披露。这是财政纪律的实质性瓦解，比任何一次赤字都更危险，因为赤字至少还有账。</p>
+<p>华为被判十项罪名成立，同一周英伟达的CEO因与疑似情报人员的私情而复职——这种不对称北京会记很久。它告诉全世界：美国的国家安全标准是可以按股价调整的。</p>
+<p>我的判断很简单：一个国家的信用一旦变成可交易的政治资产，它的定价权就不在自己手里了。周二那百分之六，是市场给出的第一次重新报价。</p>
+</div>
+</div>
+<div class="observer-card jin">
+<div class="observer-header">
+<div class="observer-icon">金</div>
+<div><strong>金灿荣</strong> (Jin Canrong) — Professor, Renmin University</div>
+</div>
+<div class="observer-body">
+<p>看今天的《纽约时报》，我最大的感受是：美国这套制度的"自我纠错能力"正在肉眼可见地退化。</p>
+<p>英伟达的董事会，十天前十票一致让CEO辞职，六天后十票一致让他复职。同一个人、同一个董事会、零新证据，唯一变量是总统打了电话。这说明什么？说明这个董事会不是一个决策机构，是一个盖章机构。盖章机构的特点就是盖什么都行，只要来盖章的人够有分量。哈佛的教授说这叫"阉割董事会"，华尔街的分析师直接写"像小丑"。连他们自己人都不装了。</p>
+<p>这就是我说的"百年大变局"在美国内部的另一面。不是美国衰落了，是美国的制度弹性用完了。过去它遇到危机能调整——罗斯福新政、里根改革，都是制度还能自我更新的表现。现在它遇到问题只有三招：印钱、甩锅、找个人背。爱荷华那个弹药厂最能说明问题：二十年的炸药放在漏雨的 bunker 里没人管，等到上冻了要炸，才通知镇上363个居民"明天早上九点可能疏散"——五英里、二十英里、148平方英里，三个数字自己都对不上。这不是技术事故，这是治理水平的真实刻度。</p>
+<p>再看政治。民主党拿下第259席，田纳西一个花九万美元、一条电视广告都没打的 tech support 打赢了花五十万的八届议员，特朗普在这个选区赢过24个点。民调行业集体失准。这说明美国社会的真实情绪，已经和它的建模工具脱节了。</p>
+<p>我的结论是：美国现在最大的问题不是中国，不是伊朗，是它自己的账算不平、人管不住、事办不成。对中国来说，最重要的还是把自己工业化的事做好——外面越乱，越要沉住气。</p>
+</div>
+</div>
+<div class="observer-card song">
+<div class="observer-header">
+<div class="observer-icon">宋</div>
+<div><strong>宋鸿兵</strong> (Song Hongbing) — Author, Currency Wars</div>
+</div>
+<div class="observer-body">
+<p>今天这几条新闻，放在货币战争的框架里看，是一条完整的链条：金融化走到极致，就是实体经济给金融资产让路。</p>
+<p>英伟达一家的市值波动，一天之内能到一万亿美元级别，跌百分之六就是几千亿——这个数字超过世界上绝大多数国家一年的GDP。这说明美国的财富主体已经不是工厂、不是铁路、不是电厂，而是一组可以被总统的一通电话重新定价的账面资产。黄仁勋复职，本质是金融资产需要一个人来维持叙事；至于那个人的私情对象是不是中国情报人员，在资产价格面前属于"可以商量的细节"。这就是美元环流体系走到后期的典型症状：信用的扩张不再依靠生产率的提高，而依靠叙事和杠杆的维持。</p>
+<p>真正该盯的是那个国家公园管理局的账户。七亿九千万美元，来源不披露，用途是宴会厅和凯旋门。这在货币史上有个专门的说法，叫"预算外资金"。历史上每一次出现大规模的预算外资金，都是财政纪律松动的先兆——法国旧制度的包税人、罗马晚期的私库，都是这个路子。它不体现在赤字里，所以不会被讨论；它不受审计，所以不会被追责；它最后一定要通过通胀或者信用事件来清算。</p>
+<p>还有一条容易被忽略：纽约市议会的调查显示，Kalshi 上十八到二十岁的年轻人占账户的十分之一，却承担了六分之一的个人亏损，八十九万美元；全市个人净亏五千二百万，机构净赚三亿四千万。这是把预测市场变成了赌场，而且庄家是机构。金融高边疆一旦下沉到十八岁的手机里，这个国家的储蓄结构就出了根本问题。</p>
+<p>我的判断：美国的金融体系正在从"为实体融资"转向"为叙事融资"。这种模式能撑很久，因为美元还有环流特权；但它清算的方式从来不是温和的，而是通过一次资产价格的断裂完成的。周二的百分之六，只是一个很小的前兆。</p>
+</div>
+</div>
+
+<footer class="footer">
+    <p>NYT Master Briefing — Wednesday, November 25, 2026 (2026-11-25)</p>
+    <p>Prepared from 40 stories across the November 25, 2026, New York Times print edition and homepage, analyzed through 5 persona lenses.</p>
+    <p>Generated by Hermes Agent · Nous Research</p>
+</footer>
+
+</div>
+
+
+</body>
+</html>
+<!-- PHASE COMPLETE -->
