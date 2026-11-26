@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>NYT Briefing — November 26, 2026 (Thursday)</title>
+<style>
+
+:root { --bg: #0a0a0f; --surface: #12121a; --card: #1a1a26; --accent: #c8a84e; --accent-dim: #a8882e; --text: #ffffff; --text-dim: #8888aa; --border: #2a2a3a; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--text); font-family: 'Georgia','Noto Serif SC','PingFang SC',serif; line-height: 1.7; font-size: 16px; }
+.hero { position: relative; min-height: 50vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0a0a1a 0%, #1a1a2e 50%, #0a0a1a 100%); overflow: hidden; }
+.hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.6) 100%); }
+.hero-content { position: relative; z-index: 1; text-align: center; padding: 2rem; max-width: 900px; }
+.hero h1 { font-size: clamp(2rem,5vw,3.5rem); font-weight: 700; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 0.75rem; text-shadow: 0 0 40px rgba(200,168,78,0.3); }
+.hero-subtitle { font-size: 1.1rem; color: #d0d0e0; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+.hero-meta { font-size: 0.95rem; color: var(--text-dim); letter-spacing: 0.08em; }
+.container { max-width: 900px; margin: 0 auto; padding: 2rem 1.5rem; }
+.section-title { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin: 2.5rem 0 1rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.5rem; }
+.cluster { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; }
+.cluster h3 { color: #c8a84e; margin-bottom: 0.75rem; font-size: 1.1rem; }
+.cluster p { line-height: 1.8; color: #ccc; margin-bottom: 0.9rem; }
+.cluster p:last-child { margin-bottom: 0; }
+.cluster ul { margin: 0.5rem 0 0 1.25rem; color: #d0d0e0; }
+.cluster li { margin-bottom: 0.5rem; line-height: 1.7; }
+.observer-card { background: #111; border-radius: 12px; padding: 1.5rem; margin: 1rem 0; border-left: 4px solid #c8a84e; }
+.observer-card.zhai { border-left-color: #8b2252; }
+.observer-card.jin { border-left-color: #e74c3c; }
+.observer-card.song { border-left-color: #3498db; }
+.observer-header { display: flex; align-items: center; gap: 12px; margin-bottom: 1rem; }
+.observer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; background: #c8a84e; color: #0a0a0f; }
+.observer-card.zhai .observer-icon { background: #8b2252; color: #fff; }
+.observer-card.jin .observer-icon { background: #e74c3c; color: #fff; }
+.observer-card.song .observer-icon { background: #3498db; color: #fff; }
+.observer-body p { line-height: 1.8; margin-bottom: 0.8rem; color: #c0c0d0; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.9rem; }
+th, td { border: 1px solid var(--border); padding: 0.5rem 0.75rem; text-align: left; }
+th { background: var(--surface); color: var(--accent); }
+tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+td { color: #c0c0d0; }
+.footer { text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid var(--border); margin-top: 2rem; }
+@media (max-width: 600px) { .container { padding: 1rem; } .cluster { padding: 1rem; } .observer-card { padding: 1rem; } table { font-size: 0.8rem; } th,td { padding: 0.4rem; } }
+
+</style>
+</head>
+<body>
+<section class="hero">
+<div class="hero-content">
+<h1>NYT Daily Briefing</h1>
+<p class="hero-subtitle">Russia's dead pass 700,000 · Ukrainian drones strike Russian ships in Benghazi · Solomon Islands turns back to Australia · Xi's purges reach Shanghai's party chief · Houthis strike Riyadh's financial district</p>
+<p class="hero-meta">Thursday, November 26, 2026</p>
+</div>
+</section>
+
+<div class="audio-bar" style="max-width:900px;margin:0 auto;padding:1.25rem 1.5rem 0;text-align:center">
+<span style="display:block;color:#c8a84e;letter-spacing:.08em;font-size:.95rem;margin-bottom:.6rem">🎧 Listen to this briefing</span>
+<audio controls preload="none" src="https://github.com/fli-rpx/news_briefing/releases/download/briefing-audio/nyt_briefing_2026-11-26.mp3" style="width:100%;max-width:520px"></audio>
+<div style="margin-top:.6rem"><a href="https://github.com/fli-rpx/news_briefing/releases/download/briefing-audio/nyt_briefing_2026-11-26.mp3" download style="color:#d0d0e0;font-size:.85rem">Download MP3</a></div>
+</div>
+<div class="container">
+
+<h2 class="section-title">Cluster 1: Geopolitics &amp; International Affairs</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>Ukraine's reach now exceeds its diplomatic cover, China is purging its own cadre while losing the Pacific quietly, and the Gulf has climbed past the rung where de-escalation still reads as strength.</p>
+</div>
+<div class="cluster">
+<h3>Over 700,000 Russian Soldiers Have Died in Ukraine, Analysis Indicates (#7)</h3>
+<p>Meduza and Mediazona, working from Rosstat data hacked by Belarusian and Ukrainian groups, put Russian dead above 700,000, with 490,000 confirmed in state records as of September. The confirmed figure lags reality by design, and Kremlin censorship has kept the scale from reaching the constituencies whose sons are dying. Expect no political inflection from the number; expect the war to continue on its current slope until a political event interrupts it.</p>
+</div>
+<div class="cluster">
+<h3>Libyan Forces Threaten Retaliation Over Ukraine's Attack on Russian Ships (#24)</h3>
+<p>Ukrainian naval drones sank a Russian warship at a Benghazi dock and damaged a freighter, more than 1,000 miles from Ukraine. Two Libyan naval officers died, and the eastern command vowed retaliation for a violation of sovereignty while Rome called the strike "worrying." Ukraine has found the right target — basing, not tonnage — but has outrun its political preparation, and that gap is what a fragile coalition prices.</p>
+</div>
+<div class="cluster">
+<h3>Solomon Islands Enters Security Treaty With Australia, in a Blow to China (#25)</h3>
+<p>The treaty precludes any foreign military base and affirms Australia as preferred security partner; a diplomatic official says Beijing was told last month the 2022 China pact will not be renewed. "Those days are done. Gone," said Prime Minister Wale, as Australia added the Solomons to treaties with Papua New Guinea, Vanuatu and Fiji. Beijing's demonstration that a Pacific state could be peeled away has been reversed as a demonstration, which matters more than the treaty text.</p>
+</div>
+<div class="cluster">
+<h3>Shanghai's Party Leader Is Put Under Investigation as Xi's Purges Expand (#21)</h3>
+<p>Chen Jining, a Britain-trained scientist seen as destined for the Standing Committee, is under investigation for "serious violations." "If even Chen Jining has been taken down, the same could happen to others. There's no safety for anyone," said Wang Hsin-hsien of National Chengchi University. The mechanism of Xi's pre-congress consolidation produces a leadership layer that is loyal but initiative-averse — a real handicap in a technology war.</p>
+</div>
+<div class="cluster">
+<h3>Houthi Attack on Skyscraper in Saudi Capital Wounds 11, Officials Say (#23)</h3>
+<p>The target was the Public Investment Fund Tower, home of the $900 billion sovereign wealth fund at the center of Mohammed bin Salman's economic transformation. It was at least the third strike on Riyadh's financial district this month, after an airport attack last month that killed at least 14 and injured over 300. Both sides are now past the point where restraint looks like strength.</p>
+</div>
+<div class="cluster">
+<h3>Opposition Makes Progress Toward Ousting Netanyahu, Party Leader Says (#22)</h3>
+<p>Eisenkot has signed Yisrael Beiteinu and expects United Torah Judaism to support or abstain, with a Dec. 6 mandate deadline and a promise to end Haredi draft exemptions as the price of the deal. He is not attacking Netanyahu; he is removing the foundation the coalition stands on. That also makes the new government unstable the day it forms.</p>
+</div>
+<div class="cluster">
+<h3>Also in the paper</h3>
+<p>Norway closed its last coal mine on Svalbard, ending a century of Arctic mining as Longyearbyen converts to 150,000 tourists a year against 2,500 residents (#19). North Korea gave Switzerland 48 hours to close its Pyongyang mission after Bern sanctioned a camp accused of indoctrinating Ukrainian children (#20). Japan's Takaichi broke with Washington to defend the International Criminal Court, pledging an early ~$33 million contribution days after Trump joined Xi and Putin in criticizing it (#26).</p>
+</div>
+<h2 class="section-title">Cluster 2: US Politics &amp; Domestic Policy</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>The midterms are three weeks old and still unresolved in Washington, in Jerusalem, and in a Louisiana courtroom, while the administrative machinery meant to execute policy failed a phone test.</p>
+</div>
+<div class="cluster">
+<h3>FEMA's Emergency Line for Iowa Did Not Offer Promised Help (#6)</h3>
+<p>An emergency alert told residents within five miles of a live detonation to call FEMA for "evacuation details." Four Times reporters called repeatedly over two days and reached a recording about disaster-assistance registration, plus an agent who said, an hour before the blast, "I don't know anything about the explosion or anything." The agency had scripts, staff and door-knockers; what it lacked was a routing decision nobody owned.</p>
+</div>
+<div class="cluster">
+<h3>Officials and Scientists Fan Out Across Iowa After Blast to Test for Lead (#5)</h3>
+<p>The 9 a.m. detonation at the Iowa Army Ammunition Plant went as designed — no secondary explosions, no kickout, four real-time lead monitors among dozens of sampling sites — and Maj. Gen. Eric Shirley called it "exceeding expectations." The soft spot is that it happened this well only after a court challenge forced a delay from the original Friday plan, which means the competence was produced by litigation rather than by process.</p>
+</div>
+<div class="cluster">
+<h3>U.S. Spy Agencies Suffer Breach of Some Unclassified Information (#13)</h3>
+<p>The C.I.A., the National Geospatial-Intelligence Agency and the O.D.N.I. found intrusions into an open-source analysis system; classified material was untouched. The tool was Artex, an A.I. hacking utility released publicly in July for defense and adapted by attackers, and initial signs including the tool suggest China — an accusation Beijing routinely denies.</p>
+</div>
+<div class="cluster">
+<h3>Jane Fonda, De Niro and Others Say Schumer Should Not Be Leader (#15)</h3>
+<p>Thirty-five donors who say they raised $23 million are backing Van Hollen over Schumer in a secret-ballot vote next week. Their real argument is about what a 56-seat majority is for — the largest Democratic majority in 16 years, and one that under current rules cannot deliver anything voters can feel.</p>
+</div>
+<div class="cluster">
+<h3>Republicans Debate Why They Lost This Year, and Whether It Rhymes With Trump (#16)</h3>
+<p>Democrats took 56 percent of the popular vote, ending decades of Republican dominance in Texas, Kansas, Mississippi and South Carolina. Nearly 20 Republican officials offered explanations from inflation to immigration enforcement; Ben Shapiro told NPR voters concluded "the Trump administration has basically stunk up the joint." The party is split between those who blame Trump and those who cannot say his name.</p>
+</div>
+<div class="cluster">
+<h3>Mamdani Wins Against Landlords in Rent Freeze Lawsuit (#3)</h3>
+<p>Justice Brendan Lantry dismissed the landlords' challenge in a 20-page decision, finding no evidence the mayor illegally swayed the board that approved a freeze on nearly one million rent-stabilized apartments. It is the second court win this month for a mayor whose affordability message Democrats rode nationally. "Housing is not a luxury," Mamdani said. "It is a basic necessity."</p>
+</div>
+<div class="cluster">
+<h3>Also in the paper</h3>
+<p>A White House aide was photographed on the Metro with a laptop open to a plan to fire the American History museum's director and mount an exhibition on "The Riches of Our Western Civilizational Inheritance"; Smithsonian Secretary Lonnie Bunch answered with structure, not outrage (#18). A redistricting dispute has left one Louisiana race unresolved pending the Supreme Court, weeks after everyone else finished voting (#17). A transit union leader resigned from the M.T.A. board over his Florida residency, an awkward problem for the governor who appoints the board (#31).</p>
+</div>
+<h2 class="section-title">Cluster 3: Business, Tech &amp; Economy</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>The week's defining move was a reversal — of a C.E.O., of an I.P.O. price, of tariff coverage — and every reversal was cheap to decide and expensive to unmake.</p>
+</div>
+<div class="cluster">
+<h3>Trump Administration Unveils New Tariffs for Dozens of Countries, Citing Unfair Practices (#2)</h3>
+<p>A 20 percent duty on some Chinese imports with a signaled ratchet to 40 percent, matching rates on all 27 E.U. members plus India, Korea, Taiwan, Vietnam and Cambodia, and a separate Brazil action on sugar and aircraft. Trade Representative Jamieson Greer says the approach is "targeted" and mostly does not stack on existing national-security tariffs — meaning this redistributes <em>coverage</em> far more than it raises the <em>rate</em>. Broad coverage at moderate rates has a longer price-level tail than a narrow spike, which is why this week's inflation print matters more than the announcement.</p>
+</div>
+<div class="cluster">
+<h3>Anthropic's Stock Debut Could Hurt Tech Start-Ups (#8)</h3>
+<p>Anthropic closed at $82.79, below its $83 offer price and 26 percent below Thursday's opening trade, on a valuation just over $1 trillion after raising about $120 billion — the largest public offering ever. Employees could sell unusually early, pressuring the price. The number that matters is not the drawdown but the comp: every private A.I. round now has to be defended against a public mark that is falling.</p>
+</div>
+<div class="cluster">
+<h3>Trump's Nvidia Move Heralds a New Front in Economic Intervention (#11)</h3>
+<p>The president personally lobbied Nvidia's board to reinstate a C.E.O. who resigned over a relationship with a woman U.S. intelligence believed was a Chinese asset. "An individual C.E.O. has just demonstrated that the interests of his company can trump U.S. national security," said Edward Fishman of the Council on Foreign Relations. Germany's foreign minister said it "shocked me, to be honest." The structural cost is that export control and personnel security now read as discretionary — and adversaries only need to wait for the next phone call.</p>
+</div>
+<div class="cluster">
+<h3>For China, Jensen Huang's Return to Nvidia Is a Mixed Blessing (#12)</h3>
+<p>Beijing welcomes the return of its most effective American advocate on chip sales but reads the episode as proof that betting on Washington's goodwill is unsound. Epoch AI estimates smuggled chips supply roughly a third of China's A.I. computing power — a dependency, not a strength. The whiplash accelerates the self-reliance drive Washington has been trying to slow.</p>
+</div>
+<div class="cluster">
+<h3>Stocks Slump Again as Investors Fret About A.I., Tariffs and Inflation (#9) / Another Hot Inflation Reading Keeps Fed on Track to Raise Rates Again (#10)</h3>
+<p>The S&amp;P 500 fell as much as 3.2 percent in the morning before closing down 0.3 percent, a near-three-point round trip that reprices the A.I. story and the rates story several times in one session. A hot P.C.E. print keeps the Fed hiking, which is the one number in this briefing that directly contradicts the administration's affordability claim and the one over which the executive has least short-run leverage.</p>
+</div>
+<div class="cluster">
+<h3>Prediction</h3>
+<p>The Fed will raise rates at its next meeting. <em>(Rationale: a hot P.C.E. print, an explicit "keeps Fed on track" framing in the Times' own reporting, and no dissenting data point anywhere in this edition — the base rate for a signaled hike is very high, and only an exogenous shock between now and the meeting would break it.)</em> <strong>Confidence: 82%</strong> — high confidence.</p>
+</div>
+<div class="cluster">
+<h3>Empowered Democrats Aim at Weakened Regulation and Corporate Corruption (#14)</h3>
+<p>Democratic committee chairs plan to investigate administration regulators and spotlight corporate corruption, with Jensen Huang already scheduled before Banking next week. Senator Warren: "So here we are teetering on the edge of a financial crisis." The state spent two years intervening in individual companies while withdrawing from the general rules that govern all of them; the incoming Congress intends to reverse that method, which is why the first hearing stars a C.E.O. the president reinstated.</p>
+</div>
+<div class="cluster">
+<h3>Also in the paper</h3>
+<p>Robbie Whelan's "The House of Mouse" lands the week of Bob Iger's final board meeting, depicting him as insecure, vindictive and money-focused — "I am frustrated about compensation!" Iger wrote to Ike Perlmutter in 2014 (#32). Sixty-four percent of luxury and premium brands ran sales in the first eleven days of November, up from 57, with 20 percent markdowns replacing 70-80 percent doorbusters (#33). Elevated mortgage rates have produced "accidental landlords" who rent properties they cannot sell at their preferred price (#34).</p>
+</div>
+<h2 class="section-title">Cluster 4: Culture &amp; Society</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>The day's cultural news is one long argument about who owns the ritual — and what it costs to move one.</p>
+</div>
+<div class="cluster">
+<h3>Macy's Thanksgiving Day Parade Postponed Until Saturday, First Time in 100-Year History (#1)</h3>
+<p>Organizers called it at 5 p.m. Wednesday with the balloons already inflated, as the forecast hit 30 sustained and 55 gusting against a 23/34 legal threshold. Deflating, trucking back through the Lincoln Tunnel, storing and re-mounting cost overtime, participant housing, and roughly $1 million per 30-second spot of inventory now split across a Thursday encore and a Saturday live show. A visitor from Mexico City summed up the stakes: "It's the Thanksgiving Day parade. Saturday is not Thanksgiving."</p>
+</div>
+<div class="cluster">
+<h3>They Labor for Years to Get Macy's Thanksgiving Day Parade Off the Ground (#30) / What to Know About Macy's 100th Thanksgiving Day Parade (#29)</h3>
+<p>Five years of centennial planning, 100 inflatables, 5,000 volunteers, engineers who flight-test balloons and crane operators who rebuild floats overnight from a New Jersey facility — "a living breathing organism," in Macy's Studios' phrase, "a very cool game of pop-culture Jenga." The centennial is the 100th march but not the 100th year, since the parade skipped 1942-44, and this year brings back the Blue Hippo whose original balloon vanished at sea in 1931. The postponement worked because Macy's owns its logistics; you cannot postpone what you have outsourced.</p>
+</div>
+<div class="cluster">
+<h3>Trapped on the Tarmac: 3-Hour Flight Delays Spike Under Trump (#4)</h3>
+<p>Three-hour tarmac delays have nearly doubled versus 2024 and are on pace for the worst year since 2009 — 2.7 a day across more than 19,000 daily domestic flights. Since Sean Duffy became transportation secretary in 2025 the department has issued no fine for extended delays, and no fine against any airline for any consumer-protection violation in nearly two years. After the 2010 rule, delays fell 94 percent in two years, because the fine existed.</p>
+</div>
+<div class="cluster">
+<h3>Turning the Lens Around: Bob Woodward Takes On Bob Woodward (#38)</h3>
+<p>At 83, after 55 years of protecting sources, Woodward names them in "Secrets" — Nixon's own lawyers among the Watergate sources, five Supreme Court justices who talked for a book on the court. "Nothing is hidden here," he says, calling the experience "liberating." The profession's core promise is being retired by its most decorated practitioner, not because it failed but because its conditions expired.</p>
+</div>
+<div class="cluster">
+<h3>MAGA Attacked Harvard. So Harvard Taught a Class About It. (#39)</h3>
+<p>The Kennedy School's first for-credit course on the movement — about 50 students, half a semester, taught by a libertarian former Republican official who calls MAGA "the most consequential political movement of the 21st century." "I don't think the ideas are going away," Stephen Richer said after the midterms. Harvard's answer to being attacked was to understand the attacker on its own terms, which is the only form of resistance that does not require lying.</p>
+</div>
+<div class="cluster">
+<h3>Step 1 for Democrats: Kill the Filibuster (#35) / I'm a Therapist. I Wish These Patients Would Not Cut Off Their Family Members. (#36)</h3>
+<p>Pfeiffer wants the filibuster abolished now rather than in 2029, on the theory that a majority which cannot deliver is indistinguishable from a minority — though his fallback ("we had better make sure voters know that we tried like hell") is a theory of power as attribution rather than creation. The therapist's essay is the same question at household scale: estrangement has become a first resort, when the harder skill is staying in the room without capitulating or dominating.</p>
+</div>
+<div class="cluster">
+<h3>Also in the paper</h3>
+<p>A left argument that the first "woke" wave overreached stylistically while its underlying demands were not wrong (#37). Nick Cave and India took the Venice Biennale's top prizes after the jury resigned and the public voted — with the vote breakdown withheld (#40). Reviews of "The Further Mis-Adventures of Cliff Booth" (#41), "All of a Sudden" and "Hexed" (#42). An obituary for Phumzile Mlambo-Ngcuka, South Africa's first female deputy president (#43). Times reporters on their own Thanksgiving table rules (#44), and a guide to comedy specials for the holiday weekend (#45).</p>
+</div>
+<h2 class="section-title">Cluster 5: Science, Health &amp; Environment</h2>
+<div class="cluster">
+<h3>Thematic Hook</h3>
+<p>Where the measurements still work, the evidence is unambiguous — and ordinary people are already routing their lives around it.</p>
+</div>
+<div class="cluster">
+<h3>This Thanksgiving, Some Families Wonder: Should I Stay Home With My Baby? (#27)</h3>
+<p>More than 5,800 measles cases and 14 deaths this year, including a new death in Wisconsin announced Tuesday, and the United States lost its measles elimination status this month. A South Carolina pediatrician is rerouting her entire drive to avoid Lancaster County, Pennsylvania, which has recorded nine deaths. "I don't know if I can get on a plane with a child under 6 months old right now," she said. "I'm afraid this is going to be the new normal."</p>
+</div>
+<div class="cluster">
+<h3>A Pier Partially Collapses as California's Tides Enter 'Uncharted Territory' (#28)</h3>
+<p>King tides, a strong El Niño and Pacific swells combined to break records: La Jolla preliminarily hit 8.11 feet, beating 7.98 set on Oct. 27; Santa Barbara recorded its highest tide since records began in 1990; Monterey surpassed 1983. A section of the Pacifica Pier toppled on live television. "We're kind of in uncharted territory," said NWS Los Angeles meteorologist Robbie Munroe.</p>
+</div>
+<div class="cluster">
+<h3>Prediction</h3>
+<p>2026 will finish as the worst year for three-hour tarmac delays since 2009. <em>(Rationale: the year-to-date pace is already on that trajectory per Bureau of Transportation Statistics data, the rate has nearly doubled against 2024, and no enforcement change is scheduled before year-end — with roughly five weeks left, reversing the trend would require both a policy reversal and a behavioral response that cannot land in the window.)</em> <strong>Confidence: 92%</strong> — near-certain.</p>
+</div>
+<h2 class="section-title">Predictions</h2>
+<table>
+<thead>
+<tr><th>#</th><th>Prediction</th><th>Confidence</th><th>Rationale</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>Fed raises rates at its next meeting</td><td>82% — high confidence</td><td>Hot P.C.E. print, explicit "on track" reporting, no countervailing data in this edition</td></tr>
+<tr><td>2</td><td>2026 finishes as worst year for 3-hour tarmac delays since 2009</td><td>92% — near-certain</td><td>YTD pace already on trajectory; rate nearly doubled vs 2024; no enforcement change scheduled</td></tr>
+<tr><td>3</td><td>Effective U.S. tariff rate rises less than 3 points between Q4 2026 and Q1 2027</td><td>65% — moderate confidence</td><td>Greer says new duties mostly do not stack on Section 232; coverage expands but the rate may not</td></tr>
+<tr><td>4</td><td>Eisenkot announces an Israeli government by Dec. 6</td><td>55% — moderate confidence</td><td>Beiteinu signed, UTJ leaning support or abstain, but the Haredi draft contradiction is unresolved</td></tr>
+<tr><td>5</td><td>Schumer retains the Senate Democratic leadership</td><td>62% — moderate confidence</td><td>Secret ballot; he claims the votes, public endorsements favor Van Hollen but the electorate is 53 senators</td></tr>
+</tbody>
+</table>
+<div class="observer-card zhai">
+<div class="observer-header">
+<div class="observer-icon">翟</div>
+<div><strong>翟东升</strong> (Zhai Dongsheng) — CDP Fellow, Renmin University</div>
+</div>
+<div class="observer-body">
+<p><strong>翟东升：关税是财政问题，不是贸易问题</strong></p>
+<p>今天这份头版，表面上是三件事——三十多国新关税、PCE 再度偏高、联储继续加息；底层逻辑其实只有一件：美国主权信用的物质基础正在系统性钙化。</p>
+<p>先说关税。对华 20%、可加到 40%，同时对欧盟 27 国、印度、韩国、台湾、越南、柬埔寨一并课税，还对巴西的糖和飞机单独立案。请注意格里尔那句话——新税"多数不与 232 条款叠加"。这不是升级，这是<strong>再分配</strong>：把同样的税负从少数国家铺到三十几个国家身上。为什么要铺？因为法院在质疑旧授权，新国会一月就要拿传票，而名义税率再往上加，政治上已经到物理天花板。所以只能在覆盖面上下功夫。这不是贸易政策的问题，这是财政的问题——关税是唯一不需要国会同意就能收的税。</p>
+<p>再说联储。PCE 偏高、联储继续加息，而白宫的全部政治资本押在"可负担性"上。这就是我说的结构性两难：债务利息决定了它不能真加息，通胀决定了它不能真降息。鲍威尔不是独立的，他是美国债务结构的囚徒。这一轮所谓的"加息"，本质是在信用和增长之间做边际取舍。</p>
+<p>至于英伟达——总统为一个 CEO 打电话，推翻了自己情报系统的判断。这不是产业政策，这是<strong>法律可执行性</strong>这根支柱的边际磨损。美元的价值不来自黄金，来自制度的可预期性；当一个国家的安全审查可以被一通电话逆转，它的信用折价就会被市场重新定价，只是慢一点。金融市场是滞后指标，不是领先指标。</p>
+<p>所以我的判断是：这不是关税战的问题，这是美元体系进入第三阶段的问题——美国既提供不了安全伞，也提供不了消费锚，只剩下收税和收租。剩下的时间，属于平行体系。</p>
+</div>
+</div>
+<div class="observer-card jin">
+<div class="observer-header">
+<div class="observer-icon">金</div>
+<div><strong>金灿荣</strong> (Jin Canrong) — Professor, Renmin University</div>
+</div>
+<div class="observer-body">
+<p><strong>金灿荣：今天的头版，把美国的焦虑写得清清楚楚</strong></p>
+<p>各位朋友，今天这份报纸很有意思。你们看啊——</p>
+<p>第一条，对三十几个国家加关税，中国 20% 还能加到 40%。这个事情其实很简单：一个饭店老板，菜还没炒好，先把桌子掀了。为什么？因为他发现自己炒不过隔壁。关税这个东西，从来不是强者的工具，是弱者的拐杖。真有钱的人不会去菜市场跟每个摊主讨价还价，只有手头紧的人才挨家挨户地省。</p>
+<p>第二条更有意思。索罗门群岛跟澳大利亚签了安全条约，把中国 2022 年那份协议到期不续了。美国人打了一整套组合拳——贸易战、科技战、舆论战，结果呢？南太平洋这个小岛国，转个身就走了。为什么？因为工业化的本体在那儿摆着，但安全承诺是要兑现的，兑现不了，人家当然换人。这叫"组合拳打在棉花上"。</p>
+<p>第三条，上海的陈吉宁被查。有人说这是不是内部不稳？我说恰恰相反。一个政党能对自己最强的干部下手，说明它的组织还在运转，纪律还在生效。中国要做的就是把自己的事情做好——这句话我讲了十年，今天还是这句。</p>
+<p>再看美国自己：爱荷华炸弹药，联邦应急署的热线打过去，接线员说"我不知道有什么爆炸"。一个连疏散电话都答不上来的国家，你跟它谈什么全球领导力？</p>
+<p>所以我的结论很简单：现在是战略相持阶段，互有攻守。美国还在攻，但攻得手忙脚乱；我们在守，守得稳坐钓鱼台。东升西降，不是口号，是工厂里的机器、实验室里的技术、老百姓的饭碗。</p>
+<p>这就是百年大变局的本质。我们赢了。</p>
+</div>
+</div>
+<div class="observer-card song">
+<div class="observer-header">
+<div class="observer-icon">宋</div>
+<div><strong>宋鸿兵</strong> (Song Hongbing) — Author, Currency Wars</div>
+</div>
+<div class="observer-body">
+<p><strong>宋鸿兵：把今天当成三个系统来看，单点故障都在同一个位置</strong></p>
+<p>如果你把今天这三十几条新闻看成一个系统，它的核心问题不是政策对错，而是<strong>执行回路的断点</strong>。</p>
+<p>第一个系统：货币。PCE 偏高、联储继续加息、关税铺向三十多国——这三件事在工程上是一根管子上的三个阀门。关税抬高进口价格，价格推高 PCE，PCE 逼联储收紧，收紧抬高美元，美元走强又压低新兴市场的偿付能力。回路是闭合的，所以任何一环的动作都会被放大三倍。真正值得盯的不是税率，而是<strong>美元环流的反向压力</strong>：当美国同时用关税挡住商品、用高利率吸走资本，回流到美债的钱会越来越多，但支撑它的产业基础越来越少。这是典型的压力容器——外表完好，内壁在减薄。</p>
+<p>第二个系统：算力。英伟达这件事，很多人当成一段八卦。不是。金融高边疆的争夺，二十世纪是 SWIFT 和清算所，二十一世纪是<strong>芯片和算力</strong>。总统为一个 CEO 打电话，等于告诉全世界：这条边疆的关卡是可以谈的。关卡一旦可以谈，就不叫边疆，叫收费站。北京看懂了，所以它的反应不是庆幸，是加速自主——北京从不把命运押在别人的善意上，这一点我们要学。</p>
+<p>第三个系统：应急。爱荷华那通电话，是我今天看到的最典型的<strong>单点故障</strong>：一个警报、一个号码、一个接线员，整条疏散链路就断在这里。系统设计的老规律——最脆弱的地方永远是最便宜的那个环节。花几十亿做监测，舍不得花几千块做一个专线转接。</p>
+<p>至于 Anthropic 一万亿估值五天破发 26%，那是泡沫的压力测试，不是泡沫的破裂。物以稀为贵，但稀不稀，要看现金流，不看故事。</p>
+<p>一句话收尾：这不是几条新闻的问题，是整个系统的时序问题。阀门在关，压力在升，先听见声音的人，先走。</p>
+</div>
+</div>
+
+<footer class="footer">
+    <p>NYT Master Briefing — Thursday, November 26, 2026 (2026-11-26)</p>
+    <p>Prepared from 45 stories across the November 26, 2026, New York Times print edition, analyzed through 5 persona lenses.</p>
+    <p>Generated by Hermes Agent · Nous Research</p>
+</footer>
+
+</div>
+
+
+</body>
+</html>
+<!-- PHASE COMPLETE -->

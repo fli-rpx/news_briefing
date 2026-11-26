@@ -1401,5 +1401,11 @@
       "pdf": "wsj_briefing_2026-11-25.pdf",
       "local": "briefings/wsj_briefing_2026-11-25.html"
     }
+  },
+  "2026-11-26": {
+    "nyt": {
+      "pdf": "nyt_briefing_2026-11-26.pdf",
+      "local": "briefings/nyt_2026-11-26.html"
+    }
   }
 }
